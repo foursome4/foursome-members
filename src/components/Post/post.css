@@ -1,0 +1,62 @@
+.post {
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10px;
+}
+
+.post .avatar img {
+    width: 50px;
+    border-radius: 50%;
+}
+
+.post .post-type {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+.post .post-type textarea {
+    width: 100%;
+    height: 80px;
+    border: 1px solid var(--Gray-Border);
+    border-radius: 20px;
+    resize: none;
+}
+
+.post .post-type .buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.post .post-type .buttons button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: 1px solid var(--Gray-Border);
+    padding: 5px;
+    width: 110px;
+    background-color: var(--Background2);
+}
+
+.post .post-type .buttons .selected {
+    border: 1px solid var(--Primary);
+    color: var(--Primary);
+}
+
+.post .post-type .buttons button svg {
+    margin-right: 5px;
+}

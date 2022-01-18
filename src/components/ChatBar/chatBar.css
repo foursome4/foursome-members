@@ -1,0 +1,53 @@
+
+.chatBar {
+    background-color: var(--Background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 270px;
+    border-radius: 8px;
+    margin: 20px;
+    height: 95%;
+    padding:20px 0;
+}
+
+.chatBar .friendsOnline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.chatBar .friendsOnline .friend {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatBar .friendsOnline .friend img{
+    width: 30px;
+    border-radius: 50%;
+}
+
+
+.chatBar .friendsOffline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatBar .friendsOffline .friend {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatBar .friendsOffline .friend img{
+    width: 30px;
+    border-radius: 50%;
+}

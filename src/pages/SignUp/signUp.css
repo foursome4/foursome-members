@@ -1,0 +1,143 @@
+.content {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .signUp {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.content .signUp .form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--White);
+   
+}
+
+.content .signUp .form .title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 70%;
+    color: var(--White);
+    margin-bottom: 10px;
+}
+
+.content .signUp .form input:focus{
+    outline: none;
+  }
+
+  .content .signUp .form option:focus{
+    outline: none;
+  }
+  .content .signUp .form select:focus{
+    outline: none;
+  }
+
+
+.content .signUp .form input {
+    width: 70%;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: var(--Primary);
+    padding:10px 5px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.content .signUp .form select {
+    width: 70%;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: var(--Primary);
+    padding:10px 5px;
+    margin-bottom: 10px;
+    color: #fff;
+
+}
+
+.content .signUp .form option {
+    width: 70%;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+    padding:10px 5px;
+    margin-bottom: 10px;
+    color: var(--Primary);
+
+}
+
+.content .signUp .form input::placeholder {
+    color: rgba(255, 255, 255, 0.44);
+}
+
+.content .signUp .form .buttons {
+    width: 70%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.content .signUp .form .buttons button {
+    background-color: var(--Button);
+    width: 100px;
+    height: 35PX;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.content .signUp .form .terms {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    color: var(--White);
+    margin-top: 10px;
+}
+
+.content .signUp .form .terms input[type="checkbox"] {
+    margin-left: -125px;
+    margin-right: -50px;
+    color: var(--Primary);
+}
+
+
+.content .signUp .logo {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--White);
+}
+
+.content .signUp .logo img{
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.content .signUp .logo .emoj {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.content .signUp .logo .emoj img{
+        width: 12%;
+        margin-top: 20px;
+}

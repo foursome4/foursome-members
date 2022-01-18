@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --Primary: #8124E2;
+  --Background: #F6F2F8;
+  --Background-man: #ececff;
+  --Background-woman: #ffecfc;
+  --Background2: #FEFEFE;
+  --Gray_font1: #828CA9;
+  --Gray_font2: #727376;
+  --Black: #000000;
+  --White: #ffffff;
+  --Button: #0095D3;
+  --Gray-Border: #BFC4D3;
+}
+
+html {
+  @media (max-width: 1080px) {
+    font-size: 93.75%;
+    
+    @media (max-width: 720px) {
+      font-size: 87.5%;
+    }
+  }
+  
+}
+
+body {
+  background: var(--Primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  background: var(--Primary);
+  width: 100%;
+    height: 100%;
+    display: flex;
+
+}
+
+body, input, textarea, button {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6, strong {
+  font-weight: 400;
+}
+
+p {
+  font-size: 12px;
+}
+
+button {
+  cursor: pointer;
+}
