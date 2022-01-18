@@ -1,5 +1,5 @@
 import logoFoursome from '../../assets/images/logo2.png'
-import { FiSearch, FiMessageSquare, FiUserPlus, FiBell, FiMail } from 'react-icons/fi'
+import { FiSearch, FiMessageSquare, FiUserPlus, FiBell, FiMail, FiLogOut } from 'react-icons/fi'
 import avatarImg from '../../assets/images/avatar.png'
 import './topBar.css'
 import { useContext, useEffect } from 'react';
@@ -37,6 +37,9 @@ function TopBar() {
                 </div>
                 <div className="link">
                     <FiMail />
+                </div>
+                <div className="link">
+                    <FiLogOut />
                 </div>
                 <div className="account">
                     <img src={user !== null ? user.avatar : avatarImg} alt="" />

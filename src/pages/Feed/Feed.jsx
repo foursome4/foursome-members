@@ -26,7 +26,7 @@ function Feed() {
 
     }, [user])
 
-    return (
+return (
         <div className="container">
         <div className="content">
             <ToolBarLeft />
