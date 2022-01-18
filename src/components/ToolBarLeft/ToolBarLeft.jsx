@@ -24,7 +24,7 @@ function ToolBarLeft() {
     return (
         <div className='ToolBar'>
             <div className="avatar">
-                <img src={user !== null ? user.nickname : avatarCasal}alt="" />
+                <img src={user !== null ? user.avatar : avatarCasal}alt="" />
             </div>
             <div className="info">
                 <div className="name">
