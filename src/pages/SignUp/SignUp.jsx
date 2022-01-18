@@ -1,14 +1,16 @@
 import { useContext, useState } from 'react';
 import logoImg from '../../assets/images/logo.png'
 import { AuthContext } from '../../contexts/Auth';
+import { useParams } from 'react-router';
 
 import './signUp.css';
 
 function SignUp() {
+  const {email} = useParams()
   const  {createAccount} = useContext(AuthContext)
   const [nickname, setNickname] = useState("");
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+  const [emailUser, setEmailUser] = useState("");
   const [code, setCode] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +23,7 @@ function SignUp() {
     const role = "member";
 
     if(checked) {
-      createAccount(nickname, username, email, phone, passordConfirm, password, status, role)
+      createAccount(nickname, username, emailUser, phone, passordConfirm, password, status, role)
       console.log(nickname, username, email, phone, passordConfirm, password, status, role)
     } else {
       alert("Favor, confirmar a leitura do termo de uso")
@@ -43,7 +45,7 @@ function SignUp() {
         <div className="title">
             <h3>CADASTRE-SE</h3>
           </div>
-          <input type="text" placeholder="E-mail" value={"jefersonmacedowgf@gmail.com"} onChange={(e) => setEmail(e.target.value)} disabled/>
+          <input type="text" placeholder="E-mail" value={"jefersonmacedowgf@gmail.com"} onChange={(e) => setEmailUser(e.target.value)} disabled/>
           <input type="text" placeholder="Código de verificação" value={code} onChange={(e) => setCode(e.target.value)} />
           <input type="text" placeholder="Nome de exibição" value={nickname} onChange={(e) => setNickname(e.target.value)}/>
           <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>

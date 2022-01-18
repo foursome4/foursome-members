@@ -1,0 +1,156 @@
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: var(--Background2);
+}
+
+.content .main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .aside{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .aside .invites {
+    width: 100%;
+    height: 100%;
+    border-right: 2px solid var(--Background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+.content .aside .invites .invites-selected {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.content .aside .invites .invites-selected button {
+    width: 50%;
+    text-align: left;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid var(--Gray_font1);
+    color: var(--Gray_font1);
+    background-color: var(--Background2);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.content .aside .invites .invites-selected .selected{
+    width: 50%;
+    text-align: left;
+    padding: 5px;
+    border: none;
+    border-bottom: 3px solid var(--Primary);
+    color: var(--Primary);
+    background-color: var(--Background2);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.content .aside .invites .invites-search {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 10px 0;
+}
+
+.content .aside .invites .invites-search input {
+    width: 100%;
+    border-radius: 20px;
+    padding: 10px;
+    border: 2px solid var(--Gray_font1);
+
+}
+
+.content .aside .invites .invites-search button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--Primary);
+    padding: 10px;
+    color: var(--White);
+    margin: 10px;
+}
+
+.content .aside .invites .invites-all {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px 0;
+    flex-wrap: wrap;
+}
+
+.content .aside .invites .invites-all .group-unic {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.content .aside .invites .invites-all .group-unic .cover {
+    width: 260px;
+}
+
+.content .aside .invites .invites-all .group-unic .profile {
+    width: 80px;
+    margin-top: -40px;
+}
+
+.content .aside .invites .invites-all .group-unic .members {
+    width: 120px;
+}
+
+.content .aside .invites .invites-all .group-unic button {
+    border: 2px solid var(--Primary);
+    padding: 10px;
+    border-radius: 20px;
+    width: 100%;
+    font-size: 16px;
+    color: var(--Primary);
+    font-weight: 600;
+    background-color: var(--Background2);
+    margin: 5px 0;
+}
+
+.content .aside .invites .invites-all .group-unic h3 {
+    font-weight: 500;
+    color: var(--Black);
+    margin: 5px 0;
+}
+.content .aside .invites .invites-all .group-unic h4 {
+    font-weight: 500;
+    color: var(--Gray_font1);
+    margin: 5px 0;
+}

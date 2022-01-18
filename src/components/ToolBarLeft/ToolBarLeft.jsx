@@ -24,13 +24,13 @@ function ToolBarLeft() {
     return (
         <div className='ToolBar'>
             <div className="avatar">
-                <img src={avatarCasal} alt="" />
+                <img src={user !== null ? user.nickname : avatarCasal}alt="" />
             </div>
             <div className="info">
                 <div className="name">
                     <h3>{user !== null ? user.nickname : "Usuário não identificado"}</h3>
                     <h5>@{user !== null ? user.username : "Usuário não identificado"}</h5>
-                    <h6>{user !== null ? user.role : "Função não identificada"} / {user !== null ? user.sex : "sexo não identificado"}</h6>
+                    <h6>{user !== null ? user.role : "Função não identificada"} / {user !== null ? user.type : "sexo não identificado"}</h6>
                 </div>
                 <h4><FaMars size={18} /> </h4>
                 <div className="info-user-man">

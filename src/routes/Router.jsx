@@ -7,6 +7,7 @@ import { Foruns2 } from '../pages/Foruns2/Foruns2';
 import { Friends } from '../pages/Friends/Friends';
 import { FriendSingle } from '../pages/FriendSingle/FriendSingle';
 import { Groups } from '../pages/Groups/Groups';
+import { Invite } from '../pages/Invite/Invite';
 import { Profile } from '../pages/Profile/Profile';
 import { Radar } from '../pages/Radar/Radar';
 import { Ranking } from '../pages/Ranking/Ranking';
@@ -28,7 +29,7 @@ function Router () {
         <BrowserRouter>
             <Routes>
             <Route path="/" element={<SignIn />}/>
-            <Route path="/signup" element={ <SignUp />} />
+            <Route path="/signup/:email" element={ <SignUp />} />
             <Route path="/feed"
                     element={ <PrivateRoute> <Feed /> </PrivateRoute>} />
             <Route path="/profile"
@@ -57,6 +58,8 @@ function Router () {
                 element={ <PrivateRoute> <CompleteRegistration /> </PrivateRoute>} />
             <Route path="/chat" 
                 element={ <PrivateRoute> <Chat /> </PrivateRoute>} />
+            <Route path="/invite" 
+                element={ <PrivateRoute> <Invite /> </PrivateRoute>} />
             </Routes>
         </BrowserRouter>
            
