@@ -3,17 +3,13 @@ import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { TopBar } from '../../components/TopBar/TopBar'
 import coverImg from '../../assets/images/cover.png'
 import avatar from '../../assets/images/avatar.png'
-
 import {FiHome, FiImage, FiVideo, FiUsers, FiList, FiCalendar, FiSettings, FiMoreVertical, FiTrash2, FiEdit, FiMessageCircle, FiThumbsUp, FiMinus} from 'react-icons/fi'
 import './profile.css'
 import { Post } from '../../components/Post/Post'
-import { FaMars, FaVenus } from 'react-icons/fa'
-import { useContext } from 'react'
-import { AuthContext } from '../../contexts/Auth'
+import { FaMars } from 'react-icons/fa'
+
 
 function Profile() {
-    const {user} = useContext(AuthContext);
-
 
   return (
       <div className="container">

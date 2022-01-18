@@ -1,6 +1,4 @@
-import { useContext } from 'react';
-import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
-import { AuthContext } from '../contexts/Auth';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import { Chat } from '../pages/Chat/Chat';
 import { CompleteRegistration } from '../pages/CompleteRegistration/CompleteRegistration';
 import { Events } from '../pages/Events/Events';
