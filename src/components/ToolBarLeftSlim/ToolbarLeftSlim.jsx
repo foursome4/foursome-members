@@ -1,13 +1,29 @@
+import { useContext, useEffect } from "react";
 import { FiCalendar, FiHome, FiImage, FiList, FiMessageSquare, FiRadio, FiTrendingUp, FiUser, FiUsers, FiVideo } from "react-icons/fi"
 import avatarImg from '../../assets/images/avatar.png'
+import { AuthContext } from "../../contexts/Auth";
 import './toolbarLeftSlim.css'
 
 function ToolbarLeftSlim () {
+    const {user} = useContext(AuthContext);
+    useEffect((user) => {
+       function loadUser(user) {
+
+            if(user) {
+                console.log(user)
+                return user
+            }
+        }
+
+        loadUser(user)
+
+    }, [user])
+
     return (
         <div className="content-toolbar">
             <div className="ToolBarLeftSlim">
                 <div className="profile">
-                    <img src={avatarImg} alt="" />
+                    <img src={user !== null ? user.avatar : avatarImg} alt="" />
                 </div>
                 <div className="tools">
                 <div className="toolIcon">

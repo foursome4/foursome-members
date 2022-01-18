@@ -35,11 +35,11 @@ function Profile() {
         <div className="main">
          <div className="section">
           <div className="cover">
-              <img src={coverImg} alt="" />
+              <img src={user !== null ? user.cover : coverImg} alt="" />
           </div>
             <div className="profile-tools">
                 <div className="user">
-                  <img src={avatar} alt="" />
+                  <img src={user !== null ? user.avatar : avatar} alt="" />
                   <h3> <b> {user !== null ? user.nickname : "User Test"} </b></h3>
                 </div>
                 <div className="tools">
@@ -59,8 +59,8 @@ function Profile() {
               <div className="infos">
               <div className="info">
                 <div className="name">
-                    <h5>@jefersonmmacedo</h5>
-                    <h6>Membro / Homem</h6>
+                    <h5>@{user !== null ? user.username : "User Test"}</h5>
+                    <h6>{user !== null ? user.role : "User Test"} / {user !== null ? user.type : "User Test"}</h6>
                 </div>
                 <h4><FaMars size={20} /> </h4>
                 <div className="info-user-man">

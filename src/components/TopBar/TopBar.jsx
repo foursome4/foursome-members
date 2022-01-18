@@ -40,7 +40,7 @@ function TopBar() {
                 </div>
                 <div className="account">
                     <img src={user !== null ? user.avatar : avatarImg} alt="" />
-                        <h4>@{user !== null ? user.nickname : "Usuário não identificado"}</h4>
+                        <h4>@{user !== null ? user.username : "Usuário não identificado"}</h4>
                 </div>
             </div>
             <div className="chat">
