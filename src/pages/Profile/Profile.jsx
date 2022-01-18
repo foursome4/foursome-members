@@ -7,9 +7,24 @@ import {FiHome, FiImage, FiVideo, FiUsers, FiList, FiCalendar, FiSettings, FiMor
 import './profile.css'
 import { Post } from '../../components/Post/Post'
 import { FaMars } from 'react-icons/fa'
+import { useContext, useEffect } from 'react'
+import { AuthContext } from '../../contexts/Auth'
 
 
 function Profile() {
+    const {user} = useContext(AuthContext);
+    useEffect((user) => {
+       function loadUser(user) {
+
+            if(user) {
+                console.log(user)
+                return user
+            }
+        }
+
+        loadUser(user)
+
+    }, [user])
 
   return (
       <div className="container">
@@ -25,7 +40,7 @@ function Profile() {
             <div className="profile-tools">
                 <div className="user">
                   <img src={avatar} alt="" />
-                  <h3> <b> Jeferson Macedo </b></h3>
+                  <h3> <b> {user !== null ? user.nickname : "User Test"} </b></h3>
                 </div>
                 <div className="tools">
                   <button className='select'><FiHome size={16}/></button>

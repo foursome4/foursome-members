@@ -6,6 +6,7 @@ export const AuthContext = createContext({});
 function AuthProvider({children}) {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [logged, setLogged] = useState(false);
 
     useEffect(() => {
         function loadStorage() {
@@ -16,12 +17,14 @@ function AuthProvider({children}) {
         if(storageUser) {
             setUser(JSON.parse(storageUser));
             setLoading(false);
+            setLogged(true);
         }
         setLoading(false);
+        console.log(logged)
         }
      
         loadStorage();       
-    },[])
+    },[logged])
 
     async function createAccount(nickname, username, email, phone, password, role, status,) {
         const data = {nickname, username, email, phone, password, role, status}
@@ -81,6 +84,7 @@ function AuthProvider({children}) {
             createAccount,
             loginSession,
             user,
+            logged,
             signed: !!user,
             loading,
             setUser,

@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
 import { Chat } from '../pages/Chat/Chat';
 import { CompleteRegistration } from '../pages/CompleteRegistration/CompleteRegistration';
 import { Events } from '../pages/Events/Events';
@@ -14,27 +14,49 @@ import { SignIn } from '../pages/SignIn/SignIn';
 import { SignUp } from '../pages/SignUp/SignUp';
 
 
+function PrivateRoute({children}) {
+    const logged = true;
+    console.log("logged");
+    console.log(logged);
+    return logged === true ? children : <Navigate to="/"/>
+}
 
-function Router () {
+
+function Router () {    
+ 
     return (
         <BrowserRouter>
             <Routes>
             <Route path="/" element={<SignIn />}/>
-            <Route path="/feed" element={<Feed />} />
-            <Route path="/profile" element={ <Profile />} />
-            <Route path="/friends" element={ <Friends />} />
-            <Route path="/friendsingle" element={ <FriendSingle />} />
-            <Route path="/groups" element={ <Groups />} />
-            <Route path="/groups/id_group" element={ <Groups />} />
-            <Route path="/foruns" element={ <Foruns2 />} />
-            <Route path="/foruns/id_forum" element={ <Foruns2 />} />
-            <Route path="/events" element={ <Events />} />
-            <Route path="/events/id_event" element={ <Events />} />
-            <Route path="/ranking" element={ <Ranking />} />
-            <Route path="/radar" element={ <Radar />} />
             <Route path="/signup" element={ <SignUp />} />
-            <Route path="/completeregistration" element={ <CompleteRegistration />} />
-            <Route path="/chat" element={ <Chat />} isPrivate/>
+            <Route path="/feed"
+                    element={ <PrivateRoute> <Feed /> </PrivateRoute>} />
+            <Route path="/profile"
+                    element={ <PrivateRoute> <Profile /> </PrivateRoute>} />
+            <Route path="/friends" 
+                element={ <PrivateRoute> <Friends /> </PrivateRoute>} />
+            <Route path="/friendsingle" 
+                element={ <PrivateRoute> <FriendSingle /> </PrivateRoute>} />
+            <Route path="/groups" 
+                element={ <PrivateRoute> <Groups /> </PrivateRoute>} />
+            <Route path="/groups/id_group" 
+                element={ <PrivateRoute> <Groups /> </PrivateRoute>} />
+            <Route path="/foruns" 
+                element={ <PrivateRoute> <Foruns2 /> </PrivateRoute>} />
+            <Route path="/foruns/id_forum" 
+                element={ <PrivateRoute> <Foruns2 /> </PrivateRoute>} />
+            <Route path="/events" 
+                element={ <PrivateRoute> <Events /> </PrivateRoute>} />
+            <Route path="/events/id_event" 
+                element={ <PrivateRoute> <Events /> </PrivateRoute>} />
+            <Route path="/ranking" 
+                element={ <PrivateRoute> <Ranking /> </PrivateRoute>} />
+            <Route path="/radar" 
+                element={ <PrivateRoute> <Radar /> </PrivateRoute>} />
+            <Route path="/completeregistration" 
+                element={ <PrivateRoute> <CompleteRegistration /> </PrivateRoute>} />
+            <Route path="/chat" 
+                element={ <PrivateRoute> <Chat /> </PrivateRoute>} />
             </Routes>
         </BrowserRouter>
            

@@ -6,9 +6,26 @@ import avatar from '../../assets/images/avatar.png'
 import avatar2 from '../../assets/images/avatar2.png'
 import './feed.css'
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
+import { useContext } from "react/cjs/react.development"
+import { AuthContext } from "../../contexts/Auth"
+import { useEffect } from "react"
 
 
 function Feed() {
+    const {user} = useContext(AuthContext);
+    useEffect((user) => {
+       function loadUser(user) {
+
+            if(user) {
+                console.log(user)
+                return user
+            }
+        }
+
+        loadUser(user)
+
+    }, [user])
+
     return (
         <div className="container">
         <div className="content">
@@ -31,10 +48,10 @@ function Feed() {
                             {/* Posts do Feed */}
                             <div className="feed-post">
                                 <div className="post-user">
-                                    <img src={avatar} alt="" />
+                                    <img src={user !== null ? user.avatar : avatar} alt="" />
                                     <div className="info-data">
                                        <div className="name-data">
-                                       <h4 className="selected">Jeferson Macedo</h4>
+                                       <h4 className="selected">{user !== null ? user.nickname : "User Test"}</h4>
                                         <h4> <FiMinus /> </h4>
                                         <h4>Festas a dois</h4>
                                        </div>

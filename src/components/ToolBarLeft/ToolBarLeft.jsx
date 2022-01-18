@@ -2,16 +2,24 @@ import {FiHome, FiVideo, FiImage, FiUsers, FiUser,  FiMessageSquare, FiTrendingU
 import {FaVenus, FaMars} from 'react-icons/fa'
 import avatarCasal from '../../assets/images/avatarCasal.png'
 import './toolBarLeft.css'
-// import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
+import { AuthContext } from '../../contexts/Auth';
 
 
 function ToolBarLeft() {
+    const {user} = useContext(AuthContext);
+    useEffect((user) => {
+       function loadUser(user) {
 
-    // function handleFunctionActiveUser(e) {
-    //     e.preventDefault();
+            if(user) {
+                console.log(user)
+                return user
+            }
+        }
 
-    //     console.log("Function Active true")
-    // }
+        loadUser(user)
+
+    }, [user])
 
     return (
         <div className='ToolBar'>
@@ -20,9 +28,9 @@ function ToolBarLeft() {
             </div>
             <div className="info">
                 <div className="name">
-                    <h3>Jeferson Macedo</h3>
-                    <h5>@jefersonmmacedo</h5>
-                    <h6>Membro / Homem</h6>
+                    <h3>{user !== null ? user.nickname : "Usuário não identificado"}</h3>
+                    <h5>@{user !== null ? user.username : "Usuário não identificado"}</h5>
+                    <h6>{user !== null ? user.role : "Função não identificada"} / {user !== null ? user.sex : "sexo não identificado"}</h6>
                 </div>
                 <h4><FaMars size={18} /> </h4>
                 <div className="info-user-man">
