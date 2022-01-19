@@ -23,7 +23,7 @@ import { SignUp } from '../pages/SignUp/SignUp';
 
 function Router () {
 
-    const {user, storageUser} = useContext(AuthContext);
+    const {user} = useContext(AuthContext);
     useEffect((user) => {
        function loadUser(user) {
 
@@ -38,7 +38,6 @@ function Router () {
     }, [user])
     
     function PrivateRoute({children}, ) {
-        const logged = true;
         console.log("logged");
         console.log(user);
         return user !== undefined ? children : <Navigate to="/"/>

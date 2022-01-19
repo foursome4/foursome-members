@@ -2,11 +2,11 @@ import { Post } from "../../components/Post/Post"
 import { FeedPost } from "../../components/FeedPost/FeedPost"
 import { ToolBarLeft } from "../../components/ToolBarLeft/ToolBarLeft"
 import { TopBar } from "../../components/TopBar/TopBar"
-import { FiThumbsUp, FiMessageCircle, FiTrash2, FiEdit, FiMinus } from 'react-icons/fi'
-import avatar from '../../assets/images/avatar.png'
-import avatar2 from '../../assets/images/avatar2.png'
+// import { FiThumbsUp, FiMessageCircle, FiTrash2, FiEdit, FiMinus } from 'react-icons/fi'
+// import avatar from '../../assets/images/avatar.png'
+// import avatar2 from '../../assets/images/avatar2.png'
 import './feed.css'
-import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
+// import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { AuthContext } from "../../contexts/Auth"
 import { useContext, useEffect } from "react"
 

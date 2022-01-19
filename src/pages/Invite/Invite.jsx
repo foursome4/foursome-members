@@ -30,7 +30,7 @@ function Invite() {
     function createInvite(e) {
         e.preventDefault();
 
-        const NewCode = user.id.substring(0, 6)
+        setCode(user.id.substring(0, 6))
 
         console.log(`Code: ${NewCode}, Nome: ${name}, Email: ${email}, Telefone: ${phone}, isAccount: ${user.id}`);
 
