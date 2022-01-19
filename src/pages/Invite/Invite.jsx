@@ -32,10 +32,10 @@ function Invite() {
 
         setCode(user.id.substring(0, 6))
 
-        console.log(`Code: ${NewCode}, Nome: ${name}, Email: ${email}, Telefone: ${phone}, isAccount: ${user.id}`);
+        console.log(`Code: ${code}, Nome: ${name}, Email: ${email}, Telefone: ${phone}, isAccount: ${user.id}`);
 
 
-        CreateInviteNewUsew({inviteCode: NewCode, name, email, phone, idAccount: user.id})
+        CreateInviteNewUsew({inviteCode: code, name, email, phone, idAccount: user.id})
 
         window.location.href = `https://api.whatsapp.com/send?phone=55${phone}&text=Parabens!!
 
