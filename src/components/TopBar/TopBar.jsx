@@ -6,7 +6,7 @@ import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 
 function TopBar() {
-    const {user} = useContext(AuthContext);
+    const {user, logout} = useContext(AuthContext);
     useEffect((user) => {
        function loadUser(user) {
 
@@ -19,6 +19,12 @@ function TopBar() {
         loadUser(user)
 
     }, [user])
+
+    function Tologout(e) {
+        e.preventDefault();
+        logout()
+    }
+
     return (
         <div className="topBar">
             <div className="logo">
@@ -39,7 +45,7 @@ function TopBar() {
                     <FiMail />
                 </div>
                 <div className="link">
-                    <FiLogOut />
+                    <FiLogOut onClick={Tologout} />
                 </div>
                 <div className="account">
                     <img src={user !== null ? user.avatar : avatarImg} alt="" />

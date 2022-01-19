@@ -2,9 +2,9 @@ import { useContext, useState } from 'react';
 import logoImg from '../../assets/images/logo.png'
 import { AuthContext } from '../../contexts/Auth';
 
-import './signIn.css';
+import './recuperation.css';
 
-function SignIn() {
+function Recuperation() {
   const  {loginSession} = useContext(AuthContext)
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
@@ -25,16 +25,13 @@ function SignIn() {
         </div>
         <div className="form">
           <div className="title">
-            <h3>LOGIN</h3>
+            <h3>RECUPERAR SENHA</h3>
           </div>
-          <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
-          <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
-          <div className="recuperation">
-            <a href="/recuperation"><p> ESQUECI MINHA SENHA</p></a>
-            <a href="/forgotit"><p>ESQUECI MEU NOME DE USUÁRIO</p></a>
-          </div>
+          <input type="text" placeholder="Nome de usuário ou E-mail" value={login} onChange={(e) => setLogin(e.target.value)}/>
+          <input type="text" placeholder="Telefone" value={password} onChange={(e) => setPassword(e.target.value)}/>
+
           <div className="buttons">
-          <button onClick={handleCreateAccount}> Entrar </button>
+          <button onClick={handleCreateAccount}> Recuperar </button>
 
 
           </div>
@@ -44,4 +41,4 @@ function SignIn() {
   )
 }
 
-export { SignIn }
+export { Recuperation }

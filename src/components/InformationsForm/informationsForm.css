@@ -27,34 +27,101 @@
     justify-content: space-around;
 }
 
-.informations form img {
-    width: 150px;
+.informations form .label-avatar{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    margin: 10px 0;
 }
+
+.informations form .label-avatar input {
+    display: none;
+}
+
+.informations form .label-avatar span {
+    z-index: 99;
+    position: absolute;
+    opacity: 0.7;
+    transition: all .5s;
+}
+
+.informations form .label-avatar span:hover{
+    opacity: 1;
+    transform: scale(1.4);
+}
+
+.informations form .label-avatar img{
+    margin-bottom: 1em;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.informations form .label-cover{
+    width: 1000px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.informations form .label-cover input {
+    display: none;
+}
+
+.informations form .label-cover span {
+    z-index: 99;
+    position: absolute;
+    opacity: 0.7;
+    transition: all .5s;
+}
+
+.informations form .label-cover span:hover{
+    opacity: 1;
+    transform: scale(1.4);
+}
+
+.informations form .label-cover img{
+    margin-bottom: 1em;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+
 
 .informations form .data {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
 .informations form .data input {
-    width: 550px;
+    width: 250px;
     font-size: 14px;
     padding: 5px;
     margin: 5px 0;
     border: 1px solid var(--Primary);
     border-radius: 8px;
     color: var(--Primary);
+    margin: 10px;
 }
 .informations form .data select {
-    width: 550px;
+    width: 250px;
     font-size: 14px;
     padding: 5px;
     margin: 5px 0;
     border: 1px solid var(--Primary);
     border-radius: 8px;
     color: var(--Primary);
+    margin: 10px;
 }
 
 .informations form .data input::placeholder {

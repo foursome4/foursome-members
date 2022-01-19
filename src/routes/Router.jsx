@@ -1,8 +1,11 @@
-import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import {Route, Routes, Navigate} from 'react-router-dom';
+import { AuthContext } from '../contexts/Auth';
 import { Chat } from '../pages/Chat/Chat';
 import { CompleteRegistration } from '../pages/CompleteRegistration/CompleteRegistration';
 import { Events } from '../pages/Events/Events';
 import { Feed } from '../pages/Feed/Feed';
+import { Forgotit } from '../pages/Forgotit/Forgotit';
 import { Foruns2 } from '../pages/Foruns2/Foruns2';
 import { Friends } from '../pages/Friends/Friends';
 import { FriendSingle } from '../pages/FriendSingle/FriendSingle';
@@ -11,25 +14,44 @@ import { Invite } from '../pages/Invite/Invite';
 import { Profile } from '../pages/Profile/Profile';
 import { Radar } from '../pages/Radar/Radar';
 import { Ranking } from '../pages/Ranking/Ranking';
+import { Recuperation } from '../pages/Recuperation/Recuperation';
 import { SignIn } from '../pages/SignIn/SignIn';
 import { SignUp } from '../pages/SignUp/SignUp';
 
 
-function PrivateRoute({children}) {
-    const logged = true;
-    console.log("logged");
-    console.log(logged);
-    return logged === true ? children : <Navigate to="/"/>
-}
 
 
-function Router () {    
- 
+function Router () {
+
+    const {user, storageUser} = useContext(AuthContext);
+    useEffect((user) => {
+       function loadUser(user) {
+
+            if(user) {
+                console.log(user)
+                return user
+            }
+        }
+
+        loadUser(user)
+
+    }, [user])
+    
+    function PrivateRoute({children}, ) {
+        const logged = true;
+        console.log("logged");
+        console.log(user);
+        return user !== undefined ? children : <Navigate to="/"/>
+    }
     return (
-        <BrowserRouter>
+
             <Routes>
             <Route path="/" element={<SignIn />}/>
             <Route path="/signup/:email" element={ <SignUp />} />
+            <Route path="/forgotit" element={ <Forgotit />} />
+            <Route path="/recuperation" element={ <Recuperation />} />
+
+
             <Route path="/feed"
                     element={ <PrivateRoute> <Feed /> </PrivateRoute>} />
             <Route path="/profile"
@@ -61,7 +83,7 @@ function Router () {
             <Route path="/invite" 
                 element={ <PrivateRoute> <Invite /> </PrivateRoute>} />
             </Routes>
-        </BrowserRouter>
+
            
     )
 }

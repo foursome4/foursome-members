@@ -1,8 +1,13 @@
+import { FiUpload } from 'react-icons/fi';
 import logoImg from '../../assets/images/logo2.png';
-import avatarDefault from '../../assets/images/avatarDefault.png';
+import profile from '../../assets/images/profile.jpg';
+import cover from '../../assets/images/cover.jpg';
+
 import './informationsForm.css'
 
 function InformationsForm() {
+    const avatarUrl = null;
+
     return (
             <div className="informations">
                 <div className="title">
@@ -10,7 +15,12 @@ function InformationsForm() {
                     <h2>Informações Complementares</h2>
                     </div>
                         <form action="">
-                    <img src={avatarDefault} alt="" />
+                        <label className="label-avatar">
+                            <span><FiUpload color="#f65" size={25} /></span>
+                            <input type="file" accept="image/*" /><br />
+                            <img src={avatarUrl === null ? profile : avatarUrl} alt="Avatar" height={100} width={100}/>
+                        </label>
+
                     <div className="data">                      
    
                             <select name="" id="">
@@ -39,6 +49,12 @@ function InformationsForm() {
                             </select>
 
                     </div>
+
+                    <label className="label-cover">
+                            <span><FiUpload color="#f65" size={25} /></span>
+                            <input type="file" accept="image/*" /><br />
+                            <img src={avatarUrl === null ? cover : avatarUrl} alt="Avatar" height={200} width={850}/>
+                        </label>
                     <div className='confirmation'>
                         <div className="confirmation_informations">
                         <input type="checkbox"/>

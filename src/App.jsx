@@ -1,6 +1,6 @@
 import { Router } from './routes/Router';
 import AuthProvider from './contexts/Auth'; 
-
+import { BrowserRouter } from 'react-router-dom';
 import './Global.css';
 
 // import {io} from 'socket.io-client';
@@ -8,11 +8,13 @@ import './Global.css';
 
 function App() {
   return (
-    <AuthProvider>
+    <BrowserRouter>
     <div className='container'> 
+    <AuthProvider>
     <Router />
-    </div>
     </AuthProvider>
+    </div>
+    </BrowserRouter>
 
   );
 }

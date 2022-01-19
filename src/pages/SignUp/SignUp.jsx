@@ -45,7 +45,7 @@ function SignUp() {
         <div className="title">
             <h3>CADASTRE-SE</h3>
           </div>
-          <input type="text" placeholder="E-mail" value={"jefersonmacedowgf@gmail.com"} onChange={(e) => setEmailUser(e.target.value)} disabled/>
+          <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmailUser(e.target.value)} disabled/>
           <input type="text" placeholder="Código de verificação" value={code} onChange={(e) => setCode(e.target.value)} />
           <input type="text" placeholder="Nome de exibição" value={nickname} onChange={(e) => setNickname(e.target.value)}/>
           <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>

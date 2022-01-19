@@ -108,8 +108,8 @@
     flex-wrap: wrap;
 }
 
-.content .aside .invites .invites-all .group-unic {
-    width: 300px;
+.content .aside .invites .invites-all .invites-unic {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,38 +119,33 @@
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
-.content .aside .invites .invites-all .group-unic .cover {
-    width: 260px;
+.content .aside .invites .invites-all .invites-unic form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.content .aside .invites .invites-all .group-unic .profile {
-    width: 80px;
-    margin-top: -40px;
-}
-
-.content .aside .invites .invites-all .group-unic .members {
-    width: 120px;
-}
-
-.content .aside .invites .invites-all .group-unic button {
-    border: 2px solid var(--Primary);
-    padding: 10px;
-    border-radius: 20px;
-    width: 100%;
-    font-size: 16px;
+.content .aside .invites .invites-all .invites-unic form input {
+    width: 550px;
+    font-size: 14px;
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 1px solid var(--Primary);
     color: var(--Primary);
-    font-weight: 600;
-    background-color: var(--Background2);
-    margin: 5px 0;
 }
 
-.content .aside .invites .invites-all .group-unic h3 {
-    font-weight: 500;
-    color: var(--Black);
-    margin: 5px 0;
+.content .aside .invites .invites-all .invites-unic form input::placeholder {
+    color: var(--Primary);
 }
-.content .aside .invites .invites-all .group-unic h4 {
-    font-weight: 500;
-    color: var(--Gray_font1);
-    margin: 5px 0;
+
+.content .aside .invites .invites-all .invites-unic form button {
+    width: 150px;
+    padding: 10px 5px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--Primary);
+    color: var(--White);
 }

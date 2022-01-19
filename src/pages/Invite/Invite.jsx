@@ -10,9 +10,10 @@ function Invite() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+    const [code, setCode] = useState("1020302010");
 
 
-    const {user} = useContext(AuthContext);
+    const {user, CreateInviteNewUsew} = useContext(AuthContext);
     useEffect((user) => {
        function loadUser(user) {
 
@@ -27,9 +28,26 @@ function Invite() {
     }, [user])
 
     function createInvite(e) {
-        e.preventDefault(`Code: 1020302010, Nome: ${name}, Email: ${email}, Telefone: ${phone}, isAccount: ${user.id}`);
+        e.preventDefault();
 
-        console.log()
+        const NewCode = user.id.substring(0, 6)
+
+        console.log(`Code: ${NewCode}, Nome: ${name}, Email: ${email}, Telefone: ${phone}, isAccount: ${user.id}`);
+
+
+        CreateInviteNewUsew({inviteCode: NewCode, name, email, phone, idAccount: user.id})
+
+        window.location.href = `https://api.whatsapp.com/send?phone=55${phone}&text=Parabens!!
+
+        Você foi convidado a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa.
+        
+        Esse convite é valido por 10 dias e intransferível.
+        
+        Para criar seu perfil agora, acesse:
+        foursome.com.br/signup/${email} e Urilize o Código ${code}
+        Em caso de dúvida, fale conosco.
+        Contato@foursome.com.br -- 
+        FOURSOME https://www.foursome.com.br`
     }
     return (
         <div className="content">

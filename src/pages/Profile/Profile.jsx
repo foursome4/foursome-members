@@ -107,65 +107,11 @@ function Profile() {
             </div>
               </div>
               <div className="feed">
-                    <Post />
-                        <div className="posts-feed">
-                            <div className="buttons">
-                                <button className='selected'> Feed </button>
-                                <button> Posts </button>
-                                <button> Fotos </button>
-                                <button> Vídeos </button>
-                                <button> Grupos </button>
-                                <button> Fóruns </button>
-                            </div>
-                        
-                            {/* Posts do Feed */}
-                            <div className="feed-post">
-                                <div className="post-user">
-                                    <img src={avatar} alt="" />
-                                    <div className="info-data">
-                                       <div className="name-data">
-                                       <h4 className="selected">Jeferson Macedo</h4>
-                                        <h4> <FiMinus /> </h4>
-                                        <h4>Festas a dois</h4>
-                                       </div>
-                                       <div className="time-data">
-                                           <h5>3 Horas e 24 Minutos</h5>
-                                       </div>
-                                    </div>
-                                </div>
-
-                                <div className="post-data">
-                                    <p>
-                                        Vamos curtir o fim de semana na presença de nossos melhores amigos.
-                                    </p>
-                                </div>
-
-                                <div className="reactions">
-                                    <button className="selected">
-                                        <FiThumbsUp />
-                                        Curtir
-                                    </button>
-                                    <button>
-                                        <FiMessageCircle />
-                                        Comentar
-                                    </button>
-                                    <button>
-                                        <FiEdit />
-                                        Editar
-                                    </button>
-                                    <button>
-                                        <FiTrash2 />
-                                        Apagar
-                                    </button>
-                                </div>
-                            </div>
-
-                            
-                        </div>
+                    <Post />      
                     </div>
             </div>
          </div>
-         <ChatSlim />
+         {/* <ChatSlim /> */}
         </div>
       </div>
     </div>
