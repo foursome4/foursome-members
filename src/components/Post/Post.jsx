@@ -1,9 +1,9 @@
 import avatarImg from '../../assets/images/avatar.png'
-import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiThumbsUp, FiMinus, FiSend } from 'react-icons/fi'
+import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiSend} from 'react-icons/fi'
 import './post.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
-import avatar from '../../assets/images/avatar.png'
+// import avatar from '../../assets/images/avatar.png'
 
 function Post() {
     const [post, setPost] = useState("text");

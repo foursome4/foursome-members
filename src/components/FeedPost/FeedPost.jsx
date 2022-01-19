@@ -1,4 +1,3 @@
-import avatarImg from '../../assets/images/avatar.png'
 import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiThumbsUp, FiMinus } from 'react-icons/fi'
 import './feedPost.css';
 import { useContext, useEffect, useState } from 'react';

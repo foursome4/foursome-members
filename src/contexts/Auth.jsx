@@ -82,7 +82,6 @@ function AuthProvider({children}) {
     }
     
     function storageUser(data) {
-        const number = 30;
         localStorage.setItem("foursome", JSON.stringify(data));
         if(user.avatar === "") {
             navigate("/completeregistration");
