@@ -14,6 +14,7 @@ import buscaCep from '../../services/api-buscaCep';
 function InformationsForm() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
+    const {logout} = useContext(AuthContext)
     const {updateInformationsAccount} = useContext(AuthContext)
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [coverUrl, setCoverUrl] = useState(null);
@@ -159,7 +160,10 @@ function InformationsForm() {
                         <input type="checkbox"/>
                         <span>Minhas informações estão corretas!</span>
                         </div>
+                        <div className='buttonsInformation'>
                         <button onClick={handleUploadAccount}>{loadding === true ? <FiRefreshCcw /> : "Salvar e avançar"}</button>
+                        <button onClick={logout}>Sair</button>
+                        </div>
                     </div>
                         </form>
             </div>
