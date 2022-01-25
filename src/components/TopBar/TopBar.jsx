@@ -4,6 +4,7 @@ import avatarImg from '../../assets/images/avatar.png'
 import './topBar.css'
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/Auth';
+import { Link } from 'react-router-dom';
 
 function TopBar() {
     const {logout} = useContext(AuthContext);
@@ -34,9 +35,11 @@ function TopBar() {
                 <div className="link">
                     <FiBell />
                 </div>
+                <Link to="/invite">
                 <div className="link">
                     <FiMail />
                 </div>
+                </ Link>
                 <div className="link">
                     <FiLogOut onClick={Tologout} />
                 </div>

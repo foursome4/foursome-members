@@ -1,16 +1,16 @@
-import { ChatBar } from "../../components/ChatBar/ChatBar"
-import { ToolBarLeft } from "../../components/ToolBarLeft/ToolBarLeft"
 import { TopBar } from "../../components/TopBar/TopBar"
 import { FiSearch, FiCalendar, FiMapPin} from 'react-icons/fi'
 import capaGrupo from '../../assets/images/capaGrupo.png'
 import perfilGrupo from '../../assets/images/perfilGrupo.png'
 import membersImg from '../../assets/images/members.png'
 import './event.css'
+import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
+import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 
 function Events() {
     return (
         <div className="content">
-            <ToolBarLeft />
+     <ToolbarLeftSlim />
             <div className="main">
                 <TopBar />
                 <div className="aside">
@@ -46,7 +46,7 @@ function Events() {
                                 </div>
                             </div>
                     </div>
-                <ChatBar />
+                    <ChatSlim />
                 </div>
             </div>
         </div>

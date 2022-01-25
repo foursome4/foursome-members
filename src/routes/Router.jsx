@@ -43,33 +43,33 @@ function PrivateRoute({children} ) {
             
             
             <Route path="/feed"
-                    element={ <PrivateRoute> <Feed user={userLocal}/> </PrivateRoute>} />
+                    element={ <PrivateRoute> <Feed/> </PrivateRoute>} />
             <Route path="/profile"
-                    element={ <PrivateRoute> <Profile user={userLocal}/> </PrivateRoute>} />
+                    element={ <PrivateRoute> <Profile/> </PrivateRoute>} />
             <Route path="/friends" 
-                element={ <PrivateRoute> <Friends user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <Friends/> </PrivateRoute>} />
             <Route path="/friendsingle" 
-                element={ <PrivateRoute> <FriendSingle user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <FriendSingle/> </PrivateRoute>} />
             <Route path="/groups" 
-                element={ <PrivateRoute> <Groups user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <Groups/> </PrivateRoute>} />
             <Route path="/groups/id_group" 
-                element={ <PrivateRoute> <Groups user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <Groups/> </PrivateRoute>} />
             <Route path="/foruns" 
-                element={ <PrivateRoute> <Foruns2 user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <Foruns2/> </PrivateRoute>} />
             <Route path="/foruns/id_forum" 
-                element={ <PrivateRoute> <Foruns2 user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <Foruns2/> </PrivateRoute>} />
             <Route path="/events" 
-                element={ <PrivateRoute> <Events user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <Events/> </PrivateRoute>} />
             <Route path="/events/id_event" 
-                element={ <PrivateRoute> <Events user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <Events/> </PrivateRoute>} />
             <Route path="/ranking" 
-                element={ <PrivateRoute> <Ranking user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <Ranking/> </PrivateRoute>} />
             <Route path="/radar" 
-                element={ <PrivateRoute> <Radar user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <Radar/> </PrivateRoute>} />
             <Route path="/completeregistration" 
-                element={ <PrivateRoute> <CompleteRegistration user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <CompleteRegistration/> </PrivateRoute>} />
             <Route path="/characteristcs" 
-                element={ <PrivateRoute> <Characteristcs user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <Characteristcs/> </PrivateRoute>} />
             <Route path="/preferences" 
                 element={ <PrivateRoute> <Preferences user={userLocal}/> </PrivateRoute>} />
             <Route path="/registrationend" 

@@ -1,9 +1,9 @@
-import { ToolBarLeft } from "../../components/ToolBarLeft/ToolBarLeft"
 import { TopBar } from "../../components/TopBar/TopBar"
 import './invite.css'
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { useContext, useState } from "react"
 import { AuthContext } from "../../contexts/Auth"
+import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 
 
 function Invite() {
@@ -45,7 +45,7 @@ function Invite() {
     }
     return (
         <div className="content">
-            <ToolBarLeft />
+            <ToolbarLeftSlim />
             <div className="main">
                 <TopBar />
                 <div className="aside">
@@ -63,6 +63,30 @@ function Invite() {
 
                                         <button onClick={createInvite}> Enviar Convite</button>
                                    </form>  
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
+                                   <br />
                                 </div>
                             </div>
                     </div>

@@ -1,15 +1,15 @@
-import { ChatBar } from "../../components/ChatBar/ChatBar"
-import { ToolBarLeft } from "../../components/ToolBarLeft/ToolBarLeft"
 import { TopBar } from "../../components/TopBar/TopBar"
 import { FiSearch} from 'react-icons/fi'
 import avatarImg5 from '../../assets/images/avatar5.png'
 import avatarImg6 from '../../assets/images/avatar6.png'
 import './friends.css'
+import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
+import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 
 function Friends() {
     return (
         <div className="content">
-            <ToolBarLeft />
+     <ToolbarLeftSlim />
             <div className="main">
                 <TopBar />
                 <div className="aside">
@@ -39,7 +39,7 @@ function Friends() {
                                 </div>
                             </div>
                     </div>
-                <ChatBar />
+                    <ChatSlim />
                 </div>
             </div>
         </div>
