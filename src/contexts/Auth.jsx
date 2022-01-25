@@ -28,7 +28,7 @@ function AuthProvider({children}) {
         }
        
         loadStorage(); 
-    },[navigate]);
+    },[]);
 
     async function createAccount(nickname, username, email, phone, password, role, status,) {
         const data = {nickname, username, email, phone, password, role, status}
