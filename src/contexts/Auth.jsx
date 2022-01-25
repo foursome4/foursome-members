@@ -181,6 +181,7 @@ async function newPost({idAccount, type, link, text, idForum, idGroup, avatar, n
     await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, avatar, nickname, username, nameForum, nameGroup }).then((result) => {
         console.log(result.data)
         console.log("Post Realizado com sucesso!");
+        window.location.reload(false)
     }).catch(error => {
         console.log("Post não foi realizado" + error)
     })

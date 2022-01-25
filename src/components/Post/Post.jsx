@@ -130,7 +130,7 @@ function Post() {
                 type: "post-text",
                 text,
             })
-            window.location.reload(false)
+            
 
             // console.log({
             //     idAccount: user.id,
@@ -160,9 +160,7 @@ function Post() {
                 idForum: "",
                 type: "post-group",
                 text,
-            })
-            window.location.reload(false)
-            
+            })      
         } else if(post === "forum") {
             newPost({
                 idAccount: user.id,
@@ -178,7 +176,7 @@ function Post() {
                 text,
             })
             
-            window.location.reload(false)
+          
             
         }
         else {
