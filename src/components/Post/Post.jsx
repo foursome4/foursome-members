@@ -93,7 +93,6 @@ function Post() {
                 type: "post-photo",
                 text,
             })
-            window.location.reload(false)
         } else if(post === "video"){
                 const uuid = uuidv4();
                 let newVideoUrlFirebase = ref(storage, `videos/posts/${uuid}`);
@@ -116,7 +115,7 @@ function Post() {
                     type: "post-video",
                     text,
                 })
-                window.location.reload(false)
+
             } else if(post === "text") {
             newPost({
                 idAccount: user.id,
@@ -133,19 +132,19 @@ function Post() {
             })
             window.location.reload(false)
 
-            console.log({
-                idAccount: user.id,
-                link: "",
-                avatar: userInformation.avatar,
-                nickname: userInformation.nickname,
-                username: user.username,
-                nameGroup: "",
-                nameForum: "",
-                idGroup: "",
-                idForum: "",
-                type,
-                text,
-            })
+            // console.log({
+            //     idAccount: user.id,
+            //     link: "",
+            //     avatar: userInformation.avatar,
+            //     nickname: userInformation.nickname,
+            //     username: user.username,
+            //     nameGroup: "",
+            //     nameForum: "",
+            //     idGroup: "",
+            //     idForum: "",
+            //     type,
+            //     text,
+            // })
             window.location.reload(false)
             
         } else if(post === "group"){
