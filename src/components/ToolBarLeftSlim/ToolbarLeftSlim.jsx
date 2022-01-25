@@ -68,13 +68,13 @@ function ToolbarLeftSlim () {
                     </Link>
                 </div>
                 <div className="tools">
-                <Link to="/profile" >
+                <Link to="/feed" >
                 <div className="toolIcon" onclick={handleRedirectFeed}>
                         <FiHome size={20}/>
                         <p>Feed</p>
                     </div>
                     </Link>
-                    <Link to="/feed" >
+                    <Link to="/friends" >
                     <div className="toolIcon" onclick={handleRedirectFriends}>
                         <FiUser size={20}/>
                         <p>Amigos</p>
