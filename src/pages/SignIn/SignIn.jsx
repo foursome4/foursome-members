@@ -20,8 +20,6 @@ function SignIn() {
       <div className="signIn">
       <div className="logo">
         <img src={logoImg} alt="Logo Foursome" />
-        <h2>Seja bem-vindo de volta!</h2>
-        <h2>Entre, a diversão está te esperando.</h2>
         </div>
         <div className="form">
           <div className="title">
@@ -30,8 +28,7 @@ function SignIn() {
           <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
           <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
           <div className="recuperation">
-            <a href="/recuperation"><p> ESQUECI MINHA SENHA</p></a>
-            <a href="/forgotit"><p>ESQUECI MEU NOME DE USUÁRIO</p></a>
+            <a href="/recuperation"><p> ESQUECEU SUA SENHA?</p></a>
           </div>
           <div className="buttons">
           <button onClick={handleCreateAccount}> Entrar </button>

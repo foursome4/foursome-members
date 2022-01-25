@@ -23,8 +23,8 @@ function SignUp() {
     const role = "member";
 
     if(checked) {
-      createAccount(nickname, username, emailUser, phone, passordConfirm, password, status, role)
-      console.log(nickname, username, email, phone, passordConfirm, password, status, role)
+     createAccount( {username, emailUser, phone, password, status: "active", role: "Membro"})
+      console.log( username, email, phone, password, status, role)
     } else {
       alert("Favor, confirmar a leitura do termo de uso")
     }
@@ -47,7 +47,6 @@ function SignUp() {
           </div>
           <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmailUser(e.target.value)} disabled/>
           <input type="text" placeholder="Código de verificação" value={code} onChange={(e) => setCode(e.target.value)} />
-          <input type="text" placeholder="Nome de exibição" value={nickname} onChange={(e) => setNickname(e.target.value)}/>
           <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
           <input type="tel" placeholder="Telefone" pattern="([0-9]{2})[0-9]{5}-[0-9]{4}" value={phone} onChange={(e) => setPhone(e.target.value)}/>
           <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>

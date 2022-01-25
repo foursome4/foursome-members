@@ -30,8 +30,8 @@ function AuthProvider({children}) {
         loadStorage(); 
     },[]);
 
-    async function createAccount(nickname, username, email, phone, password, role, status,) {
-        const data = {nickname, username, email, phone, password, role, status}
+    async function createAccount(username, email, phone, password, role, status) {
+        const data = {username, email, phone, password, role, status}
         const res = await api.post('/accounts', data);
         if(res.status === 201) {
             console.log("Cadastro realizado com sucesso!");
@@ -213,9 +213,7 @@ async function findInformationsAccount(id) {
         const data2 = res.data[0]
         console.log(data2);
         setUserDataNew(data2)
-        if(data2 === undefined ) {
-            navigate("/completeregistration");
-        } else {
+        if(data2 !== undefined ) {
             localStorage.setItem("informations-foursome", JSON.stringify(data2));
         }
 
