@@ -1,43 +1,14 @@
-.feedPost {
+.feedComments {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     width: 80%;
-    margin-top: 20px;
+    margin-top: 5px;
+    margin-left: 20px;
 }
 
-.feedPost .posts-feed {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 100%;
-}
-
-.feedPost .posts-feed .buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 0 0 10px 0;
-    width: 100%;
-}
-
-.feedPost .posts-feed .buttons button {
-    padding: 5px;
-    width: 120px;
-    border: none;
-    border-bottom: 1px solid var(--Gray-Border);
-    background-color: var(--Background2);
-}
-
-.feedPost .posts-feed .buttons .selected {
-    border-bottom: 2px solid var(--Primary);
-    color: var(--Primary);
-}
-
-.feedPost .posts-feed .feed-post {
+.feedComments .feed-comment {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,11 +17,11 @@
     color: var(--Gray_font2);
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    padding: 20px 0;
+    padding: 10px 0;
     margin: 10px 0;
 }
 
-.feedPost .posts-feed .feed-post .post-user {
+.feedComments .feed-comment .comment-user {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -58,59 +29,62 @@
     width: 90%;
 }
 
-.feedPost .posts-feed .feed-post .post-user img {
-    width: 50px;
+.feedComments .feed-comment .comment-user img {
+    width: 30px;
     border-radius: 50%;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
-.feedPost .posts-feed .feed-post .post-user .name-data {
+.feedComments .feed-comment .comment-user .name-data {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 }
 
-.feedPost .posts-feed .feed-post .post-user .name-data .selected {
+
+
+.feedComments .feed-comment .comment-user .name-data .selected {
     color: var(--Primary) ;
 }
 
-.feedPost .posts-feed .feed-post .post-data {
+.feedComments .feed-comment .comment-data {
     margin: 5px 0;
     width: 90%;
 }
 
-.feedPost .posts-feed .feed-post .post-data p {
-    font-size: 18px;
+.feedComments .feed-comment .comment-data p {
+    font-size: 14px;
 }
 
-.feedPost .posts-feed .feed-post .reactions {
-    width: 90%;
+.feedComments .feed-comment .reactions {
+    width: 40%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 5px;
     
 }
 
-.feedPost .posts-feed .feed-post .reactions button {
+.feedComments .feed-comment .reactions button {
     background-color: var(--Background2);
     border: none;
-    font-size: 18px;
+    font-size: 14px;
     color: var(--Gray_font2);
     
 }
 
-.feedPost .posts-feed .feed-post .reactions button svg {
+.feedComments .feed-comment .reactions button svg {
     margin-right: 5px;
 }
 
-.feedPost .posts-feed .feed-post .reactions .selected{
+.feedComments .feed-comment .reactions .selected{
     color: var(--Primary);   
 }
 
-.feed-post .comment {
+.feed-comment .comment {
     margin-top: 10px;
     width: 90%;
     display: flex;
@@ -119,7 +93,7 @@
     justify-content: space-evenly;
 }
 
-.feed-post .comment input {
+.feed-comment .comment input {
     width: 80%;
     height: 30px;
     border-radius: 6px;
@@ -129,7 +103,7 @@
     color: var(--Primary);
 }
 
-.feed-post .comment button {
+.feed-comment .comment button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -142,10 +116,10 @@
     color: var(--White);
 }
 
-.feed-post .comment button svg {
+.feed-comment .comment button svg {
     margin-right: 5px;
 }
 
-.feed-post .commentHidden {
+.feed-comment .commentHidden {
     display: none;
 }

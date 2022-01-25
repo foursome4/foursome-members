@@ -1,5 +1,6 @@
 .content {
     width: 80%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,6 +8,7 @@
 
 .content .signUp {
     width: 100%;
+    margin-top: 5%;
     display: flex;
     align-items: center;
     justify-content: center;

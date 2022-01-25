@@ -7,24 +7,40 @@ import {FiHome, FiImage, FiVideo, FiUsers, FiList, FiCalendar, FiSettings, FiMor
 import './profile.css'
 import { Post } from '../../components/Post/Post'
 import { FaMars } from 'react-icons/fa'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../contexts/Auth'
+import {FeedPost} from "../../components/FeedPost/FeedPost"
+import api from '../../services/api'
 
 
 function Profile() {
-    const {user} = useContext(AuthContext);
-    useEffect((user) => {
-       function loadUser(user) {
+  const [dataUser, setDataUser] = useState(null)
+  const Local = localStorage.getItem("foursome");
+  const user = JSON.parse(Local)
 
-            if(user) {
-                console.log(user)
-                return user
-            }
-        }
 
-        loadUser(user)
+    useEffect(() => {
+      const LocalData = localStorage.getItem("foursome");
+      const userData = JSON.parse(LocalData);
+      const idUser = userData.id;
+      console.log("userData.id")
+      console.log(userData.id)
+      async function loadInformations() {
+        await api.get(`/informations/${idUser}`)
+    .then((res) => {
+        console.log("res.data");
+        console.log(res.data[0])
+        setDataUser(res.data[0])
+    }).catch(error => {
+        console.log("Erro ao buscar dados" + error)
+    })
+      }
 
-    }, [user])
+
+      loadInformations()
+    }, [])
+
+    
 
   return (
       <div className="container">
@@ -35,12 +51,12 @@ function Profile() {
         <div className="main">
          <div className="section">
           <div className="cover">
-              <img src={user !== null ? user.cover : coverImg} alt="" />
+              <img src={ dataUser !== null ? dataUser.cover : coverImg} alt="" />
           </div>
             <div className="profile-tools">
                 <div className="user">
-                  <img src={user !== null ? user.avatar : avatar} alt="" />
-                  <h3> <b> {user !== null ? user.nickname : "User Test"} </b></h3>
+                  <img src={dataUser !== null ? dataUser.avatar : avatar} alt="" />
+                  <h3> <b>{dataUser !== null ? dataUser.nickname :"User Test"}</b></h3>
                 </div>
                 <div className="tools">
                   <button className='select'><FiHome size={16}/></button>
@@ -59,8 +75,8 @@ function Profile() {
               <div className="infos">
               <div className="info">
                 <div className="name">
-                    <h5>@{user !== null ? user.username : "User Test"}</h5>
-                    <h6>{user !== null ? user.role : "User Test"} / {user !== null ? user.type : "User Test"}</h6>
+                    <h5>@{user !== null ? user.username :"User Test"}</h5>
+                    <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
                 </div>
                 <h4><FaMars size={20} /> </h4>
                 <div className="info-user-man">
@@ -105,9 +121,22 @@ function Profile() {
                 <img src={avatar} alt="" />
               </div>
             </div>
+            <div className="photos">
+              <button>Vídeos</button>
+              <div className="images">
+                <img src={avatar} alt="" />
+                <img src={avatar} alt="" />
+                <img src={avatar} alt="" />
+                <img src={avatar} alt="" />
+                <img src={avatar} alt="" />
+                <img src={avatar} alt="" />
+              </div>
+            </div>
               </div>
               <div className="feed">
-                    <Post />      
+                    <Post userData={dataUser}/>
+                    <br /><br />
+                    <FeedPost />    
                     </div>
             </div>
          </div>

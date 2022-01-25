@@ -1,4 +1,4 @@
-.informations {
+.characteristcsForm {
     width: 100%;
     height: 100%;
     display: flex;
@@ -8,17 +8,21 @@
     padding: 20px;
 }
 
-.informations .title {
+.characteristcsForm .title {
     width: 90%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    color: var(--Primary);
+    color: var(--White);
+}
+
+.characteristcsForm .title img {
+    width: 150px;
 }
 
 
-.informations form{
+.characteristcsForm form{
     height: 90%;
     display: flex;
     flex-direction: column;
@@ -26,33 +30,49 @@
     justify-content: space-around;
 }
 
-.informations form img {
+.characteristcsForm form img {
     width: 150px;
 }
 
-.informations form .data {
+.characteristcsForm form .data {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    margin: 20px 0;
 }
 
-.informations form .data input {
-    width: 550px;
+
+.characteristcsForm form .data input {
+    width: 500px;
     font-size: 14px;
     padding: 5px;
     margin: 5px 0;
-    border: 1px solid var(--Primary);
-    border-radius: 8px;
-    color: var(--Primary);
+    border: none;
+    border-bottom: 1px solid var(--White);
+    background-color: var(--Primary);
+    color: var(--White);
+    margin: 4px;
 }
 
-.informations form .data input::placeholder {
-    color: var(--Primary);
+.characteristcsForm form .data select {
+    width: 500px;
+    font-size: 14px;
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 1px solid var(--White);
+    background-color: var(--Primary);
+    color: var(--White);
+    margin: 4px;
 }
 
-.informations form .confirmation {
+.characteristcsForm form .data input::placeholder {
+    color: var(--White);
+}
+
+.characteristcsForm form .confirmation {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -60,24 +80,24 @@
     width: 90%;
 }
 
-.informations form .confirmation button {
+.characteristcsForm form .confirmation button {
     width: 150px;
     padding: 10px 5px;
     font-size: 14px;
     border: none;
     border-radius: 8px;
-    background-color: var(--Primary);
-    color: var(--White);
+    background-color: var(--White);
+    color: var(--Primary);
 }
 
-.informations form .confirmation .confirmation_informations {
+.characteristcsForm form .confirmation .confirmation_characteristcsForm {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    color: var(--Primary);
+    color: var(--White);
 }
 
-.informations form .confirmation .confirmation_informations span {
+.characteristcsForm form .confirmation .confirmation_characteristcsForm span {
     margin-left: 10px;
 }

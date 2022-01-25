@@ -14,7 +14,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    color: var(--Primary);
+    color: var(--White);
+}
+
+.informations .title img {
+    width: 200px;
 }
 
 
@@ -35,7 +39,7 @@
     justify-content: center;
     flex-direction: column;
     cursor: pointer;
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 .informations form .label-avatar input {
@@ -103,29 +107,66 @@
     justify-content: space-between;
 }
 
+.informations form .SearchCep {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+}
+
+.informations form .SearchCep input {
+    width: 250px;
+    font-size: 14px;
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 1px solid var(--White);
+    background-color: var(--Primary);
+    color: var(--White);
+    margin: 10px;
+}
+
+.informations form .SearchCep input::placeholder {
+    color: var(--White);
+}
+
+.informations form .SearchCep button {
+    width: 150px;
+    padding: 10px 5px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--White);
+    color: var(--Primary);
+}
+
+
 .informations form .data input {
     width: 250px;
     font-size: 14px;
     padding: 5px;
     margin: 5px 0;
-    border: 1px solid var(--Primary);
-    border-radius: 8px;
-    color: var(--Primary);
-    margin: 10px;
+    border: none;
+    border-bottom: 1px solid var(--White);
+    background-color: var(--Primary);
+    color: var(--White);
+    margin: 5px;
 }
 .informations form .data select {
     width: 250px;
     font-size: 14px;
     padding: 5px;
     margin: 5px 0;
-    border: 1px solid var(--Primary);
-    border-radius: 8px;
-    color: var(--Primary);
-    margin: 10px;
+    border: none;
+    border-bottom: 1px solid var(--White);
+    background-color: var(--Primary);
+    color: var(--White);
+    margin: 5px;
 }
 
 .informations form .data input::placeholder {
-    color: var(--Primary);
+    color: var(--White);
 }
 
 .informations form .confirmation {
@@ -142,8 +183,8 @@
     font-size: 14px;
     border: none;
     border-radius: 8px;
-    background-color: var(--Primary);
-    color: var(--White);
+    background-color: var(--White);
+    color: var(--Primary);
 }
 
 .informations form .confirmation .confirmation_informations {
@@ -151,7 +192,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    color: var(--Primary);
+    color: var(--White);
 }
 
 .informations form .confirmation .confirmation_informations span {

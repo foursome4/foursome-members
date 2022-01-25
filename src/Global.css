@@ -36,7 +36,6 @@ body {
 
 .container {
   width: 100%;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +52,34 @@ body {
 body, input, textarea, button {
   font-family: 'Ubuntu', sans-serif;
   font-weight: 400;
+  
+  
 }
+body, input, textarea, button :focus{
+  outline: none;
+  }
+
+  body::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: var(--Background2);        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: var(--Background-man);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid var(--Background2);  /* creates padding around scroll thumb */
+  }
+
+  textarea {
+    padding: 10px;
+  }
+  input, textarea {
+
+    color: var(--Primary);
+  }
 
 h1, h2, h3, h4, h5, h6, strong {
   font-weight: 400;
@@ -66,3 +92,4 @@ p {
 button {
   cursor: pointer;
 }
+

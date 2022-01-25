@@ -1,5 +1,5 @@
 import { Router } from './routes/Router';
-import AuthProvider from './contexts/Auth'; 
+import {AuthProvider} from './contexts/Auth'; 
 import { BrowserRouter } from 'react-router-dom';
 import './Global.css';
 
@@ -9,11 +9,11 @@ import './Global.css';
 function App() {
   return (
     <BrowserRouter>
-    <div className='container'> 
     <AuthProvider>
+    <div className='container'> 
     <Router />
-    </AuthProvider>
     </div>
+    </AuthProvider>
     </BrowserRouter>
 
   );

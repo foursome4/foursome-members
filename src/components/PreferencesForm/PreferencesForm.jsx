@@ -1,66 +1,90 @@
-import logoImg from '../../assets/images/logo2.png';
+import { useContext, useState } from 'react';
+import logoImg from '../../assets/images/logo.png';
+import { AuthContext } from '../../contexts/Auth';
 import './preferencesForm.css'
 
 function PreferencesForm() {
+    const {preferencesAccount} = useContext(AuthContext);
+    const Local = localStorage.getItem("foursome");
+    const user = JSON.parse(Local)
+    const [search, setSearch] = useState();
+    const [relationship, setRelationship] = useState();
+    const [humor, setHumor] = useState();
+    const [activities, setActivities] = useState();
+    
+    function handlePreferences(e) {
+        e.preventDefault();
+        console.log({idAccount: user.id, search, relationship, humor, activities})
+
+        preferencesAccount({idAccount: user.id, search, relationship, humor, activities})
+    }
+
+    function handleSelectSearch(e) {
+        setSearch(e.target.value)
+    }
+
+    function handleSelectRelationship(e) {
+        setRelationship(e.target.value)
+    }
+
+    function handleSelectHumor(e) {
+        setHumor(e.target.value)
+    }
+
+    function handleSelectActivities(e) {
+        setActivities(e.target.value)
+    }
+
     return (
-            <div className="informations">
+
+            <div className="preferencesForm">
                 <div className="title">
                     <img src={logoImg} alt="" />
                     <h2>Preferências</h2>
                     </div>
                         <form action="">
                     <div className="data">                      
-                    <select name="" id="">
-                                <option value="uf">O que Busca?</option>
-                                <option value="uf">Estado </option>
-                                <option value="Estado ">Homem</option>
-                                <option value="Estado ">Mulher</option>
-                                <option value="Estado ">Casal</option>
+                    <select value={search} onChange={handleSelectSearch}>
+                                <option value="">O que Busca?</option>
+                                <option value="Homem">Homem</option>
+                                <option value="Mulher">Mulher</option>
+                                <option value="Casal">Casal</option>
+                                <option value="Trisal">Trisal</option>
+                                <option value="Travestis">Travestis</option>
+                                <option value="Transexuais">Transexuais</option>
+                                <option value="Grupos">Grupos</option>
                             </select>
-                            <select name="" id="">
-                                <option value="uf">Orientação Sexual</option>
-                                <option value="uf">Estado </option>
-                                <option value="Estado ">Hetero</option>
-                                <option value="Estado ">Gay</option>
-                                <option value="Estado ">Bi</option>
-                                <option value="Estado ">Trans</option>
+                            <select value={relationship} onChange={handleSelectRelationship}>
+                                <option value="">Tipo de relacionamento que busca?</option>
+                                <option value="Uma noite">Uma noite</option>
+                                <option value="Relacionamento sério">Relacionamento sério</option>
+                                <option value="Sem compromisso">Sem compromisso</option>
+                                <option value="Novas amizades">Novas amizades</option>
+                                <option value="Apenas companhia">Apenas companhia</option>
                             </select>
-                            <select name="" id="">
-                                <option value="uf">Status de Relacionamento</option>
-                                <option value="uf">Solteiro(@) </option>
-                                <option value="Estado ">Casado(@)</option>
-                                <option value="Estado ">Enrolado(@)</option>
-                                <option value="Estado ">Relacionamento Aberto</option>
+                            <select value={humor} onChange={handleSelectHumor}>
+                                <option value="">Humor</option>
+                                <option value="Introvertid@">Introvertid@</option>
+                                <option value="Extrovertid@">Extrovertid@</option>
+                                <option value="Séri@">Séri@</option>
+                                <option value="Mais abert@">Mais abert@</option>
                             </select>
-                            <select name="" id="">
-                                <option value="uf">Tipo de relacionamento que busca?</option>
-                                <option value="uf">Uma noite </option>
-                                <option value="Estado ">Relacionamento</option>
-                                <option value="Estado ">Sem compromisso</option>
-                            </select>
-                            <select name="" id="">
-                                <option value="uf">Humor</option>
-                                <option value="uf">Introvertido(@) </option>
-                                <option value="Estado ">Extrovertido(@)</option>
-                                <option value="Estado ">Sério(@) </option>
-                                <option value="Estado ">Mais aberto(@) </option>
-                            </select>
-                            <select name="" id="">
-                                <option value="uf">Atividades / Hobies</option>
-                                <option value="uf">Cinema </option>
-                                <option value="Estado ">Atividades físicas / Esportes</option>
-                                <option value="Estado ">Balada </option>
-                                <option value="Estado ">Praia / Cachoeira </option>
+                            <select value={activities} onChange={handleSelectActivities}>
+                                <option value="Atividades / Hobies">Atividades / Hobies</option>
+                                <option value="Cinema / Netflix em casa">Cinema / Netflix em casa</option>
+                                <option value="Atividades físicas / Esportes">Atividades físicas / Esportes</option>
+                                <option value="Balada / Barzinho">Balada / Barzinho</option>
+                                <option value="Praia / Cachoeira">Praia / Cachoeira </option>
                             </select>
          
   
                     </div>
                     <div className='confirmation'>
-                        <div className="confirmation_informations">
+                        <div className="confirmation_preferencesForm">
                         <input type="checkbox"/>
                         <span>Minhas informações estão corretas!</span>
                         </div>
-                        <button>Salvar e Avançar</button>
+                        <button onClick={handlePreferences}>Salvar e Avançar</button>
                     </div>
                         </form>
             </div>

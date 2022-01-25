@@ -40,6 +40,47 @@
     align-items: center;
     justify-content: center;
 }
+.post .post-data .post-type .inputs .post-file {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.post .post-data .post-type .inputs .post-file .label-avatar{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+.post .post-data .post-type .inputs .post-file .label-avatar input {
+    display: none;
+}
+
+.post .post-data .post-type .inputs .post-file .label-avatar span {
+    z-index: 99;
+    position: absolute;
+    opacity: 0.7;
+    transition: all .5s;
+}
+
+.post .post-data .post-type .inputs .post-file .label-avatar span:hover{
+    opacity: 1;
+    transform: scale(1.4);
+}
+
+.post .post-data .post-type .inputs .post-file .label-avatar img{
+    margin-bottom: 1em;
+    border-radius: 6%;
+    object-fit: cover;
+}
 
 .post .post-data .post-type .inputs textarea {
     width: 100%;

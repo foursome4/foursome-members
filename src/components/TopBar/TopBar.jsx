@@ -2,23 +2,16 @@ import logoFoursome from '../../assets/images/logo2.png'
 import { FiSearch, FiMessageSquare, FiUserPlus, FiBell, FiMail, FiLogOut } from 'react-icons/fi'
 import avatarImg from '../../assets/images/avatar.png'
 import './topBar.css'
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 
 function TopBar() {
-    const {user, logout} = useContext(AuthContext);
-    useEffect((user) => {
-       function loadUser(user) {
-
-            if(user) {
-                console.log(user)
-                return user
-            }
-        }
-
-        loadUser(user)
-
-    }, [user])
+    const {logout} = useContext(AuthContext);
+    const Local = localStorage.getItem("foursome");
+    const user = JSON.parse(Local);
+    const LocalInformation = localStorage.getItem("informations-foursome");
+    const userInformation = JSON.parse(LocalInformation);
+  
 
     function Tologout(e) {
         e.preventDefault();
@@ -48,8 +41,8 @@ function TopBar() {
                     <FiLogOut onClick={Tologout} />
                 </div>
                 <div className="account">
-                    <img src={user !== null ? user.avatar : avatarImg} alt="" />
-                        <h4>@{user !== null ? user.username : "Usuário não identificado"}</h4>
+                    <img src={userInformation !== null ? userInformation.avatar : avatarImg} alt="" />
+                        <h4>@{user !== null ? user.username : "Usuário não encontrado"}</h4>
                 </div>
             </div>
             <div className="chat">

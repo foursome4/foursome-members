@@ -13,29 +13,29 @@ function Invite() {
     const [code, setCode] = useState("1020302010");
 
 
-    const {user, CreateInviteNewUsew} = useContext(AuthContext);
-    useEffect((user) => {
-       function loadUser(user) {
+    const {CreateInviteNewUsew} = useContext(AuthContext);
+    // useEffect((user) => {
+    //    function loadUser(user) {
 
-            if(user) {
-                console.log(user)
-                return user
-            }
-        }
+    //         if(user) {
+    //             console.log(user)
+    //             return user
+    //         }
+    //     }
 
-        loadUser(user)
+    //     loadUser(user)
 
-    }, [user])
+    // }, [user])
 
     function createInvite(e) {
         e.preventDefault();
 
-        setCode(user.id.substring(0, 6))
+        // setCode(user.id.substring(0, 6))
 
-        console.log(`Code: ${code}, Nome: ${name}, Email: ${email}, Telefone: ${phone}, isAccount: ${user.id}`);
+        // console.log(`Code: ${code}, Nome: ${name}, Email: ${email}, Telefone: ${phone}, isAccount: ${user.id}`);
 
 
-        CreateInviteNewUsew({inviteCode: code, name, email, phone, idAccount: user.id})
+        CreateInviteNewUsew({inviteCode: code, name, email, phone})
 
         window.location.href = `https://api.whatsapp.com/send?phone=55${phone}&text=Parabens!!
 
