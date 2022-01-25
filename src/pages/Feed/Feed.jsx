@@ -3,9 +3,7 @@ import { FeedPost } from "../../components/FeedPost/FeedPost"
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { TopBar } from "../../components/TopBar/TopBar"
-import './feed.css'
-import { useContext } from "react"
-import { AuthContext } from "../../contexts/Auth"
+import './feed.css';
 
 function Feed() {
 

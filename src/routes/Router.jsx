@@ -1,6 +1,4 @@
-import { useContext, useEffect } from 'react';
 import {Route, Routes, Navigate} from 'react-router-dom';
-import { AuthContext } from '../contexts/Auth';
 import { Characteristcs } from '../pages/Characteristcs/Characteristcs';
 import { Chat } from '../pages/Chat/Chat';
 import { CompleteRegistration } from '../pages/CompleteRegistration/CompleteRegistration';

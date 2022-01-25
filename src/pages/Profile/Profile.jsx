@@ -1,4 +1,3 @@
-// import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSlim'
 import { TopBar } from '../../components/TopBar/TopBar'
 import coverImg from '../../assets/images/cover.png'
@@ -7,8 +6,7 @@ import {FiHome, FiImage, FiVideo, FiUsers, FiList, FiCalendar, FiSettings, FiMor
 import './profile.css'
 import { Post } from '../../components/Post/Post'
 import { FaMars } from 'react-icons/fa'
-import { useContext, useEffect, useState } from 'react'
-import { AuthContext } from '../../contexts/Auth'
+import { useEffect, useState } from 'react'
 import {FeedPost} from "../../components/FeedPost/FeedPost"
 import api from '../../services/api'
 

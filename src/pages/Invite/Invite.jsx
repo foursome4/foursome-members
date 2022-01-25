@@ -2,37 +2,31 @@ import { ToolBarLeft } from "../../components/ToolBarLeft/ToolBarLeft"
 import { TopBar } from "../../components/TopBar/TopBar"
 import './invite.css'
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { AuthContext } from "../../contexts/Auth"
 
 
 function Invite() {
+    const Local = localStorage.getItem("foursome");
+    const user = JSON.parse(Local);
+    const LocalInformation = localStorage.getItem("informations-foursome");
+    const userInformation = JSON.parse(LocalInformation);
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    const [code, setCode] = useState("1020302010");
+    const [code, setCode] = useState("");
 
 
     const {CreateInviteNewUsew} = useContext(AuthContext);
-    // useEffect((user) => {
-    //    function loadUser(user) {
-
-    //         if(user) {
-    //             console.log(user)
-    //             return user
-    //         }
-    //     }
-
-    //     loadUser(user)
-
-    // }, [user])
 
     function createInvite(e) {
         e.preventDefault();
 
-        // setCode(user.id.substring(0, 6))
+        setCode(user.id.substring(0, 6))
 
-        // console.log(`Code: ${code}, Nome: ${name}, Email: ${email}, Telefone: ${phone}, isAccount: ${user.id}`);
+        console.log(`Code: ${code}, Nome: ${name}, Email: ${email}, Telefone: ${phone},
+        isAccount: ${user.id}, username: ${user.username}, nickname: ${userInformation.nickname}, avatar: ${userInformation.avatar}`);
 
 
         CreateInviteNewUsew({inviteCode: code, name, email, phone})
