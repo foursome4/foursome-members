@@ -1,4 +1,4 @@
-import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiSend, FiUpload} from 'react-icons/fi'
+import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiSend, FiUpload, FiRefreshCcw} from 'react-icons/fi'
 import './post.css';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
@@ -13,7 +13,8 @@ function Post() {
     const user = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(LocalInformation);
- 
+    
+    const [loading, setLoading] = useState(false)
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [imageAvatar, setImageAvatar] = useState(''); 
     const [videoUrl, setVideoUrl] = useState(null);
@@ -70,6 +71,7 @@ function Post() {
     
     async function handlePost(e) {
         e.preventDefault();
+        setLoading(true)
         
         if(post === "photo") {
             const uuid = uuidv4();
@@ -131,21 +133,6 @@ function Post() {
                 text,
             })
             
-
-            // console.log({
-            //     idAccount: user.id,
-            //     link: "",
-            //     avatar: userInformation.avatar,
-            //     nickname: userInformation.nickname,
-            //     username: user.username,
-            //     nameGroup: "",
-            //     nameForum: "",
-            //     idGroup: "",
-            //     idForum: "",
-            //     type,
-            //     text,
-            // })
-            window.location.reload(false)
             
         } else if(post === "group"){
             newPost({
@@ -181,7 +168,9 @@ function Post() {
         }
         else {
             console.log("Escolha um tipo de postagem")
-        }    }
+        }   
+    
+        setLoading(false)}
         
         
         
@@ -271,7 +260,8 @@ function Post() {
                <textarea name="" id="" cols={30} rows={10}
                onChange={(e) => setText(e.target.value)}></textarea>
             }
-                    <button className="public" onClick={handlePost}> <FiSend /> </button>
+                    <button className="public" onClick={handlePost}>
+                        {loading === true ? <FiRefreshCcw /> : <FiSend /> } </button>
                 </div>
                 <div className="buttons">
                     <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>

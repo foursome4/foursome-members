@@ -128,20 +128,16 @@ function FeedPost() {
                                     </div>
 
                                     {postsData.type === "post-photo" ?
-                                        <div>
-                                            <div className="post-data" >
-                                               <img src={postsData.link} alt={"Post Image"} width={500}/>
-                                             </div>
-                                        </div>:
-                                        
-                                        postsData.type === "post-video" ?
-                                        <div>
-                                        <div className="post-data" >
-                                        <video width="500" controls >
+                                  
+                                        <div className="post-data-media" >
+                                            <img src={postsData.link} alt={"Post Image"} width={500}/>
+                                        </div> :
+                                    postsData.type === "post-video" ?
+                                        <div className="post-data-media" >
+                                        <video controls >
                                             <source src={postsData.link} type="video/mp4"/>
                                             </video>
-                                         </div>
-                                    </div> :
+                                        </div> :
                                     ""
                                       }
 
@@ -158,14 +154,12 @@ function FeedPost() {
                                             <FiChevronDown />
                                             Ver Comentários
                                         </button>
-                                        <button>
-                                            <FiEdit />
-                                            Editar
-                                        </button>
-                                        <button>
-                                            <FiTrash2 />
-                                            Apagar
-                                        </button>
+                                        {postsData.idAccount === user.id ?
+                                        <>
+                                            <button> <FiEdit /> Editar </button>
+                                            <button> <FiTrash2 /> Apagar </button>
+                                            </>
+                                        : ""}
                                     </div>
 
                                     <div className={comment === true ? "comment" : "commentHidden"}>

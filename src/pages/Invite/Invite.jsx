@@ -15,7 +15,7 @@ function Invite() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    const [code, setCode] = useState("");
+    const [code, setCode] = useState("rt54t5-o89");
 
 
     const {CreateInviteNewUsew} = useContext(AuthContext);
@@ -23,25 +23,18 @@ function Invite() {
     function createInvite(e) {
         e.preventDefault();
 
-        setCode(user.id.substring(0, 6))
+        const text = `Parabens ${name}! %0AVocê foi convidado a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa. %0A%0AEsse convite é valido por 10 dias e intransferível. %0A%0APara criar seu perfil agora, acesse: %0Afoursome.com.br/signup/${email} e Utilize o Código: ${code} %0A%0AEm caso de dúvida, fale conosco. %0AContato@foursome.com.br %0A%0AFOURSOME https://www.foursome.com.br`
 
-        console.log(`Code: ${code}, Nome: ${name}, Email: ${email}, Telefone: ${phone},
+        //setCode(user.id.substring(0, 6))
+
+        console.log(`Code: ${user.id.substring(0, 6)}, Nome: ${name}, Email: ${email}, Telefone: ${phone},
         isAccount: ${user.id}, username: ${user.username}, nickname: ${userInformation.nickname}, avatar: ${userInformation.avatar}`);
 
 
-        CreateInviteNewUsew({inviteCode: code, name, email, phone})
+        //CreateInviteNewUsew({inviteCode: code, name, email, phone})
 
-        window.location.href = `https://api.whatsapp.com/send?phone=55${phone}&text=Parabens!!
-
-        Você foi convidado a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa.
-        
-        Esse convite é valido por 10 dias e intransferível.
-        
-        Para criar seu perfil agora, acesse:
-        foursome.com.br/signup/${email} e Urilize o Código ${code}
-        Em caso de dúvida, fale conosco.
-        Contato@foursome.com.br -- 
-        FOURSOME https://www.foursome.com.br`
+        window.open("https://api.whatsapp.com/send?phone=55"+ phone + "&text=" + text,
+        '_blank')
     }
     return (
         <div className="content">

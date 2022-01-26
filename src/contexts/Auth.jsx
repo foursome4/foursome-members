@@ -178,10 +178,12 @@ async function preferencesAccount({idAccount, search, relationship, humor, activ
 
 
 async function newPost({idAccount, type, link, text, idForum, idGroup, avatar, nickname, username, nameForum, nameGroup }) {
+    setLoading(true)
     await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, avatar, nickname, username, nameForum, nameGroup }).then((result) => {
         console.log(result.data)
         console.log("Post Realizado com sucesso!");
         window.location.reload(false)
+        setLoading(false)
     }).catch(error => {
         console.log("Post não foi realizado" + error)
     })
