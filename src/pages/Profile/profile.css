@@ -187,13 +187,13 @@
     margin: 15px 5px;
     flex-wrap: wrap;
     width: 280px;
-    padding: 2px;
+    padding: 5px;
 }
 
 .content-profile .profile .main .section .sections .infos .info-user-man h4 {
     z-index: 99;
     position: absolute;
-    margin-bottom: 145px;
+    margin-bottom: 45px;
 }
 
 .content-profile .profile .main .section .sections .infos .info-user-man h4 svg {

@@ -100,12 +100,19 @@ function Profile() {
                         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
                     </div>
                 {characteristics.map((characteristicsUser) => {
+
+                  const nascimento = new Date(characteristicsUser.birthDate);
+                  const hoje = new Date()
+                  
+                  const idade =  Math.floor(Math.ceil(Math.abs(nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25);
+                  console.log(idade)
+
                   return (
                     <div className={characteristicsUser.sex === "Mulher" ? "info-user-woman" : "info-user-man"}>
                       <h4>{characteristics.sex === "Mulher" ? <FaVenus size={20} /> : <FaMars size={20} />} </h4>
                         <div className="info-user-data">
                             <h5>Idade</h5>
-                            <p>{characteristicsUser.birthDate}</p>
+                            <p>{idade}</p>
                         </div>
                         <div className="info-user-data">
                             <h5>Signo</h5>
@@ -114,43 +121,6 @@ function Profile() {
                         <div className="info-user-data">
                             <h5>Opção</h5>
                             <p>{characteristicsUser.sexualOption}</p>
-                        </div>
-    
-                        <div className="info-user-data">
-                            <h5>Altura</h5>
-                            <p>{characteristicsUser.heigth}</p>
-                        </div>
-                        <div className="info-user-data">
-                            <h5>Peso</h5>
-                            <p>{characteristicsUser.weight}</p>
-                        </div>
-                        <div className="info-user-data">
-                            <h5>Físico</h5>
-                            <p>{characteristicsUser.physique}</p>
-                        </div>
-                        <div className="info-user-data">
-                            <h5>Etnia</h5>
-                            <p>{characteristicsUser.ethnicity}</p>
-                        </div>
-                        <div className="info-user-data">
-                            <h5>Olhos</h5>
-                            <p>{characteristicsUser.eyes}</p>
-                        </div>
-                        <div className="info-user-data">
-                            <h5>Cabelo</h5>
-                            <p>{characteristicsUser.hair}</p>
-                        </div>
-                        <div className="info-user-data">
-                            <h5>Educação</h5>
-                            <p>{characteristicsUser.education}</p>
-                        </div>
-                        <div className="info-user-data">
-                            <h5>Tatoos</h5>
-                            <p>{characteristicsUser.tattos}</p>
-                        </div>
-                        <div className="info-user-data">
-                            <h5>Fuma?</h5>
-                            <p>{characteristicsUser.smokes}</p>
                         </div>
                     </div>
                         )
