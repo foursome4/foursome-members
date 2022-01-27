@@ -1,4 +1,4 @@
-import { FiTrash2, FiEdit, FiMessageCircle, FiMinus, FiSend } from 'react-icons/fi'
+import { FiTrash2, FiEdit, FiMessageCircle, FiSend } from 'react-icons/fi'
 import './FeedComments.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
@@ -20,10 +20,6 @@ function FeedComments({idPost}) {
     useEffect(() => {
           async function Comments() {
             const res = await api.get(`/comments/${idPost}`);
-            console.log("idPost - Comments")
-            console.log(idPost)
-            console.log("res.data Conmments")
-            console.log(res.data)
             const dataPosts = (res.data)
             setDataComments(dataPosts)
 
@@ -32,8 +28,6 @@ function FeedComments({idPost}) {
         Comments()
 
     }, [user, idPost])
-    console.log("dataComments")
-    console.log(dataComments)
 
 
     function handleHabiliteComment () {
@@ -59,15 +53,14 @@ function FeedComments({idPost}) {
                                 const date = parseISO(comments.created_at);
                                 const dateFormated = format(
                                     date, 
-                                "dd'/'MM'/'yyyy', às 'HH:mm'h'"
+                                "dd'/'MM'/'yyyy'-'HH:mm'"
                                 );
                                  return (
-                                    <div className="feed-comment" >
+                                    <div className="feed-comment" key={comments.id}>
                                     <div className="comment-user" >
                                         <img src={comments.avatar} alt="" />
                                         <div className="name-data">
                                         <h4 className="selected">{comments.nickname}</h4>
-                                            <h4> <FiMinus /> </h4>
                                         <div className="time-data">
                                             <h5>{dateFormated}</h5>
                                         </div>

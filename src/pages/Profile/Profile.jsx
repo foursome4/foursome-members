@@ -5,38 +5,61 @@ import avatar from '../../assets/images/avatar.png'
 import {FiHome, FiImage, FiVideo, FiUsers, FiList, FiCalendar, FiSettings, FiMoreVertical} from 'react-icons/fi'
 import './profile.css'
 import { Post } from '../../components/Post/Post'
-import { FaMars } from 'react-icons/fa'
+import { FaMars, FaVenus } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
-import {FeedPost} from "../../components/FeedPost/FeedPost"
 import api from '../../services/api'
+import { FeedPostIndividual } from '../../components/FeedPostIndividual/FeedPostIndividual'
 
 
 function Profile() {
   const [dataUser, setDataUser] = useState(null)
   const Local = localStorage.getItem("foursome");
-  const user = JSON.parse(Local)
+  const user = JSON.parse(Local);
+
+  const [characteristics, setCharacteristics] = useState([])
+  const [posts, setPosts] = useState([])
 
 
     useEffect(() => {
-      const LocalData = localStorage.getItem("foursome");
-      const userData = JSON.parse(LocalData);
-      const idUser = userData.id;
-      console.log("userData.id")
-      console.log(userData.id)
+      const idUser = user.id;
       async function loadInformations() {
         await api.get(`/informations/${idUser}`)
     .then((res) => {
-        console.log("res.data");
-        console.log(res.data[0])
         setDataUser(res.data[0])
     }).catch(error => {
         console.log("Erro ao buscar dados" + error)
     })
       }
 
+      async function loadCharacteristcs() {
+        const id_account = user.id
+        await api.get(`characteristics/${id_account}`)
+        .then((res) => {
+          setCharacteristics(res.data)
+        }).catch(error => {
+          console.log("Erro ao buscar dados" + error)
+      })
+      }
 
-      loadInformations()
-    }, [])
+      async function loadPosts() {
+          const res = await api.get(`/posts/filter/accounts/${user.id}`);
+          console.log("res.data posts")
+          console.log(res.data)
+          const dataPosts = (res.data)
+          setPosts(dataPosts)
+      }
+
+      loadInformations();
+      loadCharacteristcs();
+      loadPosts()
+    }, []);
+
+    const photos = posts.filter(post => (post.type === "post-photo"));
+    const allPhotos = photos.slice(0, 6)
+    console.log("allPhotos")
+    console.log(allPhotos)
+    const videos = posts.filter(post => (post.type === "post-video"));
+ 
 
     
 
@@ -71,52 +94,97 @@ function Profile() {
             </div>
           <div className="sections">
               <div className="infos">
-              <div className="info">
-                <div className="name">
-                    <h5>@{user !== null ? user.username :"User Test"}</h5>
-                    <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
+                    <div className="info">
+                    <div className="name">
+                        <h5>@{user !== null ? user.username :"User Test"}</h5>
+                        <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
+                    </div>
+                {characteristics.map((characteristicsUser) => {
+                  return (
+                    <div className={characteristicsUser.sex === "Mulher" ? "info-user-woman" : "info-user-man"}>
+                      <h4>{characteristics.sex === "Mulher" ? <FaVenus size={20} /> : <FaMars size={20} />} </h4>
+                        <div className="info-user-data">
+                            <h5>Idade</h5>
+                            <p>{characteristicsUser.birthDate}</p>
+                        </div>
+                        <div className="info-user-data">
+                            <h5>Signo</h5>
+                            <p>{characteristicsUser.sign}</p>
+                        </div>
+                        <div className="info-user-data">
+                            <h5>Opção</h5>
+                            <p>{characteristicsUser.sexualOption}</p>
+                        </div>
+    
+                        <div className="info-user-data">
+                            <h5>Altura</h5>
+                            <p>{characteristicsUser.heigth}</p>
+                        </div>
+                        <div className="info-user-data">
+                            <h5>Peso</h5>
+                            <p>{characteristicsUser.weight}</p>
+                        </div>
+                        <div className="info-user-data">
+                            <h5>Físico</h5>
+                            <p>{characteristicsUser.physique}</p>
+                        </div>
+                        <div className="info-user-data">
+                            <h5>Etnia</h5>
+                            <p>{characteristicsUser.ethnicity}</p>
+                        </div>
+                        <div className="info-user-data">
+                            <h5>Olhos</h5>
+                            <p>{characteristicsUser.eyes}</p>
+                        </div>
+                        <div className="info-user-data">
+                            <h5>Cabelo</h5>
+                            <p>{characteristicsUser.hair}</p>
+                        </div>
+                        <div className="info-user-data">
+                            <h5>Educação</h5>
+                            <p>{characteristicsUser.education}</p>
+                        </div>
+                        <div className="info-user-data">
+                            <h5>Tatoos</h5>
+                            <p>{characteristicsUser.tattos}</p>
+                        </div>
+                        <div className="info-user-data">
+                            <h5>Fuma?</h5>
+                            <p>{characteristicsUser.smokes}</p>
+                        </div>
+                    </div>
+                        )
+                      })}
+                  
+                    <div className="info-social">
+                        <div className="info-social-data">
+                            <p>150</p>
+                            <h5>Amigos</h5>
+                        </div>
+                        <div className="info-social-data">
+                            <p>{photos.length}</p>
+                            <h5>Fotos</h5>
+                        </div>
+                        <div className="info-social-data">
+                            <p>{videos.length}</p>
+                            <h5>Vídeos</h5>
+                        </div>
+                    </div>
                 </div>
-                <h4><FaMars size={20} /> </h4>
-                <div className="info-user-man">
-                    <div className="info-user-data">
-                        <h5>Idade</h5>
-                        <p>29 Anos</p>
-                    </div>
-                    <div className="info-user-data">
-                        <h5>Signo</h5>
-                        <p>Capricórnio</p>
-                    </div>
-                    <div className="info-user-data">
-                        <h5>Opção</h5>
-                        <p>Hétero</p>
-                    </div>
-                </div>
-              
-                <div className="info-social">
-                    <div className="info-social-data">
-                        <p>150</p>
-                        <h5>Amigos</h5>
-                    </div>
-                    <div className="info-social-data">
-                        <p>15</p>
-                        <h5>Fotos</h5>
-                    </div>
-                    <div className="info-social-data">
-                        <p>5</p>
-                        <h5>Vídeos</h5>
-                    </div>
-                </div>
-            </div>
+            
 
             <div className="photos">
               <button>Fotos</button>
               <div className="images">
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
+                {allPhotos.map((photos) => {
+                  return (
+                    <div className="photos-list">
+                <img src={photos.link} alt="" />
+                    </div>
+                  )
+                })}
+ 
+               
               </div>
             </div>
             <div className="photos">
@@ -134,7 +202,7 @@ function Profile() {
               <div className="feed">
                     <Post userData={dataUser}/>
                     <br /><br />
-                    <FeedPost />    
+                    <FeedPostIndividual idAccount={user.id} />    
                     </div>
             </div>
          </div>

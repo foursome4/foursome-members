@@ -1,38 +1,44 @@
 import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiThumbsUp, FiMinus, FiSend, FiChevronDown } from 'react-icons/fi'
-import './feedPost.css';
+import './feedPostIndividual.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import api from "../../services/api";
 import { parseISO, format} from 'date-fns';
 import { FeedComments } from '../FeedComments/FeedComments';
 
-function FeedPost() {
+    function FeedPostIndividual() {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(LocalInformation);
+
+
     const [post, setPost] = useState("");
     const [data, setData] = useState([]);
     const [comment, setComment] = useState(false);
     const [viewComment, setViewComment] = useState(true);
     const [textComment, setTextComment] = useState("");
+
     const {user, newComment} = useContext(AuthContext);
-    
     useEffect(() => {
           async function findPosts() {
-          if(post === "") {
-            const res = await api.get(`/posts/all`);
+            if(post === "") {
+            const res = await api.get(`/posts/filter/accounts/${userData.id}`);
             const dataPosts = (res.data)
             setData(dataPosts)
-          } else {
-            const res = await api.get(`/posts/filter/${post}`);
+        } else {
+            const idAccount = userData.id;
+            const type = post;
+            const res = await api.get(`/posts/filter/${idAccount}/${type}`);
+            console.log("Result, filter")
             const dataPosts = (res.data)
+            console.log(res.data)
             setData(dataPosts)
-          }
+        }
         }
         findPosts()
 
-    }, [user, post])
+    }, [post])
 
     function postAll() {
         setPost("")
@@ -91,6 +97,7 @@ function FeedPost() {
             <button className={post === "post-group" ? 'selected' : ""} onClick={postGroup}> <FiUsers /> Grupo </button>
             <button className={post === "post-forum" ? 'selected' : ""} onClick={postForum}> <FiList /> Fórum </button>
             </div>
+                            
                                 {data.map((postsData => {
 
                                 const date = parseISO(postsData.created_at);
@@ -98,6 +105,7 @@ function FeedPost() {
                                     date, 
                                 "dd'/'MM'/'yyyy', às 'HH:mm'h'"
                                 );
+
                                     return (   
                                         <>                      
                                 <div className="feed-post" key={postsData.id}>
@@ -163,9 +171,21 @@ function FeedPost() {
                                 )
                             }))}
                            </div>
-        </div>     
+            {/* {filterComments.map((comments) => {
+                return (
+                    <>
+                    <h4>{comments.nickname}</h4>
+                    <h4>{comments.username}</h4>
+                    <h4>{comments.idAccount}</h4>
+                    <h4>{comments.idPost}</h4>
+                    </>
+                )
+            })} */}
+        </div>
+         
+         
                         
     )
 }
 
-export {FeedPost}
+export {FeedPostIndividual}

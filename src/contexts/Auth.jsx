@@ -13,13 +13,7 @@ function AuthProvider({children}) {
     useEffect(() => {
         function loadStorage() {
             const storageUser = localStorage.getItem("foursome");
-            const storageUserInformation = localStorage.getItem("informations-foursome");
-        
-            if(storageUserInformation) {
-                navigate("/feed");
-            } else {
-                navigate("/completeregistration");
-            }
+
         if(storageUser) {
             setUser(JSON.parse(storageUser));
             setLoading(false);
@@ -42,7 +36,8 @@ function AuthProvider({children}) {
 
 
     
-    async function loginSession({login, password}) {
+    async function loginSession({login, password}) {     
+       
         let email;
         let username;
         console.log(login);
@@ -54,18 +49,18 @@ function AuthProvider({children}) {
                 console.log(result.data)
                 console.log("Login realizado com sucesso!");
                 storageUser(result.data);
-                setLoading(false)
+                setLoading(false);
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
             })
+            
         } else {
             username = login
             await api.post("/session", {username, password})
             .then((result) => {
-                // console.log(result.data)
                 console.log("Login realizado com sucesso!");
                 storageUser(result.data);
-                setLoading(false)
+                setLoading(false);
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
             })
@@ -218,13 +213,21 @@ async function findInformationsAccount(id) {
         setUserDataNew(data2)
         if(data2 !== undefined ) {
             localStorage.setItem("informations-foursome", JSON.stringify(data2));
+            redirectToAfterLogin()
+        } else {
+            navigate("/completeregistration");
         }
-
-        window.location.reload(false)
-
     }).catch(error => {
         console.log("Erro ao buscar dados" + error)
     })
+}
+
+function redirectToAfterLogin() {
+    const storageUserInformation = localStorage.getItem("informations-foursome");
+    if(storageUserInformation) {
+        navigate("/feed");
+    } 
+    window.location.reload()
 }
 
 

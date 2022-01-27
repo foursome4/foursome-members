@@ -15,7 +15,6 @@ function App() {
     </div>
     </AuthProvider>
     </BrowserRouter>
-
   );
 }
 

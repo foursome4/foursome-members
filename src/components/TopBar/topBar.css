@@ -20,6 +20,18 @@
 
 .topBar .logo{
     padding: 10px;
+    height: 50px;
+}
+
+
+
+.topBar .logo2{
+    display: none;
+}
+
+.topBar .logo2 img{
+    margin-top: 2px;
+    width: 60px;
 }
 
 .topBar .search {
@@ -40,7 +52,7 @@
 }
 
 .topBar .links {
-    width: 345px;
+    width: 35%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -68,6 +80,16 @@
 .topBar .links .account img {
     width: 30px;
     border-radius: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.topBar .links .account h4 {
+    font-weight: 600;
+}
+
+.topBar .links .account a {
+    text-decoration: none;
 }
 
 .topBar .chat {
@@ -77,4 +99,6 @@
     justify-content: center;
     width: 50px;
     height: 50px;
+    background-color: var(--Background);
+    display: none;
 }

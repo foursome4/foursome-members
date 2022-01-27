@@ -20,14 +20,9 @@ import { SignIn } from '../pages/SignIn/SignIn';
 import { SignUp } from '../pages/SignUp/SignUp';
 
 
-
-
 function Router () {
-
-
 const Local = localStorage.getItem("foursome");
 const userLocal = JSON.parse(Local)
-
 
 function PrivateRoute({children} ) {
     return userLocal !== null ? children : <Navigate to="/"/>
@@ -39,8 +34,7 @@ function PrivateRoute({children} ) {
             <Route path="/" element={<SignIn />}/>
             <Route path="/signup/:email" element={ <SignUp />} />
             <Route path="/forgotit" element={ <Forgotit />} />
-            <Route path="/recuperation" element={ <Recuperation />} />
-            
+            <Route path="/recuperation" element={ <Recuperation />} />       
             
             <Route path="/feed"
                     element={ <PrivateRoute> <Feed/> </PrivateRoute>} />
@@ -71,13 +65,13 @@ function PrivateRoute({children} ) {
             <Route path="/characteristcs" 
                 element={ <PrivateRoute> <Characteristcs/> </PrivateRoute>} />
             <Route path="/preferences" 
-                element={ <PrivateRoute> <Preferences user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <Preferences /> </PrivateRoute>} />
             <Route path="/registrationend" 
-                element={ <PrivateRoute> <RegistrationEnd user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <RegistrationEnd /> </PrivateRoute>} />
             <Route path="/chat" 
-                element={ <PrivateRoute> <Chat user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <Chat /> </PrivateRoute>} />
             <Route path="/invite" 
-                element={ <PrivateRoute> <Invite user={userLocal}/> </PrivateRoute>} />
+                element={ <PrivateRoute> <Invite /> </PrivateRoute>} />
             </Routes>
            
     )
