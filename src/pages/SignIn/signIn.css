@@ -7,7 +7,7 @@
 }
 
 .content .signIn {
-    margin-top: 15%;
+    margin-top: 14%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -25,15 +25,6 @@
     margin-top: 25px;
 }
 
-.content .signIn .form .title {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 70%;
-    color: var(--White);
-    margin-bottom: 10px;
-}
 
 .content .signIn .form input:focus {
     outline: none;
@@ -41,49 +32,73 @@
 
 .content .signIn .form input {
     width: 70%;
+    height: 50px;
     border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border-bottom: 1px solid #fff;
-    background-color: var(--Primary);
-    padding:10px 5px;
-    margin-bottom: 10px;
-    color: #fff;
-
+    background-color: var(--Background2);
+    border-radius: 6px;
+    font-size: 16px;
+    padding:10px;
+    margin-bottom: 5px;
+    color: var(--Primary);
+    font-weight: 600;
 }
 
 .content .signIn .form input::placeholder {
-    color: rgba(255, 255, 255, 0.44);
+    color: var(--Gray_font1);
+}
+
+.content .signIn .form .inputPassword {
+width: 70%;
+height: 50px;
+display: flex;
+
+}
+
+.content .signIn .form .inputPassword input {
+    width: 100%;
+    border-radius: 6px 0 0 6px;
+}
+
+.content .signIn .form .password {
+    background-color: var(--Background2);
+    height: 50px;
+    width: 50px;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    font-size: 20px;
+    color: var(--Primary);
 }
 
 .content .signIn .form .buttons {
     width: 70%;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin-top: 20px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
 }
 
 .content .signIn .form .buttons button {
-    background-color: darkturquoise;
+    background-color: var(--Button);
     width: 100px;
     height: 35PX;
     border: none;
-    border-radius: 20px;
+    border-radius: 6px;
     font-weight: bold;
     color: #fff;
 }
 
-.content .signIn .form .recuperation {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 70%;
-}
-
-.content .signIn .form .recuperation p {
+.content .signIn .form .buttons p {
     font-weight: bold;
     color: #fff;
+}
+
+.content .signIn .form .buttons a {
+    text-decoration: none;
 }
 
 .content .signIn .logo {
@@ -96,18 +111,145 @@
 }
 
 .content .signIn .logo img{
-    width: 50%;
-    margin-bottom: 20px;
+    width: 35%;
+    margin-bottom: 10px;
 }
 
-.content .signIn .logo .emoj {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
+@media (max-width: 1024px) {
 
-.content .signIn .logo .emoj img{
-        width: 12%;
-        margin-top: 20px;
+    .content .signIn {
+        margin-top: 20%;
+    }
+    .content .signIn .form {
+        width: 50%;
+    }
+
+    .content .signIn .form input {
+        width: 100%;
+    }
+
+    .content .signIn .form .inputPassword {
+        width: 100%;
+    }
+
+    .content .signIn .form .buttons {
+        width: 100%;
+    }
+
+    .content .signIn .logo img{
+        width: 45%;
+    }
+
+    @media (max-width: 900px) {
+
+        .content .signIn {
+            margin-top: 25%;
+        }
+
+        .content .signIn .form {
+            width: 70%;
+        }
+    
+        .content .signIn .form input {
+            width: 100%;
+        }
+
+        .content .signIn .form .inputPassword {
+            width: 100%;
+        }
+
+        .content .signIn .logo img{
+            width: 50%;
+        }
+
+        @media (max-width: 700px) {
+
+            .content .signIn {
+                margin-top: 30%;
+            }
+            .content .signIn .form {
+                width: 70%;
+            }
+        
+            .content .signIn .form input {
+                width: 100%;
+            }
+
+            .content .signIn .form .inputPassword {
+                width: 100%;
+            }
+            .content .signIn .logo img{
+                width: 70%;
+            }
+
+            @media (max-width: 500px) {
+
+                .content .signIn {
+                    margin-top: 45%;
+                }
+                .content .signIn .form {
+                    width: 70%;
+                }
+            
+                .content .signIn .form input {
+                    width: 100%;
+                }
+
+                .content .signIn .form .inputPassword {
+                    width: 100%;
+                }
+                .content .signIn .logo img{
+                    width: 80%;
+                }
+
+
+                @media (max-width: 400px) {
+
+                    .content .signIn {
+                        margin-top: 50%;
+                    }
+                    .content .signIn .form {
+                        width: 70%;
+                    }
+                
+                    .content .signIn .form input {
+                        width: 100%;
+                    }
+
+                    .content .signIn .form .inputPassword {
+                        width: 100%;
+                    }
+                    .content .signIn .logo img{
+                        width: 100%;
+                    }
+
+                    @media (max-width: 350px) {
+
+                        .content .signIn {
+                            margin-top: 60%;
+                        }
+
+                        .content .signIn .form input {
+                            font-size: 14px;
+                        }
+
+                        .content .signIn .form .inputPassword {
+                            width: 100%;
+                            font-size: 14px;
+                        }
+                        .content .signIn .form .buttons p {
+                            margin-left: 30px;
+                            font-size: 12px;
+                        }
+                    }
+                    
+                }
+                
+            }
+
+            
+        }
+        
+    }
+    
 }

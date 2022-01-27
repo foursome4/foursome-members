@@ -8,11 +8,12 @@
 
 .content .signUp {
     width: 100%;
-    margin-top: 5%;
+    margin-top: 10%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .content .signUp .form {
@@ -49,22 +50,30 @@
 
 .content .signUp .form input {
     width: 70%;
+    height: 30px;
     border: none;
     border-bottom: 1px solid #fff;
-    background-color: var(--Primary);
-    padding:10px 5px;
-    margin-bottom: 10px;
-    color: #fff;
+    background-color: var(--Background2);
+    border-radius: 6px;
+    font-size: 14px;
+    padding:10px;
+    margin-bottom: 5px;
+    color: var(--Primary);
+    font-weight: bold;
 }
 
 .content .signUp .form select {
     width: 70%;
+    height: 30px;
     border: none;
     border-bottom: 1px solid #fff;
-    background-color: var(--Primary);
-    padding:10px 5px;
-    margin-bottom: 10px;
-    color: #fff;
+    background-color: var(--Background2);
+    border-radius: 6px;
+    font-size: 14px;
+    padding:10px;
+    margin-bottom: 5px;
+    color: var(--Primary);
+    font-weight: bold;
 
 }
 
@@ -80,8 +89,9 @@
 }
 
 .content .signUp .form input::placeholder {
-    color: rgba(255, 255, 255, 0.44);
+    color: var(--Gray_font1);
 }
+
 
 .content .signUp .form .buttons {
     width: 70%;
@@ -96,7 +106,7 @@
     width: 100px;
     height: 35PX;
     border: none;
-    border-radius: 20px;
+    border-radius: 6px;
     font-weight: bold;
     color: #fff;
 }
@@ -105,16 +115,17 @@
     width: 70%;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
     color: var(--White);
     margin-top: 10px;
 }
 
 .content .signUp .form .terms input[type="checkbox"] {
-    margin-left: -125px;
-    margin-right: -50px;
+    margin-left: 5px;
+    margin-right: 10px;
     color: var(--Primary);
+    width: 15px;
 }
 
 
@@ -125,21 +136,85 @@
     justify-content: center;
     flex-direction: column;
     color: var(--White);
+    text-align: center;
 }
 
 .content .signUp .logo img{
-    width: 50%;
+    width: 40%;
     margin-bottom: 20px;
 }
 
-.content .signUp .logo .emoj {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
+@media (max-width: 800px) {
+    .content .signUp {
+        width: 100%;
+        margin-top: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
 
-.content .signUp .logo .emoj img{
-        width: 12%;
-        margin-top: 20px;
+    .content .signUp .logo {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: var(--White);
+        text-align: center;
+    }
+
+    .content .signUp .form {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--White);
+       margin-top: 30px;
+    }
+
+    .content .signUp .logo img{
+        width: 50%;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 500px) {
+        .content .signUp {
+            width: 100%;
+            margin-top: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+    
+        .content .signUp .logo {
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--White);
+            text-align: center;
+        }
+    
+        .content .signUp .form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--White);
+           margin-top: 30px;
+        }
+
+        .content .signUp .logo img{
+            width: 60%;
+            margin-bottom: 20px;
+        }
+    }
+    
 }

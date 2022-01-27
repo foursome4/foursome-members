@@ -20,8 +20,6 @@ function Recuperation() {
       <div className="signIn">
       <div className="logo">
         <img src={logoImg} alt="Logo Foursome" />
-        <h2>Seja bem-vindo de volta!</h2>
-        <h2>Entre, a diversão está te esperando.</h2>
         </div>
         <div className="form">
           <div className="title">
