@@ -109,7 +109,7 @@ function Profile() {
 
                   return (
                     <div className={characteristicsUser.sex === "Mulher" ? "info-user-woman" : "info-user-man"}>
-                      <h4>{characteristics.sex === "Mulher" ? <FaVenus size={20} /> : <FaMars size={20} />} </h4>
+                      <h4>{characteristicsUser.sex === "Mulher" ? <FaVenus size={20} /> : <FaMars size={20} />} </h4>
                         <div className="info-user-data">
                             <h5>Idade</h5>
                             <p>{idade}</p>

@@ -70,7 +70,35 @@ function CharacteristcsForm() {
                 eyes3,
                 hair3,
                 tattos3,
-                smokes3})
+                smokes3,
+                idAccount: user.id,
+                data2,
+                sex2,
+                sign2,
+                sexualOption2,
+                education2,
+                heigth2,
+                weight2,
+                physique2,
+                ethnicity2,
+                eyes2,
+                hair2,
+                tattos2,
+                smokes2,
+                idAccount: user.id,
+                data,
+                sex,
+                sign,
+                sexualOption,
+                education,
+                heigth,
+                weight,
+                physique,
+                ethnicity,
+                eyes,
+                hair,
+                tattos,
+                smokes})
         } else if ( data2 && sex2 && sign2 && sexualOption2 && education2 && heigth2 && weight2 && physique2 && ethnicity2 && eyes2 && hair2 && tattos2 && smokes2  !== "") {
             
             updateCharacteristcs2({
@@ -88,7 +116,21 @@ function CharacteristcsForm() {
                 hair2,
                 tattos2,
                 smokes2,
+                data,
+                sex,
+                sign,
+                sexualOption,
+                education,
+                heigth,
+                weight,
+                physique,
+                ethnicity,
+                eyes,
+                hair,
+                tattos,
+                smokes
             })
+
         } else {
             updateCharacteristcs({
                 idAccount: user.id,

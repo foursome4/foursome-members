@@ -1,4 +1,4 @@
-.feedPost {
+.feedPostIndividual {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,7 +7,7 @@
     margin-top: 20px;
 }
 
-.feedPost .posts-feed {
+.feedPostIndividual .posts-feed {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -15,7 +15,7 @@
     width: 100%;
 }
 
-.feedPost .posts-feed .buttons {
+.feedPostIndividual .posts-feed .buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -24,7 +24,7 @@
     width: 100%;
 }
 
-.feedPost .posts-feed .buttons button {
+.feedPostIndividual .posts-feed .buttons button {
     padding: 5px;
     width: 120px;
     border: none;
@@ -32,12 +32,12 @@
     background-color: var(--Background2);
 }
 
-.feedPost .posts-feed .buttons .selected {
+.feedPostIndividual .posts-feed .buttons .selected {
     border-bottom: 2px solid var(--Primary);
     color: var(--Primary);
 }
 
-.feedPost .posts-feed .feed-post {
+.feedPostIndividual .posts-feed .feed-post {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,7 +50,7 @@
     margin: 10px 0;
 }
 
-.feedPost .posts-feed .feed-post .post-user {
+.feedPostIndividual .posts-feed .feed-post .post-user {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -58,29 +58,29 @@
     width: 90%;
 }
 
-.feedPost .posts-feed .feed-post .post-user img {
+.feedPostIndividual .posts-feed .feed-post .post-user img {
     width: 50px;
     border-radius: 50%;
     margin-right: 20px;
 }
 
-.feedPost .posts-feed .feed-post .post-user .name-data {
+.feedPostIndividual .posts-feed .feed-post .post-user .name-data {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-.feedPost .posts-feed .feed-post .post-user .name-data .selected {
+.feedPostIndividual .posts-feed .feed-post .post-user .name-data .selected {
     color: var(--Primary) ;
 }
 
-.feedPost .posts-feed .feed-post .post-data {
+.feedPostIndividual .posts-feed .feed-post .post-data {
     margin: 5px 0;
     width: 90%;
 }
 
-.feedPost .posts-feed .feed-post .post-data-media {
+.feedPostIndividual .posts-feed .feed-post .post-data-media {
     margin: 5px 0;
     width: 90%;
     display: flex;
@@ -88,24 +88,24 @@
     align-items: center;
     justify-content: center;
 }
-.feedPost .posts-feed .feed-post .post-data-media video{
+.feedPostIndividual .posts-feed .feed-post .post-data-media video{
    margin-left: 0 auto;
    margin-right: 0 auto;
     width: 80%;
 }
 
-.feedPost .posts-feed .feed-post .post-data-media img{
+.feedPostIndividual .posts-feed .feed-post .post-data-media img{
     margin-left: 0 auto;
     margin-right: 0 auto;
      width: 80%;
  }
  
 
-.feedPost .posts-feed .feed-post .post-data p {
+.feedPostIndividual .posts-feed .feed-post .post-data p {
     font-size: 18px;
 }
 
-.feedPost .posts-feed .feed-post .reactions {
+.feedPostIndividual .posts-feed .feed-post .reactions {
     width: 75%;
     display: flex;
     flex-direction: row;
@@ -115,7 +115,7 @@
     
 }
 
-.feedPost .posts-feed .feed-post .reactions button {
+.feedPostIndividual .posts-feed .feed-post .reactions button {
     background-color: var(--Background2);
     border: none;
     font-size: 18px;
@@ -123,11 +123,11 @@
     
 }
 
-.feedPost .posts-feed .feed-post .reactions button svg {
+.feedPostIndividual .posts-feed .feed-post .reactions button svg {
     margin-right: 5px;
 }
 
-.feedPost .posts-feed .feed-post .reactions .selected{
+.feedPostIndividual .posts-feed .feed-post .reactions .selected{
     color: var(--Primary);   
 }
 

@@ -105,19 +105,21 @@ function AuthProvider({children}) {
                 console.log(result.data)
                 console.log("updateCharacteristcs2 ok");
                 await api.post("/characteristics",  {
-                    id_account: idAccount, birthDate: data2, sex2, sign2, sexualOption: sexualOption2, education2, heigth2, weight2, physique2, ethnicity2, eyes2, hair2, tattos2, smokes2,
+                    id_account: idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2, education:education2, heigth: heigth2, weight: weight2, physique:physique2, ethnicity:ethnicity2, eyes:eyes2, hair:hair2, tatoos: tattos2, smokes:smokes2,
                 }).then(async (result) => {
                     console.log(result.data)
                     console.log("updateCharacteristcs2 ok");
                     navigate("/preferences");
-                    setLoading(false)
                 }).catch(error => {
                     console.log("Informações não enviadas" + error)
-        })
-               
+                })
+                
             }).catch(error => {
                 console.log("Informações não enviadas" + error)
-    })
+            })
+            
+            setLoading(false)
+   
 }
 
 
@@ -133,13 +135,13 @@ function AuthProvider({children}) {
                 console.log(result.data)
                 console.log("updateCharacteristcs3 ok");
                 await api.post("/characteristics",  {
-                    id_account: idAccount, birthDate: data2, sex2, sign2, sexualOption: sexualOption2, education2, heigth2, weight2, physique2, ethnicity2, eyes2, hair2, tattos2, smokes2,
+                    id_account: idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2, education:education2, heigth: heigth2, weight: weight2, physique:physique2, ethnicity:ethnicity2, eyes:eyes2, hair:hair2, tatoos: tattos2, smokes:smokes2,
                 }).then(async (result) => {
                     console.log(result.data)
                     console.log("updateCharacteristcs3 ok");
             
                     await api.post("/characteristics", {
-                        id_account: idAccount, birthDate: data3, sex3, sign3, sexualOption: sexualOption3, education3, heigth3, weight3, physique3, ethnicity3, eyes3, hair3, tattos3, smokes3
+                        id_account: idAccount, birthDate: data3, sex:sex3, sign:sign3, sexualOption: sexualOption3, education:education3, heigth: heigth3, weight: weight3, physique:physique3, ethnicity:ethnicity3, eyes:eyes3, hair:hair3, tatoos: tattos3, smokes:smokes3,
                     }).then(async (result) => {
                         console.log(result.data)
                         console.log("updateCharacteristcs3 ok");

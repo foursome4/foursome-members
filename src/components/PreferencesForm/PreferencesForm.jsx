@@ -7,33 +7,72 @@ function PreferencesForm() {
     const {preferencesAccount} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
-    const [search, setSearch] = useState();
-    const [relationship, setRelationship] = useState();
-    const [humor, setHumor] = useState();
-    const [activities, setActivities] = useState();
+    const [homem, setHomem] = useState("");
+    const [mulher, setMulher] = useState("");
+    const [casal, setCasal] = useState("");
+    const [trisal, setTrisal] = useState("");
+    const [travestis, setTravestis] = useState("");
+    const [transexuais, setTransexuais] = useState("");
+    const [grupos, setGrupos] = useState("");
+
     
     function handlePreferences(e) {
         e.preventDefault();
-        console.log({idAccount: user.id, search, relationship, humor, activities})
+        console.log({idAccount: user.id, homem, mulher, casal, trisal, travestis, transexuais, grupos})
 
-        preferencesAccount({idAccount: user.id, search, relationship, humor, activities})
+        // preferencesAccount({idAccount: user.id, })
     }
 
-    function handleSelectSearch(e) {
-        setSearch(e.target.value)
+    function handleSelectHomem(e) {
+        if(homem === "") {
+            setHomem(e.target.value);
+        } else {
+            setHomem("");
+        }
+    }
+    function handleSelectMulher(e) {
+        if(mulher === "") {
+            setMulher(e.target.value);
+        } else {
+            setMulher("");
+        }
+    }
+    function handleSelectCasal(e) {
+        if(casal === "") {
+            setCasal(e.target.value);
+        } else {
+            setCasal("");
+        }
+    }
+    function handleSelectTrisal(e) {
+        if(trisal === "") {
+            setTrisal(e.target.value);
+        } else {
+            setTrisal("");
+        }
+    }
+    function handleSelectTravestis(e) {
+        if(travestis === "") {
+            setTravestis(e.target.value);
+        } else {
+            setTravestis(e.target.value);
+        }
+    }
+    function handleSelectTransexuais(e) {
+        if(transexuais === "") {
+            setTransexuais(e.target.value);
+        } else {
+            setTransexuais("");
+        }
+    }
+    function handleSelectGrupos(e) {
+        if(grupos === "") {
+            setGrupos(e.target.value);
+        } else {
+            setGrupos("");
+        }
     }
 
-    function handleSelectRelationship(e) {
-        setRelationship(e.target.value)
-    }
-
-    function handleSelectHumor(e) {
-        setHumor(e.target.value)
-    }
-
-    function handleSelectActivities(e) {
-        setActivities(e.target.value)
-    }
 
     return (
 
@@ -44,40 +83,31 @@ function PreferencesForm() {
                     </div>
                         <form action="">
                     <div className="data">                      
-                    <select value={search} onChange={handleSelectSearch}>
-                                <option value="">O que Busca?</option>
-                                <option value="Homem">Homem</option>
-                                <option value="Mulher">Mulher</option>
-                                <option value="Casal">Casal</option>
-                                <option value="Trisal">Trisal</option>
-                                <option value="Travestis">Travestis</option>
-                                <option value="Transexuais">Transexuais</option>
-                                <option value="Grupos">Grupos</option>
-                            </select>
-                            <select value={relationship} onChange={handleSelectRelationship}>
-                                <option value="">Tipo de relacionamento que busca?</option>
-                                <option value="Uma noite">Uma noite</option>
-                                <option value="Relacionamento sério">Relacionamento sério</option>
-                                <option value="Sem compromisso">Sem compromisso</option>
-                                <option value="Novas amizades">Novas amizades</option>
-                                <option value="Apenas companhia">Apenas companhia</option>
-                            </select>
-                            <select value={humor} onChange={handleSelectHumor}>
-                                <option value="">Humor</option>
-                                <option value="Introvertid@">Introvertid@</option>
-                                <option value="Extrovertid@">Extrovertid@</option>
-                                <option value="Séri@">Séri@</option>
-                                <option value="Mais abert@">Mais abert@</option>
-                            </select>
-                            <select value={activities} onChange={handleSelectActivities}>
-                                <option value="Atividades / Hobies">Atividades / Hobies</option>
-                                <option value="Cinema / Netflix em casa">Cinema / Netflix em casa</option>
-                                <option value="Atividades físicas / Esportes">Atividades físicas / Esportes</option>
-                                <option value="Balada / Barzinho">Balada / Barzinho</option>
-                                <option value="Praia / Cachoeira">Praia / Cachoeira </option>
-                            </select>
-         
-  
+                   
+                    <div className="search">
+                        <input type="checkbox" value="Homem" onChange={handleSelectHomem}/><span>Homem</span>
+                    </div>
+                    <div className="search">
+                        <input type="checkbox" value="Mulher" onChange={handleSelectMulher}/><span>Mulher</span>
+                    </div>
+                    <div className="search">
+                        <input type="checkbox" value="Casal" onChange={handleSelectCasal}/><span>Casal</span>
+                    </div>
+                    <div className="search">
+                        <input type="checkbox" value="Trisal" onChange={handleSelectTrisal}/><span>Trisal</span>
+                    </div>
+                    <div className="search">
+                        <input type="checkbox" value="Travestis" onChange={handleSelectTravestis}/><span>Travestis</span>
+                    </div>
+                    <div className="search">
+                        <input type="checkbox" value="Transexuais" onChange={handleSelectTransexuais}/><span>Transexuais</span>
+                    </div>
+                    <div className="search">
+                        <input type="checkbox" value="Grupos" onChange={handleSelectGrupos}/><span>Grupos</span>
+                    </div>
+
+
+
                     </div>
                     <div className='confirmation'>
                         <div className="confirmation_preferencesForm">

@@ -193,7 +193,7 @@
 .content-profile .profile .main .section .sections .infos .info-user-man h4 {
     z-index: 99;
     position: absolute;
-    margin-bottom: 45px;
+    margin-bottom: 40px;
 }
 
 .content-profile .profile .main .section .sections .infos .info-user-man h4 svg {
@@ -235,7 +235,7 @@
 .content-profile .profile .main .section .sections .infos .info-user-woman h4 {
     z-index: 99;
     position: absolute;
-    margin-bottom: 145px;
+    margin-bottom: 40px;
 }
 
 .content-profile .profile .main .section .sections .infos .info-user-woman h4 svg {

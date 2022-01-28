@@ -87,7 +87,7 @@ import { FeedComments } from '../FeedComments/FeedComments';
 
 
     return (
-        <div className="feedPost">
+        <div className="feedPostIndividual">
             <div className="posts-feed">
             <div className="buttons">
             <button className={post === "" ? 'selected' : ""} onClick={postAll}> <FiMenu /> Todos </button>
