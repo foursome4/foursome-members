@@ -29,6 +29,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    margin-top: 20px;
 }
 
 .informations form .label-avatar{
@@ -60,7 +61,7 @@
 
 .informations form .label-avatar img{
     margin-bottom: 1em;
-    border-radius: 50%;
+    border-radius: 50px;
     object-fit: cover;
 }
 
@@ -96,15 +97,17 @@
     margin-bottom: 1em;
     border-radius: 6px;
     object-fit: cover;
+    height:200px;
+    width: 850px;
 }
-
-
 
 .informations form .data {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-top: 10px;
+    flex-wrap: wrap;
 }
 
 .informations form .SearchCep {
@@ -143,7 +146,7 @@
 
 
 .informations form .data input {
-    width: 250px;
+    width: 200px;
     font-size: 14px;
     padding: 5px;
     margin: 5px 0;
@@ -154,7 +157,7 @@
     margin: 5px;
 }
 .informations form .data select {
-    width: 250px;
+    width: 200px;
     font-size: 14px;
     padding: 5px;
     margin: 5px 0;
@@ -209,4 +212,119 @@
 
 .informations form .confirmation  .buttonsInformation button {
     margin-left: 10px;
+}
+
+
+@media (max-width: 900px) {
+    
+.informations form .data input {
+    width: 320px;
+  
+}
+.informations form .data select {
+    width: 320px;
+}
+
+.informations form .label-cover img {
+    height:150px;
+    width: 650px;
+}
+
+.informations form .label-cover {
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+
+    .informations .title {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--White);
+        text-align: center;
+    }
+
+    .informations .title img {
+        margin-bottom: 10px;
+    }
+
+    .informations form .data {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .informations form .data input {
+        width: 500px; 
+    }
+
+    .informations form .data select {
+        width: 500px;
+    }
+
+
+    .informations form .label-cover img {
+        height:120px;
+        width: 500px;
+    }
+
+    .informations form .confirmation {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        color: var(--White);
+    }
+
+    .informations form .confirmation .confirmation_informations {
+        margin-bottom: 10px;
+        width: 100%;
+        background-color: darkgoldenrod;
+    }
+
+    .informations form .SearchCep {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    @media (max-width: 550px) {
+        .informations form .data input {
+            width: 400px; 
+        }
+    
+        .informations form .data select {
+            width: 400px;
+        }
+
+        .informations form .label-cover img {
+            height:100px;
+            width: 400px;
+        }
+
+        @media (max-width: 450px) {
+            .informations form .data input {
+                width: 300px; 
+            }
+        
+            .informations form .data select {
+                width: 300px;
+            }
+    
+            .informations form .label-cover img {
+                height:70px;
+                width: 300px;
+            }
+        }
+
+    }
+    
+}
+
 }
