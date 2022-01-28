@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 80%;
+    width: 90%;
     margin-top: 5px;
     margin-left: 20px;
 }
@@ -59,7 +59,8 @@
 }
 
 .feedComments .feed-comment .reactions {
-    width: 40%;
+    margin-top: 5px;
+    width: 95%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -71,6 +72,10 @@
 .feedComments .feed-comment .reactions button {
     background-color: var(--Background2);
     border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     font-size: 14px;
     color: var(--Gray_font2);
     
@@ -122,4 +127,18 @@
 
 .feed-comment .commentHidden {
     display: none;
+}
+
+
+
+
+@media (max-width: 700px) {
+
+    .feedComments .feed-comment .comment-user .name-data {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+    }
 }

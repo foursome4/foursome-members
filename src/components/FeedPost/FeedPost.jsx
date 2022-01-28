@@ -154,7 +154,8 @@ function FeedPost() {
                                     </div>
 
                                     <div className={comment === true ? "comment" : "commentHidden"}>
-                                        <input type="text" placeholder='Comentar' value={textComment} onChange={(e) => setTextComment(e.target.value)}/> <button onClick={() => {handleComment(postsData.id)}}><FiSend /> Comentar</button>
+                                        <input type="text" placeholder='Comentar' value={textComment} onChange={(e) => setTextComment(e.target.value)}/>
+                                        <button onClick={() => {handleComment(postsData.id)}}><FiSend /> Comentar</button>
                                     </div>
 
                                 </div>
