@@ -245,6 +245,14 @@
                 width: 100%;
             }
 
+            .feedPost .posts-feed .buttons {
+                flex-wrap: wrap;
+            }
+
+            .feedPost .posts-feed .buttons button {
+                width: 80px;
+            }
+
             .feedPost .posts-feed .feed-post .reactions {
                 width: 100%;
             }
