@@ -143,7 +143,7 @@ function FeedPost() {
                                         </button>
                                         <button onClick={handleHabiliteViwesComment}>
                                             <FiChevronDown />
-                                            Ver Comentários
+                                            Comentários
                                         </button>
                                         {postsData.idAccount === user.id ?
                                         <>
@@ -159,7 +159,7 @@ function FeedPost() {
                                     </div>
 
                                 </div>
-                            {viewComment === false ? "" :  <FeedComments idPost={postsData.id} />}
+                                {viewComment === false ? "" :  <FeedComments idPost={postsData.id} />}
                                 </>
                                 )
                             }))}

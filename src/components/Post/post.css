@@ -332,6 +332,26 @@
                 .post .post-data .post-type .buttons button {
                     width: 55px;
                   }
+
+
+                  @media (max-width: 450px) {
+                    .post {
+                        width: 100%;
+                    }
+   
+                    .post .posts-feed .buttons {
+                        width: 100%;
+                        background-color: darkolivegreen;
+                    }
+                    .post .post-data .post-type .buttons {
+                        flex-wrap: wrap;
+                    }
+    
+                    .post .post-data .post-type .buttons button {
+                        width: 55px;
+                      }
+                  }
+
               }
           }
           

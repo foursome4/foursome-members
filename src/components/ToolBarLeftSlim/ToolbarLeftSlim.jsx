@@ -1,4 +1,4 @@
-import { FiCalendar, FiHome, FiImage, FiList, FiMessageSquare, FiRadio, FiTrendingUp, FiUser, FiUsers, FiVideo } from "react-icons/fi"
+import { FiCalendar, FiChevronsLeft, FiHome, FiImage, FiList, FiMessageSquare, FiRadio, FiTrendingUp, FiUser, FiUsers, FiVideo } from "react-icons/fi"
 import { Link, useNavigate } from "react-router-dom";
 import avatarImg from '../../assets/images/avatar.png';
 import './toolbarLeftSlim.css'
@@ -122,11 +122,15 @@ function ToolbarLeftSlim () {
                         <p>Radar</p>
                     </div>
                     </Link>
-                    <Link to="/events" ><div className="toolIcon" onclick={handleRedirectEvents}>
+                    <Link to="/events" >
+                    <div className="toolIcon" onclick={handleRedirectEvents}>
                         <FiCalendar size={20}/>
                         <p>Eventos</p>
                     </div>
                     </Link>
+                    <div className="toolIcon" >
+                        <FiChevronsLeft size={20}/>
+                    </div>
                 </div>
             </div>
         </div>

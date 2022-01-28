@@ -72,7 +72,7 @@ function FeedComments({idPost}) {
                                         <p>{comments.text}</p>
                                     </div>
 
-                                    <div className="reactions" >
+                                      <div className="reactions" >
                                         <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
                                             Comentar
