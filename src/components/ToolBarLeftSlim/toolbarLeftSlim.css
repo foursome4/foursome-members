@@ -94,4 +94,16 @@
         width: 70px;
         height: 70px; 
     }
+
+
+    @media (max-width: 650px) {
+        .content-toolbar {
+            width: 55px;
+        }
+    
+        .content-toolbar .ToolBarLeftSlim .profile img{
+            width: 68px;
+            height: 68px; 
+        }
+      }
   }

@@ -44,4 +44,11 @@
   .content-chat {
     width: 60px;
   }
+
+
+  @media (max-width: 650px) {
+    .content-chat {
+      width: 55px;
+    }
+  }
 }
