@@ -1,6 +1,6 @@
 import logoFoursomemini from '../../assets/images/logo-mini2.png'
 import logoFoursome from '../../assets/images/logo2.png'
-import { FiSearch, FiMessageSquare, FiUserPlus, FiBell, FiMail, FiLogOut } from 'react-icons/fi'
+import { FiSearch, FiMessageSquare, FiUserPlus, FiBell, FiMail, FiLogOut, FiChevronRight } from 'react-icons/fi'
 import avatarImg from '../../assets/images/avatar.png'
 import './topBar.css'
 import { useContext } from 'react';
@@ -22,6 +22,9 @@ function TopBar() {
 
     return (
         <div className="topBar">
+             <div className="openTools">
+                <FiChevronRight />
+            </div>
             <div className="logo">
                 <Link to="/feed">
                 <img src={logoFoursome} alt="" />
@@ -61,6 +64,7 @@ function TopBar() {
             <div className="chat">
                 <FiMessageSquare />
             </div>
+ 
 
         </div>
     )

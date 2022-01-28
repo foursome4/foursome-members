@@ -39,3 +39,9 @@
 .content-chat .chat-avatar img {
     width: 35px;
 }
+
+@media (max-width: 850px) {
+  .content-chat {
+    width: 60px;
+  }
+}

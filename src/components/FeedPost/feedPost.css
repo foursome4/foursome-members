@@ -91,13 +91,13 @@
 .feedPost .posts-feed .feed-post .post-data-media video{
    margin-left: 0 auto;
    margin-right: 0 auto;
-    width: 50%;
+    width: 70%;
 }
 
 .feedPost .posts-feed .feed-post .post-data-media img{
     margin-left: 0 auto;
     margin-right: 0 auto;
-     width: 50%;
+     width: 70%;
  }
  
 
@@ -170,3 +170,4 @@
 .feed-post .commentHidden {
     display: none;
 }
+
