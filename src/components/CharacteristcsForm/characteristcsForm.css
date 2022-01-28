@@ -27,12 +27,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
 
-.characteristcsForm form img {
-    width: 150px;
-}
 
 .characteristcsForm form .data {
     display: flex;
@@ -40,12 +37,17 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-wrap: wrap;
-    margin: 20px 0;
+    padding-left: 20px ;
+}
+
+.characteristcsForm form .data .data-form span {
+    color: var(--White);
+    font-weight: 600;
 }
 
 
 .characteristcsForm form .data input {
-    width: 500px;
+    width: 48%;
     font-size: 14px;
     padding: 5px;
     margin: 5px 0;
@@ -57,7 +59,7 @@
 }
 
 .characteristcsForm form .data select {
-    width: 500px;
+    width: 48%;
     font-size: 14px;
     padding: 5px;
     margin: 5px 0;
@@ -100,4 +102,65 @@
 
 .characteristcsForm form .confirmation .confirmation_characteristcsForm span {
     margin-left: 10px;
+}
+
+
+@media (max-width: 700px) {
+    .characteristcsForm {
+        padding: 2px;
+    }
+
+    .characteristcsForm form{
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .characteristcsForm form .data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .characteristcsForm form .data input {
+        width: 95%;
+    }
+    
+    .characteristcsForm form .data select {
+        width: 95%;
+    }
+
+    @media (max-width: 700px) {
+        .characteristcsForm form .confirmation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .characteristcsForm form .confirmation button {
+           margin-top: 20px;
+        }
+
+        .characteristcsForm .title {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--White);
+        }
+        
+        .characteristcsForm .title img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+    }
+    
 }
