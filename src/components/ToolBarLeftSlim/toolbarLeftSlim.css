@@ -84,3 +84,14 @@
 .content-toolbar .ToolBarLeftSlim .tools .toolIcon svg:hover {
     color: var(--Background);
 }
+
+@media (max-width: 850px) {
+    .content-toolbar {
+        width: 60px;
+    }
+
+    .content-toolbar .ToolBarLeftSlim .profile img{
+        width: 70px;
+        height: 70px; 
+    }
+  }

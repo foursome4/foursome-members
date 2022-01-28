@@ -53,7 +53,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    background-color: darkgoldenrod;
 }
 
 .topBar .links .link {
@@ -157,11 +156,19 @@
                     .topBar .links {
                         width: 35%;
                     }
+
+
+                    @media (max-width: 650px) {
+
+                        .topBar .search {
+                            width: 300px;
+                        }
+    
                 }
 
         }
         
     }
-     
+}   
  }
 }

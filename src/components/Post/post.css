@@ -237,3 +237,51 @@
 .post .posts-feed .feed-post .reactions .selected{
     color: var(--Primary);   
 }
+
+
+
+
+@media (max-width: 1180px) {
+    .post .post-data .post-type .buttons button {
+      width: 100px;
+    }
+
+    .post .post-data .post-type .inputs textarea {
+        width: 85%;
+    }
+
+    .post .post-data .post-type .inputs button {
+        width: 15%;
+    }
+
+    @media (max-width: 950px) {
+
+        .post {
+            width: 90%;
+        }
+        .post .post-data .post-type .buttons button {
+          width: 85px;
+        }
+
+        .post .post-data .post-type .inputs textarea {
+            width: 80%;
+        }
+
+        .post .post-data .post-type .inputs button {
+            width: 20%;
+        }
+      }
+
+      @media (max-width: 850px) {
+        .post .post-data .post-type .buttons button {
+          width: 70px;
+        }
+
+
+        @media (max-width: 750px) {
+            .post .post-data .post-type .buttons {
+              flex-wrap: wrap;
+            }
+          }
+      }
+  }
