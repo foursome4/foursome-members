@@ -20,7 +20,7 @@ function PreferencesForm() {
         e.preventDefault();
         console.log({idAccount: user.id, homem, mulher, casal, trisal, travestis, transexuais, grupos})
 
-        // preferencesAccount({idAccount: user.id, })
+        preferencesAccount({idAccount: user.id, men:homem, woman:mulher, couple:casal, trisal:trisal, transvestites:travestis, transsexuals:transexuais, groups:grupos})
     }
 
     function handleSelectHomem(e) {

@@ -105,7 +105,7 @@ function AuthProvider({children}) {
                 console.log(result.data)
                 console.log("updateCharacteristcs2 ok");
                 await api.post("/characteristics",  {
-                    id_account: idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2, education:education2, heigth: heigth2, weight: weight2, physique:physique2, ethnicity:ethnicity2, eyes:eyes2, hair:hair2, tatoos: tattos2, smokes:smokes2,
+                    id_account: idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2, education:education2, heigth: heigth2, weight: weight2, physique:physique2, ethnicity:ethnicity2, eyes:eyes2, hair:hair2, tatoos:tattos2, smokes:smokes2,
                 }).then(async (result) => {
                     console.log(result.data)
                     console.log("updateCharacteristcs2 ok");
@@ -161,8 +161,8 @@ function AuthProvider({children}) {
 
 }
 
-async function preferencesAccount({idAccount, search, relationship, humor, activities}) {
-    await api.post('/preferences', {idAccount, search, relationship, humor, activities})
+async function preferencesAccount({idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups}) {
+    await api.post('/preferences', {idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups})
     .then((res) => {
         console.log("Preferences")
         const data = res.data
