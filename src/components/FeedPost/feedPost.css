@@ -186,7 +186,7 @@
 
 @media (max-width: 900px) {
     .feedPost {
-        width: 90%;
+        width: 100%;
     }
 
     .feedPost .posts-feed .feed-post .reactions button svg {
@@ -261,17 +261,18 @@
             }
 
             
-        @media (max-width: 550px) {
+        @media (max-width: 500px) {
             .feedPost {
                 width: 100%;
             }
 
             .feedPost .posts-feed .buttons {
+                width: 100%;
                 flex-wrap: wrap;
             }
 
             .feedPost .posts-feed .buttons button {
-                width: 80px;
+                width: 110px;
             }
 
             .feedPost .posts-feed .feed-post .reactions {
@@ -310,7 +311,7 @@
                     }
         
                     .feedPost .posts-feed .feed-post .reactions {
-                        width: 95%;
+                        width: 100%;
                         margin-left: -22px;
                     }
                     .feedPost .posts-feed .feed-post .reactions button {

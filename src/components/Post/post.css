@@ -311,7 +311,7 @@
                 }
 
                 .post .post-data .post-type .buttons button {
-                    width: 60px;
+                    width: 80px;
                   }
               }
 
@@ -330,7 +330,7 @@
                 }
 
                 .post .post-data .post-type .buttons button {
-                    width: 55px;
+                    width: 80px;
                   }
 
 
@@ -341,15 +341,36 @@
    
                     .post .posts-feed .buttons {
                         width: 100%;
-                        background-color: darkolivegreen;
                     }
                     .post .post-data .post-type .buttons {
                         flex-wrap: wrap;
                     }
     
                     .post .post-data .post-type .buttons button {
-                        width: 55px;
+                        width: 70px;
                       }
+
+
+                      @media (max-width: 450px) {
+                        .post {
+                            width: 100%;
+                        }
+       
+                        .post .posts-feed .buttons {
+                            width: 100%;
+                        }
+                        .post .post-data .post-type .buttons {
+                            flex-wrap: wrap;
+                        }
+        
+                        .post .post-data .post-type .buttons button {
+                            flex-direction: column;
+                            width: 55px;
+                          }
+                        }
+
+                      
+
                   }
 
               }
