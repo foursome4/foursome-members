@@ -64,15 +64,10 @@ function FeedComments({idPost}) {
                                         <div className="time-data">
                                             <h5>{dateFormated}</h5>
                                         </div>
-                                     
+                                       
                                         </div>
                                     </div>
-
-                                    <div className="comment-data" >
-                                        <p>{comments.text}</p>
-                                    </div>
-
-                                      <div className="reactions" >
+                                    <div className="reactions" >
                                         <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
                                             Comentar
@@ -86,6 +81,12 @@ function FeedComments({idPost}) {
                                             Apagar
                                         </button>
                                     </div>
+
+                                    <div className="comment-data" >
+                                        <p><i>{comments.text}</i></p>
+                                    </div>
+
+                                   
                                     
 
                                     <div className={comment === true ? "comment" : "commentHidden"}>

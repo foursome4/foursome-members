@@ -139,4 +139,8 @@
         padding: 10px 0;
         text-decoration: none;
     }
+
+    .content-toolbar .ToolBarLeftSlim .tools .toolIcon{
+        margin: 0 5px;
+    }
   }
