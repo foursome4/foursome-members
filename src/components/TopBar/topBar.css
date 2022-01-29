@@ -95,7 +95,6 @@
     width: 50px;
     height: 50px;
     background-color: var(--Background);
-    margin-left: 30px;
 }
 .topBar .openTools {
     display: flex;
@@ -135,6 +134,11 @@
                 .topBar .logo{
                     display: none;
                 }
+
+                .topBar .chat{
+                    display: none;
+                }
+                
                 
    
                 .topBar .logo2 img{
@@ -161,7 +165,16 @@
                     @media (max-width: 650px) {
 
                         .topBar .search {
-                            width: 300px;
+                            width: 250px;
+                        }
+
+                        .topBar .links {
+                            width: 55%;
+                           padding: 10px 5px;
+                        }
+
+                        .topBar .links .link {
+                            margin-right: 5px;
                         }
     
                 }
