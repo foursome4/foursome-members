@@ -10,7 +10,6 @@ function Feed() {
 return (
         <div className="container">
         <div className="content">
-            <ToolbarLeftSlim />
             <div className="main">
                 <TopBar />
                 <div className="aside">
@@ -20,6 +19,7 @@ return (
                     </div>
                 <ChatSlim />
                 </div>
+            <ToolbarLeftSlim />
             </div>
         </div>
         </div>

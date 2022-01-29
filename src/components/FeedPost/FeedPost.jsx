@@ -1,4 +1,4 @@
-import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiThumbsUp, FiMinus, FiSend, FiChevronDown } from 'react-icons/fi'
+import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiThumbsUp, FiSend, FiChevronDown } from 'react-icons/fi'
 import './feedPost.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
@@ -106,7 +106,6 @@ function FeedPost() {
                                         <div className="info-data">
                                         <div className="name-data">
                                         <h4 className="selected">{postsData.nickname}</h4>
-                                            <h4> <FiMinus /> </h4>
                                         </div>
                                         <div className="time-data">
                                             <h5>{dateFormated}</h5>

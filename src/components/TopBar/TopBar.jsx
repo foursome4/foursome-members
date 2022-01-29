@@ -22,9 +22,6 @@ function TopBar() {
 
     return (
         <div className="topBar">
-             <div className="openTools">
-                <FiChevronRight />
-            </div>
             <div className="logo">
                 <Link to="/feed">
                 <img src={logoFoursome} alt="" />

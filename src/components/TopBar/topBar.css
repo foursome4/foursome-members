@@ -149,7 +149,7 @@
                     .topBar .search {
                         width: 350px;
                     }
-                    .topBar .links .account {
+                    .topBar .links .account h4 {
                         display: none;
                     }
 

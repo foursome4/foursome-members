@@ -128,9 +128,6 @@ function ToolbarLeftSlim () {
                         <p>Eventos</p>
                     </div>
                     </Link>
-                    <div className="toolIcon" >
-                        <FiChevronsLeft size={20}/>
-                    </div>
                 </div>
             </div>
         </div>
