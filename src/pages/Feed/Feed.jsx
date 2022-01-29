@@ -9,19 +9,19 @@ function Feed() {
 
 return (
         <div className="container">
-        <div className="content">
-            <div className="main">
-                <TopBar />
-                <div className="aside">
-                    <div className="feed">
-                    <Post />
-                    <FeedPost /> 
+            <div className="content">
+                <div className="main">
+                    <TopBar />
+                    <div className="aside">
+                        <div className="feed">
+                        <Post />
+                        <FeedPost /> 
+                        </div>
+                    <ChatSlim />
                     </div>
-                <ChatSlim />
+                     <ToolbarLeftSlim />
                 </div>
-            <ToolbarLeftSlim />
             </div>
-        </div>
         </div>
     )
 }

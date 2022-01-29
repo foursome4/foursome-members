@@ -71,13 +71,13 @@ import { FeedComments } from '../FeedComments/FeedComments';
             setComment(false) 
         }
     }
-    function handleHabiliteViwesComment () {
-        if(viewComment === false) {
-            setViewComment(true)
-        } else {
-            setViewComment(false) 
-        }
-    }
+    // function handleHabiliteViwesComment () {
+    //     if(viewComment === false) {
+    //         setViewComment(true)
+    //     } else {
+    //         setViewComment(false) 
+    //     }
+    // }
 
     function handleComment(idPost) {
     newComment({text: textComment, idPost, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username})
@@ -149,10 +149,6 @@ import { FeedComments } from '../FeedComments/FeedComments';
                                             <FiMessageCircle />
                                             Comentar
                                         </button>
-                                        <button onClick={handleHabiliteViwesComment}>
-                                            <FiChevronDown />
-                                            Ver Comentários
-                                        </button>
                                         {postsData.idAccount === user.id ?
                                         <>
                                             <button> <FiEdit /> Editar </button>
@@ -166,7 +162,7 @@ import { FeedComments } from '../FeedComments/FeedComments';
                                     </div>
 
                                 </div>
-                            {viewComment === false ? "" :  <FeedComments idPost={postsData.id} />}
+                            <FeedComments idPost={postsData.id} />
                                 </>
                                 )
                             }))}

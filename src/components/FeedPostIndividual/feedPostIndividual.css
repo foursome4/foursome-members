@@ -170,3 +170,11 @@
 .feed-post .commentHidden {
     display: none;
 }
+
+
+@media (max-width: 800px) {
+    .feedPostIndividual {
+        width: 100%;
+        margin-top: 20px;
+    }
+}

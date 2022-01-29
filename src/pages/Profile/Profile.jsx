@@ -9,12 +9,15 @@ import { FaMars, FaVenus } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { FeedPostIndividual } from '../../components/FeedPostIndividual/FeedPostIndividual'
+import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 
 
 function Profile() {
   const [dataUser, setDataUser] = useState(null)
   const Local = localStorage.getItem("foursome");
   const user = JSON.parse(Local);
+  const LocalInformations = localStorage.getItem("informations-foursome");
+  const userInformations = JSON.parse(LocalInformations);
 
   const [characteristics, setCharacteristics] = useState([])
   const [posts, setPosts] = useState([])
@@ -72,12 +75,12 @@ function Profile() {
         <div className="main">
          <div className="section">
           <div className="cover">
-              <img src={ dataUser !== null ? dataUser.cover : coverImg} alt="" />
+              <img src={ userInformations !== null ? userInformations.cover : coverImg} alt="" />
           </div>
             <div className="profile-tools">
                 <div className="user">
-                  <img src={dataUser !== null ? dataUser.avatar : avatar} alt="" />
-                  <h3> <b>{dataUser !== null ? dataUser.nickname :"User Test"}</b></h3>
+                  <img src={userInformations !== null ? userInformations.avatar : avatar} alt="" />
+                  <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b></h3>
                 </div>
                 <div className="tools">
                   <button className='select'><FiHome size={16}/></button>
@@ -169,14 +172,14 @@ function Profile() {
               </div>
             </div>
               </div>
-              <div className="feed">
+                     <div className="feed">
                     <Post userData={dataUser}/>
                     <br /><br />
                     <FeedPostIndividual idAccount={user.id} />    
                     </div>
             </div>
          </div>
-         {/* <ChatSlim /> */}
+         <ChatSlim /> 
         </div>
       </div>
     </div>
