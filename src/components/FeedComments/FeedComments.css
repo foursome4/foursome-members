@@ -166,6 +166,10 @@
 
     @media (max-width: 370px) {
 
+        .feedComments {
+            width: 100%;
+            }
+
         .feedComments .feed-comment .comment-user {
             width: 90%;
             }

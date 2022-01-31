@@ -114,7 +114,6 @@ import { FeedComments } from '../FeedComments/FeedComments';
                                         <div className="info-data">
                                         <div className="name-data">
                                         <h4 className="selected">{postsData.nickname}</h4>
-                                            <h4> <FiMinus /> </h4>
                                         </div>
                                         <div className="time-data">
                                             <h5>{dateFormated}</h5>
@@ -161,8 +160,8 @@ import { FeedComments } from '../FeedComments/FeedComments';
                                         <input type="text" placeholder='Comentar' value={textComment} onChange={(e) => setTextComment(e.target.value)}/> <button onClick={() => {handleComment(postsData.id)}}><FiSend /> Comentar</button>
                                     </div>
 
-                                </div>
                             <FeedComments idPost={postsData.id} />
+                                </div>
                                 </>
                                 )
                             }))}

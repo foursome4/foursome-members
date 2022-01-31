@@ -195,6 +195,26 @@ async function newPost({idAccount, type, link, text, idForum, idGroup, avatar, n
     })
 }
 
+async function deletePost(id) {
+    const res = await api.delete(`/posts/${id}`);
+    if(res.status===201) {
+        toast.success('post deletado com sucesso!');
+         window.location.reload(false);
+     } else {
+        toast.error('Deu algo errado ao deletar!');
+     }
+}
+
+async function deleteComment(id) {
+    const res = await api.delete(`/comments/${id}`);
+    if(res.status===201) {
+        toast.success('post deletado com sucesso!');
+         window.location.reload(false);
+     } else {
+        toast.error('Deu algo errado ao deletar!');
+     }
+}
+
 async function newComment({idAccount, idPost, text, avatar, username, nickname}) {
     await api.post("/comments", {idAccount, idPost, text,avatar, username, nickname}).then((result) => {
         console.log(result.data)
@@ -272,7 +292,9 @@ function redirectToAfterLogin() {
             newPost,
             CreateInviteNewUsew,
             userDataNew,
-            newComment
+            newComment,
+            deletePost,
+            deleteComment
         }}>
             {children}
         </AuthContext.Provider>

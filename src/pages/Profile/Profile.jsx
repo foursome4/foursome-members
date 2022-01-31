@@ -7,6 +7,7 @@ import './profile.css'
 import { Post } from '../../components/Post/Post'
 import { Photos } from '../../components/Photos/Photos'
 import { Video } from '../../components/Video/Video'
+import { SettingsUser } from '../../components/SettingsUser/SettingsUser'
 import { FaMars, FaVenus } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
@@ -262,15 +263,15 @@ function Profile() {
                   :
                   video === "video" ?
                    <Video idAccount={user.id} type={"post-video"} />
-                  :
-                  group === "group" ?
-                  "Nenhum grupo aqui"
-                  :
-                  forum === "forum" ?
-                  "Nenhum forum aqui"
-                  :
-                  setting === "setting" ?
-                  "Nenhuma configuração aqui"
+                   :
+                   group === "group" ?
+                   "Nenhum grupo aqui"
+                   :
+                   forum === "forum" ?
+                   "Nenhum forum aqui"
+                   :
+                   setting === "setting" ?
+                   <SettingsUser idAccount={user.id} />
                   :
                   ""
                   } 

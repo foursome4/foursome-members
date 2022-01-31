@@ -16,7 +16,7 @@ function FeedPost() {
     const [comment, setComment] = useState(false);
     const [viewComment, setViewComment] = useState(true);
     const [textComment, setTextComment] = useState("");
-    const {user, newComment} = useContext(AuthContext);
+    const {user, newComment, deletePost} = useContext(AuthContext);
     
     useEffect(() => {
           async function findPosts() {
@@ -77,6 +77,10 @@ function FeedPost() {
     newComment({text: textComment, idPost, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username})
     setTextComment("");
     setComment(false) 
+    }
+
+    function handleDeletePost(id) {
+    deletePost(id)
     }
 
 
@@ -148,7 +152,7 @@ function FeedPost() {
                                         {postsData.idAccount === user.id ?
                                         <>
                                             <button> <FiEdit /> Editar </button>
-                                            <button> <FiTrash2 /> Apagar </button>
+                                            <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 /> Apagar </button>
                                             </>
                                         : ""}
                                     </div>

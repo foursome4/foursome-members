@@ -16,7 +16,7 @@ function FeedComments({idPost}) {
     const [comment, setComment] = useState(false);
     const [commentText, setCommentText] = useState("");
 
-    const {user, newComment} = useContext(AuthContext);
+    const {user, newComment, deleteComment} = useContext(AuthContext);
     useEffect(() => {
           async function Comments() {
             const res = await api.get(`/comments/${idPost}`);
@@ -43,6 +43,10 @@ function FeedComments({idPost}) {
     setCommentText("");
     setComment(false) 
     }
+
+    function handleDeleteComment(id) {
+        deleteComment(id)
+        }
 
     return (
         <div className="feedComments">
@@ -72,14 +76,18 @@ function FeedComments({idPost}) {
                                             <FiMessageCircle />
                                             Comentar
                                         </button>
+                                        {comments.idAccount === userData.id ?
+                                        <>
                                         <button>
                                             <FiEdit />
                                             Editar
                                         </button>
-                                        <button>
+                                        <button onClick={() => {handleDeleteComment(comments.id)}}>
                                             <FiTrash2 />
                                             Apagar
                                         </button>
+                                            </>
+                                            : ""}
                                     </div>
 
                                        

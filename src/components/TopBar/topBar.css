@@ -74,6 +74,8 @@
 
 .topBar .links .account img {
     width: 30px;
+    height: 30px;
+    object-fit: cover;
     border-radius: 50px;
     margin-right: 10px;
     margin-left: 10px;

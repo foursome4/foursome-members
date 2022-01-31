@@ -70,6 +70,8 @@
 
 .content-profile .profile .main .section .profile-tools .user img {
     width: 200px;
+    height: 200px;
+    object-fit: cover;
     border: 2px solid var(--White);
     border-radius: 15px;
     margin-top: -140px;
@@ -487,6 +489,12 @@
                 .content-profile .profile .main .section .sections {
                     margin-top: 140px;
                 }
+
+                .content-profile .profile .main .section .sections .feed {
+                    width: 100%;
+                    align-items: center;
+                    padding: 5px 5px;
+                } 
             }
      }
     }

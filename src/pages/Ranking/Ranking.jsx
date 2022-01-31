@@ -1,4 +1,4 @@
-import { ChatBar } from "../../components/ChatBar/ChatBar"
+import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { TopBar } from "../../components/TopBar/TopBar"
 import avatarImg2 from '../../assets/images/avatar2.png'
 import avatarImg3 from '../../assets/images/avatar3.png'
@@ -54,7 +54,7 @@ function Ranking() {
 
                             </div>
                     </div>
-                <ChatBar />
+                <ChatSlim />
                 </div>
             </div>
         </div>

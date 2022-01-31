@@ -118,8 +118,8 @@
 .feedPostIndividual .posts-feed .feed-post .reactions button {
     background-color: var(--Background2);
     border: none;
-    font-size: 18px;
     color: var(--Gray_font2);
+    font-size: 16px;
     
 }
 
@@ -174,7 +174,24 @@
 
 @media (max-width: 900px) {
     .feedPostIndividual {
-        width: 100%;
+        width: 95%;
         margin-top: 20px;
+    }
+
+
+
+    @media (max-width: 370px) {
+        .feedPostIndividual .posts-feed .feed-post .reactions {
+            width: 100%;
+            
+        }
+        
+        .feedPostIndividual .posts-feed .feed-post .reactions button {
+            background-color: var(--Background2);
+            border: none;
+            font-size: 10px;
+            color: var(--Gray_font2);
+            
+        }
     }
 }
