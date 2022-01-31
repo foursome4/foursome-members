@@ -2,9 +2,10 @@ import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { TopBar } from '../../components/TopBar/TopBar'
 import coverImg from '../../assets/images/cover.png'
 import avatar from '../../assets/images/avatar.png'
-import {FiHome, FiImage, FiVideo, FiUsers, FiList, FiCalendar, FiSettings, FiMoreVertical} from 'react-icons/fi'
+import {FiHome, FiImage, FiVideo, FiUsers, FiList, FiCalendar, FiSettings, FiMoreVertical, FiUser} from 'react-icons/fi'
 import './profile.css'
 import { Post } from '../../components/Post/Post'
+import { Photos } from '../../components/Photos/Photos'
 import { FaMars, FaVenus } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
@@ -20,7 +21,15 @@ function Profile() {
   const userInformations = JSON.parse(LocalInformations);
 
   const [characteristics, setCharacteristics] = useState([])
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
+
+  const [feed, setFeed] = useState("feed");
+  const [friend, setFriend] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [video, setVideo] = useState("");
+  const [group, setGroup] = useState("");
+  const [forum, setForum] = useState("");
+  const [setting, setSetting] = useState("");
 
 
     useEffect(() => {
@@ -57,6 +66,72 @@ function Profile() {
       loadPosts()
     }, []);
 
+
+    function handleFeed() {
+        setFeed("feed")
+        setFriend("")
+        setPhoto("")
+        setVideo("")
+        setGroup("")
+        setForum("")
+        setSetting("")
+    }
+    function handleFriend() {
+      setFeed("")
+      setFriend("friend")
+      setPhoto("")
+      setVideo("")
+      setGroup("")
+      setForum("")
+      setSetting("")
+    }
+    function handlePhoto() {
+      setFeed("")
+      setFriend("")
+      setPhoto("photo")
+      setVideo("")
+      setGroup("")
+      setForum("")
+      setSetting("")
+    }
+    function handleVideo() {
+      setFeed("")
+      setFriend("")
+      setPhoto("")
+      setVideo("video")
+      setGroup("")
+      setForum("")
+      setSetting("")
+    }
+    function handleForum() {
+      setFeed("")
+      setFriend("")
+      setPhoto("")
+      setVideo("")
+      setGroup("")
+      setForum("forum")
+      setSetting("")
+    }
+    function handleGroup() {
+      setFeed("")
+      setFriend("")
+      setPhoto("")
+      setVideo("")
+      setGroup("group")
+      setForum("")
+      setSetting("")
+    }
+    function handleSetting() {
+      setFeed("")
+      setFriend("")
+      setPhoto("")
+      setVideo("")
+      setGroup("")
+      setForum("")
+      setSetting("setting")
+    }
+
+
     const photos = posts.filter(post => (post.type === "post-photo"));
     const allPhotos = photos.slice(0, 6)
     console.log("allPhotos")
@@ -83,15 +158,13 @@ function Profile() {
                   <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b></h3>
                 </div>
                 <div className="tools">
-                  <button className='select'><FiHome size={16}/></button>
-                  {/* <button><FiUser size={16}/></button>
-                  <button><FiUserPlus size={16}/></button> */}
-                  <button><FiImage size={16}/></button>
-                  <button><FiVideo size={16}/></button>
-                  <button><FiUsers size={16}/></button>
-                  <button><FiList size={16}/></button>
-                  <button><FiCalendar size={16}/></button>
-                  <button><FiSettings size={16}/></button>
+                  <button className={feed === "" ? "" : "select"} onClick={handleFeed}><FiHome size={16}/></button>
+                  <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/></button>
+                  <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/></button>
+                  <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/></button>
+                  <button className={group === "" ? "" : "select"} onClick={handleGroup}><FiUsers size={16}/></button>
+                  <button className={forum === "" ? "" : "select"} onClick={handleForum}><FiList size={16}/></button>
+                  <button className={setting === "" ? "" : "select"} onClick={handleSetting}><FiSettings size={16}/></button>
                   <button  className='settings'><FiMoreVertical size={16}/></button>
                 </div>
             </div>
@@ -173,9 +246,33 @@ function Profile() {
             </div>
               </div>
                      <div className="feed">
+                  {feed === "feed" ?
+                  <>
                     <Post userData={dataUser}/>
                     <br /><br />
-                    <FeedPostIndividual idAccount={user.id} />    
+                    <FeedPostIndividual idAccount={user.id} />
+                  </>
+                  :
+                  friend === "friend" ?
+                  "Nenhum amigo aqui"
+                  :
+                  photo === "photo" ?
+                  <Photos idAccount={user.id} type={"post-photo"} />
+                  :
+                  video === "video" ?
+                  "Nenhum vodeo aqui"
+                  :
+                  group === "group" ?
+                  "Nenhum grupo aqui"
+                  :
+                  forum === "forum" ?
+                  "Nenhum forum aqui"
+                  :
+                  setting === "setting" ?
+                  "Nenhuma configuração aqui"
+                  :
+                  ""
+                  } 
                     </div>
             </div>
          </div>
