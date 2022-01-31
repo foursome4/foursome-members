@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: flex-start;
     width: 95%;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 .feedComments .feed-comment {
@@ -14,36 +14,40 @@
     justify-content: flex-start;
     width: 100%;
     color: var(--Gray_font2);
-    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: rgb(253, 253, 253);
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 10px 0;
+    margin-top: 5px;
 }
 
 .feedComments .feed-comment .comment-user {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-evenly;
-    width: 90%;
+    width: 100%;
 }
 
 .feedComments .feed-comment .comment-user img {
-    width: 30px;
+    width: 25px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .feedComments .feed-comment .comment-user .name-data {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
+    flex-wrap: wrap;
 }
 
 
 .feedComments .feed-comment .comment-user .name-data .selected {
     color: var(--Primary) ;
+    font-size: 14px;
 }
 
 .feedComments .feed-comment .comment-data {
@@ -54,12 +58,11 @@
 .feedComments .feed-comment .comment-data p {
     color: var(--Gray_font);
     font-weight: 500;
-    margin-top: 5px;
+    margin-top: 3px;
     font-size: 16px;
 }
 
 .feedComments .feed-comment .reactions {
-    margin-top: 5px;
     width: 95%;
     display: flex;
     flex-direction: row;
@@ -76,7 +79,6 @@
     align-items: center;
     justify-content: center;
     color: var(--Gray_font2);
-    
 }
 
 .feedComments .feed-comment .reactions button svg {
@@ -128,7 +130,9 @@
 }
 
 
-
+@media (max-width: 1150px) {
+    
+}
 
 @media (max-width: 700px) {
 

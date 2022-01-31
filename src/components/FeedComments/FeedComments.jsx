@@ -46,7 +46,7 @@ function FeedComments({idPost}) {
 
     return (
         <div className="feedComments">
-            <h4>{dataComments.length} comentários</h4><br />
+            <h4>{dataComments.length} comentários</h4>
 
                     
                              {dataComments.map((comments) => {
@@ -61,13 +61,13 @@ function FeedComments({idPost}) {
                                         <img src={comments.avatar} alt="" />
                                         <div className="name-data">
                                         <h4 className="selected">{comments.nickname}</h4>
+
                                         <div className="time-data">
                                             <h5>{dateFormated}</h5>
                                         </div>
-                                       
-                                        </div>
-                                    </div>
-                                    <div className="reactions" >
+
+
+                                        <div className="reactions" >
                                         <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
                                             Comentar
@@ -81,6 +81,11 @@ function FeedComments({idPost}) {
                                             Apagar
                                         </button>
                                     </div>
+
+                                       
+                                        </div>
+                                    </div>
+
 
                                     <div className="comment-data" >
                                         <p><i>{comments.text}</i></p>
