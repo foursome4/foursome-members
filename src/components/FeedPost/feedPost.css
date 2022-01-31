@@ -288,10 +288,15 @@
 
             .feedPost .posts-feed .feed-post .reactions {
                 width: 100%;
+
             }
             .feedPost .posts-feed .feed-post .reactions button {
-                font-size: 16px;
-                margin: 2px 5px;
+                font-size: 14px;
+                margin: 2px 3px;
+            }
+
+            .feedPost .posts-feed .feed-post .reactions button svg {
+                margin-right: 2px;
             }
 
 
@@ -323,10 +328,10 @@
         
                     .feedPost .posts-feed .feed-post .reactions {
                         width: 100%;
-                        margin-left: -22px;
+                        margin-left: 0px;
                     }
                     .feedPost .posts-feed .feed-post .reactions button {
-                        font-size: 14px;
+                        font-size: 12px;
                         margin: 2px 5px;
                     }
     

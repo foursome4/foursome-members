@@ -46,7 +46,7 @@ function FeedComments({idPost}) {
 
     return (
         <div className="feedComments">
-            <h4>{dataComments.length} comentários</h4>
+            <h5>{dataComments.length} comentários</h5>
 
                     
                              {dataComments.map((comments) => {

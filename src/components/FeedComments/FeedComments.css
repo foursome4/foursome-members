@@ -142,12 +142,16 @@
         margin: 5px 0;
     }
 
+    .feedComments .feed-comment .comment-user {
+    width: 95%;
+    }
+
     .feedComments .feed-comment .comment-user h4{
         font-size: 12px;
     }
 
     .feedComments .feed-comment .comment-user .name-data {
-        width: 100%;
+        width: 95%;
     }
 
     .feedComments .feed-comment .reactions {
@@ -161,9 +165,16 @@
 
 
     @media (max-width: 370px) {
+
+        .feedComments .feed-comment .comment-user {
+            width: 90%;
+            }
+
         .feedComments .feed-comment .reactions {
+            padding-left: 5px;
             margin-top: 5px;
-            width: 95%;            
+            width: 100%;  
+            justify-content: center;        
         }
         
         .feedComments .feed-comment .reactions button {
