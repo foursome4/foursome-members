@@ -6,6 +6,7 @@ import {FiHome, FiImage, FiVideo, FiUsers, FiList, FiCalendar, FiSettings, FiMor
 import './profile.css'
 import { Post } from '../../components/Post/Post'
 import { Photos } from '../../components/Photos/Photos'
+import { Video } from '../../components/Video/Video'
 import { FaMars, FaVenus } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
@@ -260,7 +261,7 @@ function Profile() {
                   <Photos idAccount={user.id} type={"post-photo"} />
                   :
                   video === "video" ?
-                  "Nenhum vodeo aqui"
+                   <Video idAccount={user.id} type={"post-video"} />
                   :
                   group === "group" ?
                   "Nenhum grupo aqui"
