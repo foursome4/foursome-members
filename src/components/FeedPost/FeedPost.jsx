@@ -118,12 +118,13 @@ function FeedPost() {
                                     </div>
 
                                     {postsData.type === "post-photo" ?
-                                  
                                         <div className="post-data-media" >
+                                            <h1>{userData.username}<br />{userData.username}<br />{userData.username}<br />{userData.username}<br />{userData.username}</h1>
                                             <img src={postsData.link} alt={"Post Image"} width={500}/>
                                         </div> :
                                     postsData.type === "post-video" ?
-                                        <div className="post-data-media" >
+                                    <div className="post-data-media" >
+                                           <h1>{userData.username}<br />{userData.username}<br />{userData.username}<br />{userData.username}<br />{userData.username}</h1>
                                         <video controls >
                                             <source src={postsData.link} type="video/mp4"/>
                                             </video>
@@ -157,9 +158,9 @@ function FeedPost() {
                                         <button onClick={() => {handleComment(postsData.id)}}><FiSend /> Comentar</button>
                                     </div>
 
+                                <FeedComments idPost={postsData.id} />
                                 </div>
                                 {/* {viewComment === false ? "" :  <FeedComments idPost={postsData.id} />} */}
-                                <FeedComments idPost={postsData.id} />
                                 </>
                                 )
                             }))}

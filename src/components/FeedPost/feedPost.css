@@ -88,16 +88,25 @@
     align-items: center;
     justify-content: center;
 }
+
+
+.feedPost .posts-feed .feed-post .post-data-media h1 {
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 10px;
+    position: absolute;
+}
+
+
 .feedPost .posts-feed .feed-post .post-data-media video{
    margin-left: 0 auto;
    margin-right: 0 auto;
-    width: 70%;
+    width: 80%;
 }
 
 .feedPost .posts-feed .feed-post .post-data-media img{
     margin-left: 0 auto;
     margin-right: 0 auto;
-     width: 70%;
+     width: 80%;
  }
  
 
@@ -306,7 +315,6 @@
                 .feedPost .posts-feed .feed-post .post-data-media {
                     width: 85%;
                 }
-
 
                 @media (max-width: 380px) {
                     .feedPost {
