@@ -1,5 +1,6 @@
 import {createContext, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import {toast} from 'react-toastify';
 import api from '../services/api';
 
 const AuthContext = createContext({});
@@ -29,8 +30,10 @@ function AuthProvider({children}) {
         const res = await api.post('/accounts', data);
         if(res.status === 201) {
             console.log("Cadastro realizado com sucesso!");
+            toast.info(`Cadastro criado com sucesso!`);
         } else {
-            console.log("Cadastro não foi realizado")
+            console.log("Cadastro não foi realizado");
+            toast.error(`Falha na criação do cadastro. Revise suas informações!`);
         }
     }
 
@@ -50,8 +53,11 @@ function AuthProvider({children}) {
                 console.log("Login realizado com sucesso!");
                 storageUser(result.data);
                 setLoading(false);
+                toast.info(`Seja bem vindo(a), ${result.data.username}`);
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
+                toast.error(`Falha no login.
+                E-mail, usuário ou senha incorretos!`);
             })
             
         } else {
@@ -61,8 +67,11 @@ function AuthProvider({children}) {
                 console.log("Login realizado com sucesso!");
                 storageUser(result.data);
                 setLoading(false);
+                toast.info(`Seja bem vindo(a), ${result.data.username}`);
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
+                toast.error(`Falha no login.
+                E-mail, usuário ou senha incorretos!`);
             })
         }
         

@@ -6,6 +6,7 @@ import profile from '../../assets/images/profile.jpg';
 import { v4 as uuidv4} from 'uuid'
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
+import {toast} from 'react-toastify';
 
 function Post() {
     const {newPost} = useContext(AuthContext)
@@ -38,6 +39,7 @@ function Post() {
                 setImageAvatar(image);
                setAvatarUrl(URL.createObjectURL(e.target.files[0]));
                console.log(avatarUrl);
+               toast.success('Imagem carregada com sucesso. Publique sua postagem!');
             } else {
                 console.log('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
                 setImageAvatar("");
@@ -58,7 +60,7 @@ function Post() {
                     setVideoAvatar(video);
                     setVideoUrl(URL.createObjectURL(e.target.files[0]));
                     console.log(videoUrl);
-                    
+                    toast.success('Vídeo carregado com sucesso. Publique sua postagem!');
                     
             } else {
                 console.log('Tipo dearquivo não aceito. Envie video do tipo: .mp4');

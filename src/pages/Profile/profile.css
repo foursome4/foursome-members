@@ -5,7 +5,6 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    background-color: var(--Primary);
 }
 
 .content-profile .profile {
@@ -91,7 +90,6 @@
 .content-profile .profile .main .section .profile-tools .tools .select  {
     width: 55px;
     height: 55px;
-    background-color: var(--Primary);
     color: var(--White);
     border: none;
     border-radius: 8px;
@@ -145,7 +143,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    background-color: var(--Primary);
     border: 1px solid var(--Background);
 }
 
@@ -426,7 +423,7 @@
 
 
 
-        @media (max-width: 800px) {
+        @media (max-width: 700px) {
             .content-profile .profile .main .section .profile-tools .tools button {
                 padding: 8px 16px;
             }
@@ -453,6 +450,7 @@
             }
             .content-profile .profile .main .section .profile-tools .tools button {
                 padding: 6px 14px;
+                margin: 10px;
             }
 
             .content-profile .profile .main .section .cover img {
@@ -472,6 +470,9 @@
 
 
             @media (max-width: 550px) {
+                .content-profile .profile .main .section .profile-tools {
+                    padding: 0px;
+                }
 
                 .content-profile .profile .main .section .profile-tools .tools {
                     flex-wrap: wrap;
@@ -481,7 +482,7 @@
 
                 .content-profile .profile .main .section .profile-tools .tools button {
                     padding: 4px 10px;
-                    margin-top: 5px;
+                    margin: 10px;
                     font-size: 10px;
                 }
 

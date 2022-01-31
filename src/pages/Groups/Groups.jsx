@@ -1,11 +1,11 @@
-import { ChatBar } from "../../components/ChatBar/ChatBar"
 import { TopBar } from "../../components/TopBar/TopBar"
-import { FiSearch} from 'react-icons/fi'
+import { FiPlusCircle, FiSearch} from 'react-icons/fi'
 import capaGrupo from '../../assets/images/capaGrupo.png'
 import perfilGrupo from '../../assets/images/perfilGrupo.png'
 import membersImg from '../../assets/images/members.png'
 import './groups.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
+import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 
 function Groups() {
     return (
@@ -19,9 +19,14 @@ function Groups() {
                                 <button className="selected">Todos os Grupos</button>
                                 <button>Meus grupos</button>
                             </div>
-                            <div className="groups-search">
-                                <input type="text" />
-                                <button><FiSearch size={20}/></button>
+                            <div className="groups-buttons">
+                                <div className="groups-create">
+                                <button><FiPlusCircle size={20}/> Criar grupo</button>
+                                </div>
+                                <div className="groups-search">
+                                    <input type="text" />
+                                    <button><FiSearch size={20}/></button>
+                                </div>
                             </div>
                             <div className="groups-all">
                                 <div className="group-unic">
@@ -44,7 +49,7 @@ function Groups() {
                                 </div>
                             </div>
                     </div>
-                <ChatBar />
+                <ChatSlim />
                 </div>
             </div>
         </div>

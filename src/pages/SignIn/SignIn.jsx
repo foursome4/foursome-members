@@ -1,7 +1,8 @@
 import { useContext, useState } from 'react';
 import logoImg from '../../assets/images/logo.png'
 import { AuthContext } from '../../contexts/Auth';
-import { FiEye, FiEyeOff} from 'react-icons/fi'
+import { FiEye, FiEyeOff} from 'react-icons/fi';
+import {toast} from 'react-toastify';
 
 import './signIn.css';
 
@@ -14,7 +15,9 @@ function SignIn() {
 
   function handleCreateAccount(e) {
     e.preventDefault();
-    loginSession({login: login, password:password})
+   loginSession({login: login, password:password})
+   console.log({login: login, password:password});
+  // toast.success('Seja bem vindo. Realize seu cadastro');
   }
 
   function handlePasswordView() {
@@ -32,7 +35,7 @@ function SignIn() {
         <img src={logoImg} alt="Logo Foursome" />
         </div>
         <div className="form">
-          <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
+          <input type="text" placeholder="E-mail ou Nome de usuário" value={login.toLowerCase()} onChange={(e) => setLogin(e.target.value)}/>
           <div className="inputPassword">
           <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
           <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
