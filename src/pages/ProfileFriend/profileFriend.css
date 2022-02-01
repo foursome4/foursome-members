@@ -98,6 +98,10 @@
 }
 
 .content-profile .profile .main .section .profile-tools .tools button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 55px;
     height: 55px;
     background-color: var(--Background);

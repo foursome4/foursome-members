@@ -1,39 +1,45 @@
-import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiThumbsUp, FiSend, FiChevronDown } from 'react-icons/fi'
-import './feedPost.css';
+import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiThumbsUp, FiMinus, FiSend, FiChevronDown } from 'react-icons/fi'
+import './feedPostIndividual2.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import api from "../../services/api";
 import { parseISO, format} from 'date-fns';
 import { FeedComments } from '../FeedComments/FeedComments';
 import { ListReactions } from '../ListReactions/ListReactions';
-import { Link } from 'react-router-dom';
 
-function FeedPost() {
+    function FeedPostIndividual2(idAccount, avatar, username) {
+        console.log("idAccount.username")
+        console.log(idAccount.username)
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(LocalInformation);
+
+
     const [post, setPost] = useState("");
     const [data, setData] = useState([]);
     const [comment, setComment] = useState(false);
+    const [viewComment, setViewComment] = useState(true);
     const [textComment, setTextComment] = useState("");
-    const {user, newComment, deletePost, likePost} = useContext(AuthContext);
-    
+
+    const {user, newComment, likePost} = useContext(AuthContext);
     useEffect(() => {
           async function findPosts() {
-          if(post === "") {
-            const res = await api.get(`/posts/all`);
+              const id = idAccount.idAccount;
+            if(post === "") {
+            const res = await api.get(`/posts/filter/accounts/${id}`);
             const dataPosts = (res.data)
             setData(dataPosts)
-          } else {
-            const res = await api.get(`/posts/filter/${post}`);
+        } else {
+            const type = post;
+            const res = await api.get(`/posts/filter/${id}/${type}`);
             const dataPosts = (res.data)
             setData(dataPosts)
-          }
+        }
         }
         findPosts()
 
-    }, [user, post])
+    }, [post])
 
     function postAll() {
         setPost("")
@@ -67,23 +73,20 @@ function FeedPost() {
         }
     }
 
+
     function handleComment(idPost) {
-    newComment({text: textComment, idPost, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username})
+    newComment({text: textComment, idPost, idAccount: idAccount.idAccount, avatar:idAccount.avatar, nickname: idAccount.nickname, username: userData.username})
     setTextComment("");
     setComment(false) 
     }
 
-    function handleDeletePost(id) {
-    deletePost(id)
-    }
-
     function handleLikePost( idPost) {
-        likePost({idAccount: userData.id, username: userData.username, idPost})
+        likePost({idAccount: idAccount.idAccount, username: idAccount.username, idPost})
     }
 
 
     return (
-        <div className="feedPost">
+        <div className="feedPostIndividual">
             <div className="posts-feed">
             <div className="buttons">
             <button className={post === "" ? 'selected' : ""} onClick={postAll}> <FiMenu /> Todos </button>
@@ -93,6 +96,7 @@ function FeedPost() {
             <button className={post === "post-group" ? 'selected' : ""} onClick={postGroup}> <FiUsers /> Grupo </button>
             <button className={post === "post-forum" ? 'selected' : ""} onClick={postForum}> <FiList /> Fórum </button>
             </div>
+                            
                                 {data.map((postsData => {
 
                                 const date = parseISO(postsData.created_at);
@@ -100,15 +104,15 @@ function FeedPost() {
                                     date, 
                                 "dd'/'MM'/'yyyy', às 'HH:mm'h'"
                                 );
+
                                     return (   
                                         <>                      
                                 <div className="feed-post" key={postsData.id}>
                                     <div className="post-user" >
-                                    <Link to={`/profile-friend/${postsData.idAccount}`}>  <img src={postsData.avatar} alt="" /> </Link>
+                                        <img src={postsData.avatar} alt="" />
                                         <div className="info-data">
                                         <div className="name-data">
-                                    <Link to={`/profile-friend/${postsData.idAccount}`}> <h4 className="selected">{postsData.nickname}</h4> </Link>
-                                        
+                                        <h4 className="selected">{postsData.nickname}</h4>
                                         </div>
                                         <div className="time-data">
                                             <h5>{dateFormated}</h5>
@@ -121,13 +125,12 @@ function FeedPost() {
                                     </div>
 
                                     {postsData.type === "post-photo" ?
+                                  
                                         <div className="post-data-media" >
-                                          <h1>{userData.username}<br />{userData.username}<br />{userData.username}<br />{userData.username}<br />{userData.username}</h1>
                                             <img src={postsData.link} alt={"Post Image"} width={500}/>
                                         </div> :
                                     postsData.type === "post-video" ?
-                                    <div className="post-data-media" >
-                                           <h1>{userData.username}<br />{userData.username}<br />{userData.username}<br />{userData.username}<br />{userData.username}</h1>
+                                        <div className="post-data-media" >
                                         <video controls >
                                             <source src={postsData.link} type="video/mp4"/>
                                             </video>
@@ -136,42 +139,39 @@ function FeedPost() {
                                       }
 
                                     <div className="reactions" >
-                                        <button className="selected" onClick={() => {handleLikePost(postsData.id)}}>
+                                        <button className="selected"  onClick={() => {handleLikePost(postsData.id)}}>
                                             <FiThumbsUp />
                                             Curtir
                                         </button>
-                                     <ListReactions idPost={postsData.id} />
+                                        <ListReactions idPost={postsData.id} />
                                         <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
                                             Comentar
                                         </button>
-                                        {/* <button onClick={handleHabiliteViwesComment}>
-                                            <FiChevronDown />
-                                            Comentários
-                                        </button> */}
                                         {postsData.idAccount === user.id ?
                                         <>
                                             <button> <FiEdit /> Editar </button>
-                                            <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 /> Apagar </button>
+                                            <button> <FiTrash2 /> Apagar </button>
                                             </>
                                         : ""}
                                     </div>
 
                                     <div className={comment === true ? "comment" : "commentHidden"}>
-                                        <input type="text" placeholder='Comentar' value={textComment} onChange={(e) => setTextComment(e.target.value)}/>
-                                        <button onClick={() => {handleComment(postsData.id)}}><FiSend /> Comentar</button>
+                                        <input type="text" placeholder='Comentar' value={textComment} onChange={(e) => setTextComment(e.target.value)}/> <button onClick={() => {handleComment(postsData.id)}}><FiSend /> Comentar</button>
                                     </div>
 
-                                <FeedComments idPost={postsData.id} />
+                            <FeedComments idPost={postsData.id} />
                                 </div>
-                                {/* {viewComment === false ? "" :  <FeedComments idPost={postsData.id} />} */}
                                 </>
                                 )
                             }))}
                            </div>
-        </div>     
+
+        </div>
+         
+         
                         
     )
 }
 
-export {FeedPost}
+export {FeedPostIndividual2}

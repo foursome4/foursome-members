@@ -2,7 +2,7 @@ import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { TopBar } from '../../components/TopBar/TopBar'
 import coverImg from '../../assets/images/cover.png'
 import avatar from '../../assets/images/avatar.png'
-import {FiHome, FiImage, FiVideo, FiUsers, FiList, FiCalendar, FiSettings, FiMoreVertical, FiUser} from 'react-icons/fi'
+import {FiHome, FiImage, FiVideo, FiUsers, FiList, FiCalendar, FiSettings, FiMoreVertical, FiUser, FiUserPlus, FiHeart} from 'react-icons/fi'
 import './profileFriend.css'
 import { Post } from '../../components/Post/Post'
 import { Photos } from '../../components/Photos/Photos'
@@ -11,17 +11,20 @@ import { SettingsUser } from '../../components/SettingsUser/SettingsUser'
 import { FaMars, FaVenus } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
-import { FeedPostIndividual } from '../../components/FeedPostIndividual/FeedPostIndividual'
+import { FeedPostIndividual2 } from '../../components/FeedPostIndividual2/FeedPostIndividual2'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { useParams } from 'react-router-dom'
 
 
 function ProfileFriend() {
+  const Local = localStorage.getItem("foursome");
+  const myUser = JSON.parse(Local);
   const {id} = useParams();
+  console.log("idAccount")
   console.log(id)
 
-  const [userInformations, setuserInformations] = useState(null)
-  const [user, setUser] = useState(null)
+  const [userInformations, setuserInformations] = useState("null")
+  const [user, setUser] = useState("null")
 
 
   const [characteristics, setCharacteristics] = useState([])
@@ -30,18 +33,16 @@ function ProfileFriend() {
   const [friend, setFriend] = useState("");
   const [photo, setPhoto] = useState("");
   const [video, setVideo] = useState("");
-  const [group, setGroup] = useState("");
-  const [forum, setForum] = useState("");
-  const [setting, setSetting] = useState("");
+  const [follower, setUserFollower] = useState("");
+  const [friendNew, setUserNew] = useState("");
 
 
     useEffect(() => {
-
       async function loadAccount() {
-        const res = await api.get(`/accounts/${id}`)
+        const res = await api.get(`/accounts/filter/${id}`)
         console.log("DATA USER")
-        console.log(res.data)
-        setUser(res.data) 
+        console.log(res.data[0])
+        setUser(res.data[0]) 
       }
 
 
@@ -49,6 +50,8 @@ function ProfileFriend() {
       async function loadInformations() {
         await api.get(`/informations/${idUser}`)
     .then((res) => {
+      console.log("Informações");
+      console.log(res.data[0]);
       setuserInformations(res.data[0])
     }).catch(error => {
         console.log("Erro ao buscar dados" + error)
@@ -79,8 +82,14 @@ function ProfileFriend() {
     }, []);
 
 
-    console.log("USER");
-    console.log(user);
+  function handleNewFriend(e) {
+    e.preventDefault()
+    console.log({id_account: myUser.id, id_friend: user.id, type: "friend", status: "pending"})
+  }
+  function handleNewFollower(e) {
+    e.preventDefault()
+    console.log({id_account: myUser.id, id_friend: user.id, type: "friend", status: "pending"})
+  }
 
 
 
@@ -89,63 +98,49 @@ function ProfileFriend() {
         setFriend("")
         setPhoto("")
         setVideo("")
-        setGroup("")
-        setForum("")
-        setSetting("")
+        setUserNew("")
+        setUserFollower("")
     }
     function handleFriend() {
       setFeed("")
       setFriend("friend")
       setPhoto("")
       setVideo("")
-      setGroup("")
-      setForum("")
-      setSetting("")
+      setUserNew("")
+      setUserFollower("")
     }
     function handlePhoto() {
       setFeed("")
       setFriend("")
       setPhoto("photo")
       setVideo("")
-      setGroup("")
-      setForum("")
-      setSetting("")
+      setUserNew("")
+      setUserFollower("")
     }
     function handleVideo() {
       setFeed("")
       setFriend("")
       setPhoto("")
       setVideo("video")
-      setGroup("")
-      setForum("")
-      setSetting("")
+      setUserNew("")
+      setUserFollower("")
     }
-    function handleForum() {
+
+    function handleFriendNew() {
       setFeed("")
       setFriend("")
       setPhoto("")
       setVideo("")
-      setGroup("")
-      setForum("forum")
-      setSetting("")
+      setUserNew("friendNew")
+      setUserFollower("")
     }
-    function handleGroup() {
+    function handleFollower() {
       setFeed("")
       setFriend("")
       setPhoto("")
       setVideo("")
-      setGroup("group")
-      setForum("")
-      setSetting("")
-    }
-    function handleSetting() {
-      setFeed("")
-      setFriend("")
-      setPhoto("")
-      setVideo("")
-      setGroup("")
-      setForum("")
-      setSetting("setting")
+      setUserNew("")
+      setUserFollower("follower")
     }
 
 
@@ -167,23 +162,21 @@ function ProfileFriend() {
         <div className="main">
          <div className="section">
           <div className="cover">
-              <img src="{ userInformations !== null ? userInformations.cover : coverImg}" alt="" />
+              <img src={ userInformations !== null ? userInformations.cover : coverImg} alt="" />
           </div>
             <div className="profile-tools">
                 <div className="user">
-                  <img src="{userInformations !== null ? userInformations.avatar : avatar}" alt="" />
-                  <h3> <b>"NOme de Usuário"</b></h3>
-
-                  {/* <h3> <b>"{userInformations !== null ? userInformations.nickname :"User Test"}"</b></h3> */}
+                  <img src={userInformations !== null ? userInformations.avatar : avatar} alt="" />
+  
+                  <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b></h3>
                 </div>
                 <div className="tools">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed}><FiHome size={16}/></button>
+                  <button className={friendNew === "" ? "" : "select"} onClick={handleFriendNew, handleNewFriend}><FiUserPlus size={16}/></button>
+                  <button className={follower === "" ? "" : "select"} onClick={handleFollower,handleNewFollower}><FiHeart size={16}/></button>
                   <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/></button>
                   <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/></button>
                   <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/></button>
-                  <button className={group === "" ? "" : "select"} onClick={handleGroup}><FiUsers size={16}/></button>
-                  <button className={forum === "" ? "" : "select"} onClick={handleForum}><FiList size={16}/></button>
-                  <button className={setting === "" ? "" : "select"} onClick={handleSetting}><FiSettings size={16}/></button>
                   <button  className='settings'><FiMoreVertical size={16}/></button>
                 </div>
             </div>
@@ -191,10 +184,8 @@ function ProfileFriend() {
               <div className="infos">
                     <div className="info">
                     <div className="name">
-                        <h5>@nickname</h5>
-                        {/* <h5>@{user !== null ? user.username :"User Test"}</h5> */}
-                        {/* <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6> */}
-                        <h6>"Dados"</h6>
+                        <h5>@{user !== null ? user.username :"User Test"}</h5>
+                        <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
                     </div>
                 {characteristics.map((characteristicsUser) => {
 
@@ -269,9 +260,9 @@ function ProfileFriend() {
                      <div className="feed">
                   {feed === "feed" ?
                   <>
-                    <Post userData={userInformations}/>
+                    {/* <Post userData={userInformations}/> */}
                     <br /><br />
-                    <FeedPostIndividual idAccount={id} />
+                    <FeedPostIndividual2 idAccount={user.id} avatar={userInformations.avatar} username={user.username}/>
                   </>
                   :
                   friend === "friend" ?
@@ -283,15 +274,12 @@ function ProfileFriend() {
                   video === "video" ?
                    <Video idAccount={user.id} type={"post-video"} />
                    :
-                   group === "group" ?
+                   friendNew === "group" ?
                    "Nenhum grupo aqui"
                    :
-                   forum === "forum" ?
+                   follower === "forum" ?
                    "Nenhum forum aqui"
                    :
-                   setting === "setting" ?
-                   <SettingsUser idAccount={user.id} />
-                  :
                   ""
                   } 
                     </div>
