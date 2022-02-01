@@ -57,8 +57,6 @@ function Profile() {
 
       async function loadPosts() {
           const res = await api.get(`/posts/filter/accounts/${user.id}`);
-          console.log("res.data posts")
-          console.log(res.data)
           const dataPosts = (res.data)
           setPosts(dataPosts)
       }
@@ -136,8 +134,6 @@ function Profile() {
 
     const photos = posts.filter(post => (post.type === "post-photo"));
     const allPhotos = photos.slice(0, 6)
-    console.log("allPhotos")
-    console.log(allPhotos)
     const videos = posts.filter(post => (post.type === "post-video"));
  
 
@@ -156,7 +152,9 @@ function Profile() {
           </div>
             <div className="profile-tools">
                 <div className="user">
-                  <img src={userInformations !== null ? userInformations.avatar : avatar} alt="" />
+                 <div className="user-img">
+                   <img src={userInformations !== null ? userInformations.avatar : avatar} alt="" />
+                   </div>
                   <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b></h3>
                 </div>
                 <div className="tools">
@@ -183,7 +181,6 @@ function Profile() {
                   const hoje = new Date()
                   
                   const idade =  Math.floor(Math.ceil(Math.abs(nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25);
-                  console.log(idade)
 
                   return (
                     <div className={characteristicsUser.sex === "Mulher" ? "info-user-woman" : "info-user-man"}>

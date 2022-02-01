@@ -40,8 +40,6 @@ function ProfileFriend() {
     useEffect(() => {
       async function loadAccount() {
         const res = await api.get(`/accounts/filter/${id}`)
-        console.log("DATA USER")
-        console.log(res.data[0])
         setUser(res.data[0]) 
       }
 
@@ -50,8 +48,6 @@ function ProfileFriend() {
       async function loadInformations() {
         await api.get(`/informations/${idUser}`)
     .then((res) => {
-      console.log("Informações");
-      console.log(res.data[0]);
       setuserInformations(res.data[0])
     }).catch(error => {
         console.log("Erro ao buscar dados" + error)
@@ -70,8 +66,6 @@ function ProfileFriend() {
 
       async function loadPosts() {
           const res = await api.get(`/posts/filter/accounts/${id}`);
-          console.log("res.data posts")
-          console.log(res.data)
           const dataPosts = (res.data)
           setPosts(dataPosts)
       }
@@ -146,8 +140,6 @@ function ProfileFriend() {
 
     const photos = posts.filter(post => (post.type === "post-photo"));
     const allPhotos = photos.slice(0, 6)
-    console.log("allPhotos")
-    console.log(allPhotos)
     const videos = posts.filter(post => (post.type === "post-video"));
  
 
@@ -166,8 +158,9 @@ function ProfileFriend() {
           </div>
             <div className="profile-tools">
                 <div className="user">
+                <div className="user-img">
                   <img src={userInformations !== null ? userInformations.avatar : avatar} alt="" />
-  
+                  </div>
                   <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b></h3>
                 </div>
                 <div className="tools">
@@ -193,7 +186,6 @@ function ProfileFriend() {
                   const hoje = new Date()
                   
                   const idade =  Math.floor(Math.ceil(Math.abs(nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25);
-                  console.log(idade)
 
                   return (
                     <div className={characteristicsUser.sex === "Mulher" ? "info-user-woman" : "info-user-man"}>
