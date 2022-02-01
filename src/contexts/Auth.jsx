@@ -215,6 +215,15 @@ async function deleteComment(id) {
      }
 }
 
+async function likePost({idAccount, username, idPost}) {
+    await api.post("/reactions", {idAccount, username, idPost}).then((result) => {
+        console.log(result.data)
+        console.log("Post Realizado com sucesso!");
+        window.location.reload(false)
+        setLoading(false)
+    })
+}
+
 async function newComment({idAccount, idPost, text, avatar, username, nickname}) {
     await api.post("/comments", {idAccount, idPost, text,avatar, username, nickname}).then((result) => {
         console.log(result.data)
@@ -264,8 +273,8 @@ function redirectToAfterLogin() {
 
     function storageUser(data) {
         localStorage.setItem("foursome", JSON.stringify(data));
-        console.log("Data id Account")
-        console.log(data.id)
+        // console.log("Data id Account")
+        // console.log(data.id)
         findInformationsAccount(data.id)
     }
 
@@ -294,7 +303,8 @@ function redirectToAfterLogin() {
             userDataNew,
             newComment,
             deletePost,
-            deleteComment
+            deleteComment,
+            likePost
         }}>
             {children}
         </AuthContext.Provider>

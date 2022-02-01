@@ -12,6 +12,7 @@ import { Groups } from '../pages/Groups/Groups';
 import { Invite } from '../pages/Invite/Invite';
 import { Preferences } from '../pages/Preferences/Preferences';
 import { Profile } from '../pages/Profile/Profile';
+import { ProfileFriend } from '../pages/ProfileFriend/ProfileFriend';
 import { Radar } from '../pages/Radar/Radar';
 import { Ranking } from '../pages/Ranking/Ranking';
 import { Recuperation } from '../pages/Recuperation/Recuperation';
@@ -40,6 +41,8 @@ function PrivateRoute({children} ) {
                     element={ <PrivateRoute> <Feed/> </PrivateRoute>} />
             <Route path="/profile"
                     element={ <PrivateRoute> <Profile/> </PrivateRoute>} />
+            <Route path="/profile-friend/:id"
+                    element={ <PrivateRoute> <ProfileFriend/> </PrivateRoute>} />
             <Route path="/friends" 
                 element={ <PrivateRoute> <Friends/> </PrivateRoute>} />
             <Route path="/friendsingle" 

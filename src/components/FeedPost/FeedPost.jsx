@@ -5,6 +5,8 @@ import { AuthContext } from '../../contexts/Auth';
 import api from "../../services/api";
 import { parseISO, format} from 'date-fns';
 import { FeedComments } from '../FeedComments/FeedComments';
+import { ListReactions } from '../ListReactions/ListReactions';
+import { Link } from 'react-router-dom';
 
 function FeedPost() {
     const Local = localStorage.getItem("foursome");
@@ -14,9 +16,8 @@ function FeedPost() {
     const [post, setPost] = useState("");
     const [data, setData] = useState([]);
     const [comment, setComment] = useState(false);
-    const [viewComment, setViewComment] = useState(true);
     const [textComment, setTextComment] = useState("");
-    const {user, newComment, deletePost} = useContext(AuthContext);
+    const {user, newComment, deletePost, likePost} = useContext(AuthContext);
     
     useEffect(() => {
           async function findPosts() {
@@ -65,13 +66,6 @@ function FeedPost() {
             setComment(false) 
         }
     }
-    // function handleHabiliteViwesComment () {
-    //     if(viewComment === false) {
-    //         setViewComment(true)
-    //     } else {
-    //         setViewComment(false) 
-    //     }
-    // }
 
     function handleComment(idPost) {
     newComment({text: textComment, idPost, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username})
@@ -81,6 +75,10 @@ function FeedPost() {
 
     function handleDeletePost(id) {
     deletePost(id)
+    }
+
+    function handleLikePost( idPost) {
+        likePost({idAccount: userData.id, username: userData.username, idPost})
     }
 
 
@@ -106,7 +104,7 @@ function FeedPost() {
                                         <>                      
                                 <div className="feed-post" key={postsData.id}>
                                     <div className="post-user" >
-                                        <img src={postsData.avatar} alt="" />
+                                    <Link to={`/profile-friend/${postsData.id}`} >  <img src={postsData.avatar} alt="" /> </Link>
                                         <div className="info-data">
                                         <div className="name-data">
                                         <h4 className="selected">{postsData.nickname}</h4>
@@ -123,7 +121,7 @@ function FeedPost() {
 
                                     {postsData.type === "post-photo" ?
                                         <div className="post-data-media" >
-                                            <h1>{userData.username}<br />{userData.username}<br />{userData.username}<br />{userData.username}<br />{userData.username}</h1>
+                                          <h1>{userData.username}<br />{userData.username}<br />{userData.username}<br />{userData.username}<br />{userData.username}</h1>
                                             <img src={postsData.link} alt={"Post Image"} width={500}/>
                                         </div> :
                                     postsData.type === "post-video" ?
@@ -137,10 +135,11 @@ function FeedPost() {
                                       }
 
                                     <div className="reactions" >
-                                        <button className="selected">
+                                        <button className="selected" onClick={() => {handleLikePost(postsData.id)}}>
                                             <FiThumbsUp />
                                             Curtir
                                         </button>
+                                     <ListReactions idPost={postsData.id} />
                                         <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
                                             Comentar

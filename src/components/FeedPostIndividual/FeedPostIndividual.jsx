@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/Auth';
 import api from "../../services/api";
 import { parseISO, format} from 'date-fns';
 import { FeedComments } from '../FeedComments/FeedComments';
+import { ListReactions } from '../ListReactions/ListReactions';
 
     function FeedPostIndividual() {
     const Local = localStorage.getItem("foursome");
@@ -19,7 +20,7 @@ import { FeedComments } from '../FeedComments/FeedComments';
     const [viewComment, setViewComment] = useState(true);
     const [textComment, setTextComment] = useState("");
 
-    const {user, newComment} = useContext(AuthContext);
+    const {user, newComment, likePost} = useContext(AuthContext);
     useEffect(() => {
           async function findPosts() {
             if(post === "") {
@@ -30,9 +31,7 @@ import { FeedComments } from '../FeedComments/FeedComments';
             const idAccount = userData.id;
             const type = post;
             const res = await api.get(`/posts/filter/${idAccount}/${type}`);
-            console.log("Result, filter")
             const dataPosts = (res.data)
-            console.log(res.data)
             setData(dataPosts)
         }
         }
@@ -71,18 +70,16 @@ import { FeedComments } from '../FeedComments/FeedComments';
             setComment(false) 
         }
     }
-    // function handleHabiliteViwesComment () {
-    //     if(viewComment === false) {
-    //         setViewComment(true)
-    //     } else {
-    //         setViewComment(false) 
-    //     }
-    // }
+
 
     function handleComment(idPost) {
     newComment({text: textComment, idPost, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username})
     setTextComment("");
     setComment(false) 
+    }
+
+    function handleLikePost( idPost) {
+        likePost({idAccount: userData.id, username: userData.username, idPost})
     }
 
 
@@ -140,10 +137,11 @@ import { FeedComments } from '../FeedComments/FeedComments';
                                       }
 
                                     <div className="reactions" >
-                                        <button className="selected">
+                                        <button className="selected"  onClick={() => {handleLikePost(postsData.id)}}>
                                             <FiThumbsUp />
                                             Curtir
                                         </button>
+                                        <ListReactions idPost={postsData.id} />
                                         <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
                                             Comentar
@@ -166,16 +164,7 @@ import { FeedComments } from '../FeedComments/FeedComments';
                                 )
                             }))}
                            </div>
-            {/* {filterComments.map((comments) => {
-                return (
-                    <>
-                    <h4>{comments.nickname}</h4>
-                    <h4>{comments.username}</h4>
-                    <h4>{comments.idAccount}</h4>
-                    <h4>{comments.idPost}</h4>
-                    </>
-                )
-            })} */}
+
         </div>
          
          
