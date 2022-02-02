@@ -25,8 +25,8 @@ function AuthProvider({children}) {
         loadStorage(); 
     },[]);
 
-    async function createAccount(username, email, phone, type, password, status, role, code, online) {
-        const data = {username, email, phone, type, password, status, role, code, online}
+    async function createAccount(username, email, phone, type, password, status, role, code, online, patron) {
+        const data = {username, email, phone, type, password, status, role, code, online, patron}
         console.log(data)
         console.log(data.email)
         console.log(data.code)

@@ -28,8 +28,8 @@ function SignUp() {
 
     if(checked) {
         if(passordConfirm === password) {
-         createAccount(username, email, phone, type, password, status, role, code, online)
-          console.log( username, email, phone, type, password, status, role, code, online)
+         createAccount(username, email, phone, type, password, status, role, code, online, patron)
+          console.log( username, email, phone, type, password, status, role, code, online, patron)
         } else {
           toast.error("As senhas não combinam!")
         }
