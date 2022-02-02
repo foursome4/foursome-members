@@ -105,6 +105,8 @@
     justify-content: center;
 }
 
+
+
 .feedPost .posts-feed .feed-post .post-data-media .image img{
     width: 400px;
     height: 400px;
@@ -124,12 +126,12 @@
 }
 
 .feedPost .posts-feed .feed-post .post-data-media .mark .black{
-    color: rgba(0, 0, 0, 0.056);
+    color: rgba(0, 0, 0, 0.036);
     margin: 2px;
     font-weight: 500;
 }
 .feedPost .posts-feed .feed-post .post-data-media .mark .white{
-    color: rgba(255, 255, 255, 0.056);
+    color: rgba(255, 255, 255, 0.036);
     margin: 2px;
     font-weight: 500;
 }
