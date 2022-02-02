@@ -4,35 +4,56 @@ import { AuthContext } from '../../contexts/Auth';
 import { useParams } from 'react-router';
 
 import './signUp.css';
+import { toast } from 'react-toastify';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 function SignUp() {
   const {email} = useParams()
   const  {createAccount} = useContext(AuthContext)
-  const [nickname, setNickname] = useState("");
   const [username, setUsername] = useState("");
-  const [emailUser, setEmailUser] = useState("");
   const [code, setCode] = useState("");
   const [phone, setPhone] = useState("");
+  const [type, setType] = useState("")
   const [password, setPassword] = useState("");
   const [passordConfirm, setPassordConfirm] = useState("");
-  const [checked, setChecked] = useState(false)
+  const [passwordView, setPasswordView] = useState(false)
+  const [checked, setChecked] = useState(false);
 
   function handleCreateAccount(e) {
     e.preventDefault();
-    const status = "test"; // Test = 7 Dias -- Active = Palno Ativo/Pago -- Bloqued = Plano Bloqueado/ Não pago-expirado -- Banned 
-    const role = "member";
+    const status = "active"; // Test = 7 Dias -- Active = Palno Ativo/Pago -- Bloqued = Plano Bloqueado/ Não pago-expirado -- Banned 
+    const role = "Membro";
+    const online = false;
 
     if(checked) {
-     createAccount( {username, emailUser, phone, password, status: "active", role: "Membro"})
-      console.log( username, email, phone, password, status, role)
+        if(passordConfirm === password) {
+         createAccount(username, email, phone, type, password, status, role, code, online)
+          console.log( username, email, phone, type, password, status, role, code, online)
+        } else {
+          toast.error("As senhas não combinam!")
+        }
     } else {
-      alert("Favor, confirmar a leitura do termo de uso")
+      toast.error("Favor, confirmar a leitura do termo de uso")
     }
+  }
+
+  function handleSetectType(e) {
+    setType(e.target.value)
+    console.log(e.target.value)
   }
 
   function handleChange(e) {
     setChecked(true)
   }
+
+  function handlePasswordView() {
+    if(passwordView === false) {
+      setPasswordView(true)
+    } else {
+      setPasswordView(false)
+    }
+  }
+
   return (
     <div className="content">
       <div className="signUp">
@@ -45,12 +66,30 @@ function SignUp() {
         <div className="title">
             <h3>CADASTRE-SE</h3>
           </div>
-          <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmailUser(e.target.value)} disabled/>
+          <input type="text" placeholder="E-mail" value={email} disabled/>
           <input type="text" placeholder="Código de verificação" value={code} onChange={(e) => setCode(e.target.value)} />
-          <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
+          <input type="text" placeholder="Username" value={username.toLowerCase()} onChange={(e) => setUsername(e.target.value)}/>
+          <select value={type} onChange={handleSetectType}>
+                                <option value="">Tipo de conta</option>
+                                <option value="Homem">Homem </option>
+                                <option value="Mulher">Mulher </option>
+                                <option value="Casal">Casal </option>
+                                <option value="Trisal">Trisal </option>
+                                <option value="Transex">Transex </option>
+                                <option value="Travestis">Travestis </option>
+                            </select>
           <input type="tel" placeholder="Telefone" pattern="([0-9]{2})[0-9]{5}-[0-9]{4}" value={phone} onChange={(e) => setPhone(e.target.value)}/>
-          <input type="password" placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
-          <input type="password" placeholder="Confirmar senha" value={passordConfirm} onChange={(e) => setPassordConfirm(e.target.value)}/>
+
+          <div className="inputPassword">
+          <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
+          <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
+          </div>
+
+          <div className="inputPassword">
+          <input type={passwordView === false ? "password" : "text" } placeholder="Confirmar senha" value={passordConfirm} onChange={(e) => setPassordConfirm(e.target.value)}/>
+          <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
+          </div>
+
 
           <div className="terms">
           <input type="checkbox" checked={checked} onChange={handleChange}/>

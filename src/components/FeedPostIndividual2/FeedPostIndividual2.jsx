@@ -7,62 +7,58 @@ import { parseISO, format} from 'date-fns';
 import { FeedComments } from '../FeedComments/FeedComments';
 import { ListReactions } from '../ListReactions/ListReactions';
 
-    function FeedPostIndividual2(idAccount, avatar, username) {
-        console.log("idAccount.username")
-        console.log(idAccount.username)
+    function FeedPostIndividual2(idAccount) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(LocalInformation);
 
 
-    const [post, setPost] = useState("");
+    const [myPosts, setMyPosts] = useState("");
     const [data, setData] = useState([]);
     const [comment, setComment] = useState(false);
-    const [viewComment, setViewComment] = useState(true);
     const [textComment, setTextComment] = useState("");
 
     const {user, newComment, likePost} = useContext(AuthContext);
     useEffect(() => {
           async function findPosts() {
-              const id = idAccount.idAccount;
-            if(post === "") {
-            const res = await api.get(`/posts/filter/accounts/${id}`);
+            if(myPosts === "all") {
+            const res = await api.get(`/posts/filter/accounts/${idAccount.idAccount}`);
             const dataPosts = (res.data)
             setData(dataPosts)
         } else {
-            const type = post;
-            const res = await api.get(`/posts/filter/${id}/${type}`);
+            const type = myPosts;
+            const res = await api.get(`/posts/filter/${idAccount.idAccount}/${type}`);
             const dataPosts = (res.data)
             setData(dataPosts)
         }
         }
         findPosts()
 
-    }, [post])
+    }, [myPosts])
 
     function postAll() {
-        setPost("")
+        setMyPosts("all")
     }
 
     function postText() {
-        setPost("post-text")
+        setMyPosts("post-text")
     }
 
     function postPhoto(){
-        setPost("post-photo")
+        setMyPosts("post-photo")
     }
 
     function postVideo(){
-        setPost("post-video")
+        setMyPosts("post-video")
     }
 
     function postGroup(){
-        setPost("post-group")
+        setMyPosts("post-group")
     }
 
     function postForum(){
-        setPost("post-forum")
+        setMyPosts("post-forum")
     }
 
     function handleHabiliteComment () {
@@ -89,26 +85,25 @@ import { ListReactions } from '../ListReactions/ListReactions';
         <div className="feedPostIndividual">
             <div className="posts-feed">
             <div className="buttons">
-            <button className={post === "" ? 'selected' : ""} onClick={postAll}> <FiMenu /> Todos </button>
-            <button className={post === "post-text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
-            <button className={post === "post-photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button>
-            <button className={post === "post-video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button>
-            <button className={post === "post-group" ? 'selected' : ""} onClick={postGroup}> <FiUsers /> Grupo </button>
-            <button className={post === "post-forum" ? 'selected' : ""} onClick={postForum}> <FiList /> Fórum </button>
+            <button className={myPosts === "all" ? 'selected' : ""} onClick={postAll}> <FiMenu /> Todos </button>
+            <button className={myPosts === "post-text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
+            <button className={myPosts === "post-photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button>
+            <button className={myPosts === "post-video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button>
+            <button className={myPosts === "post-group" ? 'selected' : ""} onClick={postGroup}> <FiUsers /> Grupo </button>
+            <button className={myPosts === "post-forum" ? 'selected' : ""} onClick={postForum}> <FiList /> Fórum </button>
             </div>
                             
                                 {data.map((postsData => {
-
                                 const date = parseISO(postsData.created_at);
                                 const dateFormated = format(
                                     date, 
                                 "dd'/'MM'/'yyyy', às 'HH:mm'h'"
                                 );
 
-                                    return (   
+                                return (   
                                         <>                      
                                 <div className="feed-post" key={postsData.id}>
-                                    <div className="post-user" >
+                                    <div className="post-user" key={postsData.id} >
                                         <img src={postsData.avatar} alt="" />
                                         <div className="info-data">
                                         <div className="name-data">
@@ -143,7 +138,7 @@ import { ListReactions } from '../ListReactions/ListReactions';
                                             <FiThumbsUp />
                                             Curtir
                                         </button>
-                                        <ListReactions idPost={postsData.id} />
+                                        <ListReactions idPost={postsData.id} idAccount={idAccount.idAccount}/>
                                         <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
                                             Comentar

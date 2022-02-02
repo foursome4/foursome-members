@@ -25,12 +25,24 @@ function AuthProvider({children}) {
         loadStorage(); 
     },[]);
 
-    async function createAccount(username, email, phone, password, role, status) {
-        const data = {username, email, phone, password, role, status}
+    async function createAccount(username, email, phone, type, password, status, role, code, online) {
+        const data = {username, email, phone, type, password, status, role, code, online}
+        console.log(data)
+        console.log(data.email)
+        console.log(data.code)
+        const dataInvite = await api.get(`/invites/find/${data.email}/${data.code}`);
+        console.log(dataInvite.data[0])
+
+        if(dataInvite.data[0] === undefined) {
+            toast.error("Código de verificação errado ou expirado!")
+            return
+        } 
+        
         const res = await api.post('/accounts', data);
         if(res.status === 201) {
             console.log("Cadastro realizado com sucesso!");
             toast.info(`Cadastro criado com sucesso!`);
+            navigate("/")
         } else {
             console.log("Cadastro não foi realizado");
             toast.error(`Falha na criação do cadastro. Revise suas informações!`);
@@ -139,18 +151,18 @@ function AuthProvider({children}) {
         data3, sex3, sign3, sexualOption3, education3, heigth3, weight3, physique3, ethnicity3, eyes3, hair3, tattos3, smokes3}) {
             setLoading(true)
             await api.post("/characteristics", {
-                id_account: idAccount, birthDate: data, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes
+                idAccount: idAccount, birthDate: data, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes
             }).then(async (result) => {
                 console.log(result.data)
                 console.log("updateCharacteristcs3 ok");
                 await api.post("/characteristics",  {
-                    id_account: idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2, education:education2, heigth: heigth2, weight: weight2, physique:physique2, ethnicity:ethnicity2, eyes:eyes2, hair:hair2, tatoos: tattos2, smokes:smokes2,
+                    idAccount: idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2, education:education2, heigth: heigth2, weight: weight2, physique:physique2, ethnicity:ethnicity2, eyes:eyes2, hair:hair2, tatoos: tattos2, smokes:smokes2,
                 }).then(async (result) => {
                     console.log(result.data)
                     console.log("updateCharacteristcs3 ok");
             
                     await api.post("/characteristics", {
-                        id_account: idAccount, birthDate: data3, sex:sex3, sign:sign3, sexualOption: sexualOption3, education:education3, heigth: heigth3, weight: weight3, physique:physique3, ethnicity:ethnicity3, eyes:eyes3, hair:hair3, tatoos: tattos3, smokes:smokes3,
+                        idAccount: idAccount, birthDate: data3, sex:sex3, sign:sign3, sexualOption: sexualOption3, education:education3, heigth: heigth3, weight: weight3, physique:physique3, ethnicity:ethnicity3, eyes:eyes3, hair:hair3, tatoos: tattos3, smokes:smokes3,
                     }).then(async (result) => {
                         console.log(result.data)
                         console.log("updateCharacteristcs3 ok");
@@ -216,11 +228,14 @@ async function deleteComment(id) {
 }
 
 async function likePost({idAccount, username, idPost}) {
-    await api.post("/reactions", {idAccount, username, idPost}).then((result) => {
-        console.log(result.data)
-        console.log("Post Realizado com sucesso!");
-        window.location.reload(false)
-        setLoading(false)
+await api.post("/reactions", {idAccount, username, idPost}).then((result) => {
+    console.log(result.data)
+    console.log("Post Realizado com sucesso!");
+    window.location.reload(false)
+    setLoading(false)
+}).catch(error => {
+    console.log(error)
+    toast.warning('Você já curtiu esta postagem!');
     })
 }
 
@@ -233,16 +248,28 @@ async function newComment({idAccount, idPost, text, avatar, username, nickname})
     })
 }
 
-async function CreateInviteNewUsew({inviteCode, name, email, phone,idAccount}) {
-    await api.post("/invites", {inviteCode, name, email, phone, idAccount}).then((result) => {
-        console.log(result.data)
+async function CreateInviteNewUsew({inviteCode, name, email, phone,idAccount, username}) {
+    const findAccountEmail = await api.get(`/accounts/find/${email}`);
+
+    if(findAccountEmail.data[0]) {
+        toast.error("Já existe uma conta com este e-mail!")
+        return
+    } 
+
+    await api.post("/invites", {inviteCode, name, email, phone, idAccount, username}).then((result) =>{
         console.log("Convite cadastrado com sucesso");
     }).catch(error => {
         console.log("Convite não cadastrado" + error)
+        toast.error("Já existe um covite com este e-mail!")
     })
-}
 
     
+           
+ 
+     
+
+  
+}
 
 async function findInformationsAccount(id) {
     await api.get(`/informations/${id}`)

@@ -4,7 +4,7 @@ import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { useContext, useState } from "react"
 import { AuthContext } from "../../contexts/Auth"
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
-// import { useShortenUrl } from 'react-shorten-url';
+import { FiCheck} from "react-icons/fi"
 
 
 function Invite() {
@@ -16,7 +16,7 @@ function Invite() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    const [code, setCode] = useState("rt54t5-o89");
+    const [code, setCode] = useState("");
 
 
     const {CreateInviteNewUsew} = useContext(AuthContext);
@@ -24,29 +24,21 @@ function Invite() {
     function createInvite(e) {
         e.preventDefault();
 
-        const text = `Parabens ${name}! %0AVocê foi convidado a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa. %0A%0AEsse convite é valido por 10 dias e intransferível. %0A%0APara criar seu perfil agora, acesse: %0A e Utilize o Código: ${code} %0A%0AEm caso de dúvida, fale conosco. %0AContato@foursome.com.br %0A%0AFOURSOME https://www.foursome.com.br`
+        const text = `Parabens ${name}! %0AVocê foi convidado a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa. %0A%0AEsse convite é valido por 10 dias e intransferível. %0A%0APara criar seu perfil agora, acesse: https://foursome.com.br/signup/${email} %0A e Utilize o Código: ${code} %0A%0AEm caso de dúvida, fale conosco. %0AContato@foursome.com.br %0A%0AFOURSOME https://www.foursome.com.br`
 
-        //setCode(user.id.substring(0, 6))
+        setCode(user.id.substring(0, 6))
 
         console.log(`Code: ${user.id.substring(0, 6)}, Nome: ${name}, Email: ${email}, Telefone: ${phone},
         isAccount: ${user.id}, username: ${user.username}, nickname: ${userInformation.nickname}, avatar: ${userInformation.avatar}`);
 
 
-        //CreateInviteNewUsew({inviteCode: code, name, email, phone})
+        CreateInviteNewUsew({inviteCode: code, name, email, phone, username: user.username, idAccount: user.id})
 
         window.open("https://api.whatsapp.com/send?phone=55"+ phone + "&text=" + text,
         '_blank')
 
     }
-       async function handleGenerateUrl (e) {
-
-        e.preventDefault();
-           await fetch(`https://cutt.ly/api/api.php?key=024da38b6a7d96441616ae8290d93ba0ef9ff&short=https://localhost:3000/signup/${email}&name=foursome`)
-           .then(async res => {
-               const link = await res.json();
-               console.log(link)
-           })
-    }
+   
     return (
         <div className="content">
             <ToolbarLeftSlim />
@@ -60,12 +52,20 @@ function Invite() {
                             </div>
                             <div className="invites-all">
                                 <div className="invites-unic">
+                                    <div className="informationInvite">
+                                        <h3>Olá, {userInformation.nickname}<br />antes de enviar um convite, verifique as seguintes informações</h3>
+                                       <div className="roles">
+                                       <p><FiCheck /> Certifique-se se seu convidado ja faz parte de nossa rede.</p>
+                                        <p><FiCheck /> O convite enviado é único, intransferível e válido por 10 dias.</p>
+                                        <p><FiCheck /> Você se torna amplamente responsável pelos atos de seu convidado, podendo sofrer as mesmas punições que ele, em caso de má conduta.</p>
+                                       </div>
+                                    </div>
                                    <form action="">
                                         <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome"/>
                                         <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
                                         <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Telefone"/>
 
-                                        <button onClick={handleGenerateUrl}> Enviar Convite</button>
+                                        <button onClick={createInvite}> Enviar Convite</button>
                                    </form>  
                                    <br />
                                    <br />

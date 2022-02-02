@@ -70,7 +70,7 @@
     background-color: var(--Background2);
     border-radius: 6px;
     font-size: 14px;
-    padding:10px;
+    padding:5px;
     margin-bottom: 5px;
     color: var(--Primary);
     font-weight: bold;
@@ -91,6 +91,29 @@
 .content .signUp .form input::placeholder {
     color: var(--Gray_font1);
 }
+
+.content .signUp .form .inputPassword {
+    width: 70%;
+    height: 35px;
+    display: flex;
+    
+    }
+    
+    .content .signUp .form .inputPassword input {
+        width: 100%;
+        border-radius: 6px 0 0 6px;
+    }
+    
+    .content .signUp .form .password {
+        background-color: var(--Background2);
+        height: 30px;
+        width: 50px;
+        border: none;
+        border-radius: 0 6px 6px 0;
+        font-size: 20px;
+        color: var(--Primary);
+    }
+    
 
 
 .content .signUp .form .buttons {
