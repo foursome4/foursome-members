@@ -58,6 +58,13 @@
     width: 90%;
 }
 
+.feedPost .posts-feed .feed-post .post-user a{
+   text-decoration: none;
+}
+.feedPost .posts-feed .feed-post .post-user h4{
+    font-weight: 500;
+}
+
 .feedPost .posts-feed .feed-post .post-user img {
     width: 50px;
     border-radius: 50%;
@@ -89,6 +96,44 @@
     justify-content: center;
 }
 
+.feedPost .posts-feed .feed-post .post-data-media .image{
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedPost .posts-feed .feed-post .post-data-media .image img{
+    width: 400px;
+    height: 400px;
+     object-fit: cover;
+ }
+
+.feedPost .posts-feed .feed-post .post-data-media .image .mark{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.feedPost .posts-feed .feed-post .post-data-media .mark .black{
+    color: rgba(0, 0, 0, 0.056);
+    margin: 2px;
+    font-weight: 500;
+}
+.feedPost .posts-feed .feed-post .post-data-media .mark .white{
+    color: rgba(255, 255, 255, 0.056);
+    margin: 2px;
+    font-weight: 500;
+}
+
 
 .feedPost .posts-feed .feed-post .post-data-media h1 {
     color: rgba(255, 255, 255, 0.4);
@@ -103,11 +148,7 @@
     width: 80%;
 }
 
-.feedPost .posts-feed .feed-post .post-data-media img{
-    margin-left: 0 auto;
-    margin-right: 0 auto;
-     width: 80%;
- }
+
  
 
 .feedPost .posts-feed .feed-post .post-data p {

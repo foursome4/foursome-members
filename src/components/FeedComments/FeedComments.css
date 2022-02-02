@@ -29,6 +29,10 @@
     width: 100%;
 }
 
+.feedComments .feed-comment .comment-user a {
+    text-decoration: none;
+}
+
 .feedComments .feed-comment .comment-user img {
     width: 25px;
     border-radius: 50%;

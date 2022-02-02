@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import api from "../../services/api";
 import { parseISO, format} from 'date-fns';
+import { Link } from 'react-router-dom';
 
 function FeedComments({idPost}) {
     const Local = localStorage.getItem("foursome");
@@ -62,9 +63,9 @@ function FeedComments({idPost}) {
                                  return (
                                     <div className="feed-comment" key={comments.id}>
                                     <div className="comment-user" >
-                                        <img src={comments.avatar} alt="" />
+                                    <Link to={`/profile-friend/${comments.idAccount}`}><img src={comments.avatar} alt="" /></Link>
                                         <div className="name-data">
-                                        <h4 className="selected">{comments.nickname}</h4>
+                                        <Link to={`/profile-friend/${comments.idAccount}`}><h4 className="selected">{comments.nickname}</h4></Link>
 
                                         <div className="time-data">
                                             <h5>{dateFormated}</h5>

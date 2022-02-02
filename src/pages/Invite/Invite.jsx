@@ -5,6 +5,7 @@ import { useContext, useState } from "react"
 import { AuthContext } from "../../contexts/Auth"
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import { FiCheck} from "react-icons/fi"
+import { v4 as uuidv4} from 'uuid'
 
 
 function Invite() {
@@ -16,7 +17,6 @@ function Invite() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    const [code, setCode] = useState("");
 
 
     const {CreateInviteNewUsew} = useContext(AuthContext);
@@ -24,19 +24,21 @@ function Invite() {
     function createInvite(e) {
         e.preventDefault();
 
-        const text = `Parabens ${name}! %0AVocê foi convidado a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa. %0A%0AEsse convite é valido por 10 dias e intransferível. %0A%0APara criar seu perfil agora, acesse: https://foursome.com.br/signup/${email} %0A e Utilize o Código: ${code} %0A%0AEm caso de dúvida, fale conosco. %0AContato@foursome.com.br %0A%0AFOURSOME https://www.foursome.com.br`
+        const inviteCode = uuidv4()
+       
+        const code = inviteCode.substring(0, 4)
 
-        setCode(user.id.substring(0, 6))
-
-        console.log(`Code: ${user.id.substring(0, 6)}, Nome: ${name}, Email: ${email}, Telefone: ${phone},
+        console.log(`Code: ${code}, Nome: ${name}, Email: ${email}, Telefone: ${phone},
         isAccount: ${user.id}, username: ${user.username}, nickname: ${userInformation.nickname}, avatar: ${userInformation.avatar}`);
 
 
-        CreateInviteNewUsew({inviteCode: code, name, email, phone, username: user.username, idAccount: user.id})
+        CreateInviteNewUsew({code, name, email, phone, username: user.username, idAccount: user.id})
 
-        window.open("https://api.whatsapp.com/send?phone=55"+ phone + "&text=" + text,
-        '_blank')
+       
 
+        setEmail("")
+        setPhone("")
+        setName("")
     }
    
     return (

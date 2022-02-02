@@ -248,7 +248,9 @@ async function newComment({idAccount, idPost, text, avatar, username, nickname})
     })
 }
 
-async function CreateInviteNewUsew({inviteCode, name, email, phone,idAccount, username}) {
+async function CreateInviteNewUsew({code, name, email, phone,idAccount, username}) {
+    const text = `Parabens ${name}! %0AVocê foi convidado a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa. %0A%0AEsse convite é valido por 10 dias e intransferível. %0A%0APara criar seu perfil agora, acesse: https://foursome.com.br/signup/${email} %0A e Utilize o Código: ${code} %0A%0AEm caso de dúvida, fale conosco. %0AContato@foursome.com.br %0A%0AFOURSOME https://www.foursome.com.br`
+
     const findAccountEmail = await api.get(`/accounts/find/${email}`);
 
     if(findAccountEmail.data[0]) {
@@ -256,8 +258,10 @@ async function CreateInviteNewUsew({inviteCode, name, email, phone,idAccount, us
         return
     } 
 
-    await api.post("/invites", {inviteCode, name, email, phone, idAccount, username}).then((result) =>{
+    await api.post("/invites", {code, name, email, phone, idAccount, username}).then((result) =>{
         console.log("Convite cadastrado com sucesso");
+        window.open("https://api.whatsapp.com/send?phone=55"+ phone + "&text=" + text,
+        '_blank')
     }).catch(error => {
         console.log("Convite não cadastrado" + error)
         toast.error("Já existe um covite com este e-mail!")

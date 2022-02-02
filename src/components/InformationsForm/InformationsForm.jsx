@@ -9,6 +9,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import { v4 as uuidv4 } from 'uuid'
 import buscaCep from '../../services/api-buscaCep';
+import { toast } from 'react-toastify';
 
 
 function InformationsForm() {
@@ -107,7 +108,8 @@ function InformationsForm() {
             setUf(res.data.localidade)
             setCity(res.data.uf)
         }catch{
-            console.log("eRRO")
+            console.log("error")
+            toast.error("CEP não encontrado. Por favor, digite sua cidade e seu Estado(UF) - Sigla")
         }
     }
 
