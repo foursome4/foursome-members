@@ -95,6 +95,11 @@
     border-radius: 8px;
 }
 
+.content-profile .profile .main .section .profile-tools .tools .follower button svg  {
+    background-color: var(--Primary);
+    font-size: 50px;
+}
+
 .content-profile .profile .main .section .profile-tools .tools button {
     display: flex;
     flex-direction: column;
@@ -138,6 +143,31 @@
     align-items: center;
     justify-content: flex-start;
     padding: 10px;
+}
+
+.content-profile .profile .main .section .sections .feed .friends {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.content-profile .profile .main .section .sections .feed .friends .buttonsFriends {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content-profile .profile .main .section .sections .feed .friends .buttonsFriends button {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--Primary);
+    padding: 5px;
+    color: var(--Primary);
+    background-color: var(--Background2);
 }
 
 .content-profile .profile .main .section .sections .infos {

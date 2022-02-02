@@ -73,10 +73,10 @@ function FeedComments({idPost}) {
 
 
                                         <div className="reactions" >
-                                        <button onClick={handleHabiliteComment}>
+                                        {/* <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
                                             Comentar
-                                        </button>
+                                        </button> */}
                                         {comments.idAccount === userData.id ?
                                         <>
                                         <button>

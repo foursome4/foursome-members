@@ -168,14 +168,16 @@
     }
 
 
-    @media (max-width: 370px) {
+    @media (max-width: 380px) {
 
         .feedComments {
-            width: 100%;
+            width: 90%;
+            margin-bottom: -10px;
             }
 
         .feedComments .feed-comment .comment-user {
             width: 90%;
+            font-size: 12px;
             }
 
         .feedComments .feed-comment .reactions {

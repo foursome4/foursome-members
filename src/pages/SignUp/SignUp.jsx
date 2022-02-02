@@ -13,7 +13,8 @@ function SignUp() {
   const [username, setUsername] = useState("");
   const [code, setCode] = useState("");
   const [phone, setPhone] = useState("");
-  const [type, setType] = useState("")
+  const [type, setType] = useState("");
+  const [patron, setPatron] = useState("");
   const [password, setPassword] = useState("");
   const [passordConfirm, setPassordConfirm] = useState("");
   const [passwordView, setPasswordView] = useState(false)
@@ -68,6 +69,7 @@ function SignUp() {
           </div>
           <input type="text" placeholder="E-mail" value={email} disabled/>
           <input type="text" placeholder="Código de verificação" value={code} onChange={(e) => setCode(e.target.value)} />
+          <input type="text" placeholder="Id do Patrono" value={patron} onChange={(e) => setPatron(e.target.value)} />
           <input type="text" placeholder="Username" value={username.toLowerCase()} onChange={(e) => setUsername(e.target.value)}/>
           <select value={type} onChange={handleSetectType}>
                                 <option value="">Tipo de conta</option>

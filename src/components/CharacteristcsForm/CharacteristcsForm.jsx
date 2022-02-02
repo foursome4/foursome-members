@@ -294,7 +294,7 @@ function CharacteristcsForm() {
                         <form action="">
                             <div className="data">
                             <br /><br />
-                   {user.type === "trisal" ?
+                   {user.type === "Trisal" ?
                     <div className="data-form">   
                     <span>Membro casal 1</span><br />
                     <input type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
@@ -563,7 +563,7 @@ function CharacteristcsForm() {
                                 <option value="Não">Não </option>
                             </select>
              </div>
-             : user.type === "casal"?
+             : user.type === "Casal"?
              <div className="data-form">
                   <span>Membro casal 1</span><br />
                   <input type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>

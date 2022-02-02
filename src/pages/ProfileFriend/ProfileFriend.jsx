@@ -2,26 +2,27 @@ import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { TopBar } from '../../components/TopBar/TopBar'
 import coverImg from '../../assets/images/cover.png'
 import avatar from '../../assets/images/avatar.png'
-import {FiHome, FiImage, FiVideo, FiUsers, FiList, FiCalendar, FiSettings, FiMoreVertical, FiUser, FiUserPlus, FiHeart} from 'react-icons/fi'
+import {FiHome, FiImage, FiVideo, FiMoreVertical, FiUser, FiUserPlus, FiHeart} from 'react-icons/fi'
+import {FaHeart} from 'react-icons/fa'
 import './profileFriend.css'
-import { Post } from '../../components/Post/Post'
 import { Photos } from '../../components/Photos/Photos'
 import { Video } from '../../components/Video/Video'
-import { SettingsUser } from '../../components/SettingsUser/SettingsUser'
 import { FaMars, FaVenus } from 'react-icons/fa'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import api from '../../services/api'
 import { FeedPostIndividual2 } from '../../components/FeedPostIndividual2/FeedPostIndividual2'
+import { ListFriends } from '../../components/ListFriends/ListFriends'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { useParams } from 'react-router-dom'
+import {  } from 'react/cjs/react.development'
+import { AuthContext } from '../../contexts/Auth'
 
 
 function ProfileFriend() {
+  const {newFriend, newFollower} = useContext(AuthContext)
   const Local = localStorage.getItem("foursome");
   const myUser = JSON.parse(Local);
   const {id} = useParams();
-  console.log("idAccount")
-  console.log(id)
 
   const [userInformations, setuserInformations] = useState("null")
   const [user, setUser] = useState("null")
@@ -35,6 +36,7 @@ function ProfileFriend() {
   const [video, setVideo] = useState("");
   const [follower, setUserFollower] = useState("");
   const [friendNew, setUserNew] = useState("");
+  const [myFriends, setMyFriends] = useState("")
 
 
     useEffect(() => {
@@ -65,24 +67,41 @@ function ProfileFriend() {
       }
 
       async function loadPosts() {
+        
           const res = await api.get(`/posts/filter/accounts/${id}`);
           const dataPosts = (res.data)
           setPosts(dataPosts)
       }
+
+      async function loadFriends() {
+        const idAccount = id;
+        const result = await api.get(`/friends/filter/${idAccount}`);
+        console.log("Friends")
+        console.log(result.data);
+        setMyFriends(result.data)
+      }
       loadAccount()
       loadInformations();
       loadCharacteristcs();
-      loadPosts()
+      loadPosts();
+      loadFriends();
     }, []);
+
+    const idAccount = myUser.id
+    const idFriend = user.id
+    const type = "friend"
+    const status = "pending"
 
 
   function handleNewFriend(e) {
     e.preventDefault()
-    console.log({id_account: myUser.id, id_friend: user.id, type: "friend", status: "pending"})
+    console.log(idAccount, idFriend, type, status);
+    newFriend(idAccount, idFriend, type, status)
   }
   function handleNewFollower(e) {
     e.preventDefault()
-    console.log({id_account: myUser.id, id_friend: user.id, type: "friend", status: "pending"})
+    console.log(idAccount, idFriend, type, status)
+    newFollower(idAccount, idFriend, type, status)
   }
 
 
@@ -165,8 +184,8 @@ function ProfileFriend() {
                 </div>
                 <div className="tools">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed}><FiHome size={16}/></button>
-                  <button className={friendNew === "" ? "" : "select"} onClick={handleFriendNew, handleNewFriend}><FiUserPlus size={16}/></button>
-                  <button className={follower === "" ? "" : "select"} onClick={handleFollower,handleNewFollower}><FiHeart size={16}/></button>
+                  <button onClick={handleFriendNew, handleNewFriend}><FiUserPlus size={16}/></button>
+                  <button className="follower" onClick={handleFollower,handleNewFollower}><FiHeart size={16} backgroundColor="8124E2"/></button>
                   <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/></button>
                   <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/></button>
                   <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/></button>
@@ -258,7 +277,22 @@ function ProfileFriend() {
                   </>
                   :
                   friend === "friend" ?
-                  "Nenhum amigo aqui"
+                  <div className="friends">
+                    <div className="buttonsFriends">
+                      <button>Amigos</button>
+                      <button>Seguindo</button>
+                      <button>Segiodores</button>
+                      <button>Solicitação de amizade</button>
+                    </div> 
+
+                    {myFriends.map((friends) => {
+                      return (
+                        <>
+                        <ListFriends id={friends.idFriend} />
+                        </>
+                      )
+                    })}
+                  </div>
                   :
                   photo === "photo" ?
                   <Photos idAccount={user.id} type={"post-photo"} />

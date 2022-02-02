@@ -32,6 +32,7 @@ function Profile() {
   const [group, setGroup] = useState("");
   const [forum, setForum] = useState("");
   const [setting, setSetting] = useState("");
+  const [patron, setPatron] = useState([])
 
 
     useEffect(() => {
@@ -46,10 +47,14 @@ function Profile() {
       }
 
       async function loadCharacteristcs() {
-        const id_account = user.id
-        await api.get(`characteristics/${id_account}`)
+        const idAccount = user.id
+        console.log("User.ID")
+        console.log(user.id)
+        await api.get(`characteristics/${idAccount}`)
         .then((res) => {
           setCharacteristics(res.data)
+          console.log("res.data")
+          console.log(res.data)
         }).catch(error => {
           console.log("Erro ao buscar dados" + error)
       })
@@ -61,9 +66,20 @@ function Profile() {
           setPosts(dataPosts)
       }
 
+      async function searchPatron() {
+        const id = user.patron;
+        console.log("id Patron")
+        console.log(id)
+        const patron = await api.get(`accounts/filter/${id}`);
+        console.log("patron.data[0]")
+        console.log(patron.data[0])
+        setPatron(patron.data[0])
+      }
+
       loadInformations();
       loadCharacteristcs();
       loadPosts()
+      searchPatron()
     }, []);
 
 
@@ -175,6 +191,11 @@ function Profile() {
                         <h5>@{user !== null ? user.username :"User Test"}</h5>
                         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
                     </div>
+                    <div className="name">
+                        <br />
+                        <h4>Patrono: {patron !== null ? patron.username :"Patrono não eocnotrado"}</h4>
+                        <br />
+                    </div>
                 {characteristics.map((characteristicsUser) => {
 
                   const nascimento = new Date(characteristicsUser.birthDate);
@@ -268,7 +289,8 @@ function Profile() {
                    "Nenhum forum aqui"
                    :
                    setting === "setting" ?
-                   <SettingsUser idAccount={user.id} />
+                   "As configurações vão aparecer aqui!"
+                  //  <SettingsUser idAccount={user.id} />
                   :
                   ""
                   } 

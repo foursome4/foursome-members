@@ -32,7 +32,7 @@ function Invite() {
         isAccount: ${user.id}, username: ${user.username}, nickname: ${userInformation.nickname}, avatar: ${userInformation.avatar}`);
 
 
-        CreateInviteNewUsew({code, name, email, phone, username: user.username, idAccount: user.id})
+        CreateInviteNewUsew({code, name, email, phone, username: user.username, idAccount: user.id, patron: user.id, patronNikcname:userInformation.nickname })
 
        
 

@@ -104,7 +104,7 @@ function AuthProvider({children}) {
         sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes}) {
             setLoading(true)
             await api.post("/characteristics", {
-                id_account: idAccount, birthDate: data, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes
+                idAccount, birthDate: data, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes
             }).then(async (result) => {
                 console.log("updateCharacteristcs ok");
                 navigate("/preferences");
@@ -121,12 +121,12 @@ function AuthProvider({children}) {
         data2, sex2, sign2, sexualOption2, education2, heigth2, weight2, physique2, ethnicity2, eyes2, hair2, tattos2, smokes2,}) {
             setLoading(true)
             await api.post("/characteristics", {
-                id_account: idAccount, birthDate: data, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes
+                idAccount, birthDate: data, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes
             }).then(async (result) => {
                 console.log(result.data)
                 console.log("updateCharacteristcs2 ok");
                 await api.post("/characteristics",  {
-                    id_account: idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2, education:education2, heigth: heigth2, weight: weight2, physique:physique2, ethnicity:ethnicity2, eyes:eyes2, hair:hair2, tatoos:tattos2, smokes:smokes2,
+                    idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2, education:education2, heigth: heigth2, weight: weight2, physique:physique2, ethnicity:ethnicity2, eyes:eyes2, hair:hair2, tatoos:tattos2, smokes:smokes2,
                 }).then(async (result) => {
                     console.log(result.data)
                     console.log("updateCharacteristcs2 ok");
@@ -248,8 +248,8 @@ async function newComment({idAccount, idPost, text, avatar, username, nickname})
     })
 }
 
-async function CreateInviteNewUsew({code, name, email, phone,idAccount, username}) {
-    const text = `Parabens ${name}! %0AVocê foi convidado a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa. %0A%0AEsse convite é valido por 10 dias e intransferível. %0A%0APara criar seu perfil agora, acesse: https://foursome.com.br/signup/${email} %0A e Utilize o Código: ${code} %0A%0AEm caso de dúvida, fale conosco. %0AContato@foursome.com.br %0A%0AFOURSOME https://www.foursome.com.br`
+async function CreateInviteNewUsew({code, name, email, phone,idAccount, username, patron, patronNikcname}) {
+    const text = `Parabens ${name}! %0AVocê foi convidado por ${patronNikcname} a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa. %0A%0AEsse convite é valido por 10 dias e intransferível. %0A%0APara criar seu perfil agora, acesse: %0A https://foursome.com.br/signup/${email} %0A Utilize o Código: ${code}  %0A e adicione o código do seu Patrono: ${patron} %0A%0AEm caso de dúvida, fale conosco. %0AContato@foursome.com.br %0A%0AFOURSOME https://www.foursome.com.br`
 
     const findAccountEmail = await api.get(`/accounts/find/${email}`);
 
@@ -258,21 +258,14 @@ async function CreateInviteNewUsew({code, name, email, phone,idAccount, username
         return
     } 
 
-    await api.post("/invites", {code, name, email, phone, idAccount, username}).then((result) =>{
+    await api.post("/invites", {code, name, email, phone, idAccount, username, patron}).then((result) =>{
         console.log("Convite cadastrado com sucesso");
         window.open("https://api.whatsapp.com/send?phone=55"+ phone + "&text=" + text,
         '_blank')
     }).catch(error => {
         console.log("Convite não cadastrado" + error)
         toast.error("Já existe um covite com este e-mail!")
-    })
-
-    
-           
- 
-     
-
-  
+    })  
 }
 
 async function findInformationsAccount(id) {
@@ -299,6 +292,28 @@ function redirectToAfterLogin() {
         navigate("/feed");
     } 
     window.location.reload()
+}
+
+async function newFriend(idAccount, idFriend, type, status) {
+    const data = {idAccount, idFriend, type, status}
+    await api.post("/friends", data).then((result) => {
+        console.log(result.data)
+        console.log("Amizade criada com sucesso!")
+    }).catch(error => {
+        console.log(error)
+    })
+
+}
+
+async function newFollower(idAccount, idFriend, type, status) {
+    const data = {idAccount, idFriend, type, status}
+    await api.post("/followers", data).then((result) => {
+        console.log(result.data)
+        console.log("Amizade criada com sucesso!")
+    }).catch(error => {
+        console.log(error)
+    })
+
 }
 
 
@@ -335,7 +350,9 @@ function redirectToAfterLogin() {
             newComment,
             deletePost,
             deleteComment,
-            likePost
+            likePost,
+            newFriend,
+            newFollower
         }}>
             {children}
         </AuthContext.Provider>
