@@ -145,7 +145,7 @@
 .feedPost .posts-feed .feed-post .post-data-media video{
    margin-left: 0 auto;
    margin-right: 0 auto;
-    width: 80%;
+    width: 100%;
 }
 
 
@@ -251,11 +251,7 @@
          width: 90%;
      }
      
-     .feedPost .posts-feed .feed-post .post-data-media img{
-         margin-left: 0 auto;
-         margin-right: 0 auto;
-          width: 90%;
-      }
+    
 
     @media (max-width: 750px) {
         .feedPost {
@@ -266,17 +262,21 @@
             width: 90%;
         }
 
-        .feedPost .posts-feed .feed-post .post-data-media video{
-            margin-left: 0 auto;
-            margin-right: 0 auto;
-             width: 100%;
+        .feedPost .posts-feed .feed-post .post-data-media .image{
+            width: 350px;
+            height: 350px;
+        }
+        
+        .feedPost .posts-feed .feed-post .post-data-media .image img{
+            width: 350px;
+            height: 350px;
          }
-         
-         .feedPost .posts-feed .feed-post .post-data-media img{
-             margin-left: 0 auto;
-             margin-right: 0 auto;
-              width: 100%;
-          }
+        
+        .feedPost .posts-feed .feed-post .post-data-media .image .mark{
+            width: 350px;
+            height: 350px;
+
+        }
           
 
 
@@ -289,8 +289,28 @@
             .feedPost .posts-feed .feed-post .reactions {
                 width: 95%;
             }
+
+
+                .feedPost .posts-feed .feed-post .post-data-media .image{
+            width: 350px;
+            height: 350px;
+        }
+        
+        .feedPost .posts-feed .feed-post .post-data-media .image img{
+            width: 350px;
+            height: 350px;
+         }
+        
+        .feedPost .posts-feed .feed-post .post-data-media .image .mark{
+            width: 350px;
+            height: 350px;
+
+        }
+          
         }
 
+
+        
 
         @media (max-width: 550px) {
             .feedPost {
@@ -340,7 +360,41 @@
                 margin-right: 2px;
             }
 
+            .feedPost .posts-feed .feed-post .post-data-media .image{
+                width: 350px;
+                height: 350px;
+            }
+            
+            .feedPost .posts-feed .feed-post .post-data-media .image img{
+                width: 350px;
+                height: 350px;
+             }
+            
+            .feedPost .posts-feed .feed-post .post-data-media .image .mark{
+                width: 350px;
+                height: 350px;
+    
+            }
+              
 
+                @media(max-width: 450px) {
+                    .feedPost .posts-feed .feed-post .post-data-media .image{
+                        width: 300px;
+                        height: 300px;
+                    }
+                    
+                    .feedPost .posts-feed .feed-post .post-data-media .image img{
+                        width: 300px;
+                        height: 300px;
+                     }
+                    
+                    .feedPost .posts-feed .feed-post .post-data-media .image .mark{
+                        width: 300px;
+                        height: 300px;
+            
+                    }
+                      
+               
 
             @media (max-width: 400px) {
                 .feedPost {
@@ -380,6 +434,23 @@
                         width: 85%;
                     }
 
+                    .feedPost .posts-feed .feed-post .post-data-media .image{
+                        width: 250px;
+                        height: 250px;
+                    }
+                    
+                    .feedPost .posts-feed .feed-post .post-data-media .image img{
+                        width: 250px;
+                        height: 250px;
+                     }
+                    
+                    .feedPost .posts-feed .feed-post .post-data-media .image .mark{
+                        width: 250px;
+                        height: 250px;
+            
+                    }
+                      
+
                     .feed-post .comment {
                         margin-top: 10px;
                         width: 100%;
@@ -414,6 +485,7 @@
     }
 }
    }
+}
 }
 
 
