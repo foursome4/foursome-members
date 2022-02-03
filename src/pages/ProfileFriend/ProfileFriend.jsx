@@ -37,7 +37,7 @@ function ProfileFriend() {
   const [follower, setUserFollower] = useState("");
   const [friendNew, setUserNew] = useState("");
   const [myFriends, setMyFriends] = useState("")
-
+  const [patron, setPatron] = useState([])
 
     useEffect(() => {
       async function loadAccount() {
@@ -80,11 +80,20 @@ function ProfileFriend() {
         console.log(result.data);
         setMyFriends(result.data)
       }
+
+      async function searchPatron() {
+        const patron = await api.get(`accounts/filter/${id}`);
+        console.log("patron.data[0]")
+        console.log(patron.data[0])
+        setPatron(patron.data[0])
+      }
+
       loadAccount()
       loadInformations();
       loadCharacteristcs();
       loadPosts();
       loadFriends();
+      searchPatron()
     }, []);
 
     const idAccount = myUser.id
@@ -199,6 +208,11 @@ function ProfileFriend() {
                         <h5>@{user !== null ? user.username :"User Test"}</h5>
                         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
                     </div>
+                    <div className="name">
+                        <br />
+                        <h4>Patrono: {patron !== null ? patron.username :"Patrono não eocnotrado"}</h4>
+                        <br />
+                       </div>
                 {characteristics.map((characteristicsUser) => {
 
                   const nascimento = new Date(characteristicsUser.birthDate);
@@ -281,8 +295,8 @@ function ProfileFriend() {
                     <div className="buttonsFriends">
                       <button>Amigos</button>
                       <button>Seguindo</button>
-                      <button>Segiodores</button>
-                      <button>Solicitação de amizade</button>
+                      <button>Seguidores</button>
+                      <button>Solicitações</button>
                     </div> 
 
                     {myFriends.map((friends) => {

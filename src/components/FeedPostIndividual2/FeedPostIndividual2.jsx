@@ -22,7 +22,7 @@ import { ListReactions } from '../ListReactions/ListReactions';
     const {user, newComment, likePost} = useContext(AuthContext);
     useEffect(() => {
           async function findPosts() {
-            if(myPosts === "all") {
+            if(myPosts === "") {
             const res = await api.get(`/posts/filter/accounts/${idAccount.idAccount}`);
             const dataPosts = (res.data)
             setData(dataPosts)
@@ -38,7 +38,7 @@ import { ListReactions } from '../ListReactions/ListReactions';
     }, [myPosts])
 
     function postAll() {
-        setMyPosts("all")
+        setMyPosts("")
     }
 
     function postText() {
@@ -85,7 +85,7 @@ import { ListReactions } from '../ListReactions/ListReactions';
         <div className="feedPostIndividual">
             <div className="posts-feed">
             <div className="buttons">
-            <button className={myPosts === "all" ? 'selected' : ""} onClick={postAll}> <FiMenu /> Todos </button>
+            <button className={myPosts === "" ? 'selected' : ""} onClick={postAll}> <FiMenu /> Todos </button>
             <button className={myPosts === "post-text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
             <button className={myPosts === "post-photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button>
             <button className={myPosts === "post-video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button>

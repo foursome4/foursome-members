@@ -198,7 +198,7 @@ function FeedPost() {
                                         </div> :
                                     postsData.type === "post-video" ?
                                     <div className="post-data-media" >
-                                         <video controls >
+                                         <video autoPlay >
                                             <source src={postsData.link} type="video/mp4"/>
                                             </video>
                                         </div> :
@@ -215,10 +215,6 @@ function FeedPost() {
                                             <FiMessageCircle />
                                             Comentar
                                         </button>
-                                        {/* <button onClick={handleHabiliteViwesComment}>
-                                            <FiChevronDown />
-                                            Comentários
-                                        </button> */}
                                         {postsData.idAccount === user.id ?
                                         <>
                                             <button> <FiEdit /> Editar </button>
@@ -234,7 +230,6 @@ function FeedPost() {
 
                                 <FeedComments idPost={postsData.id} />
                                 </div>
-                                {/* {viewComment === false ? "" :  <FeedComments idPost={postsData.id} />} */}
                                 </>
                                 )
                             }))}
