@@ -2,7 +2,7 @@ import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { TopBar } from '../../components/TopBar/TopBar'
 import coverImg from '../../assets/images/cover.png'
 import avatar from '../../assets/images/avatar.png'
-import {FiHome, FiImage, FiVideo, FiMoreVertical, FiUser, FiUserPlus, FiHeart} from 'react-icons/fi'
+import {FiHome, FiImage, FiVideo, FiMoreVertical, FiUser, FiUserPlus, FiHeart, FiUserMinus} from 'react-icons/fi'
 import {FaHeart} from 'react-icons/fa'
 import './profileFriend.css'
 import { Photos } from '../../components/Photos/Photos'
@@ -12,21 +12,19 @@ import { useEffect, useState, useContext } from 'react'
 import api from '../../services/api'
 import { FeedPostIndividual2 } from '../../components/FeedPostIndividual2/FeedPostIndividual2'
 import { ListFriends } from '../../components/ListFriends/ListFriends'
-import { ListFriendsPending } from '../../components/ListFriendsPending/ListFriendsPending'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { useParams } from 'react-router-dom'
 import { AuthContext } from '../../contexts/Auth'
 
 
 function ProfileFriend() {
-  const {newFriend, newFollower} = useContext(AuthContext)
+  const {newFriend, newFollower, deleteFriend} = useContext(AuthContext)
   const Local = localStorage.getItem("foursome");
   const myUser = JSON.parse(Local);
   const {id} = useParams();
 
   const [userInformations, setuserInformations] = useState("null")
   const [user, setUser] = useState("null")
-
 
   const [characteristics, setCharacteristics] = useState([])
   const [posts, setPosts] = useState([]);
@@ -41,7 +39,6 @@ function ProfileFriend() {
   const [friends, setFriends] = useState("friends");
   const [following, setFollowing] = useState("");
   const [followers, setFollowers] = useState("");
-  const [requests, setRequests] = useState("");
 
     useEffect(() => {
       async function loadAccount() {
@@ -79,16 +76,12 @@ function ProfileFriend() {
 
       async function loadFriends() {
         const idAccount = id;
-        const result = await api.get(`/friends/filter/${idAccount}`);
-        console.log("Friends")
-        console.log(result.data);
+        const result = await api.get(`/friends/${idAccount}`);
         setMyFriends(result.data)
       }
 
       async function searchPatron() {
         const patron = await api.get(`accounts/filter/${id}`);
-        console.log("patron.data[0]")
-        console.log(patron.data[0])
         setPatron(patron.data[0])
       }
 
@@ -115,6 +108,13 @@ function ProfileFriend() {
     e.preventDefault()
     console.log(idAccount, idFriend, type, status)
     newFollower(idAccount, idFriend, type, status)
+  }
+
+  function handleDeleteFriend(e) {
+    e.preventDefault()
+    console.log("FriendExists.data[0]")
+    console.log(FriendExists[0].id)
+   deleteFriend(FriendExists[0].id)
   }
 
 
@@ -173,41 +173,26 @@ function ProfileFriend() {
       setFriends("friends");
       setFollowing("");
       setFollowers("");
-      setRequests("");
     }
     function handleFollowing() {
       setFriends("");
       setFollowing("following");
       setFollowers("");
-      setRequests("");
     }
     function handleFollowers() {
       setFriends("");
       setFollowing("");
       setFollowers("followers");
-      setRequests("");
     }
-    function handleRequest() {
-      setFriends("");
-      setFollowing("");
-      setFollowers("");
-      setRequests("requests");
-    }
-
+  
 
 
     const photos = posts.filter(post => (post.type === "post-photo"));
     const allPhotos = photos.slice(0, 6)
     const videos = posts.filter(post => (post.type === "post-video"));
- 
-const friendAproveds = myFriends.filter(friend => (friend.status === 'aproved'))
-const friendPending = myFriends.filter(friend => (friend.status === 'pending'))
-    
-console.log("Aproved")
-console.log(friendAproveds)
-console.log("Pending")
-console.log(friendPending)
-    
+    const friendAproveds = myFriends.filter(friend => (friend.status === 'aproved'))
+    const FriendExists = myFriends.filter(friend => (friend.idAccount === myUser.id || friend.idFriend === myUser.id))
+   
 
   return (
       <div className="container">
@@ -228,9 +213,15 @@ console.log(friendPending)
                   <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b></h3>
                 </div>
                 <div className="tools">
-                  <button className={feed === "" ? "" : "select"} onClick={handleFeed}><FiHome size={16}/></button>
-                  <button onClick={handleFriendNew, handleNewFriend}><FiUserPlus size={16}/></button>
-                  <button className="follower" onClick={handleFollower,handleNewFollower}><FiHeart size={16} backgroundColor="8124E2"/></button>
+                  <button className={feed === "" ? "" : "select"} onClick={handleFeed }><FiHome size={16}/></button>
+                  <button onClick={FriendExists.length === 0 ? handleNewFriend : handleDeleteFriend}>
+                  {FriendExists.length === 0 ? <FiUserPlus size={16}/> : <FiUserMinus size={16}/> } 
+                    </button>
+
+                  <button className="follower" onClick={handleFollower,handleNewFollower}>
+                   <FiHeart size={16} />
+                    
+                    </button>
                   <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/></button>
                   <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/></button>
                   <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/></button>
@@ -332,7 +323,6 @@ console.log(friendPending)
                       <button className={friends === "" ? "" : "select"} onClick={handleFriends}>Amigos</button>
                       <button className={following === "" ? "" : "select"} onClick={handleFollowing}>Seguindo</button>
                       <button className={followers === "" ? "" : "select"} onClick={handleFollowers}>Seguidores</button>
-                      <button className={requests === "" ? "" : "select"} onClick={handleRequest}>Solicitações</button>
                     </div> 
 
 
@@ -340,7 +330,7 @@ console.log(friendPending)
                     friendAproveds.map((friends) => {
                       return (
                         <>
-                        <ListFriends id={friends.idFriend} />
+                        <ListFriends id={friends.idFriend === id ? friends.idAccount : friends.idFriend} />
                         </>
                       )
                     })
@@ -348,15 +338,7 @@ console.log(friendPending)
                     "Seguindo"
                     : followers === "followers" ?
                     "Seguidores"
-                    : requests === "requests" ?
-                    friendPending.map((friends) => {
-                      return (
-                        <>
-                        <ListFriendsPending id={friends.idFriend} />
-                        </>
-                      )
-                    })
-                    :
+                    : 
                     "Nada para mostrar"
                     
                   }

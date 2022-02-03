@@ -1,4 +1,4 @@
-import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiThumbsUp, FiSend, FiChevronDown } from 'react-icons/fi'
+import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiThumbsUp, FiSend } from 'react-icons/fi'
 import './feedPost.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
@@ -198,7 +198,7 @@ function FeedPost() {
                                         </div> :
                                     postsData.type === "post-video" ?
                                     <div className="post-data-media" >
-                                         <video autoPlay >
+                                         <video controls >
                                             <source src={postsData.link} type="video/mp4"/>
                                             </video>
                                         </div> :

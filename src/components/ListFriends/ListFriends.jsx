@@ -1,12 +1,14 @@
 import './listFriends.css'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/Auth';
 
 
-function ListFriends({id}) {
+function ListFriends({id, idRegister}) {
     const Local = localStorage.getItem("foursome");
     const myUser = JSON.parse(Local);
+
+    const {deleteFriend} = useContext(AuthContext)
 
     const [friendAccount, setFriendAccount] = useState("");
     const [friendInformation, setFriendInformation] = useState("");
@@ -30,6 +32,13 @@ function ListFriends({id}) {
         loadAccount();
         loadInformation();
     }, [])
+
+
+    function handleDeleteFriend(e) {
+        e.preventDefault()
+        console.log(idRegister)
+       deleteFriend(idRegister)
+    }
     return (
         <div className="listFriends">
            <div className="friendUnic">
@@ -41,6 +50,7 @@ function ListFriends({id}) {
                 :
                 <a href={`/profile-friend/${friendAccount.id}`}>Acessar Perfil</a>
             }
+            <button onClick={handleDeleteFriend} > Remover </button>
 
             </div>
            </div>

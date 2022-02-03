@@ -2,20 +2,25 @@ import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { TopBar } from '../../components/TopBar/TopBar'
 import coverImg from '../../assets/images/cover.png'
 import avatar from '../../assets/images/avatar.png'
-import {FiHome, FiImage, FiVideo, FiUsers, FiList, FiCalendar, FiSettings, FiMoreVertical, FiUser} from 'react-icons/fi'
+import {FiHome, FiImage, FiVideo,  FiSettings, FiMoreVertical, FiUser, FiMessageSquare, FiHeart} from 'react-icons/fi'
+import {FaHeart} from 'react-icons/fa'
 import './profile.css'
 import { Post } from '../../components/Post/Post'
 import { Photos } from '../../components/Photos/Photos'
 import { Video } from '../../components/Video/Video'
 import { SettingsUser } from '../../components/SettingsUser/SettingsUser'
+import { ListFriends } from '../../components/ListFriends/ListFriends'
 import { FaMars, FaVenus } from 'react-icons/fa'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import api from '../../services/api'
 import { FeedPostIndividual } from '../../components/FeedPostIndividual/FeedPostIndividual'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
+import { AuthContext } from '../../contexts/Auth'
+import { ListFriendsPending } from '../../components/ListFriendsPending/ListFriendsPending'
 
 
 function Profile() {
+  const {newFriend, newFollower} = useContext(AuthContext)
   const [dataUser, setDataUser] = useState(null)
   const Local = localStorage.getItem("foursome");
   const user = JSON.parse(Local);
@@ -32,7 +37,12 @@ function Profile() {
   const [group, setGroup] = useState("");
   const [forum, setForum] = useState("");
   const [setting, setSetting] = useState("");
-  const [patron, setPatron] = useState([])
+  const [myFriends, setMyFriends] = useState([]);
+  const [patron, setPatron] = useState([]);
+  const [friends, setFriends] = useState("friends");
+  const [following, setFollowing] = useState("following");
+  const [followers, setFollowers] = useState("");
+  const [requests, setRequests] = useState("");
 
 
     useEffect(() => {
@@ -48,13 +58,9 @@ function Profile() {
 
       async function loadCharacteristcs() {
         const idAccount = user.id
-        console.log("User.ID")
-        console.log(user.id)
         await api.get(`characteristics/${idAccount}`)
         .then((res) => {
           setCharacteristics(res.data)
-          console.log("res.data")
-          console.log(res.data)
         }).catch(error => {
           console.log("Erro ao buscar dados" + error)
       })
@@ -66,21 +72,43 @@ function Profile() {
           setPosts(dataPosts)
       }
 
+      async function loadFriends() {
+        const idAccount = user.id;
+        const result = await api.get(`/friends/${idAccount}`);
+        setMyFriends(result.data)
+      }
+
+
       async function searchPatron() {
         const id = user.patron;
-        console.log("id Patron")
-        console.log(id)
         const patron = await api.get(`accounts/filter/${id}`);
-        console.log("patron.data[0]")
-        console.log(patron.data[0])
         setPatron(patron.data[0])
       }
 
       loadInformations();
       loadCharacteristcs();
-      loadPosts()
-      searchPatron()
+      loadPosts();
+      searchPatron();
+      loadFriends();
     }, []);
+
+    const idAccount = user.id
+    const idFriend = user.id
+    const type = "friend"
+    const status = "pending"
+
+
+  function handleNewFriend(e) {
+    e.preventDefault()
+    console.log(idAccount, idFriend, type, status);
+    newFriend(idAccount, idFriend, type, status)
+  }
+  function handleNewFollower(e) {
+    e.preventDefault()
+    console.log(idAccount, idFriend, type, status)
+    newFollower(idAccount, idFriend, type, status)
+  }
+
 
 
     function handleFeed() {
@@ -148,9 +176,39 @@ function Profile() {
     }
 
 
+    function handleFriends() {
+      setFriends("friends");
+      setRequests("");
+    }
+    function handleFollowing() {
+
+      setFollowing("following");
+      setFollowers("");
+
+    }
+    function handleFollowers() {
+      setFollowing("");
+      setFollowers("followers");
+    }
+    function handleRequest() {
+      setFriends("");
+        setRequests("requests");
+    }
+
     const photos = posts.filter(post => (post.type === "post-photo"));
     const allPhotos = photos.slice(0, 6)
     const videos = posts.filter(post => (post.type === "post-video"));
+
+    const friendAproveds = myFriends.filter(friend => (friend.status === 'aproved'))
+console.log("MYID")
+console.log(user.id)
+const friendPending = myFriends.filter(friend => (friend.status === 'pending' && friend.idFriend === user.id))
+    
+console.log("Aproved")
+console.log(friendAproveds)
+console.log("Pending")
+console.log(friendPending)
+    
  
 
     
@@ -176,10 +234,10 @@ function Profile() {
                 <div className="tools">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed}><FiHome size={16}/></button>
                   <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/></button>
+                  <button className={forum === "" ? "" : "select"} onClick={handleForum}><FiHeart size={16}/></button>
                   <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/></button>
                   <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/></button>
-                  <button className={group === "" ? "" : "select"} onClick={handleGroup}><FiUsers size={16}/></button>
-                  <button className={forum === "" ? "" : "select"} onClick={handleForum}><FiList size={16}/></button>
+                  <button className={group === "" ? "" : "select"} onClick={handleGroup}><FiMessageSquare size={16}/></button>
                   <button className={setting === "" ? "" : "select"} onClick={handleSetting}><FiSettings size={16}/></button>
                   <button  className='settings'><FiMoreVertical size={16}/></button>
                 </div>
@@ -224,7 +282,7 @@ function Profile() {
                   
                     <div className="info-social">
                         <div className="info-social-data">
-                            <p>150</p>
+                            <p>{friendAproveds.length}</p>
                             <h5>Amigos</h5>
                         </div>
                         <div className="info-social-data">
@@ -274,7 +332,36 @@ function Profile() {
                   </>
                   :
                   friend === "friend" ?
-                  "Nenhum amigo aqui"
+                  <div className="friends">
+                  <div className="buttonsFriends">
+                    <button className={friends === "" ? "" : "select"} onClick={handleFriends}>Amigos</button>
+                    <button className={requests === "" ? "" : "select"} onClick={handleRequest}>Solicitações</button>
+                  </div> 
+
+
+                  {friends === "friends" ?
+                  friendAproveds.map((friends) => {
+                    return (
+                      <>
+                      <ListFriends id={friends.idFriend === user.id ? friends.idAccount : friends.idFriend} idRegister={friends.id}/>
+                      </>
+                    )
+                  })
+                  : requests === "requests" ?
+                  friendPending.map((friends) => {
+                    return (
+                      <>
+                      <ListFriendsPending idAccount={friends.idAccount} id={friends.id} />
+                      </>
+                    )
+                  })
+                  :
+                  "Nada para mostrar"
+                  
+                }
+
+                  
+                </div>
                   :
                   photo === "photo" ?
                   <Photos idAccount={user.id} type={"post-photo"} />
@@ -286,7 +373,26 @@ function Profile() {
                    "Nenhum grupo aqui"
                    :
                    forum === "forum" ?
-                   "Nenhum forum aqui"
+
+                   <div className="friends">
+                   <div className="buttonsFriends">
+                     <button className={followers === "" ? "" : "select"} onClick={handleFollowers}>Seguidores</button>
+                     <button className={following === "" ? "" : "select"} onClick={handleFollowing}>Seguindo</button>
+                   </div> 
+ 
+ 
+                   {followers === "followers" ?
+                  "Seguidores"
+                   :following === "following" ?
+                   "Seguindo"
+                    : 
+                   "Nada para mostrar"
+                   
+                 }
+ 
+                   
+                 </div>
+                  
                    :
                    setting === "setting" ?
                    "As configurações vão aparecer aqui!"

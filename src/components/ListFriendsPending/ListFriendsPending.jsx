@@ -1,10 +1,12 @@
 import './listFriendsPending.css'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/Auth';
 
 
-function ListFriendsPending({id}) {
+function ListFriendsPending({idAccount, id}) {
+    const {friendAproved} = useContext(AuthContext)
     const Local = localStorage.getItem("foursome");
     const myUser = JSON.parse(Local);
 
@@ -13,16 +15,13 @@ function ListFriendsPending({id}) {
 
     useEffect(() => {
         async function loadAccount() {
-            await api.get(`/accounts/filter/${id}`).then((result) => {
-                console.log(result.data[0])
+            await api.get(`/accounts/filter/${idAccount}`).then((result) => {
                 setFriendAccount(result.data[0])
             })
         }
 
         async function loadInformation() {
-            const idAccount = id;
             await api.get(`/informations/${idAccount}`).then((result) => {
-                console.log(result.data[0])
                 setFriendInformation(result.data[0])
             })
         }
@@ -30,6 +29,14 @@ function ListFriendsPending({id}) {
         loadAccount();
         loadInformation();
     }, [])
+
+
+    function handleAprovedFriend(e) {
+        e.preventDefault()
+        friendAproved(id)
+    }
+
+
     return (
         <div className="listFriends">
            <div className="friendUnic">
@@ -41,7 +48,7 @@ function ListFriendsPending({id}) {
                 :
                 <Link to={`/profile-friend/${friendAccount.id}`}>Acessar Perfil</Link>
             }
-            <button>Aceitar solicitação</button>
+            <button onClick={handleAprovedFriend}>Aceitar solicitação</button>
             <button>Não o/a conheço - Apenas seguir</button>
             </div>
            </div>

@@ -298,13 +298,29 @@ async function newFriend(idAccount, idFriend, type, status) {
     const data = {idAccount, idFriend, type, status}
     await api.post("/friends", data).then((result) => {
         console.log(result.data)
-        console.log("Amizade criada com sucesso!")
+        console.log("Solicitação enviada com sucesso!")
+        window.location.reload(false);
     }).catch(error => {
         console.log(error)
     })
 
 }
 
+async function friendAproved(id) {
+    console.log(id)
+   await api.put(`/friends/${id}`, {status: "aproved"}).then((result) => {
+       console.log("Solicitação aprovada com sucesso!")
+        window.location.reload(false)
+   })
+}
+
+async function deleteFriend(id){
+    console.log(id);
+    await api.delete(`/friends/${id}`).then((result) => {
+        console.log("Amigo deletado com sucesso!")
+        window.location.reload(false)
+    })
+}
 async function newFollower(idAccount, idFriend, type, status) {
     const data = {idAccount, idFriend, type, status}
     await api.post("/followers", data).then((result) => {
@@ -352,7 +368,9 @@ async function newFollower(idAccount, idFriend, type, status) {
             deleteComment,
             likePost,
             newFriend,
-            newFollower
+            newFollower,
+            friendAproved,
+            deleteFriend
         }}>
             {children}
         </AuthContext.Provider>
