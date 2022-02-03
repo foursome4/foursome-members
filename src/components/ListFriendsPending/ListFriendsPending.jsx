@@ -1,10 +1,10 @@
-import './listFriends.css'
+import './listFriendsPending.css'
 import { useEffect, useState } from 'react'
 import api from '../../services/api';
 import { Link } from 'react-router-dom';
 
 
-function ListFriends({id}) {
+function ListFriendsPending({id}) {
     const Local = localStorage.getItem("foursome");
     const myUser = JSON.parse(Local);
 
@@ -37,15 +37,16 @@ function ListFriends({id}) {
             <div className="name">
             <h3>{friendInformation.nickname}</h3>
             {friendAccount.id === myUser.id ?
-                <a href={`/profile`}>Acessar Perfil</a>
+                <Link to={`/profile`}>Acessar Perfil</Link>
                 :
-                <a href={`/profile-friend/${friendAccount.id}`}>Acessar Perfil</a>
+                <Link to={`/profile-friend/${friendAccount.id}`}>Acessar Perfil</Link>
             }
-
+            <button>Aceitar solicitação</button>
+            <button>Não o/a conheço - Apenas seguir</button>
             </div>
            </div>
         </div>
     )
 }
 
-export {ListFriends}
+export {ListFriendsPending}

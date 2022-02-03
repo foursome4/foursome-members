@@ -12,9 +12,9 @@ import { useEffect, useState, useContext } from 'react'
 import api from '../../services/api'
 import { FeedPostIndividual2 } from '../../components/FeedPostIndividual2/FeedPostIndividual2'
 import { ListFriends } from '../../components/ListFriends/ListFriends'
+import { ListFriendsPending } from '../../components/ListFriendsPending/ListFriendsPending'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { useParams } from 'react-router-dom'
-import {  } from 'react/cjs/react.development'
 import { AuthContext } from '../../contexts/Auth'
 
 
@@ -36,8 +36,12 @@ function ProfileFriend() {
   const [video, setVideo] = useState("");
   const [follower, setUserFollower] = useState("");
   const [friendNew, setUserNew] = useState("");
-  const [myFriends, setMyFriends] = useState("")
-  const [patron, setPatron] = useState([])
+  const [myFriends, setMyFriends] = useState([]);
+  const [patron, setPatron] = useState([]);
+  const [friends, setFriends] = useState("friends");
+  const [following, setFollowing] = useState("");
+  const [followers, setFollowers] = useState("");
+  const [requests, setRequests] = useState("");
 
     useEffect(() => {
       async function loadAccount() {
@@ -165,12 +169,44 @@ function ProfileFriend() {
       setUserFollower("follower")
     }
 
+    function handleFriends() {
+      setFriends("friends");
+      setFollowing("");
+      setFollowers("");
+      setRequests("");
+    }
+    function handleFollowing() {
+      setFriends("");
+      setFollowing("following");
+      setFollowers("");
+      setRequests("");
+    }
+    function handleFollowers() {
+      setFriends("");
+      setFollowing("");
+      setFollowers("followers");
+      setRequests("");
+    }
+    function handleRequest() {
+      setFriends("");
+      setFollowing("");
+      setFollowers("");
+      setRequests("requests");
+    }
+
+
 
     const photos = posts.filter(post => (post.type === "post-photo"));
     const allPhotos = photos.slice(0, 6)
     const videos = posts.filter(post => (post.type === "post-video"));
  
-
+const friendAproveds = myFriends.filter(friend => (friend.status === 'aproved'))
+const friendPending = myFriends.filter(friend => (friend.status === 'pending'))
+    
+console.log("Aproved")
+console.log(friendAproveds)
+console.log("Pending")
+console.log(friendPending)
     
 
   return (
@@ -241,8 +277,8 @@ function ProfileFriend() {
                   
                     <div className="info-social">
                         <div className="info-social-data">
-                            <p>150</p>
-                            <h5>Amigos</h5>
+                            <p>{friendAproveds.length}</p>
+                              <h5>Amigos</h5>
                         </div>
                         <div className="info-social-data">
                             <p>{photos.length}</p>
@@ -293,19 +329,39 @@ function ProfileFriend() {
                   friend === "friend" ?
                   <div className="friends">
                     <div className="buttonsFriends">
-                      <button>Amigos</button>
-                      <button>Seguindo</button>
-                      <button>Seguidores</button>
-                      <button>Solicitações</button>
+                      <button className={friends === "" ? "" : "select"} onClick={handleFriends}>Amigos</button>
+                      <button className={following === "" ? "" : "select"} onClick={handleFollowing}>Seguindo</button>
+                      <button className={followers === "" ? "" : "select"} onClick={handleFollowers}>Seguidores</button>
+                      <button className={requests === "" ? "" : "select"} onClick={handleRequest}>Solicitações</button>
                     </div> 
 
-                    {myFriends.map((friends) => {
+
+                    {friends === "friends" ?
+                    friendAproveds.map((friends) => {
                       return (
                         <>
                         <ListFriends id={friends.idFriend} />
                         </>
                       )
-                    })}
+                    })
+                    : following === "following" ?
+                    "Seguindo"
+                    : followers === "followers" ?
+                    "Seguidores"
+                    : requests === "requests" ?
+                    friendPending.map((friends) => {
+                      return (
+                        <>
+                        <ListFriendsPending id={friends.idFriend} />
+                        </>
+                      )
+                    })
+                    :
+                    "Nada para mostrar"
+                    
+                  }
+
+                    
                   </div>
                   :
                   photo === "photo" ?

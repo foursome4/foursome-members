@@ -21,7 +21,7 @@ import { ListReactions } from '../ListReactions/ListReactions';
 
     const {user, newComment, likePost} = useContext(AuthContext);
     useEffect(() => {
-          async function findPosts() {
+             async function findPosts() {
             if(myPosts === "") {
             const res = await api.get(`/posts/filter/accounts/${idAccount.idAccount}`);
             const dataPosts = (res.data)
@@ -33,7 +33,10 @@ import { ListReactions } from '../ListReactions/ListReactions';
             setData(dataPosts)
         }
         }
-        findPosts()
+
+
+        findPosts();
+
 
     }, [myPosts])
 
