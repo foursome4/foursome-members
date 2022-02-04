@@ -149,8 +149,8 @@
     font-size: 18px;
 }
 
-.feedPostIndividual .posts-feed .feed-post .reactions {
-    width: 75%;
+.feedPostIndividual .posts-feed .feed-post .reactions-individual {
+    width: 85%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -159,7 +159,7 @@
     
 }
 
-.feedPostIndividual .posts-feed .feed-post .reactions button {
+.feedPostIndividual .posts-feed .feed-post .reactions-individual button {
     background-color: var(--Background2);
     border: none;
     color: var(--Gray_font2);
@@ -167,16 +167,16 @@
     
 }
 
-.feedPostIndividual .posts-feed .feed-post .reactions button svg {
+.feedPostIndividual .posts-feed .feed-post .reactions-individual button svg {
     margin-right: 5px;
 }
 
-.feedPostIndividual .posts-feed .feed-post .reactions .selected{
+.feedPostIndividual .posts-feed .feed-post .reactions-individual .selected{
     color: var(--Primary);   
 }
 
-.feed-post .comment {
-    margin-top: 10px;
+.feedPostIndividual .posts-feed .feed-post .comment {
+    margin: 10px 0 5px 0;
     width: 90%;
     display: flex;
     flex-direction: row;
@@ -184,7 +184,7 @@
     justify-content: space-evenly;
 }
 
-.feed-post .comment input {
+.feedPostIndividual .posts-feed .feed-post .comment input {
     width: 80%;
     height: 30px;
     border-radius: 6px;
@@ -194,7 +194,7 @@
     color: var(--Primary);
 }
 
-.feed-post .comment button {
+.feedPostIndividual .posts-feed .feed-post .comment button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -205,37 +205,264 @@
     border: none;
     border-radius: 6px;
     color: var(--White);
+    margin-left: 10px;
 }
 
-.feed-post .comment button svg {
+.feedPostIndividual .posts-feed .feed-pos .comment button svg {
     margin-right: 5px;
 }
 
-.feed-post .commentHidden {
+.feedPostIndividual .posts-feed .feed-pos .commentHidden {
     display: none;
 }
 
 
 @media (max-width: 900px) {
     .feedPostIndividual {
-        width: 95%;
-        margin-top: 20px;
+        width: 100%;
     }
 
+    .feedPostIndividual .posts-feed .feed-post .reactions-individual button svg {
+        margin-right: 0px;
+    }
 
+    .feedPostIndividual .posts-feed .feed-post .post-data-media video{
+        margin-left: 0 auto;
+        margin-right: 0 auto;
+         width: 90%;
+     }
+     
+    
 
-    @media (max-width: 370px) {
-        .feedPostIndividual .posts-feed .feed-post .reactions {
+    @media (max-width: 750px) {
+        .feedPostIndividual {
             width: 100%;
-            
+        }
+
+        .feedPostIndividual .posts-feed .feed-post .reactions-individual {
+            width: 80%;
+        }
+
+        .feedPostIndividual .posts-feed .feed-post .post-data-media .image{
+            width: 350px;
+            height: 350px;
         }
         
-        .feedPostIndividual .posts-feed .feed-post .reactions button {
-            background-color: var(--Background2);
-            border: none;
-            font-size: 10px;
-            color: var(--Gray_font2);
-            
+        .feedPostIndividual .posts-feed .feed-post .post-data-media .image img{
+            width: 350px;
+            height: 350px;
+         }
+        
+        .feedPostIndividual .posts-feed .feed-post .post-data-media .image .mark{
+            width: 350px;
+            height: 350px;
+
         }
+          
+
+
+
+        @media (max-width: 600px) {
+            .feedPostIndividual {
+                width: 100%;
+            }
+    
+            .feedPostIndividual .posts-feed .feed-post .reactions-individual {
+                width: 90%;
+            }
+
+
+                .feedPostIndividual .posts-feed .feed-post .post-data-media .image{
+            width: 350px;
+            height: 350px;
+        }
+        
+        .feedPostIndividual .posts-feed .feed-post .post-data-media .image img{
+            width: 350px;
+            height: 350px;
+         }
+        
+        .feedPostIndividual .posts-feed .feed-post .post-data-media .image .mark{
+            width: 350px;
+            height: 350px;
+
+        }
+          
+        }
+
+
+        
+
+        @media (max-width: 550px) {
+            .feedPostIndividual {
+                width: 100%;
+            }
+
+            .feedPostIndividual .posts-feed .buttons {
+                flex-wrap: wrap;
+            }
+
+            .feedPostIndividual .posts-feed .buttons button {
+                width: 80px;
+            }
+
+            .feedPostIndividual .posts-feed .feed-post .reactions-individual {
+                width: 80%;
+            }
+            .feedPostIndividual .posts-feed .feed-post .reactions-individual button {
+                font-size: 14px;
+            }
+
+            
+        @media (max-width: 500px) {
+            .feedPostIndividual {
+                width: 100%;
+            }
+
+            .feedPostIndividual .posts-feed .buttons {
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .feedPostIndividual .posts-feed .buttons button {
+                width: 110px;
+            }
+
+            .feedPostIndividual .posts-feed .feed-post .reactions-individual {
+                width: 90%;
+
+            }
+            .feedPostIndividual .posts-feed .feed-post .reactions-individual button {
+                font-size: 14px;
+                margin: 2px 3px;
+            }
+
+            .feedPostIndividual .posts-feed .feed-post .reactions-individual button svg {
+                margin-right: 2px;
+            }
+
+            .feedPostIndividual .posts-feed .feed-post .post-data-media .image{
+                width: 350px;
+                height: 350px;
+            }
+            
+            .feedPostIndividual .posts-feed .feed-post .post-data-media .image img{
+                width: 350px;
+                height: 350px;
+             }
+            
+            .feedPostIndividual .posts-feed .feed-post .post-data-media .image .mark{
+                width: 350px;
+                height: 350px;
+    
+            }
+              
+
+                @media(max-width: 450px) {
+                    .feedPostIndividual .posts-feed .feed-post .post-data-media .image{
+                        width: 300px;
+                        height: 300px;
+                    }
+                    
+                    .feedPostIndividual .posts-feed .feed-post .post-data-media .image img{
+                        width: 300px;
+                        height: 300px;
+                     }
+                    
+                    .feedPostIndividual .posts-feed .feed-post .post-data-media .image .mark{
+                        width: 300px;
+                        height: 300px;
+            
+                    }
+                      
+               
+
+            @media (max-width: 400px) {
+                .feedPostIndividual {
+                    width: 100%;
+                    margin-left: 3px;
+                }
+    
+                .feedPostIndividual .posts-feed .feed-post .reactions-individual {
+                    width: 100%;
+                    margin-left: -22px;
+                }
+                .feedPostIndividual .posts-feed .feed-post .reactions-individual button {
+                    font-size: 12px;
+                    margin: 2px 5px;
+                }
+
+                .feedPostIndividual .posts-feed .feed-post .post-data-media {
+                    width: 85%;
+                }
+
+                @media (max-width: 380px) {
+                    .feedPostIndividual {
+                        width: 100%;
+                        margin-left: 3px;
+                    }
+        
+                    .feedPostIndividual .posts-feed .feed-post .reactions-individual {
+                        width: 100%;
+                        margin-left: 0px;
+                    }
+                    .feedPostIndividual .posts-feed .feed-post .reactions-individual button {
+                        font-size: 12px;
+                        margin: 2px 5px;
+                    }
+    
+                    .feedPostIndividual .posts-feed .feed-post .post-data-media {
+                        width: 85%;
+                    }
+
+                    .feedPostIndividual .posts-feed .feed-post .post-data-media .image{
+                        width: 250px;
+                        height: 250px;
+                    }
+                    
+                    .feedPostIndividual .posts-feed .feed-post .post-data-media .image img{
+                        width: 250px;
+                        height: 250px;
+                     }
+                    
+                    .feedPostIndividual .posts-feed .feed-post .post-data-media .image .mark{
+                        width: 250px;
+                        height: 250px;
+            
+                    }
+                      
+
+                    .feed-post .comment {
+                        margin-top: 10px;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    .feed-post .comment input{
+                        width: 70%;
+                    }
+                    .feed-post .comment button {
+                        width: 30%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100px;
+                        background-color: var(--Primary);
+                        padding: 5px 10px;
+                        border: none;
+                        border-radius: 6px;
+                        color: var(--White);
+                    }
+    
+                }
+            }
+                
+        }
+     }
     }
 }
+   }

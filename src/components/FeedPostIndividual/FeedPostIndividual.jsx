@@ -277,7 +277,7 @@ import { ListReactions } from '../ListReactions/ListReactions';
                                     ""
                                       }
 
-                                    <div className="reactions" >
+                                    <div className="reactions-individual" >
                                         <button className="selected"  onClick={() => {handleLikePost(postsData.id)}}>
                                             <FiThumbsUp />
                                             Curtir

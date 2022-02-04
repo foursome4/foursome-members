@@ -132,18 +132,160 @@ import { ListReactions } from '../ListReactions/ListReactions';
                                     {postsData.type === "post-photo" ?
                                   
                                         <div className="post-data-media" >
+                                              <div className='image'>
+                                         <div className="mark">
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                         </div>
                                             <img src={postsData.link} alt={"Post Image"} width={500}/>
+                                            </div> 
                                         </div> :
                                     postsData.type === "post-video" ?
                                         <div className="post-data-media" >
+                                                   <div className='image'>
+                                         <div className="mark">
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                             <h5 className='white'>{userData.id}</h5>
+                                             <h5 className='black'>{userData.id}</h5>
+                                         </div>
                                         <video controls >
                                             <source src={postsData.link} type="video/mp4"/>
                                             </video>
+                                            </div>
                                         </div> :
                                     ""
                                       }
 
-                                    <div className="reactions" >
+                                    <div className="reactions2-individual" >
                                         <button className="selected"  onClick={() => {handleLikePost(postsData.id)}}>
                                             <FiThumbsUp />
                                             Curtir
