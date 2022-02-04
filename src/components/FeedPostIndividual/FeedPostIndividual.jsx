@@ -269,7 +269,7 @@ import { ListReactions } from '../ListReactions/ListReactions';
                                              <h5 className='white'>{userData.id}</h5>
                                              <h5 className='black'>{userData.id}</h5>
                                          </div>
-                                        <video controls >
+                                        <video controls controlsList="nofullscreen nodownload">
                                             <source src={postsData.link} type="video/mp4"/>
                                             </video>
                                         </div> 

@@ -82,7 +82,7 @@
 
 .feedPostIndividual2 .posts-feed .feed-post .post-data-media {
     margin: 5px 0;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -97,6 +97,15 @@
     align-items: center;
     justify-content: center;
 }
+.feedPostIndividual2 .posts-feed .feed-post .post-data-media .image-video{
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
 
 
 
@@ -107,6 +116,17 @@
  }
 
 .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image .mark{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.feedPostIndividual2 .posts-feed .feed-post .post-data-media .image-video .mark{
     width: 400px;
     height: 400px;
     position: absolute;
@@ -247,6 +267,10 @@
             width: 350px;
             height: 350px;
         }
+        .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image-video{
+            width: 350px;
+            height: 350px;
+        }
         
         .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image img{
             width: 350px;
@@ -254,6 +278,11 @@
          }
         
         .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image .mark{
+            width: 350px;
+            height: 350px;
+
+        }
+        .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image-video .mark{
             width: 350px;
             height: 350px;
 
@@ -277,12 +306,23 @@
             height: 350px;
         }
         
+
+                .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image-video{
+            width: 350px;
+            height: 350px;
+        }
+        
         .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image img{
             width: 350px;
             height: 350px;
          }
         
         .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image .mark{
+            width: 350px;
+            height: 350px;
+
+        }
+        .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image-video .mark{
             width: 350px;
             height: 350px;
 
@@ -345,6 +385,10 @@
                 width: 350px;
                 height: 350px;
             }
+            .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image-video{
+                width: 350px;
+                height: 350px;
+            }
             
             .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image img{
                 width: 350px;
@@ -352,6 +396,11 @@
              }
             
             .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image .mark{
+                width: 350px;
+                height: 350px;
+    
+            }
+            .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image-video .mark{
                 width: 350px;
                 height: 350px;
     
@@ -364,12 +413,23 @@
                         height: 300px;
                     }
                     
+                    .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image-video{
+                        width: 300px;
+                        height: 300px;
+                    }
+                    
                     .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image img{
                         width: 300px;
                         height: 300px;
                      }
                     
                     .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image .mark{
+                        width: 300px;
+                        height: 300px;
+            
+                    }
+                    
+                    .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image-video .mark{
                         width: 300px;
                         height: 300px;
             
@@ -420,12 +480,22 @@
                         height: 250px;
                     }
                     
+                    .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image-video{
+                        width: 250px;
+                        height: 250px;
+                    }
+                    
                     .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image img{
                         width: 250px;
                         height: 250px;
                      }
                     
                     .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image .mark{
+                        width: 250px;
+                        height: 250px;
+            
+                    }
+                    .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image-video .mark{
                         width: 250px;
                         height: 250px;
             

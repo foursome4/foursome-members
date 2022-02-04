@@ -104,6 +104,15 @@
     align-items: center;
     justify-content: center;
 }
+.feedPost .posts-feed .feed-post .post-data-media .image-video{
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
 
 
 
@@ -114,6 +123,17 @@
  }
 
 .feedPost .posts-feed .feed-post .post-data-media .image .mark{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.feedPost .posts-feed .feed-post .post-data-media .image-video .mark{
     width: 400px;
     height: 400px;
     position: absolute;
@@ -270,6 +290,10 @@
             width: 350px;
             height: 350px;
         }
+        .feedPost .posts-feed .feed-post .post-data-media .image-video{
+            width: 350px;
+            height: 350px;
+        }
         
         .feedPost .posts-feed .feed-post .post-data-media .image img{
             width: 350px;
@@ -277,6 +301,12 @@
          }
         
         .feedPost .posts-feed .feed-post .post-data-media .image .mark{
+            width: 350px;
+            height: 350px;
+
+        }
+          
+        .feedPost .posts-feed .feed-post .post-data-media .image-video .mark{
             width: 350px;
             height: 350px;
 
@@ -299,6 +329,10 @@
             width: 350px;
             height: 350px;
         }
+                .feedPost .posts-feed .feed-post .post-data-media .image-video{
+            width: 350px;
+            height: 350px;
+        }
         
         .feedPost .posts-feed .feed-post .post-data-media .image img{
             width: 350px;
@@ -306,6 +340,11 @@
          }
         
         .feedPost .posts-feed .feed-post .post-data-media .image .mark{
+            width: 350px;
+            height: 350px;
+
+        }
+        .feedPost .posts-feed .feed-post .post-data-media .image-video .mark{
             width: 350px;
             height: 350px;
 
@@ -368,6 +407,10 @@
                 width: 350px;
                 height: 350px;
             }
+            .feedPost .posts-feed .feed-post .post-data-media .image-video{
+                width: 350px;
+                height: 350px;
+            }
             
             .feedPost .posts-feed .feed-post .post-data-media .image img{
                 width: 350px;
@@ -380,9 +423,19 @@
     
             }
               
+            .feedPost .posts-feed .feed-post .post-data-media .image-video .mark{
+                width: 350px;
+                height: 350px;
+    
+            }
+              
 
                 @media(max-width: 450px) {
                     .feedPost .posts-feed .feed-post .post-data-media .image{
+                        width: 300px;
+                        height: 300px;
+                    }
+                    .feedPost .posts-feed .feed-post .post-data-media .image-video{
                         width: 300px;
                         height: 300px;
                     }
@@ -393,6 +446,11 @@
                      }
                     
                     .feedPost .posts-feed .feed-post .post-data-media .image .mark{
+                        width: 300px;
+                        height: 300px;
+            
+                    }
+                    .feedPost .posts-feed .feed-post .post-data-media .image-video .mark{
                         width: 300px;
                         height: 300px;
             
@@ -443,12 +501,22 @@
                         height: 250px;
                     }
                     
+                    .feedPost .posts-feed .feed-post .post-data-media .image-video{
+                        width: 250px;
+                        height: 250px;
+                    }
+                    
                     .feedPost .posts-feed .feed-post .post-data-media .image img{
                         width: 250px;
                         height: 250px;
                      }
                     
                     .feedPost .posts-feed .feed-post .post-data-media .image .mark{
+                        width: 250px;
+                        height: 250px;
+            
+                    }
+                    .feedPost .posts-feed .feed-post .post-data-media .image-video .mark{
                         width: 250px;
                         height: 250px;
             
