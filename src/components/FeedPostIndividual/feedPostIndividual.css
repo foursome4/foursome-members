@@ -267,6 +267,10 @@
             width: 350px;
             height: 350px;
         }
+        .feedPostIndividual .posts-feed .feed-post .post-data-media .image-video{
+            width: 350px;
+            height: 350px;
+        }
         
         .feedPostIndividual .posts-feed .feed-post .post-data-media .image img{
             width: 350px;
@@ -274,6 +278,11 @@
          }
         
         .feedPostIndividual .posts-feed .feed-post .post-data-media .image .mark{
+            width: 350px;
+            height: 350px;
+
+        }
+        .feedPostIndividual .posts-feed .feed-post .post-data-media .image-video .mark{
             width: 350px;
             height: 350px;
 
@@ -297,12 +306,23 @@
             height: 350px;
         }
         
+
+                .feedPostIndividual .posts-feed .feed-post .post-data-media .image-video{
+            width: 350px;
+            height: 350px;
+        }
+        
         .feedPostIndividual .posts-feed .feed-post .post-data-media .image img{
             width: 350px;
             height: 350px;
          }
         
         .feedPostIndividual .posts-feed .feed-post .post-data-media .image .mark{
+            width: 350px;
+            height: 350px;
+
+        }
+        .feedPostIndividual .posts-feed .feed-post .post-data-media .image-video .mark{
             width: 350px;
             height: 350px;
 
@@ -365,6 +385,10 @@
                 width: 350px;
                 height: 350px;
             }
+            .feedPostIndividual .posts-feed .feed-post .post-data-media .image-video{
+                width: 350px;
+                height: 350px;
+            }
             
             .feedPostIndividual .posts-feed .feed-post .post-data-media .image img{
                 width: 350px;
@@ -372,6 +396,11 @@
              }
             
             .feedPostIndividual .posts-feed .feed-post .post-data-media .image .mark{
+                width: 350px;
+                height: 350px;
+    
+            }
+            .feedPostIndividual .posts-feed .feed-post .post-data-media .image-video .mark{
                 width: 350px;
                 height: 350px;
     
@@ -384,12 +413,23 @@
                         height: 300px;
                     }
                     
+                    .feedPostIndividual .posts-feed .feed-post .post-data-media .image-video{
+                        width: 300px;
+                        height: 300px;
+                    }
+                    
                     .feedPostIndividual .posts-feed .feed-post .post-data-media .image img{
                         width: 300px;
                         height: 300px;
                      }
                     
                     .feedPostIndividual .posts-feed .feed-post .post-data-media .image .mark{
+                        width: 300px;
+                        height: 300px;
+            
+                    }
+                    
+                    .feedPostIndividual .posts-feed .feed-post .post-data-media .image-video .mark{
                         width: 300px;
                         height: 300px;
             
@@ -440,12 +480,22 @@
                         height: 250px;
                     }
                     
+                    .feedPostIndividual .posts-feed .feed-post .post-data-media .image-video{
+                        width: 250px;
+                        height: 250px;
+                    }
+                    
                     .feedPostIndividual .posts-feed .feed-post .post-data-media .image img{
                         width: 250px;
                         height: 250px;
                      }
                     
                     .feedPostIndividual .posts-feed .feed-post .post-data-media .image .mark{
+                        width: 250px;
+                        height: 250px;
+            
+                    }
+                    .feedPostIndividual .posts-feed .feed-post .post-data-media .image-video .mark{
                         width: 250px;
                         height: 250px;
             
