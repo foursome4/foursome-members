@@ -20,7 +20,7 @@ import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 
 
 function ProfileFriend() {
-  const {newFriend, newFollower, deleteFriend} = useContext(AuthContext)
+  const {newFriend, newFollower, deleteFriend, deleteFollower} = useContext(AuthContext)
   const Local = localStorage.getItem("foursome");
   const myUser = JSON.parse(Local);
   const {id} = useParams();
@@ -141,6 +141,12 @@ function ProfileFriend() {
     console.log(FriendExists[0].id)
    deleteFriend(FriendExists[0].id)
   }
+  function handleDeleteFollower(e) {
+    e.preventDefault()
+    console.log("FriendExists.data[0]")
+    console.log(FollowingExists[0].id)
+    deleteFollower(FollowingExists[0].id)
+  }
 
 
 
@@ -220,12 +226,12 @@ function ProfileFriend() {
 
     const followersMy = myFollowers.filter(friend => (friend.idFriend === user.id))
     const followingMy = myFollowers.filter(friend => (friend.idAccount === user.id))
+    const FollowingExists = myFollowers.filter(friend => (friend.idAccount === myUser.id))
 
 
-console.log("followersMy")
-console.log(followersMy)
-console.log("followingMy")
-console.log(followingMy)
+console.log("FollowingExists")
+console.log(FollowingExists.length)
+
    
 
   return (
@@ -251,10 +257,9 @@ console.log(followingMy)
                   <button onClick={FriendExists.length === 0 ? handleNewFriend : handleDeleteFriend}>
                   {FriendExists.length === 0 ? <FiUserPlus size={16}/> : <FiUserMinus size={16}/> } 
                     </button>
-
-                  <button className="follower" onClick={handleFollower,handleNewFollower}>
-                   <FiHeart size={16} />
-                    
+                  
+                  <button className="follower" onClick={FollowingExists.length === 0 ? handleNewFollower : handleDeleteFollower}>
+                    {FollowingExists.length === 0 ? <FiHeart size={16} /> : <FaHeart size={16} />}
                     </button>
                   <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/></button>
                   <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/></button>

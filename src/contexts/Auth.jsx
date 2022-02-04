@@ -335,7 +335,8 @@ async function newFollower(idAccount, idFriend, type, status) {
     const data = {idAccount, idFriend, type, status}
     await api.post("/followers", data).then((result) => {
         console.log(result.data)
-        console.log("Amizade criada com sucesso!")
+        console.log("Seguindo com sucesso!")
+        window.location.reload(false)
     }).catch(error => {
         console.log(error)
     })

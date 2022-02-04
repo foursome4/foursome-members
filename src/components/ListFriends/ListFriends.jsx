@@ -39,13 +39,21 @@ function ListFriends({id, idRegister}) {
         console.log(idRegister)
        deleteFriend(idRegister)
     }
+
+    console.log("myUser.id")
+    console.log(myUser.id)
+    console.log("friendAccount.id")
+    console.log(friendAccount.id)
     return (
         <div className="listFriends">
            <div className="friendUnics">
            <img src={friendInformation.avatar} alt="" />
             <div className="name">
             <a href={friendAccount.id === myUser.id ? `/profile` : `/profile-friend/${friendAccount.id}`}> <h3>{friendInformation.nickname}</h3></a>
+           { myUser.id === friendAccount.id ?
             <button onClick={handleDeleteFriend} > Remover </button>
+            : ""
+           }
             </div>
            </div>
         </div>

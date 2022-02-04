@@ -1,23 +1,20 @@
-import './listFollowing.css'
+import './listFriends2.css'
 import { useContext, useEffect, useState } from 'react'
 import api from '../../services/api';
 import { AuthContext } from '../../contexts/Auth';
 
 
-function ListFollowing({idAccount, idRegister}) {
-    console.log("idAccount ListFollowing")
-    console.log(idAccount)
+function ListFriends2({id, idRegister}) {
     const Local = localStorage.getItem("foursome");
     const myUser = JSON.parse(Local);
 
-    const {deleteFollower} = useContext(AuthContext)
+    const {deleteFriend} = useContext(AuthContext)
 
     const [friendAccount, setFriendAccount] = useState("");
     const [friendInformation, setFriendInformation] = useState("");
 
     useEffect(() => {
         async function loadAccount() {
-            const id = idAccount;
             await api.get(`/accounts/filter/${id}`).then((result) => {
                 console.log(result.data[0])
                 setFriendAccount(result.data[0])
@@ -25,9 +22,9 @@ function ListFollowing({idAccount, idRegister}) {
         }
 
         async function loadInformation() {
-            
+            const idAccount = id;
             await api.get(`/informations/${idAccount}`).then((result) => {
-              console.log(result.data[0])
+                console.log(result.data[0])
                 setFriendInformation(result.data[0])
             })
         }
@@ -37,26 +34,25 @@ function ListFollowing({idAccount, idRegister}) {
     }, [])
 
 
-    function handleDeleteFollower(e) {
+    function handleDeleteFriend(e) {
         e.preventDefault()
         console.log(idRegister)
-        deleteFollower(idRegister)
+       deleteFriend(idRegister)
     }
     return (
-        <div className="listFollowing">
-           <div className="friendUnic">
+        <div className="listFriends">
+           <div className="friendUnics">
            <img src={friendInformation.avatar} alt="" />
             <div className="name">
             <a href={friendAccount.id === myUser.id ? `/profile` : `/profile-friend/${friendAccount.id}`}> <h3>{friendInformation.nickname}</h3></a>
-            { myUser.id === friendAccount.id ?
-             <button onClick={handleDeleteFollower} > Deixar de seguir </button>
+           { myUser.id === friendAccount.id ?
+            <button onClick={handleDeleteFriend} > Remover </button>
             : ""
            }
-          
             </div>
            </div>
         </div>
     )
 }
 
-export {ListFollowing}
+export {ListFriends2}

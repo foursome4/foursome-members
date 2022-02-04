@@ -48,11 +48,7 @@ function ListFollowing({idAccount, idRegister}) {
            <img src={friendInformation.avatar} alt="" />
             <div className="name">
             <a href={friendAccount.id === myUser.id ? `/profile` : `/profile-friend/${friendAccount.id}`}> <h3>{friendInformation.nickname}</h3></a>
-            { myUser.id === friendAccount.id ?
-             <button onClick={handleDeleteFollower} > Deixar de seguir </button>
-            : ""
-           }
-          
+            <button onClick={handleDeleteFollower} > Deixar de seguir </button>
             </div>
            </div>
         </div>
