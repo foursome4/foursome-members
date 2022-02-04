@@ -47,6 +47,29 @@
     
 }
 
+.content-profile .profile .main .section .cover .mark{
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.content-profile .profile .main .section .cover .mark .black{
+    color: rgba(0, 0, 0, 0.036);
+    margin: 2px;
+    font-weight: 500;
+}
+.content-profile .profile .main .section .cover .mark .white{
+    color: rgba(255, 255, 255, 0.036);
+    margin: 2px;
+    font-weight: 500;
+}
+
 .content-profile .profile .main .section .profile-tools {
     width: 100%;
     height: 100px;
@@ -68,24 +91,45 @@
     color: var(--Primary);
 }
 
-.content-profile .profile .main .section .profile-tools .user.user-img {
-    width: 200px;
-    height: 200px;
+.content-profile .profile .main .section .profile-tools .user .user-img {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     color: var(--Primary);
-    border: 2px solid var(--White);
     border-radius: 15px;
-    margin-top: -140px;
+    margin-top: -150px;
     margin-bottom: 10px;
 }
 
-.content-profile .profile .main .section .profile-tools .user img {
+.content-profile .profile .main .section .profile-tools .user .user-img img {
     width: 200px;
     height: 200px;
     object-fit: cover;
+    margin-top:0px;
+}
+
+.content-profile .profile .main .section .profile-tools .user .user-img .mark{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.content-profile .profile .main .section .profile-tools .user .user-img .mark .black{
+    color: rgba(0, 0, 0, 0.036);
+    margin: 2px;
+    font-weight: 500;
+}
+.content-profile .profile .main .section .profile-tools .user .user-img .mark .white{
+    color: rgba(255, 255, 255, 0.036);
+    margin: 2px;
+    font-weight: 500;
 }
 
 .content-profile .profile .main .section .profile-tools .tools {
@@ -486,6 +530,12 @@
                 
             }
 
+            
+            .content-profile .profile .main .section .cover .mark {
+                height: 150px;
+                
+            }
+
             .content-profile .profile .main .section .profile-tools .user img {
                 width: 150px;
                 height: 150px;
@@ -494,6 +544,13 @@
                 margin-top: -120px;
                 margin-bottom: 10px;
             }
+
+            .content-profile .profile .main .section .profile-tools .user .user-img .mark {
+                width: 150px;
+                height: 150px;
+            }
+
+
 
 
 

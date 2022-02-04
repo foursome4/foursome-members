@@ -23,14 +23,18 @@ import { ListReactions } from '../ListReactions/ListReactions';
     useEffect(() => {
              async function findPosts() {
             if(myPosts === "") {
+                console.log("myPosts está vazio")
             const res = await api.get(`/posts/filter/accounts/${idAccount.idAccount}`);
             const dataPosts = (res.data)
             setData(dataPosts)
+
         } else {
             const type = myPosts;
             const res = await api.get(`/posts/filter/${idAccount.idAccount}/${type}`);
             const dataPosts = (res.data)
             setData(dataPosts)
+
+           
         }
         }
 
@@ -38,7 +42,10 @@ import { ListReactions } from '../ListReactions/ListReactions';
         findPosts();
 
 
-    }, [myPosts])
+    }, [user, myPosts])
+
+    console.log("data")
+    console.log(data)
 
     function postAll() {
         setMyPosts("")
@@ -85,7 +92,7 @@ import { ListReactions } from '../ListReactions/ListReactions';
 
 
     return (
-        <div className="feedPostIndividual">
+        <div className="feedPostIndividual2">
             <div className="posts-feed">
             <div className="buttons">
             <button className={myPosts === "" ? 'selected' : ""} onClick={postAll}> <FiMenu /> Todos </button>

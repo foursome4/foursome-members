@@ -1,4 +1,4 @@
-.feedPostIndividual {
+.feedPostIndividual2 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,7 +7,7 @@
     margin-top: 20px;
 }
 
-.feedPostIndividual .posts-feed {
+.feedPostIndividual2 .posts-feed {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -15,7 +15,7 @@
     width: 100%;
 }
 
-.feedPostIndividual .posts-feed .buttons {
+.feedPostIndividual2 .posts-feed .buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -24,7 +24,7 @@
     width: 100%;
 }
 
-.feedPostIndividual .posts-feed .buttons button {
+.feedPostIndividual2 .posts-feed .buttons button {
     padding: 5px;
     width: 120px;
     border: none;
@@ -32,12 +32,12 @@
     background-color: var(--Background2);
 }
 
-.feedPostIndividual .posts-feed .buttons .selected {
+.feedPostIndividual2 .posts-feed .buttons .selected {
     border-bottom: 2px solid var(--Primary);
     color: var(--Primary);
 }
 
-.feedPostIndividual .posts-feed .feed-post {
+.feedPostIndividual2 .posts-feed .feed-post {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,7 +50,7 @@
     margin: 10px 0;
 }
 
-.feedPostIndividual .posts-feed .feed-post .post-user {
+.feedPostIndividual2 .posts-feed .feed-post .post-user {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -58,29 +58,29 @@
     width: 90%;
 }
 
-.feedPostIndividual .posts-feed .feed-post .post-user img {
+.feedPostIndividual2 .posts-feed .feed-post .post-user img {
     width: 50px;
     border-radius: 50%;
     margin-right: 20px;
 }
 
-.feedPostIndividual .posts-feed .feed-post .post-user .name-data {
+.feedPostIndividual2 .posts-feed .feed-post .post-user .name-data {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-.feedPostIndividual .posts-feed .feed-post .post-user .name-data .selected {
+.feedPostIndividual2 .posts-feed .feed-post .post-user .name-data .selected {
     color: var(--Primary) ;
 }
 
-.feedPostIndividual .posts-feed .feed-post .post-data {
+.feedPostIndividual2 .posts-feed .feed-post .post-data {
     margin: 5px 0;
     width: 90%;
 }
 
-.feedPostIndividual .posts-feed .feed-post .post-data-media {
+.feedPostIndividual2 .posts-feed .feed-post .post-data-media {
     margin: 5px 0;
     width: 90%;
     display: flex;
@@ -88,24 +88,24 @@
     align-items: center;
     justify-content: center;
 }
-.feedPostIndividual .posts-feed .feed-post .post-data-media video{
+.feedPostIndividual2 .posts-feed .feed-post .post-data-media video{
    margin-left: 0 auto;
    margin-right: 0 auto;
     width: 80%;
 }
 
-.feedPostIndividual .posts-feed .feed-post .post-data-media img{
+.feedPostIndividual2 .posts-feed .feed-post .post-data-media img{
     margin-left: 0 auto;
     margin-right: 0 auto;
      width: 80%;
  }
  
 
-.feedPostIndividual .posts-feed .feed-post .post-data p {
+.feedPostIndividual2 .posts-feed .feed-post .post-data p {
     font-size: 18px;
 }
 
-.feedPostIndividual .posts-feed .feed-post .reactions {
+.feedPostIndividual2 .posts-feed .feed-post .reactions {
     width: 75%;
     display: flex;
     flex-direction: row;
@@ -115,7 +115,7 @@
     
 }
 
-.feedPostIndividual .posts-feed .feed-post .reactions button {
+.feedPostIndividual2 .posts-feed .feed-post .reactions button {
     background-color: var(--Background2);
     border: none;
     color: var(--Gray_font2);
@@ -123,11 +123,11 @@
     
 }
 
-.feedPostIndividual .posts-feed .feed-post .reactions button svg {
+.feedPostIndividual2 .posts-feed .feed-post .reactions button svg {
     margin-right: 5px;
 }
 
-.feedPostIndividual .posts-feed .feed-post .reactions .selected{
+.feedPostIndividual2 .posts-feed .feed-post .reactions .selected{
     color: var(--Primary);   
 }
 
@@ -173,7 +173,7 @@
 
 
 @media (max-width: 900px) {
-    .feedPostIndividual {
+    .feedPostIndividual2 {
         width: 95%;
         margin-top: 20px;
     }
@@ -181,12 +181,12 @@
 
 
     @media (max-width: 370px) {
-        .feedPostIndividual .posts-feed .feed-post .reactions {
+        .feedPostIndividual2 .posts-feed .feed-post .reactions {
             width: 100%;
             
         }
         
-        .feedPostIndividual .posts-feed .feed-post .reactions button {
+        .feedPostIndividual2 .posts-feed .feed-post .reactions button {
             background-color: var(--Background2);
             border: none;
             font-size: 10px;

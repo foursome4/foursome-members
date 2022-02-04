@@ -238,11 +238,121 @@ console.log(followingMy)
         <div className="main">
          <div className="section">
           <div className="cover">
+          <div className="mark">
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                         </div>
               <img src={ userInformations !== null ? userInformations.cover : coverImg} alt="" />
           </div>
             <div className="profile-tools">
                 <div className="user">
                  <div className="user-img">
+                 <div className="mark">
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                
+
+                                         </div>
                    <img src={userInformations !== null ? userInformations.avatar : avatar} alt="" />
                    </div>
                   <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b></h3>
@@ -342,7 +452,7 @@ console.log(followingMy)
                      <div className="feed">
                   {feed === "feed" ?
                   <>
-                    <Post userData={dataUser}/>
+                    <Post user={dataUser}/>
                     <br /><br />
                     <FeedPostIndividual idAccount={user.id} />
                   </>
