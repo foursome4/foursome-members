@@ -41,17 +41,11 @@ function ListFriends({id, idRegister}) {
     }
     return (
         <div className="listFriends">
-           <div className="friendUnic">
+           <div className="friendUnics">
            <img src={friendInformation.avatar} alt="" />
             <div className="name">
-            <h3>{friendInformation.nickname}</h3>
-            {friendAccount.id === myUser.id ?
-                <a href={`/profile`}>Acessar Perfil</a>
-                :
-                <a href={`/profile-friend/${friendAccount.id}`}>Acessar Perfil</a>
-            }
+            <a href={friendAccount.id === myUser.id ? `/profile` : `/profile-friend/${friendAccount.id}`}> <h3>{friendInformation.nickname}</h3></a>
             <button onClick={handleDeleteFriend} > Remover </button>
-
             </div>
            </div>
         </div>

@@ -1,13 +1,13 @@
-.listFriends{
+.listFollowing{
     width: 180px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     margin: 20px;
 }
 
-.listFriends .friendUnics {
+.listFollowing .friendUnic {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -20,14 +20,14 @@
         padding: 5px;
 }
 
-.listFriends .friendUnics img {
+.listFollowing .friendUnic img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin: 5px;
 }
 
-.listFriends .friendUnics .name {
+.listFollowing .friendUnic .name {
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -35,16 +35,16 @@
     justify-content: center;
 }
 
-.listFriends .friendUnics .name h3 {
+.listFollowing .friendUnic .name h3 {
     color: var(--Primary);
     font-size: 16px;
 }
 
-.listFriends .friendUnics .name a {
+.listFollowing .friendUnic .name a {
     text-decoration: none;
 }
 
-.listFriends .friendUnics button {
+.listFollowing .friendUnic button {
     background-color: var(--Primary);
     color: white;
     display: flex;

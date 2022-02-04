@@ -140,12 +140,30 @@
 .content-profile .profile .main .section .sections .feed {
     width: 100%;
     height: 100%;
-    border-right: 2px solid var(--Background);
+    border-right: 2px solid var(--Primary);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     padding: 10px;
+}
+
+.content-profile .profile .main .section .sections .feed .friends {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-profile .profile .main .section .sections .feed .friends .listFriendsMap {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 5px 0px 20px 0px;
 }
 
 .content-profile .profile .main .section .sections .infos {

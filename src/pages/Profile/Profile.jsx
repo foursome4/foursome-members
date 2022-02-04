@@ -17,6 +17,8 @@ import { FeedPostIndividual } from '../../components/FeedPostIndividual/FeedPost
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { AuthContext } from '../../contexts/Auth'
 import { ListFriendsPending } from '../../components/ListFriendsPending/ListFriendsPending'
+import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
+import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 
 
 function Profile() {
@@ -38,6 +40,7 @@ function Profile() {
   const [forum, setForum] = useState("");
   const [setting, setSetting] = useState("");
   const [myFriends, setMyFriends] = useState([]);
+  const [myFollowers, setMyFollowers] = useState([]);
   const [patron, setPatron] = useState([]);
   const [friends, setFriends] = useState("friends");
   const [following, setFollowing] = useState("following");
@@ -78,6 +81,14 @@ function Profile() {
         setMyFriends(result.data)
       }
 
+      async function loadFollowers() {
+        const idAccount = user.id;
+        const result = await api.get(`/followers/filter/${idAccount}`);
+        console.log("result.data Followers")
+        console.log(result.data)
+        setMyFollowers(result.data)
+      }
+
 
       async function searchPatron() {
         const id = user.patron;
@@ -90,6 +101,7 @@ function Profile() {
       loadPosts();
       searchPatron();
       loadFriends();
+      loadFollowers();
     }, []);
 
     const idAccount = user.id
@@ -200,14 +212,18 @@ function Profile() {
     const videos = posts.filter(post => (post.type === "post-video"));
 
     const friendAproveds = myFriends.filter(friend => (friend.status === 'aproved'))
-console.log("MYID")
-console.log(user.id)
-const friendPending = myFriends.filter(friend => (friend.status === 'pending' && friend.idFriend === user.id))
+    console.log("MYID")
+    console.log(user.id)
+    const friendPending = myFriends.filter(friend => (friend.status === 'pending' && friend.idFriend === user.id))
     
-console.log("Aproved")
-console.log(friendAproveds)
-console.log("Pending")
-console.log(friendPending)
+    const followersMy = myFollowers.filter(friend => (friend.idFriend === user.id))
+    const followingMy = myFollowers.filter(friend => (friend.idAccount === user.id))
+
+
+console.log("followersMy")
+console.log(followersMy)
+console.log("followingMy")
+console.log(followingMy)
     
  
 
@@ -339,18 +355,17 @@ console.log(friendPending)
                   </div> 
 
 
+                  <div className="listFriendsMap">
                   {friends === "friends" ?
                   friendAproveds.map((friends) => {
                     return (
-                      <>
                       <ListFriends id={friends.idFriend === user.id ? friends.idAccount : friends.idFriend} idRegister={friends.id}/>
-                      </>
-                    )
-                  })
-                  : requests === "requests" ?
-                  friendPending.map((friends) => {
-                    return (
-                      <>
+                      )
+                    })
+                    : requests === "requests" ?
+                    friendPending.map((friends) => {
+                      return (
+                        <>
                       <ListFriendsPending idAccount={friends.idAccount} id={friends.id} />
                       </>
                     )
@@ -359,6 +374,7 @@ console.log(friendPending)
                   "Nada para mostrar"
                   
                 }
+                </div>
 
                   
                 </div>
@@ -380,16 +396,27 @@ console.log(friendPending)
                      <button className={following === "" ? "" : "select"} onClick={handleFollowing}>Seguindo</button>
                    </div> 
  
- 
+                   <div className="listFriendsMap">
                    {followers === "followers" ?
-                  "Seguidores"
+                    
+                      followersMy.map((followers) => {
+                        return (
+                          <ListFollowers id={followers.idFriend === user.id ? followers.idAccount : followers.idFriend} />
+            
+                        )
+                      })
+                    
                    :following === "following" ?
-                   "Seguindo"
+                   followingMy.map((following) => {
+                    return (
+                      <ListFollowing idAccount={following.idAccou === user.id ? following.idAccount : following.idFriend} idRegister={following.id}/>
+                    )
+                  })
                     : 
                    "Nada para mostrar"
                    
                  }
- 
+ </div>
                    
                  </div>
                   

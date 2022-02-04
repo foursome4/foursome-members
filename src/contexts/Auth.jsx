@@ -321,11 +321,45 @@ async function deleteFriend(id){
         window.location.reload(false)
     })
 }
+
+async function deleteFollower(id){
+    console.log(id);
+    await api.delete(`/followers/${id}`).then((result) => {
+        console.log("Amigo deletado com sucesso!")
+        window.location.reload(false)
+    })
+}
+
+
 async function newFollower(idAccount, idFriend, type, status) {
     const data = {idAccount, idFriend, type, status}
     await api.post("/followers", data).then((result) => {
         console.log(result.data)
         console.log("Amizade criada com sucesso!")
+    }).catch(error => {
+        console.log(error)
+    })
+
+}
+
+async function deleteFriendAndFollower(id, idAccount, idFriend, type, status) {
+    console.log(id, idAccount, idFriend, type, status)
+    const data = {idAccount, idFriend, type, status}
+    await api.delete(`/friends/${id}`).then( async (result) => {
+        console.log("Amigo deletado com sucesso!")
+        console.log(result)
+
+
+        await api.post("/followers", data).then((result) => {
+            console.log(result.data)
+            console.log("Seguindor criado com sucesso!")
+            window.location.reload(false)
+        }).catch(error => {
+            console.log(error)
+        })
+
+
+     
     }).catch(error => {
         console.log(error)
     })
@@ -370,7 +404,9 @@ async function newFollower(idAccount, idFriend, type, status) {
             newFriend,
             newFollower,
             friendAproved,
-            deleteFriend
+            deleteFriend,
+            deleteFollower,
+            deleteFriendAndFollower
         }}>
             {children}
         </AuthContext.Provider>

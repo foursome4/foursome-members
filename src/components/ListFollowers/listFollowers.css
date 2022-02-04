@@ -1,4 +1,4 @@
-.listFriends{
+.listFollowers{
     width: 180px;
     display: flex;
     flex-direction: row;
@@ -7,7 +7,7 @@
     margin: 20px;
 }
 
-.listFriends .friendUnics {
+.listFollowers .friendUnic {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -20,14 +20,14 @@
         padding: 5px;
 }
 
-.listFriends .friendUnics img {
+.listFollowers .friendUnic img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin: 5px;
 }
 
-.listFriends .friendUnics .name {
+.listFollowers .friendUnic .name {
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -35,16 +35,16 @@
     justify-content: center;
 }
 
-.listFriends .friendUnics .name h3 {
+.listFollowers .friendUnic .name h3 {
     color: var(--Primary);
     font-size: 16px;
 }
 
-.listFriends .friendUnics .name a {
+.listFollowers .friendUnic .name a {
     text-decoration: none;
 }
 
-.listFriends .friendUnics button {
+.listFollowers .friendUnic button {
     background-color: var(--Primary);
     color: white;
     display: flex;

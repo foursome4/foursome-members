@@ -15,6 +15,8 @@ import { ListFriends } from '../../components/ListFriends/ListFriends'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { useParams } from 'react-router-dom'
 import { AuthContext } from '../../contexts/Auth'
+import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
+import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 
 
 function ProfileFriend() {
@@ -35,6 +37,7 @@ function ProfileFriend() {
   const [follower, setUserFollower] = useState("");
   const [friendNew, setUserNew] = useState("");
   const [myFriends, setMyFriends] = useState([]);
+  const [myFollowers, setMyFollowers] = useState([]);
   const [patron, setPatron] = useState([]);
   const [friends, setFriends] = useState("friends");
   const [following, setFollowing] = useState("");
@@ -42,8 +45,21 @@ function ProfileFriend() {
 
     useEffect(() => {
       async function loadAccount() {
-        const res = await api.get(`/accounts/filter/${id}`)
-        setUser(res.data[0]) 
+        await api.get(`/accounts/filter/${id}`).then(async (res) => {
+          setUser(res.data[0]);
+          console.log("res.data[0].patron")
+          console.log(res.data[0].patron)
+          await api.get(`accounts/filter/${res.data[0].patron}`)
+          .then((patron) => {
+            console.log("patron.data[0]")
+            console.log(patron.data[0])
+            setPatron(patron.data[0])
+          })
+            
+          
+        }).catch((error) => {
+          console.log(error)
+        })
       }
 
 
@@ -68,7 +84,6 @@ function ProfileFriend() {
       }
 
       async function loadPosts() {
-        
           const res = await api.get(`/posts/filter/accounts/${id}`);
           const dataPosts = (res.data)
           setPosts(dataPosts)
@@ -79,32 +94,42 @@ function ProfileFriend() {
         const result = await api.get(`/friends/${idAccount}`);
         setMyFriends(result.data)
       }
-
-      async function searchPatron() {
-        const patron = await api.get(`accounts/filter/${id}`);
-        setPatron(patron.data[0])
+      async function loadFollowers() {
+        const idAccount = id;
+        const result = await api.get(`/followers/filter/${idAccount}`);
+        console.log("result.data Followers")
+        console.log(result.data)
+        setMyFollowers(result.data)
       }
+
+     
 
       loadAccount()
       loadInformations();
       loadCharacteristcs();
       loadPosts();
       loadFriends();
-      searchPatron()
+      loadFollowers();
     }, []);
 
+    
+    console.log("Patron")
+    console.log(patron)
+
+    function handleNewFriend(e) {
     const idAccount = myUser.id
     const idFriend = user.id
     const type = "friend"
     const status = "pending"
-
-
-  function handleNewFriend(e) {
     e.preventDefault()
     console.log(idAccount, idFriend, type, status);
     newFriend(idAccount, idFriend, type, status)
   }
   function handleNewFollower(e) {
+    const idAccount = myUser.id
+    const idFriend = user.id
+    const type = "follower"
+    const status = "aproved"
     e.preventDefault()
     console.log(idAccount, idFriend, type, status)
     newFollower(idAccount, idFriend, type, status)
@@ -192,6 +217,15 @@ function ProfileFriend() {
     const videos = posts.filter(post => (post.type === "post-video"));
     const friendAproveds = myFriends.filter(friend => (friend.status === 'aproved'))
     const FriendExists = myFriends.filter(friend => (friend.idAccount === myUser.id || friend.idFriend === myUser.id))
+
+    const followersMy = myFollowers.filter(friend => (friend.idFriend === user.id))
+    const followingMy = myFollowers.filter(friend => (friend.idAccount === user.id))
+
+
+console.log("followersMy")
+console.log(followersMy)
+console.log("followingMy")
+console.log(followingMy)
    
 
   return (
@@ -325,7 +359,7 @@ function ProfileFriend() {
                       <button className={followers === "" ? "" : "select"} onClick={handleFollowers}>Seguidores</button>
                     </div> 
 
-
+                    <div className="listFriendsMap">
                     {friends === "friends" ?
                     friendAproveds.map((friends) => {
                       return (
@@ -335,15 +369,26 @@ function ProfileFriend() {
                       )
                     })
                     : following === "following" ?
-                    "Seguindo"
+                    followingMy.map((following) => {
+                     return (
+                       <ListFollowing idAccount={following.idAccount === id ? following.idFriend : following.idAccount} idRegister={following.id}/>
+                     )
+                   })
                     : followers === "followers" ?
-                    "Seguidores"
+                    
+                      followersMy.map((followers) => {
+                        return (
+                          <ListFollowers id={followers.idFriend === id ? followers.idAccount : followers.idFriend} />
+            
+                        )
+                      })
                     : 
                     "Nada para mostrar"
                     
                   }
 
                     
+                  </div>
                   </div>
                   :
                   photo === "photo" ?
@@ -360,6 +405,7 @@ function ProfileFriend() {
                    :
                   ""
                   } 
+                   
                     </div>
             </div>
          </div>
