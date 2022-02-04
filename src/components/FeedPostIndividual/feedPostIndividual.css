@@ -82,7 +82,7 @@
 
 .feedPostIndividual .posts-feed .feed-post .post-data-media {
     margin: 5px 0;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -97,6 +97,15 @@
     align-items: center;
     justify-content: center;
 }
+.feedPostIndividual .posts-feed .feed-post .post-data-media .image-video{
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
 
 
 
@@ -107,6 +116,17 @@
  }
 
 .feedPostIndividual .posts-feed .feed-post .post-data-media .image .mark{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.feedPostIndividual .posts-feed .feed-post .post-data-media .image-video .mark{
     width: 400px;
     height: 400px;
     position: absolute;
