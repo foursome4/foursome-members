@@ -65,11 +65,13 @@ function ToolbarLeftSlim () {
     return (
         <div className="content-toolbar">
             <div className="ToolBarLeftSlim">
+                <div className="image">
                 <button className="profile">
                 <Link to="/profile" >
                     <img src={userInformation !== null ? userInformation.avatar :avatarImg} alt="" />
                     </Link>
                 </button>
+                </div>
                 <div className="tools">
                 <Link to="/feed" >
                  <button className="toolIcon" onclick={handleRedirectFeed}>
