@@ -200,7 +200,8 @@ async function newPost({idAccount, type, link, text, idForum, idGroup, avatar, n
     await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, avatar, nickname, username, nameForum, nameGroup }).then((result) => {
         console.log(result.data)
         console.log("Post Realizado com sucesso!");
-    //  window.location.reload(false)
+    //  window.location.reload(false);
+    toast.info("Post publicado com sucesso!")
         setLoading(false)
     }).catch(error => {
         console.log("Post não foi realizado" + error)
@@ -299,7 +300,7 @@ async function newFriend(idAccount, idFriend, type, status) {
     await api.post("/friends", data).then((result) => {
         console.log(result.data)
         console.log("Solicitação enviada com sucesso!")
-        window.location.reload(false);
+       window.location.reload(false);
     }).catch(error => {
         console.log(error)
     })
@@ -318,7 +319,7 @@ async function deleteFriend(id){
     console.log(id);
     await api.delete(`/friends/${id}`).then((result) => {
         console.log("Amigo deletado com sucesso!")
-       window.location.reload(false)
+      window.location.reload(false)
     })
 }
 
@@ -334,7 +335,7 @@ async function deleteLike(id){
     console.log(id);
     await api.delete(`/reactions/${id}`).then((result) => {
         console.log("like deletado com sucesso!")
-      //  window.location.reload(false)
+      // window.location.reload(false)
     })
 }
 

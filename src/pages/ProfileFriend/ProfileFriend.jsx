@@ -43,42 +43,49 @@ function ProfileFriend() {
   const [following, setFollowing] = useState("");
   const [followers, setFollowers] = useState("");
 
-    useEffect(() => {
-     async function loadAccount() {
-        await api.get(`/accounts/filter/${id}`).then( async (res) => {
-          setUser(res.data[0]);
-          await api.get(`accounts/filter/${res.data[0].patron}`)
-          .then((patron) => {
-            setPatron(patron.data[0])
-          }).catch((error) => {
-            console.log(error)
-          })
-            
+  useEffect(() => {
+    async function loadAccount() {
+      await api.get(`/accounts/filter/${id}`).then( async (res) => {
+        setUser(res.data[0]);
+        await api.get(`accounts/filter/${res.data[0].patron}`)
+        .then((patron) => {
+          setPatron(patron.data[0])
         }).catch((error) => {
           console.log(error)
         })
-      }
+          
+      }).catch((error) => {
+        console.log(error)
+      })
+    }
 
-      const idUser = id;
-      async function loadInformations() {
-        await api.get(`/informations/${idUser}`)
-    .then((res) => {
-      setuserInformations(res.data[0])
-    }).catch(error => {
+    const idUser = id;
+    async function loadInformations() {
+      await api.get(`/informations/${idUser}`)
+  .then((res) => {
+    setuserInformations(res.data[0])
+  }).catch(error => {
+      console.log("Erro ao buscar dados" + error)
+  })
+    }
+
+    async function loadCharacteristcs() {
+      const id_account = id
+      await api.get(`characteristics/${id_account}`)
+      .then((res) => {
+        setCharacteristics(res.data)
+      }).catch(error => {
         console.log("Erro ao buscar dados" + error)
     })
-      }
+    }
+    
+    
+    loadAccount()
+    loadInformations()
+    loadCharacteristcs()
+  }, [])
 
-      async function loadCharacteristcs() {
-        const id_account = id
-        await api.get(`characteristics/${id_account}`)
-        .then((res) => {
-          setCharacteristics(res.data)
-        }).catch(error => {
-          console.log("Erro ao buscar dados" + error)
-      })
-      }
-
+    useEffect(() => {
       async function loadPosts() {
           const res = await api.get(`/posts/filter/accounts/${id}`);
           const dataPosts = (res.data)
@@ -96,11 +103,6 @@ function ProfileFriend() {
           setMyFollowers(result.data)
       }
 
-     
-
-      loadAccount()
-      loadInformations();
-      loadCharacteristcs();
       loadPosts();
       loadFriends();
       loadFollowers();

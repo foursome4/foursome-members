@@ -17,7 +17,7 @@ function FeedPost() {
     const [post, setPost] = useState("");
     const [data, setData] = useState([]);
     const [comment, setComment] = useState(false);
-    const {user, newComment, deletePost, likePost} = useContext(AuthContext);
+    const {user, deletePost} = useContext(AuthContext);
     
     useEffect(() => {
           async function findPosts() {
@@ -33,7 +33,7 @@ function FeedPost() {
         }
         findPosts()
 
-    }, [user, post, data])
+    }, [post, data])
 
     function postAll() {
         setPost("")
