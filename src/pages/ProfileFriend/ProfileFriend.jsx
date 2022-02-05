@@ -44,24 +44,20 @@ function ProfileFriend() {
   const [followers, setFollowers] = useState("");
 
     useEffect(() => {
-      async function loadAccount() {
-        await api.get(`/accounts/filter/${id}`).then(async (res) => {
+     async function loadAccount() {
+        await api.get(`/accounts/filter/${id}`).then( async (res) => {
           setUser(res.data[0]);
-          console.log("res.data[0].patron")
-          console.log(res.data[0].patron)
           await api.get(`accounts/filter/${res.data[0].patron}`)
           .then((patron) => {
-            console.log("patron.data[0]")
-            console.log(patron.data[0])
             setPatron(patron.data[0])
+          }).catch((error) => {
+            console.log(error)
           })
             
-          
         }).catch((error) => {
           console.log(error)
         })
       }
-
 
       const idUser = id;
       async function loadInformations() {
@@ -97,9 +93,7 @@ function ProfileFriend() {
       async function loadFollowers() {
         const idAccount = id;
         const result = await api.get(`/followers/filter/${idAccount}`);
-        console.log("result.data Followers")
-        console.log(result.data)
-        setMyFollowers(result.data)
+          setMyFollowers(result.data)
       }
 
      
@@ -113,16 +107,12 @@ function ProfileFriend() {
     }, []);
 
     
-    console.log("Patron")
-    console.log(patron)
-
     function handleNewFriend(e) {
     const idAccount = myUser.id
     const idFriend = user.id
     const type = "friend"
     const status = "pending"
     e.preventDefault()
-    console.log(idAccount, idFriend, type, status);
     newFriend(idAccount, idFriend, type, status)
   }
   function handleNewFollower(e) {
@@ -131,20 +121,17 @@ function ProfileFriend() {
     const type = "follower"
     const status = "aproved"
     e.preventDefault()
-    console.log(idAccount, idFriend, type, status)
     newFollower(idAccount, idFriend, type, status)
   }
 
   function handleDeleteFriend(e) {
     e.preventDefault()
-    console.log("FriendExists.data[0]")
-    console.log(FriendExists[0].id)
+
    deleteFriend(FriendExists[0].id)
   }
   function handleDeleteFollower(e) {
     e.preventDefault()
-    console.log("FriendExists.data[0]")
-    console.log(FollowingExists[0].id)
+
     deleteFollower(FollowingExists[0].id)
   }
 
@@ -229,8 +216,7 @@ function ProfileFriend() {
     const FollowingExists = myFollowers.filter(friend => (friend.idAccount === myUser.id))
 
 
-console.log("FollowingExists")
-console.log(FollowingExists.length)
+
 
    
 

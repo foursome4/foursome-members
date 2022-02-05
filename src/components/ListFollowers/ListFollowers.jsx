@@ -17,7 +17,6 @@ function ListFollowers({id}) {
         async function loadAccount() {
             
             await api.get(`/accounts/filter/${id}`).then((result) => {
-                console.log(result.data[0])
                 setFriendAccount(result.data[0])
             })
         }
@@ -25,7 +24,6 @@ function ListFollowers({id}) {
         async function loadInformation() {
             const idAccount = id;
             await api.get(`/informations/${idAccount}`).then((result) => {
-                console.log(result.data[0])
                 setFriendInformation(result.data[0])
             })
         }
@@ -41,7 +39,6 @@ function ListFollowers({id}) {
         const type = "follower"
         const status = "aproved"
         e.preventDefault()
-        console.log(idAccount, idFriend, type, status)
         newFollower(idAccount, idFriend, type, status)
       }
 

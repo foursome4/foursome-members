@@ -16,7 +16,6 @@ function ListFriends2({id, idRegister}) {
     useEffect(() => {
         async function loadAccount() {
             await api.get(`/accounts/filter/${id}`).then((result) => {
-                console.log(result.data[0])
                 setFriendAccount(result.data[0])
             })
         }
@@ -24,7 +23,6 @@ function ListFriends2({id, idRegister}) {
         async function loadInformation() {
             const idAccount = id;
             await api.get(`/informations/${idAccount}`).then((result) => {
-                console.log(result.data[0])
                 setFriendInformation(result.data[0])
             })
         }
@@ -36,7 +34,6 @@ function ListFriends2({id, idRegister}) {
 
     function handleDeleteFriend(e) {
         e.preventDefault()
-        console.log(idRegister)
        deleteFriend(idRegister)
     }
     return (

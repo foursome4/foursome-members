@@ -200,7 +200,7 @@ async function newPost({idAccount, type, link, text, idForum, idGroup, avatar, n
     await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, avatar, nickname, username, nameForum, nameGroup }).then((result) => {
         console.log(result.data)
         console.log("Post Realizado com sucesso!");
-      // window.location.reload(false)
+      window.location.reload(false)
         setLoading(false)
     }).catch(error => {
         console.log("Post não foi realizado" + error)
@@ -231,7 +231,7 @@ async function likePost({idAccount, username, idPost}) {
 await api.post("/reactions", {idAccount, username, idPost}).then((result) => {
     console.log(result.data)
     console.log("Post Realizado com sucesso!");
-   // window.location.reload(false)
+   window.location.reload(false)
     setLoading(false)
 }).catch(error => {
     console.log(error)
@@ -299,7 +299,7 @@ async function newFriend(idAccount, idFriend, type, status) {
     await api.post("/friends", data).then((result) => {
         console.log(result.data)
         console.log("Solicitação enviada com sucesso!")
-        window.location.reload(false);
+        //window.location.reload(false);
     }).catch(error => {
         console.log(error)
     })
@@ -318,7 +318,7 @@ async function deleteFriend(id){
     console.log(id);
     await api.delete(`/friends/${id}`).then((result) => {
         console.log("Amigo deletado com sucesso!")
-        window.location.reload(false)
+       window.location.reload(false)
     })
 }
 
@@ -326,7 +326,7 @@ async function deleteFollower(id){
     console.log(id);
     await api.delete(`/followers/${id}`).then((result) => {
         console.log("Amigo deletado com sucesso!")
-        window.location.reload(false)
+       window.location.reload(false)
     })
 }
 
@@ -345,7 +345,7 @@ async function newFollower(idAccount, idFriend, type, status) {
     await api.post("/followers", data).then((result) => {
         console.log(result.data)
         console.log("Seguindo com sucesso!")
-        window.location.reload(false)
+       window.location.reload(false)
     }).catch(error => {
         console.log(error)
     })

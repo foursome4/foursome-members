@@ -5,8 +5,6 @@ import { AuthContext } from '../../contexts/Auth';
 
 
 function ListFollowing({idAccount, idRegister}) {
-    console.log("idAccount ListFollowing")
-    console.log(idAccount)
     const Local = localStorage.getItem("foursome");
     const myUser = JSON.parse(Local);
 
@@ -19,7 +17,6 @@ function ListFollowing({idAccount, idRegister}) {
         async function loadAccount() {
             const id = idAccount;
             await api.get(`/accounts/filter/${id}`).then((result) => {
-                console.log(result.data[0])
                 setFriendAccount(result.data[0])
             })
         }
@@ -27,7 +24,6 @@ function ListFollowing({idAccount, idRegister}) {
         async function loadInformation() {
             
             await api.get(`/informations/${idAccount}`).then((result) => {
-              console.log(result.data[0])
                 setFriendInformation(result.data[0])
             })
         }
@@ -39,7 +35,6 @@ function ListFollowing({idAccount, idRegister}) {
 
     function handleDeleteFollower(e) {
         e.preventDefault()
-        console.log(idRegister)
         deleteFollower(idRegister)
     }
     return (

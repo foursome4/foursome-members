@@ -6,6 +6,7 @@ import api from "../../services/api";
 import { parseISO, format} from 'date-fns';
 import { FeedComments } from '../FeedComments/FeedComments';
 import { ListReactions } from '../ListReactions/ListReactions';
+import { NewComment } from '../NewComment/NewComment';
 
     function FeedPostIndividual2(idAccount) {
     const Local = localStorage.getItem("foursome");
@@ -278,10 +279,7 @@ import { ListReactions } from '../ListReactions/ListReactions';
                                       }
 
                                     <div className="reactions2-individual" >
-                                        <button className="selected"  onClick={() => {handleLikePost(postsData.id)}}>
-                                            <FiThumbsUp />
-                                            Curtir
-                                        </button>
+
                                         <ListReactions idPost={postsData.id} idAccount={idAccount.idAccount}/>
                                         <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
@@ -296,7 +294,7 @@ import { ListReactions } from '../ListReactions/ListReactions';
                                     </div>
 
                                     <div className={comment === true ? "comment" : "commentHidden"}>
-                                        <input type="text" placeholder='Comentar' value={textComment} onChange={(e) => setTextComment(e.target.value)}/> <button onClick={() => {handleComment(postsData.id)}}><FiSend /> Comentar</button>
+                                    <NewComment postData={postsData.id}/>
                                     </div>
 
                             <FeedComments idPost={postsData.id} />

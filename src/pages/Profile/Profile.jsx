@@ -84,9 +84,7 @@ function Profile() {
       async function loadFollowers() {
         const idAccount = user.id;
         const result = await api.get(`/followers/filter/${idAccount}`);
-        console.log("result.data Followers")
-        console.log(result.data)
-        setMyFollowers(result.data)
+          setMyFollowers(result.data)
       }
 
 
@@ -111,13 +109,11 @@ function Profile() {
 
 
   function handleNewFriend(e) {
-    e.preventDefault()
-    console.log(idAccount, idFriend, type, status);
+    e.preventDefault();
     newFriend(idAccount, idFriend, type, status)
   }
   function handleNewFollower(e) {
-    e.preventDefault()
-    console.log(idAccount, idFriend, type, status)
+    e.preventDefault();
     newFollower(idAccount, idFriend, type, status)
   }
 
@@ -212,19 +208,13 @@ function Profile() {
     const videos = posts.filter(post => (post.type === "post-video"));
 
     const friendAproveds = myFriends.filter(friend => (friend.status === 'aproved'))
-    console.log("MYID")
-    console.log(user.id)
+
     const friendPending = myFriends.filter(friend => (friend.status === 'pending' && friend.idFriend === user.id))
     
     const followersMy = myFollowers.filter(friend => (friend.idFriend === user.id))
     const followingMy = myFollowers.filter(friend => (friend.idAccount === user.id))
 
 
-console.log("followersMy")
-console.log(followersMy)
-console.log("followingMy")
-console.log(followingMy)
-    
  
 
     
