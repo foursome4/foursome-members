@@ -14,8 +14,7 @@
     justify-content: flex-start;
     width: 100%;
     color: var(--Gray_font2);
-    background-color: rgb(253, 253, 253);
-    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.1);
+    background-color: rgb(250, 250, 250);
     border-radius: 10px;
     padding: 10px 0;
     margin-top: 5px;
@@ -33,8 +32,16 @@
     text-decoration: none;
 }
 
-.feedComments .feed-comment .comment-user img {
+.feedComments .feed-comment .comment-user .avatar {
     width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.feedComments .feed-comment .comment-user .avatar img {
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     margin-right: 5px;
 }
@@ -61,22 +68,21 @@
 
 .feedComments .feed-comment .comment-data p {
     color: var(--Gray_font);
-    font-weight: 500;
     margin-top: 3px;
-    font-size: 16px;
+    font-size: 15px;
 }
 
-.feedComments .feed-comment .reactions {
-    width: 95%;
+.feedComments .feed-comment .reactions-comments {
+    width: 25%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     
 }
 
-.feedComments .feed-comment .reactions button {
-    background-color: var(--Background2);
+.feedComments .feed-comment .reactions-comments button {
+    background-color: rgb(250, 250, 250);
     border: none;
     display: flex;
     flex-direction: row;
@@ -85,11 +91,11 @@
     color: var(--Gray_font2);
 }
 
-.feedComments .feed-comment .reactions button svg {
+.feedComments .feed-comment .reactions-comments button svg {
     margin-right: 5px;
 }
 
-.feedComments .feed-comment .reactions .selected{
+.feedComments .feed-comment .reactions-comments .selected{
     color: var(--Primary);   
 }
 
@@ -135,8 +141,18 @@
 
 
 @media (max-width: 1150px) {
-    
+    .feedComments .feed-comment .reactions-comments {
+        width: 25%;
+
+    }
 }
+@media (max-width: 900px) {
+    .feedComments .feed-comment .reactions-comments {
+        width: 35%;
+        justify-content: space-around;
+
+    }
+
 
 @media (max-width: 700px) {
 
@@ -158,14 +174,22 @@
         width: 95%;
     }
 
-    .feedComments .feed-comment .reactions {
+    .feedComments .feed-comment .reactions-comments {
         justify-content: space-evenly;
         
     }
 
-    .feedComments .feed-comment .reactions button {
+    .feedComments .feed-comment .reactions-comments button {
   font-size: 14px;
     }
+
+    @media (max-width: 900px) {
+        .feedComments .feed-comment .reactions-comments {
+            margin-top: 5px;
+            width: 100%;
+            justify-content: space-around;
+    
+        }
 
 
     @media (max-width: 380px) {
@@ -179,15 +203,14 @@
             width: 90%;
             font-size: 12px;
             }
-
-        .feedComments .feed-comment .reactions {
-            padding-left: 5px;
-            margin-top: 5px;
-            width: 100%;  
-            justify-content: center;        
-        }
+            .feedComments .feed-comment .reactions-comments {
+                margin-top: 5px;
+                width: 100%;
+                justify-content: space-around;
         
-        .feedComments .feed-comment .reactions button {
+            }
+        
+        .feedComments .feed-comment .reactions-comments button {
             background-color: var(--Background2);
             border: none;
             display: flex;
@@ -198,4 +221,6 @@
             font-size: 12px;
         }
     }
+    }
+}
 }

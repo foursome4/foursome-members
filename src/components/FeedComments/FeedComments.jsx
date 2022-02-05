@@ -28,7 +28,7 @@ function FeedComments({idPost}) {
 
         Comments()
 
-    }, [user, idPost])
+    }, [user, idPost, dataComments])
 
 
     function handleHabiliteComment () {
@@ -63,7 +63,10 @@ function FeedComments({idPost}) {
                                  return (
                                     <div className="feed-comment" key={comments.id}>
                                     <div className="comment-user" >
+                                        <div className="avatar">
                                     <Link to={`/profile-friend/${comments.idAccount}`}><img src={comments.avatar} alt="" /></Link>
+                                        </div>
+
                                         <div className="name-data">
                                         <Link to={`/profile-friend/${comments.idAccount}`}><h4 className="selected">{comments.nickname}</h4></Link>
 
@@ -72,7 +75,7 @@ function FeedComments({idPost}) {
                                         </div>
 
 
-                                        <div className="reactions" >
+                                        <div className="reactions-comments" >
                                         {/* <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
                                             Comentar

@@ -6,6 +6,7 @@ import api from "../../services/api";
 import { parseISO, format} from 'date-fns';
 import { FeedComments } from '../FeedComments/FeedComments';
 import { ListReactions } from '../ListReactions/ListReactions';
+import { NewComment } from '../NewComment/NewComment';
 import { Link } from 'react-router-dom';
 
 function FeedPost() {
@@ -16,7 +17,6 @@ function FeedPost() {
     const [post, setPost] = useState("");
     const [data, setData] = useState([]);
     const [comment, setComment] = useState(false);
-    const [textComment, setTextComment] = useState("");
     const {user, newComment, deletePost, likePost} = useContext(AuthContext);
     
     useEffect(() => {
@@ -67,11 +67,7 @@ function FeedPost() {
         }
     }
 
-    function handleComment(idPost) {
-    newComment({text: textComment, idPost, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username})
-    setTextComment("");
-    setComment(false) 
-    }
+ 
 
     function handleDeletePost(id) {
     deletePost(id)
@@ -291,8 +287,7 @@ function FeedPost() {
                                     </div>
 
                                     <div className={comment === true ? "comment" : "commentHidden"}>
-                                        <input type="text" placeholder='Comentar' value={textComment} onChange={(e) => setTextComment(e.target.value)}/>
-                                        <button onClick={() => {handleComment(postsData.id)}}><FiSend /> Comentar</button>
+                                         <NewComment postData={postsData.id}/>
                                     </div>
 
                                 <FeedComments idPost={postsData.id} />

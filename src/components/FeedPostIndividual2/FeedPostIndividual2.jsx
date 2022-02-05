@@ -23,7 +23,6 @@ import { ListReactions } from '../ListReactions/ListReactions';
     useEffect(() => {
              async function findPosts() {
             if(myPosts === "") {
-                console.log("myPosts está vazio")
             const res = await api.get(`/posts/filter/accounts/${idAccount.idAccount}`);
             const dataPosts = (res.data)
             setData(dataPosts)
@@ -33,19 +32,12 @@ import { ListReactions } from '../ListReactions/ListReactions';
             const res = await api.get(`/posts/filter/${idAccount.idAccount}/${type}`);
             const dataPosts = (res.data)
             setData(dataPosts)
-
-           
         }
         }
-
-
         findPosts();
 
 
-    }, [user, myPosts])
-
-    console.log("data")
-    console.log(data)
+    }, [user, myPosts, data.sort()])
 
     function postAll() {
         setMyPosts("")

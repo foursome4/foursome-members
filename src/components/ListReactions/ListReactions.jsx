@@ -21,6 +21,7 @@ function ListReactions({idPost}) {
         loadReactions()
     }, [like]);
 
+    const myLike = like.filter(likes => (likes.idAccount === userData.id));
     function handleLikePost(e) {
         e.preventDefault()
        likePost({idAccount: userData.id, username: userData.username, idPost})
@@ -28,11 +29,8 @@ function ListReactions({idPost}) {
 
     function handleDeleteLike(e) {
         e.preventDefault()
-        console.log(like.id)
-      //  deleteLike()
+      deleteLike(like[0].id)
      }
-
-    const myLike = like.filter(likes => (likes.idAccount === userData.id));
 
 
 

@@ -37,7 +37,7 @@ import { ListReactions } from '../ListReactions/ListReactions';
         }
         findPosts()
 
-    }, [user, post])
+    }, [user, post, data.sort()])
 
     function postAll() {
         setPost("")
