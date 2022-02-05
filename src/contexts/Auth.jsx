@@ -200,7 +200,7 @@ async function newPost({idAccount, type, link, text, idForum, idGroup, avatar, n
     await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, avatar, nickname, username, nameForum, nameGroup }).then((result) => {
         console.log(result.data)
         console.log("Post Realizado com sucesso!");
-      window.location.reload(false)
+    //  window.location.reload(false)
         setLoading(false)
     }).catch(error => {
         console.log("Post não foi realizado" + error)
@@ -211,7 +211,7 @@ async function deletePost(id) {
     const res = await api.delete(`/posts/${id}`);
     if(res.status===201) {
         toast.success('post deletado com sucesso!');
-         window.location.reload(false);
+     //    window.location.reload(false);
      } else {
         toast.error('Deu algo errado ao deletar!');
      }
