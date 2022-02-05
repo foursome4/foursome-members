@@ -221,7 +221,7 @@ async function deleteComment(id) {
     const res = await api.delete(`/comments/${id}`);
     if(res.status===201) {
         toast.success('post deletado com sucesso!');
-         window.location.reload(false);
+        // window.location.reload(false);
      } else {
         toast.error('Deu algo errado ao deletar!');
      }
@@ -231,7 +231,7 @@ async function likePost({idAccount, username, idPost}) {
 await api.post("/reactions", {idAccount, username, idPost}).then((result) => {
     console.log(result.data)
     console.log("Post Realizado com sucesso!");
-   window.location.reload(false)
+  // window.location.reload(false)
     setLoading(false)
 }).catch(error => {
     console.log(error)
@@ -299,7 +299,7 @@ async function newFriend(idAccount, idFriend, type, status) {
     await api.post("/friends", data).then((result) => {
         console.log(result.data)
         console.log("Solicitação enviada com sucesso!")
-        //window.location.reload(false);
+        window.location.reload(false);
     }).catch(error => {
         console.log(error)
     })
