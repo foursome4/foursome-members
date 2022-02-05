@@ -74,53 +74,53 @@ function ToolbarLeftSlim () {
                 </div>
                 <div className="tools">
                 <Link to="/feed" >
-                 <button className="toolIcon" onclick={handleRedirectFeed}>
+                 <button className="toolIcon" onClick={handleRedirectFeed}>
                         <FiHome size={20}/>Feed
                     </button>
                     </Link>
                     <Link to="/profile" >
-                    <button className="toolIcon" onclick={handleRedirectProfile}>
+                    <button className="toolIcon" onClick={handleRedirectProfile}>
                         <FiUserCheck size={20}/>Perfil
                     </button>
                     </Link>
                     <Link to="/friends" >
-                    <button className="toolIcon" onclick={handleRedirectFriends}>
+                    <button className="toolIcon" onClick={handleRedirectFriends}>
                         <FiUser size={20}/>Amigos
                     </button>
                     </Link>
           
                     <Link to="/chat" >
-                    <button className="toolIcon" onclick={handleRedirectChat}>
+                    <button className="toolIcon" onClick={handleRedirectChat}>
                         <FiMessageSquare size={20}/>
                        Chat
                     </button>
                     </Link>
                     <Link to="/groups" >
-                    <button className="toolIcon" onclick={handleRedirectGroups}>
+                    <button className="toolIcon" onClick={handleRedirectGroups}>
                         <FiUsers size={20}/>
                        Grupos
                     </button>
                     </Link>
                     <Link to="/foruns" >
-                    <button className="toolIcon" onclick={handleRedirectForuns}>
+                    <button className="toolIcon" onClick={handleRedirectForuns}>
                         <FiList size={20}/>
                        Fóruns
                     </button>
                     </Link>
                     <Link to="/ranking" >
-                    <button className="toolIcon" onclick={handleRedirectRanking}>
+                    <button className="toolIcon" onClick={handleRedirectRanking}>
                         <FiTrendingUp size={20}/>
                        Ranking
                     </button>
                     </Link>
                     <Link to="/radar" >
-                    <button className="toolIcon" onclick={handleRedirectRadar}>
+                    <button className="toolIcon" onClick={handleRedirectRadar}>
                         <FiRadio size={20}/>
                        Radar
                     </button>
                     </Link>
                     <Link to="/events" >
-                    <button className="toolIcon" onclick={handleRedirectEvents}>
+                    <button className="toolIcon" onClick={handleRedirectEvents}>
                         <FiCalendar size={20}/>
                        Eventos
                     </button>

@@ -28,7 +28,9 @@ function TopBar() {
                 </Link>
             </div>
             <div className="logo2">
+                  <Link to="/feed">
                 <img src={logoFoursomemini} alt="" />
+                </Link>
             </div>
             <div className="search">
                 <FiSearch />
@@ -51,7 +53,9 @@ function TopBar() {
                 </div>
                 <div className="account">
                     <Link to="/profile">
+                        <div className="avatar">
                     <img src={userInformation !== null ? userInformation.avatar : avatarImg} alt="" />
+                    </div>
                     </Link>
                     <Link to="/profile">
                     <h4>@{user !== null ? user.username : "Usuário não encontrado"}</h4>

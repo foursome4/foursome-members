@@ -1,4 +1,4 @@
-import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiThumbsUp, FiSend } from 'react-icons/fi'
+import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiSend } from 'react-icons/fi'
 import './feedPost.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
@@ -33,7 +33,7 @@ function FeedPost() {
         }
         findPosts()
 
-    }, [user, post])
+    }, [user, post, data])
 
     function postAll() {
         setPost("")
@@ -77,9 +77,7 @@ function FeedPost() {
     deletePost(id)
     }
 
-    function handleLikePost( idPost) {
-        likePost({idAccount: userData.id, username: userData.username, idPost})
-    }
+
 
 
     return (
@@ -104,7 +102,9 @@ function FeedPost() {
                                         <>                      
                                 <div className="feed-post" key={postsData.id}>
                                     <div className="post-user" >
+                                        <div className="avatar">              
                                     <Link to={`/profile-friend/${postsData.idAccount}`}>  <img src={postsData.avatar} alt="" /> </Link>
+                                        </div>
                                         <div className="info-data">
                                         <div className="name-data">
                                     <Link to={`/profile-friend/${postsData.idAccount}`}> <h4 className="selected">{postsData.nickname}</h4> </Link>
@@ -277,10 +277,6 @@ function FeedPost() {
                                       }
 
                                     <div className="reactions" >
-                                        <button className="selected" onClick={() => {handleLikePost(postsData.id)}}>
-                                            <FiThumbsUp />
-                                            Curtir
-                                        </button>
                                      <ListReactions idPost={postsData.id} />
                                         <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />

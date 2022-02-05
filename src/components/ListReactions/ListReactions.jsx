@@ -1,8 +1,16 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import {FiThumbsUp } from 'react-icons/fi'
+import { AuthContext } from "../../contexts/Auth";
 import api from "../../services/api"
+import {toast} from 'react-toastify';
 import "./listReactions.css"
+
+
 function ListReactions({idPost}) {
-    const [like, setLike] = useState([])
+    const {likePost, deleteLike} = useContext(AuthContext);
+    const [like, setLike] = useState([]);
+    const Local = localStorage.getItem("foursome");
+    const userData = JSON.parse(Local);
 
     useEffect(() => {
         async function loadReactions() {
@@ -11,10 +19,34 @@ function ListReactions({idPost}) {
         }
 
         loadReactions()
-    }, [])
+    }, [like]);
+
+    function handleLikePost(e) {
+        e.preventDefault()
+       likePost({idAccount: userData.id, username: userData.username, idPost})
+    }
+
+    function handleDeleteLike(e) {
+        e.preventDefault()
+        console.log(like.id)
+      //  deleteLike()
+     }
+
+    const myLike = like.filter(likes => (likes.idAccount === userData.id));
+
+
+
     return (
         <div className="reactionsList">
-            <h5>({like.length})</h5>
+              <button className={myLike.length === 0 ? "" :"selected"} onClick={myLike.length === 0 ? handleLikePost : handleDeleteLike}>
+                  <FiThumbsUp />
+                    Curtir
+                  </button>
+            <h5>{like.length === 0 ? "" :
+            <>
+            ({like.length})
+            </>
+            }</h5>
         </div>
     )
 }

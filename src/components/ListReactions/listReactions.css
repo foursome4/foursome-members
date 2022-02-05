@@ -1,3 +1,29 @@
+.reactionsList {
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 7px 0;
+}
 .reactionsList h5 {
     margin-left: -7px;
+    margin-top: 2px;
+}
+
+.reactionsList button {
+    background-color: var(--Background2);
+    border: none;
+    font-size: 15px;
+    color: var(--Gray_font2);
+    padding: 0 10px;
+    
+}
+
+.reactionsList button svg {
+    margin-right: 5px;
+}
+
+.reactionsList .selected{
+    color: var(--Primary);   
 }

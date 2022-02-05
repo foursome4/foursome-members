@@ -65,10 +65,18 @@
     font-weight: 500;
 }
 
-.feedPost .posts-feed .feed-post .post-user img {
+.feedPost .posts-feed .feed-post .post-user .avatar {
     width: 50px;
+    height: 50px;
     border-radius: 50%;
     margin-right: 20px;
+}
+
+.feedPost .posts-feed .feed-post .post-user .avatar img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .feedPost .posts-feed .feed-post .post-user .name-data {

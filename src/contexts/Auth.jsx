@@ -200,7 +200,7 @@ async function newPost({idAccount, type, link, text, idForum, idGroup, avatar, n
     await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, avatar, nickname, username, nameForum, nameGroup }).then((result) => {
         console.log(result.data)
         console.log("Post Realizado com sucesso!");
-        window.location.reload(false)
+      // window.location.reload(false)
         setLoading(false)
     }).catch(error => {
         console.log("Post não foi realizado" + error)
@@ -231,7 +231,7 @@ async function likePost({idAccount, username, idPost}) {
 await api.post("/reactions", {idAccount, username, idPost}).then((result) => {
     console.log(result.data)
     console.log("Post Realizado com sucesso!");
-    window.location.reload(false)
+   // window.location.reload(false)
     setLoading(false)
 }).catch(error => {
     console.log(error)
@@ -330,6 +330,15 @@ async function deleteFollower(id){
     })
 }
 
+async function deleteLike(id){
+    console.log(id);
+    await api.delete(`/reactions/${id}`).then((result) => {
+        console.log("like deletado com sucesso!")
+      //  window.location.reload(false)
+    })
+}
+
+
 
 async function newFollower(idAccount, idFriend, type, status) {
     const data = {idAccount, idFriend, type, status}
@@ -407,7 +416,8 @@ async function deleteFriendAndFollower(id, idAccount, idFriend, type, status) {
             friendAproved,
             deleteFriend,
             deleteFollower,
-            deleteFriendAndFollower
+            deleteFriendAndFollower,
+            deleteLike
         }}>
             {children}
         </AuthContext.Provider>

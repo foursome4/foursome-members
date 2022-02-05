@@ -186,11 +186,13 @@ function Post() {
     function postPhoto(){
         setPost("photo")
         setType("post-photo")
+        setText("")
     }
     
     function postVideo(){
         setPost("video")
         setType("post-video")
+        setText("")
     }
     
     function postGroup(){

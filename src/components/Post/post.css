@@ -18,9 +18,16 @@
     justify-content: center;
 }
 
+.post .post-data .avatar {
+    width: 50px;
+    height: 50px;  
+}
+
 .post .post-data .avatar img {
     width: 50px;
+    height: 50px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .post .post-data .post-type {
@@ -282,7 +289,13 @@
                 width: 100%;
             }
 
+            .post .post-data .avatar {
+                width: 30px;
+                height: 30px;
+            }
+
             .post .post-data .avatar img {
+                height: 30px;
                 width: 30px;
             }
 
@@ -297,6 +310,9 @@
                     width: 100%;
                 }
     
+                .post .post-data .avatar {
+                    display: none;
+                }
                 .post .post-data .avatar img {
                     display: none;
                 }
