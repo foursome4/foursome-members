@@ -12,7 +12,7 @@ function SignUp() {
   const  {createAccount} = useContext(AuthContext)
   const [username, setUsername] = useState("");
   const [code, setCode] = useState("");
-  const [phone, setPhone] = useState("");
+  const [newPhone, setPhone] = useState("");
   const [type, setType] = useState("");
   const [patron, setPatron] = useState("");
   const [password, setPassword] = useState("");
@@ -27,16 +27,16 @@ function SignUp() {
     const online = false;
 
 
-    const remove1Paranteses = phone.replace('(', '')
+    const remove1Paranteses = newPhone.replace('(', '')
     const remove2Paranteses = remove1Paranteses.replace(')', '')
     const removeSpace = remove2Paranteses.replace(' ', '')
     const removeTrace = removeSpace.replace('-', '')
-    const newPhone = removeTrace;
+    const phone = removeTrace;
 
     if(checked) {
         if(passordConfirm === password) {
-         createAccount({username, email, phone: newPhone, type, password, status, role, code, online, patron})
-          console.log( {username, email, phone: newPhone, type, password, status, role, code, online, patron})
+         createAccount(username, email, phone, type, password, status, role, code, online, patron)
+          console.log( username, email, phone, type, password, status, role, code, online, patron)
         } else {
           toast.error("As senhas não combinam!")
         }
@@ -112,7 +112,7 @@ function SignUp() {
                                 <option value="Transex">Transex </option>
                                 <option value="Travestis">Travestis </option>
                             </select>
-                            <input type="text" id="telefone" onKeyUp={mascaraFone} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
+                            <input type="text" id="telefone" onKeyUp={mascaraFone} value={newPhone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
 
           <div className="inputPassword">
           <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
