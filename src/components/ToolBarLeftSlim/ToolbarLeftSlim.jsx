@@ -1,5 +1,5 @@
-import { FiCalendar, FiChevronsLeft, FiHome, FiImage, FiList, FiMessageSquare, FiRadio, FiTrendingUp, FiUser, FiUserCheck, FiUsers, FiVideo } from "react-icons/fi"
-import { Link, useNavigate } from "react-router-dom";
+import { FiCalendar, FiHome, FiList, FiMessageSquare, FiRadio, FiTrendingUp, FiUserCheck, FiUsers, FiMapPin } from "react-icons/fi"
+import { a, useNavigate } from "react-router-dom";
 import avatarImg from '../../assets/images/avatar.png';
 import './toolbarLeftSlim.css'
 
@@ -22,16 +22,6 @@ function ToolbarLeftSlim () {
     function handleRedirectFriends () {
         console.log("clicou");
         navigate("/friends")
-    }
-
-    function handleRedirectPhotos () {
-        console.log("clicou");
-        navigate("/photos")
-    }
-
-    function handleRedirectVideos () {
-        console.log("clicou");
-        navigate("/videos")
     }
 
     function handleRedirectGroups () {
@@ -67,64 +57,72 @@ function ToolbarLeftSlim () {
             <div className="ToolBarLeftSlim">
                 <div className="image">
                 <button className="profile">
-                <Link to="/profile" >
+                <a href="/profile" >
                     <img src={userInformation !== null ? userInformation.avatar :avatarImg} alt="" />
-                    </Link>
+                    </a>
                 </button>
                 </div>
                 <div className="tools">
-                <Link to="/feed" >
+
+                <a href="/feed" >
                  <button className="toolIcon" onClick={handleRedirectFeed}>
                         <FiHome size={20}/>Feed
                     </button>
-                    </Link>
-                    <Link to="/profile" >
+                    </a>
+
+                    <a href="/profile" >
                     <button className="toolIcon" onClick={handleRedirectProfile}>
                         <FiUserCheck size={20}/>Perfil
                     </button>
-                    </Link>
-                    <Link to="/friends" >
-                    <button className="toolIcon" onClick={handleRedirectFriends}>
-                        <FiUser size={20}/>Amigos
-                    </button>
-                    </Link>
+                    </a>
           
-                    <Link to="/chat" >
+                    <a href="/chat" >
                     <button className="toolIcon" onClick={handleRedirectChat}>
                         <FiMessageSquare size={20}/>
                        Chat
                     </button>
-                    </Link>
-                    <Link to="/groups" >
-                    <button className="toolIcon" onClick={handleRedirectGroups}>
-                        <FiUsers size={20}/>
-                       Grupos
-                    </button>
-                    </Link>
-                    <Link to="/foruns" >
-                    <button className="toolIcon" onClick={handleRedirectForuns}>
-                        <FiList size={20}/>
-                       Fóruns
-                    </button>
-                    </Link>
-                    <Link to="/ranking" >
+                    </a>
+
+                    <a href="/ranking" >
                     <button className="toolIcon" onClick={handleRedirectRanking}>
                         <FiTrendingUp size={20}/>
                        Ranking
                     </button>
-                    </Link>
-                    <Link to="/radar" >
-                    <button className="toolIcon" onClick={handleRedirectRadar}>
-                        <FiRadio size={20}/>
-                       Radar
+                    </a>
+
+                    <a href="/groups" >
+                    <button className="toolIcon" onClick={handleRedirectGroups}>
+                        <FiUsers size={20}/>
+                       Grupos
                     </button>
-                    </Link>
-                    <Link to="/events" >
+                    </a>
+
+                    <a href="/foruns" >
+                    <button className="toolIcon" onClick={handleRedirectForuns}>
+                        <FiList size={20}/>
+                       Fóruns
+                    </button>
+                    </a>
+
+                    <a href="/events" >
                     <button className="toolIcon" onClick={handleRedirectEvents}>
                         <FiCalendar size={20}/>
                        Eventos
                     </button>
-                    </Link>
+                    </a>
+                    
+                    <a href="/radar" >
+                    <button className="toolIcon" onClick={handleRedirectRadar}>
+                        <FiRadio size={20}/>
+                       Radar
+                    </button>
+                    </a>
+
+                    <a href="/friends" >
+                    <button className="toolIcon" onClick={handleRedirectFriends}>
+                        <FiMapPin size={20}/>Locais
+                    </button>
+                    </a>
                 </div>
             </div>
         </div>

@@ -2,6 +2,10 @@ import {createContext, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import api from '../services/api';
+import io from 'socket.io-client';
+import { socket } from '../services/websocket';
+import apiGoogleReverse from '../services/apiGoogleReverse';
+
 
 const AuthContext = createContext({});
 
@@ -9,21 +13,26 @@ function AuthProvider({children}) {
     const [user, setUser] = useState(null);
     const [userDataNew, setUserDataNew] = useState(null);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         function loadStorage() {
             const storageUser = localStorage.getItem("foursome");
-
         if(storageUser) {
             setUser(JSON.parse(storageUser));
             setLoading(false);
+            socket.on("connection", () => {
+                console.log("Conexão estabelecida")
+            })
         }
         setLoading(false);
         }
-       
+
         loadStorage(); 
     },[]);
+
+
+  
 
     async function createAccount(username, email, phone, type, password, status, role, code, online, patron) {
         const data = {username, email, phone, type, password, status, role, code, online, patron}
@@ -182,8 +191,8 @@ function AuthProvider({children}) {
 
 }
 
-async function preferencesAccount({idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups}) {
-    await api.post('/preferences', {idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups})
+async function preferencesAccount({idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal}) {
+    await api.post('/preferences', {idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal})
     .then((res) => {
         console.log("Preferences")
         const data = res.data
@@ -212,6 +221,7 @@ async function deletePost(id) {
     const res = await api.delete(`/posts/${id}`);
     if(res.status===201) {
         toast.success('post deletado com sucesso!');
+     //    window.location.reload(false);
      //    window.location.reload(false);
      } else {
         toast.error('Deu algo errado ao deletar!');
@@ -290,7 +300,7 @@ async function findInformationsAccount(id) {
 function redirectToAfterLogin() {
     const storageUserInformation = localStorage.getItem("informations-foursome");
     if(storageUserInformation) {
-        navigate("/feed");
+        navigate("/comming-soom");
     } 
     window.location.reload()
 }
@@ -389,8 +399,12 @@ async function deleteFriendAndFollower(id, idAccount, idFriend, type, status) {
         localStorage.removeItem("foursome");
         localStorage.removeItem("informations-foursome");
         setUser(null);
-        navigate("/")
+        navigate("/");
+
+        window.location.reload(false)
     }
+
+
 
 
     return(
@@ -418,7 +432,8 @@ async function deleteFriendAndFollower(id, idAccount, idFriend, type, status) {
             deleteFriend,
             deleteFollower,
             deleteFriendAndFollower,
-            deleteLike
+            deleteLike,
+            socket
         }}>
             {children}
         </AuthContext.Provider>

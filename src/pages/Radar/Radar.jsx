@@ -7,8 +7,24 @@ import avatarImg5 from '../../assets/images/avatar5.png'
 import avatarImg6 from '../../assets/images/avatar6.png'
 import './radar.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
+import { socket } from '../../services/websocket'
+import { useEffect, useState } from "react"
 
 function Radar() {
+
+const [users, setUsers] = useState([])
+ useEffect(() => {
+   function loadUserOnline() {
+    socket.on("userOnline", (data) => {
+        console.log("data")
+        console.log(data)
+        setUsers(data)
+    })
+   }
+
+   loadUserOnline()
+ }, [])
+
     return (
         <div className="content">
      <ToolbarLeftSlim />
@@ -25,36 +41,17 @@ function Radar() {
                                 <h4>1.000 km</h4>
                             </div>
                             <div className="foruns-all">
-                                <div className="forun-unic">
-                                    <img src={avatarImg2} alt="" className="profile"/>
-                                    <h5>Juliana Morena</h5>
+                                {users.map((user) => {
+                                    return (
+                                <div className="forun-unic" key={user.idAccount}>
+                                    <img src={user.avatar} alt="" className="profile"/>
+                                    <h5>{user.nickname}</h5>
                                     <h6>+ 1km de você</h6>
                                     <button>Ver perfil</button>
                                 </div>
-                                <div className="forun-unic">
-                                    <img src={avatarImg3} alt="" className="profile"/>
-                                    <h5>Fábio Maromba</h5>
-                                    <h6>+ 2km de você</h6>
-                                    <button>Ver perfil</button>
-                                </div>
-                                <div className="forun-unic">
-                                    <img src={avatarImg4} alt="" className="profile"/>
-                                    <h5>Bela Mia</h5>
-                                    <h6>+ 20km de você</h6>
-                                    <button>Ver perfil</button>
-                                </div>
-                                <div className="forun-unic">
-                                    <img src={avatarImg5} alt="" className="profile"/>
-                                    <h5>Juliana Morena</h5>
-                                    <h6>+ 25km de você</h6>
-                                    <button>Ver perfil</button>
-                                </div>
-                                <div className="forun-unic">
-                                    <img src={avatarImg6} alt="" className="profile"/>
-                                    <h5>Fábio Maromba</h5>
-                                    <h6>+ 31km de você</h6>
-                                    <button>Ver perfil</button>
-                                </div>
+                                    )
+                                })}
+
                             </div>
                     </div>
                 <ChatSlim />

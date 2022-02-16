@@ -2,7 +2,7 @@ import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { TopBar } from '../../components/TopBar/TopBar'
 import coverImg from '../../assets/images/cover.png'
 import avatar from '../../assets/images/avatar.png'
-import {FiHome, FiImage, FiVideo, FiMoreVertical, FiUser, FiUserPlus, FiHeart, FiUserMinus} from 'react-icons/fi'
+import {FiHome, FiImage, FiVideo, FiMoreVertical, FiUser, FiUserPlus, FiHeart, FiUserMinus, FiMessageSquare} from 'react-icons/fi'
 import {FaHeart} from 'react-icons/fa'
 import './profileFriend.css'
 import { Photos } from '../../components/Photos/Photos'
@@ -17,9 +17,12 @@ import { useParams } from 'react-router-dom'
 import { AuthContext } from '../../contexts/Auth'
 import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
+import { v4 as uuidv4 } from 'uuid'
+import { useNavigate } from 'react-router-dom';
 
 
 function ProfileFriend() {
+  const navigate = useNavigate()
   const {newFriend, newFollower, deleteFriend, deleteFollower} = useContext(AuthContext)
   const Local = localStorage.getItem("foursome");
   const myUser = JSON.parse(Local);
@@ -78,11 +81,29 @@ function ProfileFriend() {
         console.log("Erro ao buscar dados" + error)
     })
     }
+
+    async function loadRoom() {
+      await api.get(`conversations/${myUser.id}/${id}`)
+      .then( async (res) => {
+        console.log(res.data)
+       
+        await api.get(`conversations/${id}/${myUser.id}`)
+        .then((res) => {
+         console.log(res.data)
+        }).catch(error => {
+          console.log("Erro ao buscar dados" + error)
+      })
+
+      }).catch(error => {
+        console.log("Erro ao buscar dados" + error)
+    })
+    }
     
     
     loadAccount()
     loadInformations()
     loadCharacteristcs()
+    loadRoom()
   }, [])
 
     useEffect(() => {
@@ -203,6 +224,14 @@ function ProfileFriend() {
       setFriends("");
       setFollowing("");
       setFollowers("followers");
+    }
+  
+    function handleChat() {
+      const v4 = uuidv4();
+      const room = v4.substring(0, 6);
+
+      console.log(room)
+      navigate(`/chat/${room}/${id}`)
     }
   
 
@@ -360,6 +389,7 @@ function ProfileFriend() {
                     {FollowingExists.length === 0 ? <FiHeart size={16} /> : <FaHeart size={16} />}
                     </button>
                   <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/></button>
+                  <button className="" onClick={handleChat}><FiMessageSquare size={16}/></button>
                   <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/></button>
                   <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/></button>
                   <button  className='settings'><FiMoreVertical size={16}/></button>

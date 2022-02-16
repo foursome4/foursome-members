@@ -1,6 +1,6 @@
 import logoFoursomemini from '../../assets/images/logo-mini2.png'
 import logoFoursome from '../../assets/images/logo2.png'
-import { FiSearch, FiMessageSquare, FiUserPlus, FiBell, FiMail, FiLogOut, FiChevronRight } from 'react-icons/fi'
+import { FiSearch, FiMessageSquare, FiUserPlus, FiBell, FiMail, FiLogOut } from 'react-icons/fi'
 import avatarImg from '../../assets/images/avatar.png'
 import './topBar.css'
 import { useContext } from 'react';
@@ -37,17 +37,17 @@ function TopBar() {
                 <input type="text" />
             </div>
             <div className="links">
+                <Link to="/invite">
                 <div className="link">
                     <FiUserPlus />
                 </div>
+                </ Link>
                 <div className="link">
                     <FiBell />
                 </div>
-                <Link to="/invite">
                 <div className="link">
                     <FiMail />
                 </div>
-                </ Link>
                 <div className="link">
                     <FiLogOut onClick={Tologout} />
                 </div>

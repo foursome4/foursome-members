@@ -30,6 +30,22 @@
     justify-content: space-evenly;
 }
 
+.preferencesForm form .proposal {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.preferencesForm form .proposal textarea{
+    resize: none;
+    border-radius: 6px;
+    border: none;
+    color: var(--Primary);
+    padding: 10px;
+}
+
 
 .preferencesForm form .data {
     width: 100%;

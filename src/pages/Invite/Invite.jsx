@@ -55,7 +55,7 @@ function Invite() {
         if (retorno.length > 10) {
           retorno = retorno.replace(/^(\d\d)(\d{5})(\d{4}).*/,"($1) $2-$3");
         } else if (retorno.length > 5) {
-          if (retorno.length == 6 && event.code == "Backspace") { 
+          if (retorno.length === 6 && event.code === "Backspace") { 
             // necessário pois senão o "-" fica sempre voltando ao dar backspace
             return; 
           } 
@@ -63,7 +63,7 @@ function Invite() {
         } else if (retorno.length > 2) {
           retorno = retorno.replace(/^(\d\d)(\d{0,5})/,"($1) $2");
         } else {
-          if (retorno.length != 0) {
+          if (retorno.length !== 0) {
             retorno = retorno.replace(/^(\d*)/,"($1");
           }
         }
@@ -84,9 +84,9 @@ function Invite() {
                             <div className="invites-all">
                                 <div className="invites-unic">
                                     <div className="informationInvite">
-                                        <h3>Olá, {userInformation.nickname}<br />antes de enviar um convite, verifique as seguintes informações</h3>
+                                        <h3>Olá, {userInformation.nickname}.<br />Antes de enviar um convite, verifique as seguintes informações</h3>
                                        <div className="roles">
-                                       <p><FiCheck /> Certifique-se se seu convidado ja faz parte de nossa rede.</p>
+                                       <p><FiCheck /> Certifique-se se seu convidado não faz parte de nossa rede.</p>
                                         <p><FiCheck /> O convite enviado é único, intransferível e válido por 10 dias.</p>
                                         <p><FiCheck /> Você se torna amplamente responsável pelos atos de seu convidado, podendo sofrer as mesmas punições que ele, em caso de má conduta.</p>
                                        </div>

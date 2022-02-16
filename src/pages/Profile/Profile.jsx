@@ -3,7 +3,6 @@ import { TopBar } from '../../components/TopBar/TopBar'
 import coverImg from '../../assets/images/cover.png'
 import avatar from '../../assets/images/avatar.png'
 import {FiHome, FiImage, FiVideo,  FiSettings, FiMoreVertical, FiUser, FiMessageSquare, FiHeart} from 'react-icons/fi'
-import {FaHeart} from 'react-icons/fa'
 import './profile.css'
 import { Post } from '../../components/Post/Post'
 import { Photos } from '../../components/Photos/Photos'
@@ -11,18 +10,17 @@ import { Video } from '../../components/Video/Video'
 import { SettingsUser } from '../../components/SettingsUser/SettingsUser'
 import { ListFriends } from '../../components/ListFriends/ListFriends'
 import { FaMars, FaVenus } from 'react-icons/fa'
-import { useContext, useEffect, useState } from 'react'
+import {useEffect, useState } from 'react'
 import api from '../../services/api'
 import { FeedPostIndividual } from '../../components/FeedPostIndividual/FeedPostIndividual'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
-import { AuthContext } from '../../contexts/Auth'
 import { ListFriendsPending } from '../../components/ListFriendsPending/ListFriendsPending'
 import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
+import { Link } from 'react-router-dom'
 
 
 function Profile() {
-  const {newFriend, newFollower} = useContext(AuthContext)
   const [dataUser, setDataUser] = useState(null)
   const Local = localStorage.getItem("foursome");
   const user = JSON.parse(Local);
@@ -102,24 +100,7 @@ function Profile() {
       loadFollowers();
     }, []);
 
-    const idAccount = user.id
-    const idFriend = user.id
-    const type = "friend"
-    const status = "pending"
-
-
-  function handleNewFriend(e) {
-    e.preventDefault();
-    newFriend(idAccount, idFriend, type, status)
-  }
-  function handleNewFollower(e) {
-    e.preventDefault();
-    newFollower(idAccount, idFriend, type, status)
-  }
-
-
-
-    function handleFeed() {
+     function handleFeed() {
         setFeed("feed")
         setFriend("")
         setPhoto("")
@@ -348,13 +329,13 @@ function Profile() {
                   <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b></h3>
                 </div>
                 <div className="tools">
-                  <button className={feed === "" ? "" : "select"} onClick={handleFeed}><FiHome size={16}/></button>
-                  <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/></button>
-                  <button className={forum === "" ? "" : "select"} onClick={handleForum}><FiHeart size={16}/></button>
-                  <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/></button>
-                  <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/></button>
-                  <button className={group === "" ? "" : "select"} onClick={handleGroup}><FiMessageSquare size={16}/></button>
-                  <button className={setting === "" ? "" : "select"} onClick={handleSetting}><FiSettings size={16}/></button>
+                  <button className={feed === "" ? "" : "select"} onClick={handleFeed}><FiHome size={16}/> Home</button>
+                  <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/> Amigos</button>
+                  <button className={forum === "" ? "" : "select"} onClick={handleForum}><FiHeart size={16}/> Seguir</button>
+                  <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/> Fotos</button>
+                  <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/> Vídeos</button>
+                  <button className={group === "" ? "" : "select"} onClick={handleGroup}><FiMessageSquare size={16}/> Chat</button>
+                  <button className={setting === "" ? "" : "select"} onClick={handleSetting}><FiSettings size={16}/> Opções</button>
                   <button  className='settings'><FiMoreVertical size={16}/></button>
                 </div>
             </div>
@@ -366,8 +347,9 @@ function Profile() {
                         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
                     </div>
                     <div className="name">
+                     
                         <br />
-                        <h4>Patrono: {patron !== null ? patron.username :"Patrono não eocnotrado"}</h4>
+                        <h4>Patrono: {patron !== null ?  <Link to={`/profile-friend/${patron.id}`}>{patron.username}</Link> :"Patrono não eocnotrado"}</h4>
                         <br />
                     </div>
                 {characteristics.map((characteristicsUser) => {

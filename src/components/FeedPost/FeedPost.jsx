@@ -33,7 +33,7 @@ function FeedPost() {
         }
         findPosts()
 
-    }, [post, data])
+    }, [])
 
     function postAll() {
         setPost("")
@@ -99,11 +99,11 @@ function FeedPost() {
                                 <div className="feed-post" key={postsData.id}>
                                     <div className="post-user" >
                                         <div className="avatar">              
-                                    <Link to={`/profile-friend/${postsData.idAccount}`}>  <img src={postsData.avatar} alt="" /> </Link>
+                                    <Link to={postsData.idAccount === userData.id ? `/profile` : `/profile-friend/${postsData.idAccount}`}>  <img src={postsData.avatar} alt="" /> </Link>
                                         </div>
                                         <div className="info-data">
                                         <div className="name-data">
-                                    <Link to={`/profile-friend/${postsData.idAccount}`}> <h4 className="selected">{postsData.nickname}</h4> </Link>
+                                    <Link to={postsData.idAccount === userData.id ? `/profile` : `/profile-friend/${postsData.idAccount}`}> <h4 className="selected">{postsData.nickname}</h4> </Link>
                                         
                                         </div>
                                         <div className="time-data">

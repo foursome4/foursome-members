@@ -14,13 +14,14 @@ function PreferencesForm() {
     const [travestis, setTravestis] = useState("");
     const [transexuais, setTransexuais] = useState("");
     const [grupos, setGrupos] = useState("");
+    const [proposal, setProposal] = useState("");
 
     
     function handlePreferences(e) {
         e.preventDefault();
-        console.log({idAccount: user.id, homem, mulher, casal, trisal, travestis, transexuais, grupos})
+        console.log({idAccount: user.id, homem, mulher, casal, trisal, travestis, transexuais, grupos, proposal})
 
-        preferencesAccount({idAccount: user.id, men:homem, woman:mulher, couple:casal, trisal:trisal, transvestites:travestis, transsexuals:transexuais, groups:grupos})
+        preferencesAccount({idAccount: user.id, men:homem, woman:mulher, couple:casal, trisal:trisal, transvestites:travestis, transsexuals:transexuais, groups:grupos, proposal:proposal})
     }
 
     function handleSelectHomem(e) {
@@ -105,9 +106,9 @@ function PreferencesForm() {
                     <div className="search">
                         <input type="checkbox" value="Grupos" onChange={handleSelectGrupos}/><span>Grupos</span>
                     </div>
-
-
-
+                    </div>
+                    <div className="proposal">
+                        <textarea name="" id="" cols="100" rows="3" placeholder="proposta" value={proposal} onChange={(e) => setProposal((e.target.value))}></textarea>
                     </div>
                     <div className='confirmation'>
                         <div className="confirmation_preferencesForm">

@@ -33,6 +33,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+    background-color: aqua;
 }
 
 .content-profile .profile .main .section .messages {
@@ -43,8 +44,8 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    background-color: var(--Background2);
     padding: 20px;
+    overflow-y: scroll;
 }
 
 .content-profile .profile .main .section .messages .messages1 {
@@ -99,7 +100,7 @@
 
 .content-profile .profile .main .section .text {
     width: 100%;
-    height: 80px;
+    height: 20%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -107,6 +108,7 @@
     padding: 10px;
     background-color: var(--Background2);
     border-top: 2px solid var(--Background);
+
 }
 
 .content-profile .profile .main .section .text textarea {
