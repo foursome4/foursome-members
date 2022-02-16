@@ -100,4 +100,21 @@
         align-items: center;
         justify-content: space-between;
     }
+
+    @media(max-width: 500px) {
+        .content .commingsoom .orientations h4 {
+            font-size: 15px;
+        }
+
+        .content .commingsoom h3 {
+    font-size: 16px;
 }
+
+.content .commingsoom h2 {
+    font-size: 20px;
+}
+    }
+}
+
+
+
