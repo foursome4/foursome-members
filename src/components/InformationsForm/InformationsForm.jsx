@@ -93,7 +93,8 @@ function InformationsForm() {
 
         
         //Salvando no banco de dados
-        updateInformationsAccount({idAccount: user.id, avatar: photoUrlAvatar, cover: photoUrl, city, uf, relationship, nickname});
+       updateInformationsAccount({idAccount: user.id, avatar: photoUrlAvatar, cover: photoUrl, city, uf, relationship, nickname});
+        console.log({idAccount: user.id, avatar: photoUrlAvatar, cover: photoUrl, city, uf, relationship, nickname});
         console.log(loadding);
         setLoadding(false);
         
@@ -105,8 +106,8 @@ function InformationsForm() {
             const res = await buscaCep.get(`${cep}/json`);
             console.log(res.data);
             console.log(res.data.uf);
-            setUf(res.data.localidade)
-            setCity(res.data.uf)
+            setUf(res.data.uf)
+            setCity(res.data.localidade)
         }catch{
             console.log("error")
             toast.error("CEP não encontrado. Por favor, digite sua cidade e seu Estado(UF) - Sigla")
