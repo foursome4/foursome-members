@@ -55,7 +55,7 @@ function CharacteristcsForm() {
     function handleUpdateCharacteristcs(e){
         e.preventDefault()
         
-        if( data3 && sex3 && sign3 && sexualOption3 && education3 && heigth3 && weight3 && physique3 && ethnicity3 && eyes3 && hair3 && tattos3 && smokes3 !== "") {
+        if(data && sex && sign && sexualOption && education && heigth && weight && physique && ethnicity && eyes && hair && tattos && smokes && data2 && sex2 && sign2 && sexualOption2 && education2 && heigth2 && weight2 && physique2 && ethnicity2 && eyes2 && hair2 && tattos2 && smokes2 && data3 && sex3 && sign3 && sexualOption3 && education3 && heigth3 && weight3 && physique3 && ethnicity3 && eyes3 && hair3 && tattos3 && smokes3 !== "") {
             updateCharacteristcs3({
                 idAccount: user.id,
                 data3,
@@ -99,7 +99,7 @@ function CharacteristcsForm() {
                 hair,
                 tattos,
                 smokes})
-        } else if ( data2 && sex2 && sign2 && sexualOption2 && education2 && heigth2 && weight2 && physique2 && ethnicity2 && eyes2 && hair2 && tattos2 && smokes2  !== "") {
+        } else if ( data && sex && sign && sexualOption && education && heigth && weight && physique && ethnicity && eyes && hair && tattos && smokes && data2 && sex2 && sign2 && sexualOption2 && education2 && heigth2 && weight2 && physique2 && ethnicity2 && eyes2 && hair2 && tattos2 && smokes2  !== "") {
             
             updateCharacteristcs2({
                 idAccount: user.id,
@@ -131,7 +131,7 @@ function CharacteristcsForm() {
                 smokes
             })
 
-        } else {
+        } else if ( data && sex && sign && sexualOption && education && heigth && weight && physique && ethnicity && eyes && hair && tattos && smokes  !== "") {
             updateCharacteristcs({
                 idAccount: user.id,
                 data,

@@ -26,10 +26,17 @@ function SignUp() {
     const role = "Membro";
     const online = false;
 
+
+    const remove1Paranteses = phone.replace('(', '')
+    const remove2Paranteses = remove1Paranteses.replace(')', '')
+    const removeSpace = remove2Paranteses.replace(' ', '')
+    const removeTrace = removeSpace.replace('-', '')
+    const newPhone = removeTrace;
+
     if(checked) {
         if(passordConfirm === password) {
-         createAccount(username, email, phone, type, password, status, role, code, online, patron)
-          console.log( username, email, phone, type, password, status, role, code, online, patron)
+         createAccount({username, email, phone: newPhone, type, password, status, role, code, online, patron})
+          console.log( {username, email, phone: newPhone, type, password, status, role, code, online, patron})
         } else {
           toast.error("As senhas não combinam!")
         }
@@ -53,6 +60,31 @@ function SignUp() {
     } else {
       setPasswordView(false)
     }
+  }
+
+
+
+
+  function mascaraFone(event) {
+    var valor = document.getElementById("telefone").attributes[0].ownerElement['value'];
+    var retorno = valor.replace(/\D/g,"");
+    retorno = retorno.replace(/^0/,"");
+    if (retorno.length > 10) {
+      retorno = retorno.replace(/^(\d\d)(\d{5})(\d{4}).*/,"($1) $2-$3");
+    } else if (retorno.length > 5) {
+      if (retorno.length === 6 && event.code === "Backspace") { 
+        // necessário pois senão o "-" fica sempre voltando ao dar backspace
+        return; 
+      } 
+      retorno = retorno.replace(/^(\d\d)(\d{4})(\d{0,4}).*/,"($1) $2-$3");
+    } else if (retorno.length > 2) {
+      retorno = retorno.replace(/^(\d\d)(\d{0,5})/,"($1) $2");
+    } else {
+      if (retorno.length !== 0) {
+        retorno = retorno.replace(/^(\d*)/,"($1");
+      }
+    }
+    document.getElementById("telefone").attributes[0].ownerElement['value'] = retorno;
   }
 
   return (
@@ -80,7 +112,7 @@ function SignUp() {
                                 <option value="Transex">Transex </option>
                                 <option value="Travestis">Travestis </option>
                             </select>
-          <input type="tel" placeholder="Telefone" pattern="([0-9]{2})[0-9]{5}-[0-9]{4}" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+                            <input type="text" id="telefone" onKeyUp={mascaraFone} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
 
           <div className="inputPassword">
           <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
