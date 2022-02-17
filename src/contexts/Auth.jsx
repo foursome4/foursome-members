@@ -409,7 +409,7 @@ async function CreateInviteNewUsew({code, name, email, phone,idAccount, username
 
     await api.post("/invites", {code, name, email, phone, idAccount, username, patron}).then((result) =>{
         console.log("Convite cadastrado com sucesso");
-        window.open("https://api.whatsapp.com/send?phone=55"+ phone + "&text=" + text,
+        window.open("https://wa.me/55"+ phone + "?text=" + text,
         '_blank')
     }).catch(error => {
         console.log("Convite não cadastrado" + error)
