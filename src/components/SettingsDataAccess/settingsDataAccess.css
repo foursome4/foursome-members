@@ -7,7 +7,7 @@
     border-radius: 20px;
     padding: 20px;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
-    margin: 40px 0;
+    margin: 10px 0;
 }
 
 .settingsDataAccess form {
@@ -26,8 +26,8 @@
 .settingsDataAccess form select {
     background-color: var(--Background2);
     color: var(--Primary);
-    border: none;
-    border-bottom: 1px solid var(--Primary);
+    border: 1px solid var(--Primary);
+    border-radius: 6px;
     padding: 5px 8px;
     width: 50%;
     margin: 10px 0;
@@ -36,8 +36,8 @@
 .settingsDataAccess form input {
     background-color: var(--Background2);
     color: var(--Primary);
-    border: none;
-    border-bottom: 1px solid var(--Primary);
+    border: 1px solid var(--Primary);
+    border-radius: 6px;
     padding: 5px 8px;
     width: 50%;
     margin: 10px 0;

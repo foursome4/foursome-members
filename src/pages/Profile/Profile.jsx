@@ -537,8 +537,7 @@ function Profile() {
                   
                    :
                    setting === "setting" ?
-                   "As configurações vão aparecer aqui!"
-                  //  <SettingsUser idAccount={user.id} />
+                   <SettingsUser idAccount={user.id} />
                   :
                   ""
                   } 

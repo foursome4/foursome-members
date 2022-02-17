@@ -62,9 +62,9 @@ function Chat() {
   })
 
   return (
-    <div className="content-profile">
+    <div className="chatPrincipal">
       <ToolbarLeftSlim />
-      <div className="profile">
+      <div className="chat">
         <TopBar />
         <div className="main">
          <div className="section">

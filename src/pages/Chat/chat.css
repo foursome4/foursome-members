@@ -33,11 +33,9 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    background-color: aqua;
 }
 
 .content-profile .profile .main .section .messages {
-    background-color: brown;
     width: 100%;
     height: 100%;
     display: flex;

@@ -38,6 +38,7 @@
 
 .content-profile .profile .main .section .cover {
     width: 100%;
+    object-fit: cover;
 }
 
 .content-profile .profile .main .section .cover img {
@@ -48,7 +49,7 @@
 }
 
 .content-profile .profile .main .section .cover .mark{
-    width: 100%;
+    width: 90%;
     height: 200px;
     position: absolute;
     object-fit: cover;
@@ -550,6 +551,10 @@
             align-items: center;
             justify-content: space-between;
             margin-top: 70px;
+        }
+
+        .content-profile .profile .main .section .cover .mark {
+            width: 100%;
         }
 
         .content-profile .profile .main .section .sections .infos {
