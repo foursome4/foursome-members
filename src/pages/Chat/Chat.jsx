@@ -10,7 +10,7 @@ import { socket } from '../../services/websocket'
 
    
 function Chat() {
-  const {room} = useParams();
+  const {room, idFriend} = useParams();
   
   const Local = localStorage.getItem("foursome");
   const user = JSON.parse(Local);
@@ -19,6 +19,7 @@ function Chat() {
 
   console.log(`User: ${user.id}`)
   console.log(`Room: ${room}`)
+  console.log(`IdFriend: ${idFriend}`)
 
   const [message, setMessage] = useState('');
   const [listMessages, setListMessages] = useState([]);
@@ -27,7 +28,8 @@ function Chat() {
 
   socket.emit("select_room", {
     room,
-    idAccount: user.id
+    idAccount: user.id,
+    idFriend: idFriend
   }, (messages) => {
     console.log(messages);
     // setListMessages([...listMessages, res]);

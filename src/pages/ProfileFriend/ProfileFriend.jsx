@@ -2,7 +2,7 @@ import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { TopBar } from '../../components/TopBar/TopBar'
 import coverImg from '../../assets/images/cover.png'
 import avatar from '../../assets/images/avatar.png'
-import {FiHome, FiImage, FiVideo, FiMoreVertical, FiUser, FiUserPlus, FiHeart, FiUserMinus, FiMessageSquare} from 'react-icons/fi'
+import {FiHome, FiImage, FiVideo, FiMoreVertical, FiUser, FiUserPlus, FiHeart, FiUserMinus, FiMessageSquare, FiCheck, FiShield} from 'react-icons/fi'
 import {FaHeart} from 'react-icons/fa'
 import './profileFriend.css'
 import { Photos } from '../../components/Photos/Photos'
@@ -13,7 +13,7 @@ import api from '../../services/api'
 import { FeedPostIndividual2 } from '../../components/FeedPostIndividual2/FeedPostIndividual2'
 import { ListFriends } from '../../components/ListFriends/ListFriends'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { AuthContext } from '../../contexts/Auth'
 import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
@@ -32,6 +32,7 @@ function ProfileFriend() {
   const [user, setUser] = useState("null")
 
   const [characteristics, setCharacteristics] = useState([])
+  const [preferences, setPreferences] = useState([])
   const [posts, setPosts] = useState([]);
   const [feed, setFeed] = useState("feed");
   const [friend, setFriend] = useState("");
@@ -82,6 +83,17 @@ function ProfileFriend() {
     })
     }
 
+    async function loadPreferences() {
+      const idAccount = id;
+      await api.get(`/preferences/${idAccount}`)
+      .then((res) => {
+        console.log(res.data[0])
+        setPreferences(res.data[0])
+      }).catch(error => {
+        console.log("Erro ao buscar dados" + error)
+    })
+    }
+
     async function loadRoom() {
       await api.get(`conversations/${myUser.id}/${id}`)
       .then( async (res) => {
@@ -103,6 +115,7 @@ function ProfileFriend() {
     loadAccount()
     loadInformations()
     loadCharacteristcs()
+    loadPreferences()
     loadRoom()
   }, [])
 
@@ -193,24 +206,7 @@ function ProfileFriend() {
       setUserFollower("")
     }
 
-    function handleFriendNew() {
-      setFeed("")
-      setFriend("")
-      setPhoto("")
-      setVideo("")
-      setUserNew("friendNew")
-      setUserFollower("")
-    }
-    function handleFollower() {
-      setFeed("")
-      setFriend("")
-      setPhoto("")
-      setVideo("")
-      setUserNew("")
-      setUserFollower("follower")
-    }
-
-    function handleFriends() {
+     function handleFriends() {
       setFriends("friends");
       setFollowing("");
       setFollowers("");
@@ -377,7 +373,7 @@ function ProfileFriend() {
                                          </div>
                   <img src={userInformations !== null ? userInformations.avatar : avatar} alt="" />
                   </div>
-                  <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b></h3>
+                  <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b>{user.role !== "Membro" ? <FiShield />: ""}</h3>
                 </div>
                 <div className="tools">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed }><FiHome size={16}/></button>
@@ -404,9 +400,29 @@ function ProfileFriend() {
                     </div>
                     <div className="name">
                         <br />
-                        <h4>Patrono: {patron !== null ? patron.username :"Patrono não eocnotrado"}</h4>
+                        <h4>Patrono: {patron !== null ?  <Link to={patron.id === user.id ? `/profile` : `/profile-friend/${patron.id}`}>{patron.username}</Link> :"Patrono não eocnotrado"}</h4>
                         <br />
                        </div>
+
+                       <div className="info-user-preferences">
+                        <div className="informations">
+                          <div className="selects">
+                          <div className="itens">{preferences.men !== "" ? <h5><FiCheck /> {preferences.men}</h5> : "" }  </div>
+                              <div className="itens"> {preferences.woman !== "" ? <h5><FiCheck /> {preferences.woman}</h5> : "" } </div>
+                              <div className="itens"> {preferences.couple !== "" ? <h5><FiCheck /> {preferences.couple}</h5> : "" } </div>
+                              <div className="itens"> {preferences.trisal !== "" ? <h5><FiCheck /> {preferences.trisal}</h5> : "" } </div>
+                              <div className="itens"> {preferences.transsexuals !== "" ? <h5><FiCheck /> {preferences.transsexuals}</h5> : "" } </div>
+                              <div className="itens"> {preferences.transvestites !== "" ? <h5><FiCheck /> {preferences.transvestites}</h5> : "" } </div>
+                              <div className="itens"> {preferences.groups !== "" ? <h5><FiCheck /> {preferences.groups}</h5> : "" } </div>
+                          </div>
+                          <div className="proposal">
+                            <h5 className='title'>Proposta</h5>
+                            {preferences.proposal !== "" ? <h5>{preferences.proposal}</h5> : "" }
+                          </div>
+                        </div>
+                      </div>
+
+
                 {characteristics.map((characteristicsUser) => {
 
                   const nascimento = new Date(characteristicsUser.birthDate);
@@ -432,6 +448,8 @@ function ProfileFriend() {
                     </div>
                         )
                       })}
+
+
                   
                     <div className="info-social">
                         <div className="info-social-data">

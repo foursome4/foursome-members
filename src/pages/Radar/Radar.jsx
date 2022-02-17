@@ -1,10 +1,5 @@
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { TopBar } from "../../components/TopBar/TopBar"
-import avatarImg2 from '../../assets/images/avatar2.png'
-import avatarImg3 from '../../assets/images/avatar3.png'
-import avatarImg4 from '../../assets/images/avatar4.png'
-import avatarImg5 from '../../assets/images/avatar5.png'
-import avatarImg6 from '../../assets/images/avatar6.png'
 import './radar.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import { socket } from '../../services/websocket'

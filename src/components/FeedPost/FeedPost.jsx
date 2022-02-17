@@ -8,6 +8,7 @@ import { FeedComments } from '../FeedComments/FeedComments';
 import { ListReactions } from '../ListReactions/ListReactions';
 import { NewComment } from '../NewComment/NewComment';
 import { Link } from 'react-router-dom';
+import { EditPost } from '../EditPost/EditPost';
 
 function FeedPost() {
     const Local = localStorage.getItem("foursome");
@@ -17,6 +18,7 @@ function FeedPost() {
     const [post, setPost] = useState("");
     const [data, setData] = useState([]);
     const [comment, setComment] = useState(false);
+    const [edit, setEdit] = useState(false);
     const {user, deletePost} = useContext(AuthContext);
     
     useEffect(() => {
@@ -33,7 +35,7 @@ function FeedPost() {
         }
         findPosts()
 
-    }, [])
+    }, [post, data])
 
     function postAll() {
         setPost("")
@@ -66,15 +68,17 @@ function FeedPost() {
             setComment(false) 
         }
     }
-
- 
+    function handleHabiliteEdit () {
+        if(edit === false) {
+            setEdit(true)
+        } else {
+            setEdit(false) 
+        }
+    }
 
     function handleDeletePost(id) {
     deletePost(id)
     }
-
-
-
 
     return (
         <div className="feedPost">
@@ -114,6 +118,14 @@ function FeedPost() {
 
                                     <div className="post-data" >
                                         <p>{postsData.text}</p>
+                                    </div>
+                                    
+                                    
+                                    <div className={edit === true ? "edit" : "editHidden"}>
+                                    {postsData.idAccount === userData.id ? 
+                                         <EditPost data={postsData.text}/>
+                                         : ""
+                                        }
                                     </div>
 
                                     {postsData.type === "post-photo" ?
@@ -280,7 +292,7 @@ function FeedPost() {
                                         </button>
                                         {postsData.idAccount === user.id ?
                                         <>
-                                            <button> <FiEdit /> Editar </button>
+                                            <button onClick={handleHabiliteEdit}> <FiEdit /> Editar </button>
                                             <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 /> Apagar </button>
                                             </>
                                         : ""}
@@ -289,6 +301,7 @@ function FeedPost() {
                                     <div className={comment === true ? "comment" : "commentHidden"}>
                                          <NewComment postData={postsData.id}/>
                                     </div>
+                                   
 
                                 <FeedComments idPost={postsData.id} />
                                 </div>

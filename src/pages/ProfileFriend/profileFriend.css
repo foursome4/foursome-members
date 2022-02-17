@@ -263,6 +263,12 @@
     color: var(--Gray_font2);
 }
 
+.content-profile .profile .main .section .sections .infos .info .name a {
+    text-decoration: none;
+    color: var(--Primary);
+}
+
+
 
 
 .content-profile .profile .main .section .sections .infos .info .info-user-man {
@@ -329,6 +335,82 @@
 .content-profile .profile .main .section .sections .infos .info-user-woman h4 svg {
     color: var(--Primary);
 }
+
+
+.content-profile .profile .main .section .sections .infos .info .info-user-preferences {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 6px;
+    margin: 5px 5px;
+    width: 280px;
+   
+}
+
+.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 2px;
+}
+
+.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .selects {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .selects .itens {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    color: var(--Primary);
+}
+
+.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .selects .itens h5 {
+    color: var(--Primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 0 3px;
+}
+
+.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .selects .itens h5 svg {
+    color: rgb(0, 162, 0);
+    margin-right: 2px;
+}
+.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .proposal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .proposal h5 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: var(--Primary);
+}   
+
+.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .proposal .title {
+    font-weight: 600;
+    color: var(--Primary);
+}
+
 
 .content-profile .profile .main .section .sections .infos .info .info-user-woman .info-user-data {
     display: flex;

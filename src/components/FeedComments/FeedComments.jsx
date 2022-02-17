@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/Auth';
 import api from "../../services/api";
 import { parseISO, format} from 'date-fns';
 import { Link } from 'react-router-dom';
+import { EditComment } from '../EditComment/EditComment';
 
 function FeedComments({idPost}) {
     const Local = localStorage.getItem("foursome");
@@ -16,7 +17,7 @@ function FeedComments({idPost}) {
     const [dataComments, setDataComments] = useState([]);
     const [comment, setComment] = useState(false);
     const [commentText, setCommentText] = useState("");
-
+    const [edit, setEdit] = useState(false);
     const {user, newComment, deleteComment} = useContext(AuthContext);
     useEffect(() => {
           async function Comments() {
@@ -47,6 +48,14 @@ function FeedComments({idPost}) {
 
     function handleDeleteComment(id) {
         deleteComment(id)
+        }
+
+        function handleHabiliteEdit () {
+            if(edit === false) {
+                setEdit(true)
+            } else {
+                setEdit(false) 
+            }
         }
 
     return (
@@ -82,7 +91,7 @@ function FeedComments({idPost}) {
                                         </button> */}
                                         {comments.idAccount === userData.id ?
                                         <>
-                                        <button>
+                                        <button onClick={handleHabiliteEdit}>
                                             <FiEdit />
                                             Editar
                                         </button>
@@ -93,7 +102,13 @@ function FeedComments({idPost}) {
                                             </>
                                             : ""}
                                     </div>
-
+                                        
+                                    <div className={edit === true ? "edit" : "editHidden"}>
+                                        {comments.idAccount === userData.id ? 
+                                         <EditComment data={comments.text}/>
+                                         : ""
+                                        }
+                                    </div>
                                        
                                         </div>
                                     </div>
@@ -106,9 +121,7 @@ function FeedComments({idPost}) {
                                    
                                     
 
-                                    <div className={comment === true ? "comment" : "commentHidden"}>
-                                        <input type="text" placeholder='Comentar' value={commentText} onChange={(e) => setCommentText(e.target.value)}/> <button onClick={() => {handleComment()}}><FiSend /> Comentar</button>
-                                    </div>
+
 
                                   
                                 </div>

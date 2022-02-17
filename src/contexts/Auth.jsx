@@ -2,7 +2,6 @@ import {createContext, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import api from '../services/api';
-import io from 'socket.io-client';
 import { socket } from '../services/websocket';
 import apiGoogleReverse from '../services/apiGoogleReverse';
 
@@ -15,9 +14,22 @@ function AuthProvider({children}) {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
+    
+    const [lat, setlat] = useState("");
+    const [long, setLong] = useState("");
+    const [myCity, setMyCity] = useState("");
+    const [myUf, setMyUf] = useState("");
+    const [city, setCity] = useState("");
+    const [uf, setUf] = useState("");
+    const [idAccount, setIdAccount] = useState("");
+    const [username, setUsername] = useState("");
+    const [avatar, setAvatar] = useState("");
+    const [nickname, setNickname] = useState("");
+
     useEffect(() => {
         function loadStorage() {
             const storageUser = localStorage.getItem("foursome");
+
         if(storageUser) {
             setUser(JSON.parse(storageUser));
             setLoading(false);
@@ -26,10 +38,98 @@ function AuthProvider({children}) {
             })
         }
         setLoading(false);
+        }      
+               
+               loadStorage(); 
+    },[]);
+
+
+
+    function socketDataLocation() {
+        function success(position) {
+            const latitude  = position.coords.latitude;
+            const longitude = position.coords.longitude;
+        
+            console.log(latitude)
+            setlat(latitude)
+            console.log(longitude)
+            setLong(longitude)
+       
+           reverseGeolocalization(latitude, longitude)
+       
+          }
+        
+          function error() {
+            console.log('Unable to retrieve your location');
+          }
+       
+          function getLocation() {
+           return window.navigator.geolocation.getCurrentPosition(success, error);
+            }
+       
+        async function reverseGeolocalization(lat, long) {
+            const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
+            console.log("Cidade")
+            setCity(address.data.results[0].address_components[3].long_name)
+            console.log(address.data.results[0].address_components[3].long_name)
+            console.log("UF")
+            setUf(address.data.results[0].address_components[4].short_name)
+            console.log(address.data.results[0].address_components[4].short_name)    
         }
 
-        loadStorage(); 
-    },[]);
+        const DataUser = localStorage.getItem("foursome");
+        const user = JSON.parse(DataUser);
+        console.log(user);
+        const LocalInformation = localStorage.getItem("informations-foursome");
+        const userInformations = JSON.parse(LocalInformation);
+        console.log(userInformations);
+
+
+        function getInformations() {
+            console.log({
+                idAccount: user.id,
+                username: user.username,
+                nickname: userInformations.nickname,
+                avatar: userInformations.avatar,
+                lat,
+                long
+            })
+
+            
+            let equalCity = " "
+
+            if(city === userInformations.city && uf === userInformations.uf ) {
+            equalCity = true
+            } else {
+            equalCity = false
+            }
+
+            const data = {
+            idAccount: user === undefined ? "" : user.id,
+            username: user.username,
+            nickname: userInformations.nickname,
+            avatar: userInformations.avatar,
+            lat: lat.toString(),
+            long: long.toString(),
+            city,
+            uf,
+            equalCity: equalCity
+            }
+
+            console.log("data");
+            console.log(data);
+
+            socket.emit("userOnline", data)
+        }
+
+        getLocation()
+        getInformations()
+    }
+
+  
+
+
+
 
 
   
@@ -72,6 +172,8 @@ function AuthProvider({children}) {
             await api.post("/session", {email, password}).then((result) => {
                 console.log(result.data)
                 console.log("Login realizado com sucesso!");
+                setIdAccount(result.data.id);
+                setUsername(result.data.username)
                 storageUser(result.data);
                 setLoading(false);
                 toast.info(`Seja bem vindo(a), ${result.data.username}`);
@@ -97,6 +199,42 @@ function AuthProvider({children}) {
         }
         
     }
+
+
+
+    async function findInformationsAccount(id) {
+        await api.get(`/informations/${id}`)
+        .then((res) => {
+            console.log("Find Informations")
+            const data2 = res.data[0]
+            console.log(data2);
+            setUserDataNew(data2);
+            setMyCity(data2.city);
+            setMyUf(data2.uf);
+            setAvatar(data2.avatar);
+            setNickname(data2.nickname);
+            if(data2 !== undefined ) {
+                localStorage.setItem("informations-foursome", JSON.stringify(data2));
+                redirectToAfterLogin()
+            } else {
+                navigate("/completeregistration");
+            }
+        }).catch(error => {
+            console.log("Erro ao buscar dados" + error)
+        })
+        socketDataLocation()
+    }
+    
+    function redirectToAfterLogin() {
+        const storageUserInformation = localStorage.getItem("informations-foursome");
+        if(storageUserInformation) {
+            navigate("/comming-soom");
+        } 
+        window.location.reload()
+    }
+
+
+    //------------------------------------------------------------------------------//
 
     async function updateInformationsAccount({idAccount, avatar, cover, relationship, nickname, city, uf}) {
         await api.post("/informations", {idAccount, avatar, cover, relationship, nickname, city, uf}).then((result) => {
@@ -279,31 +417,7 @@ async function CreateInviteNewUsew({code, name, email, phone,idAccount, username
     })  
 }
 
-async function findInformationsAccount(id) {
-    await api.get(`/informations/${id}`)
-    .then((res) => {
-        console.log("Find Informations")
-        const data2 = res.data[0]
-        console.log(data2);
-        setUserDataNew(data2)
-        if(data2 !== undefined ) {
-            localStorage.setItem("informations-foursome", JSON.stringify(data2));
-            redirectToAfterLogin()
-        } else {
-            navigate("/completeregistration");
-        }
-    }).catch(error => {
-        console.log("Erro ao buscar dados" + error)
-    })
-}
 
-function redirectToAfterLogin() {
-    const storageUserInformation = localStorage.getItem("informations-foursome");
-    if(storageUserInformation) {
-        navigate("/comming-soom");
-    } 
-    window.location.reload()
-}
 
 async function newFriend(idAccount, idFriend, type, status) {
     const data = {idAccount, idFriend, type, status}
@@ -390,8 +504,6 @@ async function deleteFriendAndFollower(id, idAccount, idFriend, type, status) {
 
     function storageUser(data) {
         localStorage.setItem("foursome", JSON.stringify(data));
-        // console.log("Data id Account")
-        // console.log(data.id)
         findInformationsAccount(data.id)
     }
 

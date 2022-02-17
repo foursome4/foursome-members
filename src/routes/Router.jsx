@@ -77,7 +77,7 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <CommingSoom /> </PrivateRoute>} />
             <Route path="/Invitation" 
                 element={ <PrivateRoute> <Invitation /> </PrivateRoute>} />
-            <Route path="/chat/:room/:id" 
+            <Route path="/chat/:room/:idFriend" 
                 element={ <PrivateRoute> <Chat /> </PrivateRoute>} />
             <Route path="/invite" 
                 element={ <PrivateRoute> <Invite /> </PrivateRoute>} />
