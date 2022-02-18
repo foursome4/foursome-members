@@ -23,7 +23,7 @@ import { useNavigate } from 'react-router-dom';
 
 function ProfileFriend() {
   const navigate = useNavigate()
-  const {newFriend, newFollower, deleteFriend, deleteFollower} = useContext(AuthContext)
+  const {socketDataLocation, newFriend, newFollower, deleteFriend, deleteFollower} = useContext(AuthContext)
   const Local = localStorage.getItem("foursome");
   const myUser = JSON.parse(Local);
   const {id} = useParams();
@@ -117,6 +117,7 @@ function ProfileFriend() {
     loadCharacteristcs()
     loadPreferences()
     loadRoom()
+    socketDataLocation()
   }, [])
 
     useEffect(() => {

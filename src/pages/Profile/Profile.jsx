@@ -10,7 +10,7 @@ import { Video } from '../../components/Video/Video'
 import { SettingsUser } from '../../components/SettingsUser/SettingsUser'
 import { ListFriends } from '../../components/ListFriends/ListFriends'
 import { FaMars, FaVenus } from 'react-icons/fa'
-import {useEffect, useState } from 'react'
+import {useContext, useEffect, useState } from 'react'
 import api from '../../services/api'
 import { FeedPostIndividual } from '../../components/FeedPostIndividual/FeedPostIndividual'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
@@ -18,9 +18,11 @@ import { ListFriendsPending } from '../../components/ListFriendsPending/ListFrie
 import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../contexts/Auth'
 
 
 function Profile() {
+  const {socketDataLocation} = useContext(AuthContext)
   const [dataUser, setDataUser] = useState(null)
   const Local = localStorage.getItem("foursome");
   const user = JSON.parse(Local);
@@ -72,8 +74,6 @@ function Profile() {
         const idAccount = user.id;
         await api.get(`/preferences/${idAccount}`)
         .then((res) => {
-          console.log(res.data[0])
-          setPreferences(res.data[0])
         }).catch(error => {
           console.log("Erro ao buscar dados" + error)
       })
@@ -103,6 +103,9 @@ function Profile() {
         const patron = await api.get(`accounts/filter/${id}`);
         setPatron(patron.data[0])
       }
+      function text() {
+        console.log("text")
+      }
 
       loadInformations();
       loadCharacteristcs();
@@ -111,7 +114,10 @@ function Profile() {
       searchPatron();
       loadFriends();
       loadFollowers();
+      socketDataLocation()
     }, []);
+
+    console.log("Text")
 
      function handleFeed() {
         setFeed("feed")

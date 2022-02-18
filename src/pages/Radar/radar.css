@@ -25,9 +25,9 @@
     justify-content: center;
 }
 
-.content .aside .foruns {
+.content .aside .radar {
     width: 100%;
-    height: 100%;
+    height: 600px;
     border-right: 2px solid var(--Background);
     display: flex;
     flex-direction: column;
@@ -36,7 +36,7 @@
     padding: 20px;
 }
 
-.content .aside .foruns .foruns-selected {
+.content .aside .radar .radar-selected {
     width: 80%;
     display: flex;
     flex-direction: row;
@@ -45,7 +45,7 @@
     padding: 10px 0;
 }
 
-.content .aside .foruns .foruns-selected button {
+.content .aside .radar .radar-selected button {
     width: 100%;
     text-align: left;
     padding: 5px;
@@ -57,7 +57,7 @@
     font-weight: 500;
 }
 
-.content .aside .foruns .foruns-selected .selected{
+.content .aside .radar .radar-selected .selected{
     width: 100%;
     text-align: left;
     padding: 5px;
@@ -69,7 +69,7 @@
     font-weight: 500;
 }
 
-.content .aside .foruns .foruns-range {
+.content .aside .radar .radar-range {
     width: 80%;
     display: flex;
     align-items: center;
@@ -78,7 +78,7 @@
     padding: 5px 0;
 }
 
-.content .aside .foruns .foruns-range input[type=range] {
+.content .aside .radar .radar-range input[type=range] {
     width: 80%;
     border-radius: 20px;
     padding: 10px;
@@ -88,12 +88,12 @@
 
 }
 
-.content .aside .foruns .foruns-range h4 {
+.content .aside .radar .radar-range h4 {
     color: var(--Primary);
     font-weight: 600;
 }
 
-.content .aside .foruns .foruns-search button {
+.content .aside .radar .radar-search button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,7 +105,7 @@
     margin: 10px;
 }
 
-.content .aside .foruns .foruns-all {
+.content .aside .radar .radar-all {
     width: 80%;
     display: flex;
     flex-direction: row;
@@ -115,31 +115,32 @@
     flex-wrap: wrap;
 }
 
-.content .aside .foruns .foruns-all .forun-unic {
-    width: 150px;
+.content .aside .radar .radar-all .forun-unic {
+    width: 180px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 20px;
     border-radius: 20px;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
     margin: 10px 0;
 }
 
-.content .aside .foruns .foruns-all .forun-unic .cover {
+.content .aside .radar .radar-all .forun-unic .cover {
     width: 260px;
 }
 
-.content .aside .foruns .foruns-all .forun-unic .profile {
+.content .aside .radar .radar-all .forun-unic .profile {
     width: 80px;
 }
 
-.content .aside .foruns .foruns-all .forun-unic .members {
+.content .aside .radar .radar-all .forun-unic .members {
     width: 120px;
 }
 
-.content .aside .foruns .foruns-all .forun-unic button {
+.content .aside .radar .radar-all .forun-unic button {
     border: 1px solid var(--Primary);
     padding: 5px;
     border-radius: 20px;
@@ -151,12 +152,44 @@
     margin: 5px 0;
 }
 
-.content .aside .foruns .foruns-all .forun-unic h5 {
+.content .aside .radar .radar-all .forun-unic img {
+    border-radius: 10px;
+}
+
+.content .aside .radar .radar-all .forun-unic a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid var(--Primary);
+    padding: 5px;
+    border-radius: 20px;
+    width: 100%;
+    font-size: 14px;
+    color: var(--Primary);
+    font-weight: 600;
+    background-color: var(--Background2);
+    margin: 5px 0;
+}
+
+.content .aside .radar .radar-all .forun-unic h5 {
     font-weight: 600;
     color: var(--Black);
     margin: 5px 0 0 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--Primary);
 }
-.content .aside .foruns .foruns-all .forun-unic h6 {
+
+.content .aside .radar .radar-all .forun-unic h5 svg {
+    margin-left: 5px;
+    font-size: 16px;
+    color: rgb(62, 62, 255);
+}
+.content .aside .radar .radar-all .forun-unic h6 {
     font-weight: 500;
     color: var(--Gray_font1);
     margin: 5px 0 5px 0;

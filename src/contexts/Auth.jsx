@@ -45,94 +45,7 @@ function AuthProvider({children}) {
 
 
 
-    function socketDataLocation() {
-        function success(position) {
-            const latitude  = position.coords.latitude;
-            const longitude = position.coords.longitude;
-        
-            console.log(latitude)
-            setlat(latitude)
-            console.log(longitude)
-            setLong(longitude)
-       
-           reverseGeolocalization(latitude, longitude)
-       
-          }
-        
-          function error() {
-            console.log('Unable to retrieve your location');
-          }
-       
-          function getLocation() {
-           return window.navigator.geolocation.getCurrentPosition(success, error);
-            }
-       
-        async function reverseGeolocalization(lat, long) {
-            const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
-            console.log("Cidade")
-            setCity(address.data.results[0].address_components[3].long_name)
-            console.log(address.data.results[0].address_components[3].long_name)
-            console.log("UF")
-            setUf(address.data.results[0].address_components[4].short_name)
-            console.log(address.data.results[0].address_components[4].short_name)    
-        }
 
-        const DataUser = localStorage.getItem("foursome");
-        const user = JSON.parse(DataUser);
-        console.log(user);
-        const LocalInformation = localStorage.getItem("informations-foursome");
-        const userInformations = JSON.parse(LocalInformation);
-        console.log(userInformations);
-
-
-        function getInformations() {
-            console.log({
-                idAccount: user.id,
-                username: user.username,
-                nickname: userInformations.nickname,
-                avatar: userInformations.avatar,
-                lat,
-                long
-            })
-
-            
-            let equalCity = " "
-
-            if(city === userInformations.city && uf === userInformations.uf ) {
-            equalCity = true
-            } else {
-            equalCity = false
-            }
-
-            const data = {
-            idAccount: user === undefined ? "" : user.id,
-            username: user.username,
-            nickname: userInformations.nickname,
-            avatar: userInformations.avatar,
-            lat: lat.toString(),
-            long: long.toString(),
-            city,
-            uf,
-            equalCity: equalCity
-            }
-
-            console.log("data");
-            console.log(data);
-
-            socket.emit("userOnline", data)
-        }
-
-        getLocation()
-        getInformations()
-    }
-
-  
-
-
-
-
-
-  
 
     async function createAccount(username, email, phone, type, password, status, role, code, online, patron) {
         const data = {username, email, phone, type, password, status, role, code, online, patron}
@@ -215,14 +128,14 @@ function AuthProvider({children}) {
             setNickname(data2.nickname);
             if(data2 !== undefined ) {
                 localStorage.setItem("informations-foursome", JSON.stringify(data2));
-                redirectToAfterLogin()
+                redirectToAfterLogin();
             } else {
                 navigate("/completeregistration");
             }
         }).catch(error => {
             console.log("Erro ao buscar dados" + error)
         })
-        socketDataLocation()
+        
     }
     
     function redirectToAfterLogin() {
@@ -518,6 +431,94 @@ async function deleteFriendAndFollower(id, idAccount, idFriend, type, status) {
 
 
 
+    // Location
+    function socketDataLocation() {
+        function success(position) {
+            const latitude  = position.coords.latitude;
+            const longitude = position.coords.longitude;
+        
+            console.log(latitude)
+            setlat(latitude)
+            console.log(longitude)
+            setLong(longitude)
+       
+           reverseGeolocalization(latitude, longitude)
+       
+          }
+        
+          function error() {
+            console.log('Unable to retrieve your location');
+          }
+       
+          function getLocation() {
+           return window.navigator.geolocation.getCurrentPosition(success, error);
+            }
+       
+        async function reverseGeolocalization(lat, long) {
+            const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
+            console.log("Cidade")
+            setCity(address.data.results[0].address_components[3].long_name)
+            console.log(address.data.results[0].address_components[3].long_name)
+            console.log("UF")
+            setUf(address.data.results[0].address_components[4].short_name)
+            console.log(address.data.results[0].address_components[4].short_name)    
+        }
+
+        const DataUser = localStorage.getItem("foursome");
+        const user = JSON.parse(DataUser);
+        console.log(user);
+        const LocalInformation = localStorage.getItem("informations-foursome");
+        const userInformations = JSON.parse(LocalInformation);
+        console.log(userInformations);
+
+
+        function getInformations() {
+            console.log({
+                idAccount: user.id,
+                username: user.username,
+                nickname: userInformations.nickname,
+                avatar: userInformations.avatar,
+                lat,
+                long
+            })
+
+            
+            let equalCity = " "
+
+            if(city === userInformations.city && uf === userInformations.uf ) {
+            equalCity = true
+            } else {
+            equalCity = false
+            }
+
+            const data = {
+            idAccount: user === undefined ? "" : user.id,
+            username: user.username,
+            nickname: userInformations.nickname,
+            avatar: userInformations.avatar,
+            lat: lat.toString(),
+            long: long.toString(),
+            city,
+            uf,
+            equalCity: equalCity
+            }
+
+                if(data.idAccount && data.username && data.nickname && data.avatar && data.lat && data.long && data.city && data.uf !== "") {
+                    console.log("data");
+                    console.log(data);
+                    socket.emit("userOnline", data)
+                } else {
+                    console.log("Imformações imcompletas")
+                }
+
+        }
+
+        getLocation()
+        getInformations()
+    }
+
+
+
 
     return(
         <AuthContext.Provider value={{
@@ -545,7 +546,8 @@ async function deleteFriendAndFollower(id, idAccount, idFriend, type, status) {
             deleteFollower,
             deleteFriendAndFollower,
             deleteLike,
-            socket
+            socket,
+            socketDataLocation
         }}>
             {children}
         </AuthContext.Provider>

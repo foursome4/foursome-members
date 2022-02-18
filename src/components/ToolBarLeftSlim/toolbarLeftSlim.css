@@ -99,7 +99,7 @@
     position: fixed;
     margin-top: 90vh;
     bottom: 0;
-    z-index: 0;
+    z-index: 1;
     overflow-x: scroll;
     }
 

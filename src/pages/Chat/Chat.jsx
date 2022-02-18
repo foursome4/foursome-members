@@ -62,12 +62,12 @@ function Chat() {
   })
 
   return (
-    <div className="chatPrincipal">
+    <div className="content-profile">
       <ToolbarLeftSlim />
-      <div className="chat">
+      <div className="profile">
         <TopBar />
-        <div className="main">
-         <div className="section">
+        <div className="main-chat">
+         <div className="section-chat">
              <div className="messages">
 
                {listMessages.map((message) => {
@@ -81,7 +81,6 @@ function Chat() {
                  )
                })}
 
-              <span>Ana Julia está digitando...</span>  
             </div>
             <div className="text">
                 <textarea name="" id="" cols={10} rows={3} value={text} autoFocus  autoComplete='off' placeholder='Digite uma mensagem' onChange={(e) => setText(e.target.value)}></textarea>
