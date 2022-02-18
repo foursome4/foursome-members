@@ -242,6 +242,89 @@ function AuthProvider({children}) {
 
 }
 
+
+async function newUpdateCharacteristcs({idAccount, data,
+    sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes}) {
+        setLoading(true)
+        await api.post("/characteristics", {
+            idAccount, birthDate: data, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes
+        }).then(async (result) => {
+            console.log("updateCharacteristcs ok");
+            navigate("/preferences");
+            setLoading(false)
+        }).catch(error => {
+            console.log("Informações não enviadas" + error)
+})
+}
+
+
+
+async function newUpdateCharacteristcs2({idAccount, data,
+    sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes,
+    data2, sex2, sign2, sexualOption2, education2, heigth2, weight2, physique2, ethnicity2, eyes2, hair2, tattos2, smokes2,}) {
+        setLoading(true)
+        await api.post("/characteristics", {
+            idAccount, birthDate: data, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes
+        }).then(async (result) => {
+            console.log(result.data)
+            console.log("updateCharacteristcs2 ok");
+            await api.post("/characteristics",  {
+                idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2, education:education2, heigth: heigth2, weight: weight2, physique:physique2, ethnicity:ethnicity2, eyes:eyes2, hair:hair2, tatoos:tattos2, smokes:smokes2,
+            }).then(async (result) => {
+                console.log(result.data)
+                console.log("updateCharacteristcs2 ok");
+                navigate("/preferences");
+            }).catch(error => {
+                console.log("Informações não enviadas" + error)
+            })
+            
+        }).catch(error => {
+            console.log("Informações não enviadas" + error)
+        })
+        
+        setLoading(false)
+
+}
+
+
+
+async function newUpdateCharacteristcs3({idAccount, data,
+    sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes,
+    data2, sex2, sign2, sexualOption2, education2, heigth2, weight2, physique2, ethnicity2, eyes2, hair2, tattos2, smokes2,
+    data3, sex3, sign3, sexualOption3, education3, heigth3, weight3, physique3, ethnicity3, eyes3, hair3, tattos3, smokes3}) {
+        setLoading(true)
+        await api.post("/characteristics", {
+            idAccount: idAccount, birthDate: data, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes
+        }).then(async (result) => {
+            console.log(result.data)
+            console.log("updateCharacteristcs3 ok");
+            await api.post("/characteristics",  {
+                idAccount: idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2, education:education2, heigth: heigth2, weight: weight2, physique:physique2, ethnicity:ethnicity2, eyes:eyes2, hair:hair2, tatoos: tattos2, smokes:smokes2,
+            }).then(async (result) => {
+                console.log(result.data)
+                console.log("updateCharacteristcs3 ok");
+        
+                await api.post("/characteristics", {
+                    idAccount: idAccount, birthDate: data3, sex:sex3, sign:sign3, sexualOption: sexualOption3, education:education3, heigth: heigth3, weight: weight3, physique:physique3, ethnicity:ethnicity3, eyes:eyes3, hair:hair3, tatoos: tattos3, smokes:smokes3,
+                }).then(async (result) => {
+                    console.log(result.data)
+                    console.log("updateCharacteristcs3 ok");
+                    navigate("/preferences");
+                    setLoading(false)
+                }).catch(error => {
+                    console.log("Informações não enviadas" + error)
+        })
+
+            }).catch(error => {
+                console.log("Informações não enviadas" + error)
+    })
+           
+        }).catch(error => {
+            console.log("Informações não enviadas" + error)
+})
+
+}
+
 async function preferencesAccount({idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal}) {
     await api.post('/preferences', {idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal})
     .then((res) => {
@@ -437,9 +520,9 @@ async function deleteFriendAndFollower(id, idAccount, idFriend, type, status) {
             const latitude  = position.coords.latitude;
             const longitude = position.coords.longitude;
         
-            console.log(latitude)
+            //console.log(latitude)
             setlat(latitude)
-            console.log(longitude)
+            //console.log(longitude)
             setLong(longitude)
        
            reverseGeolocalization(latitude, longitude)
@@ -456,31 +539,31 @@ async function deleteFriendAndFollower(id, idAccount, idFriend, type, status) {
        
         async function reverseGeolocalization(lat, long) {
             const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
-            console.log("Cidade")
+            //console.log("Cidade")
             setCity(address.data.results[0].address_components[3].long_name)
-            console.log(address.data.results[0].address_components[3].long_name)
-            console.log("UF")
+            //console.log(address.data.results[0].address_components[3].long_name)
+            //console.log("UF")
             setUf(address.data.results[0].address_components[4].short_name)
-            console.log(address.data.results[0].address_components[4].short_name)    
+            //console.log(address.data.results[0].address_components[4].short_name)    
         }
 
         const DataUser = localStorage.getItem("foursome");
         const user = JSON.parse(DataUser);
-        console.log(user);
+        //console.log(user);
         const LocalInformation = localStorage.getItem("informations-foursome");
         const userInformations = JSON.parse(LocalInformation);
-        console.log(userInformations);
+        //console.log(userInformations);
 
 
         function getInformations() {
-            console.log({
-                idAccount: user.id,
-                username: user.username,
-                nickname: userInformations.nickname,
-                avatar: userInformations.avatar,
-                lat,
-                long
-            })
+            // console.log({
+            //     idAccount: user.id,
+            //     username: user.username,
+            //     nickname: userInformations.nickname,
+            //     avatar: userInformations.avatar,
+            //     lat,
+            //     long
+            // })
 
             
             let equalCity = " "
@@ -504,8 +587,6 @@ async function deleteFriendAndFollower(id, idAccount, idFriend, type, status) {
             }
 
                 if(data.idAccount && data.username && data.nickname && data.avatar && data.lat && data.long && data.city && data.uf !== "") {
-                    console.log("data");
-                    console.log(data);
                     socket.emit("userOnline", data)
                 } else {
                     console.log("Imformações imcompletas")
@@ -531,6 +612,9 @@ async function deleteFriendAndFollower(id, idAccount, idFriend, type, status) {
             updateCharacteristcs,
             updateCharacteristcs2,
             updateCharacteristcs3,
+            newUpdateCharacteristcs,
+            newUpdateCharacteristcs2,
+            newUpdateCharacteristcs3,
             preferencesAccount,
             newPost,
             CreateInviteNewUsew,

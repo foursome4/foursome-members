@@ -6,7 +6,7 @@ import api from '../../services/api';
 import './settingsCharacteristcs.css'
 
 function SettingsCharacteristcs() {
-    const {loading, updateCharacteristcs, updateCharacteristcs2, updateCharacteristcs3} = useContext(AuthContext);
+    const {loading, newUpdateCharacteristcs, newUpdateCharacteristcs2, newUpdateCharacteristcs3} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
 
@@ -81,7 +81,7 @@ function SettingsCharacteristcs() {
         e.preventDefault()
         
         if(data && sex && sign && sexualOption && education && heigth && weight && physique && ethnicity && eyes && hair && tattos && smokes && data2 && sex2 && sign2 && sexualOption2 && education2 && heigth2 && weight2 && physique2 && ethnicity2 && eyes2 && hair2 && tattos2 && smokes2 && data3 && sex3 && sign3 && sexualOption3 && education3 && heigth3 && weight3 && physique3 && ethnicity3 && eyes3 && hair3 && tattos3 && smokes3 !== "") {
-            updateCharacteristcs3({
+            newUpdateCharacteristcs3({
                 idAccount: user.id,
                 data3,
                 sex3,
@@ -126,7 +126,7 @@ function SettingsCharacteristcs() {
                 smokes})
         } else if ( data && sex && sign && sexualOption && education && heigth && weight && physique && ethnicity && eyes && hair && tattos && smokes && data2 && sex2 && sign2 && sexualOption2 && education2 && heigth2 && weight2 && physique2 && ethnicity2 && eyes2 && hair2 && tattos2 && smokes2  !== "") {
             
-            updateCharacteristcs2({
+            newUpdateCharacteristcs2({
                 idAccount: user.id,
                 data2,
                 sex2,
@@ -157,7 +157,7 @@ function SettingsCharacteristcs() {
             })
 
         } else if ( data && sex && sign && sexualOption && education && heigth && weight && physique && ethnicity && eyes && hair && tattos && smokes  !== "") {
-            updateCharacteristcs({
+            newUpdateCharacteristcs({
                 idAccount: user.id,
                 data,
                 sex,

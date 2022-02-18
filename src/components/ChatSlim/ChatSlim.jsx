@@ -11,34 +11,25 @@ function ChatSlim() {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
-    const [estilo, setEstilo] = useState(true)
-
 const [users, setUsers] = useState([])
  useEffect(() => {
-   function loadUserOnline() {
-    socket.on("userOnline", (data) => {
-        console.log("data")
-        console.log(data)
-        setUsers(data)
-    })
-   }
-
-   loadUserOnline()
    socketDataLocation()
  }, [])
 
+ socket.on("userOnline", (data) => {
+    console.log("data")
+    console.log(data)
+    setUsers(data)
+})
+
  const myLocation = users.filter((location) => (location.idAccount === userData.id));
 
-function handleEstilo(e) {
-    e.preventDefault();
-
-    setEstilo(false)
-}       
+    
     return (
         
-        <div className={estilo === true ? "content-chat" : "content-chat-hidden"}>
+        <div className="content-chat">
             <div className="chat-avatar">
-                    <button onClick={handleEstilo}><FiLogOut /> </button>
+                    <button><FiLogOut /> </button>
                      </div>
             {users.map((user) => {
                 return (

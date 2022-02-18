@@ -19,6 +19,7 @@ import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 import { v4 as uuidv4 } from 'uuid'
 import { useNavigate } from 'react-router-dom';
+import { socket } from '../../services/websocket'
 
 
 function ProfileFriend() {
@@ -31,6 +32,7 @@ function ProfileFriend() {
   const [userInformations, setuserInformations] = useState("null")
   const [user, setUser] = useState("null")
 
+  const [rooms, setRooms] = useState([])
   const [characteristics, setCharacteristics] = useState([])
   const [preferences, setPreferences] = useState([])
   const [posts, setPosts] = useState([]);
@@ -94,29 +96,29 @@ function ProfileFriend() {
     })
     }
 
-    async function loadRoom() {
-      await api.get(`conversations/${myUser.id}/${id}`)
-      .then( async (res) => {
-        console.log(res.data)
+    // async function loadRoom() {
+    //   await api.get(`conversations/${myUser.id}/${id}`)
+    //   .then( async (res) => {
+    //     console.log(res.data)
        
-        await api.get(`conversations/${id}/${myUser.id}`)
-        .then((res) => {
-         console.log(res.data)
-        }).catch(error => {
-          console.log("Erro ao buscar dados" + error)
-      })
+    //     await api.get(`conversations/${id}/${myUser.id}`)
+    //     .then((res) => {
+    //      console.log(res.data)
+    //     }).catch(error => {
+    //       console.log("Erro ao buscar dados" + error)
+    //   })
 
-      }).catch(error => {
-        console.log("Erro ao buscar dados" + error)
-    })
-    }
+    //   }).catch(error => {
+    //     console.log("Erro ao buscar dados" + error)
+    // })
+    // }
     
     
     loadAccount()
     loadInformations()
     loadCharacteristcs()
     loadPreferences()
-    loadRoom()
+    // loadRoom()
     socketDataLocation()
   }, [])
 
@@ -222,13 +224,28 @@ function ProfileFriend() {
       setFollowing("");
       setFollowers("followers");
     }
-  
+
+
+
+    socket.on("rooms", (data) => {
+      setRooms([...rooms, data]);
+    })
+
+    console.log(rooms)
     function handleChat() {
+      const selectRoom = rooms.filter((room) => (room.idAccount === id && room.idFriend === myUser.id || room.idAccount === myUser.id && room.idFriend === id ))
+      console.log("selectRoom");
+      console.log(selectRoom);
+
       const v4 = uuidv4();
       const room = v4.substring(0, 6);
 
-      console.log(room)
-      navigate(`/chat/${room}/${id}`)
+      if(selectRoom === "") {
+        console.log(room)
+        navigate(`/chat/${room}/${id}`);
+      } else {
+        navigate(`/chat/${selectRoom.room}/${id}`);
+      }
     }
   
 

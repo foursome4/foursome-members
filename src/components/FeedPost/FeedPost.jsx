@@ -77,7 +77,13 @@ function FeedPost() {
     }
 
     function handleDeletePost(id) {
-    deletePost(id)
+        confirm("Deseja apagar?")
+        if (confirm("Você realmente quer sair?")) {
+           alert("Obrigado")
+          } else {
+              alert("de nada")
+          }
+    //deletePost(id)
     }
 
     return (

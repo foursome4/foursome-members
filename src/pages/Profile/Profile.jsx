@@ -74,6 +74,7 @@ function Profile() {
         const idAccount = user.id;
         await api.get(`/preferences/${idAccount}`)
         .then((res) => {
+          setPreferences(res.data[0])
         }).catch(error => {
           console.log("Erro ao buscar dados" + error)
       })
@@ -103,9 +104,6 @@ function Profile() {
         const patron = await api.get(`accounts/filter/${id}`);
         setPatron(patron.data[0])
       }
-      function text() {
-        console.log("text")
-      }
 
       loadInformations();
       loadCharacteristcs();
@@ -117,7 +115,6 @@ function Profile() {
       socketDataLocation()
     }, []);
 
-    console.log("Text")
 
      function handleFeed() {
         setFeed("feed")

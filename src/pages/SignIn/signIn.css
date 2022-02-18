@@ -15,6 +15,13 @@
     flex-direction: column;
 }
 
+.content .signIn h1 {
+    margin-top: 25px;
+    font-weight: 700;
+    color: var(--White);
+    text-align: center;
+}
+
 
 .content .signIn .form {
     width: 50%;
