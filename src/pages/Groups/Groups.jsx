@@ -1,53 +1,67 @@
 import { TopBar } from "../../components/TopBar/TopBar"
 import { FiPlusCircle, FiSearch} from 'react-icons/fi'
-import capaGrupo from '../../assets/images/capaGrupo.png'
-import perfilGrupo from '../../assets/images/perfilGrupo.png'
-import membersImg from '../../assets/images/members.png'
 import './groups.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
+import { ListGroups } from "../../components/ListGroups/ListGroups"
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
+import { useState } from "react"
+import { MyGroups } from "../../components/MyGroups/MyGroups"
+import { GroupsCreated } from "../../components/GroupsCreated/GroupsCreated"
+import { CreateGroups } from "../../components/CreateGroups/CreateGroups"
 
 function Groups() {
+
+    const [select, setSelect] = useState("All");
+
+    function handleAllGroups() {
+        setSelect("All")
+    }
+    function handleMyGroups() {
+        setSelect("Participate")
+    }
+    function handleParticipate() {
+        setSelect("My")
+    }
+    function handleSelectCreate() {
+        setSelect("Create")
+    }
+
     return (
         <div className="content">
      <ToolbarLeftSlim />
-            <div className="main">
+            <div className="main-group">
                 <TopBar />
-                <div className="aside">
-                    <div className="groups">
-                            <div className="groups-selected">
-                                <button className="selected">Todos os Grupos</button>
-                                <button>Meus grupos</button>
+                <div className="aside-group">
+                    <div className="group">
+                            <div className="group-selected">
+                                <button className={select === "All" ? "selected" : ""} onClick={handleAllGroups}>Todos os Grupos</button>
+                                <button className={select === "Participate" ? "selected" : ""} onClick={handleMyGroups}>Grupos que participo</button>
+                                <button className={select === "My" ? "selected" : ""} onClick={handleParticipate}>Meus grupos</button>
                             </div>
-                            <div className="groups-buttons">
-                                <div className="groups-create">
-                                <button><FiPlusCircle size={20}/> Criar grupo</button>
-                                </div>
-                                <div className="groups-search">
-                                    <input type="text" />
-                                    <button><FiSearch size={20}/></button>
+                            <div className="group-buttons">
+                                <div className="group-create">
+                                <button onClick={handleSelectCreate}><FiPlusCircle size={20}/> Criar grupo</button>
                                 </div>
                             </div>
-                            <div className="groups-all">
-                                <div className="group-unic">
-                                    <img src={capaGrupo} alt="" className="cover"/>
-                                    <img src={perfilGrupo} alt="" className="profile"/>
-                                    <h3>Curtição em Arraial</h3>
-                                    <h4>Criado a 3 meses</h4>
-                                    <img src={membersImg} alt="" className="members"/>
-                                    <h4>Grupo público / 20 Membros</h4>
-                                    <button>Entrar no grupo</button>
-                                </div>
-                                <div className="group-unic">
-                                    <img src={capaGrupo} alt="" className="cover"/>
-                                    <img src={perfilGrupo} alt="" className="profile"/>
-                                    <h3>Curtição em Arraial</h3>
-                                    <h4>Criado a 3 meses</h4>
-                                    <img src={membersImg} alt="" className="members"/>
-                                    <h4>Grupo público / 20 Membros</h4>
-                                    <button>Entrar no grupo</button>
-                                </div>
+
+                            {select === "All" ?
+                            <ListGroups /> : 
+                            select === "Participate" ?
+                            <MyGroups /> :
+                            select === "My" ?
+                            <GroupsCreated /> : 
+                            select === "Create" ?
+                            <CreateGroups /> : 
+                            <div>
+                                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                                <br /><br /><br /><br /><br />
+                               
                             </div>
+                        }
+
+                            
+                           
                     </div>
                 <ChatSlim />
                 </div>

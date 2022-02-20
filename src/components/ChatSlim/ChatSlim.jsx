@@ -23,6 +23,8 @@ const [users, setUsers] = useState([])
 })
 
  const myLocation = users.filter((location) => (location.idAccount === userData.id));
+ console.log("myLocation");
+ console.log(myLocation);
 
     
     return (

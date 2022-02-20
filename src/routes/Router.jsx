@@ -7,11 +7,10 @@ import { Events } from '../pages/Events/Events';
 import { Feed } from '../pages/Feed/Feed';
 import { Forgotit } from '../pages/Forgotit/Forgotit';
 import { Foruns2 } from '../pages/Foruns2/Foruns2';
-import { Friends } from '../pages/Friends/Friends';
-import { FriendSingle } from '../pages/FriendSingle/FriendSingle';
 import { Groups } from '../pages/Groups/Groups';
 import { Invitation } from '../pages/Invitation/Invitation';
 import { Invite } from '../pages/Invite/Invite';
+import { Loader } from '../pages/Loader/Loader';
 import { Preferences } from '../pages/Preferences/Preferences';
 import { Profile } from '../pages/Profile/Profile';
 import { ProfileFriend } from '../pages/ProfileFriend/ProfileFriend';
@@ -38,6 +37,7 @@ function PrivateRoute({children} ) {
             <Route path="/signup/:email" element={ <SignUp />} />
             <Route path="/forgotit" element={ <Forgotit />} />
             <Route path="/recuperation" element={ <Recuperation />} />       
+            <Route path="/loader" element={ <Loader />} />       
             
             <Route path="/feed"
                     element={ <PrivateRoute> <Feed/> </PrivateRoute>} />
@@ -45,10 +45,6 @@ function PrivateRoute({children} ) {
                     element={ <PrivateRoute> <Profile/> </PrivateRoute>} />
             <Route path="/profile-friend/:id"
                     element={ <PrivateRoute> <ProfileFriend/> </PrivateRoute>} />
-            <Route path="/friends" 
-                element={ <PrivateRoute> <Friends/> </PrivateRoute>} />
-            <Route path="/friendsingle" 
-                element={ <PrivateRoute> <FriendSingle/> </PrivateRoute>} />
             <Route path="/groups" 
                 element={ <PrivateRoute> <Groups/> </PrivateRoute>} />
             <Route path="/groups/id_group" 

@@ -37,6 +37,8 @@ function FeedPost() {
 
     }, [post, data])
 
+    
+
     function postAll() {
         setPost("")
     }
@@ -61,6 +63,7 @@ function FeedPost() {
         setPost("post-forum")
     }
 
+
     function handleHabiliteComment () {
         if(comment === false) {
             setComment(true)
@@ -68,6 +71,7 @@ function FeedPost() {
             setComment(false) 
         }
     }
+
     function handleHabiliteEdit () {
         if(edit === false) {
             setEdit(true)
@@ -77,13 +81,11 @@ function FeedPost() {
     }
 
     function handleDeletePost(id) {
-        confirm("Deseja apagar?")
-        if (confirm("Você realmente quer sair?")) {
-           alert("Obrigado")
-          } else {
-              alert("de nada")
-          }
-    //deletePost(id)
+    const deletar = window.confirm("Deseja deletar a postagem?");
+
+    if(deletar === true) {
+       deletePost(id);
+        } 
     }
 
     return (

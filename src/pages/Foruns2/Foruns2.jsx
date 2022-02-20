@@ -13,24 +13,24 @@ function Foruns2() {
             <div className="main">
                 <TopBar />
                 <div className="aside">
-                    <div className="groups">
-                            <div className="groups-selected">
+                    <div className="foruns">
+                            <div className="foruns-selected">
                                 <button className="selected">Todos os Foruns</button>
                                 <button>Foruns que participo</button>
                             </div>
-                            <div className="groups-search">
+                            <div className="foruns-search">
                                 <input type="text" />
                                 <button><FiSearch size={20}/></button>
                             </div>
-                            <div className="groups-all">
-                                <div className="group-unic">
+                            <div className="foruns-all">
+                                <div className="foruns-unic">
                                     <img src={capaGrupo} alt="" className="cover"/>
                                     <img src={perfilGrupo} alt="" className="profile"/>
                                     <h3>Dicas de lazer em Arraial</h3>
                                     <h4>Criado a 3 meses</h4>
                                     <button>Entrar no grupo</button>
                                 </div>
-                                <div className="group-unic">
+                                <div className="foruns-unic">
                                     <img src={capaGrupo} alt="" className="cover"/>
                                     <img src={perfilGrupo} alt="" className="profile"/>
                                     <h3>Curtição em Arraial</h3>

@@ -14,16 +14,16 @@ function Events() {
             <div className="main">
                 <TopBar />
                 <div className="aside">
-                    <div className="groups">
-                            <div className="groups-selected">
+                    <div className="events">
+                            <div className="events-selected">
                                 <button className="selected">Todos os Eventos</button>
                                 <button>Presença Confirmada</button>
                             </div>
-                            <div className="groups-search">
+                            <div className="events-search">
                                 <input type="text" />
                                 <button><FiSearch size={20}/></button>
                             </div>
-                            <div className="groups-all">
+                            <div className="events-all">
                                 <div className="group-unic">
                                     <img src={capaGrupo} alt="" className="cover"/>
                                     <img src={perfilGrupo} alt="" className="profile"/>

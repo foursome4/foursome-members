@@ -34,7 +34,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    background-color: aquamarine;
+    background-color: var(--Background);
 }
 
 .content-profile .profile .main-chat .section-chat .messages {

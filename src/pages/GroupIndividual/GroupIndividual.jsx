@@ -4,7 +4,7 @@ import coverImg from '../../assets/images/cover.png'
 import avatar from '../../assets/images/avatar.png'
 import {FiHome, FiImage, FiVideo, FiMoreVertical, FiUser, FiUserPlus, FiHeart, FiUserMinus, FiMessageSquare, FiCheck, FiShield} from 'react-icons/fi'
 import {FaHeart} from 'react-icons/fa'
-import './profileFriend.css'
+import './groupIndividual.css'
 import { Photos } from '../../components/Photos/Photos'
 import { Video } from '../../components/Video/Video'
 import { FaMars, FaVenus } from 'react-icons/fa'
@@ -23,7 +23,7 @@ import { socket } from '../../services/websocket'
 import apiGoogleReverse from '../../services/apiGoogleReverse'
 
 
-function ProfileFriend() {
+function GroupIndividual() {
   const navigate = useNavigate()
   const {socketDataLocation, newFriend, newFollower, deleteFriend, deleteFollower} = useContext(AuthContext)
   const Local = localStorage.getItem("foursome");
@@ -286,13 +286,13 @@ function ProfileFriend() {
 
   return (
       <div className="container">
-    <div className="content-profile">
+    <div className="content-groupIndividual">
       <ToolbarLeftSlim />
-      <div className="profile">
+      <div className="groupIndividual">
         <TopBar />
-        <div className="main">
-         <div className="section">
-          <div className="cover">
+        <div className="main-groupIndividual">
+         <div className="section-groupIndividual">
+          <div className="cover-groupIndividual">
           <div className="mark">
                                              <h5 className='black'>{user.id}</h5>
                                              <h5 className='white'>{user.id}</h5>
@@ -364,7 +364,7 @@ function ProfileFriend() {
                                          </div>
               <img src={ userInformations !== null ? userInformations.cover : coverImg} alt="" />
           </div>
-            <div className="profile-tools">
+            <div className="groupIndividual-tools">
                 <div className="user">
                 <div className="user-img">
                 <div className="mark">
@@ -428,7 +428,7 @@ function ProfileFriend() {
                   <button  className='settings'><FiMoreVertical size={16}/></button>
                 </div>
             </div>
-          <div className="sections">
+          <div className="sections-groupIndividual">
               <div className="infos">
                     <div className="info">
                     <div className="name">
@@ -437,7 +437,7 @@ function ProfileFriend() {
                     </div>
                     <div className="name">
                         <br />
-                        <h4>Patrono: {patron !== null ?  <Link to={patron.id === user.id ? `/profile` : `/profile-friend/${patron.id}`}>{patron.username}</Link> :"Patrono não eocnotrado"}</h4>
+                        <h4>Patrono: {patron !== null ?  <Link to={patron.id === user.id ? `/groupIndividual` : `/groupIndividual-friend/${patron.id}`}>{patron.username}</Link> :"Patrono não eocnotrado"}</h4>
                         <br />
                        </div>
 
@@ -604,4 +604,4 @@ function ProfileFriend() {
   )
 }
 
-export { ProfileFriend }
+export { GroupIndividual }

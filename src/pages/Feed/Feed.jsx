@@ -11,6 +11,7 @@ import { AuthContext } from "../../contexts/Auth"
 function Feed() {
             const {socketDataLocation} = useContext(AuthContext)
            useEffect(() => {
+            
             socketDataLocation()
            })
 

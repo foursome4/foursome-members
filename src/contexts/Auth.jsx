@@ -89,7 +89,7 @@ function AuthProvider({children}) {
                 setUsername(result.data.username)
                 storageUser(result.data);
                 setLoading(false);
-                toast.info(`Seja bem vindo(a), ${result.data.username}`);
+                
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
                 toast.error(`Falha no login.
@@ -102,8 +102,11 @@ function AuthProvider({children}) {
             .then((result) => {
                 console.log("Login realizado com sucesso!");
                 storageUser(result.data);
+                setIdAccount(result.data.id);
+                setUsername(result.data.username)
+                storageUser(result.data);
                 setLoading(false);
-                toast.info(`Seja bem vindo(a), ${result.data.username}`);
+                
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
                 toast.error(`Falha no login.
@@ -112,8 +115,6 @@ function AuthProvider({children}) {
         }
         
     }
-
-
 
     async function findInformationsAccount(id) {
         await api.get(`/informations/${id}`)
@@ -126,25 +127,17 @@ function AuthProvider({children}) {
             setMyUf(data2.uf);
             setAvatar(data2.avatar);
             setNickname(data2.nickname);
-            if(data2 !== undefined ) {
-                localStorage.setItem("informations-foursome", JSON.stringify(data2));
-                redirectToAfterLogin();
-            } else {
-                navigate("/completeregistration");
-            }
+            
+            localStorage.setItem("informations-foursome", JSON.stringify(data2));
+           
         }).catch(error => {
             console.log("Erro ao buscar dados" + error)
         })
         
     }
-    
-    function redirectToAfterLogin() {
-        const storageUserInformation = localStorage.getItem("informations-foursome");
-        if(storageUserInformation) {
-            navigate("/comming-soom");
-        } 
-        window.location.reload()
-    }
+
+
+
 
 
     //------------------------------------------------------------------------------//
@@ -498,10 +491,35 @@ async function deleteFriendAndFollower(id, idAccount, idFriend, type, status) {
 }
 
 
+// Sessão grupos
+
+async function creategroup(avatarUrl, coverUrl, name, description, theme, privacity){
+    const data = {name, description, theme, privacity, avatar: avatarUrl, cover: coverUrl};
+    console.log(data)
+    await api.post("groups", data).then((result) => {
+        console.log(result);
+        toast.success("Grupo Criado com socesso!")
+    }).catch(error => {
+        console.log(error)
+    })
+}
+
+async function deleteGroup(id){
+    console.log(id);
+    await api.delete(`/groups/${id}`).then((result) => {
+        console.log("grupo deletado com sucesso!")
+    })
+}
+
+// Fim da Sessão grupos
+
     function storageUser(data) {
         localStorage.setItem("foursome", JSON.stringify(data));
-        findInformationsAccount(data.id)
+        findInformationsAccount(data.id);
+        navigate("/loader")
     }
+
+
 
     function logout() {
         localStorage.removeItem("foursome");
@@ -631,7 +649,8 @@ async function deleteFriendAndFollower(id, idAccount, idFriend, type, status) {
             deleteFriendAndFollower,
             deleteLike,
             socket,
-            socketDataLocation
+            socketDataLocation,
+            creategroup
         }}>
             {children}
         </AuthContext.Provider>

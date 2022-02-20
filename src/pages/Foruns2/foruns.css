@@ -25,7 +25,7 @@
     justify-content: center;
 }
 
-.content .aside .groups {
+.content .aside .foruns {
     width: 100%;
     height: 100%;
     border-right: 2px solid var(--Background);
@@ -36,7 +36,7 @@
     padding: 20px;
 }
 
-.content .aside .groups .groups-selected {
+.content .aside .foruns .foruns-selected {
     width: 80%;
     display: flex;
     flex-direction: row;
@@ -45,7 +45,7 @@
     padding: 10px 0;
 }
 
-.content .aside .groups .groups-selected button {
+.content .aside .foruns .foruns-selected button {
     width: 50%;
     text-align: left;
     padding: 5px;
@@ -57,7 +57,7 @@
     font-weight: 500;
 }
 
-.content .aside .groups .groups-selected .selected{
+.content .aside .foruns .foruns-selected .selected{
     width: 50%;
     text-align: left;
     padding: 5px;
@@ -69,7 +69,7 @@
     font-weight: 500;
 }
 
-.content .aside .groups .groups-search {
+.content .aside .foruns .foruns-search {
     width: 80%;
     display: flex;
     align-items: center;
@@ -78,7 +78,7 @@
     padding: 10px 0;
 }
 
-.content .aside .groups .groups-search input {
+.content .aside .foruns .foruns-search input {
     width: 100%;
     border-radius: 20px;
     padding: 10px;
@@ -86,7 +86,7 @@
 
 }
 
-.content .aside .groups .groups-search button {
+.content .aside .foruns .foruns-search button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -98,7 +98,7 @@
     margin: 10px;
 }
 
-.content .aside .groups .groups-all {
+.content .aside .foruns .foruns-all {
     width: 80%;
     display: flex;
     flex-direction: row;
@@ -108,7 +108,7 @@
     flex-wrap: wrap;
 }
 
-.content .aside .groups .groups-all .group-unic {
+.content .aside .foruns .foruns-all .group-unic {
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -119,20 +119,20 @@
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 
-.content .aside .groups .groups-all .group-unic .cover {
+.content .aside .foruns .foruns-all .group-unic .cover {
     width: 260px;
 }
 
-.content .aside .groups .groups-all .group-unic .profile {
+.content .aside .foruns .foruns-all .group-unic .profile {
     width: 80px;
     margin-top: -40px;
 }
 
-.content .aside .groups .groups-all .group-unic .members {
+.content .aside .foruns .foruns-all .group-unic .members {
     width: 120px;
 }
 
-.content .aside .groups .groups-all .group-unic button {
+.content .aside .foruns .foruns-all .group-unic button {
     border: 2px solid var(--Primary);
     padding: 10px;
     border-radius: 20px;
@@ -144,12 +144,12 @@
     margin: 5px 0;
 }
 
-.content .aside .groups .groups-all .group-unic h3 {
+.content .aside .foruns .foruns-all .group-unic h3 {
     font-weight: 500;
     color: var(--Black);
     margin: 5px 0;
 }
-.content .aside .groups .groups-all .group-unic h4 {
+.content .aside .foruns .foruns-all .group-unic h4 {
     font-weight: 500;
     color: var(--Gray_font1);
     margin: 5px 0;
