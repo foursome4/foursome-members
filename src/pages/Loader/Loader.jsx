@@ -30,7 +30,7 @@ function Loader() {
                 } else {
                     console.log("Redirecionar")
                     console.log(data2)
-                //    navigate("/completeregistration");       
+                    navigate("/completeregistration");       
                 }
                 window.location.reload()
                
