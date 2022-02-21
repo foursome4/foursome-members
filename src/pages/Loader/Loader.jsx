@@ -25,12 +25,12 @@ function Loader() {
                 if(data2 !== undefined) {
                     console.log("Redirecionar feed")
                     console.log(data2)
-                  navigate("/feed");
+                    navigate("/comming-soom");
         
                 } else {
                     console.log("Redirecionar")
                     console.log(data2)
-                   navigate("/completeregistration");       
+                //    navigate("/completeregistration");       
                 }
                 window.location.reload()
                

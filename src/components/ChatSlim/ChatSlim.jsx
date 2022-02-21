@@ -23,8 +23,6 @@ const [users, setUsers] = useState([])
 })
 
  const myLocation = users.filter((location) => (location.idAccount === userData.id));
- console.log("myLocation");
- console.log(myLocation);
 
     
     return (
@@ -35,7 +33,6 @@ const [users, setUsers] = useState([])
                      </div>
             {users.map((user) => {
                 return (
-                    user.idAccount === myLocation[0].idAccount ? "" :
                     <div className="chat-avatar">
                     <img src={user.avatar} alt="" />
                      </div>
