@@ -30,7 +30,7 @@ function Chat() {
   const [listMessages, setListMessages] = useState([]);
   const [text, setText] = useState('');
   const [link, setLink] = useState('');
-  const [avatarUrl, setAvatarUrl] = useState(null);
+  const [avatarUrl, setAvatarUrl] = useState('');
   const [imageAvatar, setImageAvatar] = useState('');
   const [loadding, setLoadding] = useState(false);
 
@@ -116,7 +116,7 @@ async function handleUploadAccount(e) {
    socket.emit("message", data)
     setListMessages([...listMessages, data]);
     setText("");
-    setAvatarUrl(null);
+    setAvatarUrl('');
     setImageAvatar('');
 
     socket.on("message", (data) => {
