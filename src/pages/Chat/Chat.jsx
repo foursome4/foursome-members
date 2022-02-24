@@ -33,6 +33,7 @@ function Chat() {
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [imageAvatar, setImageAvatar] = useState('');
   const [loadding, setLoadding] = useState(false);
+  const [click, setClick] = useState(false);
 
   useEffect(() => {
     if(messageRef.current) {
@@ -115,7 +116,7 @@ async function handleUploadAccount(img) {
   console.log(data);
 
    socket.emit("message", data)
-    setListMessages([...listMessages, data]);
+    setListMessages([data, ...listMessages]);
     setText("");
     setAvatarUrl(null);
     setImageAvatar('');
@@ -136,16 +137,22 @@ async function handleUploadAccount(img) {
     }
     console.log(data);
     socket.emit("message", data)
-    setListMessages([...listMessages, data]);
+    setListMessages([data, ...listMessages]);
     setText("")
   }
   
   socket.on("message", (data) => {
-    setListMessages([...listMessages, data]);
+    setListMessages([data, ...listMessages]);
   })
 
 
-
+function handlePressMessage() {
+  if(click === false) {
+    setClick(true)
+  } else {
+    setClick(false)
+  }
+}
 
 
   return (
@@ -160,7 +167,7 @@ async function handleUploadAccount(img) {
                {listMessages.map((message) => {
                  return (
                   message.idAccount === user.id ?
-                  <div className={message.idAccount === user.id ? "messages2" : "messages1"} key={message.id}>
+                  <div className={message.idAccount === user.id ? "messages2" : "messages1"} key={message.id} onClick={handlePressMessage}>
                   <div className={message.idAccount === user.id ? "my-message" : "message-friend"}>
                   
                        <div className="data">
@@ -171,6 +178,8 @@ async function handleUploadAccount(img) {
                        <img src={message.link} alt="" />
                       </div>
                       : ""}
+                    {click === true ? <button>Delete</button> :
+                      ""}
                        </div>
                        <div className="avatar">                     
                       <img src={message.avatar} alt="" />
@@ -191,8 +200,9 @@ async function handleUploadAccount(img) {
                        <img src={message.link} alt="" />
                       </div>
                       : ""}
+                      {click === true ? <button>Delete</button> :
+                      ""}
                        </div>
-                    
                   </div>
                    </div>
                  
