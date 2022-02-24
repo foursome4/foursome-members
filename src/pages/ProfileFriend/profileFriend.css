@@ -83,24 +83,35 @@
     margin-top: -4px;
     border: 1px solid var(--Background);
 }
+.content-profile .profile .main .section .profile-tools .users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--Primary);
+}
 
-.content-profile .profile .main .section .profile-tools .user.user-img {
+.content-profile .profile .main .section .profile-tools .users .users-img {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     width: 200px;
     height: 200px;
     color: var(--Primary);
-    border: 2px solid var(--White);
     border-radius: 15px;
     margin-top: -140px;
     margin-bottom: 10px;
 }
 
-.content-profile .profile .main .section .profile-tools .user img {
+.content-profile .profile .main .section .profile-tools .users img {
     width: 200px;
     height: 200px;
     object-fit: cover;
+    border-radius: 15px;
 }
 
-.content-profile .profile .main .section .profile-tools .user .user-img .mark{
+.content-profile .profile .main .section .profile-tools .users .users-img .mark{
     width: 200px;
     height: 200px;
     position: absolute;
@@ -112,19 +123,19 @@
     flex-wrap: wrap;
 }
 
-.content-profile .profile .main .section .profile-tools .user .user-img .mark .black{
+.content-profile .profile .main .section .profile-tools .users .users-img .mark .black{
     color: rgba(0, 0, 0, 0.036);
     margin: 2px;
     font-weight: 500;
 }
-.content-profile .profile .main .section .profile-tools .user .user-img .mark .white{
+.content-profile .profile .main .section .profile-tools .users .users-img .mark .white{
     color: rgba(255, 255, 255, 0.036);
     margin: 2px;
     font-weight: 500;
 }
 
 
-.content-profile .profile .main .section .profile-tools .tools {
+.content-profile .profile .main .section .profile-tools .tool {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -135,20 +146,21 @@
 
 }
 
-.content-profile .profile .main .section .profile-tools .tools .select  {
+.content-profile .profile .main .section .profile-tools .tool .select  {
     width: 55px;
     height: 55px;
     color: var(--White);
+    background-color: var(--Primary);
     border: none;
     border-radius: 8px;
 }
 
-.content-profile .profile .main .section .profile-tools .tools .follower button svg  {
+.content-profile .profile .main .section .profile-tools .tool .follower button svg  {
     background-color: var(--Primary);
     font-size: 50px;
 }
 
-.content-profile .profile .main .section .profile-tools .tools button {
+.content-profile .profile .main .section .profile-tools .tool button {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -162,7 +174,7 @@
     margin-left: 35px;
 }
 
-.content-profile .profile .main .section .profile-tools .tools .settings {
+.content-profile .profile .main .section .profile-tools .tool .settings {
     width: 55px;
     height: 55px;
     background-color: var(--White);
@@ -272,7 +284,7 @@
 
 
 
-.content-profile .profile .main .section .sections .infos .info .info-user-man {
+.content-profile .profile .main .section .sections .infos .info .info-users-man {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -285,18 +297,18 @@
     padding: 5px;
 }
 
-.content-profile .profile .main .section .sections .infos .info-user-man h4 {
+.content-profile .profile .main .section .sections .infos .info-users-man h4 {
     z-index: 99;
     position: absolute;
     margin-bottom: 40px;
 }
 
-.content-profile .profile .main .section .sections .infos .info-user-man h4 svg {
+.content-profile .profile .main .section .sections .infos .info-users-man h4 svg {
     color: var(--Primary);
 }
 
 
-.content-profile .profile .main .section .sections .infos .info .info-user-man .info-user-data {
+.content-profile .profile .main .section .sections .infos .info .info-users-man .info-users-data {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -306,15 +318,15 @@
     text-align: center;
 }
 
-.content-profile .profile .main .section .sections .infos .info .info-user-man .info-user-data h5 {
+.content-profile .profile .main .section .sections .infos .info .info-users-man .info-users-data h5 {
     color: var(--Primary);
 }
 
-.content-profile .profile .main .section .sections .infos .info .info-user-man .info-user-data p {
+.content-profile .profile .main .section .sections .infos .info .info-users-man .info-users-data p {
     color: var(--Gray_font2);
 }
 
-.content-profile .profile .main .section .sections .infos .info .info-user-woman {
+.content-profile .profile .main .section .sections .infos .info .info-users-woman {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -327,18 +339,18 @@
     background-color: var(--Background-woman);
 }
 
-.content-profile .profile .main .section .sections .infos .info-user-woman h4 {
+.content-profile .profile .main .section .sections .infos .info-users-woman h4 {
     z-index: 99;
     position: absolute;
     margin-bottom: 40px;
 }
 
-.content-profile .profile .main .section .sections .infos .info-user-woman h4 svg {
+.content-profile .profile .main .section .sections .infos .info-users-woman h4 svg {
     color: var(--Primary);
 }
 
 
-.content-profile .profile .main .section .sections .infos .info .info-user-preferences {
+.content-profile .profile .main .section .sections .infos .info .info-users-preferences {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -349,7 +361,7 @@
    
 }
 
-.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations {
+.content-profile .profile .main .section .sections .infos .info .info-users-preferences .informations {
     width: 100%;
     display: flex;
     align-items: center;
@@ -358,7 +370,7 @@
     padding: 2px;
 }
 
-.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .selects {
+.content-profile .profile .main .section .sections .infos .info .info-users-preferences .informations .selects {
     width: 100%;
     display: flex;
     align-items: center;
@@ -367,7 +379,7 @@
     flex-wrap: wrap;
 }
 
-.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .selects .itens {
+.content-profile .profile .main .section .sections .infos .info .info-users-preferences .informations .selects .itens {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -375,7 +387,7 @@
     color: var(--Primary);
 }
 
-.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .selects .itens h5 {
+.content-profile .profile .main .section .sections .infos .info .info-users-preferences .informations .selects .itens h5 {
     color: var(--Primary);
     display: flex;
     align-items: center;
@@ -384,11 +396,11 @@
     margin: 0 3px;
 }
 
-.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .selects .itens h5 svg {
+.content-profile .profile .main .section .sections .infos .info .info-users-preferences .informations .selects .itens h5 svg {
     color: rgb(0, 162, 0);
     margin-right: 2px;
 }
-.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .proposal {
+.content-profile .profile .main .section .sections .infos .info .info-users-preferences .informations .proposal {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -398,7 +410,7 @@
     margin-top: 5px;
 }
 
-.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .proposal h5 {
+.content-profile .profile .main .section .sections .infos .info .info-users-preferences .informations .proposal h5 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -407,13 +419,13 @@
     color: var(--Primary);
 }   
 
-.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .proposal .title {
+.content-profile .profile .main .section .sections .infos .info .info-users-preferences .informations .proposal .title {
     font-weight: 600;
     color: var(--Primary);
 }
 
 
-.content-profile .profile .main .section .sections .infos .info .info-user-woman .info-user-data {
+.content-profile .profile .main .section .sections .infos .info .info-users-woman .info-users-data {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -423,11 +435,11 @@
     text-align: center;
 }
 
-.content-profile .profile .main .section .sections .infos .info .info-user-woman .info-user-data h5 {
+.content-profile .profile .main .section .sections .infos .info .info-users-woman .info-users-data h5 {
     color: var(--Primary);
 }
 
-.content-profile .profile .main .section .sections .infos .info .info-user-woman .info-user-data p {
+.content-profile .profile .main .section .sections .infos .info .info-users-woman .info-users-data p {
     color: var(--Gray_font2);
 }
 
@@ -455,7 +467,7 @@
 }
 
 
-.content-profile .profile .main .section .sections .infos .photos{
+.content-profile .profile .main .section .sections .infos .photo{
     width: 280px;
     display: flex;
     flex-direction: column;
@@ -467,7 +479,7 @@
     border-radius: 8px;
 }
 
-.content-profile .profile .main .section .sections .infos .photos button {
+.content-profile .profile .main .section .sections .infos .photo button {
     color: var(--Primary);
     background-color: var(--Background);
     border: none;
@@ -476,7 +488,7 @@
     font-size: 14px;
 }
 
-.content-profile .profile .main .section .sections .infos .photos .images {
+.content-profile .profile .main .section .sections .infos .photo .image {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -485,7 +497,7 @@
     padding: 5px;
 }
 
-.content-profile .profile .main .section .sections .infos .photos .images .photos-list {
+.content-profile .profile .main .section .sections .infos .photo .image .photo-list {
     width: 75px;
     height: 75px;
     border-radius: 8px;
@@ -494,7 +506,7 @@
     
 }
 
-.content-profile .profile .main .section .sections .infos .photos .images img {
+.content-profile .profile .main .section .sections .infos .photo .image img {
     height: 100%;
     object-fit: cover;
 
@@ -574,11 +586,11 @@
             border: 1px solid var(--Background);
         }
 
-        .content-profile .profile .main .section .sections .infos .photos {
+        .content-profile .profile .main .section .sections .infos .photo {
             display: none;
         }
 
-        .content-profile .profile .main .section .profile-tools .tools {
+        .content-profile .profile .main .section .profile-tools .tool {
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -588,7 +600,7 @@
         
         }
 
-        .content-profile .profile .main .section .profile-tools .tools button {
+        .content-profile .profile .main .section .profile-tools .tool button {
             padding: 10px 20px;
             background-color: var(--Background);
             color: var(--Primary);
@@ -600,7 +612,7 @@
 
 
         @media (max-width: 700px) {
-            .content-profile .profile .main .section .profile-tools .tools button {
+            .content-profile .profile .main .section .profile-tools .tool button {
                 padding: 8px 16px;
             }
 
@@ -615,7 +627,7 @@
             
         @media (max-width: 650px) {
 
-            .content-profile .profile .main .section .profile-tools .tools {
+            .content-profile .profile .main .section .profile-tools .tool {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -625,12 +637,12 @@
             
             }
 
-            .content-profile .profile .main .section .profile-tools .tools {
+            .content-profile .profile .main .section .profile-tools .tool {
                 padding: 5px 0;
                 height: 200px;
             
             }
-            .content-profile .profile .main .section .profile-tools .tools button {
+            .content-profile .profile .main .section .profile-tools .tool button {
                 padding: 6px 14px;
                 margin: 10px;
             }
@@ -644,7 +656,7 @@
             }
             
 
-            .content-profile .profile .main .section .profile-tools .user img {
+            .content-profile .profile .main .section .profile-tools .users img {
                 width: 150px;
                 height: 150px;
                 border: 2px solid var(--White);
@@ -653,7 +665,7 @@
                 margin-bottom: 10px;
             }
 
-            .content-profile .profile .main .section .profile-tools .user .user-img mark {
+            .content-profile .profile .main .section .profile-tools .users .users-img mark {
                 width: 150px;
                 height: 150px;
             }
@@ -668,13 +680,13 @@
                     height: 100px;
                 }
 
-                .content-profile .profile .main .section .profile-tools .tools {
+                .content-profile .profile .main .section .profile-tools .tool {
                     flex-wrap: wrap;
                     width: 100%;
                     font-size: 10px;
                 }
 
-                .content-profile .profile .main .section .profile-tools .tools button {
+                .content-profile .profile .main .section .profile-tools .tool button {
                     padding: 4px 10px;
                     margin: 10px 10px 10px 10px;
                     font-size: 10px;

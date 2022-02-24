@@ -92,11 +92,11 @@
 }
 
 .content .invitation .button {
-    width: 30%;
+    width: 50%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .content .invitation button {
@@ -107,7 +107,7 @@
     border-radius: 8px;
     background-color: var(--White);
     color: var(--Primary);
-    margin-top: 20px;
+    margin: 20px 5px 0 5px;
 }
 
 .content .invitation .convite{
@@ -119,6 +119,31 @@
     background-color: var(--Button);
     color: var(--White);
     margin-top: 20px;
+}
+
+.content .invitation .buttons{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.content .invitation .buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 5px;
+}
+
+.content .invitation .buttons button:hover {
+    background-color: var(--Button);
+    color: var(--White);
+}
+.content .invitation .buttons button svg{
+    margin-left: 5px;
 }
 
 
@@ -142,5 +167,9 @@
         border-radius: 6px;
         color: var(--Primary);
         margin: 5px 0;
+    }
+
+    .content .invitation .buttons{
+        width: 70%;
     }
 }

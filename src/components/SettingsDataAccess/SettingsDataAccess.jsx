@@ -22,10 +22,13 @@ function SettingsDataAccess() {
                                 <option value="Transex">Transex</option>
                                 <option value="Travestis">Travestis</option>
                             </select>
-                <input type="username" value={user.username} disabled="disabled" placeholder="username"/>
-                <input type="password" placeholder="Senha"/>
-                <input type="password" placeholder="Confirmar Senha"/>
                 <button>Atualizar</button>
+            </form>
+            <form action="">
+                <input type="password" placeholder="Senha atual"/>
+                <input type="password" placeholder="Nova Senha"/>
+                <input type="password" placeholder="Confirmar Nova Senha"/>
+                <button>Alterar senha</button>
             </form>
         </div>
     )

@@ -1,4 +1,4 @@
-import { FiCalendar, FiHome, FiList, FiMessageSquare, FiRadio, FiTrendingUp, FiUserCheck, FiUsers, FiMapPin } from "react-icons/fi"
+import { FiCalendar, FiHome, FiList, FiMessageSquare, FiRadio, FiTrendingUp, FiUserCheck, FiUsers, FiMapPin, FiMail } from "react-icons/fi"
 import { a, useNavigate } from "react-router-dom";
 import avatarImg from '../../assets/images/avatar.png';
 import './toolbarLeftSlim.css'
@@ -76,10 +76,10 @@ function ToolbarLeftSlim () {
                     </button>
                     </a>
           
-                    <a href="/chat" >
+                    <a href="/messages" >
                     <button className="toolIcon" onClick={handleRedirectChat}>
-                        <FiMessageSquare size={20}/>
-                       Chat
+                        <FiMail size={20}/>
+                       Recados
                     </button>
                     </a>
 
@@ -118,7 +118,7 @@ function ToolbarLeftSlim () {
                     </button>
                     </a>
 
-                    <a href="/friends" >
+                    <a href="/locals" >
                     <button className="toolIcon" onClick={handleRedirectFriends}>
                         <FiMapPin size={20}/>Locais
                     </button>

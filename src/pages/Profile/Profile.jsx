@@ -294,7 +294,7 @@ function Profile() {
                                          </div>
               <img src={ userInformations !== null ? userInformations.cover : coverImg} alt="" />
           </div>
-            <div className="profile-tools">
+            <div className="profile-tool">
                 <div className="user">
                  <div className="user-img">
                  <div className="mark">
@@ -348,7 +348,6 @@ function Profile() {
                   <button className={forum === "" ? "" : "select"} onClick={handleForum}><FiHeart size={16}/> Seguir</button>
                   <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/> Fotos</button>
                   <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/> Vídeos</button>
-                  <button className={group === "" ? "" : "select"} onClick={handleGroup}><FiMessageSquare size={16}/> Chat</button>
                   <button className={setting === "" ? "" : "select"} onClick={handleSetting}><FiSettings size={16}/> Opções</button>
                   <button  className='settings'><FiMoreVertical size={16}/></button>
                 </div>
@@ -431,9 +430,9 @@ function Profile() {
                 </div>
             
 
-            <div className="photos">
+            <div className="photo">
               <button>Fotos</button>
-              <div className="images">
+              <div className="image">
                 {allPhotos.map((photos) => {
                   return (
                     <div className="photos-list">
@@ -445,9 +444,9 @@ function Profile() {
                
               </div>
             </div>
-            <div className="photos">
+            <div className="photo">
               <button>Vídeos</button>
-              <div className="images">
+              <div className="image">
                 <img src={avatar} alt="" />
                 <img src={avatar} alt="" />
                 <img src={avatar} alt="" />

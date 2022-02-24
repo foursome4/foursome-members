@@ -49,6 +49,9 @@ function TopBar() {
                     <FiMail />
                 </div>
                 <div className="link">
+                    <FiMessageSquare />
+                </div>
+                <div className="link">
                     <FiLogOut onClick={Tologout} />
                 </div>
                 <div className="account">
@@ -62,9 +65,7 @@ function TopBar() {
                     </Link>
                 </div>
             </div>
-            <div className="chat">
-                <FiMessageSquare />
-            </div>
+           
  
 
         </div>

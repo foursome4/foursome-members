@@ -52,7 +52,7 @@ function SettingsUser({idAccount}) {
                 <button className={informations === "informations" ? "selected" : ""} onClick={handleInformations}>Informations</button>
                 <button className={characteristcs === "characteristcs" ? "selected" : ""}  onClick={handleCaracteristicas}>Caracteristicas</button>
                 <button className={preferences === "preferences" ? "selected" : ""}  onClick={handlePreferencias}>Preferências</button>
-                <button className={dataAccess === "dataAccess" ? "selected" : ""}  onClick={handleDadosAcesso}>Dados de Acesso</button>
+                <button className={dataAccess === "dataAccess" ? "selected" : ""}  onClick={handleDadosAcesso}>Conta</button>
 
             </div>
             {informations === "informations" ?

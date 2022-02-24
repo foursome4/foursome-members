@@ -4,7 +4,8 @@ import { AuthContext } from '../../contexts/Auth'
 import './invitation.css'
 import logo from '../../assets/images/logo.png'
 import { v4 as uuidv4} from 'uuid'
-import { FiCheckCircle } from 'react-icons/fi'
+import { FiMail } from 'react-icons/fi'
+import { FaWhatsapp } from 'react-icons/fa'
 import { set } from 'date-fns'
 
 function Invitation() {
@@ -17,6 +18,8 @@ function Invitation() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+
+    const [inviteType, setInviteType] = useState("Email")
 
 
     function createInvite(e) {
@@ -67,6 +70,14 @@ function Invitation() {
         }
         document.getElementById("telefone").attributes[0].ownerElement['value'] = retorno;
       }
+
+      function handleTypeInvite() {
+        if(inviteType === "Email") {
+          setInviteType("Whatsapp")
+        } else {
+          setInviteType("Email")
+        }
+      }
    
 
     return (
@@ -78,13 +89,24 @@ function Invitation() {
 
                     <h3>Enquanto não lançamos, traga seus amigos e se divirta com a gente!</h3>
                     </div>
+                    <div className="buttons">
+                      <button onClick={handleTypeInvite}>Via E-mail <FiMail /></button>
+                      <button onClick={handleTypeInvite}>Via Whatsapp <FaWhatsapp /></button>
+                    </div>
+                   {inviteType === "Email" ?
                     <form action="">
 
                     <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome"/>
-                    <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
-                    <input type="text" id="telefone" onKeyUp={mascaraFone} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
-
+                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required/>
                     </form>
+                    :
+                    inviteType === "Whatsapp"?
+                    <form action="">
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome"/>
+                    <input type="text" id="telefone" onKeyUp={mascaraFone} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
+                    </form>
+                    :
+                    "Selecione como deseja enviar o convte"}
 
                 <div className="button">
                 <button className="convite" onClick={createInvite}>Convidar!</button>

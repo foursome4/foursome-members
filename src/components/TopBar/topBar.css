@@ -10,7 +10,7 @@
     position: fixed;
     top: 0;
     z-index: 0;
-   padding: 0 0 0 100px;
+   padding: 0 10% 0 10%; 
 }
 
 .topBar svg {
@@ -30,7 +30,7 @@
 }
 
 .topBar .search {
-    width: 450px;
+    width: 250px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -47,7 +47,7 @@
 }
 
 .topBar .links {
-    width: 25%;
+    width: 40%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -96,25 +96,7 @@
     text-decoration: none;
 }
 
-.topBar .chat {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background-color: var(--Background);
-}
-.topBar .openTools {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background-color: var(--Background);
-    margin-right: 30px;
-}
+
 
 @media (max-width: 1200px) {
     .topBar .search {

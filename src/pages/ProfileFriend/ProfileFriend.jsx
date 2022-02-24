@@ -100,22 +100,33 @@ function ProfileFriend() {
     async function loadRoom() {
       await api.get(`conversations/${myUser.id}/${id}`)
       .then( async (res) => {
-        console.log("Room 1")
-        console.log(res.data)
         if(res.data.length !== 0) {
-          console.log("vazio");
+          console.log("Busca Sala - Tentativa 1");
+          console.log(res.data[0])
+          setRooms(res.data[0])
           return
         } 
        
         await api.get(`conversations/${id}/${myUser.id}`)
-        .then((res) => {
-         console.log("Room 2");
-         console.log(res.data);
-         if(res.data.length === 0) {
-          console.log("vazio")
-        } else {
-          console.log("Cheio")
-        } 
+        .then( async (res) => {
+          if(res.data.length !== 0) {
+            console.log("Busca Sala - tentativa 2");
+            console.log(res.data[0])
+            setRooms(res.data[0])
+            return
+          }
+
+          const v4 = uuidv4();
+          const room = v4.substring(0, 6);
+          const data = {room, idAccount: myUser.id, idFriend: id}
+          console.log(data)
+
+          await api.post(`/conversations`, data).then((res) => {
+            console.log("Conversa criada com sucesso!");
+            window.location.reload(false);
+          })
+
+
         }).catch(error => {
           console.log("Erro ao buscar dados" + error)
       })
@@ -124,11 +135,6 @@ function ProfileFriend() {
         console.log("Erro ao buscar dados" + error)
     })
     }
-    
-
-    // async function createNewRoom() {
-      
-    // }
     
     loadAccount()
     loadInformations()
@@ -139,25 +145,9 @@ function ProfileFriend() {
   }, []);
 
 
-  // socket.on("rooms", (data) => {
-  //   setRooms([...rooms, data]);
-  // })
-
-  // console.log(rooms)
  function handleChat() {
-    const selectRoom = rooms.filter((room) => (room.idAccount === id && room.idFriend === myUser.id || room.idAccount === myUser.id && room.idFriend === id ))
-    console.log("selectRoom");
-    console.log(selectRoom);
-
-    const v4 = uuidv4();
-    const room = v4.substring(0, 6);
-
-    if(selectRoom === "") {
-      console.log(room)
-      navigate(`/chat/${room}/${id}`);
-    } else {
-      navigate(`/chat/${selectRoom.room}/${id}`);
-    }
+   console.log(rooms.room)
+  navigate(`/chat/${rooms.room}`);
   }
 
 
@@ -365,8 +355,8 @@ function ProfileFriend() {
               <img src={ userInformations !== null ? userInformations.cover : coverImg} alt="" />
           </div>
             <div className="profile-tools">
-                <div className="user">
-                <div className="user-img">
+                <div className="users">
+                <div className="users-img">
                 <div className="mark">
                                              <h5 className='black'>{user.id}</h5>
                                              <h5 className='white'>{user.id}</h5>
@@ -412,7 +402,7 @@ function ProfileFriend() {
                   </div>
                   <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b>{user.role !== "Membro" ? <FiShield />: ""}</h3>
                 </div>
-                <div className="tools">
+                <div className="tool">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed }><FiHome size={16}/></button>
                   <button onClick={FriendExists.length === 0 ? handleNewFriend : handleDeleteFriend}>
                   {FriendExists.length === 0 ? <FiUserPlus size={16}/> : <FiUserMinus size={16}/> } 
@@ -505,12 +495,12 @@ function ProfileFriend() {
                 </div>
             
 
-            <div className="photos">
+            <div className="photo">
               <button>Fotos</button>
-              <div className="images">
+              <div className="image">
                 {allPhotos.map((photos) => {
                   return (
-                    <div className="photos-list">
+                    <div className="photo-list">
                 <img src={photos.link} alt="" />
                     </div>
                   )
@@ -519,9 +509,9 @@ function ProfileFriend() {
                
               </div>
             </div>
-            <div className="photos">
+            <div className="photo">
               <button>Vídeos</button>
-              <div className="images">
+              <div className="image">
                 <img src={avatar} alt="" />
                 <img src={avatar} alt="" />
                 <img src={avatar} alt="" />

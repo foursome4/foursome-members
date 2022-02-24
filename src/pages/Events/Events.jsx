@@ -11,7 +11,7 @@ function Events() {
     return (
         <div className="content">
      <ToolbarLeftSlim />
-            <div className="main">
+            <div className="main-events">
                 <TopBar />
                 <div className="aside">
                     <div className="events">
@@ -24,7 +24,7 @@ function Events() {
                                 <button><FiSearch size={20}/></button>
                             </div>
                             <div className="events-all">
-                                <div className="group-unic">
+                                <div className="events-unic">
                                     <img src={capaGrupo} alt="" className="cover"/>
                                     <img src={perfilGrupo} alt="" className="profile"/>
                                     <h3>Pré Carnaval 2022</h3>
@@ -34,7 +34,7 @@ function Events() {
                                     <h5><FiMapPin /> Sítio Arena Texas - Cabo Frio - RJ</h5>
                                     <button>Participar</button>
                                 </div>
-                                <div className="group-unic">
+                                <div className="events-unic">
                                     <img src={capaGrupo} alt="" className="cover"/>
                                     <img src={perfilGrupo} alt="" className="profile"/>
                                     <h3>Balada Chopp 10</h3>
