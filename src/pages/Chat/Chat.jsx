@@ -30,7 +30,7 @@ function Chat() {
   const [listMessages, setListMessages] = useState([]);
   const [text, setText] = useState('');
   const [link, setLink] = useState('');
-  const [avatarUrl, setAvatarUrl] = useState('');
+  const [avatarUrl, setAvatarUrl] = useState(null);
   const [imageAvatar, setImageAvatar] = useState('');
   const [loadding, setLoadding] = useState(false);
 
@@ -77,6 +77,7 @@ function Chat() {
            setImageAvatar(image);
            setAvatarUrl(URL.createObjectURL(e.target.files[0]));
            console.log(avatarUrl);
+           handleUploadAccount(image)
         } else {
             console.log('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
             setImageAvatar(null);
@@ -85,20 +86,20 @@ function Chat() {
     }
 }
 
-async function handleUploadAccount(e) {
-  e.preventDefault();
-  //Avatar
+
+
+async function handleUploadAccount(img) {
+
   setLoadding(true);
   console.log(loadding);
   const uuid = uuidv4();
 
+  console.log(imageAvatar)
   let newAvatarUrlFirebase = ref(storage, `images/image-chat/${uuid}`);
-  let uploadAvatar = await uploadBytes(newAvatarUrlFirebase, imageAvatar);
+  let uploadAvatar = await uploadBytes(newAvatarUrlFirebase, img);
   let photoUrlAvatar = await getDownloadURL(uploadAvatar.ref);
       
   console.log(uploadAvatar.ref.name, photoUrlAvatar);
-
-
 
   
   const data = {
@@ -116,13 +117,9 @@ async function handleUploadAccount(e) {
    socket.emit("message", data)
     setListMessages([...listMessages, data]);
     setText("");
-    setAvatarUrl('');
+    setAvatarUrl(null);
     setImageAvatar('');
 
-    socket.on("message", (data) => {
-    setListMessages([...listMessages, data]);
-  })
-  
 }
   function handleNewMessage(e) {
     e.preventDefault();
@@ -131,21 +128,21 @@ async function handleUploadAccount(e) {
       room: room,
       idAccount: user.id,
       text,
-      link: avatarUrl,
+      link,
       avatar: userInformations.avatar,
       nickname: userInformations.nickname,
       username: user.username,
       created_at: new Date()
     }
     console.log(data);
-    // socket.emit("message", data)
-    // setListMessages([...listMessages, data]);
-    // setText("")
+    socket.emit("message", data)
+    setListMessages([...listMessages, data]);
+    setText("")
   }
   
-  // socket.on("message", (data) => {
-  //   setListMessages([...listMessages, data]);
-  // })
+  socket.on("message", (data) => {
+    setListMessages([...listMessages, data]);
+  })
 
 
 
@@ -210,8 +207,8 @@ async function handleUploadAccount(e) {
                             <img src={avatarUrl === null ? profile : avatarUrl} alt="Avatar" height={45} width={45}/>
                         </label>
                 <textarea name="" id="" cols={10} rows={3} value={text} autoFocus  autoComplete='off' placeholder='Digite uma mensagem' onChange={(e) => setText(e.target.value)}></textarea>
-                <button className="button1" onClick={handleUploadAccount} disabled={text === "" ? "disabled" : ""}>Enviar <FiSend /></button>
-                <button className="button2" onClick={handleUploadAccount} disabled={text === "" ? "disabled" : ""}><FiSend /></button>
+                <button className="button1" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}>Enviar <FiSend /></button>
+                <button className="button2" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}><FiSend /></button>
             </div>
          </div>
          <ChatSlim />
