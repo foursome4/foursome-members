@@ -105,7 +105,28 @@ function Ranking() {
                           "Nada a mostrar. Escolha um ranking"
                             }
 
-                            
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
                     </div>
                 <ChatSlim />
                 </div>

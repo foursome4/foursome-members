@@ -14,19 +14,19 @@ function SettingsCharacteristcs() {
     const [characteristics2, setCharacteristics2] = useState([])
     const [characteristics3, setCharacteristics3] = useState([])
 
-    const [birthDate,setBirthDate] = useState(characteristics.data);
-    const [sex,setSex] = useState(characteristics.sex);
-    const [sign,setSign] = useState(characteristics.sign);
-    const [sexualOption,setSexualOption] = useState(characteristics.sexualOption);
-    const [education,setEducation] = useState(characteristics.education);
+    const [birthDate,setBirthDate] = useState("");
+    const [sex,setSex] = useState("");
+    const [sign,setSign] = useState("");
+    const [sexualOption,setSexualOption] = useState("");
+    const [education,setEducation] = useState("");
     const [heigth,setHeigth] = useState("");
     const [weight,setWeight] = useState("");
-    const [physique,setPhysique] = useState(characteristics.physique);
-    const [ethnicity,setEthnicity] = useState(characteristics.ethnicity);
-    const [eyes,setEyes] = useState(characteristics.eyes);
-    const [hair,setHair] = useState(characteristics.hair);
-    const [tattos,setTattos] = useState(characteristics.tattos);
-    const [smokes,setSmokes] = useState(characteristics.smokes);
+    const [physique,setPhysique] = useState("");
+    const [ethnicity,setEthnicity] = useState("");
+    const [eyes,setEyes] = useState("");
+    const [hair,setHair] = useState("");
+    const [tattos,setTattos] = useState("");
+    const [smokes,setSmokes] = useState("");
 
     const [birthDate2,setBirthDate2] = useState("");
     const [sex2,setSex2] = useState("");
@@ -79,101 +79,119 @@ function SettingsCharacteristcs() {
 
     function handleUpdateCharacteristcs(e){
         e.preventDefault()
-        
-        if(birthDate && sex && sign && sexualOption && education && heigth && weight && physique && ethnicity && eyes && hair && tattos && smokes && birthDate2 && sex2 && sign2 && sexualOption2 && education2 && heigth2 && weight2 && physique2 && ethnicity2 && eyes2 && hair2 && tattos2 && smokes2 && birthDate3 && sex3 && sign3 && sexualOption3 && education3 && heigth3 && weight3 && physique3 && ethnicity3 && eyes3 && hair3 && tattos3 && smokes3 !== "") {
-            newUpdateCharacteristcs3({
+
+        console.log("Clicou")
+        newUpdateCharacteristcs({
+                id: characteristics.id,
                 idAccount: user.id,
-                birthDate3,
-                sex3,
-                sign3,
-                sexualOption3,
-                education3,
-                heigth3,
-                weight3,
-                physique3,
-                ethnicity3,
-                eyes3,
-                hair3,
-                tattos3,
-                smokes3,
-                idAccount: user.id,
-                birthDate2,
-                sex2,
-                sign2,
-                sexualOption2,
-                education2,
-                heigth2,
-                weight2,
-                physique2,
-                ethnicity2,
-                eyes2,
-                hair2,
-                tattos2,
-                smokes2,
-                idAccount: user.id,
-                birthDate,
-                sex,
-                sign,
-                sexualOption,
-                education,
-                heigth,
-                weight,
-                physique,
-                ethnicity,
-                eyes,
-                hair,
-                tattos,
-                smokes})
-        } else if ( birthDate && sex && sign && sexualOption && education && heigth && weight && physique && ethnicity && eyes && hair && tattos && smokes && birthDate2 && sex2 && sign2 && sexualOption2 && education2 && heigth2 && weight2 && physique2 && ethnicity2 && eyes2 && hair2 && tattos2 && smokes2  !== "") {
-            
-            newUpdateCharacteristcs2({
-                idAccount: user.id,
-                birthDate2,
-                sex2,
-                sign2,
-                sexualOption2,
-                education2,
-                heigth2,
-                weight2,
-                physique2,
-                ethnicity2,
-                eyes2,
-                hair2,
-                tattos2,
-                smokes2,
-                birthDate,
-                sex,
-                sign,
-                sexualOption,
-                education,
-                heigth,
-                weight,
-                physique,
-                ethnicity,
-                eyes,
-                hair,
-                tattos,
-                smokes
+                birthDate: birthDate === "" ? characteristics.birthDate : birthDate,
+                sex: sex === "" ? characteristics.sex : sex,
+                sign: sign === "" ? characteristics.sign : sign,
+                sexualOption: sexualOption === "" ? characteristics.sexualOption : sexualOption,
+                education: education === "" ? characteristics.education : education,
+                heigth: heigth === "" ? characteristics.heigth : heigth,
+                weight: weight === "" ? characteristics.weight : weight,
+                physique: physique === "" ? characteristics.physique : physique,
+                ethnicity: ethnicity === "" ? characteristics.ethnicity : ethnicity,
+                eyes: eyes === "" ? characteristics.eyes : eyes,
+                hair: hair === "" ? characteristics.hair : hair,
+                tattos: tattos === "" ? characteristics.tattos : tattos,
+                smokes: smokes === "" ? characteristics.smokes : smokes
             })
 
-        } else if ( birthDate && sex && sign && sexualOption && education && heigth && weight && physique && ethnicity && eyes && hair && tattos && smokes  !== "") {
-            newUpdateCharacteristcs({
-                idAccount: user.id,
-                birthDate,
-                sex,
-                sign,
-                sexualOption,
-                education,
-                heigth,
-                weight,
-                physique,
-                ethnicity,
-                eyes,
-                hair,
-                tattos,
-                smokes})
+    }
+    function handleUpdateCharacteristcs2(e){
+        e.preventDefault()
 
-        }
+        console.log("Clicou")
+        
+        newUpdateCharacteristcs2({
+                id: characteristics2.id,
+                idAccount: user.id,
+                birthDate2: birthDate2 === "" ? characteristics2.birthDate : birthDate2,
+                sex2: sex2 === "" ? characteristics2.sex : sex2,
+                sign2: sign2 === "" ? characteristics2.sign : sign2,
+                sexualOption2: sexualOption2 === "" ? characteristics2.sexualOption : sexualOption2,
+                education2: education2 === "" ? characteristics2.education : education2,
+                heigth2: heigth2 === "" ? characteristics2.heigth : heigth2,
+                weight2: weight2 === "" ? characteristics2.weight : weight2,
+                physique2: physique2 === "" ? characteristics2.physique : physique2,
+                ethnicity2: ethnicity2 === "" ? characteristics2.ethnicity : ethnicity2,
+                eyes2: eyes2 === "" ? characteristics2.eyes : eyes2,
+                hair2: hair2 === "" ? characteristics2.hair : hair2,
+                tattos2: tattos2 === "" ? characteristics2.tattos : tattos2,
+                smokes2: smokes2 === "" ? characteristics2.smokes : smokes2,
+                id2: characteristics.id,
+                idAccount: user.id,
+                birthDate: birthDate === "" ? characteristics.birthDate : birthDate,
+                sex: sex === "" ? characteristics.sex : sex,
+                sign: sign === "" ? characteristics.sign : sign,
+                sexualOption: sexualOption === "" ? characteristics.sexualOption : sexualOption,
+                education: education === "" ? characteristics.education : education,
+                heigth: heigth === "" ? characteristics.heigth : heigth,
+                weight: weight === "" ? characteristics.weight : weight,
+                physique: physique === "" ? characteristics.physique : physique,
+                ethnicity: ethnicity === "" ? characteristics.ethnicity : ethnicity,
+                eyes: eyes === "" ? characteristics.eyes : eyes,
+                hair: hair === "" ? characteristics.hair : hair,
+                tattos: tattos === "" ? characteristics.tattos : tattos,
+                smokes: smokes === "" ? characteristics.smokes : smokes
+            })
+
+       
+    }
+    function handleUpdateCharacteristcs3(e){
+        e.preventDefault()
+
+        console.log("Clicou")
+        
+        newUpdateCharacteristcs3({
+                id3: characteristics3.id,
+                idAccount: user.id,
+                birthDate3: birthDate3 === "" ? characteristics3.birthDate : birthDate3,
+                sex3: sex3 === "" ? characteristics3.sex : sex3,
+                sign3: sign3 === "" ? characteristics3.sign : sign3,
+                sexualOption3: sexualOption3 === "" ? characteristics3.sexualOption : sexualOption3,
+                education3: education3 === "" ? characteristics3.education : education3,
+                heigth3: heigth3 === "" ? characteristics3.heigth : heigth3,
+                weight3: weight3 === "" ? characteristics3.weight : weight3,
+                physique3: physique3 === "" ? characteristics3.physique : physique3,
+                ethnicity3: ethnicity3 === "" ? characteristics3.ethnicity : ethnicity3,
+                eyes3: eyes3 === "" ? characteristics3.eyes : eyes3,
+                hair3: hair3 === "" ? characteristics3.hair : hair3,
+                tattos3: tattos3 === "" ? characteristics3.tattos : tattos3,
+                smokes3: smokes3 === "" ? characteristics3.smokes : smokes3,
+                id2: characteristics2.id,
+                idAccount: user.id,
+                birthDate2: birthDate2 === "" ? characteristics2.birthDate : birthDate2,
+                sex2: sex2 === "" ? characteristics2.sex : sex2,
+                sign2: sign2 === "" ? characteristics2.sign : sign2,
+                sexualOption2: sexualOption2 === "" ? characteristics2.sexualOption : sexualOption2,
+                education2: education2 === "" ? characteristics2.education : education2,
+                heigth2: heigth2 === "" ? characteristics2.heigth : heigth2,
+                weight2: weight2 === "" ? characteristics2.weight : weight2,
+                physique2: physique2 === "" ? characteristics2.physique : physique2,
+                ethnicity2: ethnicity2 === "" ? characteristics2.ethnicity : ethnicity2,
+                eyes2: eyes2 === "" ? characteristics2.eyes : eyes2,
+                hair2: hair2 === "" ? characteristics2.hair : hair2,
+                tattos2: tattos2 === "" ? characteristics2.tattos : tattos2,
+                smokes2: smokes2 === "" ? characteristics2.smokes : smokes2,
+                id: characteristics.id,
+                idAccount: user.id,
+                birthDate: birthDate === "" ? characteristics.birthDate : birthDate,
+                sex: sex === "" ? characteristics.sex : sex,
+                sign: sign === "" ? characteristics.sign : sign,
+                sexualOption: sexualOption === "" ? characteristics.sexualOption : sexualOption,
+                education: education === "" ? characteristics.education : education,
+                heigth: heigth === "" ? characteristics.heigth : heigth,
+                weight: weight === "" ? characteristics.weight : weight,
+                physique: physique === "" ? characteristics.physique : physique,
+                ethnicity: ethnicity === "" ? characteristics.ethnicity : ethnicity,
+                eyes: eyes === "" ? characteristics.eyes : eyes,
+                hair: hair === "" ? characteristics.hair : hair,
+                tattos: tattos === "" ? characteristics.tattos : tattos,
+                smokes: smokes === "" ? characteristics.smokes : smokes
+            })
     }
 
 //-----------------------------------
@@ -311,20 +329,20 @@ function SettingsCharacteristcs() {
                    {user.type === "Trisal" ?
                     <div className="data-form">   
                     <span>Membro casal 1</span><br />
-                    <input type="date" placeholder="Data de Nascimenrto" value={birthDate}  onChange={(e) => setBirthDate(e.target.value)}/>
-                    <select value={characteristics.sex} onChange={handleSelectSex}>
+                    <input type="date" placeholder="Data de Nascimenrto" value={birthDate === "" ? characteristics.birthDate : birthDate}  onChange={(e) => setBirthDate(e.target.value)}/>
+                    <select value={sex === "" ?  characteristics.sex : sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
-                            <select value={characteristics.sexualOption} onChange={handleSelectSexualOption}>
+                            <select value={sexualOption === "" ? characteristics.sexualOption : sexualOption} onChange={handleSelectSexualOption}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
-                            <select value={characteristics.education} onChange={handleSelectEducation}>
+                            <select value={education === "" ? characteristics.education : education} onChange={handleSelectEducation}>
                                 <option value="">Escolaridade</option>
                                 <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto </option>
                                 <option value="Ensino Fundamental Completo">Ensino Fundamental Completo </option>
@@ -335,7 +353,7 @@ function SettingsCharacteristcs() {
                                 <option value="Mestrado/Doutorado Cursando">Mestrado/Doutorado Cursando</option>
                                 <option value="Mestrado/Doutorado Completo">Mestrado/Doutorado Completo</option>
                             </select>
-                            <select value={characteristics.sign} onChange={handleSelectSign}>
+                            <select value={sign === "" ? characteristics.sign : sign} onChange={handleSelectSign}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -351,9 +369,9 @@ function SettingsCharacteristcs() {
                                 <option value="Peixes">Peixes</option>
                             </select>
 
-                    <input type="text" placeholder="Altura" value={characteristics.heigth}  onChange={(e) => setHeigth(e.target.value)}/>
-                    <input type="text" placeholder="Peso" value={characteristics.weight}  onChange={(e) => setWeight(e.target.value)}/>
-                    <select value={characteristics.physique} onChange={handleSelectPhysique}>
+                    <input type="text" placeholder="Altura" value={heigth === "" ?  characteristics.heigth : heigth}  onChange={(e) => setHeigth(e.target.value)}/>
+                    <input type="text" placeholder="Peso" value={weight === "" ?  characteristics.weight : weight}  onChange={(e) => setWeight(e.target.value)}/>
+                    <select value={physique === "" ? characteristics.physique : physique} onChange={handleSelectPhysique}>
                                 <option value="">Físico</option>
                                 <option value="Atletico">Atletico </option>
                                 <option value="Magro">Magro </option>
@@ -362,7 +380,7 @@ function SettingsCharacteristcs() {
                                 <option value="Maromba">Maromba </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics.eyes} onChange={handleSelectEyes}>
+                    <select value={eyes === "" ? characteristics.eyes : eyes} onChange={handleSelectEyes}>
                                 <option value="">Olhos</option>
                                 <option value="Preto">Preto </option>
                                 <option value="Castanho">Castanho </option>
@@ -370,7 +388,7 @@ function SettingsCharacteristcs() {
                                 <option value="Azuis">Azuis </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics.ethnicity} onChange={handleSelectEthnicity}>
+                    <select value={ethnicity === "" ? characteristics.ethnicity : ethnicity} onChange={handleSelectEthnicity}>
                                 <option value="">Etnia</option>
                                 <option value="Brancos">Brancos </option>
                                 <option value="Pardos">Pardos </option>
@@ -379,7 +397,7 @@ function SettingsCharacteristcs() {
                                 <option value="Indígenas">Indígenas </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                            <select value={characteristics.hair} onChange={handleSelectHair}>
+                            <select value={hair === "" ? characteristics.hair : hair} onChange={handleSelectHair}>
                                 <option value="">Cabelos</option>
                                 <option value="Brancos">Brancos </option>
                                 <option value="Preto">Preto </option>
@@ -388,32 +406,32 @@ function SettingsCharacteristcs() {
                                 <option value="Ruivo">Ruivo </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics.tattos} onChange={handleSelectTatoo}>
+                    <select value={tattos === "" ? characteristics.tattos : tattos} onChange={handleSelectTatoo}>
                                 <option value="">Tatuagens?</option>
                                 <option value="Sim">Sim </option>
                                 <option value="Não">Não </option>
                             </select>
-                    <select value={characteristics.smokes} onChange={handleSelectSmokes}>
+                    <select value={smokes === "" ? characteristics.smokes : smokes} onChange={handleSelectSmokes}>
                                 <option value="">Fumante?</option>
                                 <option value="Sim">Sim </option>
                                 <option value="Não">Não </option>
                             </select>
                     <br /><br />
                     <span>Membro casal 2</span><br />
-                    <input type="date" placeholder="Data de Nascimenrto" value={characteristics2.birthDate}  onChange={(e) => setBirthDate2(e.target.value)}/>
-                    <select value={characteristics2.sex} onChange={handleSelectSex2}>
+                    <input type="date" placeholder="Data de Nascimenrto" value={birthDate2 === "" ? characteristics2.birthDate : birthDate2}  onChange={(e) => setBirthDate2(e.target.value)}/>
+                    <select value={sex2 === "" ? characteristics2.sex : sex2} onChange={handleSelectSex2}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
-                            <select value={characteristics2.sexualOption} onChange={handleSelectSexualOption2}>
+                            <select value={sexualOption2 === "" ? characteristics2.sexualOption : sexualOption2} onChange={handleSelectSexualOption2}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
-                            <select value={characteristics2.education} onChange={handleSelectEducation2}>
+                            <select value={education2 === "" ? characteristics2.education : education2} onChange={handleSelectEducation2}>
                                 <option value="">Escolaridade</option>
                                 <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto </option>
                                 <option value="Ensino Fundamental Completo">Ensino Fundamental Completo </option>
@@ -424,7 +442,7 @@ function SettingsCharacteristcs() {
                                 <option value="Mestrado/Doutorado Cursando">Mestrado/Doutorado Cursando</option>
                                 <option value="Mestrado/Doutorado Completo">Mestrado/Doutorado Completo</option>
                             </select>
-                            <select value={characteristics2.sign} onChange={handleSelectSign2}>
+                            <select value={sign2 === "" ? characteristics2.sign : sign2} onChange={handleSelectSign2}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -440,9 +458,9 @@ function SettingsCharacteristcs() {
                                 <option value="Peixes">Peixes</option>
                             </select>
 
-                    <input type="text" placeholder="Altura" value={characteristics2.heigth}  onChange={(e) => setHeigth2(e.target.value)}/>
-                    <input type="text" placeholder="Peso" value={characteristics2.weight}  onChange={(e) => setWeight2(e.target.value)}/>
-                    <select value={characteristics2.physique} onChange={handleSelectPhysique2}>
+                    <input type="text" placeholder="Altura" value={heigth2 === "" ? characteristics2.heigth : heigth2}  onChange={(e) => setHeigth2(e.target.value)}/>
+                    <input type="text" placeholder="Peso" value={weight2 === "" ? characteristics2.weight : weight2}  onChange={(e) => setWeight2(e.target.value)}/>
+                    <select value={physique2 === "" ? characteristics2.physique : physique2} onChange={handleSelectPhysique2}>
                                 <option value="">Físico</option>
                                 <option value="Atletico">Atletico </option>
                                 <option value="Magro">Magro </option>
@@ -451,7 +469,7 @@ function SettingsCharacteristcs() {
                                 <option value="Maromba">Maromba </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics2.eyes} onChange={handleSelectEyes2}>
+                    <select value={eyes2 === "" ? characteristics2.birthDate : birthDate2} onChange={handleSelectEyes2}>
                                 <option value="">Olhos</option>
                                 <option value="Preto">Preto </option>
                                 <option value="Castanho">Castanho </option>
@@ -459,7 +477,7 @@ function SettingsCharacteristcs() {
                                 <option value="Azuis">Azuis </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics2.ethnicity} onChange={handleSelectEthnicity2}>
+                    <select value={ethnicity2 === "" ? characteristics2.ethnicity : ethnicity2} onChange={handleSelectEthnicity2}>
                                 <option value="">Etnia</option>
                                 <option value="Brancos">Brancos </option>
                                 <option value="Pardos">Pardos </option>
@@ -468,7 +486,7 @@ function SettingsCharacteristcs() {
                                 <option value="Indígenas">Indígenas </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                            <select value={characteristics2.hair} onChange={handleSelectHair2}>
+                            <select value={hair2 === "" ? characteristics2.hair : hair2} onChange={handleSelectHair2}>
                                 <option value="">Cabelos</option>
                                 <option value="Brancos">Brancos </option>
                                 <option value="Preto">Preto </option>
@@ -477,32 +495,32 @@ function SettingsCharacteristcs() {
                                 <option value="Ruivo">Ruivo </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics2.tattos} onChange={handleSelectTatoo2}>
+                    <select value={tattos2 === "" ? characteristics2.tattos : tattos2} onChange={handleSelectTatoo2}>
                                 <option value="">Tatuagens?</option>
                                 <option value="Sim">Sim </option>
                                 <option value="Não">Não </option>
                             </select>
-                    <select value={characteristics2.smokes} onChange={handleSelectSmokes2}>
+                    <select value={smokes2 === "" ? characteristics2.smokes : smokes2} onChange={handleSelectSmokes2}>
                                 <option value="">Fumante?</option>
                                 <option value="Sim">Sim </option>
                                 <option value="Não">Não </option>
                             </select>
                             <br /><br />
                     <span>Membro casal 3</span><br />
-                    <input type="date" placeholder="Data de Nascimenrto" value={characteristics3.birthDate}  onChange={(e) => setBirthDate3(e.target.value)}/>
-                    <select value={characteristics3.sex} onChange={handleSelectSex3}>
+                    <input type="date" placeholder="Data de Nascimenrto" value={birthDate3 === "" ? characteristics3.birthDate : birthDate3}  onChange={(e) => setBirthDate3(e.target.value)}/>
+                    <select value={sex3 === "" ? characteristics3.sex : sex3} onChange={handleSelectSex3}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
-                            <select value={characteristics3.sexualOption} onChange={handleSelectSexualOption3}>
+                            <select value={sexualOption3 === "" ? characteristics3.sexualOption : sexualOption3} onChange={handleSelectSexualOption3}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
-                            <select value={characteristics3.education} onChange={handleSelectEducation3}>
+                            <select value={education3 === "" ? characteristics3.education : education3} onChange={handleSelectEducation3}>
                                 <option value="">Escolaridade</option>
                                 <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto </option>
                                 <option value="Ensino Fundamental Completo">Ensino Fundamental Completo </option>
@@ -513,7 +531,7 @@ function SettingsCharacteristcs() {
                                 <option value="Mestrado/Doutorado Cursando">Mestrado/Doutorado Cursando</option>
                                 <option value="Mestrado/Doutorado Completo">Mestrado/Doutorado Completo</option>
                             </select>
-                            <select value={characteristics3.sign} onChange={handleSelectSign3}>
+                            <select value={sign3 === "" ? characteristics3.sign : sign3} onChange={handleSelectSign3}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -529,9 +547,9 @@ function SettingsCharacteristcs() {
                                 <option value="Peixes">Peixes</option>
                             </select>
 
-                    <input type="text" placeholder="Altura" value={characteristics3.heigth}  onChange={(e) => setHeigth3(e.target.value)}/>
-                    <input type="text" placeholder="Peso" value={characteristics3.weight}  onChange={(e) => setWeight3(e.target.value)}/>
-                    <select value={characteristics3.physique} onChange={handleSelectPhysique3}>
+                    <input type="text" placeholder="Altura" value={heigth3 === "" ? characteristics3.heigth : heigth3}  onChange={(e) => setHeigth3(e.target.value)}/>
+                    <input type="text" placeholder="Peso" value={weight3 === "" ? characteristics3.weight : weight3}  onChange={(e) => setWeight3(e.target.value)}/>
+                    <select value={physique3 === "" ? characteristics3.physique : physique3} onChange={handleSelectPhysique3}>
                                 <option value="">Físico</option>
                                 <option value="Atletico">Atletico </option>
                                 <option value="Magro">Magro </option>
@@ -540,7 +558,7 @@ function SettingsCharacteristcs() {
                                 <option value="Maromba">Maromba </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics3.eyes} onChange={handleSelectEyes3}>
+                    <select value={eyes3 === "" ? characteristics3.eyes : eyes3} onChange={handleSelectEyes3}>
                                 <option value="">Olhos</option>
                                 <option value="Preto">Preto </option>
                                 <option value="Castanho">Castanho </option>
@@ -548,7 +566,7 @@ function SettingsCharacteristcs() {
                                 <option value="Azuis">Azuis </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics3.ethnicity} onChange={handleSelectEthnicity3}>
+                    <select value={ethnicity3 === "" ? characteristics3.ethnicity : ethnicity3} onChange={handleSelectEthnicity3}>
                                 <option value="">Etnia</option>
                                 <option value="Brancos">Brancos </option>
                                 <option value="Pardos">Pardos </option>
@@ -557,7 +575,7 @@ function SettingsCharacteristcs() {
                                 <option value="Indígenas">Indígenas </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                            <select value={characteristics3.hair} onChange={handleSelectHair3}>
+                            <select value={hair3 === "" ? characteristics3.hair : hair3} onChange={handleSelectHair3}>
                                 <option value="">Cabelos</option>
                                 <option value="Brancos">Brancos </option>
                                 <option value="Preto">Preto </option>
@@ -566,34 +584,39 @@ function SettingsCharacteristcs() {
                                 <option value="Ruivo">Ruivo </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics3.tattos} onChange={handleSelectTatoo3}>
+                    <select value={tattos3 === "" ? characteristics3.tattos : tattos3} onChange={handleSelectTatoo3}>
                                 <option value="">Tatuagens?</option>
                                 <option value="Sim">Sim </option>
                                 <option value="Não">Não </option>
                             </select>
-                    <select value={characteristics3.smokes} onChange={handleSelectSmokes3}>
+                    <select value={smokes3 === "" ? characteristics3.smokes : smokes3} onChange={handleSelectSmokes3}>
                                 <option value="">Fumante?</option>
                                 <option value="Sim">Sim </option>
                                 <option value="Não">Não </option>
                             </select>
+
+                            <div className='confirmation'>
+                        <button onClick={handleUpdateCharacteristcs3}>{loading === true ? <FiRefreshCcw /> : "Atualizar"}</button>
+                        
+                    </div>
              </div>
              : user.type === "Casal"?
              <div className="data-form">
                   <span>Membro casal 1</span><br />
-                  <input type="date" placeholder="Data de Nascimenrto" value={characteristics.birthDate}  onChange={(e) => setBirthDate(e.target.value)}/>
-                    <select value={characteristics.sex} onChange={handleSelectSex}>
+                  <input type="date" placeholder="Data de Nascimenrto" value={birthDate === "" ? characteristics.birthDate : birthDate}  onChange={(e) => setBirthDate(e.target.value)}/>
+                    <select value={sex === "" ?  characteristics.sex : sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
-                            <select value={characteristics.sexualOption} onChange={handleSelectSexualOption}>
+                            <select value={sexualOption === "" ? characteristics.sexualOption : sexualOption} onChange={handleSelectSexualOption}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
-                            <select value={characteristics.education} onChange={handleSelectEducation}>
+                            <select value={education === "" ? characteristics.education : education} onChange={handleSelectEducation}>
                                 <option value="">Escolaridade</option>
                                 <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto </option>
                                 <option value="Ensino Fundamental Completo">Ensino Fundamental Completo </option>
@@ -604,7 +627,7 @@ function SettingsCharacteristcs() {
                                 <option value="Mestrado/Doutorado Cursando">Mestrado/Doutorado Cursando</option>
                                 <option value="Mestrado/Doutorado Completo">Mestrado/Doutorado Completo</option>
                             </select>
-                            <select value={characteristics.sign} onChange={handleSelectSign}>
+                            <select value={sign === "" ? characteristics.sign : sign} onChange={handleSelectSign}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -620,9 +643,9 @@ function SettingsCharacteristcs() {
                                 <option value="Peixes">Peixes</option>
                             </select>
 
-                    <input type="text" placeholder="Altura" value={characteristics.heigth}  onChange={(e) => setHeigth(e.target.value)}/>
-                    <input type="text" placeholder="Peso" value={characteristics.weight}  onChange={(e) => setWeight(e.target.value)}/>
-                    <select value={characteristics.physique} onChange={handleSelectPhysique}>
+                    <input type="text" placeholder="Altura" value={heigth === "" ?  characteristics.heigth : heigth}  onChange={(e) => setHeigth(e.target.value)}/>
+                    <input type="text" placeholder="Peso" value={weight === "" ?  characteristics.weight : weight}  onChange={(e) => setWeight(e.target.value)}/>
+                    <select value={physique === "" ? characteristics.physique : physique} onChange={handleSelectPhysique}>
                                 <option value="">Físico</option>
                                 <option value="Atletico">Atletico </option>
                                 <option value="Magro">Magro </option>
@@ -631,7 +654,7 @@ function SettingsCharacteristcs() {
                                 <option value="Maromba">Maromba </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics.eyes} onChange={handleSelectEyes}>
+                    <select value={eyes === "" ? characteristics.eyes : eyes} onChange={handleSelectEyes}>
                                 <option value="">Olhos</option>
                                 <option value="Preto">Preto </option>
                                 <option value="Castanho">Castanho </option>
@@ -639,7 +662,7 @@ function SettingsCharacteristcs() {
                                 <option value="Azuis">Azuis </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics.ethnicity} onChange={handleSelectEthnicity}>
+                    <select value={ethnicity === "" ? characteristics.ethnicity : ethnicity} onChange={handleSelectEthnicity}>
                                 <option value="">Etnia</option>
                                 <option value="Brancos">Brancos </option>
                                 <option value="Pardos">Pardos </option>
@@ -648,7 +671,7 @@ function SettingsCharacteristcs() {
                                 <option value="Indígenas">Indígenas </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                            <select value={characteristics.hair} onChange={handleSelectHair}>
+                            <select value={hair === "" ? characteristics.hair : hair} onChange={handleSelectHair}>
                                 <option value="">Cabelos</option>
                                 <option value="Brancos">Brancos </option>
                                 <option value="Preto">Preto </option>
@@ -657,33 +680,35 @@ function SettingsCharacteristcs() {
                                 <option value="Ruivo">Ruivo </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics.tattos} onChange={handleSelectTatoo}>
+                    <select value={tattos === "" ? characteristics.tattos : tattos} onChange={handleSelectTatoo}>
                                 <option value="">Tatuagens?</option>
                                 <option value="Sim">Sim </option>
                                 <option value="Não">Não </option>
                             </select>
-                    <select value={characteristics.smokes} onChange={handleSelectSmokes}>
+                    <select value={smokes === "" ? characteristics.smokes : smokes} onChange={handleSelectSmokes}>
                                 <option value="">Fumante?</option>
                                 <option value="Sim">Sim </option>
                                 <option value="Não">Não </option>
                             </select>
+
+                            
                             
                             <br /><br />
                     <span>Membro casal 2</span><br />
-                    <input type="date" placeholder="Data de Nascimenrto" value={characteristics2.birthDate}  onChange={(e) => setBirthDate2(e.target.value)}/>
-                    <select value={characteristics2.sex} onChange={handleSelectSex2}>
+                    <input type="date" placeholder="Data de Nascimenrto" value={birthDate2 === "" ? characteristics2.birthDate : birthDate2}  onChange={(e) => setBirthDate2(e.target.value)}/>
+                    <select value={sex2 === "" ? characteristics2.sex : sex2} onChange={handleSelectSex2}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
-                            <select value={characteristics2.sexualOption} onChange={handleSelectSexualOption2}>
+                            <select value={sexualOption2 === "" ? characteristics2.sexualOption : sexualOption2} onChange={handleSelectSexualOption2}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
-                            <select value={characteristics2.education} onChange={handleSelectEducation2}>
+                            <select value={education2 === "" ? characteristics2.education : education2} onChange={handleSelectEducation2}>
                                 <option value="">Escolaridade</option>
                                 <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto </option>
                                 <option value="Ensino Fundamental Completo">Ensino Fundamental Completo </option>
@@ -694,7 +719,7 @@ function SettingsCharacteristcs() {
                                 <option value="Mestrado/Doutorado Cursando">Mestrado/Doutorado Cursando</option>
                                 <option value="Mestrado/Doutorado Completo">Mestrado/Doutorado Completo</option>
                             </select>
-                            <select value={characteristics2.sign} onChange={handleSelectSign2}>
+                            <select value={sign2 === "" ? characteristics2.sign : sign2} onChange={handleSelectSign2}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -710,9 +735,9 @@ function SettingsCharacteristcs() {
                                 <option value="Peixes">Peixes</option>
                             </select>
 
-                    <input type="text" placeholder="Altura" value={characteristics2.heigth}  onChange={(e) => setHeigth2(e.target.value)}/>
-                    <input type="text" placeholder="Peso" value={characteristics2.weight}  onChange={(e) => setWeight2(e.target.value)}/>
-                    <select value={characteristics2.physique} onChange={handleSelectPhysique2}>
+                    <input type="text" placeholder="Altura" value={heigth2 === "" ? characteristics2.heigth : heigth2}  onChange={(e) => setHeigth2(e.target.value)}/>
+                    <input type="text" placeholder="Peso" value={weight2 === "" ? characteristics2.weight : weight2}  onChange={(e) => setWeight2(e.target.value)}/>
+                    <select value={physique2 === "" ? characteristics2.physique : physique2} onChange={handleSelectPhysique2}>
                                 <option value="">Físico</option>
                                 <option value="Atletico">Atletico </option>
                                 <option value="Magro">Magro </option>
@@ -721,7 +746,7 @@ function SettingsCharacteristcs() {
                                 <option value="Maromba">Maromba </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics2.eyes} onChange={handleSelectEyes2}>
+                    <select value={eyes2 === "" ? characteristics2.birthDate : birthDate2} onChange={handleSelectEyes2}>
                                 <option value="">Olhos</option>
                                 <option value="Preto">Preto </option>
                                 <option value="Castanho">Castanho </option>
@@ -729,7 +754,7 @@ function SettingsCharacteristcs() {
                                 <option value="Azuis">Azuis </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics2.ethnicity} onChange={handleSelectEthnicity2}>
+                    <select value={ethnicity2 === "" ? characteristics2.ethnicity : ethnicity2} onChange={handleSelectEthnicity2}>
                                 <option value="">Etnia</option>
                                 <option value="Brancos">Brancos </option>
                                 <option value="Pardos">Pardos </option>
@@ -738,7 +763,7 @@ function SettingsCharacteristcs() {
                                 <option value="Indígenas">Indígenas </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                            <select value={characteristics2.hair} onChange={handleSelectHair2}>
+                            <select value={hair2 === "" ? characteristics2.hair : hair2} onChange={handleSelectHair2}>
                                 <option value="">Cabelos</option>
                                 <option value="Brancos">Brancos </option>
                                 <option value="Preto">Preto </option>
@@ -747,33 +772,38 @@ function SettingsCharacteristcs() {
                                 <option value="Ruivo">Ruivo </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={characteristics2.tattos} onChange={handleSelectTatoo2}>
+                    <select value={tattos2 === "" ? characteristics2.tattos : tattos2} onChange={handleSelectTatoo2}>
                                 <option value="">Tatuagens?</option>
                                 <option value="Sim">Sim </option>
                                 <option value="Não">Não </option>
                             </select>
-                    <select value={characteristics2.smokes} onChange={handleSelectSmokes2}>
+                    <select value={smokes2 === "" ? characteristics2.smokes : smokes2} onChange={handleSelectSmokes2}>
                                 <option value="">Fumante?</option>
                                 <option value="Sim">Sim </option>
                                 <option value="Não">Não </option>
                             </select>
+
+                            <div className='confirmation'>
+                        <button onClick={handleUpdateCharacteristcs2}>{loading === true ? <FiRefreshCcw /> : "Atualizar"}</button>
+                        
+                    </div>
              </div>
              :
              <div className="data-form">
-                                      <input type="date" placeholder="Data de Nascimenrto" value={birthDate}  onChange={(e) => setBirthDate(e.target.value)}/>
-                    <select value={sex} onChange={handleSelectSex}>
+                                      <input type="date" placeholder="Data de Nascimenrto" value={birthDate === "" ? characteristics.birthDate : birthDate}  onChange={(e) => setBirthDate(e.target.value)}/>
+                    <select value={sex === "" ?  characteristics.sex : sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
-                            <select value={sexualOption} onChange={handleSelectSexualOption}>
+                            <select value={sexualOption === "" ? characteristics.sexualOption : sexualOption} onChange={handleSelectSexualOption}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
-                            <select value={education} onChange={handleSelectEducation}>
+                            <select value={education === "" ? characteristics.education : education} onChange={handleSelectEducation}>
                                 <option value="">Escolaridade</option>
                                 <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto </option>
                                 <option value="Ensino Fundamental Completo">Ensino Fundamental Completo </option>
@@ -784,7 +814,7 @@ function SettingsCharacteristcs() {
                                 <option value="Mestrado/Doutorado Cursando">Mestrado/Doutorado Cursando</option>
                                 <option value="Mestrado/Doutorado Completo">Mestrado/Doutorado Completo</option>
                             </select>
-                            <select value={sign} onChange={handleSelectSign}>
+                            <select value={sign === "" ? characteristics.sign : sign} onChange={handleSelectSign}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -800,9 +830,9 @@ function SettingsCharacteristcs() {
                                 <option value="Peixes">Peixes</option>
                             </select>
 
-                    <input type="text" placeholder="Altura" value={heigth === "" ? characteristics.heigth : heigth}  onChange={(e) => setHeigth(e.target.value)}/>
-                    <input type="text" placeholder="Peso" value={weight === "" ? characteristics.weight : weight}  onChange={(e) => setWeight(e.target.value)}/>
-                    <select value={physique} onChange={handleSelectPhysique}>
+                    <input type="text" placeholder="Altura" value={heigth === "" ?  characteristics.heigth : heigth}  onChange={(e) => setHeigth(e.target.value)}/>
+                    <input type="text" placeholder="Peso" value={weight === "" ?  characteristics.weight : weight}  onChange={(e) => setWeight(e.target.value)}/>
+                    <select value={physique === "" ? characteristics.physique : physique} onChange={handleSelectPhysique}>
                                 <option value="">Físico</option>
                                 <option value="Atletico">Atletico </option>
                                 <option value="Magro">Magro </option>
@@ -811,7 +841,7 @@ function SettingsCharacteristcs() {
                                 <option value="Maromba">Maromba </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={eyes} onChange={handleSelectEyes}>
+                    <select value={eyes === "" ? characteristics.eyes : eyes} onChange={handleSelectEyes}>
                                 <option value="">Olhos</option>
                                 <option value="Preto">Preto </option>
                                 <option value="Castanho">Castanho </option>
@@ -819,7 +849,7 @@ function SettingsCharacteristcs() {
                                 <option value="Azuis">Azuis </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={ethnicity} onChange={handleSelectEthnicity}>
+                    <select value={ethnicity === "" ? characteristics.ethnicity : ethnicity} onChange={handleSelectEthnicity}>
                                 <option value="">Etnia</option>
                                 <option value="Brancos">Brancos </option>
                                 <option value="Pardos">Pardos </option>
@@ -828,7 +858,7 @@ function SettingsCharacteristcs() {
                                 <option value="Indígenas">Indígenas </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                            <select value={hair} onChange={handleSelectHair}>
+                            <select value={hair === "" ? characteristics.hair : hair} onChange={handleSelectHair}>
                                 <option value="">Cabelos</option>
                                 <option value="Brancos">Brancos </option>
                                 <option value="Preto">Preto </option>
@@ -837,23 +867,24 @@ function SettingsCharacteristcs() {
                                 <option value="Ruivo">Ruivo </option>
                                 <option value="Outros">Outros </option>
                             </select>
-                    <select value={tattos} onChange={handleSelectTatoo}>
+                    <select value={tattos === "" ? characteristics.tattos : tattos} onChange={handleSelectTatoo}>
                                 <option value="">Tatuagens?</option>
                                 <option value="Sim">Sim </option>
                                 <option value="Não">Não </option>
                             </select>
-                    <select value={smokes} onChange={handleSelectSmokes}>
+                    <select value={smokes === "" ? characteristics.smokes : smokes} onChange={handleSelectSmokes}>
                                 <option value="">Fumante?</option>
                                 <option value="Sim">Sim </option>
                                 <option value="Não">Não </option>
                             </select>
+                   <div className='confirmation'>
+                        <button onClick={handleUpdateCharacteristcs}>{loading === true ? <FiRefreshCcw /> : "Atualizar"}</button>
+                        
+                    </div>               
              </div>
                 }
                 </div>
-                    <div className='confirmation'>
-                        <button onClick={handleUpdateCharacteristcs}>{loading === true ? <FiRefreshCcw /> : "Atualizar"}</button>
-                        
-                    </div>
+
                         </form>
             </div>
     )
