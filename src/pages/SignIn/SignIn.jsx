@@ -2,7 +2,6 @@ import { useContext, useState } from 'react';
 import logoImg from '../../assets/images/logo.png'
 import { AuthContext } from '../../contexts/Auth';
 import { FiEye, FiEyeOff} from 'react-icons/fi';
-import {toast} from 'react-toastify';
 
 import './signIn.css';
 
@@ -17,7 +16,6 @@ function SignIn() {
     e.preventDefault();
    loginSession({login: login, password:password})
    console.log({login: login, password:password});
-  // toast.success('Seja bem vindo. Realize seu cadastro');
   }
 
   function handlePasswordView() {

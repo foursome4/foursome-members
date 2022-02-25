@@ -19,8 +19,6 @@ import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 import { v4 as uuidv4 } from 'uuid'
 import { useNavigate } from 'react-router-dom';
-import { socket } from '../../services/websocket'
-import apiGoogleReverse from '../../services/apiGoogleReverse'
 
 
 function ProfileFriend() {
@@ -142,7 +140,7 @@ function ProfileFriend() {
     loadPreferences()
     loadRoom()
     socketDataLocation()
-  }, []);
+  }, [socketDataLocation, myUser.id, id]);
 
 
  function handleChat() {
@@ -172,7 +170,7 @@ function ProfileFriend() {
       loadPosts();
       loadFriends();
       loadFollowers();
-    }, []);
+    }, [id]);
 
     
     function handleNewFriend(e) {
@@ -433,6 +431,7 @@ function ProfileFriend() {
 
                        <div className="info-user-preferences">
                         <div className="informations">
+                            <h5 className='title'>Proposta</h5>
                           <div className="selects">
                           <div className="itens">{preferences.men !== "" ? <h5><FiCheck /> {preferences.men}</h5> : "" }  </div>
                               <div className="itens"> {preferences.woman !== "" ? <h5><FiCheck /> {preferences.woman}</h5> : "" } </div>

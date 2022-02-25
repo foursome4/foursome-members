@@ -74,6 +74,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     max-width: 50%;
+    min-width: 10%;
 }
 
 .content .chat .main-chat .section-chat .messages .my-message {
@@ -82,6 +83,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     max-width: 50%;
+    min-width: 10%;
 }
 
 
@@ -157,6 +159,51 @@
     border-radius: 6px;
     width: 250px;
     height: 250px;
+}
+
+
+.content .chat .main-chat .section-chat .messages .my-message .data .image .mark{
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.content .chat .main-chat .section-chat .messages .message-friend .data .image .mark{
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.content .chat .main-chat .section-chat .messages .my-message .data .image .mark .black{
+    color: rgba(0, 0, 0, 0.036);
+    margin: 2px;
+    font-weight: 500;
+}
+.content .chat .main-chat .section-chat .messages .my-message .data .image .mark .white{
+    color: rgba(255, 255, 255, 0.036);
+    margin: 2px;
+    font-weight: 500;
+}
+.content .chat .main-chat .section-chat .messages .message-friend .data .image .mark .black{
+    color: rgba(0, 0, 0, 0.036);
+    margin: 2px;
+    font-weight: 500;
+}
+.content .chat .main-chat .section-chat .messages .message-friend .data .image .mark .white{
+    color: rgba(255, 255, 255, 0.036);
+    margin: 2px;
+    font-weight: 500;
 }
 
 .content .chat .main-chat .section-chat .messages .my-message .data .image img {
@@ -351,6 +398,16 @@
                     width: 200px;
                     height: 200px;
                     object-fit: cover;
+                }
+                .content .chat .main-chat .section-chat .messages .my-message .data .image .mark{
+                    width: 200px;
+                    height: 200px;
+
+                }
+                .content .chat .main-chat .section-chat .messages .message-friend .data .image .mark{
+                    width: 200px;
+                    height: 200px;
+ 
                 }
             }
             

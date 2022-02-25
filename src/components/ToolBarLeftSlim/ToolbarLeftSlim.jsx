@@ -1,5 +1,5 @@
-import { FiCalendar, FiHome, FiList, FiMessageSquare, FiRadio, FiTrendingUp, FiUserCheck, FiUsers, FiMapPin, FiMail } from "react-icons/fi"
-import { a, useNavigate } from "react-router-dom";
+import { FiCalendar, FiHome, FiList, FiRadio, FiTrendingUp, FiUserCheck, FiUsers, FiMapPin, FiMail } from "react-icons/fi"
+import { useNavigate } from "react-router-dom";
 import avatarImg from '../../assets/images/avatar.png';
 import './toolbarLeftSlim.css'
 

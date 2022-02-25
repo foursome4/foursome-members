@@ -18,7 +18,7 @@ function Video({idAccount, type}) {
 
       findPosts()
 
-  }, [])
+  }, [idAccount, type])
 
 
     return(

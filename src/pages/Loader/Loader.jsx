@@ -41,7 +41,7 @@ function Loader() {
         }
         findInformationsAccount()
         socketDataLocation()
-    }, [])    
+    }, [socketDataLocation, navigate, user.id])    
 
 
     return(

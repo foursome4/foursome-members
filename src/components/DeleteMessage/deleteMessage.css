@@ -1,0 +1,42 @@
+.delete {
+    width: 90%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    color: var(--White);
+    margin-top: 10px;
+    margin-right: 5%;
+}
+.delete .buttonDelete {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: var(--Button);
+    border: none;
+    border-radius: 6px;
+    color: var(--White);
+    padding: 5px;
+    font-size: 16px;
+}
+
+.delete .buttonDelete button {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    color: var(--White);
+}
+
+.delete .buttonDelete button svg {
+    margin-left: 5px;
+}
+.delete .buttonDelete svg {
+    margin-left: 5px;
+}

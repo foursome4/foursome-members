@@ -1,15 +1,20 @@
 import "./settingsInformations.css"
 import { FiUpload } from "react-icons/fi";
 import buscaCep from "../../services/api-buscaCep";
-import { useState } from "react";
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../contexts/Auth';
+import { v4 as uuidv4} from 'uuid'
+import { storage } from '../../services/firebaseConnection';
+import { ref, getDownloadURL, uploadBytes} from 'firebase/storage';
 
 function SettingsInformations() {
+    const {NewUpdateInformationsAccount} = useContext(AuthContext)
+
     const Local = localStorage.getItem("foursome");
-    const user = JSON.parse(Local)
+    const user = JSON.parse(Local);
     const LocalInformations = localStorage.getItem("informations-foursome");
     const userInformations= JSON.parse(LocalInformations);
-    console.log("userInformations");
-    console.log(userInformations);
+
 
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [coverUrl, setCoverUrl] = useState(null);
@@ -18,7 +23,7 @@ function SettingsInformations() {
     const [city, setCity] = useState("");
     const [uf, setUf] = useState("");
     const [cep, setCep] = useState("");
-    const [relationship, setRelationship] = useState("");
+    const [relationship, setRelationship] = useState(userInformations.relationship);
     const [nickname, setNickname] = useState("")
     const [loadding, setLoadding] = useState(false);
 
@@ -41,7 +46,8 @@ function SettingsInformations() {
             }
         }
     }
-
+    
+    
     function handleFileCover(e) {
         console.log(e.target.files[0])
         console.log(loadding);
@@ -61,6 +67,54 @@ function SettingsInformations() {
        }
     }
 
+    async function handleUploadAccount(e) {
+        e.preventDefault();
+        //Avatar
+        setLoadding(true);
+        console.log(imageAvatar)
+        
+
+
+            console.log(loadding);
+            const uuid = uuidv4();
+    
+            let newAvatarUrlFirebase = ref(storage, `images/avatar/${uuid}`);
+            let uploadAvatar = await uploadBytes(newAvatarUrlFirebase, imageAvatar);
+            let photoUrlAvatar = await getDownloadURL(uploadAvatar.ref);
+                
+            console.log(uploadAvatar.ref.name, photoUrlAvatar);
+
+
+        
+
+        // Cover
+        console.log(imageCover)
+        
+
+        const uuid2 = uuidv4();
+
+        let newCoverUrlFirebase = ref(storage, `images/cover/${uuid2}`);
+        let upload = await uploadBytes(newCoverUrlFirebase, imageCover);
+        let photoUrl = await getDownloadURL(upload.ref);
+
+        console.log(upload.ref.name, photoUrl);
+    
+
+        
+        //Salvando no banco de dados
+        NewUpdateInformationsAccount({id: userInformations.id,
+            idAccount: userInformations.idAccount,
+            avatar: photoUrlAvatar === "" ? userInformations.avatar : photoUrlAvatar,
+            cover: photoUrl === "" ? userInformations.cover : photoUrl,
+            city,
+            uf,
+            relationship,
+            nickname,
+            created_at: userInformations.created_at});
+        console.log(loadding);
+        setLoadding(false);
+        
+    }
     async function handleSearchCep(e) {
         e.preventDefault();
         try {
@@ -78,6 +132,8 @@ function SettingsInformations() {
         setRelationship(e.target.value)
     }
 
+
+
     return (
         <div className="settingsInformation">
         <form action="">
@@ -93,10 +149,10 @@ function SettingsInformations() {
                 <button onClick={handleSearchCep}>Buscar Cep</button>
                 </div>
             <div className="data">                      
-                    <input type="text" placeholder='UF' value={userInformations.uf} onChange={(e) => setUf(e.target.value)}/>
-                    <input type="text" placeholder='Cidade' value={userInformations.city} onChange={(e) => setCity(e.target.value)}/>
-                    <input type="text" placeholder='Nome de Exibição' value={userInformations.nickname} onChange={(e) => setNickname(e.target.value)}/>
-                    <select value={userInformations.relationship} onChange={handleRelationship}>
+                    <input type="text" placeholder='UF' value={uf === "" ? userInformations.uf : uf} onChange={(e) => setUf(e.target.value)}/>
+                    <input type="text" placeholder='Cidade' value={city === "" ? userInformations.city : city} onChange={(e) => setCity(e.target.value)}/>
+                    <input type="text" placeholder='Nome de Exibição' value={nickname === "" ? userInformations.nickname : nickname} onChange={(e) => setNickname(e.target.value)}/>
+                    <select value={relationship} onChange={handleRelationship}>
                         <option value="">Status de Relacionamento</option>
                         <option value="Solteir@">Solteir@ </option>
                         <option value="Casad@">Casad@</option>
@@ -111,9 +167,8 @@ function SettingsInformations() {
                     <input type="file" accept="image/*" onChange={handleFileCover}/><br />
                     <img src={coverUrl === null ? userInformations.cover : coverUrl } alt="Avatar"/>
                 </label>
-                {/* <button onClick={handleUploadAccount}>{loadding === true ? <FiRefreshCcw /> : "Atualizar"}</button>
-                <button onClick={logout}>Sair</button> */}
-                <button>Atualizar</button>
+              
+                <button onClick={handleUploadAccount}>Atualizar</button>
     </form>
     </div>
     )

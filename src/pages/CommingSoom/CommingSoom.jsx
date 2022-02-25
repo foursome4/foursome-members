@@ -27,7 +27,7 @@ function CommingSoom() {
                     <h4>< FiCheckCircle/> Ficar ansioso</h4>
                     <h4>< FiCheckCircle/> Convidar seus melhores amigos</h4>
                     <h4>< FiCheckCircle/> Ficar ligado em nossas novidades</h4>
-                    <h4>< FiCheckCircle/> Seguir nosso Tiktok:  <a href="https://www.tiktok.com/@foursomeoficial" target="_blank">Abrir Tiktok</a> </h4>
+                    <h4>< FiCheckCircle/> Seguir nosso Tiktok:  <a href="https://www.tiktok.com/@foursomeoficial" target="_blank" rel="noreferrer">Abrir Tiktok</a> </h4>
                     </div>
                 </div>
                 <div className="button">

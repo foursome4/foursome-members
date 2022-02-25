@@ -145,6 +145,16 @@
 .content .invitation .buttons button svg{
     margin-left: 5px;
 }
+.content .invitation .inviteUnic{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 5px 0;
+    border-radius: 6px;
+    border: 1px solid var(--White);
+}
 
 
 @media(max-width: 900px) {

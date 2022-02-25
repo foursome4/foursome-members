@@ -2,7 +2,7 @@ import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { TopBar } from '../../components/TopBar/TopBar'
 import coverImg from '../../assets/images/cover.png'
 import avatar from '../../assets/images/avatar.png'
-import {FiHome, FiImage, FiVideo,  FiSettings, FiMoreVertical, FiUser, FiMessageSquare, FiHeart, FiCheck, FiShield, FiShieldOff} from 'react-icons/fi'
+import {FiHome, FiImage, FiVideo,  FiSettings, FiMoreVertical, FiUser, FiHeart, FiCheck, FiShield} from 'react-icons/fi'
 import './profile.css'
 import { Post } from '../../components/Post/Post'
 import { Photos } from '../../components/Photos/Photos'
@@ -113,7 +113,7 @@ function Profile() {
       loadFriends();
       loadFollowers();
       socketDataLocation()
-    }, []);
+    }, [socketDataLocation, user.id, user.patron]);
 
 
      function handleFeed() {
@@ -159,15 +159,6 @@ function Profile() {
       setVideo("")
       setGroup("")
       setForum("forum")
-      setSetting("")
-    }
-    function handleGroup() {
-      setFeed("")
-      setFriend("")
-      setPhoto("")
-      setVideo("")
-      setGroup("group")
-      setForum("")
       setSetting("")
     }
     function handleSetting() {
@@ -368,6 +359,7 @@ function Profile() {
 
                     <div className="info-user-preferences">
                         <div className="informations">
+                            <h5 className='title'>Proposta</h5>
                           <div className="selects">
                               <div className="itens">{preferences.men !== "" ? <h5><FiCheck /> {preferences.men}</h5> : "" }  </div>
                               <div className="itens"> {preferences.woman !== "" ? <h5><FiCheck /> {preferences.woman}</h5> : "" } </div>

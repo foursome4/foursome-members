@@ -5,6 +5,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+    background-color: var(--Background2)
 }
 
 .content-profile .profile {
@@ -368,6 +369,16 @@
     justify-content: space-between;
     flex-direction: column;
     padding: 2px;
+}
+
+.content-profile .profile .main .section .sections .infos .info .info-users-preferences .informations h5 {
+    text-align: center;
+    color: var(--Primary);
+}   
+
+.content-profile .profile .main .section .sections .infos .info .info-users-preferences .informations  .title {
+    font-weight: 600;
+    color: var(--Primary);
 }
 
 .content-profile .profile .main .section .sections .infos .info .info-users-preferences .informations .selects {

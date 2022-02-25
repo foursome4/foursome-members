@@ -62,6 +62,7 @@ function AuthProvider({children}) {
         
         const res = await api.post('/accounts', data);
         if(res.status === 201) {
+            completeAccount(data.email)
             console.log("Cadastro realizado com sucesso!");
             toast.info(`Cadastro criado com sucesso!`);
             navigate("/")
@@ -147,6 +148,18 @@ function AuthProvider({children}) {
             console.log(result.data)
             console.log("Informações enviadas com sucesso");
             navigate("/characteristcs");
+        }).catch(error => {
+            console.log("Informações não enviadas" + error)
+        })
+    }
+    async function NewUpdateInformationsAccount({id, idAccount, avatar, cover, relationship, nickname, city, uf, created_at}) {
+        await api.patch(`/informations/${id}`, {avatar, cover, relationship, nickname, city, uf}).then((result) => {
+            console.log(result.data)
+            console.log("Informações atualizadas com sucesso!");
+            localStorage.setItem("informations-foursome", JSON.stringify({
+                id, _id: id, idAccount, avatar, cover, relationship, nickname, city, uf, created_at
+            }))
+            window.location.reload(false);
         }).catch(error => {
             console.log("Informações não enviadas" + error)
         })
@@ -324,6 +337,7 @@ async function preferencesAccount({idAccount, men, woman, couple, trisal, transv
         console.log("Preferences")
         const data = res.data
         console.log(data);
+        createSuccess(user.email)
         navigate("/registrationend");
     }).catch(error => {
         console.log("Erro ao salvar dados" + error)
@@ -386,8 +400,8 @@ async function newComment({idAccount, idPost, text, avatar, username, nickname})
     })
 }
 
-async function CreateInviteNewUsew({code, name, email, phone,idAccount, username, patron, patronNikcname}) {
-    const text = `Parabens ${name}! %0AVocê foi convidado por ${patronNikcname} a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa. %0A%0AEsse convite é valido por 10 dias e intransferível. %0A%0APara criar seu perfil agora, acesse: %0A https://foursome.com.br/signup/${email} %0A Utilize o Código: ${code}  %0A e adicione o código do seu Patrono: ${patron} %0A%0AEm caso de dúvida, fale conosco. %0AContato@foursome.com.br %0A%0AFOURSOME https://www.foursome.com.br`
+async function CreateInviteNewUsew({code, name, email, phone,idAccount, username, patron, patronNickname}) {
+    const text = `Parabens ${name}! %0AVocê foi convidado por ${patronNickname} a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa. %0A%0AEsse convite é valido por 10 dias e intransferível. %0A%0APara criar seu perfil agora, acesse: %0A https://foursome.com.br/signup/${email} %0A Utilize o Código: ${code}  %0A e adicione o código do seu Patrono: ${patron} %0A%0AEm caso de dúvida, fale conosco. %0AContato@foursome.com.br %0A%0AFOURSOME https://www.foursome.com.br`
     
     const findAccountEmail = await api.get(`/accounts/find/${email}`);
 
@@ -405,6 +419,45 @@ async function CreateInviteNewUsew({code, name, email, phone,idAccount, username
         toast.error("Já existe um covite com este e-mail!")
     })  
 }
+
+async function CreateInviteMail({code, name, email, phone,idAccount, username, patron, patronNickname}) {
+  
+    const findAccountEmail = await api.get(`/accounts/find/${email}`);
+
+    if(findAccountEmail.data[0]) {
+        toast.error("Já existe uma conta com este e-mail!")
+        return
+    } 
+
+    await api.post("/invites", {code, name, email, phone, idAccount, username, patron}).then(async (result) =>{
+        console.log("Convite cadastrado com sucesso");
+        const data = {mail: email, name, code, patron, patronNickname}
+        const res = await api.post("/mail/invite", data);
+        if(res.status === 200) {
+            toast.success("Convite enviado com sucesso!")
+        }
+    }).catch(error => {
+        console.log("Convite não cadastrado" + error)
+        toast.error("Já existe um covite com este e-mail!")
+    })  
+}
+
+
+
+
+    async function completeAccount(email) {
+        const res = await api.post("/mail/confirmation", {mail: email});
+        if(res.status === 200) {
+        }
+    }
+    async function createSuccess(email) {
+        const res = await api.post("/mail/complete", {mail: email});
+        if(res.status === 200) {
+        }
+    }
+
+
+
 
 
 
@@ -449,6 +502,13 @@ async function deleteLike(id){
     await api.delete(`/reactions/${id}`).then((result) => {
         console.log("like deletado com sucesso!")
       // window.location.reload(false)
+    })
+}
+async function deleteActualMessage(_id){
+    console.log(_id);
+    await api.delete(`/messages/${_id}`).then((result) => {
+        console.log("mensagem deletada com sucesso!")
+     // window.location.reload(false)
     })
 }
 
@@ -627,6 +687,7 @@ async function deleteGroup(id){
             loading,
             logout,
             updateInformationsAccount,
+            NewUpdateInformationsAccount,
             updateCharacteristcs,
             updateCharacteristcs2,
             updateCharacteristcs3,
@@ -650,7 +711,10 @@ async function deleteGroup(id){
             deleteLike,
             socket,
             socketDataLocation,
-            creategroup
+            creategroup,
+            CreateInviteMail,
+            deleteActualMessage
+
         }}>
             {children}
         </AuthContext.Provider>

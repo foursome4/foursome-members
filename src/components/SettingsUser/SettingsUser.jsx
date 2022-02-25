@@ -5,14 +5,7 @@ import { SettingsInformations } from "../SettingsInformations/SettingsInformatio
 import { SettingsPreferences } from "../SettingsPreferences/SettingsPreferences";
 import { SettingsCharacteristcs } from "../SettingsCharacteristcs/SettingsCharacteristcs";
 
-function SettingsUser({idAccount}) {
-
-    const Local = localStorage.getItem("foursome");
-    const user = JSON.parse(Local)
-    const LocalInformations = localStorage.getItem("informations-foursome");
-    const userInformations= JSON.parse(LocalInformations);
-    console.log("userInformations");
-    console.log(userInformations);
+function SettingsUser() {
 
     const [informations, setInformations] = useState("informations");
     const [characteristcs, setCharacteristcs] = useState("");

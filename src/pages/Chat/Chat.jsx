@@ -11,6 +11,7 @@ import { FiSend, FiUpload } from 'react-icons/fi'
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes} from 'firebase/storage'
 import { v4 as uuidv4 } from 'uuid'
+import {DeleteMessage} from '../../components/DeleteMessage/DeleteMessage'
 
    
 function Chat() {
@@ -26,7 +27,6 @@ function Chat() {
   console.log(`Room: ${room}`)
   console.log(`IdFriend: ${idFriend}`)
 
-  const [message, setMessage] = useState('');
   const [listMessages, setListMessages] = useState([]);
   const [text, setText] = useState('');
   const [link, setLink] = useState('');
@@ -52,20 +52,12 @@ function Chat() {
       })
     }
     findMessages()
-  }, [])
+  }, [room])
 
   socket.emit("select_room", {
     room,
     idAccount: user.id,
     idFriend: idFriend
-  }, (messages) => {
-    console.log(messages);
-    // const res = messages
-    // setListMessages([...listMessages, res]);
-    messages.forEach((message) => {
-     // setListMessages([...listMessages, message]);
-    })
-
   })
 
   function handleFile(e) {
@@ -167,18 +159,87 @@ function handlePressMessage() {
                {listMessages.map((message) => {
                  return (
                   message.idAccount === user.id ?
-                  <div className={message.idAccount === user.id ? "messages2" : "messages1"} key={message.id} onClick={handlePressMessage}>
-                  <div className={message.idAccount === user.id ? "my-message" : "message-friend"}>
+                  <div className={message.idAccount === user.id ? "messages2" : "messages1"} key={message.id} >
+                  <div className={message.idAccount === user.id ? "my-message" : "message-friend"} onClick={handlePressMessage}>
                   
                        <div className="data">
                         <p><b>Eu</b></p>
                        <h5>{message.text}</h5>
                      {message.link !== "" ?
                        <div className="image">
+                                                                  <div className="mark">
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                         </div>
                        <img src={message.link} alt="" />
                       </div>
                       : ""}
-                    {click === true ? <button>Delete</button> :
+                    {click === true ?  message.idAccount === user.id ? <DeleteMessage _id={message._id} /> : "" :
                       ""}
                        </div>
                        <div className="avatar">                     
@@ -197,10 +258,79 @@ function handlePressMessage() {
                        <p>{message.text}</p>
                      {message.link !== "" ?
                        <div className="image">
+                                                                  <div className="mark">
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                             <h5 className='white'>{user.id}</h5>
+                                             <h5 className='black'>{user.id}</h5>
+                                         </div>
                        <img src={message.link} alt="" />
                       </div>
                       : ""}
-                      {click === true ? <button>Delete</button> :
+                      {click === true ?   message.idAccount === user.id ? <DeleteMessage _id={message._id} /> : "" :
                       ""}
                        </div>
                   </div>

@@ -16,7 +16,7 @@ function Radar() {
 const [users, setUsers] = useState([])
  useEffect(() => {
    socketDataLocation()
- }, [])
+ }, [socketDataLocation])
 
  socket.on("userOnline", (data) => {
     console.log("data")
