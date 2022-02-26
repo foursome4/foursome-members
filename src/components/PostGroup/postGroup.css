@@ -248,6 +248,8 @@
 
 
 
+
+
 @media (max-width: 1180px) {
     .post .post-data .post-type .buttons button {
       width: 150px;
@@ -299,6 +301,7 @@
                 height: 30px;
                 width: 30px;
             }
+
             .post .post-data .post-type .buttons button {
                 width: 100px;
               }

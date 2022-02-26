@@ -1,5 +1,5 @@
 import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiSend, FiUpload, FiRefreshCcw} from 'react-icons/fi'
-import './post.css';
+import './postGroup.css';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import profile from '../../assets/images/profile.jpg';
@@ -8,7 +8,8 @@ import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
 import {toast} from 'react-toastify';
 
-function Post() {
+function PostGroup({nameGroup, idGroup}) {
+    console.log(nameGroup, idGroup)
     const {newPost} = useContext(AuthContext)
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
@@ -90,11 +91,11 @@ function Post() {
                 avatar: userInformation.avatar,
                 nickname: userInformation.nickname,
                 username: user.username,
-                nameGroup: "",
+                nameGroup: nameGroup,
                 nameForum: "",
-                idGroup: "",
+                idGroup: idGroup,
                 idForum: "",
-                type: "post-photo",
+                type: "post-photo-group",
                 text,
             })
         } else if(post === "video"){
@@ -112,11 +113,11 @@ function Post() {
                     avatar: userInformation.avatar,
                     nickname: userInformation.nickname,
                     username: user.username,
-                    nameGroup: "",
+                    nameGroup: nameGroup,
                     nameForum: "",
-                    idGroup: "",
+                    idGroup: idGroup,
                     idForum: "",
-                    type: "post-video",
+                    type: "post-video-group",
                     text,
                 })
 
@@ -127,16 +128,16 @@ function Post() {
                 avatar: userInformation.avatar,
                 nickname: userInformation.nickname,
                 username: user.username,
-                nameGroup: "",
+                nameGroup: nameGroup,
                 nameForum: "",
-                idGroup: "",
+                idGroup: idGroup,
                 idForum: "",
-                type: "post-text",
+                type: "post-text-group",
                 text,
             })
             
             
-        }
+        } 
         else {
             console.log("Escolha um tipo de postagem")
         }   
@@ -149,22 +150,21 @@ function Post() {
         
         function postText() {
             setPost("text")
-        setType("post-text")
+        setType("post-text-group")
     }
 
     function postPhoto(){
         setPost("photo")
-        setType("post-photo")
+        setType("post-photo-group")
         setText("")
     }
     
     function postVideo(){
         setPost("video")
-        setType("post-video")
+        setType("post-video-group")
         setText("")
     }
-
-
+ 
     return (
         <div className="post">
              <div className="post-data">
@@ -241,4 +241,4 @@ function Post() {
     )
 }
 
-export {Post}
+export {PostGroup}

@@ -33,11 +33,16 @@
 
 .listGroups .groups-all .group-unic .cover {
     width: 160px;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 .listGroups .groups-all .group-unic .profile {
     width: 80px;
     margin-top: -40px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--Background2);
 }
 
 .listGroups .groups-all .group-unic .members {
@@ -60,22 +65,6 @@
     margin-top: 5px;
 }
 
-.listGroups .groups-all .group-unic .Deletar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-    border: none;
-    border-radius: 20px;
-    width: 100%;
-    font-size: 14px;
-    color: var(--Background2);
-    font-weight: 500;
-    background-color: var(--Delete);
-    margin-top: 5px;
-}
-
 .listGroups .groups-all .group-unic h4 {
     font-weight: 500;
     color: var(--Primary);
@@ -83,10 +72,6 @@
     margin-bottom: 5px;
 }
 .listGroups .groups-all .group-unic h6 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
     font-weight: 500;
     color: var(--Gray_font1);
     text-align: center;

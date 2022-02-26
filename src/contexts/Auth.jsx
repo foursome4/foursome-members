@@ -351,6 +351,8 @@ async function updatePreferencesAccount({id, men, woman, couple, trisal, transve
     .then((res) => {
         const data = res.data
         console.log(data);
+        console.log("Atualização de preferencias ok");
+        window.location.reload(false)
     }).catch(error => {
         console.log("Erro ao salvar dados" + error)
     })
@@ -564,17 +566,39 @@ async function deleteFriendAndFollower(id, idAccount, idFriend, type, status) {
 
 
 // Sessão grupos
-
-async function creategroup(avatarUrl, coverUrl, name, description, theme, privacity){
-    const data = {name, description, theme, privacity, avatar: avatarUrl, cover: coverUrl};
+async function creategroup( name, description, theme, privacity, cover, avatar, idAccount, username, avatarUser, nickname){
+    const data = { name, description, theme, privacity, cover, avatar, idAccount, username, avatarUser};
     console.log(data)
-    await api.post("groups", data).then((result) => {
-        console.log(result);
-        toast.success("Grupo Criado com socesso!")
+    await api.post("/groups", data).then(async (result) => {
+        console.log(result.data);
+        toast.success("Grupo Criado com socesso!");
+
+        const data2 = {idAccount, idGroup: result.data.id, username, avatar, nickname, role: "Administrator", status: "Aproved"};
+        console.log(data2)
+        await api.post("/groups/members", data2).then((result) => {
+            console.log(result);
+            toast.success("Membro adicionado com sucesso!")
+        }).catch(error => {
+            console.log(error)
+        })
+
+
     }).catch(error => {
         console.log(error)
     })
 }
+
+async function createMemberGroup( idAccount, idGroup, username, avatar, nickname, role, status){
+    const data = { idAccount, idGroup, username, avatar, nickname, role, status};
+    console.log(data)
+    await api.post("/groups/members", data).then((result) => {
+        console.log(result);
+        toast.success("Membro adicionado com sucesso!")
+    }).catch(error => {
+        console.log(error)
+    })
+}
+
 
 async function deleteGroup(id){
     console.log(id);
@@ -725,6 +749,7 @@ async function deleteGroup(id){
             socket,
             socketDataLocation,
             creategroup,
+            createMemberGroup,
             CreateInviteMail,
             deleteActualMessage
 

@@ -67,6 +67,10 @@
     margin-bottom: 5px;
 }
 .listGroups .groups-all .group-unic h6 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     font-weight: 500;
     color: var(--Gray_font1);
     text-align: center;

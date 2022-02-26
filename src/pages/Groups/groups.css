@@ -43,12 +43,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 10px 0;
+    flex-wrap: wrap;
 }
 
 .content .aside-group .group .group-selected button {
-    width: 50%;
+    width: 220px;
     text-align: left;
     padding: 5px;
     border: none;
@@ -60,7 +61,7 @@
 }
 
 .content .aside-group .group .group-selected .selected{
-    width: 50%;
+    width: 220px;
     text-align: left;
     padding: 5px;
     border: none;
@@ -130,5 +131,65 @@
 
 .content .aside-group .group .group-buttons .group-create button svg {
     margin-right: 10px;
+}
+
+
+@media(max-width: 900px) {
+    .content .aside-group .group .group-selected {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+        flex-wrap: wrap;
+        background-color: aqua;
+    }
+    .content .aside-group .group .group-selected button {
+        width: 150px;
+        font-size: 14px;
+    }
+    
+    .content .aside-group .group .group-selected .selected{
+        width: 150px;
+        font-size: 14px;
+    }
+
+    @media(max-width: 600px) {
+        .content .aside-group .group .group-selected button {
+            width: 130px;
+            font-size: 12px;
+        }
+        
+        .content .aside-group .group .group-selected .selected{
+            width: 130px;
+            font-size: 12px;
+        }
+
+        .content .aside-group .group .group-buttons .group-create button {
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        .content .aside-group .group .group-buttons .group-create button svg {
+            margin-right: 5px;
+            font-size: 2px;
+        }
+
+        @media(max-width: 500px) {
+            .content .aside-group .group .group-selected button {
+                width: 150px;
+                font-size: 12px;
+            }
+            
+            .content .aside-group .group .group-selected .selected{
+                width: 150px;
+                font-size: 12px;
+            }
+        }
+    }
+
+    
+    
 }
 

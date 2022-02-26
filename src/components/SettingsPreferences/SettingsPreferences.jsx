@@ -25,8 +25,6 @@ function SettingsPreferences() {
             .then((res) => {
               console.log(res.data[0])
               setPreferences(res.data[0])
-
-              setHomem(preferences.men)
             }).catch(error => {
               console.log("Erro ao buscar dados" + error)
           })
@@ -38,19 +36,18 @@ function SettingsPreferences() {
     
     function handlePreferences(e) {
         e.preventDefault();
-        console.log({
-            men:homem === "" ? preferences.men : homem,
-            woman:mulher === "" ? preferences.woman : mulher,
-            couple:casal === "" ? preferences.couple : casal,
-            trisal:trisal === "" ? preferences.trisal : trisal,
-            transvestites:travestis === "" ? preferences.transvestites : travestis,
-            transsexuals:transexuais === "" ? preferences.transsexuals : transexuais,
-            groups:grupos === "" ? preferences.groups : grupos,
-            proposal:proposal === "" ? preferences.proposal : proposal 
+        updatePreferencesAccount({
+            id: preferences.id,
+            men:homem,
+            woman:mulher,
+            couple:casal ,
+            trisal:trisal,
+            transvestites:travestis ,
+            transsexuals:transexuais,
+            groups:grupos,
+            proposal:proposal 
         })
-
-      //  updatePreferencesAccount({idAccount: user.id, men:homem, woman:mulher, couple:casal, trisal:trisal, transvestites:travestis, transsexuals:transexuais, groups:grupos, proposal:proposal})
-    }
+   }
 
     function handleSelectHomem(e) {
         if(homem === "") {
@@ -112,25 +109,25 @@ function SettingsPreferences() {
                     <div className="data">                      
                    
                     <div className="search">
-                        <input type="checkbox" checked={preferences.men !== "" ? false : true} value="Homem" onChange={handleSelectHomem}/><span>Homem</span>
+                        <input type="checkbox"  value={"Homem"} onChange={handleSelectHomem}/><span>Homem</span>
                     </div>
                     <div className="search">
-                        <input type="checkbox" checked={preferences.woman !== "" ? true : false} value="Mulher" onChange={handleSelectMulher}/><span>Mulher</span>
+                        <input type="checkbox"  value={"Mulher"} onChange={handleSelectMulher}/><span>Mulher</span>
                     </div>
                     <div className="search">
-                        <input type="checkbox" checked={preferences.couple !== "" ? true : false} value="Casal" onChange={handleSelectCasal}/><span>Casal</span>
+                        <input type="checkbox" value={"Casal"} onChange={handleSelectCasal}/><span>Casal</span>
                     </div>
                     <div className="search">
-                        <input type="checkbox" checked={preferences.trisal !== "" ? true : false} value="Trisal" onChange={handleSelectTrisal}/><span>Trisal</span>
+                        <input type="checkbox"  value={"Trisal"} onChange={handleSelectTrisal}/><span>Trisal</span>
                     </div>
                     <div className="search">
-                        <input type="checkbox" checked={preferences.transvestites !== "" ? true : false} value="Travestis" onChange={handleSelectTravestis}/><span>Travestis</span>
+                        <input type="checkbox" value={"Travestis"} onChange={handleSelectTravestis}/><span>Travestis</span>
                     </div>
                     <div className="search">
-                        <input type="checkbox" checked={preferences.transsexuals !== "" ? true : false} value="Transexuais" onChange={handleSelectTransexuais}/><span>Transexuais</span>
+                        <input type="checkbox"  value={"Transexuais"} onChange={handleSelectTransexuais}/><span>Transexuais</span>
                     </div>
                     <div className="search">
-                        <input type="checkbox" checked={preferences.groups !== "" ? true : false} value="Grupos" onChange={handleSelectGrupos}/><span>Grupos</span>
+                        <input type="checkbox" value={"Grupos"} onChange={handleSelectGrupos}/><span>Grupos</span>
                     </div>
                     </div>
                     <div className="proposal">

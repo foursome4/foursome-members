@@ -1,7 +1,7 @@
 import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSlim'
 import { TopBar } from '../../components/TopBar/TopBar'
 import {FiHome, FiMoreVertical, FiUser} from 'react-icons/fi'
-import './groupIndividual.css'
+import './forumIndividual.css'
 
 import {useContext, useEffect, useState } from 'react'
 import api from '../../services/api'
@@ -12,7 +12,7 @@ import { PostGroup } from '../../components/PostGroup/PostGroup'
 import { FeedPostGroup } from '../../components/FeedPostGroup/FeedPostGroup'
 
 
-function GroupIndividual() {
+function ForumIndividual() {
   const {id} = useParams();
   console.log(id)
   const {socketDataLocation} = useContext(AuthContext)
@@ -156,4 +156,4 @@ console.log(member)
   )
 }
 
-export { GroupIndividual }
+export { ForumIndividual }

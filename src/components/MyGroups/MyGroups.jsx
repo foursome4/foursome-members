@@ -1,52 +1,47 @@
 import './myGroups.css'
-import capaGrupo from '../../assets/images/capaGrupo.png'
-import perfilGrupo from '../../assets/images/perfilGrupo.png'
+import { useEffect, useState } from 'react';
+import api from '../../services/api';
+import { ListGroupUnic } from '../ListGroupUnic/ListGroupUnic';
 
 function MyGroups() {
+    const Local = localStorage.getItem("foursome");
+    const user = JSON.parse(Local)
+    const LocalInformations = localStorage.getItem("informations-foursome");
+    const userInformations= JSON.parse(LocalInformations);
+
+    const [members, setMembers] = useState([]);
+
+    useEffect(() => {
+        async function loadGroups(){
+            await api.get("/members").then((result) => {
+                console.log(result.data);
+                setMembers(result.data)
+            })
+        }
+
+        loadGroups()
+    }, []);
+
+
+
+
+
     return (
         <div className="listGroups">
              <div className="groups-all">
-                                <div className="group-unic">
-                                    <img src={capaGrupo} alt="" className="cover"/>
-                                    <img src={perfilGrupo} alt="" className="profile"/>
-                                    <h4>Meys Groups</h4>
-                                    <h6><b>Criado a 3 meses</b></h6>
-                                    <h6>Grupo público / 20 Membros</h6>
-                                    <button>Sair</button>
-                                </div>
-                                <div className="group-unic">
-                                    <img src={capaGrupo} alt="" className="cover"/>
-                                    <img src={perfilGrupo} alt="" className="profile"/>
-                                    <h4>Meys Groups</h4>
-                                    <h6><b>Criado a 3 meses</b></h6>
-                                    <h6>Grupo público / 20 Membros</h6>
-                                    <button>Sair</button>
-                                </div>
-                                <div className="group-unic">
-                                    <img src={capaGrupo} alt="" className="cover"/>
-                                    <img src={perfilGrupo} alt="" className="profile"/>
-                                    <h4>Meys Groups</h4>
-                                    <h6><b>Criado a 3 meses</b></h6>
-                                    <h6>Grupo público / 20 Membros</h6>
-                                    <button>Sair</button>
-                                </div>
-                                <div className="group-unic">
-                                    <img src={capaGrupo} alt="" className="cover"/>
-                                    <img src={perfilGrupo} alt="" className="profile"/>
-                                    <h4>Meys Groups</h4>
-                                    <h6><b>Criado a 3 meses</b></h6>
-                                    <h6>Grupo público / 20 Membros</h6>
-                                    <button>Sair</button>
-                                </div>
-                                <div className="group-unic">
-                                    <img src={capaGrupo} alt="" className="cover"/>
-                                    <img src={perfilGrupo} alt="" className="profile"/>
-                                    <h4>Meys Groups</h4>
-                                    <h6><b>Criado a 3 meses</b></h6>
-                                    <h6>Grupo público / 20 Membros</h6>
-                                    <button>Sair</button>
-                                </div>
+                                {members.map((member) => {
+                                    return(
+                                        member.idAccount === user.id ?
+                                <ListGroupUnic id={member.idGroup} />
+                                        :
+                                      ""
+                                    )
+                                })}
+                               
+
                             </div>
+                            <br />
+                                
         </div>
     )
 }

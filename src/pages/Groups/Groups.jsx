@@ -45,7 +45,7 @@ function Groups() {
                             </div>
 
                             {select === "All" ?
-                            <ListGroups /> : 
+                            <ListGroups />: 
                             select === "Participate" ?
                             <MyGroups /> :
                             select === "My" ?

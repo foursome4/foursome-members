@@ -7,6 +7,7 @@ import { Events } from '../pages/Events/Events';
 import { Feed } from '../pages/Feed/Feed';
 import { Forgotit } from '../pages/Forgotit/Forgotit';
 import { Foruns2 } from '../pages/Foruns2/Foruns2';
+import { GroupIndividual } from '../pages/GroupIndividual/GroupIndividual';
 import { Groups } from '../pages/Groups/Groups';
 import { Invitation } from '../pages/Invitation/Invitation';
 import { Invite } from '../pages/Invite/Invite';
@@ -47,8 +48,8 @@ function PrivateRoute({children} ) {
                     element={ <PrivateRoute> <ProfileFriend/> </PrivateRoute>} />
             <Route path="/groups" 
                 element={ <PrivateRoute> <Groups/> </PrivateRoute>} />
-            <Route path="/groups/id_group" 
-                element={ <PrivateRoute> <Groups/> </PrivateRoute>} />
+            <Route path="/group/:id" 
+                element={ <PrivateRoute> <GroupIndividual/> </PrivateRoute>} />
             <Route path="/foruns" 
                 element={ <PrivateRoute> <Foruns2/> </PrivateRoute>} />
             <Route path="/foruns/id_forum" 

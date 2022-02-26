@@ -33,11 +33,16 @@
 
 .listGroups .groups-all .group-unic .cover {
     width: 160px;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 .listGroups .groups-all .group-unic .profile {
     width: 80px;
     margin-top: -40px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--Background2);
 }
 
 .listGroups .groups-all .group-unic .members {
@@ -67,6 +72,10 @@
     margin-bottom: 5px;
 }
 .listGroups .groups-all .group-unic h6 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     font-weight: 500;
     color: var(--Gray_font1);
     text-align: center;

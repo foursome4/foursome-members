@@ -52,12 +52,14 @@ function Chat() {
       })
     }
     findMessages()
-  }, [room])
+  }, [])
 
   socket.emit("select_room", {
     room,
     idAccount: user.id,
     idFriend: idFriend
+  }, (messages) => {
+
   })
 
   function handleFile(e) {

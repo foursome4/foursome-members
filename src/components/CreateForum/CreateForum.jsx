@@ -1,4 +1,4 @@
-import "./createGroups.css"
+import "./createForum.css"
 import { FiUpload } from "react-icons/fi";
 import { useContext, useState } from "react";
 import avatar from  "../../assets/images/avatar.png"
@@ -9,7 +9,7 @@ import { ref, getDownloadURL, uploadBytes} from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid'
 
 
-function CreateGroups() {
+function CreateForum() {
     const {creategroup}= useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
@@ -160,4 +160,4 @@ function CreateGroups() {
     )
 }
 
-export {CreateGroups}
+export {CreateForum}
