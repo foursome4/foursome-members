@@ -1,5 +1,5 @@
 import "./createEvents.css"
-import { FiUpload } from "react-icons/fi";
+import { FiSearch, FiUpload } from "react-icons/fi";
 import { useContext, useState } from "react";
 import avatar from  "../../assets/images/avatar.png"
 import cover from  "../../assets/images/cover.jpg"
@@ -11,7 +11,7 @@ import buscaCep from '../../services/api-buscaCep'
 
 
 function CreateEvents() {
-    const {creategroup}= useContext(AuthContext);
+    const {createEvents}= useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
     const LocalInformations = localStorage.getItem("informations-foursome");
@@ -35,6 +35,7 @@ function CreateEvents() {
     const [reference, setReferencee] = useState("");
     const [complement, setComplement] = useState("");
     const [cep, setCep] = useState("");
+    const [number, setNumber] = useState("")
 
 
 
@@ -43,7 +44,6 @@ function CreateEvents() {
 
        if(e.target.files[0]){
            const image = e.target.files[0];
-
            if(image.type === 'image/jpeg' || image.type === 'image/jpg' || image.type === 'image/png') {
                setImageAvatar(image);
                setAvatarUrl(URL.createObjectURL(e.target.files[0]));
@@ -63,7 +63,6 @@ function CreateEvents() {
 
        if(e.target.files[0]){
            const image = e.target.files[0];
-
            if(image.type === 'image/jpeg' || image.type === 'image/jpg' || image.type === 'image/png') {
             setImageCover(image);
                setCoverUrl(URL.createObjectURL(e.target.files[0]));
@@ -82,8 +81,7 @@ function CreateEvents() {
         setLoadding(true);
         console.log(loadding);
         const uuid = uuidv4();
-
-        let newAvatarUrlFirebase = ref(storage, `images/avatar/${uuid}`);
+        let newAvatarUrlFirebase = ref(storage, `images/folderEvents/${uuid}`);
         let uploadAvatar = await uploadBytes(newAvatarUrlFirebase, imageAvatar);
         let avatar = await getDownloadURL(uploadAvatar.ref);
             
@@ -93,8 +91,7 @@ function CreateEvents() {
 
         // Cover
         const uuid2 = uuidv4();
-
-        let newCoverUrlFirebase = ref(storage, `images/cover/${uuid2}`);
+        let newCoverUrlFirebase = ref(storage, `images/coverEvents/${uuid2}`);
         let upload = await uploadBytes(newCoverUrlFirebase, imageCover);
         let cover = await getDownloadURL(upload.ref);
 
@@ -104,14 +101,15 @@ function CreateEvents() {
             let username = user.username;
             let avatarUser = userInformations.avatar;
             let nickname = userInformations.nickname;
+            let status = "pending"
         
 
         console.log(loadding);
         setLoadding(false);
  
 
-    creategroup(
-        name, description, theme, cover, avatar, idAccount, username, avatarUser, nickname
+        createEvents(
+        avatar, name, description, date, street, district, city, uf, complement, reference, number, theme, cover, status, idAccount, username, avatarUser, nickname
         )
         
     }
@@ -123,8 +121,10 @@ function CreateEvents() {
             const res = await buscaCep.get(`${cep}/json`);
             console.log(res.data);
             console.log(res.data.uf);
-            setUf(res.data.localidade)
-            setCity(res.data.uf)
+            setUf(res.data.uf)
+            setCity(res.data.localidade)
+            setDistrict(res.data.bairro);
+            setStreet(res.data.logradouro);
         }catch{
             console.log("eRRO")
         }
@@ -143,6 +143,7 @@ function CreateEvents() {
     return (
         <div className="createEvent">
         <form action="">
+            <h5><b>Folder do Evento</b></h5>
     <label className="label-avatar">
                     <span><FiUpload color="#f65" size={25} /></span>
                     <input type="file" accept="image/*" onChange={handleFile}/><br />
@@ -152,28 +153,38 @@ function CreateEvents() {
             <div className="data">                      
                     <input type="text" placeholder='Nome Evento' value={name} onChange={(e) => setName(e.target.value)}/>
                     <input type="text" placeholder='Descrição' value={description} onChange={(e) => setDescription(e.target.value)}/>
+                    <input type="date" placeholder='Descrição' value={date} onChange={(e) => setDate(e.target.value)}/>
                     <div className="SearchCep">
                 <input type="text" placeholder='Digite seu cep' value={cep} onChange={(e) => setCep(e.target.value)}/>
-                <button onClick={handleSearchCep}>Buscar Cep</button>
+                <button onClick={handleSearchCep}><FiSearch /> Cep </button>
                 </div>
+                <input type="text" placeholder='Rua' value={street} onChange={(e) => setStreet(e.target.value)}/>
+                <input type="text" placeholder='Bairro' value={district} onChange={(e) => setDistrict(e.target.value)}/>
+                <input type="number" placeholder='Número' value={number} onChange={(e) => setNumber(e.target.value)}/>
+                <input type="text" placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)}/>
+                <input type="text" placeholder='Estado' value={uf} onChange={(e) => setUf(e.target.value)}/>
+                <input type="text" placeholder='Complemento' value={complement} onChange={(e) => setComplement(e.target.value)}/>
+                <input type="text" placeholder='Ponto de Referênca' value={reference} onChange={(e) => setReferencee(e.target.value)}/>
+                <br />
                   
                     <select value={theme} onChange={handleTheme}>
                         <option value="">Tema do evento</option>
-                        <option value="Entreteinimento">Entreteinimento </option>
-                        <option value="Discussão">Discussão</option>
-                        <option value="Dicas">Dicas</option>
-                        <option value="Informativos">Informativos</option>
+                        <option value="Balada">Balada </option>
+                        <option value="Palada sertaneja">Palada sertaneja</option>
+                        <option value="Pagode">Pagode</option>
+                        <option value="Festa privativa">Festa privativa</option>
+                        <option value="Festa no Sítio">Festa no Sítio</option>
                     </select>
 
             </div>
-
+            <h5><b>Capa da página do Evento</b></h5>
             <label className="label-cover">
                     <span><FiUpload color="#f65" size={25} /></span>
                     <input type="file" accept="image/*" onChange={handleFileCover}/><br />
                     <img src={coverUrl === null ? cover : coverUrl } alt="Avatar"/>
                 </label>
 
-                <button onClick={handleCreateEvent}>Criar Grupo</button>
+                <button onClick={handleCreateEvent}>Criar Evento</button>
     </form>
     </div>
     )

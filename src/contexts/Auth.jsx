@@ -610,6 +610,16 @@ async function createMemberGroup( idAccount, idGroup, username, avatar, nickname
         console.log(error)
     })
 }
+async function createEvents( avatar, name, description, date, street, district, city, uf, complement, reference, number, theme, cover, status, idAccount, username, avatarUser, nickname){
+    const data = { avatar, name, description, date, street, district, city, uf, complement, reference, number, theme, cover, status, idAccount, username, avatarUser, nickname};
+    console.log(data)
+    await api.post("/events", data).then((result) => {
+        console.log(result);
+        toast.success("Evento criado com sucesso! Aguarde a aprovação dos moderadores!")
+    }).catch(error => {
+        console.log(error)
+    })
+}
 
 
 async function deleteGroup(id){
@@ -646,9 +656,7 @@ async function deleteGroup(id){
             const latitude  = position.coords.latitude;
             const longitude = position.coords.longitude;
         
-            //console.log(latitude)
             setlat(latitude)
-            //console.log(longitude)
             setLong(longitude)
        
            reverseGeolocalization(latitude, longitude)
@@ -665,32 +673,18 @@ async function deleteGroup(id){
        
         async function reverseGeolocalization(lat, long) {
             const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
-            //console.log("Cidade")
             setCity(address.data.results[0].address_components[3].long_name)
-            //console.log(address.data.results[0].address_components[3].long_name)
-            //console.log("UF")
-            setUf(address.data.results[0].address_components[4].short_name)
-            //console.log(address.data.results[0].address_components[4].short_name)    
+
+            setUf(address.data.results[0].address_components[4].short_name)   
         }
 
         const DataUser = localStorage.getItem("foursome");
         const user = JSON.parse(DataUser);
-        //console.log(user);
         const LocalInformation = localStorage.getItem("informations-foursome");
         const userInformations = JSON.parse(LocalInformation);
-        //console.log(userInformations);
 
 
         function getInformations() {
-            // console.log({
-            //     idAccount: user.id,
-            //     username: user.username,
-            //     nickname: userInformations.nickname,
-            //     avatar: userInformations.avatar,
-            //     lat,
-            //     long
-            // })
-
             
             let equalCity = " "
 
@@ -764,7 +758,8 @@ async function deleteGroup(id){
             createMemberGroup,
             CreateInviteMail,
             deleteActualMessage,
-            createForum
+            createForum,
+            createEvents
 
         }}>
             {children}

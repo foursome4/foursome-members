@@ -17,6 +17,9 @@ function Events() {
         setSelect("All")
     }
     function handleParticipate() {
+        setSelect("Participate")
+    }
+    function handleMyEvents() {
         setSelect("My")
     }
     function handleSelectCreate() {
@@ -32,17 +35,19 @@ function Events() {
                     <div className="group">
                             <div className="group-selected">
                                 <button className={select === "All" ? "selected" : ""} onClick={handleAllGroups}>Eventos</button>
-                                <button className={select === "All" ? "selected" : ""} onClick={handleAllGroups}>Participação confirmada</button>
-                                <button className={select === "My" ? "selected" : ""} onClick={handleParticipate}>Meus Eventos</button>
+                                <button className={select === "Participate" ? "selected" : ""} onClick={handleParticipate}>Eu vou!</button>
+                                <button className={select === "My" ? "selected" : ""} onClick={handleMyEvents}>Meus Eventos</button>
                             </div>
                             <div className="group-buttons">
                                 <div className="group-create">
-                                <button onClick={handleSelectCreate}><FiPlusCircle size={20}/> Criar forum</button>
+                                <button onClick={handleSelectCreate}><FiPlusCircle size={20}/> Criar evento</button>
                                 </div>
                             </div>
 
                             {select === "All" ?
                             <ListEvents />: 
+                            select === "Participate" ?
+                            <MyEvents /> : 
                             select === "My" ?
                             <MyEvents /> : 
                             select === "Create" ?
