@@ -64,11 +64,11 @@ import { NewComment } from '../NewComment/NewComment';
                                         <p>{postsData.text}</p>
                                     </div>
                                     <div className="reactions-individual" >
-                                        <ListReactions idPost={postsData.id} />
+                                        {/* <ListReactions idPost={postsData.id} />
                                         <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
                                             Comentar
-                                        </button>
+                                        </button> */}
                                         {postsData.idAccount === user.id ?
                                         <>
                                             <button> <FiEdit /> Editar </button>
@@ -77,11 +77,11 @@ import { NewComment } from '../NewComment/NewComment';
                                         : ""}
                                     </div>
 
-                                    <div className={comment === true ? "comment" : "commentHidden"}>
+                                    {/* <div className={comment === true ? "comment" : "commentHidden"}>
                                     <NewComment postData={postsData.id}/>
                                     </div>
 
-                            <FeedComments idPost={postsData.id} />
+                            <FeedComments idPost={postsData.id} /> */}
                                 </div>
                                 </>
                                 )

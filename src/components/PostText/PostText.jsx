@@ -27,6 +27,8 @@ function PostText({nameForum, idForum}) {
                 username: user.username,
                 nameGroup: "",
                 nameForum: nameForum,
+                nameEvent: "",
+                idEvent: "",
                 idGroup: "",
                 idForum: idForum,
                 type: "post-text-forum",

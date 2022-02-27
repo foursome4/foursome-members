@@ -359,9 +359,9 @@ async function updatePreferencesAccount({id, men, woman, couple, trisal, transve
 }
 
 
-async function newPost({idAccount, type, link, text, idForum, idGroup, avatar, nickname, username, nameForum, nameGroup }) {
+async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent }) {
     setLoading(true)
-    await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, avatar, nickname, username, nameForum, nameGroup }).then((result) => {
+    await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent }).then((result) => {
         console.log(result.data)
         console.log("Post Realizado com sucesso!");
     //  window.location.reload(false);

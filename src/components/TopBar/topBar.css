@@ -71,6 +71,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    color: var(--Primary);
 }
 
 .avatar {
@@ -90,10 +91,12 @@
 
 .topBar .links .account h4 {
     font-weight: 600;
+    color: var(--Primary);
 }
 
 .topBar .links .account a {
     text-decoration: none;
+    color: var(--Primary);
 }
 
 

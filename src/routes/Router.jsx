@@ -3,6 +3,7 @@ import { Characteristcs } from '../pages/Characteristcs/Characteristcs';
 import { Chat } from '../pages/Chat/Chat';
 import { CommingSoom } from '../pages/CommingSoom/CommingSoom';
 import { CompleteRegistration } from '../pages/CompleteRegistration/CompleteRegistration';
+import { EventIndividual } from '../pages/EventIndividual/EventIndividual';
 import { Events } from '../pages/Events/Events';
 import { Feed } from '../pages/Feed/Feed';
 import { Forgotit } from '../pages/Forgotit/Forgotit';
@@ -57,6 +58,8 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <ForumIndividual/> </PrivateRoute>} />
             <Route path="/events" 
                 element={ <PrivateRoute> <Events/> </PrivateRoute>} />
+            <Route path="/event/:id" 
+                element={ <PrivateRoute> <EventIndividual/> </PrivateRoute>} />
             <Route path="/ranking" 
                 element={ <PrivateRoute> <Ranking/> </PrivateRoute>} />
             <Route path="/radar" 

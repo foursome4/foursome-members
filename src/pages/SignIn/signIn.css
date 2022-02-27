@@ -124,11 +124,11 @@ display: flex;
 .content .signIn .footer {
     position: relative;
     bottom: 0;
-    margin-top: 200px;
+    margin-top: 150px;
 }
 .content .signIn .footer img{
     width: 70px;
-    margin-bottom: 20px;
+    margin-bottom: px;
 }
 
 @media (max-width: 1024px) {

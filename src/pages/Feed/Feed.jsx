@@ -6,6 +6,7 @@ import { TopBar } from "../../components/TopBar/TopBar"
 import './feed.css';
 import { useContext, useEffect } from "react"
 import { AuthContext } from "../../contexts/Auth"
+import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 
 
 function Feed() {
@@ -28,6 +29,7 @@ return (
                     <ChatSlim />
                     </div>
                      <ToolbarLeftSlim />
+                     <BarBottomMenu />
                 </div>
             </div>
         </div>

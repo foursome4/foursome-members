@@ -1,4 +1,4 @@
-import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiThumbsUp, FiMinus, FiSend, FiChevronDown } from 'react-icons/fi'
+import { FiTrash2, FiEdit, FiMessageCircle } from 'react-icons/fi'
 import './feedPostEvent.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
@@ -11,13 +11,14 @@ import { NewComment } from '../NewComment/NewComment';
     function FeedPostEvent({idEvent}) {
 
     const [data, setData] = useState([]);
+    const [comment, setComment] = useState(false);
    
 
     const {user} = useContext(AuthContext);
     useEffect(() => {
           async function findPosts() {
     
-            const res = await api.get(`/posts/groups/${idEvent}`);
+            const res = await api.get(`/posts/events/${idEvent}`);
             const dataPosts = (res.data)
             setData(dataPosts)
         }
@@ -25,7 +26,13 @@ import { NewComment } from '../NewComment/NewComment';
 
     }, [user, data.sort()])
 
-
+    function handleHabiliteComment () {
+        if(comment === false) {
+            setComment(true)
+        } else {
+            setComment(false) 
+        }
+    }
 
 
     return (
@@ -58,11 +65,6 @@ import { NewComment } from '../NewComment/NewComment';
                                         <p>{postsData.text}</p>
                                     </div>
                                     <div className="reactions-individual" >
-                                        <ListReactions idPost={postsData.id} />
-                                        <button onClick={handleHabiliteComment}>
-                                            <FiMessageCircle />
-                                            Comentar
-                                        </button>
                                         {postsData.idAccount === user.id ?
                                         <>
                                             <button> <FiEdit /> Editar </button>
@@ -70,12 +72,6 @@ import { NewComment } from '../NewComment/NewComment';
                                             </>
                                         : ""}
                                     </div>
-
-                                    <div className={comment === true ? "comment" : "commentHidden"}>
-                                    <NewComment postData={postsData.id}/>
-                                    </div>
-
-                            <FeedComments idPost={postsData.id} />
                                 </div>
                                 </>
                                 )

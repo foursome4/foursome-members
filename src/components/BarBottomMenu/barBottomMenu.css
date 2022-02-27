@@ -1,0 +1,126 @@
+.BarBottom {
+display: none;
+}
+
+
+
+@media (max-width: 900px) {
+    .BarBottom {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: flex-start;
+    justify-content:center;
+    flex-direction: row;    
+    background-color: var(--Background);
+    position: fixed;
+    margin-top: 90vh;
+    bottom: 0;
+    z-index: 1;
+    overflow-x: scroll;
+    }
+
+   .content-toolbar2::-webkit-scrollbar {
+        width: 12px;              
+      }
+      
+     .content-toolbar2::-webkit-scrollbar-track {
+        background: var(--Background2);      
+      }
+      
+     .content-toolbar2::-webkit-scrollbar-thumb {
+        background-color: var(--Background-man);   
+        border-radius: 20px;      
+        border: 3px solid var(--Background2); 
+      }
+    
+
+    .BarBottom .BarBottomBlock {
+        width: 90%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+        flex-direction: row;
+    }
+
+    .BarBottom .BarBottomBlock .profile {
+        display: none;
+    }
+
+    .BarBottom .BarBottomBlock .Buttons {
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+        padding: 10px 0;
+        text-decoration: none;
+    }
+    .BarBottom .BarBottomBlock .Buttons a {
+
+      text-decoration: none;
+  }
+  
+  .BarBottom .BarBottomBlock .Buttons .ButtonsUnic a {
+      text-decoration: none;
+  
+  }
+  
+  .BarBottom .BarBottomBlock .Buttons .ButtonsUnic {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      margin: 0 5px;
+      padding: 3px 0;
+      color: var(--Primary);
+      cursor: pointer;
+      padding: 5px;
+      font-size: 12px;
+      border: none;
+  }
+  .BarBottom .BarBottomBlock .Buttons .ButtonUser {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 0 5px;
+      padding: 3px 0;
+      background-color: var(--Primary);
+      cursor: pointer;
+      padding: 5px;
+      font-size: 12px;
+      border: none;
+  }
+  .BarBottom .BarBottomBlock .Buttons .ButtonsUnic:hover {
+      background-color: var(--Primary);
+      color: var(--Background);
+  }
+  
+  
+  .BarBottom .BarBottomBlock .Buttons .ButtonsUnic p:hover {
+      color: var(--Background);
+  }
+  
+  .BarBottom .BarBottomBlock .Buttons .ButtonsUnic svg:hover {
+      color: var(--Background);
+  }
+
+
+  }
+
+
+
+
+
+
+
+

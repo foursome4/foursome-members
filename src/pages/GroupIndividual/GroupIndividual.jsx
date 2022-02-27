@@ -36,6 +36,10 @@ function GroupIndividual() {
     const [description, setDescription] = useState();
     const [idGroup, setIdGroup] = useState();
     const [members, setMembers] = useState([])
+    const [nickname, setNickname] = useState("");
+    const [username, setUsername] = useState("");
+    const [avatarUser, setAvatarUser] = useState("");
+
 
 
   useEffect(() => {
@@ -49,6 +53,9 @@ function GroupIndividual() {
                 setTheme(result.data[0].theme);
                 setDescription(result.data[0].description);
                 setIdGroup(result.data[0].id);
+                setUsername(result.data[0].username);
+                setNickname(result.data[0].nickname);
+                setAvatarUser(result.data[0].avatarUser);
         })
     }
 
@@ -113,6 +120,16 @@ console.log(member)
                    <h3>Sobre o grupo</h3>
                    <div className='bar'></div>
                    <h5>{description}</h5>
+                   <br />
+                   <h3>Criado por</h3>
+                   <div className='bar'></div>
+                   <div className="creator">
+                     <div className="image">
+                       <img src={avatarUser}alt="" />
+                     </div>
+                     <h4>{nickname}</h4>
+                     <h5>{username}</h5>
+                   </div>
                    <br />
                    <h3>Membros</h3>
                    <div className='bar'></div>

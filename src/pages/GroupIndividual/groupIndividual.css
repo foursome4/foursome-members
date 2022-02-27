@@ -267,6 +267,7 @@
     height: 5px;
     background-color: var(--Primary);
     margin: 10px 0;
+    border-radius: 6px;
 
 }
 
@@ -275,14 +276,28 @@
     font-weight: 600;
     text-align: center;
 }
+.content-profile .profile .main .section .sections .infos .info .name h5{
+    color: var(--Black);
+    font-weight: 600;
+    text-align: center;
+}
+.content-profile .profile .main .section .sections .infos .info .name h4{
+    color: var(--Primary);
+    font-weight: 600;
+    text-align: center;
+}
 
 .content-profile .profile .main .section .sections .infos .info .name h6 {
     color: var(--Gray_font2);
+    font-weight: 600;
 }
 
 .content-profile .profile .main .section .sections .infos .info .name a {
     text-decoration: none;
     color: var(--Primary);
+}
+.content-profile .profile .main .section .sections .infos .info .name img {
+    width: 80%;
 }
 
 .content-profile .profile .main .section .sections .infos .info .name .imageMembers {
@@ -306,6 +321,24 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
+}
+.content-profile .profile .main .section .sections .infos .info .name .creator {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.content-profile .profile .main .section .sections .infos .info .name .creator .image{
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 6px;
+}
+.content-profile .profile .main .section .sections .infos .info .name .creator img{
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 6px;
 }
 
 

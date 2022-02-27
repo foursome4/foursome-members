@@ -4,40 +4,42 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 
 
-function PostTextEvent({nameGroup, idGroup}) {
-    console.log(nameGroup, idGroup)
-    const {newPost} = useContext(AuthContext)
+function PostTextEvent({nameEvent, idEvent}) {
+    console.log(nameEvent, idEvent)
+    const {newPost, loading} = useContext(AuthContext)
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(LocalInformation);
-    
-    const [loading, setLoading] = useState(false)
+
     const [text, setText] = useState("");
     
     async function handlePost(e) {
         e.preventDefault();
-        setLoading(true)
 
-            newPost({
+        newPost({
                 idAccount: user.id,
                 link: "",
                 avatar: userInformation.avatar,
                 nickname: userInformation.nickname,
                 username: user.username,
-                nameGroup: nameGroup,
+                nameGroup: "",
                 nameForum: "",
-                idGroup: idGroup,
+                nameEvent: nameEvent,
+                idEvent: idEvent,
+                idGroup: "",
                 idForum: "",
-                type: "post-text-Event",
+                type: "post-text-event",
                 text,
             })
     
-        setLoading(false)
+            if(loading === false) {
+                setText("")
+            }
+         
+            
     }
-        
-
- 
+    
     return (
         <div className="post">
              <div className="post-data">
@@ -46,7 +48,7 @@ function PostTextEvent({nameGroup, idGroup}) {
             </div>
             <div className="post-type">
                 <div className="inputs">
-                <textarea name="" id="" cols={30} rows={10} placeholder=""
+                <textarea name="" id="" cols={30} rows={10} placeholder="Deixe um comentário sobre o evento"
                 onChange={(e) => setText(e.target.value)}></textarea>
               
                     <button className="public" onClick={handlePost}>
