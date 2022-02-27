@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import logoImg from '../../assets/images/logo.png'
+import codingIt from '../../assets/images/Coding.it.png'
 import { AuthContext } from '../../contexts/Auth';
 import { FiEye, FiEyeOff} from 'react-icons/fi';
 
@@ -42,6 +43,11 @@ function SignIn() {
           <button onClick={handleCreateAccount}> Entrar </button>
             <a href="/recuperation"><p> ESQUECEU SUA SENHA?</p></a>
           </div>
+        </div>
+        <div className="footer">
+          <a href="https://www.codingit.com.br" target="_blank" rel="noreferrer">
+            <img src={codingIt} alt="" />
+          </a>
         </div>
       </div>
     </div>

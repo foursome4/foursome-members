@@ -6,7 +6,8 @@ import cover from  "../../assets/images/cover.jpg"
 import { AuthContext } from "../../contexts/Auth";
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes} from 'firebase/storage';
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid';
+import buscaCep from '../../services/api-buscaCep'
 
 
 function CreateEvents() {
@@ -19,14 +20,21 @@ function CreateEvents() {
 
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [coverUrl, setCoverUrl] = useState(null);
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
-    const [theme, setTheme] = useState("");
-    const [privacity, setPrivacity] = useState("");
     const [imageAvatar, setImageAvatar] = useState("");
     const [imageCover, setImageCover] = useState("");
     const [loadding, setLoadding] = useState(false);
     
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [theme, setTheme] = useState("");
+    const [date, setDate] = useState("");
+    const [street, setStreet] = useState("");
+    const [district, setDistrict] = useState("");
+    const [city, setCity] = useState("");
+    const [uf, setUf] = useState("");
+    const [reference, setReferencee] = useState("");
+    const [complement, setComplement] = useState("");
+    const [cep, setCep] = useState("");
 
 
 
@@ -68,7 +76,7 @@ function CreateEvents() {
        }
     }
 
-    async function handleCreateGroup(e) {
+    async function handleCreateEvent(e) {
         e.preventDefault();
         //Avatar
         setLoadding(true);
@@ -103,9 +111,23 @@ function CreateEvents() {
  
 
     creategroup(
-        name, description, theme, privacity, cover, avatar, idAccount, username, avatarUser, nickname
+        name, description, theme, cover, avatar, idAccount, username, avatarUser, nickname
         )
         
+    }
+
+
+    async function handleSearchCep(e) {
+        e.preventDefault();
+        try {
+            const res = await buscaCep.get(`${cep}/json`);
+            console.log(res.data);
+            console.log(res.data.uf);
+            setUf(res.data.localidade)
+            setCity(res.data.uf)
+        }catch{
+            console.log("eRRO")
+        }
     }
 
    
@@ -113,15 +135,13 @@ function CreateEvents() {
     function handleTheme(e) {
         setTheme(e.target.value)
     }
-    function handlePrivacity(e) {
-        setPrivacity(e.target.value)
-    }
+
 
 
 
 
     return (
-        <div className="createGroup">
+        <div className="createEvent">
         <form action="">
     <label className="label-avatar">
                     <span><FiUpload color="#f65" size={25} /></span>
@@ -130,20 +150,19 @@ function CreateEvents() {
                 </label>
 
             <div className="data">                      
-                    <input type="text" placeholder='Nome do Grupo' value={name} onChange={(e) => setName(e.target.value)}/>
+                    <input type="text" placeholder='Nome Evento' value={name} onChange={(e) => setName(e.target.value)}/>
                     <input type="text" placeholder='Descrição' value={description} onChange={(e) => setDescription(e.target.value)}/>
+                    <div className="SearchCep">
+                <input type="text" placeholder='Digite seu cep' value={cep} onChange={(e) => setCep(e.target.value)}/>
+                <button onClick={handleSearchCep}>Buscar Cep</button>
+                </div>
                   
                     <select value={theme} onChange={handleTheme}>
-                        <option value="">Tema do grupo</option>
+                        <option value="">Tema do evento</option>
                         <option value="Entreteinimento">Entreteinimento </option>
                         <option value="Discussão">Discussão</option>
                         <option value="Dicas">Dicas</option>
                         <option value="Informativos">Informativos</option>
-                    </select>
-                    <select value={privacity} onChange={handlePrivacity}>
-                        <option value="">Privacidade</option>
-                        <option value="Open">Aberto </option>
-                        <option value="Private">Privado</option>
                     </select>
 
             </div>
@@ -154,7 +173,7 @@ function CreateEvents() {
                     <img src={coverUrl === null ? cover : coverUrl } alt="Avatar"/>
                 </label>
 
-                <button onClick={handleCreateGroup}>Criar Grupo</button>
+                <button onClick={handleCreateEvent}>Criar Grupo</button>
     </form>
     </div>
     )

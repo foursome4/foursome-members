@@ -1,4 +1,4 @@
-.listForuns  {
+.listEvents  {
     width: 80%;
     display: flex;
     flex-direction: row;
@@ -9,7 +9,7 @@
 }
 
 
-.listForuns .foruns-all {
+.listEvents .events-all {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -19,7 +19,7 @@
     flex-wrap: wrap;
 }
 
-.listForuns .foruns-all .foruns-unic {
+.listEvents .events-all .events-unic {
     width: 200px;
     display: flex;
     flex-direction: column;
@@ -31,20 +31,20 @@
     margin: 10px 5px;
 }
 
-.listForuns .foruns-all .foruns-unic .imageCover {
+.listEvents .events-all .events-unic .imageCover {
     width: 160px;
     height: 60px;
     object-fit: cover;
     border-radius: 6px;
 }
 
-.listForuns .foruns-all .foruns-unic .imageCover img {
+.listEvents .events-all .events-unic .imageCover img {
     width: 160px;
     height: 60px;
     border-radius: 6px;
 }
 
-.listForuns .foruns-all .foruns-unic .profile {
+.listEvents .events-all .events-unic .profile {
     width: 80px;
     margin-top: -40px;
     object-fit: cover;
@@ -52,11 +52,11 @@
     border: 1px solid var(--Background2);
 }
 
-.listForuns .foruns-all .foruns-unic .members {
+.listEvents .events-all .events-unic .members {
     width: 120px;
 }
 
-.listForuns .foruns-all .foruns-unic a {
+.listEvents .events-all .events-unic a {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -72,13 +72,13 @@
     margin-top: 5px;
 }
 
-.listForuns .foruns-all .foruns-unic h4 {
+.listEvents .events-all .events-unic h4 {
     font-weight: 500;
     color: var(--Primary);
     text-align: center;
     margin-bottom: 5px;
 }
-.listForuns .foruns-all .foruns-unic h6 {
+.listEvents .events-all .events-unic h6 {
     display: flex;
     flex-direction: row;
     align-items: center;

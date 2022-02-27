@@ -55,7 +55,7 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Foruns/> </PrivateRoute>} />
             <Route path="/forum/:id" 
                 element={ <PrivateRoute> <ForumIndividual/> </PrivateRoute>} />
-            <Route path="/events/id_event" 
+            <Route path="/events" 
                 element={ <PrivateRoute> <Events/> </PrivateRoute>} />
             <Route path="/ranking" 
                 element={ <PrivateRoute> <Ranking/> </PrivateRoute>} />

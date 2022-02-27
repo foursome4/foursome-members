@@ -121,6 +121,14 @@ display: flex;
     width: 35%;
     margin-bottom: 10px;
 }
+.content .signIn .footer {
+    position: absolute;
+    bottom: 0;
+}
+.content .signIn .footer img{
+    width: 70px;
+    margin-bottom: 20px;
+}
 
 @media (max-width: 1024px) {
 
@@ -209,6 +217,11 @@ display: flex;
                     width: 80%;
                 }
 
+                
+                .content .signIn .form .buttons p {
+                    text-align: right;
+                }
+
 
                 @media (max-width: 400px) {
 
@@ -221,13 +234,24 @@ display: flex;
                 
                     .content .signIn .form input {
                         width: 100%;
+                        font-size: 14px;
                     }
 
                     .content .signIn .form .inputPassword {
                         width: 100%;
                     }
+                    .content .signIn .form .inputPassword input {
+                        width: 100%;
+                        font-size: 14px;
+                    }
                     .content .signIn .logo img{
                         width: 100%;
+                    }
+
+                    .content .signIn .form .buttons p {
+                        margin-left: 10px;
+                        font-size: 12px;
+                        text-align: right;
                     }
 
                     @media (max-width: 350px) {

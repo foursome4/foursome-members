@@ -1,52 +1,64 @@
 import { TopBar } from "../../components/TopBar/TopBar"
-import { FiSearch, FiCalendar, FiMapPin} from 'react-icons/fi'
-import capaGrupo from '../../assets/images/capaGrupo.png'
-import perfilGrupo from '../../assets/images/perfilGrupo.png'
-import membersImg from '../../assets/images/members.png'
-import './event.css'
+import { FiPlusCircle} from 'react-icons/fi'
+import './events.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
+import { useState } from "react"
+
+import { ListEvents } from "../../components/ListEvents/ListEvents"
+import { MyEvents } from "../../components/MyEvents/MyEvents"
+import { CreateEvents } from "../../components/CreateEvents/CreateEvents"
 
 function Events() {
+
+    const [select, setSelect] = useState("All");
+
+    function handleAllGroups() {
+        setSelect("All")
+    }
+    function handleParticipate() {
+        setSelect("My")
+    }
+    function handleSelectCreate() {
+        setSelect("Create")
+    }
+
     return (
         <div className="content">
      <ToolbarLeftSlim />
-            <div className="main-events">
+            <div className="main-group">
                 <TopBar />
-                <div className="aside">
-                    <div className="events">
-                            <div className="events-selected">
-                                <button className="selected">Todos os Eventos</button>
-                                <button>Presença Confirmada</button>
+                <div className="aside-group">
+                    <div className="group">
+                            <div className="group-selected">
+                                <button className={select === "All" ? "selected" : ""} onClick={handleAllGroups}>Eventos</button>
+                                <button className={select === "All" ? "selected" : ""} onClick={handleAllGroups}>Participação confirmada</button>
+                                <button className={select === "My" ? "selected" : ""} onClick={handleParticipate}>Meus Eventos</button>
                             </div>
-                            <div className="events-search">
-                                <input type="text" />
-                                <button><FiSearch size={20}/></button>
-                            </div>
-                            <div className="events-all">
-                                <div className="events-unic">
-                                    <img src={capaGrupo} alt="" className="cover"/>
-                                    <img src={perfilGrupo} alt="" className="profile"/>
-                                    <h3>Pré Carnaval 2022</h3>
-                                    <h4>+ Mais informações</h4>
-                                    <img src={membersImg} alt="" className="members"/>
-                                    <h4><FiCalendar /> 25 de Janeiro</h4>
-                                    <h5><FiMapPin /> Sítio Arena Texas - Cabo Frio - RJ</h5>
-                                    <button>Participar</button>
-                                </div>
-                                <div className="events-unic">
-                                    <img src={capaGrupo} alt="" className="cover"/>
-                                    <img src={perfilGrupo} alt="" className="profile"/>
-                                    <h3>Balada Chopp 10</h3>
-                                    <h4>+ Mais informações</h4>
-                                    <img src={membersImg} alt="" className="members"/>
-                                    <h4><FiCalendar /> 20 de Janeiro</h4>
-                                    <h5><FiMapPin /> Boate Black Night - Búzios - RJ</h5>
-                                    <button>Participar</button>
+                            <div className="group-buttons">
+                                <div className="group-create">
+                                <button onClick={handleSelectCreate}><FiPlusCircle size={20}/> Criar forum</button>
                                 </div>
                             </div>
+
+                            {select === "All" ?
+                            <ListEvents />: 
+                            select === "My" ?
+                            <MyEvents /> : 
+                            select === "Create" ?
+                            <CreateEvents /> : 
+                            <div>
+                                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                                <br /><br /><br /><br /><br />
+                               
+                            </div>
+                        }
+
+                            
+                           
                     </div>
-                    <ChatSlim />
+                <ChatSlim />
                 </div>
             </div>
         </div>

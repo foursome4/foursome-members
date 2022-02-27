@@ -1,5 +1,5 @@
 
-.createGroup {
+.createEvent {
     width: 80%;
     color: var(--Primary);
     display: flex;
@@ -8,7 +8,7 @@
     flex-direction: column;
 }
 
-.createGroup form {
+.createEvent form {
     width: 100%;
     display: flex;
     align-items: center;
@@ -23,7 +23,7 @@
 
 
 
-.createGroup form .label-avatar{
+.createEvent form .label-avatar{
     width: 100px;
     height: 100px;
     display: flex;
@@ -34,23 +34,23 @@
     margin: 5px 0;
 }
 
-.createGroup form .label-avatar input {
+.createEvent form .label-avatar input {
     display: none;
 }
 
-.createGroup form .label-avatar span {
+.createEvent form .label-avatar span {
     z-index: 99;
     position: absolute;
     opacity: 0.7;
     transition: all .5s;
 }
 
-.createGroup form .label-avatar span:hover{
+.createEvent form .label-avatar span:hover{
     opacity: 1;
     transform: scale(1.4);
 }
 
-.createGroup form .label-avatar img{
+.createEvent form .label-avatar img{
     margin-bottom: 1em;
     border-radius: 50px;
     object-fit: cover;
@@ -59,7 +59,7 @@
 }
 
 
-.createGroup form .label-cover{
+.createEvent form .label-cover{
     width: 95%;
     height: 100px;
     display: flex;
@@ -70,23 +70,23 @@
     margin: 20px 0;
 }
 
-.createGroup form .label-cover input {
+.createEvent form .label-cover input {
     display: none;
 }
 
-.createGroup form .label-cover span {
+.createEvent form .label-cover span {
     z-index: 99;
     position: absolute;
     opacity: 0.7;
     transition: all .5s;
 }
 
-.createGroup form .label-cover span:hover{
+.createEvent form .label-cover span:hover{
     opacity: 1;
     transform: scale(1.4);
 }
 
-.createGroup form .label-cover img{
+.createEvent form .label-cover img{
     margin-bottom: 1em;
     border-radius: 6px;
     object-fit: cover;
@@ -94,7 +94,7 @@
     height: 100px;
 }
 
-.createGroup form .data {
+.createEvent form .data {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -105,7 +105,7 @@
 }
 
 
-.createGroup form .data select {
+.createEvent form .data select {
     width: 80%;
     background-color: var(--Background2);
     color: var(--Primary);
@@ -115,7 +115,7 @@
     margin: 3px 0;
 }
 
-.createGroup .data input {
+.createEvent .data input {
     width: 80%;
     background-color: var(--Background2);
     color: var(--Primary);
@@ -125,12 +125,12 @@
     margin: 3px 0;
 }
 
-.createGroup .data input::placeholder {
+.createEvent .data input::placeholder {
     color: var(--Primary);
 }
 
 
-.createGroup form button {
+.createEvent form button {
     background-color: var(--Primary);
     display: flex;
     flex-direction: row;
@@ -143,7 +143,7 @@
     font-size: 16px;
 }
 
-.createGroup form .SearchCep {
+.createEvent form .SearchCep {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -152,7 +152,7 @@
     margin: 10px 0;
 }
 
-.createGroup form .SearchCep input {
+.createEvent form .SearchCep input {
     background-color: var(--Background2);
     color: var(--Primary);
     border: 1px solid var(--Primary);
@@ -160,7 +160,7 @@
     padding: 5px 8px;
 }
 
-.createGroup form .SearchCep button {
+.createEvent form .SearchCep button {
     background-color: var(--Primary);
     display: flex;
     flex-direction: row;

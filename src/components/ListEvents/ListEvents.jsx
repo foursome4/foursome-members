@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 
 function ListEvents() {
 
-    const [foruns, setForuns] = useState([])
+    const [events, setEvents] = useState([])
 
 
     useEffect(() => {
         async function loadGroups(){
-            await api.get("/foruns").then((result) => {
+            await api.get("/events").then((result) => {
                 console.log(result.data);
-                setForuns(result.data)
+                setEvents(result.data)
             })
         }
 
@@ -21,17 +21,17 @@ function ListEvents() {
 
 
     return (
-        <div className="listForuns">
-             <div className="foruns-all">
-                             {foruns.map((forum) => {
+        <div className="listEvents">
+             <div className="events-all">
+                             {events.map((event) => {
                                  return(
-                                    <div className="foruns-unic" key={forum.id}>
+                                    <div className="events-unic" key={event.id}>
                                         <div className="imageCover"> 
-                                    <img src={forum.cover} alt="" className="cover"/>
+                                    <img src={event.cover} alt="" className="cover"/>
                                         </div>
-                                    <img src={forum.avatar} alt="" className="profile"/>
-                                    <h4>{forum.name}</h4>
-                                    <Link to={`/forum/${forum.id}`}>Entrar</Link>
+                                    <img src={event.avatar} alt="" className="profile"/>
+                                    <h4>{event.name}</h4>
+                                    <Link to={`/event/${event.id}`}>Entrar</Link>
                                 </div>
                            
                                  )

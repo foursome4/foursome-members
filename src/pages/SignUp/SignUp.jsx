@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import logoImg from '../../assets/images/logo.png'
 import { AuthContext } from '../../contexts/Auth';
 import { useParams } from 'react-router';
-
+import codingIt from '../../assets/images/Coding.it.png'
 import './signUp.css';
 import { toast } from 'react-toastify';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
@@ -88,7 +88,7 @@ function SignUp() {
   }
 
   return (
-    <div className="content">
+    <div className="content-signUp">
       <div className="signUp">
         <div className="logo">
         <img src={logoImg} alt="Logo Foursome" />
@@ -134,6 +134,12 @@ function SignUp() {
           <button onClick={handleCreateAccount}> Cadastrar </button>
           </div>
         </div>
+        <div className="footer">
+          <a href="https://www.codingit.com.br" target="_blank" rel="noreferrer">
+            <img src={codingIt} alt="" />
+          </a>
+        </div>
+        
       </div>
     </div>
   )
