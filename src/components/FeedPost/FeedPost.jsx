@@ -85,6 +85,7 @@ function FeedPost() {
     }
 
     return (
+
         <div className="feedPost">
             <div className="posts-feed">
             <div className="buttons">

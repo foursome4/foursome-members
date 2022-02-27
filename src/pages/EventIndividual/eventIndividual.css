@@ -15,7 +15,6 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    background-color: var(--Background2);
 }
 
 .content-profile .profile .main {
@@ -30,7 +29,6 @@
 }
 
 .content-profile .profile .main .section {
-    background-color: var(--Background2);
     width: 100%;
     height: 100%;
     display: flex;
@@ -41,7 +39,6 @@
 
 .content-profile .profile .main .section .cover {
     width: 100%;
-    height: 200px;
     object-fit: cover;
 }
 
@@ -68,13 +65,11 @@
     color: rgba(0, 0, 0, 0.036);
     margin: 2px;
     font-weight: 500;
-    object-fit: cover;
 }
 .content-profile .profile .main .section .cover .mark .white{
     color: rgba(255, 255, 255, 0.036);
     margin: 2px;
     font-weight: 500;
-    object-fit: cover;
 }
 
 .content-profile .profile .main .section .profile-tool {
@@ -98,11 +93,12 @@
     color: var(--Primary);
 }
 
-.content-profile .profile .main .section .profile-tool .user h3 {
+.content-profile .profile .main .section .profile-tool .user h4 {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 .content-profile .profile .main .section .profile-tool .user h3 svg {
@@ -215,7 +211,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 10px;
 }
 
@@ -263,10 +259,21 @@
     align-items: center;
     justify-content: center;
     flex-direction: column; 
+    text-align: center;
+}
+
+.content-profile .profile .main .section .sections .infos .info .name .bar {
+    width: 50px;
+    height: 5px;
+    background-color: var(--Primary);
+    margin: 10px 0;
+
 }
 
 .content-profile .profile .main .section .sections .infos .info .name h3 {
-    color: var(--Primary);
+    color: var(--Black);
+    font-weight: 600;
+    text-align: center;
 }
 
 .content-profile .profile .main .section .sections .infos .info .name h6 {
@@ -276,6 +283,29 @@
 .content-profile .profile .main .section .sections .infos .info .name a {
     text-decoration: none;
     color: var(--Primary);
+}
+
+.content-profile .profile .main .section .sections .infos .info .name .imageMembers {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-profile .profile .main .section .sections .infos .info .name .imageMembers .image {
+    object-fit: cover;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid var(--White);
+
+}
+
+.content-profile .profile .main .section .sections .infos .info .name .imageMembers .image img {
+    object-fit: cover;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
 }
 
 

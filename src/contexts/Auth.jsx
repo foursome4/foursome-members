@@ -587,6 +587,18 @@ async function creategroup( name, description, theme, privacity, cover, avatar, 
         console.log(error)
     })
 }
+// Sessão grupos
+async function createForum( name, description, theme, avatar, cover, idAccount, username, nickname, avatarUser ){
+    const data = { name, description, theme, avatar, cover, idAccount, username, nickname, avatarUser };
+
+    await api.post("/foruns", data).then(async (result) => {
+        console.log(result.data);
+        toast.success("Forum Criado com socesso!");
+
+    }).catch(error => {
+        console.log(error)
+    })
+}
 
 async function createMemberGroup( idAccount, idGroup, username, avatar, nickname, role, status){
     const data = { idAccount, idGroup, username, avatar, nickname, role, status};
@@ -751,7 +763,8 @@ async function deleteGroup(id){
             creategroup,
             createMemberGroup,
             CreateInviteMail,
-            deleteActualMessage
+            deleteActualMessage,
+            createForum
 
         }}>
             {children}

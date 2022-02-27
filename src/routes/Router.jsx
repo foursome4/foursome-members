@@ -6,7 +6,8 @@ import { CompleteRegistration } from '../pages/CompleteRegistration/CompleteRegi
 import { Events } from '../pages/Events/Events';
 import { Feed } from '../pages/Feed/Feed';
 import { Forgotit } from '../pages/Forgotit/Forgotit';
-import { Foruns2 } from '../pages/Foruns2/Foruns2';
+import { ForumIndividual } from '../pages/ForumIndividual/ForumIndividual';
+import { Foruns } from '../pages/Foruns/Foruns';
 import { GroupIndividual } from '../pages/GroupIndividual/GroupIndividual';
 import { Groups } from '../pages/Groups/Groups';
 import { Invitation } from '../pages/Invitation/Invitation';
@@ -51,11 +52,9 @@ function PrivateRoute({children} ) {
             <Route path="/group/:id" 
                 element={ <PrivateRoute> <GroupIndividual/> </PrivateRoute>} />
             <Route path="/foruns" 
-                element={ <PrivateRoute> <Foruns2/> </PrivateRoute>} />
-            <Route path="/foruns/id_forum" 
-                element={ <PrivateRoute> <Foruns2/> </PrivateRoute>} />
-            <Route path="/events" 
-                element={ <PrivateRoute> <Events/> </PrivateRoute>} />
+                element={ <PrivateRoute> <Foruns/> </PrivateRoute>} />
+            <Route path="/forum/:id" 
+                element={ <PrivateRoute> <ForumIndividual/> </PrivateRoute>} />
             <Route path="/events/id_event" 
                 element={ <PrivateRoute> <Events/> </PrivateRoute>} />
             <Route path="/ranking" 

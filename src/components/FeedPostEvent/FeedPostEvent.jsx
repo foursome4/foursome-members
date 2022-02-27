@@ -1,5 +1,5 @@
-import { FiTrash2, FiEdit, FiMessageCircle } from 'react-icons/fi'
-import './feedPostForum.css';
+import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiThumbsUp, FiMinus, FiSend, FiChevronDown } from 'react-icons/fi'
+import './feedPostEvent.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import api from "../../services/api";
@@ -8,16 +8,16 @@ import { FeedComments } from '../FeedComments/FeedComments';
 import { ListReactions } from '../ListReactions/ListReactions';
 import { NewComment } from '../NewComment/NewComment';
 
-    function FeedPostForum({idForum}) {
+    function FeedPostEvent({idEvent}) {
 
     const [data, setData] = useState([]);
-    const [comment, setComment] = useState(false);
+   
 
     const {user} = useContext(AuthContext);
     useEffect(() => {
           async function findPosts() {
     
-            const res = await api.get(`/posts/foruns/${idForum}`);
+            const res = await api.get(`/posts/groups/${idEvent}`);
             const dataPosts = (res.data)
             setData(dataPosts)
         }
@@ -26,13 +26,7 @@ import { NewComment } from '../NewComment/NewComment';
     }, [user, data.sort()])
 
 
-    function handleHabiliteComment () {
-        if(comment === false) {
-            setComment(true)
-        } else {
-            setComment(false) 
-        }
-    }
+
 
     return (
         <div className="feedPostIndividual">
@@ -95,4 +89,4 @@ import { NewComment } from '../NewComment/NewComment';
     )
 }
 
-export {FeedPostForum}
+export {FeedPostEvent}

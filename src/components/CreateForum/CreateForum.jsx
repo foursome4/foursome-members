@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 
 function CreateForum() {
-    const {creategroup}= useContext(AuthContext);
+    const {createForum}= useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
     const LocalInformations = localStorage.getItem("informations-foursome");
@@ -102,8 +102,8 @@ function CreateForum() {
         setLoadding(false);
  
 
-    creategroup(
-        name, description, theme, privacity, cover, avatar, idAccount, username, avatarUser, nickname
+    createForum(
+        name, description, theme, avatar, cover, idAccount, username, nickname, avatarUser 
         )
         
     }
@@ -130,11 +130,11 @@ function CreateForum() {
                 </label>
 
             <div className="data">                      
-                    <input type="text" placeholder='Nome do Grupo' value={name} onChange={(e) => setName(e.target.value)}/>
-                    <input type="text" placeholder='Descrição' value={description} onChange={(e) => setDescription(e.target.value)}/>
+                    <input type="text" placeholder='Nome do Forum' value={name} onChange={(e) => setName(e.target.value)}/>
+                    <input type="text" placeholder='Pergunta, dúvida ou sujestão detalhada' value={description} onChange={(e) => setDescription(e.target.value)}/>
                   
                     <select value={theme} onChange={handleTheme}>
-                        <option value="">Tema do grupo</option>
+                        <option value="">Tema do forum</option>
                         <option value="Entreteinimento">Entreteinimento </option>
                         <option value="Discussão">Discussão</option>
                         <option value="Dicas">Dicas</option>

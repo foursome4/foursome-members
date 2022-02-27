@@ -170,21 +170,25 @@
 }
 
 .feedPostIndividual .posts-feed .feed-post .reactions-individual {
-    width: 85%;
+    width: 60%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px;
+    justify-content: center;
+    margin: 7px 0;
     
 }
 
 .feedPostIndividual .posts-feed .feed-post .reactions-individual button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     background-color: var(--Background2);
     border: none;
     color: var(--Gray_font2);
     font-size: 16px;
-    
+    margin-left: 5px;
 }
 
 .feedPostIndividual .posts-feed .feed-post .reactions-individual button svg {

@@ -1,7 +1,7 @@
 import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSlim'
 import { TopBar } from '../../components/TopBar/TopBar'
 import {FiHome, FiMoreVertical, FiUser} from 'react-icons/fi'
-import './forumIndividual.css'
+import './eventIndividual.css'
 
 import {useContext, useEffect, useState } from 'react'
 import api from '../../services/api'
@@ -10,10 +10,9 @@ import { Link, useParams } from 'react-router-dom'
 import { AuthContext } from '../../contexts/Auth'
 import { FeedPostGroup } from '../../components/FeedPostGroup/FeedPostGroup'
 import { PostText } from '../../components/PostText/PostText'
-import { FeedPostForum } from '../../components/FeedPostForum/FeedPostForum'
 
 
-function ForumIndividual() {
+function EventIndividual() {
   const {id} = useParams();
   console.log(id)
   const {socketDataLocation} = useContext(AuthContext)
@@ -110,7 +109,7 @@ function ForumIndividual() {
                   <>
                     <PostText nameForum={name} idForum={idGroup}/>
                     <br /><br />
-                    <FeedPostForum idForum={id} />
+                    <FeedPostGroup idForum={id} />
                   </>
                   :
                  
@@ -132,4 +131,4 @@ function ForumIndividual() {
   )
 }
 
-export { ForumIndividual }
+export { EventIndividual }
