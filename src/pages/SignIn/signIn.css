@@ -122,8 +122,9 @@ display: flex;
     margin-bottom: 10px;
 }
 .content .signIn .footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
+    margin-top: 200px;
 }
 .content .signIn .footer img{
     width: 70px;
