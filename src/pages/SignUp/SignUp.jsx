@@ -88,7 +88,7 @@ function SignUp() {
   }
 
   return (
-    <div className="content-signUp">
+    <div className="content">
       <div className="signUp">
         <div className="logo">
         <img src={logoImg} alt="Logo Foursome" />
