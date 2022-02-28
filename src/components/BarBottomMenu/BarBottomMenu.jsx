@@ -1,14 +1,30 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FiCalendar, FiHome, FiList, FiRadio, FiTrendingUp, FiUserCheck, FiUsers, FiMapPin, FiMail, FiSmile, FiMenu } from "react-icons/fi"
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/Auth";
+import { socket } from "../../services/websocket";
 import './barBottomMenu.css'
 
 function BarBottomMenu () {
+    const {socketDataLocation} = useContext(AuthContext)
+    const LocalUser = localStorage.getItem("foursome");
+    const userData = JSON.parse(LocalUser);
+
     const Local = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(Local);
     const navigate = useNavigate();
 
     const [select, setSelect] = useState(false)
+
+    const [users, setUsers] = useState([])
+    useEffect(() => {
+    socketDataLocation()
+    }, [])
+
+ socket.on("userOnline", (data) => {
+    setUsers(data)
+})
+
 
 
       function handleRedirectFeed () {
@@ -137,59 +153,19 @@ function BarBottomMenu () {
                 <button className="ButtonsUnic" onClick={handleOpenBar}>
                        <FiMenu size={20}/>Menu
                    </button>
-               <a href="/feed" >
-                <button className="ButtonUser" onClick={handleRedirectFeed}>
-                      
-                   </button>
-                   </a>
 
-                   <a href="/profile" >
-                   <button className="ButtonUser" onClick={handleRedirectProfile}>
-                      
-                   </button>
+                   {users.map((user) => {
+                       return(             
+                    user.idAccount === userData.id ? "" :
+               <a href="" >
+                <div className="divUser" onClick={handleRedirectFeed} key={user.idAccount}>
+                      <img src={user.avatar} alt={user.idAccount} />
+                   </div>
                    </a>
-         
-                   <a href="/messages" >
-                   <button className="ButtonUser" onClick={handleRedirectChat}>
-                      
-                   </button>
-                   </a>
+                       )
+                   })}
 
-                   <a href="/ranking" >
-                   <button className="ButtonUser" onClick={handleRedirectRanking}>
-                      
-                   </button>
-                   </a>
-
-                   <a href="/groups" >
-                   <button className="ButtonUser" onClick={handleRedirectGroups}>
-                     
-                   </button>
-                   </a>
-
-                   <a href="/foruns" >
-                   <button className="ButtonUser" onClick={handleRedirectForuns}>
-                      
-                   </button>
-                   </a>
-
-                   <a href="/events" >
-                   <button className="ButtonUser" onClick={handleRedirectEvents}>
-                      
-                   </button>
-                   </a>
-                   
-                   <a href="/radar" >
-                   <button className="ButtonUser" onClick={handleRedirectRadar}>
-                      
-                   </button>
-                   </a>
-
-                   <a href="/locals" >
-                   <button className="ButtonUser" onClick={handleRedirectFriends}>
-                     
-                   </button>
-                   </a>
+                 
                </div>
                 :
                     ""

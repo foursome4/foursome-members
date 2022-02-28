@@ -17,14 +17,10 @@ const [users, setUsers] = useState([])
  }, [])
 
  socket.on("userOnline", (data) => {
-    console.log("data")
-    console.log(data)
     setUsers(data)
 })
 
- const myLocation = users.filter((location) => (location.idAccount === userData.id));
-
-    
+     
     return (
         
         <div className="content-chat">
@@ -33,7 +29,8 @@ const [users, setUsers] = useState([])
                      </div>
             {users.map((user) => {
                 return (
-                    <div className="chat-avatar">
+                    user.idAccount === userData.id ? "" :
+                    <div className="chat-avatar" key={user.id}>
                     <img src={user.avatar} alt="" />
                      </div>
                 )

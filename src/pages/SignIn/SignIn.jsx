@@ -45,11 +45,11 @@ function SignIn() {
             <a href="/recuperation"><p> ESQUECEU SUA SENHA?</p></a>
           </div>
         </div>
-        <div className="footer">
+        {/* <div className="footer">
           <a href="https://www.codingit.com.br" target="_blank" rel="noreferrer">
             <img src={codingIt} alt="" />
           </a>
-        </div>
+        </div> */}
       </div>
 
 
