@@ -82,14 +82,16 @@ const [users, setUsers] = useState([])
                                 function deg2rad(deg) {
                                     console.log(deg * (Math.PI/180))
 
-                                    // const distance = deg * (Math.PI/180);
+                                    const distance = deg * (Math.PI/180);
 
                                     
-                                    // var km = Math.round(distance / 100) /10;  
-                                    // console.log(km + " Km")
+                                    console.log( "Kilometragem")
+                                    var km = Math.round(distance / 100) /10;  
+                                    console.log(km + " Km")
                                     
-                                    // var km2 = Math.round(distance * 100) /10 ;  
-                                    // console.log(km2 + " Metros")
+                                    console.log("Metros");
+                                    var km2 = Math.round(distance * 100) /10 ;  
+                                    console.log(km2 + " Metros")
                                     // let newDistance;
                                     // if(km === 0) {
                                     //     newDistance = km

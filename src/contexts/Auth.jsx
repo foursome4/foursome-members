@@ -419,7 +419,7 @@ async function CreateInviteNewUsew({code, name, email, phone,idAccount, username
     
     const findAccountEmail = await api.get(`/accounts/find/${email}`);
 
-    if(findAccountEmail.data[0]) {
+    if(findAccountEmail.data.lenght > 1) {
         toast.error("Já existe uma conta com este e-mail!")
         return
     } 
@@ -438,7 +438,7 @@ async function CreateInviteMail({code, name, email, phone,idAccount, username, p
   
     const findAccountEmail = await api.get(`/accounts/find/${email}`);
 
-    if(findAccountEmail.data[0]) {
+    if(findAccountEmail.data.lenght > 1) {
         toast.error("Já existe uma conta com este e-mail!")
         return
     } 
@@ -455,7 +455,6 @@ async function CreateInviteMail({code, name, email, phone,idAccount, username, p
         toast.error("Já existe um covite com este e-mail!")
     })  
 }
-
 
 
 
@@ -759,7 +758,8 @@ async function deleteGroup(id){
             CreateInviteMail,
             deleteActualMessage,
             createForum,
-            createEvents
+            createEvents,
+            CreateInviteNewUserWhatsAndEmail
 
         }}>
             {children}

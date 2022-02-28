@@ -19,7 +19,7 @@ function Invite() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    const [typeInvite, setTypeInvite] = useState("All");
+    const [typeInvite, setTypeInvite] = useState("Email");
 
 
     const {CreateInviteNewUsew, CreateInviteMail} = useContext(AuthContext);
@@ -42,10 +42,32 @@ function Invite() {
         isAccount: ${user.id}, username: ${user.username}, nickname: ${userInformation.nickname}, avatar: ${userInformation.avatar}`);
 
 
-       CreateInviteNewUsew({code, name, email, phone:newPhone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname })
        CreateInviteMail({code, name, email, phone:newPhone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname })
 
+        setEmail("")
+        setPhone("")
+        setName("")
+    }
+
+    function createInviteWhatsapp(e) {
+        e.preventDefault();
+
+        const remove1Paranteses = phone.replace('(', '')
+        const remove2Paranteses = remove1Paranteses.replace(')', '')
+        const removeSpace = remove2Paranteses.replace(' ', '')
+        const removeTrace = removeSpace.replace('-', '')
+        const newPhone = removeTrace;
+
+        console.log(newPhone)
+        const inviteCode = uuidv4()
        
+        const code = inviteCode.substring(0, 4)
+
+        console.log(`Code: ${code}, Nome: ${name}, Email: ${email}, Telefone: ${newPhone},
+        isAccount: ${user.id}, username: ${user.username}, nickname: ${userInformation.nickname}, avatar: ${userInformation.avatar}`);
+
+
+       CreateInviteNewUsew({code, name, email, phone:newPhone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname })
 
         setEmail("")
         setPhone("")
@@ -80,12 +102,10 @@ function Invite() {
       function handleInviteForWhatsapp(){
         setTypeInvite("Whatsapp")
       }
-      function handleInviteForEmailWhatsapp(){
-        setTypeInvite("All")
-      }
+
    
     return (
-        <div className="content">
+        <div className="content-invite">
             <ToolbarLeftSlim />
             <BarBottomMenu />
             <div className="main">
@@ -99,7 +119,7 @@ function Invite() {
                             <div className="invites-all">
                                 <div className="invites-unic">
                                     <div className="informationInvite">
-                                        <h3>Olá, {userInformation.nickname}.<br />Antes de enviar um convite, verifique as seguintes informações</h3>
+                                        <h4>Olá, {userInformation.nickname}.<br />Antes de enviar um convite, verifique as seguintes informações</h4>
                                        <div className="roles">
                                        <p><FiCheck /> Certifique-se se seu convidado não faz parte de nossa rede.</p>
                                         <p><FiCheck /> O convite enviado é único, intransferível e válido por 10 dias.</p>
@@ -108,66 +128,45 @@ function Invite() {
                                     </div>
 
                                     <div className="buttons">
-                                      <button onClick={handleInviteForEmailWhatsapp}>E-mail <FiMail /> &nbsp; & Whatsapp <FaWhatsapp /></button>
                                       <button onClick={handleInviteForEmail}>E-mail <FiMail /></button>
                                       <button onClick={handleInviteForWhatsapp}>Whatsapp <FaWhatsapp /></button>
                                     </div>
-                                    {typeInvite === "All" ?
+                                    { typeInvite === "Email" ?
                                     <form action="">
+                                      <span>Convite por e-mail</span>
                                     <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome"/>
                                     <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
                                     <input type="text" id="telefone" onKeyUp={mascaraFone} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
 
                                     <button onClick={createInvite}> Enviar Convite</button>
-                               </form>  
-                                  :
-                                  typeInvite === "Email" ?
-                                    <form action="">
-                                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome"/>
-                                    <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
-                                    <input type="text" id="telefone" onKeyUp={mascaraFone} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
-
-                                    <button onClick={createInvite}> Enviar Convite</button>
+                                    <br />
+                                    <br />
+                                    <br />
                                </form>  
                                   :
                                   typeInvite === "Whatsapp" ?
                                     <form action="">
+                                      <span>Convite por whatsapp</span>
                                     <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome"/>
                                     <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
                                     <input type="text" id="telefone" onKeyUp={mascaraFone} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
 
-                                    <button onClick={createInvite}> Enviar Convite</button>
+                                    <button onClick={createInviteWhatsapp}> Enviar Convite</button>
+
+                                    <br />
+                                    <br />
+                                    <br />
                                </form>  
+
                                   :""
                                   
                                   }
                                    
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
-                                   <br />
+                                
                                 </div>
+
                             </div>
+
                     </div>
                 <ChatSlim />
                 </div>
