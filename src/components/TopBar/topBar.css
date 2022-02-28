@@ -168,6 +168,10 @@
     margin: 3px;
 }
 
+.content-modal .search input::placeholder {
+    color: var(--Background2);
+}
+
 
 .content-modal .itensModal .accounts{
     background-color: var(--Background);
