@@ -153,12 +153,14 @@
     border-radius: 6px;
     width: 250px;
     height: 250px;
+    object-fit: cover;
 }
 .content .chat .main-chat .section-chat .messages .message-friend .data .image {
     margin-top: 5px;
     border-radius: 6px;
     width: 250px;
     height: 250px;
+    object-fit: cover;
 }
 
 

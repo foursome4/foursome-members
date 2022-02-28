@@ -5,7 +5,8 @@ import { useParams } from 'react-router';
 import codingIt from '../../assets/images/Coding.it.png'
 import './signUp.css';
 import { toast } from 'react-toastify';
-import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { FiEye, FiEyeOff, FiX } from 'react-icons/fi';
+import Modal from 'react-modal'
 
 function SignUp() {
   const {email} = useParams()
@@ -19,6 +20,8 @@ function SignUp() {
   const [passordConfirm, setPassordConfirm] = useState("");
   const [passwordView, setPasswordView] = useState(false)
   const [checked, setChecked] = useState(false);
+
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   function handleCreateAccount(e) {
     e.preventDefault();
@@ -87,6 +90,23 @@ function SignUp() {
     document.getElementById("telefone").attributes[0].ownerElement['value'] = retorno;
   }
 
+
+  function handleOpenModal() {
+    setIsOpenModal(true)
+  }
+
+  function handleCloseModal() {
+    setIsOpenModal(false)
+  }
+
+  function handleTerms() {
+    handleOpenModal()
+    console.log("Modal")
+  }
+
+
+  Modal.setAppElement('#root');
+
   return (
     <div className="content">
       <div className="signUp">
@@ -127,7 +147,7 @@ function SignUp() {
 
           <div className="terms">
           <input type="checkbox" checked={checked} onChange={handleChange}/>
-          <span>Li e concordo com os <strong>Termos de uso</strong></span>
+          <span>Li e concordo com os </span><span onClick={handleTerms} className="pointer"> <b > Termos de uso</b></span>
           </div>
 
           <div className="buttons">
@@ -141,6 +161,30 @@ function SignUp() {
         </div>
         
       </div>
+
+
+      
+
+      <Modal isOpen={isOpenModal} onRequestClose={handleCloseModal}
+            ClassName="react-modal-overlay"
+            className="react-modal-content">
+            <button type="button" className="react-modal-button" onClick={handleCloseModal}>
+            <FiX /> 
+            </button>
+            <div className="content-modal">
+            <h3>Termos de Uso</h3>
+        
+            <div className="itensModal">
+
+            </div>
+
+           
+            
+            <div className="buttons-modal">
+            <button className="butont-White" onClick={handleCloseModal}>Cancelar</button>
+            </div>
+            </div>
+            </Modal>
     </div>
   )
 }

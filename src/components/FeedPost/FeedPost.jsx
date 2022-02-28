@@ -462,6 +462,7 @@ function FeedPost() {
 
                                 <FeedComments idPost={postsData.id} />
                                 </div>
+
                                 </>
                                 )
                             }))}

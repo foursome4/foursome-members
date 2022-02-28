@@ -354,6 +354,8 @@ function handlePressMessage() {
                 <button className="button1" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}>Enviar <FiSend /></button>
                 <button className="button2" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}><FiSend /></button>
             </div>
+            <br />
+
          </div>
          <ChatSlim />
         </div>

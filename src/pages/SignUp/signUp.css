@@ -144,6 +144,11 @@
     margin-top: 10px;
 }
 
+.content .signUp .form .terms .pointer{
+  cursor: pointer;
+  margin-left: 3px;
+}
+
 .content .signUp .form .terms input[type="checkbox"] {
     margin-left: 5px;
     margin-right: 10px;

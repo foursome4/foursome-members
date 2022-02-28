@@ -10,6 +10,7 @@ import ReactTooltip from 'react-tooltip';
 import Modal from 'react-modal'
 import api from '../../services/api'
 import { UserConversation } from '../UserConversation/UserConversation'
+import { UsersSearch } from '../UsersSearch/UsersSearch'
 
 function TopBar() {
     const {logout} = useContext(AuthContext);
@@ -19,10 +20,15 @@ function TopBar() {
     const userInformation = JSON.parse(LocalInformation);
 
     const [isOpenModal, setIsOpenModal] = useState(false);
+    const [isOpenModalSearch, setIsOpenModalSearch] = useState(false);
 
     const [rooms, setRooms] = useState([])
     const [rooms2, setRooms2] = useState([])
-
+    const [accounts, setAccoounts] = useState([])
+    const [search, setSearch] = useState('')
+    const [searchId, setSearchId] = useState('')
+    const [type, setType] = useState("username")
+ 
     useEffect(() => {
         async function loadRoomIdAccount() {
             const idAccount = user.id
@@ -48,8 +54,16 @@ function TopBar() {
           })
           }
 
-          
 
+          async function loadAccounts() {
+              await api.get("/accounts").then((result) => {
+                  console.log("All users")
+                  console.log(result.data)
+                  setAccoounts(result.data)
+              })
+          }
+
+          loadAccounts()
           loadRoomIdAccount()
           loadRoomIDFriend()
     }, [])
@@ -58,7 +72,10 @@ function TopBar() {
     const newRooms = rooms.concat(rooms2)
     console.log("New Salas")
     console.log(newRooms)
-  
+  console.log(search)
+
+  const SearchUsers = accounts.filter((account) => account.username.startsWith(search))
+  const SearchUsersId = accounts.filter((account) => account.id.startsWith(searchId))
 
     function Tologout(e) {
         e.preventDefault();
@@ -78,6 +95,24 @@ function TopBar() {
         console.log("Modal")
       }
 
+    function handleOpenModalSearch() {
+        setIsOpenModalSearch(true)
+      }
+    
+      function handleCloseModalSearch() {
+        setIsOpenModalSearch(false)
+      }
+
+      function handleSearch() {
+        handleOpenModalSearch()
+        console.log("Modal")
+      }
+
+      function handleSelectTypeSearch(e) {
+        setType(e.target.value)
+    }
+
+
 
       Modal.setAppElement('#root');
     return (
@@ -92,9 +127,9 @@ function TopBar() {
                 <img src={logoFoursomemini} alt="" />
                 </Link>
             </div>
-            <div className="search">
+            <div className="search" onClick={handleSearch}>
                 <FiSearch />
-                <input type="text" />
+               <p>Pesquisar</p>
             </div>
             <div className="links">
                 <Link to="/invite">
@@ -160,7 +195,6 @@ function TopBar() {
             <h3>Mensagens</h3>
         
             <div className="itensModal">
-            </div>
 
             {newRooms.map((rooms) => {
                 return(
@@ -171,10 +205,62 @@ function TopBar() {
                     </div>
                 )
             })}
+            </div>
             
             
             <div className="buttons-modal">
             <button className="butont-White" onClick={handleCloseModal}>Cancelar</button>
+            </div>
+            </div>
+            </Modal>
+
+
+            <Modal isOpen={isOpenModalSearch} onRequestClose={handleCloseModalSearch}
+            overlayClassName="react-modal-overlay"
+            className="react-modal-content">
+            <button type="button" className="react-modal-button" onClick={handleCloseModalSearch}>
+            <FiX /> 
+            </button>
+            <div className="content-modal">
+            <h3>Busca de usuários</h3>
+        
+            <div className="search">
+           <select  value={type} onChange={handleSelectTypeSearch}>
+                <option value="username">Usuário</option>
+                <option value="id">id</option>
+            </select>
+            {type === "username" ?
+            <input type="text" placeholder='buscar usuário' value={search} onChange={(e) => setSearch(e.target.value)}/>
+            :
+            <input type="text" placeholder='buscar pelo Id' value={searchId} onChange={(e) => setSearchId(e.target.value)}/>
+            }
+            </div>
+            
+            <div className="itensModal">
+            {type === "username" ?
+            SearchUsers.map((account) => {
+                return(
+                    
+                    <div className="accounts" key={account.id}>
+                      <UsersSearch id={account.id} username={account.username} />
+                    </div>
+                )
+            })
+                :
+                SearchUsersId.map((account) => {
+                    return(
+                        
+                        <div className="accounts" key={account.id}>
+                           <UsersSearch id={account.id} username={account.username} />
+                        </div>
+                    )
+            
+                })
+            }
+            
+            </div>
+            <div className="buttons-modal">
+            <button className="butont-White" onClick={handleCloseModalSearch}>Cancelar</button>
             </div>
             </div>
             </Modal>

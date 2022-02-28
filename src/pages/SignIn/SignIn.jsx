@@ -11,7 +11,7 @@ function SignIn() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [passwordView, setPasswordView] = useState(false)
-  // const number = "21971684632"
+
 
   function handleCreateAccount(e) {
     e.preventDefault();
@@ -26,6 +26,7 @@ function SignIn() {
       setPasswordView(false)
     }
   }
+
 
   return (
     <div className="content">
@@ -50,6 +51,14 @@ function SignIn() {
           </a>
         </div>
       </div>
+
+
+
+
+
+
+
+
     </div>
   )
 }
