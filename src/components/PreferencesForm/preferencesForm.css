@@ -127,4 +127,13 @@
     .preferencesForm form .confirmation button{
         margin-top: 20px;
     }
+
+    @media (max-width: 450px) {
+        .preferencesForm form .data {
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: 50px;
+        }
+    }
 }
+

@@ -3,7 +3,7 @@ import './chatSlim.css'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../contexts/Auth'
 import { socket } from '../../services/websocket'
-import {FiLogOut} from 'react-icons/fi'
+import {FiCircle, FiLogOut} from 'react-icons/fi'
 
 function ChatSlim() {
 
@@ -31,6 +31,7 @@ const [users, setUsers] = useState([])
                 return (
                     user.idAccount === userData.id ? "" :
                     <div className="chat-avatar" key={user.id}>
+                        <FiCircle />
                     <img src={user.avatar} alt="" />
                      </div>
                 )

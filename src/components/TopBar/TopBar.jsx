@@ -34,8 +34,6 @@ function TopBar() {
             const idAccount = user.id
             await api.get(`conversations/account/filter/${idAccount}`)
             .then( async (res) => {
-                console.log("Busca Sala - tentativa 1");
-                console.log(res.data)
                 setRooms(res.data)
             }).catch(error => {
               console.log("Erro ao buscar dados" + error)
@@ -46,8 +44,6 @@ function TopBar() {
             const idFriend = user.id
             await api.get(`conversations/friend/filter/${idFriend}`)
             .then( async (res) => {
-                console.log("Busca Sala - tentativa 2");
-                console.log(res.data)
                 setRooms2(res.data)
             }).catch(error => {
               console.log("Erro ao buscar dados" + error)
@@ -57,8 +53,6 @@ function TopBar() {
 
           async function loadAccounts() {
               await api.get("/accounts").then((result) => {
-                  console.log("All users")
-                  console.log(result.data)
                   setAccoounts(result.data)
               })
           }
@@ -68,12 +62,7 @@ function TopBar() {
           loadRoomIDFriend()
     }, [])
 
-    console.log("Salas")
     const newRooms = rooms.concat(rooms2)
-    console.log("New Salas")
-    console.log(newRooms)
-  console.log(search)
-
   const SearchUsers = accounts.filter((account) => account.username.startsWith(search))
   const SearchUsersId = accounts.filter((account) => account.id.startsWith(searchId))
 
@@ -201,7 +190,7 @@ function TopBar() {
                     
                     <div className="rooms" key={rooms.id}>
                         <UserConversation idAccount={rooms.idAccount !== user.id ? rooms.idAccount : rooms.idFriend} room={rooms.room}/>
-                        {/* <h4>{rooms.idAccount} - {rooms.idFriend} - {rooms.room}</h4> */}
+
                     </div>
                 )
             })}

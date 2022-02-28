@@ -21,7 +21,7 @@ function Invitation() {
     const [phone, setPhone] = useState("");
 
     const [inviteType, setInviteType] = useState("Email")
-    const [myInvites, setMyInvites] = useState("Email")
+    const [myInvites, setMyInvites] = useState([])
 
     useEffect(() => {
       const idAccount = user.id
@@ -89,35 +89,7 @@ function Invitation() {
       setName("")
   }
 
-    function createInviteMailandWhatsapp(e) {
-      e.preventDefault();
-
-      const remove1Paranteses = phone.replace('(', '')
-      const remove2Paranteses = remove1Paranteses.replace(')', '')
-      const removeSpace = remove2Paranteses.replace(' ', '')
-      const removeTrace = removeSpace.replace('-', '')
-      const newPhone = removeTrace;
-
-      console.log(newPhone)
-      const inviteCode = uuidv4()
-     
-      const code = inviteCode.substring(0, 4)
-
-      console.log(`Code: ${code}, Nome: ${name}, Email: ${email}, Telefone: ${newPhone},
-      isAccount: ${user.id}, username: ${user.username}, nickname: ${userInformation.nickname}, avatar: ${userInformation.avatar}`);
-
-
-      CreateInviteMail({code, name, email, phone:newPhone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname })
-      CreateInviteNewUsew({code, name, email, phone:newPhone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname })
-
-     
-
-      setEmail("")
-      setPhone("")
-      setName("")
-  }
-
-    function mascaraFone(event) {
+     function mascaraFone(event) {
         var valor = document.getElementById("telefone").attributes[0].ownerElement['value'];
         var retorno = valor.replace(/\D/g,"");
         retorno = retorno.replace(/^0/,"");
@@ -148,11 +120,7 @@ function Invitation() {
           setInviteType("Whatsapp")
           console.log("Whatsapp")
       }
-      function createInviteMailWhatsapp() {
-          setInviteType("All")
-          console.log("All")
-      }
-
+ 
       function handleInvites() {
         setInviteType("Invites")
         console.log("Invites")
@@ -171,7 +139,6 @@ function Invitation() {
                     <div className="buttons">
                       <button onClick={handleEmailInvite}>Via E-mail <FiMail /></button>
                       <button onClick={handleWhatsappInvite}>Via Whatsapp <FaWhatsapp /></button>
-                      <button onClick={createInviteMailWhatsapp}>Whatsapp & Email <FaWhatsapp /></button>
                       <button onClick={handleInvites}>Enviados <FiSend /> </button>
                     </div>
                    {inviteType === "Email" ?
@@ -198,25 +165,13 @@ function Invitation() {
                   </div>
                     </form>
                     :
-                    inviteType === "All"?
-                    <form action="">
-                    <span>Convite por E-mail & Whatsapp</span>
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome"/>
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required/>
-                    <input type="text" id="telefone" onKeyUp={mascaraFone} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
-                    <div className="button">
-                    <button className="convite" onClick={createInviteMailandWhatsapp}>Convidar!</button>
-                    <button  onClick={logout}>Sair</button>
-                   </div>
-                    </form>
-                    :
                     inviteType === "Invites"?
                    myInvites.map((invite) => {
                      return (
                        <div className="inviteUnic">
                          <h5>{invite.name}</h5>
-                         <h5>{invite.email !== "" ? invite.email : ""}</h5>
-                         <h5>{invite.phone !== "" ? invite.phone : ""}</h5> 
+                         <h5>{invite.email !== "" ? invite.email : ""} - {invite.phone !== "" ? invite.phone : ""}</h5>
+                         <button className='delete'>Deletar</button> 
                        
                        </div>
                      )

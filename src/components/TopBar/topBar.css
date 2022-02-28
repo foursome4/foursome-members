@@ -187,8 +187,9 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    background-color: var(--Primary);
-    padding: 10px;
+    background-color: var(--Background);
+    margin: 5px;
+    border-radius: 6px;
     text-decoration: none;
 }
 

@@ -83,19 +83,6 @@
 }
 .listForuns .foruns-all .foruns-unic a {
     text-decoration: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-    border: none;
-    border-radius: 20px;
-    width: 100%;
-    font-size: 14px;
-    color: var(--White);
-    font-weight: 500;
-    background-color: var(--Primary);
-    margin-top: 5px;
 }
 
 .listForuns .foruns-all .foruns-unic h4 {

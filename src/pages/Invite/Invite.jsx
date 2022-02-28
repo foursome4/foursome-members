@@ -1,13 +1,14 @@
 import { TopBar } from "../../components/TopBar/TopBar"
 import './invite.css'
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../contexts/Auth"
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
-import { FiCheck, FiMail} from "react-icons/fi"
+import { FiCheck, FiMail, FiSend} from "react-icons/fi"
 import { v4 as uuidv4} from 'uuid'
 import { FaWhatsapp } from "react-icons/fa"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
+import api from "../../services/api"
 
 
 function Invite() {
@@ -20,9 +21,23 @@ function Invite() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [typeInvite, setTypeInvite] = useState("Email");
+    const [myInvites, setMyInvites] = useState([])
 
 
     const {CreateInviteNewUsew, CreateInviteMail} = useContext(AuthContext);
+
+
+    useEffect(() => {
+      const idAccount = user.id
+      async function loadInvites() {
+        await api.get(`/invites/${idAccount}`).then((result) => {
+          const data = result.data;
+          console.log(result.data)
+          setMyInvites(data)
+        })
+      }
+      loadInvites()
+    }, [user.id])
 
     function createInvite(e) {
         e.preventDefault();
@@ -102,6 +117,9 @@ function Invite() {
       function handleInviteForWhatsapp(){
         setTypeInvite("Whatsapp")
       }
+      function handleInviteMyInvites(){
+        setTypeInvite("Invites")
+      }
 
    
     return (
@@ -114,9 +132,9 @@ function Invite() {
                     <div className="invites">
                             <div className="invites-selected">
                                 <button className="selected">Enviar convite</button>
-                                <button>Convites enviados</button>
                             </div>
                             <div className="invites-all">
+
                                 <div className="invites-unic">
                                     <div className="informationInvite">
                                         <h4>Olá, {userInformation.nickname}.<br />Antes de enviar um convite, verifique as seguintes informações</h4>
@@ -130,7 +148,9 @@ function Invite() {
                                     <div className="buttons">
                                       <button onClick={handleInviteForEmail}>E-mail <FiMail /></button>
                                       <button onClick={handleInviteForWhatsapp}>Whatsapp <FaWhatsapp /></button>
+                                      <button onClick={handleInviteMyInvites}>Enviados <FiSend /> </button>
                                     </div>
+                                    <br />
                                     { typeInvite === "Email" ?
                                     <form action="">
                                       <span>Convite por e-mail</span>
@@ -157,7 +177,18 @@ function Invite() {
                                     <br />
                                     <br />
                                </form>  
-
+                                :
+                                typeInvite === "Invites" ?
+                                myInvites.map((invite) => {
+                                  return (
+                                    <div className="inviteUnic">
+                                      <h5><b>{invite.name}</b></h5>
+                                      <h5>{invite.email !== "" ? invite.email : ""} - {invite.phone !== "" ? invite.phone : ""}</h5>
+                                      <button>Deletar</button> 
+                                    
+                                    </div>
+                                  )
+                                })
                                   :""
                                   
                                   }

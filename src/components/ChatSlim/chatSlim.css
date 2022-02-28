@@ -39,10 +39,16 @@
     margin: 6px 0;
 }
 
+
+
 .content-chat .chat-avatar img {
   border-radius: 50%;
     width: 35px;
     object-fit: cover;
+    z-index: -1;
+}
+.content-chat .chat-avatar svg {
+  z-index: 1;
 }
 
 .content-chat .chat-avatar button {

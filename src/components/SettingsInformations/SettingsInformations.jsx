@@ -104,12 +104,74 @@ function SettingsInformations() {
         //Salvando no banco de dados
         NewUpdateInformationsAccount({id: userInformations.id,
             idAccount: userInformations.idAccount,
+            avatar: userInformations.avatar,
+            cover: userInformations.cover,
+            city: city === "" ? userInformations.city : city,
+            uf: uf === "" ? userInformations.uf : uf,
+            relationship: relationship === "" ? userInformations.relationship : relationship ,
+            nickname: nickname === "" ? userInformations.nickname : nickname,
+            created_at: userInformations.created_at});
+        console.log(loadding);
+        setLoadding(false);
+        
+    }
+
+
+    async function handleUploadAvatar(e) {
+        e.preventDefault();
+        //Avatar
+        setLoadding(true);
+        console.log(imageAvatar)
+
+            console.log(loadding);
+            const uuid = uuidv4();
+    
+            let newAvatarUrlFirebase = ref(storage, `images/avatar/${uuid}`);
+            let uploadAvatar = await uploadBytes(newAvatarUrlFirebase, imageAvatar);
+            let photoUrlAvatar = await getDownloadURL(uploadAvatar.ref);
+                
+            console.log(uploadAvatar.ref.name, photoUrlAvatar);
+        
+        //Salvando no banco de dados
+        NewUpdateInformationsAccount({id: userInformations.id,
+            idAccount: userInformations.idAccount,
             avatar: photoUrlAvatar === "" ? userInformations.avatar : photoUrlAvatar,
+            cover: userInformations.cover,
+            city: city === "" ? userInformations.city : city,
+            uf: uf === "" ? userInformations.uf : uf,
+            relationship: relationship === "" ? userInformations.relationship : relationship ,
+            nickname: nickname === "" ? userInformations.nickname : nickname,
+            created_at: userInformations.created_at});
+        console.log(loadding);
+        setLoadding(false);
+        
+    }
+
+    async function handleUploadCover(e) {
+        e.preventDefault();
+        //Avatar
+        setLoadding(true);
+         // Cover
+         console.log(imageCover)
+        
+
+         const uuid2 = uuidv4();
+ 
+         let newCoverUrlFirebase = ref(storage, `images/cover/${uuid2}`);
+         let upload = await uploadBytes(newCoverUrlFirebase, imageCover);
+         let photoUrl = await getDownloadURL(upload.ref);
+ 
+         console.log(upload.ref.name, photoUrl);
+        
+        //Salvando no banco de dados
+        NewUpdateInformationsAccount({id: userInformations.id,
+            idAccount: userInformations.idAccount,
+            avatar: userInformations.avatar,
             cover: photoUrl === "" ? userInformations.cover : photoUrl,
-            city,
-            uf,
-            relationship,
-            nickname,
+            city: city === "" ? userInformations.city : city,
+            uf: uf === "" ? userInformations.uf : uf,
+            relationship: relationship === "" ? userInformations.relationship : relationship ,
+            nickname: nickname === "" ? userInformations.nickname : nickname,
             created_at: userInformations.created_at});
         console.log(loadding);
         setLoadding(false);
@@ -121,8 +183,8 @@ function SettingsInformations() {
             const res = await buscaCep.get(`${cep}/json`);
             console.log(res.data);
             console.log(res.data.uf);
-            setUf(res.data.localidade)
-            setCity(res.data.uf)
+            setUf(res.data.uf)
+            setCity(res.data.localidade)
         }catch{
             console.log("eRRO")
         }
@@ -143,7 +205,10 @@ function SettingsInformations() {
                     <img src={avatarUrl === null ? userInformations.avatar : avatarUrl } alt="Avatar" height={100} width={100}/>
                 </label>
 
+                <button onClick={handleUploadAvatar}>Atualizar Avatar</button>
 
+                <br />
+                <br />
                 <div className="SearchCep">
                 <input type="text" placeholder='Digite seu cep' value={cep} onChange={(e) => setCep(e.target.value)}/>
                 <button onClick={handleSearchCep}>Buscar Cep</button>
@@ -161,6 +226,10 @@ function SettingsInformations() {
                     </select>
 
             </div>
+                <button onClick={handleUploadAccount}>Atualizar</button>
+
+                <br />
+                <br />
 
             <label className="label-cover">
                     <span><FiUpload color="#f65" size={25} /></span>
@@ -168,7 +237,7 @@ function SettingsInformations() {
                     <img src={coverUrl === null ? userInformations.cover : coverUrl } alt="Avatar"/>
                 </label>
               
-                <button onClick={handleUploadAccount}>Atualizar</button>
+                <button onClick={handleUploadCover}>Atualizar Capa</button>
     </form>
     </div>
     )

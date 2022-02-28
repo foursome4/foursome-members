@@ -143,7 +143,6 @@
         justify-content: center;
         padding: 10px 0;
         flex-wrap: wrap;
-        background-color: aqua;
     }
     .content .aside-group .group .group-selected button {
         width: 150px;

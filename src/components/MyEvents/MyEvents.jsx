@@ -9,12 +9,12 @@ function MyEvents() {
     const LocalInformations = localStorage.getItem("informations-foursome");
     const userInformations= JSON.parse(LocalInformations);
 
-    const [foruns, setForuns] = useState([])
+    const [events, setForuns] = useState([])
 
     useEffect(() => {
         async function loadMyEvents(){
             const idAccount = user.id
-            await api.get(`/foruns/account/${idAccount}`).then((result) => {
+            await api.get(`/events/account/${idAccount}`).then((result) => {
                 console.log(result.data);
                 setForuns(result.data)
             })
@@ -30,17 +30,19 @@ function MyEvents() {
     return (
         <div className="listForuns">
              <div className="foruns-all">
-                             {foruns.map((forum) => {
+                             {events.map((event) => {
                                  return(
-                                    <div className="foruns-unic" key={forum.id}>
+                                    <div className="foruns-unic" key={event.id}>
                                         <div className="imageCover">                                          
-                                    <img src={forum.cover} alt="" className="cover"/>
+                                    <img src={event.cover} alt="" className="cover"/>
                                         </div>
                                         <div className="avatarImage">
-                                    <img src={forum.avatar} alt="" className="profile"/>
+                                    <img src={event.avatar} alt="" className="profile"/>
                                         </div>
-                                    <h4>{forum.name}</h4>
-                                    <Link to={`/forum/${forum.id}`}>Entrar</Link>
+                                        <Link to={`/event/${event.id}`}>
+                                    <h4>{event.name}</h4>
+                                    </Link>
+                                    <Link to={`/event/${event.id}`}>Entrar</Link>
                                     <button>Fechar</button>
                                 </div>
                            

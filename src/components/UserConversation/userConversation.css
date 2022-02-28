@@ -3,8 +3,6 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
-    background-color: var(--Background);
-    margin: 10px 0;
     width: 90%;
     text-decoration: none;
 }
@@ -26,7 +24,6 @@
     margin-left: 5px;
     color: var(--Primary);
     text-decoration: none;
-    color: var(--Primary);
     font-weight: 500;
 }
 

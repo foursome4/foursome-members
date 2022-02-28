@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../contexts/Auth"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
+import apiGoogleReverse from "../../services/apiGoogleReverse copy"
 
 function Radar() {
     const {socketDataLocation} = useContext(AuthContext)
@@ -64,50 +65,14 @@ const [users, setUsers] = useState([])
                                 {users.map((user) => {
 
 
-                                // Function calculate distance
-                                function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-                                    var R = 6371; // Radius of the earth in km
-                                    var dLat = deg2rad(lat1-lat2);  // deg2rad below
-                                    var dLon = deg2rad(lon1-lon2); 
-                                    var a = 
-                                    Math.sin(dLat/2) * Math.sin(dLat/2) +
-                                    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-                                    Math.sin(dLon/2) * Math.sin(dLon/2)
-                                    ; 
-                                    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-                                    var d = R * c; // Distance in km
-                                    return d;
-                                }
-                                
-                                function deg2rad(deg) {
-                                    console.log(deg * (Math.PI/180))
+                        
 
-                                    const distance = deg * (Math.PI/180);
+async function reverseGeolocalization(lat1, long1, lat2, long2) {
+    const address = await apiGoogleReverse.get(`json?origins=${lat1},${long1}&destinations=${lat2},${long2}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
+    console.log(address)
+}
 
-                                    
-                                    console.log( "Kilometragem")
-                                    var km = Math.round(distance / 100) /10;  
-                                    console.log(km + " Km")
-                                    
-                                    console.log("Metros");
-                                    var km2 = Math.round(distance * 100) /10 ;  
-                                    console.log(km2 + " Metros")
-                                    // let newDistance;
-                                    // if(km === 0) {
-                                    //     newDistance = km
-                                    //     console.log("newDistance") 
-                                    //     console.log(newDistance + " Km") 
-                                    // } else  if(km !== 0 ){
-                                    //     newDistance = km2
-                                    //     console.log("newDistance") 
-                                    //     console.log(newDistance + " Metros") 
-
-                                    // }
-
-
-                                }
-
-                                getDistanceFromLatLonInKm(lat1, long1, user.lat, user.long)
+reverseGeolocalization(user.lat, user.long, lat1, long1)
 
 
 

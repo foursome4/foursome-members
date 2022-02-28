@@ -30,7 +30,9 @@ function ListEvents() {
                                     <img src={event.cover} alt="" className="cover"/>
                                         </div>
                                     <img src={event.avatar} alt="" className="profile"/>
+                                    <Link to={`/event/${event.id}`}>
                                     <h4>{event.name}</h4>
+                                    </Link>
                                     <Link to={`/event/${event.id}`}>Entrar</Link>
                                 </div>
                            
@@ -51,6 +53,9 @@ function ListEvents() {
                                 <br />
                                 <br />
                                 <br />
+                                <br />
+                                <br />
+       
                          
         </div>
     )
