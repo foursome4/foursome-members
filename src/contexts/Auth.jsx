@@ -759,7 +759,6 @@ async function deleteGroup(id){
             deleteActualMessage,
             createForum,
             createEvents,
-            CreateInviteNewUserWhatsAndEmail
 
         }}>
             {children}
