@@ -11,6 +11,7 @@ import { CreateGroups } from "../../components/CreateGroups/CreateGroups"
 import { ListForuns } from "../../components/ListForuns/ListForuns"
 import { MyForuns } from "../../components/MyForuns/MyForuns"
 import { CreateForum } from "../../components/CreateForum/CreateForum"
+import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 
 function Foruns() {
 
@@ -29,6 +30,7 @@ function Foruns() {
     return (
         <div className="content">
      <ToolbarLeftSlim />
+     <BarBottomMenu />
             <div className="main-group">
                 <TopBar />
                 <div className="aside-group">

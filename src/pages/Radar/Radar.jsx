@@ -7,6 +7,7 @@ import { socket } from '../../services/websocket'
 import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../contexts/Auth"
+import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 
 function Radar() {
     const {socketDataLocation} = useContext(AuthContext)
@@ -93,6 +94,7 @@ const myLocation = users.filter((location) => (location.idAccount === userData.i
     return (
         <div className="content">
      <ToolbarLeftSlim />
+     <BarBottomMenu />
             <div className="main">
                 <TopBar />
                 <div className="aside">

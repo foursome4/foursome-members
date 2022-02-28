@@ -19,6 +19,7 @@ import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 import { v4 as uuidv4 } from 'uuid'
 import { useNavigate } from 'react-router-dom';
+import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 
 
 function ProfileFriend() {
@@ -276,6 +277,7 @@ function ProfileFriend() {
       <div className="container">
     <div className="content-profile">
       <ToolbarLeftSlim />
+      <BarBottomMenu />
       <div className="profile">
         <TopBar />
         <div className="main">

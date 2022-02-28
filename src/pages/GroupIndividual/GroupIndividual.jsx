@@ -10,6 +10,7 @@ import { Link, useParams } from 'react-router-dom'
 import { AuthContext } from '../../contexts/Auth'
 import { PostGroup } from '../../components/PostGroup/PostGroup'
 import { FeedPostGroup } from '../../components/FeedPostGroup/FeedPostGroup'
+import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 
 
 function GroupIndividual() {
@@ -92,6 +93,7 @@ console.log(member)
       <div className="container">
     <div className="content-profile">
       <ToolbarLeftSlim />
+      <BarBottomMenu />
       <div className="profile">
         <TopBar />
         <div className="main">

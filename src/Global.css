@@ -102,11 +102,15 @@ button {
   bottom: 0;
   right: 0;
   left: 0;
-
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+.react-modal-overlay:focus{
+  outline: none;
+  }
 
 .react-modal-content {
   width: 100%;
@@ -117,6 +121,10 @@ button {
   border-radius: 8px;
   border: none;
 }
+
+.react-modal-content:focus{
+  outline: none;
+  }
 
 .react-modal-button {
   width: 15px;
@@ -129,5 +137,6 @@ button {
   right: 0;
   top: 0;
   margin: 15px;
+  border: none;
 }
 

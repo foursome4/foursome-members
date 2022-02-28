@@ -8,6 +8,7 @@ import { useState } from "react"
 import { MyGroups } from "../../components/MyGroups/MyGroups"
 import { GroupsCreated } from "../../components/GroupsCreated/GroupsCreated"
 import { CreateGroups } from "../../components/CreateGroups/CreateGroups"
+import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 
 function Groups() {
 
@@ -29,6 +30,7 @@ function Groups() {
     return (
         <div className="content">
      <ToolbarLeftSlim />
+     <BarBottomMenu />
             <div className="main-group">
                 <TopBar />
                 <div className="aside-group">

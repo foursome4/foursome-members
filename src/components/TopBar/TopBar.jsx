@@ -3,11 +3,13 @@ import logoFoursome from '../../assets/images/logo2.png'
 import { FiSearch, FiMessageSquare, FiUserPlus, FiBell, FiMail, FiLogOut, FiX } from 'react-icons/fi'
 import avatarImg from '../../assets/images/avatar.png'
 import './topBar.css'
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import { Link } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import Modal from 'react-modal'
+import api from '../../services/api'
+import { UserConversation } from '../UserConversation/UserConversation'
 
 function TopBar() {
     const {logout} = useContext(AuthContext);
@@ -17,6 +19,45 @@ function TopBar() {
     const userInformation = JSON.parse(LocalInformation);
 
     const [isOpenModal, setIsOpenModal] = useState(false);
+
+    const [rooms, setRooms] = useState([])
+    const [rooms2, setRooms2] = useState([])
+
+    useEffect(() => {
+        async function loadRoomIdAccount() {
+            const idAccount = user.id
+            await api.get(`conversations/account/filter/${idAccount}`)
+            .then( async (res) => {
+                console.log("Busca Sala - tentativa 1");
+                console.log(res.data)
+                setRooms(res.data)
+            }).catch(error => {
+              console.log("Erro ao buscar dados" + error)
+          })
+          }
+
+          async function loadRoomIDFriend() {
+            const idFriend = user.id
+            await api.get(`conversations/friend/filter/${idFriend}`)
+            .then( async (res) => {
+                console.log("Busca Sala - tentativa 2");
+                console.log(res.data)
+                setRooms2(res.data)
+            }).catch(error => {
+              console.log("Erro ao buscar dados" + error)
+          })
+          }
+
+          
+
+          loadRoomIdAccount()
+          loadRoomIDFriend()
+    }, [])
+
+    console.log("Salas")
+    const newRooms = rooms.concat(rooms2)
+    console.log("New Salas")
+    console.log(newRooms)
   
 
     function Tologout(e) {
@@ -119,19 +160,28 @@ function TopBar() {
             <h3>Mensagens</h3>
         
             <div className="itensModal">
-           <p>Itens</p>
             </div>
+
+            {newRooms.map((rooms) => {
+                return(
+                    
+                    <div className="rooms" key={rooms.id}>
+                        <UserConversation idAccount={rooms.idAccount !== user.id ? rooms.idAccount : rooms.idFriend} room={rooms.room}/>
+                        {/* <h4>{rooms.idAccount} - {rooms.idFriend} - {rooms.room}</h4> */}
+                    </div>
+                )
+            })}
             
             
             <div className="buttons-modal">
-            <button className="button-White" onClick={handleCloseModal}>Cancelar</button>
+            <button className="butont-White" onClick={handleCloseModal}>Cancelar</button>
             </div>
             </div>
             </Modal>
 
         </div>
 
-        
+
     )
 }
 

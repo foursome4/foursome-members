@@ -99,6 +99,62 @@
     color: var(--Primary);
 }
 
+.content-modal {
+    border: none;
+    overflow-y: scroll;
+    height: 300px;
+}
+
+
+.content-modal::-webkit-scrollbar {
+    width: 12px;              
+  }
+  
+ .content-modal::-webkit-scrollbar-track {
+    background: var(--Background2);      
+  }
+  
+ .content-modal::-webkit-scrollbar-thumb {
+    background-color: var(--Background-man);   
+    border-radius: 20px;      
+    border: 3px solid var(--Background2); 
+  }
+
+
+.content-modal .itensModal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    border: none;
+    overflow-y: scroll;
+    text-decoration: none;
+}
+
+.content-modal .itensModal .rooms {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--Primary);
+    padding: 10px;
+    text-decoration: none;
+}
+
+
+.content-modal  .buttons-modal .butont-White {
+    background-color: var(--Primary);
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    color: var(--White);
+    border-radius: 6px;
+}
+
+
+
 
 
 @media (max-width: 1200px) {

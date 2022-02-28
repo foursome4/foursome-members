@@ -7,6 +7,7 @@ import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { FiCheck, FiMail} from "react-icons/fi"
 import { v4 as uuidv4} from 'uuid'
 import { FaWhatsapp } from "react-icons/fa"
+import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 
 
 function Invite() {
@@ -86,6 +87,7 @@ function Invite() {
     return (
         <div className="content">
             <ToolbarLeftSlim />
+            <BarBottomMenu />
             <div className="main">
                 <TopBar />
                 <div className="aside">

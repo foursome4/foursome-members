@@ -12,6 +12,7 @@ import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes} from 'firebase/storage'
 import { v4 as uuidv4 } from 'uuid'
 import {DeleteMessage} from '../../components/DeleteMessage/DeleteMessage'
+import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu';
 
    
 function Chat() {
@@ -152,6 +153,7 @@ function handlePressMessage() {
   return (
     <div className="content">
       <ToolbarLeftSlim />
+      <BarBottomMenu />
       <div className="chat">
         <TopBar />
         <div className="main-chat">

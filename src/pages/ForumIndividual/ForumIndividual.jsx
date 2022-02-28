@@ -11,6 +11,7 @@ import { AuthContext } from '../../contexts/Auth'
 import { FeedPostGroup } from '../../components/FeedPostGroup/FeedPostGroup'
 import { PostText } from '../../components/PostText/PostText'
 import { FeedPostForum } from '../../components/FeedPostForum/FeedPostForum'
+import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 
 
 function ForumIndividual() {
@@ -73,6 +74,7 @@ function ForumIndividual() {
       <div className="container">
     <div className="content-profile">
       <ToolbarLeftSlim />
+      <BarBottomMenu />
       <div className="profile">
         <TopBar />
         <div className="main">

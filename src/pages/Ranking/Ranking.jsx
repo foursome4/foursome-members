@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import api from "../../services/api"
 import { Link } from "react-router-dom"
 import { CountReactions } from "../../components/CountReactions/CountReactions"
+import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 
 function Ranking() {
 
@@ -45,6 +46,7 @@ function Ranking() {
     return (
         <div className="content">
      <ToolbarLeftSlim />
+     <BarBottomMenu />
             <div className="main">
                 <TopBar />
                 <div className="aside">

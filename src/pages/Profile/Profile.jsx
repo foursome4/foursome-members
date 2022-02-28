@@ -19,6 +19,7 @@ import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../contexts/Auth'
+import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 
 
 function Profile() {
@@ -209,6 +210,7 @@ function Profile() {
       <div className="container">
     <div className="content-profile">
       <ToolbarLeftSlim />
+      <BarBottomMenu />
       <div className="profile">
         <TopBar />
         <div className="main">
