@@ -4,9 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import api from "../../services/api";
 import { parseISO, format} from 'date-fns';
-import { FeedComments } from '../FeedComments/FeedComments';
-import { ListReactions } from '../ListReactions/ListReactions';
-import { NewComment } from '../NewComment/NewComment';
+
 
     function FeedPostEvent({idEvent}) {
 
@@ -67,8 +65,8 @@ import { NewComment } from '../NewComment/NewComment';
                                     <div className="reactions-individual" >
                                         {postsData.idAccount === user.id ?
                                         <>
-                                            <button> <FiEdit /> Editar </button>
-                                            <button> <FiTrash2 /> Apagar </button>
+                                            <button> <FiEdit />  </button>
+                                            <button> <FiTrash2 />  </button>
                                             </>
                                         : ""}
                                     </div>

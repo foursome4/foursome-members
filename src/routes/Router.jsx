@@ -11,6 +11,7 @@ import { ForumIndividual } from '../pages/ForumIndividual/ForumIndividual';
 import { Foruns } from '../pages/Foruns/Foruns';
 import { GroupIndividual } from '../pages/GroupIndividual/GroupIndividual';
 import { Groups } from '../pages/Groups/Groups';
+import { InformationsFoursome } from '../pages/InformationsFoursome/InformationsFoursome';
 import { Invitation } from '../pages/Invitation/Invitation';
 import { Invite } from '../pages/Invite/Invite';
 import { Loader } from '../pages/Loader/Loader';
@@ -80,6 +81,8 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Chat /> </PrivateRoute>} />
             <Route path="/invite" 
                 element={ <PrivateRoute> <Invite /> </PrivateRoute>} />
+            <Route path="/infos" 
+                element={ <PrivateRoute> <InformationsFoursome /> </PrivateRoute>} />
             </Routes>
            
     )

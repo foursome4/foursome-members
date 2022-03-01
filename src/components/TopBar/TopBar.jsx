@@ -1,6 +1,6 @@
 import logoFoursomemini from '../../assets/images/logo-mini2.png'
 import logoFoursome from '../../assets/images/logo2.png'
-import { FiSearch, FiMessageSquare, FiUserPlus, FiBell, FiMail, FiLogOut, FiX } from 'react-icons/fi'
+import { FiSearch, FiMessageSquare, FiUserPlus, FiBell, FiMail, FiLogOut, FiX, FiInfo } from 'react-icons/fi'
 import avatarImg from '../../assets/images/avatar.png'
 import './topBar.css'
 import { useContext, useEffect, useState } from 'react';
@@ -171,6 +171,14 @@ function TopBar() {
                     <h4>@{user !== null ? user.username : "Usuário não encontrado"}</h4>
                     </Link>
                 </div>
+                <Link to="/invite">
+                <div className="link" data-tip data-for='Informações'>
+                    <FiInfo />
+                </div>
+                </ Link>
+                <ReactTooltip id='Informações' place="bottom" type="dark" effect="solid">
+                     <span>Informações</span>
+                </ReactTooltip>
             </div>
            
  
@@ -181,9 +189,9 @@ function TopBar() {
             <FiX /> 
             </button>
             <div className="content-modal">
-            <h3>Mensagens</h3>
+            <h3>Conversas</h3>
         
-            <div className="itensModal">
+            <div className="itensModalMessages">
 
             {newRooms.map((rooms) => {
                 return(
@@ -219,9 +227,9 @@ function TopBar() {
                 <option value="id">id</option>
             </select>
             {type === "username" ?
-            <input type="text" placeholder='buscar usuário' value={search} onChange={(e) => setSearch(e.target.value)}/>
+            <input type="text" placeholder='buscar usuário' value={search.toLowerCase()} onChange={(e) => setSearch(e.target.value)}/>
             :
-            <input type="text" placeholder='buscar pelo Id' value={searchId} onChange={(e) => setSearchId(e.target.value)}/>
+            <input type="text" placeholder='buscar pelo Id' value={searchId.toLowerCase()} onChange={(e) => setSearchId(e.target.value)}/>
             }
             </div>
             

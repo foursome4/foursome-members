@@ -17,7 +17,6 @@ import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 function ForumIndividual() {
   const {id} = useParams();
   console.log(id)
-  const {socketDataLocation} = useContext(AuthContext)
 
   const [feed, setFeed] = useState("feed");
   const [friend, setFriend] = useState("");
@@ -53,8 +52,8 @@ function ForumIndividual() {
     }
 
     loadGroups()
-    socketDataLocation()
-}, [socketDataLocation]);
+
+}, []);
 
 
      function handleFeed() {

@@ -17,7 +17,6 @@ import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 function EventIndividual() {
   const {id} = useParams();
   console.log(id)
-  const {socketDataLocation} = useContext(AuthContext)
 
   const [feed, setFeed] = useState("feed");
   const [member, setMember] = useState("");
@@ -72,8 +71,7 @@ function EventIndividual() {
     }
 
     loadGroups()
-    socketDataLocation()
-}, [socketDataLocation]);
+}, []);
 
 
      function handleFeed() {

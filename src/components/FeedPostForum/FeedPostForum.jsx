@@ -71,8 +71,8 @@ import { NewComment } from '../NewComment/NewComment';
                                         </button> */}
                                         {postsData.idAccount === user.id ?
                                         <>
-                                            <button> <FiEdit /> Editar </button>
-                                            <button> <FiTrash2 /> Apagar </button>
+                                            <button> <FiEdit />  </button>
+                                            <button> <FiTrash2 />  </button>
                                             </>
                                         : ""}
                                     </div>

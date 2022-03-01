@@ -10,7 +10,6 @@ function Loader() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
     const navigate = useNavigate()
-    const {socketDataLocation} = useContext(AuthContext)
 
     useEffect(() => {
         async function findInformationsAccount() {
@@ -40,8 +39,7 @@ function Loader() {
             
         }
         findInformationsAccount()
-        socketDataLocation()
-    }, [socketDataLocation, navigate, user.id])    
+    }, [navigate, user.id])    
 
 
     return(

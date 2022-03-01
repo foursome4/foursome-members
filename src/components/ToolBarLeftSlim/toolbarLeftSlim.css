@@ -1,5 +1,5 @@
 .content-toolbar {
-    width: 80px;
+    width: 85px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -10,7 +10,24 @@
     top: 0;
     left: 0;
     z-index: 1;
+    overflow-y: scroll;
+    overflow: auto;
 }
+
+.content-toolbar::-webkit-scrollbar {
+    width: 10px;              
+  }
+  
+ .content-toolbar::-webkit-scrollbar-track {
+    background: var(--Background2);      
+  }
+  
+ .content-toolbar::-webkit-scrollbar-thumb {
+    background-color: var(--Background-man);   
+    border-radius: 20px;      
+    border: 3px solid var(--Background2); 
+  }
+
 
 .content-toolbar .ToolBarLeftSlim {
     width: 100%;
@@ -21,16 +38,14 @@
     flex-direction: column;
 }
 
-.content-toolbar .ToolBarLeftSlim .profile {
+.content-toolbar .ToolBarLeftSlim .image {
     width: 80px;
-    height: 80px;  
+    height: 80px; 
+    object-fit: cover;
+    background-color: aquamarine;
 }
 
-.content-toolbar .ToolBarLeftSlim .profile button {
-    border: none;
-}
-
-.content-toolbar .ToolBarLeftSlim .profile img{
+.content-toolbar .ToolBarLeftSlim .image img{
     width: 80px;
     height: 80px; 
     object-fit: cover;

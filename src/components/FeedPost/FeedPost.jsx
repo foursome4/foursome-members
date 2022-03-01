@@ -20,7 +20,7 @@ function FeedPost() {
     const [data, setData] = useState([]);
     const [comment, setComment] = useState(false);
     const [edit, setEdit] = useState(false);
-    const {user, deletePost, socketDataLocation} = useContext(AuthContext);
+    const {user, deletePost} = useContext(AuthContext);
 
 
     
@@ -38,7 +38,6 @@ function FeedPost() {
     }
 
         findPosts()
-        socketDataLocation()
 
     }, [post, data])
 
@@ -63,6 +62,7 @@ function FeedPost() {
     function handleHabiliteComment () {
         if(comment === false) {
             setComment(true)
+            setEdit(false) 
         } else {
             setComment(false) 
         }
@@ -71,6 +71,7 @@ function FeedPost() {
     function handleHabiliteEdit () {
         if(edit === false) {
             setEdit(true)
+            setComment(false) 
         } else {
             setEdit(false) 
         }
@@ -102,7 +103,13 @@ function FeedPost() {
                                 "dd'/'MM'/'yyyy', às 'HH:mm'h'"
                                 );
                                     return (   
-                                        <>                      
+                                        <>   
+                             {postsData.type === "post-text" ||
+                             postsData.type === "post-text-group" ||
+                             postsData.type === "post-photo" ||
+                             postsData.type === "post-video" ||                  
+                             postsData.type === "post-photo-group" ||                   
+                             postsData.type === "post-video-group" ?                   
                                 <div className="feed-post" key={postsData.id}>
                                     <div className="post-user" >
                                         <div className="avatar">              
@@ -127,7 +134,7 @@ function FeedPost() {
                                     
                                     <div className={edit === true ? "edit" : "editHidden"}>
                                     {postsData.idAccount === userData.id ? 
-                                         <EditPost data={postsData.text}/>
+                                         <EditPost data={postsData.text} id={postsData.id}/>
                                          : ""
                                         }
                                     </div>
@@ -445,12 +452,11 @@ function FeedPost() {
                                      <ListReactions idPost={postsData.id} />
                                         <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
-                                            Comentar
                                         </button>
                                         {postsData.idAccount === user.id ?
                                         <>
-                                            <button onClick={handleHabiliteEdit}> <FiEdit /> Editar </button>
-                                            <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 /> Apagar </button>
+                                            <button onClick={handleHabiliteEdit}> <FiEdit /> </button>
+                                            <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 /> </button>
                                             </>
                                         : ""}
                                     </div>
@@ -462,7 +468,7 @@ function FeedPost() {
 
                                 <FeedComments idPost={postsData.id} />
                                 </div>
-
+                                : "" }
                                 </>
                                 )
                             }))}

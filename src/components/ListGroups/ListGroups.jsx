@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import api from '../../services/api'
 import { AuthContext } from '../../contexts/Auth'
 import { ListMembersGroup } from '../ListMembersGroup/ListMembersGroup';
+import { Link } from 'react-router-dom';
 
 function ListGroups() {
     const {createMemberGroup}= useContext(AuthContext);
@@ -25,30 +26,6 @@ function ListGroups() {
     }, []);
 
 
-    function handleCreateMemberGroup(id, privacity) {
-
-        let idAccount = user.id
-        let idGroup = id
-        let role = "Member"
-        let status = privacity === "Open" ? "Aproved" : "Pending"
-        let avatar = userInformations.avatar
-        let username = user.username
-        let nickname = userInformations.nickname
-
-
-           createMemberGroup(
-                idAccount,
-                idGroup,
-                role,
-                status,
-                avatar,
-                username,
-                nickname
-        )
-
-
-    }
-
 
     return (
         <div className="listGroups">
@@ -56,30 +33,20 @@ function ListGroups() {
                              {groups.map((group) => {
                                  return(
                                     <div className="group-unic" key={group.id}>
+                                        <div className="cover">
                                     <img src={group.cover} alt="" className="cover"/>
+                                        </div>
                                     <img src={group.avatar} alt="" className="profile"/>
                                     <h4>{group.name}</h4>
                                     <h6>Grupo {group.privacity} / <ListMembersGroup idGroup={group.id}/> Membros</h6>
-                                    <button onClick={() => {handleCreateMemberGroup(group.id, group.privacity)}}>Entrar no grupo</button>
+                                    <Link to={`/group/${group.id}`}>Entrar no grupo</Link>
                                 </div>
                            
                                  )
                              })}
                                
                             </div>
-                                 <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
+
                          
         </div>
     )

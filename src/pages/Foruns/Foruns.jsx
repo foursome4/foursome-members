@@ -2,12 +2,8 @@ import { TopBar } from "../../components/TopBar/TopBar"
 import { FiPlusCircle} from 'react-icons/fi'
 import './foruns.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
-import { ListGroups } from "../../components/ListGroups/ListGroups"
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { useState } from "react"
-import { MyGroups } from "../../components/MyGroups/MyGroups"
-import { GroupsCreated } from "../../components/GroupsCreated/GroupsCreated"
-import { CreateGroups } from "../../components/CreateGroups/CreateGroups"
 import { ListForuns } from "../../components/ListForuns/ListForuns"
 import { MyForuns } from "../../components/MyForuns/MyForuns"
 import { CreateForum } from "../../components/CreateForum/CreateForum"
@@ -36,8 +32,8 @@ function Foruns() {
                 <div className="aside-group">
                     <div className="group">
                             <div className="group-selected">
-                                <button className={select === "All" ? "selected" : ""} onClick={handleAllGroups}>Todos Fóruns</button>
-                                <button className={select === "My" ? "selected" : ""} onClick={handleParticipate}>Meus grupos</button>
+                                <button className={select === "All" ? "selected" : ""} onClick={handleAllGroups}>Todos Foruns</button>
+                                <button className={select === "My" ? "selected" : ""} onClick={handleParticipate}>Meus Foruns</button>
                             </div>
                             <div className="group-buttons">
                                 <div className="group-create">
@@ -52,10 +48,7 @@ function Foruns() {
                             select === "Create" ?
                             <CreateForum /> : 
                             <div>
-                                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-                                <br /><br /><br /><br /><br />
-                               
+                              
                             </div>
                         }
 

@@ -5,7 +5,6 @@ import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { ListGroups } from "../../components/ListGroups/ListGroups"
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { useState } from "react"
-import { MyGroups } from "../../components/MyGroups/MyGroups"
 import { GroupsCreated } from "../../components/GroupsCreated/GroupsCreated"
 import { CreateGroups } from "../../components/CreateGroups/CreateGroups"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
@@ -17,9 +16,7 @@ function Groups() {
     function handleAllGroups() {
         setSelect("All")
     }
-    function handleMyGroups() {
-        setSelect("Participate")
-    }
+
     function handleParticipate() {
         setSelect("My")
     }
@@ -37,7 +34,6 @@ function Groups() {
                     <div className="group">
                             <div className="group-selected">
                                 <button className={select === "All" ? "selected" : ""} onClick={handleAllGroups}>Todos os Grupos</button>
-                                <button className={select === "Participate" ? "selected" : ""} onClick={handleMyGroups}>Grupos que participo</button>
                                 <button className={select === "My" ? "selected" : ""} onClick={handleParticipate}>Meus grupos</button>
                             </div>
                             <div className="group-buttons">
@@ -47,9 +43,7 @@ function Groups() {
                             </div>
 
                             {select === "All" ?
-                            <ListGroups />: 
-                            select === "Participate" ?
-                            <MyGroups /> :
+                            <ListGroups />:
                             select === "My" ?
                             <GroupsCreated /> : 
                             select === "Create" ?

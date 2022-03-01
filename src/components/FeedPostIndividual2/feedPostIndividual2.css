@@ -166,7 +166,10 @@
  
 
 .feedPostIndividual2 .posts-feed .feed-post .post-data p {
-    font-size: 18px;
+    color: var(--Gray_font);
+    font-size: 14px;
+    margin-left: 20px;
+    white-space: pre-line;
 }
 
 .feedPostIndividual2 .posts-feed .feed-post .reactions2-individual {

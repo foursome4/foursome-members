@@ -54,19 +54,16 @@
 .listForuns .foruns-all .foruns-unic .avatarImage img {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
+    border-radius: 6px;
 }
 
 .listForuns .foruns-all .foruns-unic .profile {
     width: 80px;
-    margin-top: -40px;
 }
 
-.listForuns .foruns-all .foruns-unic .members {
-    width: 120px;
-}
 
-.listForuns .foruns-all .foruns-unic button {
+
+.listForuns .foruns-all .foruns-unic .Deletar {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -78,7 +75,7 @@
     font-size: 14px;
     color: var(--White);
     font-weight: 500;
-    background-color: var(--Primary);
+    background-color: var(--Delete);
     margin-top: 5px;
 }
 .listForuns .foruns-all .foruns-unic a {

@@ -37,14 +37,12 @@ function ListReactions({idPost}) {
     return (
         <div className="reactionsList">
               <button className={myLike.length === 0 ? "" :"selected"} onClick={myLike.length === 0 ? handleLikePost : handleDeleteLike}>
-                  <FiThumbsUp />
-                    Curtir
-                  </button>
-            <h5>{like.length === 0 ? "" :
+                  <FiThumbsUp /> {like.length === 0 ? "" :
             <>
-            ({like.length})
+            {like.length}
             </>
-            }</h5>
+            }
+                  </button>
         </div>
     )
 }

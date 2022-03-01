@@ -1,9 +1,7 @@
 import './groupsCreated.css'
-import capaGrupo from '../../assets/images/capaGrupo.png'
-import perfilGrupo from '../../assets/images/perfilGrupo.png'
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
-import { ListMembersGroup } from '../ListMembersGroup/ListMembersGroup';
+import { Link } from 'react-router-dom';
 
 function GroupsCreated() {
     const Local = localStorage.getItem("foursome");
@@ -33,40 +31,20 @@ function GroupsCreated() {
              {myGroups.map((group) => {
                                     return(
                                         group.idAccount === user.id ?
-                                <div className="group-unic">
+                                <div className="group-unic" key={group.avatar}>
+                                    <div className="cover">
                                     <img src={group.avatar} alt="" className="cover"/>
+                                    </div>
                                     <img src={group.cover} alt="" className="profile"/>
                                     <h4>{group.name}</h4>
-                                    <h6>Grupo {group.privacity} / <ListMembersGroup idGroup={group.id}/> Membros</h6>
-                                    <button>Entrar no grupo</button>
+                                    <Link to={`/group/${group.id}`}>Entrar no grupo</Link>
                                     <button className='Deletar'>Deletar no grupo</button>
                                 </div>
                                      :
                                      ""
                                      )
                                 })}
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-
+                             
                             </div>
         </div>
     )

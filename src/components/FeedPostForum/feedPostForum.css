@@ -166,7 +166,10 @@
  
 
 .feedPostIndividual .posts-feed .feed-post .post-data p {
-    font-size: 18px;
+    color: var(--Gray_font);
+    font-size: 14px;
+    margin-left: 20px;
+    white-space: pre-line;
 }
 
 .feedPostIndividual .posts-feed .feed-post .reactions-individual {
@@ -184,21 +187,23 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: var(--Background2);
+    background-color: var(--Background);
     border: none;
     color: var(--Gray_font2);
-    font-size: 16px;
-    margin-left: 5px;
+    padding:10px 20px;
+    margin: 3px;
+    border-radius: 6px;
+    font-size: 14px;
 }
 
-.feedPostIndividual .posts-feed .feed-post .reactions-individual button svg {
-    margin-right: 5px;
+.feedPostIndividual .posts-feed .feed-post .reactions-individual .selected button {
+    padding:10px 5px;
 }
 
-.feedPostIndividual .posts-feed .feed-post .reactions-individual .selected{
-    color: var(--Primary);   
+.feedPostIndividual .posts-feed .feed-post .reactions-individual .selected svg{
+    font-size: 14px;
+    color: var(--Primary); 
 }
-
 .feedPostIndividual .posts-feed .feed-post .comment {
     width: 100%;
     display: flex;

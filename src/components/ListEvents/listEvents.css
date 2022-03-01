@@ -59,18 +59,19 @@
 }
 
 .listEvents .events-all .events-unic a {
+    text-decoration: none;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     padding: 5px;
-    border: none;
+    border: 1px solid var(--Primary);;
     border-radius: 20px;
     width: 100%;
     font-size: 14px;
-    color: var(--Background2);
+    color: var(--Primary);
     font-weight: 500;
-    background-color: var(--Primary);
+    background-color: var(--Background2);
     margin-top: 5px;
 }
 

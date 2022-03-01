@@ -42,7 +42,7 @@ function MyForuns() {
                                         </div>
                                     <h4>{forum.name}</h4>
                                     <Link to={`/forum/${forum.id}`}>Entrar</Link>
-                                    <button>Fechar</button>
+                                    <button className='Deletar'>Fechar</button>
                                 </div>
                            
                                  )

@@ -185,8 +185,9 @@
 
 .feedPost .posts-feed .feed-post .post-data p {
     color: var(--Gray_font);
-    font-weight: 500;
-    font-size: 18px;
+    font-size: 14px;
+    margin-left: 20px;
+    white-space: pre-line;
 }
 
 .feedPost .posts-feed .feed-post .reactions {
@@ -199,20 +200,30 @@
 }
 
 .feedPost .posts-feed .feed-post .reactions button {
-    background-color: var(--Background2);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--Background);
     border: none;
-    font-size: 15px;
     color: var(--Gray_font2);
-    padding: 0 10px;
-    
+    padding:10px 20px;
+    margin: 3px;
+    border-radius: 6px;
+    font-size: 14px;
 }
 
-.feedPost .posts-feed .feed-post .reactions button svg {
-    margin-right: 3px;
+
+
+.feedPost .posts-feed .feed-post .reactions .selected button{
+    padding:10px 5px;
 }
 
-.feedPost .posts-feed .feed-post .reactions .selected{
-    color: var(--Primary);   
+
+
+.feedPost .posts-feed .feed-post .reactions .selected svg{
+    font-size: 14px;
+    color: var(--Primary); 
 }
 
 .feed-post .comment {

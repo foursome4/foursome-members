@@ -7,13 +7,11 @@ import {FiCircle, FiLogOut} from 'react-icons/fi'
 
 function ChatSlim() {
 
-    const {socketDataLocation} = useContext(AuthContext)
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
 const [users, setUsers] = useState([])
  useEffect(() => {
-   socketDataLocation()
  }, [])
 
  socket.on("userOnline", (data) => {

@@ -272,8 +272,11 @@
 .content-profile .profile .main .section .sections .infos .info .name h6 {
     color: var(--Gray_font2);
 }
+.content-profile .profile .main .section .sections .infos .info .name h4 {
+    color: var(--Gray_font2);
+}
 
-.content-profile .profile .main .section .sections .infos .info .name a {
+.content-profile .profile .main .section .sections .infos .info .name h4 a {
     text-decoration: none;
     color: var(--Primary);
 }
@@ -365,6 +368,26 @@
     flex-direction: column;
     padding: 2px;
 }
+.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 2px;
+}
+
+
+.content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .title {
+    color: var(--Primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 0 3px;
+    font-weight: 600;
+}
+
 
 .content-profile .profile .main .section .sections .infos .info .info-user-preferences .informations .selects {
     width: 100%;

@@ -283,12 +283,12 @@ import { NewComment } from '../NewComment/NewComment';
                                         <ListReactions idPost={postsData.id} idAccount={idAccount.idAccount}/>
                                         <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
-                                            Comentar
+                                            
                                         </button>
                                         {postsData.idAccount === user.id ?
                                         <>
-                                            <button> <FiEdit /> Editar </button>
-                                            <button> <FiTrash2 /> Apagar </button>
+                                            <button> <FiEdit />  </button>
+                                            <button> <FiTrash2 />  </button>
                                             </>
                                         : ""}
                                     </div>

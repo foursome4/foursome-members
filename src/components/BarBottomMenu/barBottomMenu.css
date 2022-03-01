@@ -20,15 +20,15 @@ display: none;
     overflow-x: scroll;
     }
 
-   .content-toolbar2::-webkit-scrollbar {
+   .BarBottom::-webkit-scrollbar {
         width: 12px;              
       }
       
-     .content-toolbar2::-webkit-scrollbar-track {
+     .BarBottom::-webkit-scrollbar-track {
         background: var(--Background2);      
       }
       
-     .content-toolbar2::-webkit-scrollbar-thumb {
+     .BarBottom::-webkit-scrollbar-thumb {
         background-color: var(--Background-man);   
         border-radius: 20px;      
         border: 3px solid var(--Background2); 

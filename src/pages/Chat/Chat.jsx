@@ -32,7 +32,7 @@ function Chat() {
   const [text, setText] = useState('');
   const [link, setLink] = useState('');
   const [avatarUrl, setAvatarUrl] = useState(null);
-  const [imageAvatar, setImageAvatar] = useState('');
+  const [midiaAvatar, setMidiaAvatar] = useState('');
   const [loadding, setLoadding] = useState(false);
   const [click, setClick] = useState(false);
 
@@ -67,16 +67,16 @@ function Chat() {
     console.log(e.target.files[0])
 
    if(e.target.files[0]){
-       const image = e.target.files[0];
+       const midia = e.target.files[0];
 
-       if(image.type === 'image/jpeg' || image.type === 'image/jpg' || image.type === 'image/png') {
-           setImageAvatar(image);
+       if(midia.type === 'midia/jpeg' || midia.type === 'midia/jpg' || midia.type === 'midia/png') {
+           setMidiaAvatar(midia);
            setAvatarUrl(URL.createObjectURL(e.target.files[0]));
            console.log(avatarUrl);
-           handleUploadAccount(image)
+           handleUploadAccount(midia)
         } else {
-            console.log('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
-            setImageAvatar(null);
+            console.log('Tipo de arquivo não aceito. Envie uma midia dos tipos: .jpg, .jpeg, .png');
+            setMidiaAvatar(null);
             return null;
         }
     }
@@ -90,8 +90,8 @@ async function handleUploadAccount(img) {
   console.log(loadding);
   const uuid = uuidv4();
 
-  console.log(imageAvatar)
-  let newAvatarUrlFirebase = ref(storage, `images/image-chat/${uuid}`);
+  console.log(midiaAvatar)
+  let newAvatarUrlFirebase = ref(storage, `midias/midia-chat/${uuid}`);
   let uploadAvatar = await uploadBytes(newAvatarUrlFirebase, img);
   let photoUrlAvatar = await getDownloadURL(uploadAvatar.ref);
       
@@ -114,7 +114,7 @@ async function handleUploadAccount(img) {
     setListMessages([data, ...listMessages]);
     setText("");
     setAvatarUrl(null);
-    setImageAvatar('');
+    setMidiaAvatar('');
 
 }
   function handleNewMessage(e) {
@@ -142,11 +142,11 @@ async function handleUploadAccount(img) {
 
 
 function handlePressMessage() {
-  if(click === false) {
-    setClick(true)
-  } else {
-    setClick(false)
-  }
+  // if(click === false) {
+  //   setClick(true)
+  // } else {
+  //   setClick(false)
+  // }
 }
 
 
@@ -171,7 +171,8 @@ function handlePressMessage() {
                        <h5>{message.text}</h5>
                      {message.link !== "" ?
                        <div className="image">
-                                                                  <div className="mark">
+                            <img src={message.link} alt="" />
+                                            <div className="mark">
                                              <h5 className='black'>{user.id}</h5>
                                              <h5 className='white'>{user.id}</h5>
                                              <h5 className='black'>{user.id}</h5>
@@ -240,7 +241,7 @@ function handlePressMessage() {
                                              <h5 className='white'>{user.id}</h5>
                                              <h5 className='black'>{user.id}</h5>
                                          </div>
-                       <img src={message.link} alt="" />
+                    
                       </div>
                       : ""}
                     {click === true ?  message.idAccount === user.id ? <DeleteMessage _id={message._id} /> : "" :
@@ -262,6 +263,7 @@ function handlePressMessage() {
                        <p>{message.text}</p>
                      {message.link !== "" ?
                        <div className="image">
+                         <img src={message.link} alt="" />
                                                                   <div className="mark">
                                              <h5 className='black'>{user.id}</h5>
                                              <h5 className='white'>{user.id}</h5>
@@ -331,7 +333,7 @@ function handlePressMessage() {
                                              <h5 className='white'>{user.id}</h5>
                                              <h5 className='black'>{user.id}</h5>
                                          </div>
-                       <img src={message.link} alt="" />
+                       
                       </div>
                       : ""}
                       {click === true ?   message.idAccount === user.id ? <DeleteMessage _id={message._id} /> : "" :
@@ -350,7 +352,7 @@ function handlePressMessage() {
                             <input type="file" accept="image/*" onChange={handleFile}/><br />
                             <img src={avatarUrl === null ? profile : avatarUrl} alt="Avatar" height={45} width={45}/>
                         </label>
-                <textarea name="" id="" cols={10} rows={3} value={text} autoFocus  autoComplete='off' placeholder='Digite uma mensagem' onChange={(e) => setText(e.target.value)}></textarea>
+                <textarea name="" id=""  value={text} autoFocus  autoComplete='off' placeholder='Digite uma mensagem' onChange={(e) => setText(e.target.value)}></textarea>
                 <button className="button1" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}>Enviar <FiSend /></button>
                 <button className="button2" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}><FiSend /></button>
             </div>

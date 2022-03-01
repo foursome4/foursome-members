@@ -23,7 +23,6 @@ import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 
 
 function Profile() {
-  const {socketDataLocation} = useContext(AuthContext)
   const [dataUser, setDataUser] = useState(null)
   const Local = localStorage.getItem("foursome");
   const user = JSON.parse(Local);
@@ -113,8 +112,7 @@ function Profile() {
       searchPatron();
       loadFriends();
       loadFollowers();
-      socketDataLocation()
-    }, [socketDataLocation, user.id, user.patron]);
+    }, [user.id, user.patron]);
 
 
      function handleFeed() {
@@ -197,6 +195,7 @@ function Profile() {
     const videos = posts.filter(post => (post.type === "post-video"));
 
     const friendAproveds = myFriends.filter(friend => (friend.status === 'aproved'))
+    console.log(friendAproveds)
 
     const friendPending = myFriends.filter(friend => (friend.status === 'pending' && friend.idFriend === user.id))
     
@@ -431,7 +430,7 @@ function Profile() {
 
                     <div className="info-user-preferences">
                         <div className="informations">
-                            <h5 className='title'>Proposta</h5>
+                            <h5 className='title'>Preferências</h5>
                           <div className="selects">
                               <div className="itens">{preferences.men !== "" ? <h5><FiCheck /> {preferences.men}</h5> : "" }  </div>
                               <div className="itens"> {preferences.woman !== "" ? <h5><FiCheck /> {preferences.woman}</h5> : "" } </div>

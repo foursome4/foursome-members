@@ -105,7 +105,7 @@ function FeedComments({idPost}) {
                                         
                                     <div className={edit === true ? "edit" : "editHidden"}>
                                         {comments.idAccount === userData.id ? 
-                                         <EditComment data={comments.text}/>
+                                         <EditComment data={comments.text} id={comments.id}/>
                                          : ""
                                         }
                                     </div>

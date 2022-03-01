@@ -58,7 +58,7 @@
 
 .feedComments .feed-comment .comment-user .name-data .selected {
     color: var(--Primary) ;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .feedComments .feed-comment .comment-data {
@@ -69,7 +69,7 @@
 .feedComments .feed-comment .comment-data p {
     color: var(--Gray_font);
     margin-top: 3px;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .feedComments .feed-comment .reactions-comments {
@@ -167,7 +167,7 @@
     }
 
     .feedComments .feed-comment .comment-user h4{
-        font-size: 12px;
+        font-size: 13px;
     }
 
     .feedComments .feed-comment .comment-user .name-data {
@@ -180,7 +180,7 @@
     }
 
     .feedComments .feed-comment .reactions-comments button {
-  font-size: 14px;
+  font-size: 13px;
     }
 
     @media (max-width: 900px) {
@@ -201,7 +201,7 @@
 
         .feedComments .feed-comment .comment-user {
             width: 90%;
-            font-size: 12px;
+            font-size: 13px;
             }
             .feedComments .feed-comment .reactions-comments {
                 margin-top: 5px;
@@ -218,7 +218,7 @@
             align-items: center;
             justify-content: center;
             color: var(--Gray_font2);
-            font-size: 12px;
+            font-size: 13px;
         }
     }
     }

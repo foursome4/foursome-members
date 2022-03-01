@@ -46,11 +46,26 @@
     align-items: flex-start;
     justify-content: flex-start;
     padding: 20px 40px;
-    overflow-y: scroll;
+    overflow-x: scroll;
     overflow: auto;
     margin-top: 50px;
     background-color: var(--Background2);
 }
+
+.content .chat .main-chat .section-chat .messages::-webkit-scrollbar {
+    width: 12px;              
+  }
+  
+ .content .chat .main-chat .section-chat .messages::-webkit-scrollbar-track {
+    background: var(--Background2);      
+  }
+  
+ .content .chat .main-chat .section-chat .messages::-webkit-scrollbar-thumb {
+    background-color: var(--Background-man);   
+    border-radius: 20px;      
+    border: 3px solid var(--Background2); 
+  }
+
 
 .content .chat .main-chat .section-chat .messages .messages1 {
     width: 100%;
@@ -127,7 +142,6 @@
     border-radius: 8px;
     margin-bottom: 10px;
     max-width: 100%;
-    word-break: break-all;
     white-space: pre-line;
 }
 
@@ -144,7 +158,6 @@
     border-radius: 8px;
     margin-bottom: 10px;
     max-width: 100%;
-    word-break: break-all;
     white-space: pre-line;
 }
 
@@ -153,38 +166,38 @@
     border-radius: 6px;
     width: 250px;
     height: 250px;
-    object-fit: cover;
+    object-fit: contain;
 }
 .content .chat .main-chat .section-chat .messages .message-friend .data .image {
     margin-top: 5px;
     border-radius: 6px;
     width: 250px;
     height: 250px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 
 .content .chat .main-chat .section-chat .messages .my-message .data .image .mark{
     width: 250px;
     height: 250px;
-    position: absolute;
     object-fit: cover;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-top: -100%;
 }
 .content .chat .main-chat .section-chat .messages .message-friend .data .image .mark{
     width: 250px;
     height: 250px;
-    position: absolute;
     object-fit: cover;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-top: -100%;
 }
 
 .content .chat .main-chat .section-chat .messages .my-message .data .image .mark .black{
@@ -212,13 +225,14 @@
     width: 250px;
     height: 250px;
     border-radius: 6px;
-    object-fit: cover;
+    object-fit: contain;
 }
 .content .chat .main-chat .section-chat .messages .message-friend .data .image img {
     width: 250px;
     height: 250px;
     border-radius: 6px;
-    object-fit: cover;
+    object-fit: contain;
+
 }
 
 .content .chat .main-chat .section-chat .text {
@@ -241,8 +255,24 @@
     border-radius: 8px;
     margin-right: 10px;
     background-color: var(--Background2);
+    overflow-x: scroll;
     height: 45px;
 }
+
+.content .chat .main-chat .section-chat .text textarea::-webkit-scrollbar {
+    width: 12px;              
+  }
+  
+ .content .chat .main-chat .section-chat .text textarea::-webkit-scrollbar-track {
+    background: var(--Background2);      
+  }
+  
+ .content .chat .main-chat .section-chat .text textarea::-webkit-scrollbar-thumb {
+    background-color: var(--Background-man);   
+    border-radius: 20px;      
+    border: 3px solid var(--Background2); 
+  }
+
 
 .content .chat .main-chat .section-chat .text .button1 {
     width: 80px;

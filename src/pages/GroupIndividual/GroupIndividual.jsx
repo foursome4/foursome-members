@@ -16,7 +16,6 @@ import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 function GroupIndividual() {
   const {id} = useParams();
   console.log(id)
-  const {socketDataLocation} = useContext(AuthContext)
   const [dataUser, setDataUser] = useState(null)
   const Local = localStorage.getItem("foursome");
   const user = JSON.parse(Local);
@@ -71,8 +70,7 @@ function GroupIndividual() {
 
   loadMembers()
     loadGroups()
-    socketDataLocation()
-}, [socketDataLocation]);
+}, []);
 
 
      function handleFeed() {

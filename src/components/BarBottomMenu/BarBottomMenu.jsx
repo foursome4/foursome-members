@@ -1,12 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { FiCalendar, FiHome, FiList, FiRadio, FiTrendingUp, FiUserCheck, FiUsers, FiMapPin, FiMail, FiSmile, FiMenu } from "react-icons/fi"
+import { FiCalendar, FiHome, FiList, FiRadio, FiTrendingUp, FiUserCheck, FiUsers, FiMapPin, FiMail, FiSmile, FiMenu, FiInfo } from "react-icons/fi"
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/Auth";
 import { socket } from "../../services/websocket";
 import './barBottomMenu.css'
 
 function BarBottomMenu () {
-    const {socketDataLocation} = useContext(AuthContext)
     const LocalUser = localStorage.getItem("foursome");
     const userData = JSON.parse(LocalUser);
 
@@ -18,7 +17,6 @@ function BarBottomMenu () {
 
     const [users, setUsers] = useState([])
     useEffect(() => {
-    socketDataLocation()
     }, [])
 
  socket.on("userOnline", (data) => {
@@ -67,7 +65,11 @@ function BarBottomMenu () {
     }
     function handleRedirectProfile () {
         console.log("clicou");
-        navigate("/ptofile")
+        navigate("/profile")
+    }
+    function handleRedirectInfo () {
+        console.log("clicou");
+        navigate("/infos")
     }
     function handleOpenUsersOnline (e) {
         e.preventDefault()
@@ -99,12 +101,12 @@ function BarBottomMenu () {
                     </button>
                     </a>
           
-                    <a href="/messages" >
+                    {/* <a href="/messages" >
                     <button className="ButtonsUnic" onClick={handleRedirectChat}>
                         <FiMail size={20}/>
                        Recados
                     </button>
-                    </a>
+                    </a> */}
 
                     <a href="/ranking" >
                     <button className="ButtonsUnic" onClick={handleRedirectRanking}>
@@ -141,9 +143,14 @@ function BarBottomMenu () {
                     </button>
                     </a>
 
-                    <a href="/locals" >
+                    {/* <a href="/locals" >
                     <button className="ButtonsUnic" onClick={handleRedirectFriends}>
                         <FiMapPin size={20}/>Locais
+                    </button>
+                    </a> */}
+                    <a href="/infos" >
+                    <button className="ButtonsUnic" onClick={handleRedirectInfo}>
+                        <FiInfo size={20}/>Infos
                     </button>
                     </a>
                 </div>

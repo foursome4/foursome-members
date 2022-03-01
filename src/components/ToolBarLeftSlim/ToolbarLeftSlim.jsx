@@ -1,4 +1,4 @@
-import { FiCalendar, FiHome, FiList, FiRadio, FiTrendingUp, FiUserCheck, FiUsers, FiMapPin, FiMail } from "react-icons/fi"
+import { FiCalendar, FiHome, FiList, FiRadio, FiTrendingUp, FiUserCheck, FiUsers, FiMapPin, FiMail, FiInbox, FiInfo } from "react-icons/fi"
 import { useNavigate } from "react-router-dom";
 import avatarImg from '../../assets/images/avatar.png';
 import './toolbarLeftSlim.css'
@@ -49,18 +49,20 @@ function ToolbarLeftSlim () {
     }
     function handleRedirectProfile () {
         console.log("clicou");
-        navigate("/ptofile")
+        navigate("/profile")
+    }
+    function handleRedirectInfos () {
+        console.log("clicou");
+        navigate("/infos")
     }
 
     return (
         <div className="content-toolbar">
             <div className="ToolBarLeftSlim">
                 <div className="image">
-                <button className="profile">
                 <a href="/profile" >
                     <img src={userInformation !== null ? userInformation.avatar :avatarImg} alt="" />
                     </a>
-                </button>
                 </div>
                 <div className="tools">
 
@@ -76,12 +78,12 @@ function ToolbarLeftSlim () {
                     </button>
                     </a>
           
-                    <a href="/messages" >
+                    {/* <a href="/messages" >
                     <button className="toolIcon" onClick={handleRedirectChat}>
                         <FiMail size={20}/>
                        Recados
                     </button>
-                    </a>
+                    </a> */}
 
                     <a href="/ranking" >
                     <button className="toolIcon" onClick={handleRedirectRanking}>
@@ -117,10 +119,16 @@ function ToolbarLeftSlim () {
                        Radar
                     </button>
                     </a>
-
+{/* 
                     <a href="/locals" >
                     <button className="toolIcon" onClick={handleRedirectFriends}>
                         <FiMapPin size={20}/>Locais
+                    </button>
+                    </a> */}
+
+                    <a href="/infos" >
+                    <button className="toolIcon" onClick={handleRedirectInfos}>
+                        <FiInfo size={20}/>Infos
                     </button>
                     </a>
                 </div>

@@ -382,6 +382,24 @@ async function deletePost(id) {
         toast.error('Deu algo errado ao deletar!');
      }
 }
+async function editPost(id, text) {
+    console.log(id, text)
+        const res = await api.patch(`/posts/${id}`, {text});
+        if(res.status===201) {
+            toast.success('post editado com sucesso!');
+         } else {
+            toast.error('Deu algo errado ao deletar!');
+         }
+ }
+async function editComment(id, text) {
+    console.log(id, text)
+        const res = await api.patch(`/comments/${id}`, {text});
+        if(res.status===201) {
+            toast.success('comentário editado com sucesso!');
+         } else {
+            toast.error('Deu algo errado ao deletar!');
+         }
+ }
 
 async function deleteComment(id) {
     const res = await api.delete(`/comments/${id}`);
@@ -759,6 +777,8 @@ async function deleteGroup(id){
             deleteActualMessage,
             createForum,
             createEvents,
+            editPost,
+            editComment
 
         }}>
             {children}
