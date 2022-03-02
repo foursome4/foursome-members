@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { FaCircle } from "react-icons/fa";
 import { FiCalendar, FiHome, FiList, FiRadio, FiTrendingUp, FiUserCheck, FiUsers, FiMapPin, FiMail, FiSmile, FiMenu, FiInfo } from "react-icons/fi"
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/Auth";
@@ -166,7 +167,10 @@ function BarBottomMenu () {
                     user.idAccount === userData.id ? "" :
                <a href="" >
                 <div className="divUser" onClick={handleRedirectFeed} key={user.idAccount}>
-                      <img src={user.avatar} alt={user.idAccount} />
+                    <FaCircle />
+                    <div className="image">
+                     <img src={user.avatar} alt={user.idAccount} />
+                    </div>
                    </div>
                    </a>
                        )
