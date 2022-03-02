@@ -32,7 +32,7 @@ function Chat() {
   const [text, setText] = useState('');
   const [link, setLink] = useState('');
   const [avatarUrl, setAvatarUrl] = useState(null);
-  const [midiaAvatar, setMidiaAvatar] = useState('');
+  const [imageAvatar, setImageAvatar] = useState('');
   const [loadding, setLoadding] = useState(false);
   const [click, setClick] = useState(false);
 
@@ -67,16 +67,16 @@ function Chat() {
     console.log(e.target.files[0])
 
    if(e.target.files[0]){
-       const midia = e.target.files[0];
+       const image = e.target.files[0];
 
-       if(midia.type === 'midia/jpeg' || midia.type === 'midia/jpg' || midia.type === 'midia/png') {
-           setMidiaAvatar(midia);
+       if(image.type === 'image/jpeg' || image.type === 'image/jpg' || image.type === 'image/png') {
+           setImageAvatar(image);
            setAvatarUrl(URL.createObjectURL(e.target.files[0]));
            console.log(avatarUrl);
-           handleUploadAccount(midia)
+           handleUploadAccount(image)
         } else {
-            console.log('Tipo de arquivo não aceito. Envie uma midia dos tipos: .jpg, .jpeg, .png');
-            setMidiaAvatar(null);
+            console.log('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
+            setImageAvatar(null);
             return null;
         }
     }
@@ -90,8 +90,8 @@ async function handleUploadAccount(img) {
   console.log(loadding);
   const uuid = uuidv4();
 
-  console.log(midiaAvatar)
-  let newAvatarUrlFirebase = ref(storage, `midias/midia-chat/${uuid}`);
+  console.log(imageAvatar)
+  let newAvatarUrlFirebase = ref(storage, `images/image-chat/${uuid}`);
   let uploadAvatar = await uploadBytes(newAvatarUrlFirebase, img);
   let photoUrlAvatar = await getDownloadURL(uploadAvatar.ref);
       
@@ -114,7 +114,7 @@ async function handleUploadAccount(img) {
     setListMessages([data, ...listMessages]);
     setText("");
     setAvatarUrl(null);
-    setMidiaAvatar('');
+    setImageAvatar('');
 
 }
   function handleNewMessage(e) {
