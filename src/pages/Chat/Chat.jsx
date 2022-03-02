@@ -4,7 +4,7 @@ import { TopBar } from '../../components/TopBar/TopBar'
 import profile from '../../assets/images/profile.jpg';
 import './chat.css';
 import { useState, useEffect, useRef} from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { socket } from '../../services/websocket'
 import api from '../../services/api'
 import { FiSend, FiUpload } from 'react-icons/fi'
@@ -167,10 +167,13 @@ function handlePressMessage() {
                   <div className={message.idAccount === user.id ? "my-message" : "message-friend"} onClick={handlePressMessage}>
                   
                        <div className="data">
+                       <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>
                         <p><b>Eu</b></p>
+                        </Link>
                        <h5>{message.text}</h5>
                      {message.link !== "" ?
                        <div className="image">
+                    
                             <img src={message.link} alt="" />
                                             <div className="mark">
                                              <h5 className='black'>{user.id}</h5>
@@ -248,22 +251,30 @@ function handlePressMessage() {
                       ""}
                        </div>
                        <div className="avatar">                     
+                       <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>             
                       <img src={message.avatar} alt="" />
+                      </Link>  
                     </div>
                   </div>
                    </div>
                   :
                   <div className="messages1" key={message.id}>
                   <div className="message-friend">
-                  <div className="avatar">                     
+                  <div className="avatar">     
+                  <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>             
                       <img src={message.avatar} alt="" />
+                      </Link>   
                     </div>
                        <div className="data">
+                       <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>
                         <p><b>{message.nickname}</b></p>
+                       </Link>
                        <p>{message.text}</p>
                      {message.link !== "" ?
                        <div className="image">
-                         <img src={message.link} alt="" />
+                            <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>
+                            <img src={message.link} alt="" />
+                            </Link>
                                                                   <div className="mark">
                                              <h5 className='black'>{user.id}</h5>
                                              <h5 className='white'>{user.id}</h5>
