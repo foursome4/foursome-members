@@ -298,7 +298,7 @@
                     }
 
                     .topBar .links {
-                        width: 35%;
+                        width: 50%;
                     }
 
 
@@ -310,8 +310,8 @@
                         }
 
                         .topBar .links {
-                            width: 55%;
-                           padding: 10px 5px;
+                            width: 60%;
+                           padding: 10px 5px 10px 0 ;
                         }
 
                         .topBar .links .link {
@@ -336,8 +336,16 @@
                                display: none;
                             
                             }
+                        
+                            @media(max-width: 400px ) {
+                                .topBar .links .account {
+                                    display: none;
+                                }
+                            }
         
                     }
+
+                    
                 }
 
         }
