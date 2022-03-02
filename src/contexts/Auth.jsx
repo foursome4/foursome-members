@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import api from '../services/api';
 import { socket } from '../services/websocket';
-import apiGoogleReverse from '../services/apiGoogleDistance';
+import apiGoogleReverse from '../services/apiGoogleReverse';
 
 
 const AuthContext = createContext({});
@@ -668,73 +668,89 @@ async function deleteGroup(id){
 
 
     // Location
-    function socketDataLocation() {
-        function success(position) {
-            const latitude  = position.coords.latitude;
-            const longitude = position.coords.longitude;
-        
-            setlat(latitude)
-            setLong(longitude)
-       
-           reverseGeolocalization(latitude, longitude)
-       
-          }
-        
-          function error() {
-            console.log('Unable to retrieve your location');
-          }
-       
-          function getLocation() {
-           return window.navigator.geolocation.getCurrentPosition(success, error);
-            }
-       
-        async function reverseGeolocalization(lat, long) {
-            const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
-            setCity(address.data.results[0].address_components[3].long_name)
-
-            setUf(address.data.results[0].address_components[4].short_name)   
+ // Location
+ function socketDataLocation() {
+    function success(position) {
+        const latitude  = position.coords.latitude;
+        const longitude = position.coords.longitude;
+    
+        //console.log(latitude)
+        setlat(latitude)
+        //console.log(longitude)
+        setLong(longitude)
+   
+       reverseGeolocalization(latitude, longitude)
+   
+      }
+    
+      function error() {
+        console.log('Unable to retrieve your location');
+      }
+   
+      function getLocation() {
+       return window.navigator.geolocation.getCurrentPosition(success, error);
         }
-
-        const DataUser = localStorage.getItem("foursome");
-        const user = JSON.parse(DataUser);
-        const LocalInformation = localStorage.getItem("informations-foursome");
-        const userInformations = JSON.parse(LocalInformation);
-
-
-        function getInformations() {
-            
-            let equalCity = " "
-
-            if(city === userInformations.city && uf === userInformations.uf ) {
-            equalCity = true
-            } else {
-            equalCity = false
-            }
-
-            const data = {
-            idAccount: user === undefined ? "" : user.id,
-            username: user.username,
-            nickname: userInformations.nickname,
-            avatar: userInformations.avatar,
-            lat: lat.toString(),
-            long: long.toString(),
-            city,
-            uf,
-            equalCity: equalCity
-            }
-
-                if(data.idAccount && data.username && data.nickname && data.avatar && data.lat && data.long && data.city && data.uf !== "") {
-                    socket.emit("userOnline", data)
-                } else {
-                    console.log("Imformações imcompletas")
-                }
-
-        }
-
-        getLocation()
-        getInformations()
+   
+    async function reverseGeolocalization(lat, long) {
+        const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
+        //console.log("Cidade")
+        setCity(address.data.results[0].address_components[3].long_name)
+        //console.log(address.data.results[0].address_components[3].long_name)
+        //console.log("UF")
+        setUf(address.data.results[0].address_components[4].short_name)
+        //console.log(address.data.results[0].address_components[4].short_name)    
     }
 
+    const DataUser = localStorage.getItem("foursome");
+    const user = JSON.parse(DataUser);
+    //console.log(user);
+    const LocalInformation = localStorage.getItem("informations-foursome");
+    const userInformations = JSON.parse(LocalInformation);
+    //console.log(userInformations);
+
+
+    function getInformations() {
+        // console.log({
+        //     idAccount: user.id,
+        //     username: user.username,
+        //     nickname: userInformations.nickname,
+        //     avatar: userInformations.avatar,
+        //     lat,
+        //     long
+        // })
+
+        
+        let equalCity = " "
+
+        if(city === userInformations.city && uf === userInformations.uf ) {
+        equalCity = true
+        } else {
+        equalCity = false
+        }
+
+        const data = {
+        idAccount: user === undefined ? "" : user.id,
+        username: user.username,
+        nickname: userInformations.nickname,
+        avatar: userInformations.avatar,
+        lat: lat.toString(),
+        long: long.toString(),
+        city,
+        uf,
+        equalCity: equalCity
+        }
+
+            if(data.idAccount && data.username && data.nickname && data.avatar && data.lat && data.long && data.city && data.uf !== "") {
+                socket.emit("userOnline", data)
+            } else {
+                console.log("Imformações imcompletas")
+            }
+
+    }
+
+    getLocation()
+    getInformations()
+}
 
 
 

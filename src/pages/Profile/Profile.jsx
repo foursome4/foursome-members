@@ -23,6 +23,7 @@ import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 
 
 function Profile() {
+  const {socketDataLocation} = useContext(AuthContext)
   const [dataUser, setDataUser] = useState(null)
   const Local = localStorage.getItem("foursome");
   const user = JSON.parse(Local);
@@ -112,7 +113,8 @@ function Profile() {
       searchPatron();
       loadFriends();
       loadFollowers();
-    }, [user.id, user.patron]);
+      socketDataLocation()
+    }, [socketDataLocation, user.id, user.patron]);
 
 
      function handleFeed() {

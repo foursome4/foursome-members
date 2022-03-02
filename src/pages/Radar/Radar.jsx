@@ -8,7 +8,7 @@ import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../contexts/Auth"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
-import apiGoogleReverse from "../../services/apiGoogleReverse copy"
+import apiGoogleReverse from "../../services/apiGoogleReverse"
 
 function Radar() {
     const {socketDataLocation} = useContext(AuthContext)
@@ -68,8 +68,9 @@ const [users, setUsers] = useState([])
                         
 
 async function reverseGeolocalization(lat1, long1, lat2, long2) {
-    const address = await apiGoogleReverse.get(`json?origins=${lat1},${long1}&destinations=${lat2},${long2}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
-    console.log(address)
+    const Distance = await apiGoogleReverse.get(`json?origins=${lat1},${long1}&destinations=${lat2},${long2}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
+    console.log("Distance")
+    console.log(Distance)
 }
 
 reverseGeolocalization(user.lat, user.long, lat1, long1)
