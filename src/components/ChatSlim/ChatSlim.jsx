@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/Auth'
 import { socket } from '../../services/websocket'
 import {FiCircle, FiLogOut} from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import { FaCircle } from 'react-icons/fa'
 
 function ChatSlim() {
 
@@ -32,7 +33,7 @@ const [users, setUsers] = useState([])
                 return (
                     user.idAccount === userData.id ? "" :
                     <div className="chat-avatar" key={user.id}>
-                        <FiCircle />
+                        <FaCircle />
                         <Link to={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>
                     <img src={user.avatar} alt="" />
                     </Link>

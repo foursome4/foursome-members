@@ -1,4 +1,4 @@
-.content {
+.content-Login {
     width: 80%;
     height: 100%;
     display: flex;
@@ -6,7 +6,7 @@
     justify-content: center;
 }
 
-.content .signUp {
+.content-Login .signUp {
     width: 100%;
     display: flex;
     align-items: flex-start;
@@ -15,7 +15,7 @@
     flex-wrap: wrap;
 }
 
-.content .signUp .form {
+.content-Login .signUp .form {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@
    
 }
 
-.content .signUp .form .title {
+.content-Login .signUp .form .title {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -35,19 +35,19 @@
     margin-bottom: 10px;
 }
 
-.content .signUp .form input:focus{
+.content-Login .signUp .form input:focus{
     outline: none;
   }
 
-  .content .signUp .form option:focus{
+  .content-Login .signUp .form option:focus{
     outline: none;
   }
-  .content .signUp .form select:focus{
+  .content-Login .signUp .form select:focus{
     outline: none;
   }
 
 
-.content .signUp .form input {
+.content-Login .signUp .form input {
     width: 70%;
     height: 30px;
     border: none;
@@ -61,7 +61,7 @@
     font-weight: bold;
 }
 
-.content .signUp .form select {
+.content-Login .signUp .form select {
     width: 70%;
     height: 30px;
     border: none;
@@ -76,7 +76,7 @@
 
 }
 
-.content .signUp .form option {
+.content-Login .signUp .form option {
     width: 70%;
     border: none;
     border-bottom: 1px solid #fff;
@@ -87,23 +87,23 @@
 
 }
 
-.content .signUp .form input::placeholder {
+.content-Login .signUp .form input::placeholder {
     color: var(--Gray_font1);
 }
 
-.content .signUp .form .inputPassword {
+.content-Login .signUp .form .inputPassword {
     width: 70%;
     height: 35px;
     display: flex;
     
     }
     
-    .content .signUp .form .inputPassword input {
+    .content-Login .signUp .form .inputPassword input {
         width: 100%;
         border-radius: 6px 0 0 6px;
     }
     
-    .content .signUp .form .password {
+    .content-Login .signUp .form .password {
         background-color: var(--Background2);
         height: 30px;
         width: 50px;
@@ -115,7 +115,7 @@
     
 
 
-.content .signUp .form .buttons {
+.content-Login .signUp .form .buttons {
     width: 70%;
     display: flex;
     align-items: flex-start;
@@ -123,7 +123,7 @@
     margin-top: 20px;
 }
 
-.content .signUp .form .buttons button {
+.content-Login .signUp .form .buttons button {
     background-color: var(--Button);
     width: 100px;
     height: 35PX;
@@ -133,7 +133,7 @@
     color: #fff;
 }
 
-.content .signUp .form .terms {
+.content-Login .signUp .form .terms {
     width: 70%;
     display: flex;
     flex-direction: row;
@@ -143,12 +143,12 @@
     margin-top: 10px;
 }
 
-.content .signUp .form .terms .pointer{
+.content-Login .signUp .form .terms .pointer{
   cursor: pointer;
   margin-left: 3px;
 }
 
-.content .signUp .form .terms input[type="checkbox"] {
+.content-Login .signUp .form .terms input[type="checkbox"] {
     margin-left: 5px;
     margin-right: 10px;
     color: var(--Primary);
@@ -156,7 +156,7 @@
 }
 
 
-.content .signUp .logo {
+.content-Login .signUp .logo {
     width: 50%;
     display: flex;
     align-items: center;
@@ -166,23 +166,23 @@
     text-align: center;
 }
 
-.content .signUp .logo img{
+.content-Login .signUp .logo img{
     width: 40%;
     margin-bottom: 20px;
 }
 
-.content .signUp .footer {
+.content-Login .signUp .footer {
     position: absolute;
     bottom: 0;
 }
-.content .signUp .footer img{
+.content-Login .signUp .footer img{
     width: 70px;
     margin-bottom: 20px;
 }
 
 
 @media (max-width: 800px) {
-    .content .signUp {
+    .content-Login .signUp {
         width: 100%;
         display: flex;
         align-items: center;
@@ -191,7 +191,7 @@
         flex-wrap: wrap;
     }
 
-    .content .signUp .logo {
+    .content-Login .signUp .logo {
         width: 80%;
         display: flex;
         align-items: center;
@@ -201,7 +201,7 @@
         text-align: center;
     }
 
-    .content .signUp .form {
+    .content-Login .signUp .form {
         width: 80%;
         display: flex;
         flex-direction: column;
@@ -211,16 +211,16 @@
        margin-top: 30px;
     }
 
-    .content .signUp .logo img{
+    .content-Login .signUp .logo img{
         width: 50%;
         margin-bottom: 20px;
     }
 
-    .content .signUp .footer {
+    .content-Login .signUp .footer {
         position: relative;
         bottom: 0;
     }
-    .content .signUp .footer img{
+    .content-Login .signUp .footer img{
         margin-top: 40px;
         width: 70px;
         margin-bottom: 20px;
@@ -228,7 +228,7 @@
     
 
     @media (max-width: 500px) {
-        .content .signUp {
+        .content-Login .signUp {
             width: 100%;
             display: flex;
             align-items: center;
@@ -237,7 +237,7 @@
             flex-wrap: wrap;
         }
     
-        .content .signUp .logo {
+        .content-Login .signUp .logo {
             width: 80%;
             display: flex;
             align-items: center;
@@ -247,7 +247,7 @@
             text-align: center;
         }
     
-        .content .signUp .form {
+        .content-Login .signUp .form {
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -257,7 +257,7 @@
            margin-top: 30px;
         }
 
-        .content .signUp .logo img{
+        .content-Login .signUp .logo img{
             width: 60%;
             margin-bottom: 20px;
         }

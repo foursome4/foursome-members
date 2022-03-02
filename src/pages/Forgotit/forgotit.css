@@ -1,11 +1,11 @@
-.content {
+.content-Login {
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.content .signIn {
+.content-Login .signIn {
     width: 100%;
     display: flex;
     align-items: center;
@@ -14,7 +14,7 @@
 }
 
 
-.content .signIn .form {
+.content-Login .signIn .form {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@
     justify-content: center;
 }
 
-.content .signIn .form .title {
+.content-Login .signIn .form .title {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -32,11 +32,11 @@
     margin-bottom: 10px;
 }
 
-.content .signIn .form input:focus {
+.content-Login .signIn .form input:focus {
     outline: none;
   }
 
-.content .signIn .form input {
+.content-Login .signIn .form input {
     width: 70%;
     border: none;
     border-bottom: 1px solid #fff;
@@ -47,11 +47,11 @@
 
 }
 
-.content .signIn .form input::placeholder {
+.content-Login .signIn .form input::placeholder {
     color: rgba(255, 255, 255, 0.44);
 }
 
-.content .signIn .form .buttons {
+.content-Login .signIn .form .buttons {
     width: 70%;
     display: flex;
     align-items: flex-start;
@@ -59,7 +59,7 @@
     margin-top: 20px;
 }
 
-.content .signIn .form .buttons button {
+.content-Login .signIn .form .buttons button {
     background-color: darkturquoise;
     width: 100px;
     height: 35PX;
@@ -69,7 +69,7 @@
     color: #fff;
 }
 
-.content .signIn .form .recuperation {
+.content-Login .signIn .form .recuperation {
     margin-top: 10px;
     display: flex;
     flex-direction: row;
@@ -78,12 +78,12 @@
     width: 70%;
 }
 
-.content .signIn .form .recuperation p {
+.content-Login .signIn .form .recuperation p {
     font-weight: bold;
     color: #fff;
 }
 
-.content .signIn .logo {
+.content-Login .signIn .logo {
     width: 50%;
     display: flex;
     align-items: center;
@@ -92,19 +92,19 @@
     color: var(--White);
 }
 
-.content .signIn .logo img{
+.content-Login .signIn .logo img{
     width: 50%;
     margin-bottom: 20px;
 }
 
-.content .signIn .logo .emoj {
+.content-Login .signIn .logo .emoj {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
 }
 
-.content .signIn .logo .emoj img{
+.content-Login .signIn .logo .emoj img{
         width: 12%;
         margin-top: 20px;
 }

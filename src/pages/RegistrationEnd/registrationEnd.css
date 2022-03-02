@@ -1,4 +1,4 @@
-.content {
+.content-Login {
     width: 90%;
     height: 90%;
     display: flex;
@@ -6,7 +6,7 @@
     justify-content: center;
 }
 
-.content .registrationEnd {
+.content-Login .registrationEnd {
     width: 80%;
     height: 80%;
     display: flex;
@@ -18,28 +18,28 @@
     color: var(--White);
 }
 
-.content .registrationEnd img {
+.content-Login .registrationEnd img {
     width: 250px;
 }
 
-.content .registrationEnd h2 {
+.content-Login .registrationEnd h2 {
     font-weight: 900;
     margin: 20px 0;
 }
 
-.content .registrationEnd h3 {
+.content-Login .registrationEnd h3 {
     font-weight: 700;
     margin: 0 0 10px 0;
 }
 
-.content .registrationEnd .orientations {
+.content-Login .registrationEnd .orientations {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
 }
 
-.content .registrationEnd .orientations h4 {
+.content-Login .registrationEnd .orientations h4 {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -47,11 +47,11 @@
     margin-top: 5px;
 }
 
-.content .registrationEnd .orientations h4 svg {
+.content-Login .registrationEnd .orientations h4 svg {
     margin-right: 5px;
 }
 
-.content .registrationEnd button {
+.content-Login .registrationEnd button {
     width: 150px;
     padding: 10px 5px;
     font-size: 14px;

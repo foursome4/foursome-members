@@ -16,7 +16,7 @@ function Forgotit() {
   }
 
   return (
-    <div className="content">
+    <div className="content-Login">
       <div className="signIn">
       <div className="logo">
         <img src={logoImg} alt="Logo Foursome" />

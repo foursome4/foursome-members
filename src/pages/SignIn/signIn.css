@@ -1,4 +1,4 @@
-.content {
+.content-Login {
     width: 80%;
     height: 100%;
     display: flex;
@@ -6,7 +6,7 @@
     justify-content: center;
 }
 
-.content .signIn {
+.content-Login .signIn {
     width: 100%;
     display: flex;
     align-items: center;
@@ -14,7 +14,7 @@
     flex-direction: column;
 }
 
-.content .signIn h1 {
+.content-Login .signIn h1 {
     margin-top: 25px;
     font-weight: 700;
     color: var(--White);
@@ -22,7 +22,7 @@
 }
 
 
-.content .signIn .form {
+.content-Login .signIn .form {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -32,11 +32,11 @@
 }
 
 
-.content .signIn .form input:focus {
+.content-Login .signIn .form input:focus {
     outline: none;
   }
 
-.content .signIn .form input {
+.content-Login .signIn .form input {
     width: 70%;
     height: 50px;
     border: none;
@@ -54,23 +54,23 @@
     font-weight: 600;
 }
 
-.content .signIn .form input::placeholder {
+.content-Login .signIn .form input::placeholder {
     color: var(--Gray_font1);
 }
 
-.content .signIn .form .inputPassword {
+.content-Login .signIn .form .inputPassword {
 width: 70%;
 height: 50px;
 display: flex;
 
 }
 
-.content .signIn .form .inputPassword input {
+.content-Login .signIn .form .inputPassword input {
     width: 100%;
     border-radius: 6px 0 0 6px;
 }
 
-.content .signIn .form .password {
+.content-Login .signIn .form .password {
     background-color: var(--Background2);
     height: 50px;
     width: 50px;
@@ -80,7 +80,7 @@ display: flex;
     color: var(--Primary);
 }
 
-.content .signIn .form .buttons {
+.content-Login .signIn .form .buttons {
     width: 70%;
     display: flex;
     align-items: center;
@@ -88,7 +88,7 @@ display: flex;
     margin-top: 5px;
 }
 
-.content .signIn .form .buttons button {
+.content-Login .signIn .form .buttons button {
     background-color: var(--Button);
     width: 100px;
     height: 35PX;
@@ -98,16 +98,16 @@ display: flex;
     color: #fff;
 }
 
-.content .signIn .form .buttons p {
+.content-Login .signIn .form .buttons p {
     font-weight: bold;
     color: #fff;
 }
 
-.content .signIn .form .buttons a {
+.content-Login .signIn .form .buttons a {
     text-decoration: none;
 }
 
-.content .signIn .logo {
+.content-Login .signIn .logo {
     width: 50%;
     display: flex;
     align-items: center;
@@ -116,39 +116,39 @@ display: flex;
     color: var(--White);
 }
 
-.content .signIn .logo img{
+.content-Login .signIn .logo img{
     width: 35%;
     margin-bottom: 10px;
 }
-.content .signIn .footer {
+.content-Login .signIn .footer {
     position: relative;
     bottom: 0;
     margin-top: 150px;
 }
-.content .signIn .footer img{
+.content-Login .signIn .footer img{
     width: 70px;
     margin-bottom: px;
 }
 
 @media (max-width: 1024px) {
 
-    .content .signIn .form {
+    .content-Login .signIn .form {
         width: 50%;
     }
 
-    .content .signIn .form input {
+    .content-Login .signIn .form input {
         width: 100%;
     }
 
-    .content .signIn .form .inputPassword {
+    .content-Login .signIn .form .inputPassword {
         width: 100%;
     }
 
-    .content .signIn .form .buttons {
+    .content-Login .signIn .form .buttons {
         width: 100%;
     }
 
-    .content .signIn .logo img{
+    .content-Login .signIn .logo img{
         width: 45%;
     }
 
@@ -156,69 +156,69 @@ display: flex;
 
 
 
-        .content .signIn .form {
+        .content-Login .signIn .form {
             width: 70%;
         }
     
-        .content .signIn .form input {
+        .content-Login .signIn .form input {
             width: 100%;
         }
 
-        .content .signIn .form .inputPassword {
+        .content-Login .signIn .form .inputPassword {
             width: 100%;
         }
 
-        .content .signIn .logo img{
+        .content-Login .signIn .logo img{
             width: 50%;
         }
 
         @media (max-width: 700px) {
 
 
-            .content .signIn .form {
+            .content-Login .signIn .form {
                 width: 70%;
             }
         
-            .content .signIn .form input {
+            .content-Login .signIn .form input {
                 width: 100%;
             }
 
-            .content .signIn .form .inputPassword {
+            .content-Login .signIn .form .inputPassword {
                 width: 100%;
             }
-            .content .signIn .logo img{
+            .content-Login .signIn .logo img{
                 width: 70%;
             }
 
             @media (max-width: 500px) {
 
 
-                .content .signIn .form {
+                .content-Login .signIn .form {
                     width: 70%;
                 }
             
-                .content .signIn .form input {
+                .content-Login .signIn .form input {
                     width: 100%;
                 }
 
-                .content .signIn .form .inputPassword {
+                .content-Login .signIn .form .inputPassword {
                     width: 100%;
                 }
-                .content .signIn .logo img{
+                .content-Login .signIn .logo img{
                     width: 80%;
                 }
 
                 
-                .content .signIn .form .buttons p {
+                .content-Login .signIn .form .buttons p {
                     text-align: right;
                 }
 
-                .content .signIn .footer {
+                .content-Login .signIn .footer {
                     position: relative;
                     bottom: 0;
                     margin-top: 180px;
                 }
-                .content .signIn .footer img{
+                .content-Login .signIn .footer img{
                     width: 70px;
                     margin-bottom: 20px;
                 }
@@ -226,27 +226,27 @@ display: flex;
 
                 @media (max-width: 400px) {
 
-                    .content .signIn .form {
+                    .content-Login .signIn .form {
                         width: 70%;
                     }
                 
-                    .content .signIn .form input {
+                    .content-Login .signIn .form input {
                         width: 100%;
                         font-size: 14px;
                     }
 
-                    .content .signIn .form .inputPassword {
+                    .content-Login .signIn .form .inputPassword {
                         width: 100%;
                     }
-                    .content .signIn .form .inputPassword input {
+                    .content-Login .signIn .form .inputPassword input {
                         width: 100%;
                         font-size: 14px;
                     }
-                    .content .signIn .logo img{
+                    .content-Login .signIn .logo img{
                         width: 100%;
                     }
 
-                    .content .signIn .form .buttons p {
+                    .content-Login .signIn .form .buttons p {
                         margin-left: 10px;
                         font-size: 12px;
                         text-align: right;
@@ -255,15 +255,15 @@ display: flex;
                     @media (max-width: 350px) {
 
 
-                        .content .signIn .form input {
+                        .content-Login .signIn .form input {
                             font-size: 14px;
                         }
 
-                        .content .signIn .form .inputPassword {
+                        .content-Login .signIn .form .inputPassword {
                             width: 100%;
                             font-size: 14px;
                         }
-                        .content .signIn .form .buttons p {
+                        .content-Login .signIn .form .buttons p {
                             margin-left: 30px;
                             font-size: 12px;
                         }

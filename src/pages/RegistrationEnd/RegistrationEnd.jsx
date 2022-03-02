@@ -8,7 +8,7 @@ import { FiCheckCircle } from 'react-icons/fi'
 function RegistrationEnd() {
     const {logout} = useContext(AuthContext)
     return (
-        <div className="content">
+        <div className="content-Login">
             <div className="registrationEnd">
                 <div className="title">
                     <img src={logo} alt="" />

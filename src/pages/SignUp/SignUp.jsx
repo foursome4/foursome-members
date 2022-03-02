@@ -108,7 +108,7 @@ function SignUp() {
   Modal.setAppElement('#root');
 
   return (
-    <div className="content">
+    <div className="content-Login">
       <div className="signUp">
         <div className="logo">
         <img src={logoImg} alt="Logo Foursome" />
