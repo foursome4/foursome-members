@@ -37,7 +37,7 @@ function GroupsCreated() {
                                     </div>
                                     <img src={group.cover} alt="" className="profile"/>
                                     <h4>{group.name}</h4>
-                                    <Link to={`/group/${group.id}`}>Entrar no grupo</Link>
+                                    <a href={`/group/${group.id}`}>Entrar no grupo</a>
                                     <button className='Deletar'>Deletar no grupo</button>
                                 </div>
                                      :

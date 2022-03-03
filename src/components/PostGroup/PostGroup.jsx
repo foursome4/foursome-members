@@ -88,8 +88,6 @@ function PostGroup({nameGroup, idGroup}) {
             newPost({
                 idAccount: user.id,
                 link: photoUrlAvatar !== null ? photoUrlAvatar : "",
-                avatar: userInformation.avatar,
-                nickname: userInformation.nickname,
                 username: user.username,
                 nameGroup: nameGroup,
                 nameForum: "",
@@ -129,8 +127,6 @@ function PostGroup({nameGroup, idGroup}) {
             newPost({
                 idAccount: user.id,
                 link: "",
-                avatar: userInformation.avatar,
-                nickname: userInformation.nickname,
                 username: user.username,
                 nameGroup: nameGroup,
                 nameForum: "",

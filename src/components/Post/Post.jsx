@@ -87,8 +87,6 @@ function Post() {
             newPost({
                 idAccount: user.id,
                 link: photoUrlAvatar !== null ? photoUrlAvatar : "",
-                avatar: userInformation.avatar,
-                nickname: userInformation.nickname,
                 username: user.username,
                 nameGroup: "",
                 nameForum: "",
@@ -111,8 +109,6 @@ function Post() {
                 newPost({
                     idAccount: user.id,
                     link: videoUrl !== null ? videoUrl : "",
-                    avatar: userInformation.avatar,
-                    nickname: userInformation.nickname,
                     username: user.username,
                     nameGroup: "",
                     nameForum: "",
@@ -128,8 +124,6 @@ function Post() {
             newPost({
                 idAccount: user.id,
                 link: "",
-                avatar: userInformation.avatar,
-                nickname: userInformation.nickname,
                 username: user.username,
                 nameGroup: "",
                 nameForum: "",

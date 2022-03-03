@@ -27,14 +27,14 @@ function UsersSearch({id, username}) {
     return (
        <div className="item">
            <div className="image">
-           <Link to={`/profile-friend/${id}`}>
+           <a href={`/profile-friend/${id}`}>
            <img src={avatar} alt="" />
-           </Link>
+           </a>
            </div>
            <div className="name">
-             <Link to={`/profile-friend/${id}`}>
+             <a href={`/profile-friend/${id}`}>
            <h3>{nickname}</h3>
-           </Link>
+           </a>
            <h5>{id} - {username}</h5>
            </div>
        </div>

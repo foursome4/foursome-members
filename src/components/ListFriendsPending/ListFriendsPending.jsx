@@ -1,7 +1,6 @@
 import './listFriendsPending.css'
 import { useContext, useEffect, useState } from 'react'
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/Auth';
 
 

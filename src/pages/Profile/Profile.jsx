@@ -426,7 +426,7 @@ function Profile() {
                     <div className="name">
                      
                         <br />
-                        <h4>Patrono: {patron !== null ?  <Link to={patron.id === user.id ? `/profile` : `/profile-friend/${patron.id}`}>{patron.username}</Link> :"Patrono não eocnotrado"}</h4>
+                        <h4>Patrono: {patron !== null ?  <a href={patron.id === user.id ? `/profile` : `/profile-friend/${patron.id}`}>{patron.username}</a> :"Patrono não eocnotrado"}</h4>
                         <br />
                     </div>
 

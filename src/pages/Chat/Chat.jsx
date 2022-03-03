@@ -251,9 +251,9 @@ function handlePressMessage() {
                       ""}
                        </div>
                        <div className="avatar">                     
-                       <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>             
+                       <a href={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>             
                       <img src={message.avatar} alt="" />
-                      </Link>  
+                      </a>  
                     </div>
                   </div>
                    </div>
@@ -261,21 +261,19 @@ function handlePressMessage() {
                   <div className="messages1" key={message.id}>
                   <div className="message-friend">
                   <div className="avatar">     
-                  <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>             
+                  <a href={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>             
                       <img src={message.avatar} alt="" />
-                      </Link>   
+                      </a>   
                     </div>
                        <div className="data">
-                       <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>
+                       <a href={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>
                         <p><b>{message.nickname}</b></p>
-                       </Link>
+                       </a>
                        <p>{message.text}</p>
                      {message.link !== "" ?
                        <div className="image">
-                            <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>
                             <img src={message.link} alt="" />
-                            </Link>
-                                                                  <div className="mark">
+                                        <div className="mark">
                                              <h5 className='black'>{user.id}</h5>
                                              <h5 className='white'>{user.id}</h5>
                                              <h5 className='black'>{user.id}</h5>

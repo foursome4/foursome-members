@@ -22,8 +22,6 @@ function PostText({nameForum, idForum}) {
             newPost({
                 idAccount: user.id,
                 link: "",
-                avatar: userInformation.avatar,
-                nickname: userInformation.nickname,
                 username: user.username,
                 nameGroup: "",
                 nameForum: nameForum,

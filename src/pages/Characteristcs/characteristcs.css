@@ -1,4 +1,4 @@
-.content {
+.content-Login {
     width: 90%;
     height: 90%;
     display: flex;
@@ -6,7 +6,7 @@
     justify-content: center;
 }
 
-.content .registration2 {
+.content-Login .registration2 {
     width: 80%;
     height: 80%;
     display: flex;

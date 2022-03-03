@@ -1,4 +1,4 @@
-.characteristcsForm {
+.content-Login {
     width: 100%;
     height: 100%;
     display: flex;
@@ -8,7 +8,7 @@
     padding: 20px;
 }
 
-.characteristcsForm .title {
+.content-Login .title {
     width: 90%;
     display: flex;
     flex-direction: row;
@@ -17,12 +17,12 @@
     color: var(--White);
 }
 
-.characteristcsForm .title img {
+.content-Login .title img {
     width: 150px;
 }
 
 
-.characteristcsForm form{
+.content-Login form{
     height: 90%;
     display: flex;
     flex-direction: column;
@@ -31,7 +31,7 @@
 }
 
 
-.characteristcsForm form .data {
+.content-Login form .data {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -40,13 +40,13 @@
     padding-left: 20px ;
 }
 
-.characteristcsForm form .data .data-form span {
+.content-Login form .data .data-form span {
     color: var(--White);
     font-weight: 600;
 }
 
 
-.characteristcsForm form .data input {
+.content-Login form .data input {
     width: 48%;
     font-size: 14px;
     padding: 5px;
@@ -58,7 +58,7 @@
     margin: 4px;
 }
 
-.characteristcsForm form .data select {
+.content-Login form .data select {
     width: 48%;
     font-size: 14px;
     padding: 5px;
@@ -70,19 +70,20 @@
     margin: 4px;
 }
 
-.characteristcsForm form .data input::placeholder {
+.content-Login form .data input::placeholder {
     color: var(--White);
 }
 
-.characteristcsForm form .confirmation {
+.content-Login form .confirmation {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: 90%;
+    color: var(--White);
 }
 
-.characteristcsForm form .confirmation button {
+.content-Login form .confirmation button {
     width: 150px;
     padding: 10px 5px;
     font-size: 14px;
@@ -92,7 +93,7 @@
     color: var(--Primary);
 }
 
-.characteristcsForm form .confirmation .confirmation_characteristcsForm {
+.content-Login form .confirmation .confirmation_content-Login {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -100,17 +101,17 @@
     color: var(--White);
 }
 
-.characteristcsForm form .confirmation .confirmation_characteristcsForm span {
+.content-Login form .confirmation .confirmation_content-Login span {
     margin-left: 10px;
 }
 
 
 @media (max-width: 700px) {
-    .characteristcsForm {
+    .content-Login {
         padding: 2px;
     }
 
-    .characteristcsForm form{
+    .content-Login form{
         height: 90%;
         display: flex;
         flex-direction: column;
@@ -118,7 +119,7 @@
         justify-content: center;
     }
 
-    .characteristcsForm form .data {
+    .content-Login form .data {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -126,16 +127,16 @@
         margin-bottom: 20px;
     }
 
-    .characteristcsForm form .data input {
+    .content-Login form .data input {
         width: 95%;
     }
     
-    .characteristcsForm form .data select {
+    .content-Login form .data select {
         width: 95%;
     }
 
     @media (max-width: 700px) {
-        .characteristcsForm form .confirmation {
+        .content-Login form .confirmation {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -144,11 +145,11 @@
             margin-top: 10px;
         }
         
-        .characteristcsForm form .confirmation button {
+        .content-Login form .confirmation button {
            margin-top: 20px;
         }
 
-        .characteristcsForm .title {
+        .content-Login .title {
             width: 90%;
             display: flex;
             flex-direction: column;
@@ -157,7 +158,7 @@
             color: var(--White);
         }
         
-        .characteristcsForm .title img {
+        .content-Login .title img {
             width: 150px;
             margin-bottom: 20px;
         }

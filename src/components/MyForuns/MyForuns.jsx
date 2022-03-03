@@ -1,8 +1,6 @@
 import './myForuns.css'
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
-import { ListGroupUnic } from '../ListGroupUnic/ListGroupUnic';
-import { Link } from 'react-router-dom';
 
 function MyForuns() {
     const Local = localStorage.getItem("foursome");
@@ -41,7 +39,7 @@ function MyForuns() {
                                     <img src={forum.avatar} alt="" className="profile"/>
                                         </div>
                                     <h4>{forum.name}</h4>
-                                    <Link to={`/forum/${forum.id}`}>Entrar</Link>
+                                    <a href={`/forum/${forum.id}`}>Entrar</a>
                                     <button className='Deletar'>Fechar</button>
                                 </div>
                            

@@ -32,7 +32,7 @@ function ListEvents() {
                                     <img src={event.avatar} alt="" className="profile"/>
                                     <h4>{event.name}</h4>
 
-                                    <Link to={`/event/${event.id}`}>Saber mais</Link>
+                                    <a a={`/event/${event.id}`}>Saber mais</a>
                                 </div>
                            
                                  )

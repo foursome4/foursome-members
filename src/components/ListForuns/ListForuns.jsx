@@ -1,7 +1,6 @@
 import './listForuns.css'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
-import { Link } from 'react-router-dom';
 
 function ListForuns() {
 
@@ -31,7 +30,7 @@ function ListForuns() {
                                         </div>
                                     <img src={forum.avatar} alt="" className="profile"/>
                                     <h4>{forum.name}</h4>
-                                    <Link to={`/forum/${forum.id}`}>Entrar</Link>
+                                    <a href={`/forum/${forum.id}`}>Entrar</a>
                                 </div>
                            
                                  )

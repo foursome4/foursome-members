@@ -69,7 +69,7 @@ function Ranking() {
                                           <div className="image">
                                              <img src={photos.avatar} alt="" className="profile"/>
                                           </div>                                       
-                                             <h5><Link to={`profile-friend/${photos.idAccount}`}>{photos.nickname}</Link></h5>
+                                             <h5><a href={`profile-friend/${photos.idAccount}`}>{photos.nickname}</a></h5>
                                           </div>
                                           <div className="post">
                                           <img src={photos.link} alt="" />
@@ -90,7 +90,7 @@ function Ranking() {
                                       <div className="image">
                                          <img src={videos.avatar} alt="" className="profile"/>
                                       </div>                                       
-                                         <h5><Link to={`profile-friend/${videos.idAccount}`}>{videos.nickname}</Link></h5>
+                                         <h5><a href={`profile-friend/${videos.idAccount}`}>{videos.nickname}</a></h5>
                                       </div>
                                       <div className="post">
                                       <video controls controlsList="nofullscreen nodownload" >
