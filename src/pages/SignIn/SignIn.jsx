@@ -1,16 +1,26 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import logoImg from '../../assets/images/logo.png'
 import codingIt from '../../assets/images/Coding.it.png'
 import { AuthContext } from '../../contexts/Auth';
 import { FiEye, FiEyeOff} from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
+
 
 import './signIn.css';
 
 function SignIn() {
+
   const  {loginSession} = useContext(AuthContext)
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [passwordView, setPasswordView] = useState(false)
+  const navigate = useNavigate();
+
+  useEffect(() => {
+      if(localStorage.getItem("foursome") !== null) {
+        navigate("/feed")
+      }
+  })
 
 
   function handleCreateAccount(e) {

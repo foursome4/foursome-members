@@ -1,6 +1,7 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import logoImg from '../../assets/images/logo.png'
 import { AuthContext } from '../../contexts/Auth';
+import { useNavigate } from 'react-router-dom';
 
 import './forgotit.css';
 
@@ -9,6 +10,15 @@ function Forgotit() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   // const number = "21971684632"
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+      if(localStorage.getItem("foursome") !== null) {
+        navigate("/feed")
+      }
+  })
+
 
   function handleCreateAccount(e) {
     e.preventDefault();

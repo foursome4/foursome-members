@@ -1,7 +1,8 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import logoImg from '../../assets/images/logo.png'
 import { AuthContext } from '../../contexts/Auth';
 import { useParams } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import codingIt from '../../assets/images/Coding.it.png'
 import './signUp.css';
 import { toast } from 'react-toastify';
@@ -22,6 +23,16 @@ function SignUp() {
   const [checked, setChecked] = useState(false);
 
   const [isOpenModal, setIsOpenModal] = useState(false);
+
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+      if(localStorage.getItem("foursome") !== null) {
+        navigate("/feed")
+      }
+  })
+
 
   function handleCreateAccount(e) {
     e.preventDefault();
