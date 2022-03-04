@@ -5,7 +5,6 @@ import avatarImg from '../../assets/images/avatar.png'
 import './topBar.css'
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
-import { Link } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import Modal from 'react-modal'
 import api from '../../services/api'
@@ -21,6 +20,7 @@ function TopBar() {
 
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [isOpenModalSearch, setIsOpenModalSearch] = useState(false);
+    const [isOpenModalFriend, setIsOpenModalFriend] = useState(false);
 
     const [rooms, setRooms] = useState([])
     const [rooms2, setRooms2] = useState([])
@@ -91,6 +91,16 @@ function TopBar() {
       function handleCloseModalSearch() {
         setIsOpenModalSearch(false)
       }
+    function handleOpenModalFriend() {
+        setIsOpenModalFriend(true)
+      }
+    function handleFriends() {
+        handleOpenModalFriend()
+      }
+    
+      function handleCloseModalFriend() {
+        setIsOpenModalFriend(false)
+      }
 
       function handleSearch() {
         handleOpenModalSearch()
@@ -107,34 +117,34 @@ function TopBar() {
     return (
         <div className="topBar">
             <div className="logo">
-                <Link to="/feed">
+                <a href="/feed">
                 <img src={logoFoursome} alt="" />
-                </Link>
+                </a>
             </div>
             <div className="logo2">
-                  <Link to="/feed">
+                  <a href="/feed">
                 <img src={logoFoursomemini} alt="" />
-                </Link>
+                </a>
             </div>
             <div className="search" onClick={handleSearch}>
                 <FiSearch />
                <p>Pesquisar</p>
             </div>
             <div className="links">
-                <Link to="/invite">
+                <a href="/invite">
                 <div className="link" data-tip data-for='Convidar'>
                     <FiUserPlus />
                 </div>
-                </ Link>
+                </ a>
                 <ReactTooltip id='Convidar' place="bottom" type="dark" effect="solid">
                      <span>Convidar</span>
                 </ReactTooltip>
 
 
-                <div className="link" data-tip data-for='Notificações'>
+                <div className="link" onClick={handleFriends} data-tip data-for='Notificações'>
                     <FiBell />
                 </div>
-                <ReactTooltip id='Notificações' place="bottom" type="dark" effect="solid">
+                <ReactTooltip id='Notificações'  place="bottom" type="dark" effect="solid">
                      <span>Notificações</span>
                 </ReactTooltip>
 
@@ -162,20 +172,20 @@ function TopBar() {
                      <span>Sair</span>
                 </ReactTooltip>
                 <div className="account">
-                    <Link to="/profile">
+                    <a href="/profile">
                         <div className="avatar">
                     <img src={userInformation !== null ? userInformation.avatar : avatarImg} alt="" />
                     </div>
-                    </Link>
-                    <Link to="/profile">
+                    </a>
+                    <a href="/profile">
                     <h4>@{user !== null ? user.username : "Usuário não encontrado"}</h4>
-                    </Link>
+                    </a>
                 </div>
-                <Link to="/invite">
+                <a href="/invite">
                 <div className="link" data-tip data-for='Informações'>
                     <FiInfo />
                 </div>
-                </ Link>
+                </a>
                 <ReactTooltip id='Informações' place="bottom" type="dark" effect="solid">
                      <span>Informações</span>
                 </ReactTooltip>
@@ -258,6 +268,27 @@ function TopBar() {
             </div>
             <div className="buttons-modal">
             <button className="butont-White" onClick={handleCloseModalSearch}>Cancelar</button>
+            </div>
+            </div>
+            </Modal>
+
+            <Modal isOpen={isOpenModalFriend} onRequestClose={handleCloseModalFriend}
+            overlayClassName="react-modal-overlay"
+            className="react-modal-content">
+            <button type="button" className="react-modal-button" onClick={handleCloseModalFriend}>
+            <FiX /> 
+            </button>
+            <div className="content-modal">
+            <h3>Notificações</h3>
+        
+            <div className="search">          
+            </div>
+            
+            <div className="itensModalFriend">
+           
+            </div>
+            <div className="buttons-modal">
+            <button className="butont-White" onClick={handleCloseModalFriend}>Cancelar</button>
             </div>
             </div>
             </Modal>

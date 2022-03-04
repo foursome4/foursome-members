@@ -39,10 +39,8 @@ function MyEvents() {
                                         <div className="avatarImage">
                                     <img src={event.avatar} alt="" className="profile"/>
                                         </div>
-                                        <Link to={`/event/${event.id}`}>
                                     <h4>{event.name}</h4>
-                                    </Link>
-                                    <Link to={`/event/${event.id}`}>Entrar</Link>
+                                    <a href={`/event/${event.id}`}>Entrar</a>
                                     <button>Fechar</button>
                                 </div>
                            

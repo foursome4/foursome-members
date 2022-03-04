@@ -1,17 +1,9 @@
 import './listGroupUnic.css'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import api from '../../services/api'
-import { AuthContext } from '../../contexts/Auth'
 import { ListMembersGroup } from '../ListMembersGroup/ListMembersGroup';
-import { Link } from 'react-router-dom';
 
 function ListGroupUnic({id}) {
-    const {createMemberGroup}= useContext(AuthContext);
-    const Local = localStorage.getItem("foursome");
-    const user = JSON.parse(Local)
-    const LocalInformations = localStorage.getItem("informations-foursome");
-    const userInformations= JSON.parse(LocalInformations);
-
     const [avatar, setAvatar] = useState();
     const [cover, setCover] = useState();
     const [name, setName] = useState();
@@ -47,7 +39,7 @@ function ListGroupUnic({id}) {
                                    <div className="group-unic" >
                                         <img src={cover} alt="" className="cover"/>
                                         <img src={avatar} alt="" className="profile"/>
-                                       <Link  to={`/group/${id}`}><h4>{name}</h4></Link> 
+                                       <a  href={`/group/${id}`}><h4>{name}</h4></a> 
                                         <h6>Grupo {privacity} / <ListMembersGroup idGroup={id}/> Membros</h6>
                                         <button>Sair</button>
                                         </div>        

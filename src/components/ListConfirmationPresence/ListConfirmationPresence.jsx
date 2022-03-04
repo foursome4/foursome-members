@@ -3,11 +3,6 @@ import { useEffect, useState } from 'react'
 import api from '../../services/api'
 
 function ListConfirmationPresence({idGroup}) {
-    const Local = localStorage.getItem("foursome");
-    const user = JSON.parse(Local)
-    const LocalInformations = localStorage.getItem("informations-foursome");
-    const userInformations= JSON.parse(LocalInformations);
-
     const [members, setMembers] = useState();
   
 

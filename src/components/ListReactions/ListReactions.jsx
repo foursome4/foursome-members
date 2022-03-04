@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react"
 import {FiThumbsUp } from 'react-icons/fi'
 import { AuthContext } from "../../contexts/Auth";
 import api from "../../services/api"
-import {toast} from 'react-toastify';
 import "./listReactions.css"
 
 

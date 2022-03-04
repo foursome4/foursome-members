@@ -3,7 +3,7 @@ import './characteristcs.css'
 
 function Characteristcs() {
     return (
-        <div className="content">
+        <div className="content-Login">
             <div className="registration2">
                 <CharacteristcsForm />
             </div>

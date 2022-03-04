@@ -167,10 +167,10 @@ function AuthProvider({children}) {
 
 
     async function updateCharacteristcs({idAccount, data,
-        sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes}) {
+        sex, sign, sexualOption}) {
             setLoading(true)
             await api.post("/characteristics", {
-                idAccount, birthDate: data, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes
+                idAccount, birthDate: data, sex, sign, sexualOption
             }).then(async (result) => {
                 console.log("updateCharacteristcs ok");
                 navigate("/preferences");
@@ -183,16 +183,15 @@ function AuthProvider({children}) {
 
 
     async function updateCharacteristcs2({idAccount, data,
-        sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes,
-        data2, sex2, sign2, sexualOption2, education2, heigth2, weight2, physique2, ethnicity2, eyes2, hair2, tattos2, smokes2,}) {
+        sex, sign, sexualOption, data2, sex2, sign2, sexualOption2}) {
             setLoading(true)
             await api.post("/characteristics", {
-                idAccount, birthDate: data, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes
+                idAccount, birthDate: data, sex, sign, sexualOption
             }).then(async (result) => {
                 console.log(result.data)
                 console.log("updateCharacteristcs2 ok");
                 await api.post("/characteristics",  {
-                    idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2, education:education2, heigth: heigth2, weight: weight2, physique:physique2, ethnicity:ethnicity2, eyes:eyes2, hair:hair2, tatoos:tattos2, smokes:smokes2,
+                    idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2
                 }).then(async (result) => {
                     console.log(result.data)
                     console.log("updateCharacteristcs2 ok");
@@ -212,23 +211,21 @@ function AuthProvider({children}) {
 
 
     async function updateCharacteristcs3({idAccount, data,
-        sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes,
-        data2, sex2, sign2, sexualOption2, education2, heigth2, weight2, physique2, ethnicity2, eyes2, hair2, tattos2, smokes2,
-        data3, sex3, sign3, sexualOption3, education3, heigth3, weight3, physique3, ethnicity3, eyes3, hair3, tattos3, smokes3}) {
+        sex, sign, sexualOption, data2, sex2, sign2, sexualOption2, data3, sex3, sign3, sexualOption3 }) {
             setLoading(true)
             await api.post("/characteristics", {
-                idAccount: idAccount, birthDate: data, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes
+                idAccount: idAccount, birthDate: data, sex, sign, sexualOption
             }).then(async (result) => {
                 console.log(result.data)
                 console.log("updateCharacteristcs3 ok");
                 await api.post("/characteristics",  {
-                    idAccount: idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2, education:education2, heigth: heigth2, weight: weight2, physique:physique2, ethnicity:ethnicity2, eyes:eyes2, hair:hair2, tatoos: tattos2, smokes:smokes2,
+                    idAccount: idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2
                 }).then(async (result) => {
                     console.log(result.data)
                     console.log("updateCharacteristcs3 ok");
             
                     await api.post("/characteristics", {
-                        idAccount: idAccount, birthDate: data3, sex:sex3, sign:sign3, sexualOption: sexualOption3, education:education3, heigth: heigth3, weight: weight3, physique:physique3, ethnicity:ethnicity3, eyes:eyes3, hair:hair3, tatoos: tattos3, smokes:smokes3,
+                        idAccount: idAccount, birthDate: data3, sex:sex3, sign:sign3, sexualOption: sexualOption3
                     }).then(async (result) => {
                         console.log(result.data)
                         console.log("updateCharacteristcs3 ok");
@@ -249,14 +246,12 @@ function AuthProvider({children}) {
 }
 
 
-async function newUpdateCharacteristcs({id, birthDate,
-    sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes}) {
+async function newUpdateCharacteristcs({id, birthDate, sex, sign, sexualOption}) {
         setLoading(true)
-       console.log({id, birthDate,
-        sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes})
+       console.log({id, birthDate, sex, sign, sexualOption})
 
         await api.patch(`/characteristics/${id}`,
-        {birthDate: birthDate, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes})
+        {birthDate: birthDate, sex, sign, sexualOption})
         .then((result) => {
             console.log("updateCharacteristcs ok");
             window.location.reload(false)
@@ -268,17 +263,15 @@ async function newUpdateCharacteristcs({id, birthDate,
 
 
 
-async function newUpdateCharacteristcs2({id, birthDate,
-    sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes,
-    id2, birthDate2, sex2, sign2, sexualOption2, education2, heigth2, weight2, physique2, ethnicity2, eyes2, hair2, tattos2, smokes2,}) {
+async function newUpdateCharacteristcs2({id, birthDate, sex, sign, sexualOption, id2, birthDate2, sex2, sign2, sexualOption2}) {
         setLoading(true)
         await api.patch(`/characteristics/${id}`, {
-            birthDate: birthDate, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes
+            birthDate: birthDate, sex, sign, sexualOption
         }).then(async (result) => {
             console.log(result.data)
             console.log("updateCharacteristcs2 ok");
             await api.patch(`/characteristics/${id2}`,  {
-                birthDate: birthDate2, sex:sex2, sign:sign2, sexualOption: sexualOption2, education:education2, heigth: heigth2, weight: weight2, physique:physique2, ethnicity:ethnicity2, eyes:eyes2, hair:hair2, tatoos:tattos2, smokes:smokes2,
+                birthDate: birthDate2, sex:sex2, sign:sign2, sexualOption: sexualOption2
             }).then(async (result) => {
                 console.log(result.data)
                 console.log("updateCharacteristcs2 ok");
@@ -298,23 +291,21 @@ async function newUpdateCharacteristcs2({id, birthDate,
 
 
 async function newUpdateCharacteristcs3({id, birthDate,
-    sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes,
-    id2, birthDate2, sex2, sign2, sexualOption2, education2, heigth2, weight2, physique2, ethnicity2, eyes2, hair2, tattos2, smokes2,
-    id3, birthDate3, sex3, sign3, sexualOption3, education3, heigth3, weight3, physique3, ethnicity3, eyes3, hair3, tattos3, smokes3}) {
+    sex, sign, sexualOption, id2, birthDate2, sex2, sign2, sexualOption2, id3, birthDate3, sex3, sign3, sexualOption3}) {
         setLoading(true)
         await api.patch(`/characteristics/${id}`, {
-            birthDate: birthDate, sex, sign, sexualOption, education, heigth, weight, physique, ethnicity, eyes, hair, tattos, smokes
+            birthDate: birthDate, sex, sign, sexualOption
         }).then(async (result) => {
             console.log(result.data)
             console.log("updateCharacteristcs3 ok");
             await api.patch(`/characteristics/${id2}`,  {
-                birthDate: birthDate2, sex:sex2, sign:sign2, sexualOption: sexualOption2, education:education2, heigth: heigth2, weight: weight2, physique:physique2, ethnicity:ethnicity2, eyes:eyes2, hair:hair2, tatoos: tattos2, smokes:smokes2,
+                birthDate: birthDate2, sex:sex2, sign:sign2, sexualOption: sexualOption2
             }).then(async (result) => {
                 console.log(result.data)
                 console.log("updateCharacteristcs3 ok");
         
                 await api.patch(`/characteristics/${id3}`, {
-                    birthDate: birthDate3, sex:sex3, sign:sign3, sexualOption: sexualOption3, education:education3, heigth: heigth3, weight: weight3, physique:physique3, ethnicity:ethnicity3, eyes:eyes3, hair:hair3, tatoos: tattos3, smokes:smokes3,
+                    birthDate: birthDate3, sex:sex3, sign:sign3, sexualOption: sexualOption3
                 }).then(async (result) => {
                     console.log(result.data)
                     console.log("updateCharacteristcs3 ok");

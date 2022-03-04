@@ -3,11 +3,10 @@ import { TopBar } from '../../components/TopBar/TopBar'
 import {FiHome, FiMoreVertical, FiUser} from 'react-icons/fi'
 import './groupIndividual.css'
 
-import {useContext, useEffect, useState } from 'react'
+import {useEffect, useState } from 'react'
 import api from '../../services/api'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
-import { Link, useParams } from 'react-router-dom'
-import { AuthContext } from '../../contexts/Auth'
+import { useParams } from 'react-router-dom'
 import { PostGroup } from '../../components/PostGroup/PostGroup'
 import { FeedPostGroup } from '../../components/FeedPostGroup/FeedPostGroup'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
@@ -16,14 +15,6 @@ import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 function GroupIndividual() {
   const {id} = useParams();
   console.log(id)
-  const [dataUser, setDataUser] = useState(null)
-  const Local = localStorage.getItem("foursome");
-  const user = JSON.parse(Local);
-  const LocalInformations = localStorage.getItem("informations-foursome");
-  const userInformations = JSON.parse(LocalInformations);
-
-
-
 
   const [feed, setFeed] = useState("feed");
   const [friend, setFriend] = useState("");

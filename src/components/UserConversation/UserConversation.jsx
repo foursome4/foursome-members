@@ -25,13 +25,13 @@ function UserConversation({idAccount, room}) {
     return (
        <div className="item">
            <div className="image">
-           <Link to={`/chat/${room}`}>
+           <a href={`/chat/${room}`}>
            <img src={avatar} alt="" />
-           </Link>
+           </a>
            </div>
-           <Link to={`/chat/${room}`}>
+           <a href={`/chat/${room}`}>
            <h3>Eu & {nickname}</h3>
-           </Link>
+           </a>
        </div>
     ) 
 }
