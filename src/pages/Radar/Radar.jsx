@@ -11,7 +11,6 @@ import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import apiGoogleReverse from "../../services/apiGoogleReverse"
 
 function Radar() {
-    const {socketDataLocation} = useContext(AuthContext)
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
@@ -20,7 +19,6 @@ function Radar() {
 
 const [users, setUsers] = useState([])
  useEffect(() => {
-   socketDataLocation()
 
    socket.on("userOnline", (data) => {
        console.log("data")
@@ -36,7 +34,7 @@ const [users, setUsers] = useState([])
         setLong(myLocation[0].long)
       })
       
- }, [socketDataLocation])
+ }, [])
 
 
 

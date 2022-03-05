@@ -10,6 +10,7 @@ import Modal from 'react-modal'
 import api from '../../services/api'
 import { UserConversation } from '../UserConversation/UserConversation'
 import { UsersSearch } from '../UsersSearch/UsersSearch'
+import { socket } from '../../services/websocket'
 
 function TopBar() {
     const {logout} = useContext(AuthContext);
@@ -60,15 +61,19 @@ function TopBar() {
           loadAccounts()
           loadRoomIdAccount()
           loadRoomIDFriend()
+
     }, [])
 
-    const newRooms = rooms.concat(rooms2)
+
+
+
+  const newRooms = rooms.concat(rooms2)
   const SearchUsers = accounts.filter((account) => account.username.startsWith(search))
   const SearchUsersId = accounts.filter((account) => account.id.startsWith(searchId))
 
     function Tologout(e) {
         e.preventDefault();
-        logout()
+        logout(user.id)
     }
 
     function handleOpenModal() {
@@ -110,6 +115,25 @@ function TopBar() {
       function handleSelectTypeSearch(e) {
         setType(e.target.value)
     }
+
+
+    //Deslogandop após tempo de inatividade
+    function inactivityTime() {
+        let time;
+        // reset timer
+        window.onload = resetTimer;
+        document.onmousemove = resetTimer;
+        document.onkeydown = resetTimer;
+        function doSomething() {
+            logout(user.id)
+        }
+        function resetTimer() {
+            clearTimeout(time);
+            time = setTimeout(doSomething, 2000000)
+        }
+    }
+
+    inactivityTime()
 
 
 

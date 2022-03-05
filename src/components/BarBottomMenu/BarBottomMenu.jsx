@@ -18,11 +18,11 @@ function BarBottomMenu () {
 
     const [users, setUsers] = useState([])
     useEffect(() => {
+        socket.on("userOnline", (data) => {
+           setUsers(data)
+       })
     }, [])
 
- socket.on("userOnline", (data) => {
-    setUsers(data)
-})
 
 
 

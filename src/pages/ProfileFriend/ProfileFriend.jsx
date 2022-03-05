@@ -24,7 +24,7 @@ import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 
 function ProfileFriend() {
   const navigate = useNavigate()
-  const {socketDataLocation, newFriend, newFollower, deleteFriend, deleteFollower} = useContext(AuthContext)
+  const {newFriend, newFollower, deleteFriend, deleteFollower} = useContext(AuthContext)
   const Local = localStorage.getItem("foursome");
   const myUser = JSON.parse(Local);
   const {id} = useParams();
@@ -140,8 +140,7 @@ function ProfileFriend() {
     loadCharacteristcs()
     loadPreferences()
     loadRoom()
-    socketDataLocation()
-  }, [socketDataLocation, myUser.id, id]);
+  }, [myUser.id, id]);
 
 
  function handleChat() {

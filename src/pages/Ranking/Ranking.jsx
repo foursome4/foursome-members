@@ -4,7 +4,6 @@ import './ranking.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import { useEffect, useState } from "react"
 import api from "../../services/api"
-import { Link } from "react-router-dom"
 import { CountReactions } from "../../components/CountReactions/CountReactions"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 

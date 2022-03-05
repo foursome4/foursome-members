@@ -33,9 +33,7 @@ function AuthProvider({children}) {
         if(storageUser) {
             setUser(JSON.parse(storageUser));
             setLoading(false);
-            socket.on("connection", () => {
-                console.log("Conexão estabelecida")
-            })
+       
         }
         setLoading(false);
         }      
@@ -647,9 +645,10 @@ async function deleteGroup(id){
 
 
 
-    function logout() {
+    async function logout(idAccount) {
         localStorage.removeItem("foursome");
         localStorage.removeItem("informations-foursome");
+        await api.delete(`/online/${idAccount}`)
         setUser(null);
         navigate("/");
 
@@ -694,23 +693,12 @@ async function deleteGroup(id){
 
     const DataUser = localStorage.getItem("foursome");
     const user = JSON.parse(DataUser);
-    //console.log(user);
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformations = JSON.parse(LocalInformation);
-    //console.log(userInformations);
 
 
-    function getInformations() {
-        // console.log({
-        //     idAccount: user.id,
-        //     username: user.username,
-        //     nickname: userInformations.nickname,
-        //     avatar: userInformations.avatar,
-        //     lat,
-        //     long
-        // })
-
-        
+    async function getInformations() {
+       
         let equalCity = " "
 
         if(city === userInformations.city && uf === userInformations.uf ) {
@@ -731,10 +719,15 @@ async function deleteGroup(id){
         equalCity: equalCity
         }
 
-            if(data.idAccount && data.username && data.nickname && data.avatar && data.lat && data.long && data.city && data.uf !== "") {
-                socket.emit("userOnline", data)
+        
+        if(data.idAccount && data.username && data.nickname && data.avatar && data.lat && data.long && data.city && data.uf !== "") {
+                socket.on("connection", () => {
+                    console.log("Conexão estabelecida")
+                })
+                await api.post("/online", data)
+                // socket.emit("userOnline", data)
             } else {
-                console.log("Imformações imcompletas")
+                console.log("Imformações não coletadas com sucesso!")
             }
 
     }

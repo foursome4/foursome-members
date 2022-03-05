@@ -1,26 +1,25 @@
 
 import './chatSlim.css'
-import { useContext, useEffect, useState } from 'react'
-import { AuthContext } from '../../contexts/Auth'
-import { socket } from '../../services/websocket'
-import {FiCircle, FiLogOut} from 'react-icons/fi'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import {FiLogOut} from 'react-icons/fi'
 import { FaCircle } from 'react-icons/fa'
+import api from '../../services/api'
 
 function ChatSlim() {
-
-    const {socketDataLocation} = useContext(AuthContext)
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
 const [users, setUsers] = useState([])
- useEffect(() => {
-   socketDataLocation()
- }, [])
 
- socket.on("userOnline", (data) => {
-    setUsers(data)
-})
+useEffect(() => {
+    async function loadUsersONline() {
+        await api.get("/online").then((res) => {
+            setUsers(res.data)
+        })
+    }
+
+    loadUsersONline()
+}, [users])
 
      
     return (
