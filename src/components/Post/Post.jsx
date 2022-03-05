@@ -1,4 +1,4 @@
-import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiSend, FiUpload, FiRefreshCcw} from 'react-icons/fi'
+import { FiImage, FiVideo, FiMenu, FiSend, FiUpload, FiRefreshCcw} from 'react-icons/fi'
 import './post.css';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
@@ -22,7 +22,6 @@ function Post() {
     const [videoAvatar, setVideoAvatar] = useState(''); 
     const [post, setPost] = useState("text");
     const [text, setText] = useState("");
-    const [type, setType] = useState("");
       
     
     
@@ -147,20 +146,17 @@ function Post() {
         
         
         
-        function postText() {
+    function postText() {
             setPost("text")
-        setType("post-text")
     }
 
     function postPhoto(){
         setPost("photo")
-        setType("post-photo")
         setText("")
     }
     
     function postVideo(){
         setPost("video")
-        setType("post-video")
         setText("")
     }
 

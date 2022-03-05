@@ -22,7 +22,6 @@ function CreateEvents() {
     const [coverUrl, setCoverUrl] = useState(null);
     const [imageAvatar, setImageAvatar] = useState("");
     const [imageCover, setImageCover] = useState("");
-    const [loadding, setLoadding] = useState(false);
     
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
@@ -47,9 +46,8 @@ function CreateEvents() {
            if(image.type === 'image/jpeg' || image.type === 'image/jpg' || image.type === 'image/png') {
                setImageAvatar(image);
                setAvatarUrl(URL.createObjectURL(e.target.files[0]));
-               console.log(avatarUrl);
             } else {
-                console.log('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
+                window.alert('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
                 setImageAvatar(null);
                 return null;
             }
@@ -59,16 +57,14 @@ function CreateEvents() {
     
     function handleFileCover(e) {
         console.log(e.target.files[0])
-        console.log(loadding);
 
        if(e.target.files[0]){
            const image = e.target.files[0];
            if(image.type === 'image/jpeg' || image.type === 'image/jpg' || image.type === 'image/png') {
             setImageCover(image);
                setCoverUrl(URL.createObjectURL(e.target.files[0]));
-               console.log(coverUrl)
            } else {
-               console.log('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
+              window.alert('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
                setImageCover(null);
                return null;
            }
@@ -78,16 +74,10 @@ function CreateEvents() {
     async function handleCreateEvent(e) {
         e.preventDefault();
         //Avatar
-        setLoadding(true);
-        console.log(loadding);
         const uuid = uuidv4();
         let newAvatarUrlFirebase = ref(storage, `images/folderEvents/${uuid}`);
         let uploadAvatar = await uploadBytes(newAvatarUrlFirebase, imageAvatar);
-        let avatar = await getDownloadURL(uploadAvatar.ref);
-            
-        console.log(uploadAvatar.ref.name, avatar);
-
-        
+        let avatar = await getDownloadURL(uploadAvatar.ref);        
 
         // Cover
         const uuid2 = uuidv4();
@@ -95,17 +85,12 @@ function CreateEvents() {
         let upload = await uploadBytes(newCoverUrlFirebase, imageCover);
         let cover = await getDownloadURL(upload.ref);
 
-        console.log(upload.ref.name, cover);
-
             let idAccount = user.id;
             let username = user.username;
             let avatarUser = userInformations.avatar;
             let nickname = userInformations.nickname;
             let status = "pending"
         
-
-        console.log(loadding);
-        setLoadding(false);
  
 
         createEvents(
@@ -119,14 +104,12 @@ function CreateEvents() {
         e.preventDefault();
         try {
             const res = await buscaCep.get(`${cep}/json`);
-            console.log(res.data);
-            console.log(res.data.uf);
             setUf(res.data.uf)
             setCity(res.data.localidade)
             setDistrict(res.data.bairro);
             setStreet(res.data.logradouro);
         }catch{
-            console.log("eRRO")
+            console.log("ERRO IN CEP")
         }
     }
 

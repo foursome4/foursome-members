@@ -4,9 +4,7 @@ import './radar.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import { FaPlane} from "react-icons/fa"
 import { socket } from '../../services/websocket'
-import { useContext, useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import { AuthContext } from "../../contexts/Auth"
+import {  useEffect, useState } from "react"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import apiGoogleReverse from "../../services/apiGoogleReverse"
 
@@ -34,7 +32,7 @@ const [users, setUsers] = useState([])
         setLong(myLocation[0].long)
       })
       
- }, [])
+ }, [userData.id])
 
 
 

@@ -63,7 +63,7 @@ function Ranking() {
                                 <div className="ranking-all">
                                 {photo.map((photos) => {
                                     return(
-                                      <div className="ranking-unic">
+                                      <div className="ranking-unic" key={photos.id}>
                                           <div className="title">   
                                           <div className="image">
                                              <img src={photos.avatar} alt="" className="profile"/>
@@ -84,7 +84,7 @@ function Ranking() {
                             <div className="ranking-all">
                             {video.map((videos) => {
                                 return(
-                                  <div className="ranking-unic">
+                                  <div className="ranking-unic"  key={videos.id}>
                                       <div className="title">   
                                       <div className="image">
                                          <img src={videos.avatar} alt="" className="profile"/>

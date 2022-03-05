@@ -6,11 +6,6 @@ import './editPost.css'
 
 function EditPost({data, id}) {
     const {editPost} = useContext(AuthContext);
-
-    const Local = localStorage.getItem("foursome");
-    const userData = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
     const [text, setText] = useState(data);
 
     function handleComment() {

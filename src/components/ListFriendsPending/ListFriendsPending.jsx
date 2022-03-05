@@ -27,10 +27,8 @@ function ListFriendsPending({idAccount, id}) {
 
         loadAccount();
         loadInformation();
-    }, [])
+    }, [idAccount])
 
-
-    const account2 = idAccount
 
 
     function handleAprovedFriend(e) {

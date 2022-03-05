@@ -30,7 +30,6 @@ function Chat() {
 
   const [listMessages, setListMessages] = useState([]);
   const [text, setText] = useState('');
-  const [link, setLink] = useState('');
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [imageAvatar, setImageAvatar] = useState('');
   const [loadding, setLoadding] = useState(false);
@@ -53,7 +52,7 @@ function Chat() {
       })
     }
     findMessages()
-  }, [])
+  }, [room])
 
   socket.emit("select_room", {
     room,
@@ -124,7 +123,7 @@ async function handleUploadAccount(img) {
       room: room,
       idAccount: user.id,
       text,
-      link,
+      link: "",
       avatar: userInformations.avatar,
       nickname: userInformations.nickname,
       username: user.username,
@@ -142,11 +141,11 @@ async function handleUploadAccount(img) {
 
 
 function handlePressMessage() {
-  // if(click === false) {
-  //   setClick(true)
-  // } else {
-  //   setClick(false)
-  // }
+  if(click === false) {
+    setClick(false)
+  } else {
+    setClick(false)
+  }
 }
 
 

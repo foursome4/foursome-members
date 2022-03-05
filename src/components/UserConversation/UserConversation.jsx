@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import api from "../../services/api";
 import './userConversation.css'
 
@@ -20,7 +19,7 @@ function UserConversation({idAccount, room}) {
         }
 
         loadInformations()
-    }, [])
+    }, [idAccount])
 
     return (
        <div className="item">

@@ -22,8 +22,6 @@ function GroupIndividual() {
   const [avatar, setAvatar] = useState();
     const [cover, setCover] = useState();
     const [name, setName] = useState();
-    const [privacity, setPrivacity] = useState();
-    const [theme, setTheme] = useState();
     const [description, setDescription] = useState();
     const [idGroup, setIdGroup] = useState();
     const [members, setMembers] = useState([])
@@ -40,8 +38,6 @@ function GroupIndividual() {
                 setAvatar(result.data[0].avatar);
                 setCover(result.data[0].cover);
                 setName(result.data[0].name);
-                setPrivacity(result.data[0].privacity);
-                setTheme(result.data[0].theme);
                 setDescription(result.data[0].description);
                 setIdGroup(result.data[0].id);
                 setUsername(result.data[0].username);
@@ -61,7 +57,7 @@ function GroupIndividual() {
 
   loadMembers()
     loadGroups()
-}, []);
+}, [id, ]);
 
 
      function handleFeed() {
@@ -116,7 +112,7 @@ console.log(member)
                    <div className='bar'></div>
                    <div className="creator">
                      <div className="image">
-                       <img src={avatarUser}alt="" />
+                       <img src={avatarUser} alt="" />
                      </div>
                      <h4>{nickname}</h4>
                      <h5>{username}</h5>
@@ -127,8 +123,8 @@ console.log(member)
                    <div className="imageMembers">
                    {member.map((avatar) => {
                       return (
-                          <div className="image">
-                            <img src={avatar.avatar} />
+                          <div className="image" key={avatar.id}>
+                            <img src={avatar.avatar} alt=""/>
                           </div>
                           )
                         })}

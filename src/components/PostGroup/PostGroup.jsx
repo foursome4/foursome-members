@@ -1,4 +1,4 @@
-import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiSend, FiUpload, FiRefreshCcw} from 'react-icons/fi'
+import { FiImage, FiVideo, FiMenu, FiSend, FiUpload, FiRefreshCcw} from 'react-icons/fi'
 import './postGroup.css';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
@@ -23,7 +23,6 @@ function PostGroup({nameGroup, idGroup}) {
     const [videoAvatar, setVideoAvatar] = useState(''); 
     const [post, setPost] = useState("text");
     const [text, setText] = useState("");
-    const [type, setType] = useState("");
       
     
     
@@ -152,18 +151,15 @@ function PostGroup({nameGroup, idGroup}) {
         
         function postText() {
             setPost("text")
-        setType("post-text-group")
     }
 
     function postPhoto(){
         setPost("photo")
-        setType("post-photo-group")
         setText("")
     }
     
     function postVideo(){
         setPost("video")
-        setType("post-video-group")
         setText("")
     }
  

@@ -51,7 +51,8 @@ function ForumIndividual() {
 
     loadGroups()
 
-}, []);
+}, [id, ]);
+console.log(idAccount, theme)
 
 
      function handleFeed() {

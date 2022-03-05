@@ -5,9 +5,6 @@ import api from '../../services/api';
 function MyForuns() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
-    const LocalInformations = localStorage.getItem("informations-foursome");
-    const userInformations= JSON.parse(LocalInformations);
-
     const [foruns, setForuns] = useState([])
 
     useEffect(() => {
@@ -20,7 +17,7 @@ function MyForuns() {
         }
 
         loadMyForuns()
-    }, []);
+    }, [user.id]);
 
 
 

@@ -25,7 +25,6 @@ function CreateGroups() {
     const [privacity, setPrivacity] = useState("");
     const [imageAvatar, setImageAvatar] = useState("");
     const [imageCover, setImageCover] = useState("");
-    const [loadding, setLoadding] = useState(false);
     
 
 
@@ -39,9 +38,8 @@ function CreateGroups() {
            if(image.type === 'image/jpeg' || image.type === 'image/jpg' || image.type === 'image/png') {
                setImageAvatar(image);
                setAvatarUrl(URL.createObjectURL(e.target.files[0]));
-               console.log(avatarUrl);
             } else {
-                console.log('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
+                window.alert('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
                 setImageAvatar(null);
                 return null;
             }
@@ -51,7 +49,6 @@ function CreateGroups() {
     
     function handleFileCover(e) {
         console.log(e.target.files[0])
-        console.log(loadding);
 
        if(e.target.files[0]){
            const image = e.target.files[0];
@@ -59,9 +56,8 @@ function CreateGroups() {
            if(image.type === 'image/jpeg' || image.type === 'image/jpg' || image.type === 'image/png') {
             setImageCover(image);
                setCoverUrl(URL.createObjectURL(e.target.files[0]));
-               console.log(coverUrl)
            } else {
-               console.log('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
+             window.alert('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
                setImageCover(null);
                return null;
            }
@@ -71,15 +67,12 @@ function CreateGroups() {
     async function handleCreateGroup(e) {
         e.preventDefault();
         //Avatar
-        setLoadding(true);
-        console.log(loadding);
         const uuid = uuidv4();
 
         let newAvatarUrlFirebase = ref(storage, `images/avatar/${uuid}`);
         let uploadAvatar = await uploadBytes(newAvatarUrlFirebase, imageAvatar);
         let avatar = await getDownloadURL(uploadAvatar.ref);
             
-        console.log(uploadAvatar.ref.name, avatar);
 
         
 
@@ -90,16 +83,10 @@ function CreateGroups() {
         let upload = await uploadBytes(newCoverUrlFirebase, imageCover);
         let cover = await getDownloadURL(upload.ref);
 
-        console.log(upload.ref.name, cover);
-
             let idAccount = user.id;
             let username = user.username;
             let avatarUser = userInformations.avatar;
             let nickname = userInformations.nickname;
-        
-
-        console.log(loadding);
-        setLoadding(false);
  
 
     creategroup(

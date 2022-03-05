@@ -11,7 +11,7 @@ function LoadReactions({idPost}) {
             console.log(res.data)
         }
         reactionsLoad()
-    }, [])
+    }, [idPost])
     return (
         data
     )

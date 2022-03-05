@@ -1,5 +1,5 @@
 import "./deleteMessage.css"
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { FiTrash } from 'react-icons/fi';
 import { AuthContext } from '../../contexts/Auth';
 
@@ -9,7 +9,6 @@ function DeleteMessage(_id) {
 
     function handleMessageDelete(e){
         e.preventDefault();
-
         deleteActualMessage(_id._id)
     }
 

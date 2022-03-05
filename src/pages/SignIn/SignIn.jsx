@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import logoImg from '../../assets/images/logo.png'
-import codingIt from '../../assets/images/Coding.it.png'
 import { AuthContext } from '../../contexts/Auth';
 import { FiEye, FiEyeOff} from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';

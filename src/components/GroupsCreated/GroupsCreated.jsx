@@ -1,20 +1,17 @@
 import './groupsCreated.css'
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
 
 function GroupsCreated() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
-    const LocalInformations = localStorage.getItem("informations-foursome");
-    const userInformations= JSON.parse(LocalInformations);
+
 
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
         async function loadGroups(){
             await api.get("/groups").then((result) => {
-                console.log(result.data);
                 setGroups(result.data)
             })
         }

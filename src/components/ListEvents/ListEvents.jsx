@@ -1,7 +1,6 @@
 import './listEvents.css'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
-import { Link } from 'react-router-dom';
 
 function ListEvents() {
 
@@ -15,7 +14,6 @@ function ListEvents() {
                 setEvents(result.data)
             })
         }
-
         loadGroups()
     }, []);
 
@@ -31,8 +29,7 @@ function ListEvents() {
                                         </div>
                                     <img src={event.avatar} alt="" className="profile"/>
                                     <h4>{event.name}</h4>
-
-                                    <a a={`/event/${event.id}`}>Saber mais</a>
+                                    <a href={`/event/${event.id}`}>Saber mais</a>
                                 </div>
                            
                                  )

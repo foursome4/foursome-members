@@ -1,4 +1,4 @@
-import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiSend } from 'react-icons/fi'
+import { FiImage, FiVideo, FiMenu, FiTrash2, FiEdit, FiMessageCircle } from 'react-icons/fi'
 import './feedPost.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
@@ -9,13 +9,10 @@ import { ListReactions } from '../ListReactions/ListReactions';
 import { NewComment } from '../NewComment/NewComment';
 import { Link } from 'react-router-dom';
 import { EditPost } from '../EditPost/EditPost';
-import { Loader } from '../Loader/Loader';
 
 function FeedPost() {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
     const [post, setPost] = useState("");
     const [data, setData] = useState([]);
     const [comment, setComment] = useState(false);

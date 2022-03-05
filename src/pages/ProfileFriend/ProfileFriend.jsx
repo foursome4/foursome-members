@@ -458,7 +458,7 @@ function ProfileFriend() {
                   const idade =  Math.floor(Math.ceil(Math.abs(nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25);
 
                   return (
-                    <div className={characteristicsUser.sex === "Mulher" ? "info-user-woman" : "info-user-man"}>
+                    <div className={characteristicsUser.sex === "Mulher" ? "info-user-woman" : "info-user-man"} key={characteristicsUser.id}>
                       <h4>{characteristicsUser.sex === "Mulher" ? <FaVenus size={20} /> : <FaMars size={20} />} </h4>
                         <div className="info-user-data">
                             <h5>Idade</h5>
@@ -500,7 +500,7 @@ function ProfileFriend() {
               <div className="image">
                 {allPhotos.map((photos) => {
                   return (
-                    <div className="photo-list">
+                    <div className="photo-list" key={photos.id}>
                 <img src={photos.link} alt="" />
                     </div>
                   )

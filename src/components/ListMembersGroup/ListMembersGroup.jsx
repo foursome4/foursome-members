@@ -1,7 +1,6 @@
 import './listMembersGroup.css'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import api from '../../services/api'
-import { AuthContext } from '../../contexts/Auth'
 
 function ListMembersGroup({idGroup}) {
     const [members, setMembers] = useState();
@@ -15,7 +14,7 @@ function ListMembersGroup({idGroup}) {
         }
 
         loadGroups()
-    }, []);
+    }, [idGroup]);
 
       return (
         <div className='counter'>

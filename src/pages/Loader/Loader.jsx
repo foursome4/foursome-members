@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import loader from '../../assets/images/gif/loader2.gif';
-import { AuthContext } from '../../contexts/Auth';
 import api from '../../services/api';
 import "./loader.css"
 

@@ -10,15 +10,13 @@ import { Video } from '../../components/Video/Video'
 import { SettingsUser } from '../../components/SettingsUser/SettingsUser'
 import { ListFriends } from '../../components/ListFriends/ListFriends'
 import { FaMars, FaVenus } from 'react-icons/fa'
-import {useContext, useEffect, useState } from 'react'
+import {useEffect, useState } from 'react'
 import api from '../../services/api'
 import { FeedPostIndividual } from '../../components/FeedPostIndividual/FeedPostIndividual'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { ListFriendsPending } from '../../components/ListFriendsPending/ListFriendsPending'
 import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
-import { Link } from 'react-router-dom'
-import { AuthContext } from '../../contexts/Auth'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 
 
@@ -456,7 +454,7 @@ function Profile() {
                   const idade =  Math.floor(Math.ceil(Math.abs(nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25);
 
                   return (
-                    <div className={characteristicsUser.sex === "Mulher" ? "info-user-woman" : "info-user-man"}>
+                    <div className={characteristicsUser.sex === "Mulher" ? "info-user-woman" : "info-user-man"} key={characteristicsUser.id}>
                       <h4>{characteristicsUser.sex === "Mulher" ? <FaVenus size={20} /> : <FaMars size={20} />} </h4>
                         <div className="info-user-data">
                             <h5>Idade</h5>
@@ -498,7 +496,7 @@ function Profile() {
               <div className="image">
                 {allPhotos.map((photos) => {
                   return (
-                    <div className="photos-list">
+                    <div className="photos-list" key={photos.id}>
                 <img src={photos.link} alt="" />
                     </div>
                   )

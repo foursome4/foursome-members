@@ -10,7 +10,6 @@ import Modal from 'react-modal'
 import api from '../../services/api'
 import { UserConversation } from '../UserConversation/UserConversation'
 import { UsersSearch } from '../UsersSearch/UsersSearch'
-import { socket } from '../../services/websocket'
 
 function TopBar() {
     const {logout} = useContext(AuthContext);
@@ -62,7 +61,7 @@ function TopBar() {
           loadRoomIdAccount()
           loadRoomIDFriend()
 
-    }, [])
+    }, [user.id])
 
 
 

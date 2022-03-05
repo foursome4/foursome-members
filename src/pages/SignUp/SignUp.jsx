@@ -3,7 +3,6 @@ import logoImg from '../../assets/images/logo.png'
 import { AuthContext } from '../../contexts/Auth';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
-import codingIt from '../../assets/images/Coding.it.png'
 import './signUp.css';
 import { toast } from 'react-toastify';
 import { FiEye, FiEyeOff, FiX } from 'react-icons/fi';

@@ -1,8 +1,7 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCircle } from "react-icons/fa";
-import { FiCalendar, FiHome, FiList, FiRadio, FiTrendingUp, FiUserCheck, FiUsers, FiMapPin, FiMail, FiSmile, FiMenu, FiInfo } from "react-icons/fi"
+import { FiCalendar, FiHome, FiList, FiRadio, FiTrendingUp, FiUserCheck, FiUsers, FiSmile, FiMenu, FiInfo } from "react-icons/fi"
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../contexts/Auth";
 import { socket } from "../../services/websocket";
 import './barBottomMenu.css'
 
@@ -10,9 +9,7 @@ function BarBottomMenu () {
     const LocalUser = localStorage.getItem("foursome");
     const userData = JSON.parse(LocalUser);
 
-    const Local = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(Local);
-    const navigate = useNavigate();
+     const navigate = useNavigate();
 
     const [select, setSelect] = useState(false)
 
@@ -27,49 +24,32 @@ function BarBottomMenu () {
 
 
       function handleRedirectFeed () {
-            console.log("clicou");
+
             navigate("/feed")
       }
 
-      function handleRedirectChat () {
-        console.log("clicou");
-        navigate("/chat")
-    }
-
-    function handleRedirectFriends () {
-        console.log("clicou");
-        navigate("/friends")
-    }
-
     function handleRedirectGroups () {
-        console.log("clicou");
         navigate("/groups")
     }
 
     function handleRedirectForuns () {
-        console.log("clicou");
         navigate("/foruns")
     }
 
     function handleRedirectRadar () {
-        console.log("clicou");
         navigate("/radar")
     }
     function handleRedirectRanking () {
-        console.log("clicou");
         navigate("/ranking")
     }
 
     function handleRedirectEvents () {
-        console.log("clicou");
         navigate("/events")
     }
     function handleRedirectProfile () {
-        console.log("clicou");
         navigate("/profile")
     }
     function handleRedirectInfo () {
-        console.log("clicou");
         navigate("/infos")
     }
     function handleOpenUsersOnline (e) {
@@ -165,7 +145,7 @@ function BarBottomMenu () {
                    {users.map((user) => {
                        return(             
                     user.idAccount === userData.id ? "" :
-               <a href="" >
+               <a href={`/profile-friend/${user.idAccount}`} key={user.idAccount}>
                 <div className="divUser" onClick={handleRedirectFeed} key={user.idAccount}>
                     <FaCircle />
                     <div className="image">

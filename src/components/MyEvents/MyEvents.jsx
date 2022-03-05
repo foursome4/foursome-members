@@ -1,13 +1,10 @@
 import './myEvents.css'
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
 
 function MyEvents() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
-    const LocalInformations = localStorage.getItem("informations-foursome");
-    const userInformations= JSON.parse(LocalInformations);
 
     const [events, setForuns] = useState([])
 
@@ -21,7 +18,7 @@ function MyEvents() {
         }
 
         loadMyEvents()
-    }, []);
+    }, [user.id]);
 
 
 

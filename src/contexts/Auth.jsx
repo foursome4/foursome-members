@@ -17,14 +17,9 @@ function AuthProvider({children}) {
     
     const [lat, setlat] = useState("");
     const [long, setLong] = useState("");
-    const [myCity, setMyCity] = useState("");
-    const [myUf, setMyUf] = useState("");
     const [city, setCity] = useState("");
     const [uf, setUf] = useState("");
-    const [idAccount, setIdAccount] = useState("");
-    const [username, setUsername] = useState("");
-    const [avatar, setAvatar] = useState("");
-    const [nickname, setNickname] = useState("");
+
 
     useEffect(() => {
         function loadStorage() {
@@ -76,16 +71,11 @@ function AuthProvider({children}) {
        
         let email;
         let username;
-        console.log(login);
-        console.log(password);
+
         
         if(login.includes('@')) {
             email = login
             await api.post("/session", {email, password}).then((result) => {
-                console.log(result.data)
-                console.log("Login realizado com sucesso!");
-                setIdAccount(result.data.id);
-                setUsername(result.data.username)
                 storageUser(result.data);
                 setLoading(false);
                 
@@ -99,10 +89,6 @@ function AuthProvider({children}) {
             username = login
             await api.post("/session", {username, password})
             .then((result) => {
-                console.log("Login realizado com sucesso!");
-                storageUser(result.data);
-                setIdAccount(result.data.id);
-                setUsername(result.data.username)
                 storageUser(result.data);
                 setLoading(false);
                 
@@ -122,10 +108,6 @@ function AuthProvider({children}) {
             const data2 = res.data[0]
             console.log(data2);
             setUserDataNew(data2);
-            setMyCity(data2.city);
-            setMyUf(data2.uf);
-            setAvatar(data2.avatar);
-            setNickname(data2.nickname);
             
             localStorage.setItem("informations-foursome", JSON.stringify(data2));
            
@@ -777,6 +759,7 @@ async function deleteGroup(id){
             deleteActualMessage,
             createForum,
             createEvents,
+            deleteGroup,
             editPost,
             editComment
 
