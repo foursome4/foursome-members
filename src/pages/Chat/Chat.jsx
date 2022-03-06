@@ -46,7 +46,7 @@ function Chat() {
     async function findMessages() {
       const idRoom = room
       await api.get(`/messages/${idRoom}`).then((result) => {
-        console.log("Memnsagens do banco de dados")
+        console.log("Mensagens do banco de dados")
         console.log(result.data)
         setListMessages(result.data);
       })

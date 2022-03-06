@@ -411,7 +411,7 @@ function ProfileFriend() {
                     {FollowingExists.length === 0 ? <FiHeart size={16} /> : <FaHeart size={16} />}
                     </button>
                   <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/></button>
-                  <button className="" onClick={handleChat}><FiMessageSquare size={16}/></button>
+                  <button className="" onClick={rooms.length !== 0 ? handleChat : ""}><FiMessageSquare size={16}/></button>
                   <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/></button>
                   <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/></button>
                   <button  className='settings'><FiMoreVertical size={16}/></button>
