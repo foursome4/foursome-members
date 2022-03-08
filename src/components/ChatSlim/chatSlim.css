@@ -38,7 +38,6 @@
     border-radius: 50%;
     margin: 6px 0;
     object-fit: cover;
-    background-color: aqua;
 }
 
 
@@ -50,6 +49,23 @@
     object-fit: cover;
     z-index: 0;
 }
+.content-chat .chat-avatar img:before {
+  content: " '"  attr("") "'";
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  z-index: 0;
+}
+.content-chat .chat-avatar img:after {
+  content: " '"  attr("") "'";
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  z-index: 0;
+}
+
 .content-chat .chat-avatar svg {
   z-index: 1;
   position: absolute;

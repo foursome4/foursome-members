@@ -32,7 +32,7 @@ useEffect(() => {
                     <div className="chat-avatar" key={user.id}>
                         <FaCircle />
                         <a href={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>
-                    <img src={user.avatar} alt={user.idAccount} />
+                    <img src={user.avatar} alt={user.username} width="35px"/>
                     </a>
                      </div>
                 )

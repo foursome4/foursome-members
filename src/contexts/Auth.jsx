@@ -400,20 +400,7 @@ async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, 
     setLoading(true)
     await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent }).then( async (result) => {
         console.log(result.data)
-        console.log("Post Realizado com sucesso!");
-    
-
-        const textNotification = `Seu amigo ${username}, criou uma nova postagem.`
-        const data = {idPatrono, idAccount, text:textNotification }
-        await api.post("/notifications", data).then(() => {
-            console.log("Notificação criada com sucesso")
-        }).catch(error => {
-            console.log("Notificação não cadastrada" + error)
-        })
-        setLoading(false);
-
-
-       
+        console.log("Post Realizado com sucesso!");      
     toast.info("Post publicado com sucesso!")
         setLoading(false)
     }).catch(error => {
