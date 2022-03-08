@@ -177,11 +177,12 @@ function TopBar() {
         document.onkeydown = resetTimer;
         function doSomething() {
             toast.error("Finalizando a sessão")
-          //  logout(user.id)
+          logout(user.id)
         }
         function resetTimer() {
             clearTimeout(time);
-            time = setTimeout(doSomething, 2000000)
+          //  time = setTimeout(doSomething, 2000000)
+            time = setTimeout(doSomething, 50000)
         }
     }
 
