@@ -3,10 +3,11 @@ import { TopBar } from "../../components/TopBar/TopBar"
 import './radar.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import { FaPlane} from "react-icons/fa"
-import { socket } from '../../services/websocket'
 import {  useEffect, useState } from "react"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import apiGoogleReverse from "../../services/apiGoogleReverse"
+import api from "../../services/api"
+import axios from 'axios';
 
 function Radar() {
     const Local = localStorage.getItem("foursome");
@@ -16,23 +17,44 @@ function Radar() {
     const [long1, setLong] = useState()
 
 const [users, setUsers] = useState([])
- useEffect(() => {
+useEffect(() => {
 
-   socket.on("userOnline", (data) => {
-       console.log("data")
-       console.log(data)
-       setUsers(data)
-       
-       const myLocation = data.filter((location) => (location.idAccount === userData.id));
-        console.log(myLocation[0])
-        console.log(myLocation[0].lat)
-        console.log(myLocation[0].long)
-       
-        setLat(myLocation[0].lat)
-        setLong(myLocation[0].long)
-      })
+    async function loadUsersONline() {
+        await api.get("/online").then((res) => {
+            setUsers(res.data)
+            console.log(res.data);
+            const myLocation = res.data.filter((location) => (location.idAccount === userData.id));
+            console.log(myLocation[0])
+            console.log(myLocation[0].lat)
+            console.log(myLocation[0].long)
+           
+            setLat(myLocation[0].lat)
+            setLong(myLocation[0].long)
+        })
+    }
+
+    loadUsersONline();   
+
       
  }, [userData.id])
+
+
+ console.log(users)
+
+var config = {
+  method: 'get',
+  url: 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=-22.8447154,-42.0592233&destinations=-22.7012879,-42.6334516&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0',
+  headers: { }
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+
 
 
 
@@ -63,13 +85,18 @@ const [users, setUsers] = useState([])
 
                         
 
-async function reverseGeolocalization(lat1, long1, lat2, long2) {
-    const Distance = await apiGoogleReverse.get(`json?origins=${lat1},${long1}&destinations=${lat2},${long2}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
-    console.log("Distance")
-    console.log(Distance)
+function reverseGeolocalization() {
+    apiGoogleReverse.get(`/distancematrix/json?origins=-22.8447154,-42.0592233&destinations=-22.7012879,-42.6334516&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`).then((result) => {
+        console.log("Distance")
+        console.log(result.data)
+    }).catch(error => {
+        console.log(error)
+    })
 }
 
-reverseGeolocalization(user.lat, user.long, lat1, long1)
+
+reverseGeolocalization();
+console.log(user.lat, user.long, lat1, long1);
 
 
 

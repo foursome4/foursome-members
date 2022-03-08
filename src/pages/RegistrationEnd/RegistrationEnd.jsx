@@ -17,6 +17,10 @@ function RegistrationEnd() {
                     <div className="orientations">
                     <h4>< FiCheckCircle/> Não utilizar termos ofensivos em conversas, postagens e comentarios</h4>
                     <h4>< FiCheckCircle/> Seja gentil e faça sempre novas amizades</h4>
+
+                    <div className="informations">
+                        <h3>Informações sobre uso do site e funcionalidades</h3>
+                    </div>
                     </div>
                 </div>
                                 

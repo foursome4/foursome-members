@@ -96,6 +96,8 @@ function PostGroup({nameGroup, idGroup}) {
                 idForum: "",
                 type: "post-photo-group",
                 text,
+                idAccount: user.id,
+                idPatrono: null
             })
         } else if(post === "video"){
                 const uuid = uuidv4();
@@ -120,6 +122,8 @@ function PostGroup({nameGroup, idGroup}) {
                     idForum: "",
                     type: "post-video-group",
                     text,
+                    idAccount: user.id,
+                    idPatrono: null
                 })
 
             } else if(post === "text") {
@@ -135,6 +139,8 @@ function PostGroup({nameGroup, idGroup}) {
                 idForum: "",
                 type: "post-text-group",
                 text,
+                idAccount: user.id,
+                idPatrono: null
             })
             
             

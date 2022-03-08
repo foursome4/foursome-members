@@ -2,23 +2,26 @@ import { useEffect, useState } from "react";
 import { FaCircle } from "react-icons/fa";
 import { FiCalendar, FiHome, FiList, FiRadio, FiTrendingUp, FiUserCheck, FiUsers, FiSmile, FiMenu, FiInfo } from "react-icons/fi"
 import { useNavigate } from "react-router-dom";
+import api from "../../services/api";
 import { socket } from "../../services/websocket";
 import './barBottomMenu.css'
 
 function BarBottomMenu () {
-    const LocalUser = localStorage.getItem("foursome");
-    const userData = JSON.parse(LocalUser);
+    const Local = localStorage.getItem("foursome");
+    const userData = JSON.parse(Local);
+    const navigate = useNavigate();
+    const [select, setSelect] = useState(false);
+    const [users, setUsers] = useState([]);
 
-     const navigate = useNavigate();
+useEffect(() => {
+    async function loadUsersONline() {
+        await api.get("/online").then((res) => {
+            setUsers(res.data)
+        })
+    }
 
-    const [select, setSelect] = useState(false)
-
-    const [users, setUsers] = useState([])
-    useEffect(() => {
-        socket.on("userOnline", (data) => {
-           setUsers(data)
-       })
-    }, [])
+    loadUsersONline()
+}, [users])
 
 
 

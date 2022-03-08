@@ -45,7 +45,10 @@ function SettingsPreferences() {
             transvestites:travestis ,
             transsexuals:transexuais,
             groups:grupos,
-            proposal:proposal 
+            proposal:proposal,
+            idAccount: user.id,
+            idPatrono: user.patron,
+            username: user.sername
         })
    }
 

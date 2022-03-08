@@ -110,7 +110,10 @@ function SettingsInformations() {
             uf: uf === "" ? userInformations.uf : uf,
             relationship: relationship === "" ? userInformations.relationship : relationship ,
             nickname: nickname === "" ? userInformations.nickname : nickname,
-            created_at: userInformations.created_at});
+            idPatrono: user.patron,
+            username: user.username,
+            created_at: userInformations.created_at
+        });
         console.log(loadding);
         setLoadding(false);
         
@@ -141,7 +144,10 @@ function SettingsInformations() {
             uf: uf === "" ? userInformations.uf : uf,
             relationship: relationship === "" ? userInformations.relationship : relationship ,
             nickname: nickname === "" ? userInformations.nickname : nickname,
-            created_at: userInformations.created_at});
+            idPatrono: user.patron,
+            username: user.username,
+            created_at: userInformations.created_at,
+        });
         console.log(loadding);
         setLoadding(false);
         
@@ -172,7 +178,10 @@ function SettingsInformations() {
             uf: uf === "" ? userInformations.uf : uf,
             relationship: relationship === "" ? userInformations.relationship : relationship ,
             nickname: nickname === "" ? userInformations.nickname : nickname,
-            created_at: userInformations.created_at});
+            idPatrono: user.patron,
+            username: user.username,
+            created_at: userInformations.created_at,
+        });
         console.log(loadding);
         setLoadding(false);
         

@@ -95,6 +95,8 @@ function Post() {
                 idForum: "",
                 type: "post-photo",
                 text,
+                idAccount: user.id,
+                iidPatrono: null
             })
         } else if(post === "video"){
                 const uuid = uuidv4();
@@ -117,6 +119,8 @@ function Post() {
                     idForum: "",
                     type: "post-video",
                     text,
+                    idAccount: user.id,
+                    iidPatrono: null
                 })
 
             } else if(post === "text") {
@@ -132,6 +136,8 @@ function Post() {
                 idForum: "",
                 type: "post-text",
                 text,
+                idAccount: user.id,
+                iidPatrono: null
             })
             
             

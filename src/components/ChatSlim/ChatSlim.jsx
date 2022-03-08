@@ -25,16 +25,14 @@ useEffect(() => {
     return (
         
         <div className="content-chat">
-            <div className="chat-avatar">
-                    <button><FiLogOut /> </button>
-                     </div>
+
             {users.map((user) => {
                 return (
                     user.idAccount === userData.id ? "" :
                     <div className="chat-avatar" key={user.id}>
                         <FaCircle />
                         <a href={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>
-                    <img src={user.avatar} alt="" />
+                    <img src={user.avatar} alt={user.idAccount} />
                     </a>
                      </div>
                 )

@@ -9,6 +9,7 @@ import { ListReactions } from '../ListReactions/ListReactions';
 import { NewComment } from '../NewComment/NewComment';
 import { Link } from 'react-router-dom';
 import { EditPost } from '../EditPost/EditPost';
+import { UsersPosts } from '../UsersPosts/UsersPosts';
 
 function FeedPost() {
     const Local = localStorage.getItem("foursome");
@@ -97,7 +98,7 @@ function FeedPost() {
                                 const date = parseISO(postsData.created_at);
                                 const dateFormated = format(
                                     date, 
-                                "dd'/'MM'/'yyyy', às 'HH:mm'h'"
+                                "dd'/'MM'/'yyyy' às 'HH:mm'h'"
                                 );
                                     return (   
                                         <>   
@@ -108,21 +109,8 @@ function FeedPost() {
                              postsData.type === "post-photo-group" ||                   
                              postsData.type === "post-video-group" ?                   
                                 <div className="feed-post" key={postsData.id}>
-                                    <div className="post-user" >
-                                        <div className="avatar">              
-                                    <Link to={postsData.idAccount === userData.id ? `/profile` : `/profile-friend/${postsData.idAccount}`}>  <img src={postsData.avatar} alt="" /> </Link>
-                                        </div>
-                                        <div className="info-data">
-                                        <div className="name-data">
-                                    <Link to={postsData.idAccount === userData.id ? `/profile` : `/profile-friend/${postsData.idAccount}`}> <h4 className="selected">{postsData.nickname}</h4> </Link>
-                                        
-                                        </div>
-                                        <div className="time-data">
+                           <UsersPosts idAccount={postsData.idAccount} username={postsData.username} date={dateFormated} />
                                         <Link to={``} ><h5>{postsData.nameGroup !== "" ? postsData.nameGroup : postsData.nameForum  !== "" ? postsData.nameForum : ""  } </h5></Link>
-                                            <h5> {dateFormated}</h5>
-                                        </div>
-                                        </div>
-                                    </div>
 
                                     <div className="post-data" >
                                         <p>{postsData.text}</p>

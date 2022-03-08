@@ -53,16 +53,23 @@ function AuthProvider({children}) {
             return
         } 
         
-        const res = await api.post('/accounts', data);
-        if(res.status === 201) {
+        const res = await api.post('/accounts', data).then(async (result) => {
             completeAccount(data.email)
             console.log("Cadastro realizado com sucesso!");
             toast.info(`Cadastro criado com sucesso!`);
-            navigate("/")
-        } else {
-            console.log("Cadastro não foi realizado");
+
+            const text = `Seu amigo ${username}, ingressou na Foursome, dê as boas vindas.`
+            const data = {idPatrono: patron, idAccount: result.data.id, text, }
+            await api.post("/notifications", data).then(() => {
+                console.log("Notificação criada com sucesso");
+                navigate("/")
+            }).catch(error => {
+                console.log("Notificação não cadastrada" + error)
+            })
+        }).catch(error => {
+            console.log("Cadastro não foi realizado: "+ error);
             toast.error(`Falha na criação do cadastro. Revise suas informações!`);
-        }
+        });
     }
 
 
@@ -132,14 +139,22 @@ function AuthProvider({children}) {
             console.log("Informações não enviadas" + error)
         })
     }
-    async function NewUpdateInformationsAccount({id, idAccount, avatar, cover, relationship, nickname, city, uf, created_at}) {
-        await api.patch(`/informations/${id}`, {avatar, cover, relationship, nickname, city, uf}).then((result) => {
+    async function NewUpdateInformationsAccount({id, idAccount, avatar, cover, relationship, nickname, city, uf, created_at, idPatrono, username}) {
+        await api.patch(`/informations/${id}`, {avatar, cover, relationship, nickname, city, uf}).then( async (result) => {
             console.log(result.data)
             console.log("Informações atualizadas com sucesso!");
             localStorage.setItem("informations-foursome", JSON.stringify({
                 id, _id: id, idAccount, avatar, cover, relationship, nickname, city, uf, created_at
             }))
-            window.location.reload(false);
+
+            const text = `Seu amigo ${username}, alterou informações em seu perfil`
+            const data = {idPatrono, idAccount, text, }
+            await api.post("/notifications", data).then(() => {
+                console.log("Notificação criada com sucesso");
+                window.location.reload(false)
+            }).catch(error => {
+                console.log("Notificação não cadastrada" + error)
+            })
         }).catch(error => {
             console.log("Informações não enviadas" + error)
         })
@@ -226,16 +241,28 @@ function AuthProvider({children}) {
 }
 
 
-async function newUpdateCharacteristcs({id, birthDate, sex, sign, sexualOption}) {
+async function newUpdateCharacteristcs({id, birthDate, sex, sign, sexualOption, idPatrono, username, idAccount}) {
         setLoading(true)
        console.log({id, birthDate, sex, sign, sexualOption})
 
         await api.patch(`/characteristics/${id}`,
         {birthDate: birthDate, sex, sign, sexualOption})
-        .then((result) => {
+        .then( async (result) => {
             console.log("updateCharacteristcs ok");
-            window.location.reload(false)
-            setLoading(false)
+
+
+            const text = `Seu amigo ${username}, alterou as características de um de seus membros do perfil`
+            const data = {idPatrono, idAccount, text, }
+            await api.post("/notifications", data).then(() => {
+                console.log("Notificação criada com sucesso")
+                window.location.reload(false)
+            }).catch(error => {
+                console.log("Notificação não cadastrada" + error)
+            })
+            setLoading(false);
+
+
+
         }).catch(error => {
                 console.log("Informações não enviadas" + error)
      })
@@ -243,7 +270,7 @@ async function newUpdateCharacteristcs({id, birthDate, sex, sign, sexualOption})
 
 
 
-async function newUpdateCharacteristcs2({id, birthDate, sex, sign, sexualOption, id2, birthDate2, sex2, sign2, sexualOption2}) {
+async function newUpdateCharacteristcs2({id, birthDate, sex, sign, sexualOption, id2, birthDate2, sex2, sign2, sexualOption2, idPatrono, username, idAccount}) {
         setLoading(true)
         await api.patch(`/characteristics/${id}`, {
             birthDate: birthDate, sex, sign, sexualOption
@@ -255,7 +282,20 @@ async function newUpdateCharacteristcs2({id, birthDate, sex, sign, sexualOption,
             }).then(async (result) => {
                 console.log(result.data)
                 console.log("updateCharacteristcs2 ok");
+                
+
+            const text = `Seu amigo ${username}, alterou as características de um de seus membros do perfil`
+            const data = {idPatrono, idAccount, text, }
+            await api.post("/notifications", data).then(() => {
+                console.log("Notificação criada com sucesso")
                 window.location.reload(false)
+            }).catch(error => {
+                console.log("Notificação não cadastrada" + error)
+            })
+            setLoading(false);
+
+
+           
             }).catch(error => {
                 console.log("Informações não enviadas" + error)
             })
@@ -271,7 +311,7 @@ async function newUpdateCharacteristcs2({id, birthDate, sex, sign, sexualOption,
 
 
 async function newUpdateCharacteristcs3({id, birthDate,
-    sex, sign, sexualOption, id2, birthDate2, sex2, sign2, sexualOption2, id3, birthDate3, sex3, sign3, sexualOption3}) {
+    sex, sign, sexualOption, id2, birthDate2, sex2, sign2, sexualOption2, id3, birthDate3, sex3, sign3, sexualOption3, idPatrono, idAccount, username}) {
         setLoading(true)
         await api.patch(`/characteristics/${id}`, {
             birthDate: birthDate, sex, sign, sexualOption
@@ -289,7 +329,20 @@ async function newUpdateCharacteristcs3({id, birthDate,
                 }).then(async (result) => {
                     console.log(result.data)
                     console.log("updateCharacteristcs3 ok");
-                    window.location.reload(false)
+                    
+
+            const text = `Seu amigo ${username}, alterou as características de um de seus membros do perfil`
+            const data = {idPatrono, idAccount, text, }
+            await api.post("/notifications", data).then(() => {
+                console.log("Notificação criada com sucesso")
+                window.location.reload(false)
+            }).catch(error => {
+                console.log("Notificação não cadastrada" + error)
+            })
+            setLoading(false);
+
+
+           
                     setLoading(false)
                 }).catch(error => {
                     console.log("Informações não enviadas" + error)
@@ -317,25 +370,50 @@ async function preferencesAccount({idAccount, men, woman, couple, trisal, transv
         console.log("Erro ao salvar dados" + error)
     })
 }
-async function updatePreferencesAccount({id, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal}) {
+async function updatePreferencesAccount({id, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal, idPatrono, username, idAccount}) {
     await api.patch(`/preferences/${id}`, { men, woman, couple, trisal, transvestites, transsexuals, groups, proposal})
-    .then((res) => {
+    .then( async (res) => {
         const data = res.data
         console.log(data);
         console.log("Atualização de preferencias ok");
-        window.location.reload(false)
+        
+
+        const text = `Seu amigo ${username}, alterou as características de um de seus membros do perfil`
+        const data2 = {idPatrono, idAccount, text, }
+        await api.post("/notifications", data2).then(() => {
+            console.log("Notificação criada com sucesso")
+            window.location.reload(false)
+        }).catch(error => {
+            console.log("Notificação não cadastrada" + error)
+        })
+        setLoading(false);
+
+
+       
     }).catch(error => {
         console.log("Erro ao salvar dados" + error)
     })
 }
 
 
-async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent }) {
+async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent, idPatrono}) {
     setLoading(true)
-    await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent }).then((result) => {
+    await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent }).then( async (result) => {
         console.log(result.data)
         console.log("Post Realizado com sucesso!");
-    //  window.location.reload(false);
+    
+
+        const textNotification = `Seu amigo ${username}, criou uma nova postagem.`
+        const data = {idPatrono, idAccount, text:textNotification }
+        await api.post("/notifications", data).then(() => {
+            console.log("Notificação criada com sucesso")
+        }).catch(error => {
+            console.log("Notificação não cadastrada" + error)
+        })
+        setLoading(false);
+
+
+       
     toast.info("Post publicado com sucesso!")
         setLoading(false)
     }).catch(error => {
@@ -343,12 +421,11 @@ async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, 
     })
 }
 
+
 async function deletePost(id) {
     const res = await api.delete(`/posts/${id}`);
     if(res.status===201) {
         toast.success('post deletado com sucesso!');
-     //    window.location.reload(false);
-     //    window.location.reload(false);
      } else {
         toast.error('Deu algo errado ao deletar!');
      }
@@ -376,7 +453,6 @@ async function deleteComment(id) {
     const res = await api.delete(`/comments/${id}`);
     if(res.status===201) {
         toast.success('post deletado com sucesso!');
-        // window.location.reload(false);
      } else {
         toast.error('Deu algo errado ao deletar!');
      }
@@ -386,7 +462,6 @@ async function likePost({idAccount, username, idPost}) {
 await api.post("/reactions", {idAccount, username, idPost}).then((result) => {
     console.log(result.data)
     console.log("Post Realizado com sucesso!");
-  // window.location.reload(false)
     setLoading(false)
 }).catch(error => {
     console.log(error)

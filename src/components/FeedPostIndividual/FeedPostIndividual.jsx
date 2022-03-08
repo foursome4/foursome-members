@@ -7,6 +7,7 @@ import { parseISO, format} from 'date-fns';
 import { FeedComments } from '../FeedComments/FeedComments';
 import { ListReactions } from '../ListReactions/ListReactions';
 import { NewComment } from '../NewComment/NewComment';
+import { UsersPosts } from '../UsersPosts/UsersPosts';
 
     function FeedPostIndividual({id}) {
     const Local = localStorage.getItem("foursome");
@@ -106,17 +107,7 @@ import { NewComment } from '../NewComment/NewComment';
                                     return (   
                                         <>                      
                                 <div className="feed-post" key={postsData.id}>
-                                    <div className="post-user" >
-                                        <img src={postsData.avatar} alt="" />
-                                        <div className="info-data">
-                                        <div className="name-data">
-                                        <h4 className="selected">{postsData.nickname}</h4>
-                                        </div>
-                                        <div className="time-data">
-                                            <h5>{dateFormated}</h5>
-                                        </div>
-                                        </div>
-                                    </div>
+                                <UsersPosts idAccount={postsData.idAccount} username={postsData.username} date={dateFormated} />
 
                                     <div className="post-data" >
                                         <p>{postsData.text}</p>

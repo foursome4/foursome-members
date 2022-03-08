@@ -1,0 +1,85 @@
+.itemComment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    text-decoration: none;
+    border-radius: 6px;
+}
+.itemComment .block1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    text-decoration: none;
+
+}
+.itemComment .block1 .title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+}
+
+.itemComment .block1 .title  .image{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 5px;
+}
+.itemComment .block1 .title  .image img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.itemComment .block1 .title .name h5 {
+    margin-left: 5px;
+    color: var(--Primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+.itemComment .block1 .title .name p {
+    margin-left: 5px;
+    color: var(--Gray_font2);
+}
+
+.itemComment .block1 .title a {
+    text-decoration: none;
+    color: var(--Primary);
+}
+
+.itemComment .block1 .buttonsComment {
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: flex-end;
+    
+}
+
+.itemComment .block1 .buttonsComment button {
+    width: 30px;
+    height: 30px;
+    background-color: var(--Background);
+    color: var(--Gray_font2);
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    margin: 0 3px;
+}
+
+.itemComment .comment-data {
+    margin: 2px 0;
+    width: 90%;
+}
+
+.itemComment .comment-data p {
+    color: var(--Gray_font);
+    margin-top: 3px;
+    font-size: 13px;
+}

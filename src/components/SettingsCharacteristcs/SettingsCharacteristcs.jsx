@@ -79,8 +79,6 @@ function SettingsCharacteristcs() {
 
     function handleUpdateCharacteristcs(e){
         e.preventDefault()
-
-        console.log("Clicou")
         newUpdateCharacteristcs({
                 id: characteristics.id,
                 idAccount: user.id,
@@ -88,62 +86,34 @@ function SettingsCharacteristcs() {
                 sex: sex === "" ? characteristics.sex : sex,
                 sign: sign === "" ? characteristics.sign : sign,
                 sexualOption: sexualOption === "" ? characteristics.sexualOption : sexualOption,
-                education: education === "" ? characteristics.education : education,
-                heigth: heigth === "" ? characteristics.heigth : heigth,
-                weight: weight === "" ? characteristics.weight : weight,
-                physique: physique === "" ? characteristics.physique : physique,
-                ethnicity: ethnicity === "" ? characteristics.ethnicity : ethnicity,
-                eyes: eyes === "" ? characteristics.eyes : eyes,
-                hair: hair === "" ? characteristics.hair : hair,
-                tattos: tattos === "" ? characteristics.tattos : tattos,
-                smokes: smokes === "" ? characteristics.smokes : smokes
+                idPatrono: user.patron,
+                username: user.sername,
             })
 
     }
     function handleUpdateCharacteristcs2(e){
         e.preventDefault()
-
-        console.log("Clicou")
         
         newUpdateCharacteristcs2({
-                id: characteristics2.id,
-                idAccount: user.id,
-                birthDate2: birthDate2 === "" ? characteristics2.birthDate : birthDate2,
-                sex2: sex2 === "" ? characteristics2.sex : sex2,
-                sign2: sign2 === "" ? characteristics2.sign : sign2,
-                sexualOption2: sexualOption2 === "" ? characteristics2.sexualOption : sexualOption2,
-                education2: education2 === "" ? characteristics2.education : education2,
-                heigth2: heigth2 === "" ? characteristics2.heigth : heigth2,
-                weight2: weight2 === "" ? characteristics2.weight : weight2,
-                physique2: physique2 === "" ? characteristics2.physique : physique2,
-                ethnicity2: ethnicity2 === "" ? characteristics2.ethnicity : ethnicity2,
-                eyes2: eyes2 === "" ? characteristics2.eyes : eyes2,
-                hair2: hair2 === "" ? characteristics2.hair : hair2,
-                tattos2: tattos2 === "" ? characteristics2.tattos : tattos2,
-                smokes2: smokes2 === "" ? characteristics2.smokes : smokes2,
-                id2: characteristics.id,
-                idAccount: user.id,
+            idAccount: user.id,
+            id2: characteristics.id,
+            birthDate2: birthDate2 === "" ? characteristics2.birthDate : birthDate2,
+            sex2: sex2 === "" ? characteristics2.sex : sex2,
+            sign2: sign2 === "" ? characteristics2.sign : sign2,
+            sexualOption2: sexualOption2 === "" ? characteristics2.sexualOption : sexualOption2,
+            id: characteristics2.id,
                 birthDate: birthDate === "" ? characteristics.birthDate : birthDate,
                 sex: sex === "" ? characteristics.sex : sex,
                 sign: sign === "" ? characteristics.sign : sign,
                 sexualOption: sexualOption === "" ? characteristics.sexualOption : sexualOption,
-                education: education === "" ? characteristics.education : education,
-                heigth: heigth === "" ? characteristics.heigth : heigth,
-                weight: weight === "" ? characteristics.weight : weight,
-                physique: physique === "" ? characteristics.physique : physique,
-                ethnicity: ethnicity === "" ? characteristics.ethnicity : ethnicity,
-                eyes: eyes === "" ? characteristics.eyes : eyes,
-                hair: hair === "" ? characteristics.hair : hair,
-                tattos: tattos === "" ? characteristics.tattos : tattos,
-                smokes: smokes === "" ? characteristics.smokes : smokes
+                idPatrono: user.patron,
+                username: user.sername,
             })
 
        
     }
     function handleUpdateCharacteristcs3(e){
         e.preventDefault()
-
-        console.log("Clicou")
         
         newUpdateCharacteristcs3({
                 id3: characteristics3.id,
@@ -152,45 +122,18 @@ function SettingsCharacteristcs() {
                 sex3: sex3 === "" ? characteristics3.sex : sex3,
                 sign3: sign3 === "" ? characteristics3.sign : sign3,
                 sexualOption3: sexualOption3 === "" ? characteristics3.sexualOption : sexualOption3,
-                education3: education3 === "" ? characteristics3.education : education3,
-                heigth3: heigth3 === "" ? characteristics3.heigth : heigth3,
-                weight3: weight3 === "" ? characteristics3.weight : weight3,
-                physique3: physique3 === "" ? characteristics3.physique : physique3,
-                ethnicity3: ethnicity3 === "" ? characteristics3.ethnicity : ethnicity3,
-                eyes3: eyes3 === "" ? characteristics3.eyes : eyes3,
-                hair3: hair3 === "" ? characteristics3.hair : hair3,
-                tattos3: tattos3 === "" ? characteristics3.tattos : tattos3,
-                smokes3: smokes3 === "" ? characteristics3.smokes : smokes3,
                 id2: characteristics2.id,
-                idAccount: user.id,
                 birthDate2: birthDate2 === "" ? characteristics2.birthDate : birthDate2,
                 sex2: sex2 === "" ? characteristics2.sex : sex2,
                 sign2: sign2 === "" ? characteristics2.sign : sign2,
                 sexualOption2: sexualOption2 === "" ? characteristics2.sexualOption : sexualOption2,
-                education2: education2 === "" ? characteristics2.education : education2,
-                heigth2: heigth2 === "" ? characteristics2.heigth : heigth2,
-                weight2: weight2 === "" ? characteristics2.weight : weight2,
-                physique2: physique2 === "" ? characteristics2.physique : physique2,
-                ethnicity2: ethnicity2 === "" ? characteristics2.ethnicity : ethnicity2,
-                eyes2: eyes2 === "" ? characteristics2.eyes : eyes2,
-                hair2: hair2 === "" ? characteristics2.hair : hair2,
-                tattos2: tattos2 === "" ? characteristics2.tattos : tattos2,
-                smokes2: smokes2 === "" ? characteristics2.smokes : smokes2,
                 id: characteristics.id,
-                idAccount: user.id,
                 birthDate: birthDate === "" ? characteristics.birthDate : birthDate,
                 sex: sex === "" ? characteristics.sex : sex,
                 sign: sign === "" ? characteristics.sign : sign,
                 sexualOption: sexualOption === "" ? characteristics.sexualOption : sexualOption,
-                education: education === "" ? characteristics.education : education,
-                heigth: heigth === "" ? characteristics.heigth : heigth,
-                weight: weight === "" ? characteristics.weight : weight,
-                physique: physique === "" ? characteristics.physique : physique,
-                ethnicity: ethnicity === "" ? characteristics.ethnicity : ethnicity,
-                eyes: eyes === "" ? characteristics.eyes : eyes,
-                hair: hair === "" ? characteristics.hair : hair,
-                tattos: tattos === "" ? characteristics.tattos : tattos,
-                smokes: smokes === "" ? characteristics.smokes : smokes
+                idPatrono: user.patron,
+                username: user.sername,
             })
     }
 

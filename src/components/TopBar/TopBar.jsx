@@ -12,6 +12,7 @@ import { UserConversation } from '../UserConversation/UserConversation'
 import { UsersSearch } from '../UsersSearch/UsersSearch'
 import { toast } from 'react-toastify'
 import { UsersPending } from '../UsersPending/UsersPending'
+import { UsersNotifications } from '../UsersNotifications/UsersNotifications'
 
 function TopBar() {
     const {logout} = useContext(AuthContext);
@@ -27,12 +28,14 @@ function TopBar() {
 
     const [rooms, setRooms] = useState([])
     const [rooms2, setRooms2] = useState([])
-    const [messages, setMessages] = useState([])
+    const [messages, setMessages] = useState([]);
+    const [notifications, setNotifications] = useState([]);
     const [myFriends, setMyFriends] = useState([]);
     const [accounts, setAccoounts] = useState([])
     const [search, setSearch] = useState('')
     const [searchId, setSearchId] = useState('')
     const [type, setType] = useState("username")
+    const [date, setDate] = useState(new Date("Tue Mar 06 2022 03:38:05 GMT-0300 (Hora padrão de Brasília)"))
  
     useEffect(() => {
         async function loadRoomIdAccount() {
@@ -69,7 +72,15 @@ function TopBar() {
             console.log("Friends")
             console.log(result.data)
           }
+          async function loadNotifications() {
+              const idPatrono = user.id
+            const result = await api.get(`/notifications/my/${idPatrono}`);
+            setNotifications(result.data)
+            console.log("Notifications")
+            console.log(result.data)
+          }
 
+          loadNotifications()
           loadFriends()
           loadAccounts()
           loadRoomIdAccount()
@@ -78,11 +89,19 @@ function TopBar() {
     }, [user.id])
 
 
-
+    console.log("Date");
+    console.log(date);
+    console.log("Actual Date");
+    console.log(new Date);
 
   const newRooms = rooms.concat(rooms2)
   const SearchUsers = accounts.filter((account) => account.username.startsWith(search))
   const SearchUsersId = accounts.filter((account) => account.id.startsWith(searchId))
+
+  const notificationsFilter = notifications.filter((notification) => (new Date(notification.created_at) > date))
+    console.log("notificationsFilter")
+    console.log(notificationsFilter)
+
 
   const friendPending = myFriends.filter(friend => (friend.status === 'pending' && friend.idFriend === user.id))
   console.log("Pending");
@@ -135,6 +154,8 @@ function TopBar() {
       }
     function handleNotifications() {
         handleOpenModalNotifications()
+        const date = new Date()
+        handleNewDate(date)
       }
     
       function handleCloseModalNotifications() {
@@ -156,7 +177,7 @@ function TopBar() {
         document.onkeydown = resetTimer;
         function doSomething() {
             toast.error("Finalizando a sessão")
-            logout(user.id)
+          //  logout(user.id)
         }
         function resetTimer() {
             clearTimeout(time);
@@ -165,6 +186,12 @@ function TopBar() {
     }
 
     inactivityTime()
+
+    function handleNewDate(date) {
+        console.log("NOva data")
+        console.log(date)
+        setDate(date)
+    }
 
 
 
@@ -187,6 +214,9 @@ function TopBar() {
             </div>
             <div className="links">
                 <div className="link"  onClick={handleFriends} data-tip data-for='Solicitações'>
+                    {friendPending.length === 0 ? "" :
+                    <div className="counter"> {friendPending.length}</div>
+                    }
                     <FiUserPlus />
                 </div>
                 <ReactTooltip id='Solicitações' place="bottom" type="dark" effect="solid">
@@ -195,6 +225,9 @@ function TopBar() {
 
 
                 <div className="link" onClick={handleNotifications} data-tip data-for='Notificações'>
+                {notificationsFilter.length === 0 ? "" :
+                    <div className="counter"> {notificationsFilter.length}</div>
+                    }
                     <FiBell />
                 </div>
                 <ReactTooltip id='Notificações'  place="bottom" type="dark" effect="solid">
@@ -260,17 +293,7 @@ function TopBar() {
             <div className="itensModalMessages">
 
             {newRooms.map((rooms) => {
-                    //  api.get(`/messages/${rooms.room}`).then((result) => {
-                    //       console.log("Mensagens do banco de dados")
-                    //       console.log(result.data.length)
-                    //       console.log(rooms.room)
-                    //       setMessages(result.data);
-                    //     })
-
-                    //   console.log("messages")
-                    //   console.log(messages)
                 return(
-                    // messages.length === 0 ? "" :
                     <div className="rooms" key={rooms.id}>
                         <UserConversation idAccount={rooms.idAccount !== user.id ? rooms.idAccount : rooms.idFriend} room={rooms.room}/>
 
@@ -395,7 +418,16 @@ function TopBar() {
             </div>
             
             <div className="itensModalNotifications">
-           
+            {notifications.map((notification) => {
+
+                return(
+                    <div className="notification" key={notification.id}>
+                        <div className="name">
+                        <UsersNotifications id={notification.idAccount} text={notification.text}/>
+                        </div>
+                    </div>
+                )
+            })}
             </div>
             <div className="buttons-modal">
             <button className="butont-White" onClick={handleCloseModalNotifications}>Cancelar</button>

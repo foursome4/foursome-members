@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import api from "../../services/api";
 import { parseISO, format} from 'date-fns';
+import { UsersPosts } from '../UsersPosts/UsersPosts';
 
 
     function FeedPostEvent({idEvent}) {
@@ -47,17 +48,7 @@ import { parseISO, format} from 'date-fns';
                                     return (   
                                         <>                      
                                 <div className="feed-post" key={postsData.id}>
-                                    <div className="post-user" >
-                                        <img src={postsData.avatar} alt="" />
-                                        <div className="info-data">
-                                        <div className="name-data">
-                                        <h4 className="selected">{postsData.nickname}</h4>
-                                        </div>
-                                        <div className="time-data">
-                                            <h5>{dateFormated}</h5>
-                                        </div>
-                                        </div>
-                                    </div>
+                                <UsersPosts idAccount={postsData.idAccount} username={postsData.username} date={dateFormated} />
 
                                     <div className="post-data" >
                                         <p>{postsData.text}</p>
