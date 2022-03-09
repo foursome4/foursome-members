@@ -65,13 +65,13 @@
 }
 
 .content-profile .profile .main .section .cover .mark .black{
-    color: rgba(0, 0, 0, 0.036);
+    color: rgba(0, 0, 0, 0.07);
     margin: 2px;
     font-weight: 500;
     object-fit: cover;
 }
 .content-profile .profile .main .section .cover .mark .white{
-    color: rgba(255, 255, 255, 0.036);
+    color: rgba(255, 255, 255, 0.07);
     margin: 2px;
     font-weight: 500;
     object-fit: cover;
@@ -144,12 +144,12 @@
 }
 
 .content-profile .profile .main .section .profile-tool .user .user-img .mark .black{
-    color: rgba(0, 0, 0, 0.036);
+    color: rgba(0, 0, 0, 0.07);
     margin: 2px;
     font-weight: 500;
 }
 .content-profile .profile .main .section .profile-tool .user .user-img .mark .white{
-    color: rgba(255, 255, 255, 0.036);
+    color: rgba(255, 255, 255, 0.07);
     margin: 2px;
     font-weight: 500;
 }

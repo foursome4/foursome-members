@@ -84,7 +84,7 @@ function AuthProvider({children}) {
             email = login
             await api.post("/session", {email, password}).then((result) => {
                 if(result.data.status === "banned") {
-                    toast.error(`Olá, ${result.data.username}. Sua conta foi banida. Entre em contato!`);
+                    toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                     return
                 }
                 storageUser(result.data);
@@ -101,7 +101,7 @@ function AuthProvider({children}) {
             await api.post("/session", {username, password})
             .then((result) => {
                 if(result.data.status === "banned") {
-                    toast.error(`Olá, ${result.data.username}. Sua conta foi banida. Entre em contato!`);
+                    toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                    return
                 }
                 storageUser(result.data);

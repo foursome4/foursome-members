@@ -201,22 +201,22 @@
 }
 
 .content .chat .main-chat .section-chat .messages .my-message .data .image .mark .black{
-    color: rgba(0, 0, 0, 0.036);
+    color: rgba(0, 0, 0, 0.07);
     margin: 2px;
     font-weight: 500;
 }
 .content .chat .main-chat .section-chat .messages .my-message .data .image .mark .white{
-    color: rgba(255, 255, 255, 0.036);
+    color: rgba(255, 255, 255, 0.07);
     margin: 2px;
     font-weight: 500;
 }
 .content .chat .main-chat .section-chat .messages .message-friend .data .image .mark .black{
-    color: rgba(0, 0, 0, 0.036);
+    color: rgba(0, 0, 0, 0.07);
     margin: 2px;
     font-weight: 500;
 }
 .content .chat .main-chat .section-chat .messages .message-friend .data .image .mark .white{
-    color: rgba(255, 255, 255, 0.036);
+    color: rgba(255, 255, 255, 0.07);
     margin: 2px;
     font-weight: 500;
 }
