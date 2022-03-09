@@ -2,6 +2,7 @@ import './listFollowers.css'
 import { useContext, useEffect, useState } from 'react'
 import api from '../../services/api';
 import { AuthContext } from '../../contexts/Auth';
+import { Link } from 'react-router-dom';
 
 
 function ListFollowers({id}) {
@@ -30,7 +31,7 @@ function ListFollowers({id}) {
 
         loadAccount();
         loadInformation();
-    }, [])
+    }, [id])
 
 
     function handleNewFollower(e) {
@@ -47,7 +48,7 @@ function ListFollowers({id}) {
            <div className="friendUnic">
            <img src={friendInformation.avatar} alt="" />
             <div className="name">
-            <a href={friendAccount.id === myUser.id ? `/profile` : `/profile-friend/${friendAccount.id}`}> <h3>{friendInformation.nickname}</h3></a>
+            <Link to={friendAccount.id === myUser.id ? `/profile` : `/profile-friend/${friendAccount.id}`}> <h3>{friendInformation.nickname}</h3></Link>
             <button onClick={handleNewFollower}> Seguir </button>
             </div>
            </div>

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import api from "../../services/api"
 import { CountReactions } from "../../components/CountReactions/CountReactions"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
+import { Link } from "react-router-dom"
 
 function Ranking() {
 
@@ -68,7 +69,7 @@ function Ranking() {
                                           <div className="image">
                                              <img src={photos.avatar} alt="" className="profile"/>
                                           </div>                                       
-                                             <h5><a href={`profile-friend/${photos.idAccount}`}>{photos.nickname}</a></h5>
+                                             <h5><Link to={`profile-friend/${photos.idAccount}`}>{photos.nickname}</Link></h5>
                                           </div>
                                           <div className="post">
                                           <img src={photos.link} alt="" />

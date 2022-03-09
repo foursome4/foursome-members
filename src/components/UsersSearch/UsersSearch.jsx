@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import api from "../../services/api";
 import './usersSearch.css'
 
 
 function UsersSearch({id, username}) {
+    const Local = localStorage.getItem("foursome");
+    const userData = JSON.parse(Local);
+    
     const [nickname, setNickname] = useState('')
     const [avatar, setAvatar] = useState('')
     console.log(id)
@@ -26,14 +30,14 @@ function UsersSearch({id, username}) {
     return (
        <div className="item">
            <div className="image">
-           <a href={`/profile-friend/${id}`}>
+           <Link to={userData.id === id ? `/profile` : `/profile-friend/${id}`}>
            <img src={avatar} alt="" />
-           </a>
+           </Link>
            </div>
            <div className="name">
-             <a href={`/profile-friend/${id}`}>
+             <Link to={userData.id === id ? `/profile` : `/profile-friend/${id}`}>
            <h3>{nickname}</h3>
-           </a>
+           </Link>
            <h5>{id} - {username}</h5>
            </div>
        </div>

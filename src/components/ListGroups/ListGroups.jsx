@@ -1,18 +1,11 @@
 import './listGroups.css'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import api from '../../services/api'
-import { AuthContext } from '../../contexts/Auth'
 import { ListMembersGroup } from '../ListMembersGroup/ListMembersGroup';
 import { Link } from 'react-router-dom';
 
 function ListGroups() {
-    const {createMemberGroup}= useContext(AuthContext);
-    const Local = localStorage.getItem("foursome");
-    const user = JSON.parse(Local)
-    const LocalInformations = localStorage.getItem("informations-foursome");
-    const userInformations= JSON.parse(LocalInformations);
     const [groups, setGroups] = useState([])
-
 
     useEffect(() => {
         async function loadGroups(){
@@ -24,8 +17,6 @@ function ListGroups() {
 
         loadGroups()
     }, []);
-
-
 
     return (
         <div className="listGroups">

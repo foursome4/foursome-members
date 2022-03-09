@@ -13,7 +13,7 @@ import api from '../../services/api'
 import { FeedPostIndividual2 } from '../../components/FeedPostIndividual2/FeedPostIndividual2'
 import { ListFriends } from '../../components/ListFriends/ListFriends'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { AuthContext } from '../../contexts/Auth'
 import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
@@ -426,7 +426,7 @@ function ProfileFriend() {
                     </div>
                     <div className="name">
                         <br />
-                        <h4>Patrono: {patron !== null ?  <a href={patron.id === user.id ? `/profile` : `/profile-friend/${patron.id}`}>{patron.username}</a> :"Patrono não eocnotrado"}</h4>
+                        <h4>Patrono: {patron !== null ?  <Link to={patron.id === user.id ? `/profile` : `/profile-friend/${patron.id}`}>{patron.username}</Link> :"Patrono não eocnotrado"}</h4>
                         <br />
                        </div>
 

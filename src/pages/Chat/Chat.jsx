@@ -250,9 +250,9 @@ function handlePressMessage() {
                       ""}
                        </div>
                        <div className="avatar">                     
-                       <a href={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>             
+                       <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>             
                       <img src={message.avatar} alt="" />
-                      </a>  
+                      </Link>  
                     </div>
                   </div>
                    </div>
@@ -260,14 +260,14 @@ function handlePressMessage() {
                   <div className="messages1" key={message.id}>
                   <div className="message-friend">
                   <div className="avatar">     
-                  <a href={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>             
+                  <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>             
                       <img src={message.avatar} alt="" />
-                      </a>   
+                      </Link>   
                     </div>
                        <div className="data">
-                       <a href={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>
+                       <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>
                         <p><b>{message.nickname}</b></p>
-                       </a>
+                       </Link>
                        <p>{message.text}</p>
                      {message.link !== "" ?
                        <div className="image">

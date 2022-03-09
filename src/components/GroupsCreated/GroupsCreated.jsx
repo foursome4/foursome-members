@@ -1,6 +1,7 @@
 import './groupsCreated.css'
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
+import { Link } from 'react-router-dom';
 
 function GroupsCreated() {
     const Local = localStorage.getItem("foursome");
@@ -34,7 +35,7 @@ function GroupsCreated() {
                                     </div>
                                     <img src={group.cover} alt="" className="profile"/>
                                     <h4>{group.name}</h4>
-                                    <a href={`/group/${group.id}`}>Entrar no grupo</a>
+                                    <Link to={`/group/${group.id}`}>Entrar no grupo</Link>
                                     <button className='Deletar'>Deletar no grupo</button>
                                 </div>
                                      :

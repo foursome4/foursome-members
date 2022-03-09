@@ -1,6 +1,7 @@
 import './myEvents.css'
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
+import { Link } from 'react-router-dom';
 
 function MyEvents() {
     const Local = localStorage.getItem("foursome");
@@ -37,7 +38,7 @@ function MyEvents() {
                                     <img src={event.avatar} alt="" className="profile"/>
                                         </div>
                                     <h4>{event.name}</h4>
-                                    <a href={`/event/${event.id}`}>Entrar</a>
+                                    <Link to={`/event/${event.id}`}>Entrar</Link>
                                     <button>Fechar</button>
                                 </div>
                            

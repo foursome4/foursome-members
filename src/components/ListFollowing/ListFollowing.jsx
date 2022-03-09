@@ -2,6 +2,7 @@ import './listFollowing.css'
 import { useContext, useEffect, useState } from 'react'
 import api from '../../services/api';
 import { AuthContext } from '../../contexts/Auth';
+import { Link } from 'react-router-dom';
 
 
 function ListFollowing({idAccount, idRegister}) {
@@ -30,7 +31,7 @@ function ListFollowing({idAccount, idRegister}) {
 
         loadAccount();
         loadInformation();
-    }, [])
+    }, [idAccount])
 
 
     function handleDeleteFollower(e) {
@@ -42,7 +43,7 @@ function ListFollowing({idAccount, idRegister}) {
            <div className="friendUnic">
            <img src={friendInformation.avatar} alt="" />
             <div className="name">
-            <a href={friendAccount.id === myUser.id ? `/profile` : `/profile-friend/${friendAccount.id}`}> <h3>{friendInformation.nickname}</h3></a>
+            <Link to={friendAccount.id === myUser.id ? `/profile` : `/profile-friend/${friendAccount.id}`}> <h3>{friendInformation.nickname}</h3></Link>
             { myUser.id === friendAccount.id ?
              <button onClick={handleDeleteFollower} > Deixar de seguir </button>
             : ""

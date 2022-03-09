@@ -119,13 +119,13 @@ function FeedPost() {
                                     
                                     <div className={edit === true ? "edit" : "editHidden"}>
                                     {postsData.idAccount === userData.id ? 
-                                         <EditPost data={postsData.text} id={postsData.id}/>
+                                         <EditPost data={postsData.text} id={postsData.id} key={postsData.id}/>
                                          : ""
                                         }
                                     </div>
 
                                     {postsData.type === "post-photo"  ?
-                                        <div className="post-data-media" >
+                                        <div className="post-data-media" key={postsData.id}>
                                        
                                          <div className='image'>
                                          <div className="mark">
@@ -201,7 +201,7 @@ function FeedPost() {
                                          </div>
                                         </div> :
                                     postsData.type === "post-video"  ?
-                                    <div className="post-data-media" >
+                                    <div className="post-data-media" key={postsData.id} >
                                          <div className='image-video'>
                                          <div className="mark">
                                              <h5 className='black'>{userData.id}</h5>
@@ -278,7 +278,7 @@ function FeedPost() {
                                             </div>
                                         </div> :
                                          postsData.type === "post-photo-group"  ?
-                                         <div className="post-data-media" >
+                                         <div className="post-data-media" key={postsData.id} >
                                        
                                          <div className='image'>
                                          <div className="mark">
@@ -354,7 +354,7 @@ function FeedPost() {
                                          </div>
                                         </div> :
                                               postsData.type === "post-video-group"  ?
-                                              <div className="post-data-media" >
+                                              <div className="post-data-media" key={postsData.id}>
                                                    <div className='image-video'>
                                                    <div className="mark">
                                                        <h5 className='black'>{userData.id}</h5>

@@ -2,6 +2,7 @@ import './listFriends.css'
 import { useContext, useEffect, useState } from 'react'
 import api from '../../services/api';
 import { AuthContext } from '../../contexts/Auth';
+import { Link } from 'react-router-dom';
 
 
 function ListFriends({id, idRegister}) {
@@ -29,7 +30,7 @@ function ListFriends({id, idRegister}) {
 
         loadAccount();
         loadInformation();
-    }, [])
+    }, [id])
 
 
     function handleDeleteFriend(e) {
@@ -43,7 +44,7 @@ function ListFriends({id, idRegister}) {
            <div className="friendUnics">
            <img src={friendInformation.avatar} alt="" />
             <div className="name">
-            <a href={friendAccount.id === myUser.id ? `/profile` : `/profile-friend/${friendAccount.id}`}> <h3>{friendInformation.nickname}</h3></a>
+            <Link to={friendAccount.id === myUser.id ? `/profile` : `/profile-friend/${friendAccount.id}`}> <h3>{friendInformation.nickname}</h3></Link>
            { myUser.id === friendAccount.id ?
             <button onClick={handleDeleteFriend} > Remover </button>
             : ""

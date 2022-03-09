@@ -22,7 +22,7 @@ function Post() {
     const [videoAvatar, setVideoAvatar] = useState(''); 
     const [post, setPost] = useState("text");
     const [text, setText] = useState("");
-      
+
     
     
     async function handleFile(e) {
@@ -95,9 +95,10 @@ function Post() {
                 idForum: "",
                 type: "post-photo",
                 text,
-                idAccount: user.id,
                 iidPatrono: null
             })
+
+            reset()
         } else if(post === "video"){
                 const uuid = uuidv4();
                 let newVideoUrlFirebase = ref(storage, `videos/posts/${uuid}`);
@@ -119,9 +120,10 @@ function Post() {
                     idForum: "",
                     type: "post-video",
                     text,
-                    idAccount: user.id,
                     iidPatrono: null
                 })
+
+                reset()
 
             } else if(post === "text") {
             newPost({
@@ -136,17 +138,22 @@ function Post() {
                 idForum: "",
                 type: "post-text",
                 text,
-                idAccount: user.id,
                 iidPatrono: null
             })
             
-            
+            reset()
         }
         else {
             console.log("Escolha um tipo de postagem")
         }   
     
-        setLoading(false)}
+        setLoading(false)
+    }
+    function reset() {
+        setAvatarUrl(null)
+        setVideoUrl(null)
+        setText("")
+    }
         
         
         

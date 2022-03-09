@@ -2,6 +2,7 @@ import './listGroupUnic.css'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { ListMembersGroup } from '../ListMembersGroup/ListMembersGroup';
+import { Link } from 'react-router-dom';
 
 function ListGroupUnic({id}) {
     const [avatar, setAvatar] = useState();
@@ -28,7 +29,7 @@ function ListGroupUnic({id}) {
         }
 
         loadGroups()
-    }, []);
+    }, [id]);
 
     
 
@@ -39,7 +40,7 @@ function ListGroupUnic({id}) {
                                    <div className="group-unic" >
                                         <img src={cover} alt="" className="cover"/>
                                         <img src={avatar} alt="" className="profile"/>
-                                       <a  href={`/group/${id}`}><h4>{name}</h4></a> 
+                                       <Link  to={`/group/${id}`}><h4>{name}</h4></Link> 
                                         <h6>Grupo {privacity} / <ListMembersGroup idGroup={id}/> Membros</h6>
                                         <button>Sair</button>
                                         </div>        

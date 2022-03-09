@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import api from "../../services/api";
 import './userConversation.css'
 
@@ -37,13 +38,13 @@ function UserConversation({idAccount, room}) {
         messages.length === 0 ? "" :       
        <div className="item">
            <div className="image">
-           <a href={`/chat/${room}`}>
+           <Link to={`/chat/${room}`}>
            <img src={avatar} alt="" />
-           </a>
+           </Link>
            </div>
-           <a href={`/chat/${room}`}>
-           <h3>Eu & {nickname}</h3>
-           </a>
+           <Link to={`/chat/${room}`}>
+           <h4>Eu & {nickname}</h4>
+           </Link>
            <div className="counter">
                {messages.length}
             </div>

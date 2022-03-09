@@ -1,15 +1,15 @@
 
 import './chatSlim.css'
 import { useEffect, useState } from 'react'
-import {FiLogOut} from 'react-icons/fi'
 import { FaCircle } from 'react-icons/fa'
 import api from '../../services/api'
+import { Link } from 'react-router-dom'
 
 function ChatSlim() {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
-const [users, setUsers] = useState([])
+    const [users, setUsers] = useState([])
 
 useEffect(() => {
     async function loadUsersONline() {
@@ -23,17 +23,15 @@ useEffect(() => {
 
      
     return (
-        
         <div className="content-chat">
-
             {users.map((user) => {
                 return (
                     user.idAccount === userData.id ? "" :
                     <div className="chat-avatar" key={user.id}>
                         <FaCircle />
-                        <a href={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>
+                        <Link to={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>
                     <img src={user.avatar} alt={user.username} width="35px"/>
-                    </a>
+                    </Link>
                      </div>
                 )
             })}

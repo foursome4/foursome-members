@@ -1,10 +1,12 @@
 import { useState,useEffect} from 'react'
+import { Link } from 'react-router-dom';
 import api from '../../services/api'
 import './usersPosts.css'
 
 function UsersPosts({idAccount, username, date}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
+    
     const [nickname, setNickname] = useState('')
     const [avatar, setAvatar] = useState('')
     useEffect(() => {
@@ -25,14 +27,14 @@ function UsersPosts({idAccount, username, date}) {
     return (
        <div className="itemUsers">
            <div className="image">
-           <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
+           <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
            <img src={avatar} alt="" />
-           </a>
+           </Link>
            </div>
            <div className="name">
-           <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
+           <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
                <h4>{nickname}</h4>
-               </a>
+               </Link>
            <p>{date}</p>
            </div>
        </div>

@@ -10,7 +10,6 @@ import Modal from 'react-modal'
 import api from '../../services/api'
 import { UserConversation } from '../UserConversation/UserConversation'
 import { UsersSearch } from '../UsersSearch/UsersSearch'
-import { toast } from 'react-toastify'
 import { UsersPending } from '../UsersPending/UsersPending'
 import { UsersNotifications } from '../UsersNotifications/UsersNotifications'
 
@@ -28,7 +27,6 @@ function TopBar() {
 
     const [rooms, setRooms] = useState([])
     const [rooms2, setRooms2] = useState([])
-    const [messages, setMessages] = useState([]);
     const [notifications, setNotifications] = useState([]);
     const [myFriends, setMyFriends] = useState([]);
     const [accounts, setAccoounts] = useState([])
@@ -92,7 +90,7 @@ function TopBar() {
     console.log("Date");
     console.log(date);
     console.log("Actual Date");
-    console.log(new Date);
+    console.log(new Date());
 
   const newRooms = rooms.concat(rooms2)
   const SearchUsers = accounts.filter((account) => account.username.startsWith(search))
@@ -168,27 +166,7 @@ function TopBar() {
     }
 
 
-    //Deslogandop após tempo de inatividade
-    function inactivityTime() {
-        let time;
-        // reset timer
-        window.onload = resetTimer;
-        document.onmousemove = resetTimer;
-        document.onkeydown = resetTimer;
-        function doSomething() {
-            toast.error("Finalizando a sessão")
-          logout(user.id)
-        }
-        function resetTimer() {
-            clearTimeout(time);
-          //  time = setTimeout(doSomething, 2000000)
-            time = setTimeout(doSomething, 50000)
-        }
-    }
-
-    inactivityTime()
-
-    function handleNewDate(date) {
+     function handleNewDate(date) {
         console.log("NOva data")
         console.log(date)
         setDate(date)

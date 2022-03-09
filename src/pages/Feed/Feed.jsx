@@ -7,11 +7,18 @@ import './feed.css';
 import { useContext, useEffect } from "react"
 import { AuthContext } from "../../contexts/Auth"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
+import { useNavigate } from 'react-router-dom';
 
 
 function Feed() {
+    const Local = localStorage.getItem("foursome");
+    const user = JSON.parse(Local);
+    const navigate = useNavigate();
             const {socketDataLocation} = useContext(AuthContext)
            useEffect(() => {
+               if(user.status === "blocked") {
+                navigate("/profile");
+               }
             socketDataLocation()
            })
 

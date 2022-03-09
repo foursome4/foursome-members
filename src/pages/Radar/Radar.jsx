@@ -8,6 +8,7 @@ import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import apiGoogleReverse from "../../services/apiGoogleReverse"
 import api from "../../services/api"
 import axios from 'axios';
+import { Link } from "react-router-dom"
 
 function Radar() {
     const Local = localStorage.getItem("foursome");
@@ -112,7 +113,7 @@ console.log(user.lat, user.long, lat1, long1);
                                <img src={user.avatar} alt="" className="profile"/>
                                <h5>{user.nickname} {user.equalCity === true ? "" : <FaPlane/>}</h5>
                                <h6>+ 1km de você</h6>
-                               <a href={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>Ver perfil</a>
+                               <Link to={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>Ver perfil</Link>
                            </div>
                                     )
                                 })}

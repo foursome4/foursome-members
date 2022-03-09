@@ -1,4 +1,4 @@
-import { FiTrash2, FiEdit, FiMessageCircle } from 'react-icons/fi'
+import { FiTrash2, FiEdit } from 'react-icons/fi'
 import './feedPostEvent.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
@@ -8,12 +8,9 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
 
 
     function FeedPostEvent({idEvent}) {
-
-    const [data, setData] = useState([]);
-    const [comment, setComment] = useState(false);
-   
-
+    const [data, setData] = useState([]); 
     const {user} = useContext(AuthContext);
+
     useEffect(() => {
           async function findPosts() {
     
@@ -23,16 +20,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
         }
         findPosts()
 
-    }, [user, data.sort()])
-
-    function handleHabiliteComment () {
-        if(comment === false) {
-            setComment(true)
-        } else {
-            setComment(false) 
-        }
-    }
-
+    }, [idEvent]);
 
     return (
         <div className="feedPostIndividual">

@@ -53,8 +53,8 @@ function AuthProvider({children}) {
             return
         } 
         
-        const res = await api.post('/accounts', data).then(async (result) => {
-            completeAccount(data.email)
+        await api.post('/accounts', data).then(async (result) => {
+            completeAccount(email)
             console.log("Cadastro realizado com sucesso!");
             toast.info(`Cadastro criado com sucesso!`);
 
@@ -83,6 +83,10 @@ function AuthProvider({children}) {
         if(login.includes('@')) {
             email = login
             await api.post("/session", {email, password}).then((result) => {
+                if(result.data.status === "banned") {
+                    toast.error(`Olá, ${result.data.username}. Sua conta foi banida. Entre em contato!`);
+                    return
+                }
                 storageUser(result.data);
                 setLoading(false);
                 
@@ -96,6 +100,10 @@ function AuthProvider({children}) {
             username = login
             await api.post("/session", {username, password})
             .then((result) => {
+                if(result.data.status === "banned") {
+                    toast.error(`Olá, ${result.data.username}. Sua conta foi banida. Entre em contato!`);
+                   return
+                }
                 storageUser(result.data);
                 setLoading(false);
                 
@@ -779,6 +787,29 @@ async function deleteGroup(id){
     getLocation()
     getInformations()
 }
+
+
+   //Deslogandop após tempo de inatividade
+   function inactivityTime() {
+       let time;
+       // reset timer
+       window.onload = resetTimer;
+       document.onmousemove = resetTimer;
+       document.onkeydown = resetTimer;
+       function doSomething() {
+        const DataUser = localStorage.getItem("foursome");
+        const user = JSON.parse(DataUser);
+           toast.error("Finalizando a sessão")
+           logout(user.id)
+        }
+        function resetTimer() {
+        clearTimeout(time);
+      time = setTimeout(doSomething, 300000)
+       // time = setTimeout(doSomething, 50000)
+    }
+}
+
+inactivityTime()
 
 
 
