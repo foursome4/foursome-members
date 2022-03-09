@@ -21,7 +21,6 @@ function UserComment({idAccount, username, date, id, text}) {
     useEffect(() => {
         async function loadInformations() {
             await api.get(`informations/${idAccount}`).then((result) => {
-                console.log(result.data[0])
                 setNickname(result.data[0].nickname)
                 setAvatar(result.data[0].avatar)
             }).catch((error) => {

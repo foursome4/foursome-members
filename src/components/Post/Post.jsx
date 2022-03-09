@@ -1,12 +1,13 @@
 import { FiImage, FiVideo, FiMenu, FiSend, FiUpload, FiRefreshCcw} from 'react-icons/fi'
 import './post.css';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import profile from '../../assets/images/profile.jpg';
 import { v4 as uuidv4} from 'uuid'
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
 import {toast} from 'react-toastify';
+import api from '../../services/api'
 
 function Post() {
     const {newPost} = useContext(AuthContext)
@@ -22,6 +23,41 @@ function Post() {
     const [videoAvatar, setVideoAvatar] = useState(''); 
     const [post, setPost] = useState("text");
     const [text, setText] = useState("");
+
+    const [videos, setVideos] = useState([])
+    const [photos, setPhotos] = useState([])
+
+
+    useEffect(() => {
+        async function findPostsPhoto() {
+          const idAccount = user.id;
+          const res = await api.get(`/posts/filter/${idAccount}/post-photo`);
+          setPhotos(res.data)
+      
+      }
+        async function findPostsVideo() {
+          const idAccount = user.id;
+          const res = await api.get(`/posts/filter/${idAccount}/post-video`);
+          setVideos(res.data)
+      
+      }
+      findPostsPhoto()
+      findPostsVideo()
+
+  }, [user.id, videos, photos])
+
+  console.log("Photos")
+  console.log(photos)
+  console.log("Videos")
+  console.log(videos)
+  const dailyPhoto = photos.filter((photo) => (new Date(photo.created_at).getDate() === new Date().getDate()));
+  console.log("dailyPhoto")
+  console.log(dailyPhoto)
+  const dailyVideo = videos.filter((video) => (new Date(video.created_at).getDate() === new Date().getDate()));
+  console.log("dailyVideo")
+  console.log(dailyVideo)
+
+
 
     
     
@@ -98,6 +134,7 @@ function Post() {
                 iidPatrono: null
             })
 
+            setPost("text")
             reset()
         } else if(post === "video"){
                 const uuid = uuidv4();
@@ -122,8 +159,9 @@ function Post() {
                     text,
                     iidPatrono: null
                 })
-
+                setPost("text")
                 reset()
+                
 
             } else if(post === "text") {
             newPost({
@@ -140,7 +178,7 @@ function Post() {
                 text,
                 iidPatrono: null
             })
-            
+            setPost("text")
             reset()
         }
         else {
@@ -155,10 +193,7 @@ function Post() {
         setText("")
     }
         
-        
-        
-        
-        
+
     function postText() {
             setPost("text")
     }
@@ -197,49 +232,27 @@ function Post() {
                             <img src={avatarUrl === null ? profile : avatarUrl} alt="Avatar" height={80} width={80}/>
                         </label>
 
-
                 </div>:
                post === "video" ?
                <div className='post-file'>
                <textarea name="" id="" cols={30} rows={10}
                 onChange={(e) => setText(e.target.value)}></textarea>
                
-               
                  <label className="label-avatar">
                             <span><FiUpload color="#f65" size={25} /></span>
                             <input type="file" accept="video/*" onChange={handleFileVideo}/><br />
                             <img src={videoUrl === null ? profile : videoUrl} alt="Video" height={80} width={80}/>
                         </label>
-
-
-                </div> :
-               post === "group" ?
-               <div className='post-file'>
-               <textarea name="" id="" cols={30} rows={10}
-                onChange={(e) => setText(e.target.value)}></textarea>
-               
-               
-                 <label className="label-avatar">
-                            <span><FiUpload color="#f65" size={25} /></span>
-                            <input type="file" accept="image/*" onChange={handleFile}/><br />
-                            <img src={avatarUrl === null ? profile : avatarUrl} alt="Avatar" height={80} width={80}/>
-                        </label>
-
-
-                </div> :
-               post === "forum" ?
-               <textarea name="" id="" cols={30} rows={10}
-               onChange={(e) => setText(e.target.value)}></textarea> :
-               <textarea name="" id="" cols={30} rows={10}
-               onChange={(e) => setText(e.target.value)}></textarea>
+                </div> :" "
             }
-                    <button className="public" onClick={handlePost}>
-                        {loading === true ? <FiRefreshCcw /> : <FiSend /> } </button>
+                        <button className="public" onClick={handlePost}>
+                            {loading === true ? <FiRefreshCcw /> : <FiSend />}
+                        </button>
                 </div>
                 <div className="buttons">
                     <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
-                    <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button>
-                    <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button>
+                  {dailyPhoto.length === 1 ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
+                  {dailyVideo.length === 1 ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
                 </div>
             </div>      
             </div>
