@@ -9,7 +9,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
 
     function FeedPostEvent({idEvent}) {
     const [data, setData] = useState([]); 
-    const {user} = useContext(AuthContext);
+    const {user, deletePost} = useContext(AuthContext);
 
     useEffect(() => {
           async function findPosts() {
@@ -21,6 +21,14 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
         findPosts()
 
     }, [idEvent]);
+
+    function handleDeletePost(id) {
+        const deletar = window.confirm("Deseja deletar a postagem?");
+    
+        if(deletar === true) {
+           deletePost(id);
+            } 
+        }
 
     return (
         <div className="feedPostIndividual">
@@ -45,7 +53,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
                                         {postsData.idAccount === user.id ?
                                         <>
                                             <button> <FiEdit />  </button>
-                                            <button> <FiTrash2 />  </button>
+                                            <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 />  </button>
                                             </>
                                         : ""}
                                     </div>

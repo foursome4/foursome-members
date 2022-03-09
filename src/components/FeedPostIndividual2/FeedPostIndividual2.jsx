@@ -21,7 +21,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
     const [comment, setComment] = useState(false);
     const [textComment, setTextComment] = useState("");
 
-    const {user, newComment, likePost} = useContext(AuthContext);
+    const {user, deletePost} = useContext(AuthContext);
     useEffect(() => {
              async function findPosts() {
             if(myPosts === "") {
@@ -74,16 +74,13 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
     }
 
 
-    function handleComment(idPost) {
-    newComment({text: textComment, idPost, idAccount: idAccount.idAccount, avatar:idAccount.avatar, nickname: idAccount.nickname, username: userData.username})
-    setTextComment("");
-    setComment(false) 
-    }
-
-    function handleLikePost( idPost) {
-        likePost({idAccount: idAccount.idAccount, username: idAccount.username, idPost})
-    }
-
+    function handleDeletePost(id) {
+        const deletar = window.confirm("Deseja deletar a postagem?");
+    
+        if(deletar === true) {
+           deletePost(id);
+            } 
+        }
 
     return (
         <div className="feedPostIndividual2">
@@ -279,7 +276,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
                                         {postsData.idAccount === user.id ?
                                         <>
                                             <button> <FiEdit />  </button>
-                                            <button> <FiTrash2 />  </button>
+                                            <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 />  </button>
                                             </>
                                         : ""}
                                     </div>

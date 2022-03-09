@@ -22,7 +22,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
     const [viewComment, setViewComment] = useState(true);
     const [textComment, setTextComment] = useState("");
 
-    const {user, newComment, likePost} = useContext(AuthContext);
+    const {user, deletePost} = useContext(AuthContext);
     useEffect(() => {
           async function findPosts() {
             if(post === "") {
@@ -74,15 +74,13 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
     }
 
 
-    function handleComment(idPost) {
-    newComment({text: textComment, idPost, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username})
-    setTextComment("");
-    setComment(false) 
-    }
-
-    function handleLikePost( idPost) {
-        likePost({idAccount: userData.id, username: userData.username, idPost})
-    }
+    function handleDeletePost(id) {
+        const deletar = window.confirm("Deseja deletar a postagem?");
+    
+        if(deletar === true) {
+           deletePost(id);
+            } 
+        }
 
 
     return (
@@ -278,7 +276,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
                                         {postsData.idAccount === user.id ?
                                         <>
                                             <button> <FiEdit />  </button>
-                                            <button> <FiTrash2 />  </button>
+                                            <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 />  </button>
                                             </>
                                         : ""}
                                     </div>
