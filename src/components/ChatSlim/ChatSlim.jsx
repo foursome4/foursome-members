@@ -29,9 +29,9 @@ useEffect(() => {
                     user.idAccount === userData.id ? "" :
                     <div className="chat-avatar" key={user.idAccount}>
                         <FaCircle />
-                        <Link to={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>
+                        <a href={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>
                     <img src={user.avatar} alt={user.username} width="35px"/>
-                    </Link>
+                    </a>
                      </div>
                 )
             })}

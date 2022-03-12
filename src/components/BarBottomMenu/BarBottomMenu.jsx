@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaCircle } from "react-icons/fa";
 import { FiCalendar, FiHome, FiList, FiRadio, FiUserCheck, FiUsers, FiSmile, FiMenu, FiInfo } from "react-icons/fi"
-import { Link } from "react-router-dom";
 import api from "../../services/api";
 import './barBottomMenu.css'
 
@@ -40,70 +39,70 @@ function BarBottomMenu () {
                  <button className="ButtonsUnic" onClick={handleOpenUsersOnline}>
                         <FiSmile size={20}/>Online
                     </button>
-                <Link to="/feed" >
+                <a href="/feed" >
                  <button className="ButtonsUnic" >
                         <FiHome size={20}/>Feed
                     </button>
-                    </Link>
+                    </a>
 
-                    <Link to="/profile" >
+                    <a href="/profile" >
                     <button className="ButtonsUnic" >
                         <FiUserCheck size={20}/>Perfil
                     </button>
-                    </Link>
+                    </a>
           
-                    {/* <Link to="/messages" >
+                    {/* <a href="/messages" >
                     <button className="ButtonsUnic" >
                         <FiMail size={20}/>
                        Recados
                     </button>
-                    </Link> */}
+                    </a> */}
 
-                    {/* <Link to="/ranking" >
+                    {/* <a href="/ranking" >
                     <button className="ButtonsUnic" >
                         <FiTrendingUp size={20}/>
                        Ranking
                     </button>
-                    </Link> */}
+                    </a> */}
 
-                    <Link to="/groups" >
+                    <a href="/groups" >
                     <button className="ButtonsUnic" >
                         <FiUsers size={20}/>
                        Grupos
                     </button>
-                    </Link>
+                    </a>
 
-                    <Link to="/foruns" >
+                    <a href="/foruns" >
                     <button className="ButtonsUnic" >
                         <FiList size={20}/>
                        Fóruns
                     </button>
-                    </Link>
+                    </a>
 
-                    <Link to="/events" >
+                    <a href="/events" >
                     <button className="ButtonsUnic" >
                         <FiCalendar size={20}/>
                        Eventos
                     </button>
-                    </Link>
+                    </a>
                     
-                    <Link to="/radar" >
+                    <a href="/radar" >
                     <button className="ButtonsUnic" >
                         <FiRadio size={20}/>
                        Radar
                     </button>
-                    </Link>
+                    </a>
 
-                    {/* <Link to="/locals" >
+                    {/* <a href="/locals" >
                     <button className="ButtonsUnic" >
                         <FiMapPin size={20}/>Locais
                     </button>
-                    </Link> */}
-                    <Link to="/infos" >
+                    </a> */}
+                    <a href="/infos" >
                     <button className="ButtonsUnic" >
                         <FiInfo size={20}/>Infos
                     </button>
-                    </Link>
+                    </a>
                 </div>
                 : select === true ?
                 <div className="Buttons">
@@ -115,14 +114,14 @@ function BarBottomMenu () {
                    {users.map((user) => {
                        return(             
                     user.idAccount === userData.id ? "" :
-               <Link to={`/profile-friend/${user.idAccount}`} key={user.idAccount}>
+               <a href={`/profile-friend/${user.idAccount}`} key={user.idAccount}>
                 <div className="divUser" key={user.idAccount}>
                     <FaCircle />
                     <div className="image">
                      <img src={user.avatar} alt={user.idAccount} />
                     </div>
                    </div>
-                   </Link>
+                   </a>
                        )
                    })}
 
