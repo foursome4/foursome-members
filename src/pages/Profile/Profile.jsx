@@ -14,7 +14,6 @@ import {useEffect, useState } from 'react'
 import api from '../../services/api'
 import { FeedPostIndividual } from '../../components/FeedPostIndividual/FeedPostIndividual'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
-import { ListFriendsPending } from '../../components/ListFriendsPending/ListFriendsPending'
 import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
@@ -44,7 +43,6 @@ function Profile() {
   const [friends, setFriends] = useState("friends");
   const [following, setFollowing] = useState("following");
   const [followers, setFollowers] = useState("");
-  const [requests, setRequests] = useState("");
 
 
     useEffect(() => {
@@ -171,7 +169,6 @@ function Profile() {
 
     function handleFriends() {
       setFriends("friends");
-      setRequests("");
     }
     function handleFollowing() {
 
@@ -183,20 +180,12 @@ function Profile() {
       setFollowing("");
       setFollowers("followers");
     }
-    function handleRequest() {
-      setFriends("");
-        setRequests("requests");
-    }
 
     const photos = posts.filter(post => (post.type === "post-photo"));
     const allPhotos = photos.slice(0, 6)
     const videos = posts.filter(post => (post.type === "post-video"));
 
     const friendAproveds = myFriends.filter(friend => (friend.status === 'aproved'))
-    console.log(friendAproveds)
-
-    const friendPending = myFriends.filter(friend => (friend.status === 'pending' && friend.idFriend === user.id))
-    
     const followersMy = myFollowers.filter(friend => (friend.idFriend === user.id))
     const followingMy = myFollowers.filter(friend => (friend.idAccount === user.id))
 
@@ -529,7 +518,6 @@ function Profile() {
                   <div className="friends">
                   <div className="buttonsFriends">
                     <button className={friends === "" ? "" : "select"} onClick={handleFriends}>Amigos</button>
-                    <button className={requests === "" ? "" : "select"} onClick={handleRequest}>Solicitações</button>
                   </div> 
 
 
@@ -540,14 +528,6 @@ function Profile() {
                       <ListFriends id={friends.idFriend === user.id ? friends.idAccount : friends.idFriend} idRegister={friends.id}/>
                       )
                     })
-                    : requests === "requests" ?
-                    friendPending.map((friends) => {
-                      return (
-                        <>
-                      <ListFriendsPending idAccount={friends.idAccount} id={friends.id} />
-                      </>
-                    )
-                  })
                   :
                   "Nada para mostrar"
                   
@@ -575,7 +555,15 @@ function Profile() {
                    </div> 
  
                    <div className="listFriendsMap">
-                   {followers === "followers" ?
+                   {
+                   following === "following" ?
+                   followingMy.map((following) => {
+                    return (
+                      <ListFollowing idAccount={following.idAccou === user.id ? following.idAccount : following.idFriend} idRegister={following.id}/>
+                    )
+                  })
+                  :
+                  followers === "followers" ?
                     
                       followersMy.map((followers) => {
                         return (
@@ -584,12 +572,7 @@ function Profile() {
                         )
                       })
                     
-                   :following === "following" ?
-                   followingMy.map((following) => {
-                    return (
-                      <ListFollowing idAccount={following.idAccou === user.id ? following.idAccount : following.idFriend} idRegister={following.id}/>
-                    )
-                  })
+                   
                     : 
                    "Nada para mostrar"
                    

@@ -20,7 +20,7 @@ function Feed() {
                 navigate("/profile");
                }
             socketDataLocation()
-           })
+           }, [socketDataLocation])
 
 
 return (

@@ -19,8 +19,7 @@ function Loader() {
                 const data2 = res.data[0]
                 console.log("data2");               
                 console.log(res.data[0]);               
-                setData(res.data[0]);               
-                localStorage.setItem("informations-foursome", JSON.stringify(data2));
+                setData(res.data[0]);     
 
                 if(data2 !== undefined) {
                     console.log("Redirecionar feed")
@@ -32,7 +31,7 @@ function Loader() {
                     console.log(data2)
                   navigate("/completeregistration");       
                 }
-               window.location.reload()
+               window.location.reload(false)
                
             }).catch(error => {
                 console.log("Erro ao buscar dados" + error)
@@ -47,7 +46,7 @@ function Loader() {
         <div className="loader">
             <img src={loader} alt="Carregando" />
             <h3>Olá, {data.nickname}</h3>
-            <h3>Estamos trabalhando em atualizações importantes. Em breve estaremos de volta!</h3>
+            <h3>Estamos preparando tudo para você!</h3>
         </div>
     )
 }

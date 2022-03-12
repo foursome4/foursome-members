@@ -15,9 +15,9 @@ function Recuperation() {
 
   useEffect(() => {
       if(localStorage.getItem("foursome") !== null) {
-        navigate("/feed")
+        navigate("/loader")
       }
-  })
+    },[])
 
 
   function handleCreateAccount(e) {

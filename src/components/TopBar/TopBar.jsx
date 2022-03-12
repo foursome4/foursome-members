@@ -1,20 +1,20 @@
-import logoFoursomemini from '../../assets/images/logo-mini2.png'
-import logoFoursome from '../../assets/images/logo2.png'
-import { FiSearch, FiMessageSquare, FiUserPlus, FiBell, FiMail, FiLogOut, FiX, FiInfo, FiCheckSquare, FiHeart, FiXSquare } from 'react-icons/fi'
-import avatarImg from '../../assets/images/avatar.png'
-import './topBar.css'
+import logoFoursomemini from '../../assets/images/logo-mini2.png';
+import logoFoursome from '../../assets/images/logo2.png';
+import { FiSearch, FiMessageSquare, FiUserPlus, FiBell, FiMail, FiLogOut, FiX, FiInfo, FiCheckSquare, FiHeart, FiXSquare } from 'react-icons/fi';
+import avatarImg from '../../assets/images/avatar.png';
+import './topBar.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import ReactTooltip from 'react-tooltip';
-import Modal from 'react-modal'
-import api from '../../services/api'
-import { UserConversation } from '../UserConversation/UserConversation'
-import { UsersSearch } from '../UsersSearch/UsersSearch'
-import { UsersPending } from '../UsersPending/UsersPending'
-import { UsersNotifications } from '../UsersNotifications/UsersNotifications'
+import Modal from 'react-modal';
+import api from '../../services/api';
+import { UserConversation } from '../UserConversation/UserConversation';
+import { UsersSearch } from '../UsersSearch/UsersSearch';
+import { UsersPending } from '../UsersPending/UsersPending';
+import { UsersNotifications } from '../UsersNotifications/UsersNotifications';
 
 function TopBar() {
-    const {logout} = useContext(AuthContext);
+    const {logout,friendAproved, deleteFriend, deleteFriendAndFollower} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
@@ -53,9 +53,8 @@ function TopBar() {
                 setRooms2(res.data)
             }).catch(error => {
               console.log("Erro ao buscar dados" + error)
-          })
+           })
           }
-
 
           async function loadAccounts() {
               await api.get("/accounts").then((result) => {
@@ -70,6 +69,7 @@ function TopBar() {
             console.log("Friends")
             console.log(result.data)
           }
+
           async function loadNotifications() {
               const idPatrono = user.id
             const result = await api.get(`/notifications/my/${idPatrono}`);
@@ -83,8 +83,7 @@ function TopBar() {
           loadAccounts()
           loadRoomIdAccount()
           loadRoomIDFriend()
-
-    }, [user.id])
+    }, [user.id, notifications])
 
 
     console.log("Date");
@@ -170,6 +169,21 @@ function TopBar() {
         console.log("NOva data")
         console.log(date)
         setDate(date)
+    }
+
+    function handleAprovedFriend(id) {
+        friendAproved(id)
+    }
+
+    function handleDeleteFriend(id) {
+        deleteFriend(id)
+    }
+    function handleFollowerFriend(id, friendId ) {
+        const idAccount = friendId
+        const idFriend = user.id
+        const type = "friend"
+        const status = "aproved"
+        deleteFriendAndFollower(id, idAccount, idFriend, type, status)
     }
 
 
@@ -359,15 +373,15 @@ function TopBar() {
                         <UsersPending id={friend.idAccount} />
                         </div>
                         <div className="buttons">
-                            <button className='Acept' data-tip data-for='Aceitar'><FiCheckSquare /></button>
+                            <button className='Acept' data-tip data-for='Aceitar' onClick={() => handleAprovedFriend(friend.id)}><FiCheckSquare /></button>
                             <ReactTooltip id='Aceitar' place="bottom" type="dark" effect="solid">
                              <span>Aceitar</span>
                             </ReactTooltip>
-                            <button className='Acept' data-tip data-for='Seguir'> <FiHeart /></button>
+                            <button className='Acept' data-tip data-for='Seguir' onClick={() => handleFollowerFriend(friend.id, friend.idAccount )}> <FiHeart /></button>
                             <ReactTooltip id='Seguir' place="bottom" type="dark" effect="solid">
                              <span>Seguir</span>
                             </ReactTooltip>
-                            <button className='Refuse' data-tip data-for='Recusar'> <FiXSquare /></button>
+                            <button className='Refuse' data-tip data-for='Recusar' onClick={() => handleDeleteFriend(friend.id)}> <FiXSquare /></button>
                             <ReactTooltip id='Recusar' place="bottom" type="dark" effect="solid">
                              <span>Recusar</span>
                             </ReactTooltip>

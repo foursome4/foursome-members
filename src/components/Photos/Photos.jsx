@@ -25,7 +25,7 @@ function Photos({idAccount, type}) {
         <div className="photos">
                     {data.map((photo) => {
                         return (
-                            <div className="photo">
+                            <div className="photo" key={photo.id}>
                                              <div className="mark">
                                              <h5 className='black'>oi</h5>
                                              <h5 className='white'>oi</h5>

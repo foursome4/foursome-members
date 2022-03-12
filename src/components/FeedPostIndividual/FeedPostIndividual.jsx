@@ -273,7 +273,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
                                             <FiMessageCircle />
                                             
                                         </button>
-                                        {postsData.idAccount === user.id ?
+                                        {postsData.idAccount === userData.id ?
                                         <>
                                             <button> <FiEdit />  </button>
                                             <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 />  </button>

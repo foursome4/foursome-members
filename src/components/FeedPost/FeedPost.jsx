@@ -438,7 +438,7 @@ function FeedPost() {
                                         <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
                                         </button>
-                                        {postsData.idAccount === user.id ?
+                                        {postsData.idAccount === userData.id ?
                                         <>
                                             <button onClick={handleHabiliteEdit}> <FiEdit /> </button>
                                             <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 /> </button>

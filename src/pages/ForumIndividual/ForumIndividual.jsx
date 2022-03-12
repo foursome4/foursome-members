@@ -51,7 +51,7 @@ function ForumIndividual() {
 
     loadGroups()
 
-}, [id, ]);
+}, [id]);
 console.log(idAccount, theme)
 
 

@@ -7,10 +7,12 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.25.0",
+    "core-js": "3.21.1",
     "date-fns": "^2.28.0",
     "firebase": "^9.6.3",
     "firebase-admin": "^10.0.1",
     "react": "^17.0.2",
+    "react-app-polyfill": "^3.0.0",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-modal": "^3.14.4",
@@ -41,6 +43,7 @@
       "not op_mini all"
     ],
     "development": [
+      "defaults",
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"

@@ -17,7 +17,7 @@ function Forgotit() {
       if(localStorage.getItem("foursome") !== null) {
         navigate("/feed")
       }
-  })
+  },[])
 
 
   function handleCreateAccount(e) {

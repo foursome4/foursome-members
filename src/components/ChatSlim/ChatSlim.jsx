@@ -27,7 +27,7 @@ useEffect(() => {
             {users.map((user) => {
                 return (
                     user.idAccount === userData.id ? "" :
-                    <div className="chat-avatar" key={user.id}>
+                    <div className="chat-avatar" key={user.idAccount}>
                         <FaCircle />
                         <Link to={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>
                     <img src={user.avatar} alt={user.username} width="35px"/>

@@ -61,7 +61,7 @@ function UserComment({idAccount, username, date, id, text}) {
         }
 
     return (
-       <div className="itemComment">
+       <div className="itemComment" key={userData.id}>
            <div className="block1">
            <div className="title">
            <div className="image">

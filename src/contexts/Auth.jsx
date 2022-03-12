@@ -21,25 +21,6 @@ function AuthProvider({children}) {
     const [uf, setUf] = useState("");
 
 
-    useEffect(() => {
-        function loadStorage() {
-            const storageUser = localStorage.getItem("foursome");
-
-        if(storageUser) {
-            setUser(JSON.parse(storageUser));
-            setLoading(false);
-       
-        }
-        setLoading(false);
-        }      
-               
-               loadStorage(); 
-    },[]);
-
-
-
-
-
     async function createAccount(username, email, phone, type, password, status, role, code, online, patron) {
         const data = {username, email, phone, type, password, status, role, code, online, patron}
         console.log(data)
@@ -87,8 +68,8 @@ function AuthProvider({children}) {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                     return
                 }
-                storageUser(result.data);
-                setLoading(false);
+                localStorage.setItem("foursome", JSON.stringify(result.data));
+                findInformationsAccount(result.data.id)
                 
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
@@ -104,8 +85,8 @@ function AuthProvider({children}) {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                    return
                 }
-                storageUser(result.data);
-                setLoading(false);
+                localStorage.setItem("foursome", JSON.stringify(result.data));
+                findInformationsAccount(result.data.id)
                 
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
@@ -119,12 +100,8 @@ function AuthProvider({children}) {
     async function findInformationsAccount(id) {
         await api.get(`/informations/${id}`)
         .then((res) => {
-            console.log("Find Informations")
-            const data2 = res.data[0]
-            console.log(data2);
-            setUserDataNew(data2);
-            
-            localStorage.setItem("informations-foursome", JSON.stringify(data2));
+            localStorage.setItem("informations-foursome", JSON.stringify(res.data[0]));
+            navigate("/profile") 
            
         }).catch(error => {
             console.log("Erro ao buscar dados" + error)
@@ -689,11 +666,11 @@ async function deleteGroup(id){
 
 // Fim da Sessão grupos
 
-    function storageUser(data) {
-        localStorage.setItem("foursome", JSON.stringify(data));
-        findInformationsAccount(data.id);
-        navigate("/loader")
-    }
+    // function storageUser(data) {
+    //     localStorage.setItem("foursome", JSON.stringify(data));
+    //     navigate("/loader") 
+    //   //  findInformationsAccount(data.id);
+    // }
 
 
 

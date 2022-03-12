@@ -23,7 +23,8 @@ function Post() {
     const [videoAvatar, setVideoAvatar] = useState(''); 
     const [post, setPost] = useState("text");
     const [text, setText] = useState("");
-
+    const [dataPhoto, setDataPhoto] = useState(false);
+    const [dataVideo, setDataVideo] = useState(false);
     const [videos, setVideos] = useState([])
     const [photos, setPhotos] = useState([])
 
@@ -44,18 +45,14 @@ function Post() {
       findPostsPhoto()
       findPostsVideo()
 
-  }, [user.id, videos, photos])
+  }, [user.id])
 
-  console.log("Photos")
-  console.log(photos)
-  console.log("Videos")
-  console.log(videos)
-  const dailyPhoto = photos.filter((photo) => (new Date(photo.created_at).getDate() === new Date().getDate()));
-  console.log("dailyPhoto")
-  console.log(dailyPhoto)
-  const dailyVideo = videos.filter((video) => (new Date(video.created_at).getDate() === new Date().getDate()));
-  console.log("dailyVideo")
-  console.log(dailyVideo)
+
+  const dailyPhoto = photos.filter((photo) => (
+  new Date(photo.created_at).getDate() === new Date().getDate()));
+
+  const dailyVideo = videos.filter((video) => (
+  new Date(video.created_at).getDate() === new Date().getDate()));
 
 
 
@@ -133,7 +130,7 @@ function Post() {
                 text,
                 iidPatrono: null
             })
-
+            setDataPhoto(true)
             setPost("text")
             reset()
         } else if(post === "video"){
@@ -159,6 +156,7 @@ function Post() {
                     text,
                     iidPatrono: null
                 })
+                setDataVideo(true)
                 setPost("text")
                 reset()
                 
@@ -251,8 +249,8 @@ function Post() {
                 </div>
                 <div className="buttons">
                     <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
-                  {dailyPhoto.length === 1 ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
-                  {dailyVideo.length === 1 ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
+                  {dailyPhoto.length === 1 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
+                  {dailyVideo.length === 1 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
                 </div>
             </div>      
             </div>
