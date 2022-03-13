@@ -83,7 +83,7 @@ function TopBar() {
           loadAccounts()
           loadRoomIdAccount()
           loadRoomIDFriend()
-    }, [user.id, notifications])
+    }, [user.id])
 
 
     console.log("Date");

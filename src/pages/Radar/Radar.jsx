@@ -39,30 +39,9 @@ useEffect(() => {
       
  }, [userData.id])
 
+ console.log(lat1)
+ console.log(long1)
 
- console.log(users)
-
-var config = {
-  method: 'get',
-  url: 'https://maps.googleapis.com/maps/api/distancematrix/json?origins=-22.8447154,-42.0592233&destinations=-22.7012879,-42.6334516&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0',
-  headers: { }
-};
-
-axios(config)
-.then(function (response) {
-  console.log(JSON.stringify(response.data));
-})
-.catch(function (error) {
-  console.log(error);
-});
-
-
-
-
-
-
-
-  //end Function calculate distance
 
     return (
         <div className="content">
@@ -83,26 +62,40 @@ axios(config)
                             <div className="radar-all">
                                 {users.map((user) => {
 
+                   
 
-                        
+// function reverseGeolocalization() {
+//     apiGoogleReverse.get(`/distancematrix/json?origins=-22.8447154,-42.0592233&destinations=-22.7012879,-42.6334516&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`).then((result) => {
+//         console.log("Distance")
+//         console.log(result.data)
+//     }).catch(error => {
+//         console.log(error)
+//     })
+// }
 
-function reverseGeolocalization() {
-    apiGoogleReverse.get(`/distancematrix/json?origins=-22.8447154,-42.0592233&destinations=-22.7012879,-42.6334516&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`).then((result) => {
-        console.log("Distance")
-        console.log(result.data)
-    }).catch(error => {
-        console.log(error)
-    })
+
+// reverseGeolocalization();
+// console.log(user.lat, user.long, lat1, long1);
+
+let distance = 0;
+function getDistanceFromLatLonInKm(lat1, long1, lat2, long2) {
+    "use strict";
+    var deg2rad = function (deg) { return deg * (Math.PI / 180); },
+        R = 6371,
+        dLat = deg2rad(lat2 - lat1),
+        dLng = deg2rad(long1 - long2),
+        a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+            + Math.cos(deg2rad(lat1))
+            * Math.cos(deg2rad(lat2))
+            * Math.sin(dLng / 2) * Math.sin(dLng / 2),
+        c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        console.log(((R * c *1000)/10).toFixed());
+
+        distance = ((R * c *1000)/1000).toFixed()
+    return ((R * c *1000).toFixed());
 }
 
-
-reverseGeolocalization();
-console.log(user.lat, user.long, lat1, long1);
-
-
-
-
-
+getDistanceFromLatLonInKm(user.lat, user.long, lat1, long1 )
 
 
 
@@ -112,7 +105,7 @@ console.log(user.lat, user.long, lat1, long1);
                                <div className="forun-unic" key={user.idAccount}>
                                <img src={user.avatar} alt="" className="profile"/>
                                <h5>{user.nickname} {user.equalCity === true ? "" : <FaPlane/>}</h5>
-                               <h6>+ 1km de você</h6>
+                               <h6>{distance}Km de você</h6>
                                <Link to={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>Ver perfil</Link>
                            </div>
                                     )

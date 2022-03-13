@@ -19,7 +19,6 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
     const [myPosts, setMyPosts] = useState("");
     const [data, setData] = useState([]);
     const [comment, setComment] = useState(false);
-    const [textComment, setTextComment] = useState("");
 
     const {user, deletePost} = useContext(AuthContext);
     useEffect(() => {
