@@ -90,8 +90,16 @@ function getDistanceFromLatLonInKm(lat1, long1, lat2, long2) {
             * Math.sin(dLng / 2) * Math.sin(dLng / 2),
         c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         console.log(((R * c *1000)/10).toFixed());
+        console.log("Teste de Distancia")
+        console.log((R * c*1000)/1000)
 
-        distance = ((R * c *1000)/1000).toFixed()
+        const distanceCalc = (R * c).toString();
+        
+        if(distanceCalc.includes("0.")) {
+            distance = "- " + ((R * c *1000)/1000).toFixed() + "Km"
+        } else{
+            distance = ((R * c *1000)/1000).toFixed() + "Km"
+        }
     return ((R * c *1000).toFixed());
 }
 
@@ -105,7 +113,7 @@ getDistanceFromLatLonInKm(user.lat, user.long, lat1, long1 )
                                <div className="forun-unic" key={user.idAccount}>
                                <img src={user.avatar} alt="" className="profile"/>
                                <h5>{user.nickname} {user.equalCity === true ? "" : <FaPlane/>}</h5>
-                               <h6>{distance}Km de você</h6>
+                               <h6>{distance} de você</h6>
                                <Link to={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>Ver perfil</Link>
                            </div>
                                     )
