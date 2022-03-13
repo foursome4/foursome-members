@@ -1,11 +1,12 @@
 import { useState,useEffect, useContext} from 'react'
 import api from '../../services/api'
 import './userComment.css'
-import { FiTrash2, FiEdit, FiMessageCircle, FiCornerDownLeft } from 'react-icons/fi'
+import { FiTrash2, FiEdit, FiCornerDownLeft } from 'react-icons/fi'
 import { AuthContext } from '../../contexts/Auth';
 import { NewReply } from '../NewReply/NewReply';
+import { EditComment } from '../EditComment/EditComment';
 
-function UserComment({idAccount, username, date, id, text}) {
+function UserComment({idAccount, username, date, idComment, text}) {
     const {user, newComment, deleteComment} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
@@ -42,15 +43,14 @@ function UserComment({idAccount, username, date, id, text}) {
         }
     }
 
-    function handleComment(idPost) {
-    newComment({text: commentText, idReply: "idReply", idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username})
-    setReplyText("");
-    setReply(false) 
-    }
+    function handleDeleteComment(idComment) {
+        const deletar = window.confirm("Deseja deletar a postagem?");
 
-    function handleDeleteComment(id) {
-        deleteComment(id)
+        if(deletar === true) {
+           deleteComment(idComment)
+            } 
         }
+
 
         function handleHabiliteEdit () {
             if(edit === false) {
@@ -80,7 +80,7 @@ function UserComment({idAccount, username, date, id, text}) {
            <div className="buttonsComment">
                <button onClick={handleHabiliteReply} ><FiCornerDownLeft /></button>
                <button onClick={handleHabiliteEdit}><FiEdit /></button>
-               <button onClick={() => {handleDeleteComment(id)}}><FiTrash2 /></button>
+               <button onClick={() => {handleDeleteComment(idComment)}}><FiTrash2 /></button>
            </div>
            : 
            <div className="buttonsComment">
@@ -92,8 +92,13 @@ function UserComment({idAccount, username, date, id, text}) {
                 <p><i>{text}</i></p>
             </div>
 
+            {edit ===  true ?
+            <EditComment data={text} id={idComment}/>
+            : ""
+            }
+
             {reply === true ?
-            <NewReply id={id} username={username}/>
+            <NewReply idComment={idComment} username={username}/>
                      :
                      ""}
        </div>

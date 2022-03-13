@@ -23,15 +23,15 @@ function FeedReply({idComment}) {
         reply.length === 0 ? "" :    
         <div className="feedReply">
            
-                             {reply.map((comments) => {
-                                const date = parseISO(comments.created_at);
+                             {reply.map((replys) => {
+                                const date = parseISO(replys.created_at);
                                 const dateFormated = format(
                                     date, 
                                 "dd'/'MM'/'yyyy'-'HH:mm'"
                                 );
                                  return (
-                                    <div className="feed-reply" key={comments.id}>
-                                    <UserReply idAccount={comments.idAccount} username={comments.username} date={dateFormated} text={comments.text}/>
+                                    <div className="feed-reply" key={replys.id}>
+                                    <UserReply idAccount={replys.idAccount} username={replys.username} date={dateFormated} text={replys.text} id={replys.id}/>
                                     </div>
                                  )
                              })}

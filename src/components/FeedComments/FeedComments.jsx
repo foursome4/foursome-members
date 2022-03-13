@@ -36,11 +36,11 @@ function FeedComments({idPost}) {
                                 );
                                  return (
                                     <div className="feed-comment" key={comments.id}>
-                                    <UserComment idAccount={comments.idAccount} username={comments.username} date={dateFormated} text={comments.text}/>
+                                    <UserComment idAccount={comments.idAccount} username={comments.username} date={dateFormated} text={comments.text} idComment={comments.id}/>
                                     <FeedReply idComment={comments.id} />
                                     </div>
                                  )
-                             })}
+                                })}
                           
   
         </div>

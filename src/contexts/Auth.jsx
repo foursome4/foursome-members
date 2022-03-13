@@ -429,6 +429,24 @@ async function deleteComment(id) {
         toast.error('Deu algo errado ao deletar!');
      }
 }
+async function editReply(id, text) {
+    console.log(id, text)
+        const res = await api.patch(`/reply/${id}`, {text});
+        if(res.status===201) {
+            toast.success('comentário editado com sucesso!');
+         } else {
+            toast.error('Deu algo errado ao deletar!');
+         }
+ }
+
+async function deleteReply(id) {
+    const res = await api.delete(`/reply/${id}`);
+    if(res.status===201) {
+        toast.success('post deletado com sucesso!');
+     } else {
+        toast.error('Deu algo errado ao deletar!');
+     }
+}
 
 async function likePost({idAccount, username, idPost}) {
 await api.post("/reactions", {idAccount, username, idPost}).then((result) => {
@@ -828,6 +846,7 @@ inactivityTime()
             newReply,
             deletePost,
             deleteComment,
+            deleteReply,
             likePost,
             newFriend,
             newFollower,
@@ -846,7 +865,8 @@ inactivityTime()
             createEvents,
             deleteGroup,
             editPost,
-            editComment
+            editComment,
+            editReply,
 
         }}>
             {children}

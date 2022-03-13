@@ -4,7 +4,7 @@ import { AuthContext } from '../../contexts/Auth';
 import './newReply.css'
 
 
-function NewReply({id, username}) {
+function NewReply({idComment, username}) {
     const {newReply} = useContext(AuthContext);
 
     const Local = localStorage.getItem("foursome");
@@ -13,15 +13,15 @@ function NewReply({id, username}) {
     const userInformation = JSON.parse(LocalInformation);
     const [textComment, setTextComment] = useState("");
 
-    function handleComment(id) {
-        newReply({text: textComment, idReply: id, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username})
+    function handleComment() {
+        newReply({text: textComment, idComment: idComment, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username})
         setTextComment("");
         }
 
     return (
         <div className='commentNew'>
                <input type="text" placeholder={`Responder a ${username}`} value={textComment} onChange={(e) => setTextComment(e.target.value)}/>
-               <button onClick={() => {handleComment(id)}}><FiSend /> Responder</button>
+               <button onClick={handleComment}><FiSend /> Responder</button>
         </div>
     )
 }
