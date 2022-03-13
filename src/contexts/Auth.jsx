@@ -449,6 +449,14 @@ async function newComment({idAccount, idPost, text, avatar, username, nickname})
         console.log("Comentário não foi realizado" + error)
     })
 }
+async function newReply({idAccount, idComment, text, avatar, username, nickname}) {
+    await api.post("/reply", {idAccount, idComment, text,avatar, username, nickname}).then((result) => {
+        console.log(result.data)
+        console.log("Resposta Realizado com sucesso!");
+    }).catch(error => {
+        console.log("Resposta não foi realizado" + error)
+    })
+}
 
 async function CreateInviteNewUsew({code, name, email, phone,idAccount, username, patron, patronNickname}) {
     const text = `Parabens ${name}! %0AVocê foi convidado por ${patronNickname} a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa. %0A%0AEsse convite é valido por 10 dias e intransferível. %0A%0APara criar seu perfil agora, acesse: %0A https://foursome.com.br/signup/${email} %0A Utilize o Código: ${code}  %0A e adicione o código do seu Patrono: ${patron} %0A%0AEm caso de dúvida, fale conosco. %0AContato@foursome.com.br %0A%0AFOURSOME https://www.foursome.com.br`
@@ -776,12 +784,18 @@ async function deleteGroup(id){
        function doSomething() {
         const DataUser = localStorage.getItem("foursome");
         const user = JSON.parse(DataUser);
-           toast.error("Finalizando a sessão")
-           logout(user.id)
+        const DataUserInformations = localStorage.getItem("informations-foursome");
+        const userInformations = JSON.parse(DataUserInformations);
+
+            if(userInformations !== null || userInformations !== undefined || userInformations !== "") {
+                toast.error("Finalizando a sessão")
+                logout(user.id)
+            }
         }
         function resetTimer() {
         clearTimeout(time);
-      time = setTimeout(doSomething, 300000)
+     time = setTimeout(doSomething, 300000000000000000)
+     // time = setTimeout(doSomething, 300000)
        // time = setTimeout(doSomething, 50000)
     }
 }
@@ -811,6 +825,7 @@ inactivityTime()
             CreateInviteNewUsew,
             userDataNew,
             newComment,
+            newReply,
             deletePost,
             deleteComment,
             likePost,

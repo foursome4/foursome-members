@@ -66,16 +66,12 @@ function TopBar() {
             const idAccount = user.id;
             const result = await api.get(`/friends/${idAccount}`);
             setMyFriends(result.data)
-            console.log("Friends")
-            console.log(result.data)
           }
 
           async function loadNotifications() {
               const idPatrono = user.id
             const result = await api.get(`/notifications/my/${idPatrono}`);
             setNotifications(result.data)
-            console.log("Notifications")
-            console.log(result.data)
           }
 
           loadNotifications()
@@ -86,23 +82,13 @@ function TopBar() {
     }, [user.id])
 
 
-    console.log("Date");
-    console.log(date);
-    console.log("Actual Date");
-    console.log(new Date());
-
   const newRooms = rooms.concat(rooms2)
   const SearchUsers = accounts.filter((account) => account.username.startsWith(search))
   const SearchUsersId = accounts.filter((account) => account.id.startsWith(searchId))
 
   const notificationsFilter = notifications.filter((notification) => (new Date(notification.created_at) > date))
-    console.log("notificationsFilter")
-    console.log(notificationsFilter)
-
-
   const friendPending = myFriends.filter(friend => (friend.status === 'pending' && friend.idFriend === user.id))
-  console.log("Pending");
-  console.log(friendPending);
+
 
 
     function Tologout(e) {
@@ -166,8 +152,6 @@ function TopBar() {
 
 
      function handleNewDate(date) {
-        console.log("NOva data")
-        console.log(date)
         setDate(date)
     }
 

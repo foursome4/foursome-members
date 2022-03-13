@@ -267,12 +267,12 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
 
                                     <div className="reactions2-individual" >
 
-                                        <ListReactions idPost={postsData.id} idAccount={idAccount.idAccount}/>
+                                        <ListReactions idPost={postsData.id} idAccount={postsData.idAccount}/>
                                         <button onClick={handleHabiliteComment}>
                                             <FiMessageCircle />
                                             
                                         </button>
-                                        {postsData.idAccount === user.id ?
+                                        {postsData.idAccount === userData.id ?
                                         <>
                                             <button> <FiEdit />  </button>
                                             <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 />  </button>

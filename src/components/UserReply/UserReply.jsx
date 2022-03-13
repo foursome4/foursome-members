@@ -1,11 +1,11 @@
 import { useState,useEffect, useContext} from 'react'
 import api from '../../services/api'
-import './userComment.css'
+import './userReply.css'
 import { FiTrash2, FiEdit, FiMessageCircle, FiCornerDownLeft } from 'react-icons/fi'
 import { AuthContext } from '../../contexts/Auth';
 import { NewReply } from '../NewReply/NewReply';
 
-function UserComment({idAccount, username, date, id, text}) {
+function UserReply({idAccount, username, date, id, text}) {
     const {user, newComment, deleteComment} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
@@ -61,7 +61,7 @@ function UserComment({idAccount, username, date, id, text}) {
         }
 
     return (
-       <div className="itemComment" key={userData.id}>
+       <div className="itemReply" key={userData.id}>
            <div className="block1">
            <div className="title">
            <div className="image">
@@ -69,26 +69,22 @@ function UserComment({idAccount, username, date, id, text}) {
                <img src={avatar} alt="" />
            </a>
            </div>
-           <div className="name">
+           <div className={userData.id === idAccount ? "MyName":"name"}>
            <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-               <h5>{nickname}</h5>
+               <h6>{nickname}</h6>
                </a>
            <p>{date}</p>
            </div>
            </div>
            {userData.id === idAccount ?
-           <div className="buttonsComment">
-               <button onClick={handleHabiliteReply} ><FiCornerDownLeft /></button>
+           <div className="buttonsReply">
                <button onClick={handleHabiliteEdit}><FiEdit /></button>
                <button onClick={() => {handleDeleteComment(id)}}><FiTrash2 /></button>
            </div>
-           : 
-           <div className="buttonsComment">
-           <button onClick={handleHabiliteReply}><FiCornerDownLeft /></button>
-               </div>
+           : ""
             }
             </div>
-            <div className="comment-data" >
+            <div className="Reply-data" >
                 <p><i>{text}</i></p>
             </div>
 
@@ -101,4 +97,4 @@ function UserComment({idAccount, username, date, id, text}) {
 }
 
 
-export {UserComment}
+export {UserReply}

@@ -1,4 +1,4 @@
-.itemComment {
+.itemReply {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6,9 +6,9 @@
     width: 100%;
     text-decoration: none;
     border-radius: 6px;
-    padding: 5px;
+    padding-left: 5%;
 }
-.itemComment .block1 {
+.itemReply .block1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -17,7 +17,7 @@
     text-decoration: none;
 
 }
-.itemComment .block1 .title {
+.itemReply .block1 .title {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -25,37 +25,63 @@
     width: 100%;
 }
 
-.itemComment .block1 .title  .image{
-    width: 35px;
-    height: 35px;
+.itemReply .block1 .title  .image{
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 5px;
 }
-.itemComment .block1 .title  .image img{
-    width: 35px;
-    height: 35px;
+.itemReply .block1 .title  .image img{
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.itemComment .block1 .title .name h5 {
+.itemReply .block1 .title .name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+.itemReply .block1 .title .name h6 {
     margin-left: 5px;
     color: var(--Primary);
     text-decoration: none;
     font-weight: 500;
 }
-.itemComment .block1 .title .name p {
+.itemReply .block1 .title .name p {
     margin-left: 5px;
     color: var(--Gray_font2);
+    font-size: 12px;
+}
+.itemReply .block1 .title .MyName {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+}
+.itemReply .block1 .title .MyName h6 {
+    margin-left: 5px;
+    color: var(--Primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+.itemReply .block1 .title .MyName p {
+    margin-left: 5px;
+    color: var(--Gray_font2);
+    font-size: 12px;
 }
 
-.itemComment .block1 .title a {
+.itemReply .block1 .title a {
     text-decoration: none;
     color: var(--Primary);
 }
 
-.itemComment .block1 .buttonsComment {
+.itemReply .block1 .buttonsReply {
 display: flex;
 flex-direction: row;
 align-items: center;
@@ -63,7 +89,7 @@ justify-content: flex-end;
     
 }
 
-.itemComment .block1 .buttonsComment button {
+.itemReply .block1 .buttonsReply button {
     width: 30px;
     height: 30px;
     background-color: var(--Background);
@@ -74,13 +100,13 @@ justify-content: flex-end;
     margin: 0 3px;
 }
 
-.itemComment .comment-data {
+.itemReply .Reply-data {
     margin: 2px 0;
     width: 90%;
 }
 
-.itemComment .comment-data p {
+.itemReply .Reply-data p {
     color: var(--Gray_font);
     margin-top: 3px;
-    font-size: 13px;
+    font-size: 12px;
 }

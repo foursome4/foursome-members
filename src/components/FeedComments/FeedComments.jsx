@@ -4,6 +4,7 @@ import { AuthContext } from '../../contexts/Auth';
 import api from "../../services/api";
 import { parseISO, format} from 'date-fns';
 import { UserComment } from '../UserComment/UserComment';
+import { FeedReply } from '../FeedReply/FeedReply';
 
 function FeedComments({idPost}) {
     const [dataComments, setDataComments] = useState([]);
@@ -36,6 +37,7 @@ function FeedComments({idPost}) {
                                  return (
                                     <div className="feed-comment" key={comments.id}>
                                     <UserComment idAccount={comments.idAccount} username={comments.username} date={dateFormated} text={comments.text}/>
+                                    <FeedReply idComment={comments.id} />
                                     </div>
                                  )
                              })}
