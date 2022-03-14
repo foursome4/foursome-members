@@ -16,7 +16,7 @@ function EditComment({data, id}) {
     return (
         <div className='editComment'>
                <input type="text" placeholder='Comentar' value={text} onChange={(e) => setTextComment(e.target.value)}/>
-               <button onClick={handleComment}><FiSend />Editar</button>
+               {text !== "" ?  <button onClick={handleComment}><FiSend />Editar</button>  : "" }
         </div>
     )
 }

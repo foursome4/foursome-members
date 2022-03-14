@@ -32,7 +32,7 @@ function FeedComments({idPost}) {
                                 const date = parseISO(comments.created_at);
                                 const dateFormated = format(
                                     date, 
-                                "dd'/'MM'/'yyyy'-'HH:mm'"
+                                    "dd'/'MM'/'yyyy' às 'HH:mm'h'"
                                 );
                                  return (
                                     <div className="feed-comment" key={comments.id}>

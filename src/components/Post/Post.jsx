@@ -103,6 +103,10 @@ function Post() {
     }
     
     
+    async function handleMessage(e) {
+        e.preventDefault();
+        toast.error("Não é possível enviar um post vazio")
+    }
     async function handlePost(e) {
         e.preventDefault();
         setLoading(true)
@@ -133,7 +137,7 @@ function Post() {
             setDataPhoto(true)
             setPost("text")
             reset()
-        } else if(post === "video"){
+        } else if(post === "video" ){
                 const uuid = uuidv4();
                 let newVideoUrlFirebase = ref(storage, `videos/posts/${uuid}`);
                 
@@ -162,23 +166,24 @@ function Post() {
                 
 
             } else if(post === "text") {
-            newPost({
-                idAccount: user.id,
-                link: "",
-                username: user.username,
-                nameGroup: "",
-                nameForum: "",
-                nameEvent: "",
-                idEvent: "",
-                idGroup: "",
-                idForum: "",
-                type: "post-text",
-                text,
-                iidPatrono: null
-            })
-            setPost("text")
-            reset()
-        }
+                    newPost({
+                        idAccount: user.id,
+                        link: "",
+                        username: user.username,
+                        nameGroup: "",
+                        nameForum: "",
+                        nameEvent: "",
+                        idEvent: "",
+                        idGroup: "",
+                        idForum: "",
+                        type: "post-text",
+                        text,
+                        iidPatrono: null
+                    })
+                    setPost("text")
+                    reset()
+                
+                }
         else {
             console.log("Escolha um tipo de postagem")
         }   
@@ -243,9 +248,21 @@ function Post() {
                         </label>
                 </div> :" "
             }
-                        <button className="public" onClick={handlePost}>
+                        { post === "text" ?                  
+                        <button className="public" onClick={ text !== ""? handlePost : handleMessage}>
                             {loading === true ? <FiRefreshCcw /> : <FiSend />}
                         </button>
+                        : 
+                        post === "photo" ?                  
+                        <button className="public" onClick={avatarUrl !== null ? handlePost : handleMessage}>
+                            {loading === true ? <FiRefreshCcw /> : <FiSend />}
+                        </button>
+                        : post === "video" ?                  
+                        <button className="public" onClick={videoUrl !== null ? handlePost : handleMessage}>
+                            {loading === true ? <FiRefreshCcw /> : <FiSend />}
+                        </button>
+                        : ""
+                    }
                 </div>
                 <div className="buttons">
                     <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>

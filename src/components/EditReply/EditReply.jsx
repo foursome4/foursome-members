@@ -16,7 +16,7 @@ function EditReply({data, id}) {
     return (
         <div className='editReply'>
                <input type="text" placeholder='Comentar' value={text} onChange={(e) => setTextReply(e.target.value)}/>
-               <button onClick={handleReply}><FiSend />Editar</button>
+              {text !== "" ?  <button onClick={handleReply}><FiSend />Editar</button> : "" }
         </div>
     )
 }
