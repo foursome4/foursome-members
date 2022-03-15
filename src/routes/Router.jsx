@@ -14,8 +14,10 @@ import { Groups } from '../pages/Groups/Groups';
 import { InformationsFoursome } from '../pages/InformationsFoursome/InformationsFoursome';
 import { Invitation } from '../pages/Invitation/Invitation';
 import { Invite } from '../pages/Invite/Invite';
+import { Lgpd } from '../pages/Lgpd/Lgpd';
 import { Loader } from '../pages/Loader/Loader';
 import { Preferences } from '../pages/Preferences/Preferences';
+import { PrivacityPolice } from '../pages/PrivacityPolice/PrivacityPolice';
 import { Profile } from '../pages/Profile/Profile';
 import { ProfileFriend } from '../pages/ProfileFriend/ProfileFriend';
 import { Radar } from '../pages/Radar/Radar';
@@ -24,6 +26,7 @@ import { Recuperation } from '../pages/Recuperation/Recuperation';
 import { RegistrationEnd } from '../pages/RegistrationEnd/RegistrationEnd';
 import { SignIn } from '../pages/SignIn/SignIn';
 import { SignUp } from '../pages/SignUp/SignUp';
+import { UseOfTerms } from '../pages/UseOfTerms/UseOfTerms';
 
 
 function Router () {
@@ -42,6 +45,9 @@ function PrivateRoute({children} ) {
             <Route path="/forgotit" element={ <Forgotit />} />
             <Route path="/recuperation" element={ <Recuperation />} />       
             <Route path="/loader" element={ <Loader />} />       
+            <Route path="/terms" element={ <UseOfTerms />} />       
+            <Route path="/police" element={ <PrivacityPolice />} />       
+            <Route path="/lgpd" element={ <Lgpd />} />       
             
             <Route path="/feed"
                     element={ <PrivateRoute> <Feed/> </PrivateRoute>} />
