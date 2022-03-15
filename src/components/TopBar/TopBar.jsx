@@ -1,6 +1,6 @@
 import logoFoursomemini from '../../assets/images/logo-mini2.png';
 import logoFoursome from '../../assets/images/logo2.png';
-import { FiSearch, FiMessageSquare, FiUserPlus, FiBell, FiMail, FiLogOut, FiX, FiInfo, FiCheckSquare, FiHeart, FiXSquare } from 'react-icons/fi';
+import { FiMessageSquare, FiMail, FiLogOut, FiX, FiInfo} from 'react-icons/fi';
 import avatarImg from '../../assets/images/avatar.png';
 import './topBar.css';
 import { useContext, useEffect, useState } from 'react';
@@ -9,56 +9,24 @@ import ReactTooltip from 'react-tooltip';
 import Modal from 'react-modal';
 import api from '../../services/api';
 import { UserConversation } from '../UserConversation/UserConversation';
-import { UsersSearch } from '../UsersSearch/UsersSearch';
-import { UsersPending } from '../UsersPending/UsersPending';
-import { UsersNotifications } from '../UsersNotifications/UsersNotifications';
+
+import { SearchUsers } from '../ButtonsTopBar/SearchUsers/SearchUsers';
+import { SolicitationsFriend } from '../ButtonsTopBar/SolicitationsFriend/SolicitationsFriend';
+import { Notifications } from '../ButtonsTopBar/Notifications/Notifications';
 
 function TopBar() {
-    const {logout,friendAproved, deleteFriend, deleteFriendAndFollower} = useContext(AuthContext);
+    const {logout} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(LocalInformation);
 
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const [isOpenModalSearch, setIsOpenModalSearch] = useState(false);
-    const [isOpenModalFriend, setIsOpenModalFriend] = useState(false);
-    const [isOpenModalNotifications, setIsOpenModalNotifications] = useState(false);
-
     const [rooms, setRooms] = useState([])
     const [rooms2, setRooms2] = useState([])
-    const [notifications, setNotifications] = useState([]);
-    const [myFriends, setMyFriends] = useState([]);
-    const [accounts, setAccoounts] = useState([])
-    const [search, setSearch] = useState('')
-    const [searchId, setSearchId] = useState('')
-    const [type, setType] = useState("username")
-    const [date, setDate] = useState(new Date("Tue Mar 06 2022 03:38:05 GMT-0300 (Hora padrão de Brasília)"))
-    const [dateRead, setDateRead] = useState([])
+
  
     useEffect(() => {
-        async function loadDateRead() {
-            const idAccount = user.id
-            await api.get(`/dateread/${idAccount}`)
-            .then( async (res) => {
-                if(res.data.length !== 0) {
-                    setDateRead(res.data[0]);
-                } else {
-                    const data = {
-                        idAccount: user.id,
-                        DateRead: new Date() 
-                    }
-                    await api.post(`/dateread`, data) .then((res) => {
-                        console.log("Data inicial definida com sucesso!")
-                    }).catch(error => {
-                console.log("Erro ao buscar dados" + error)
-            })
-                }
-            }).catch(error => {
-                console.log("Erro ao buscar dados" + error)
-            })
-        }
-
         async function loadRoomIdAccount() {
             const idAccount = user.id
             await api.get(`conversations/account/filter/${idAccount}`)
@@ -79,39 +47,15 @@ function TopBar() {
            })
           }
 
-          async function loadAccounts() {
-              await api.get("/accounts").then((result) => {
-                  setAccoounts(result.data)
-              })
-          }
-
-          async function loadFriends() {
-            const idAccount = user.id;
-            const result = await api.get(`/friends/${idAccount}`);
-            setMyFriends(result.data)
-          }
-
-          async function loadNotifications() {
-              const idPatrono = user.id
-            const result = await api.get(`/notifications/my/${idPatrono}`);
-            setNotifications(result.data)
-          }
-
-          loadNotifications()
-          loadFriends()
-          loadAccounts()
           loadRoomIdAccount()
           loadRoomIDFriend()
-          loadDateRead()
-    }, [user.id, dateRead])
+    }, [user.id])
 
 
   const newRooms = rooms.concat(rooms2)
-  const SearchUsers = accounts.filter((account) => account.username.startsWith(search))
-  const SearchUsersId = accounts.filter((account) => account.id.startsWith(searchId))
 
-  const notificationsFilter = notifications.filter((notification) => (new Date(notification.created_at) > new Date(dateRead.DateRead) ))
-  const friendPending = myFriends.filter(friend => (friend.status === 'pending' && friend.idFriend === user.id))
+ 
+
 
     function Tologout(e) {
         e.preventDefault();
@@ -130,81 +74,6 @@ function TopBar() {
         handleOpenModal()
       }
 
-    function handleOpenModalSearch() {
-        setIsOpenModalSearch(true)
-      }
-    
-      function handleCloseModalSearch() {
-        setIsOpenModalSearch(false)
-      }
-      function handleSearch() {
-        handleOpenModalSearch()
-      }
-
-
-    function handleOpenModalFriend() {
-        setIsOpenModalFriend(true)
-      }
-    function handleFriends() {
-        handleOpenModalFriend()
-      }
-    
-      function handleCloseModalFriend() {
-        setIsOpenModalFriend(false)
-      }
-
-
-    function handleOpenModalNotifications() {
-        setIsOpenModalNotifications(true)
-      }
-    async function handleNotifications() {
-        handleOpenModalNotifications()
-        const date = new Date()
-        handleNewDate(date)
-
-        const id = dateRead.id
-        const data = {
-            DateRead: new Date()
-        }
-
-    await api.patch(`/dateread/${id}`, data).then((res) => {
-        console.log("Data inicial alterada com sucesso!")
-        }).catch(error => {
-        console.log("Erro ao buscar dados" + error)
-    })
-
-      }
-    
-      function handleCloseModalNotifications() {
-        setIsOpenModalNotifications(false)
-      }
-
-
-      function handleSelectTypeSearch(e) {
-        setType(e.target.value)
-    }
-
-
-     function handleNewDate(date) {
-        setDate(date)
-    }
-
-    function handleAprovedFriend(id) {
-        friendAproved(id)
-    }
-
-    function handleDeleteFriend(id) {
-        deleteFriend(id)
-    }
-    function handleFollowerFriend(id, friendId ) {
-        const idAccount = friendId
-        const idFriend = user.id
-        const type = "friend"
-        const status = "aproved"
-        deleteFriendAndFollower(id, idAccount, idFriend, type, status)
-    }
-
-
 
       Modal.setAppElement('#root');
     return (
@@ -219,31 +88,16 @@ function TopBar() {
                 <img src={logoFoursomemini} alt="" />
                 </a>
             </div>
-            <div className="search" onClick={handleSearch}>
-                <FiSearch />
-               <p>Pesquisar</p>
-            </div>
+
+            <SearchUsers />
+  
             <div className="links">
-                <div className="link"  onClick={handleFriends} data-tip data-for='Solicitações'>
-                    {friendPending.length === 0 ? "" :
-                    <div className="counter"> {friendPending.length}</div>
-                    }
-                    <FiUserPlus />
-                </div>
-                <ReactTooltip id='Solicitações' place="bottom" type="dark" effect="solid">
-                     <span>Solicitações</span>
-                </ReactTooltip>
 
 
-                <div className="link" onClick={handleNotifications} data-tip data-for='Notificações'>
-                {notificationsFilter.length === 0 ? "" :
-                    <div className="counter"> {notificationsFilter.length}</div>
-                    }
-                    <FiBell />
-                </div>
-                <ReactTooltip id='Notificações'  place="bottom" type="dark" effect="solid">
-                     <span>Notificações</span>
-                </ReactTooltip>
+                <SolicitationsFriend />
+                <Notifications /> 
+
+
 
                 <a href="/invite">
                 <div className="link" data-tip data-for='Convidar'>
@@ -321,131 +175,6 @@ function TopBar() {
             </Modal>
             {/* FIM Modal Conversations  */}
 
-            {/* Modal Search  */}
-            <Modal isOpen={isOpenModalSearch} onRequestClose={handleCloseModalSearch}
-            overlayClassName="react-modal-overlay"
-            className="react-modal-content">
-            <button type="button" className="react-modal-button" onClick={handleCloseModalSearch}>
-            <FiX /> 
-            </button>
-            <div className="content-modal">
-            <h3>Busca de usuários</h3>
-        
-            <div className="search">
-           <select  value={type} onChange={handleSelectTypeSearch}>
-                <option value="username">Usuário</option>
-                <option value="id">id</option>
-            </select>
-            {type === "username" ?
-            <input type="text" placeholder='buscar usuário' value={search.toLowerCase()} onChange={(e) => setSearch(e.target.value)}/>
-            :
-            <input type="text" placeholder='buscar pelo Id' value={searchId.toLowerCase()} onChange={(e) => setSearchId(e.target.value)}/>
-            }
-            </div>
-            
-            <div className="itensModal">
-            {type === "username" ?
-            SearchUsers.map((account) => {
-                return(
-                    
-                    <div className="accounts" key={account.id}>
-                      <UsersSearch id={account.id} username={account.username} />
-                    </div>
-                )
-            })
-                :
-                SearchUsersId.map((account) => {
-                    return(
-                        
-                        <div className="accounts" key={account.id}>
-                           <UsersSearch id={account.id} username={account.username} />
-                        </div>
-                    )
-            
-                })
-            }
-            
-            </div>
-            <div className="buttons-modal">
-            <button className="butont-White" onClick={handleCloseModalSearch}>Cancelar</button>
-            </div>
-            </div>
-            </Modal>
-            {/* FIM Modal Search  */}
-
-            {/* Modal Friends  */}
-            <Modal isOpen={isOpenModalFriend} onRequestClose={handleCloseModalFriend}
-            overlayClassName="react-modal-overlay"
-            className="react-modal-content">
-            <button type="button" className="react-modal-button" onClick={handleCloseModalFriend}>
-            <FiX /> 
-            </button>
-            <div className="content-modal">
-            <h3>Solicitações de amizade</h3>
-            
-            <div className="itensModalFriend">
-            {friendPending.map((friend) => {
-                return(
-                    <div className="friend" key={friend.idAccount}>
-                        <div className="name">
-                        <UsersPending id={friend.idAccount} />
-                        </div>
-                        <div className="buttons">
-                            <button className='Acept' data-tip data-for='Aceitar' onClick={() => handleAprovedFriend(friend.id)}><FiCheckSquare /></button>
-                            <ReactTooltip id='Aceitar' place="bottom" type="dark" effect="solid">
-                             <span>Aceitar</span>
-                            </ReactTooltip>
-                            <button className='Acept' data-tip data-for='Seguir' onClick={() => handleFollowerFriend(friend.id, friend.idAccount )}> <FiHeart /></button>
-                            <ReactTooltip id='Seguir' place="bottom" type="dark" effect="solid">
-                             <span>Seguir</span>
-                            </ReactTooltip>
-                            <button className='Refuse' data-tip data-for='Recusar' onClick={() => handleDeleteFriend(friend.id)}> <FiXSquare /></button>
-                            <ReactTooltip id='Recusar' place="bottom" type="dark" effect="solid">
-                             <span>Recusar</span>
-                            </ReactTooltip>
-                        </div>
-                    </div>
-                )
-            })}
-            </div>
-            <div className="buttons-modal">
-            <button className="butont-White" onClick={handleCloseModalFriend}>Cancelar</button>
-            </div>
-            </div>
-            </Modal>
-            {/* FIM Modal Friends  */}
-
-            {/* Modal Notifications  */}
-            <Modal isOpen={isOpenModalNotifications} onRequestClose={handleCloseModalNotifications}
-            overlayClassName="react-modal-overlay"
-            className="react-modal-content">
-            <button type="button" className="react-modal-button" onClick={handleCloseModalNotifications}>
-            <FiX /> 
-            </button>
-            <div className="content-modal">
-            <h3>Notificações</h3>
-        
-            <div className="search">          
-            </div>
-            
-            <div className="itensModalNotifications">
-            {notifications.map((notification) => {
-
-                return(
-                    <div className="notification" key={notification.id}>
-                        <div className="name">
-                        <UsersNotifications id={notification.idAccount} text={notification.text}/>
-                        </div>
-                    </div>
-                )
-            })}
-            </div>
-            <div className="buttons-modal">
-            <button className="butont-White" onClick={handleCloseModalNotifications}>Cancelar</button>
-            </div>
-            </div>
-            </Modal>
-            {/* FIM Modal Notifications  */}
         </div>
 
 

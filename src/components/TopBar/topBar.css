@@ -29,37 +29,6 @@
     margin-top: -100px;
 }
 
-.topBar .search {
-    width: 120px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    background-color: var(--Primary);
-    padding: 10px;
-    border-radius: 6px;
-    color: var(--Background2);
-    cursor: pointer;
-}
-
-.topBar .search svg {
-    color: var(--Background2);
-
-}
-
-.topBar .search p {
-    color: var(--Background2);
-
-}
-
-
-
-.topBar .search input {
-    width: 93%;
-    background-color: var(--Background);
-    border: none;
-}
-
 .topBar .links {
     width: 50%;
     display: flex;
@@ -139,19 +108,7 @@
 
 
 
-.content-modal .itensModal {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 100%;
-    height: 70%;
-    border: none;
-    overflow-y: scroll;
-    text-decoration: none;
-    background-color: var(--Background2);
-    margin-bottom:7px ;
-}
+
 
 .content-modal .itensModalMessages {
     display: flex;
@@ -166,46 +123,8 @@
     background-color: var(--Background2);
     margin-bottom:7px ;
 }
-.content-modal .itensModalFriend {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 100%;
-    height: 80%;
-    border: none;
-    overflow-y: scroll;
-    text-decoration: none;
-    background-color: var(--Background2);
-    margin-bottom:7px ;
-}
-.content-modal .itensModalNotifications {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 100%;
-    height: 80%;
-    border: none;
-    overflow-y: scroll;
-    text-decoration: none;
-    background-color: var(--Background2);
-    margin-bottom:7px ;
-}
 
-.content-modal .itensModal::-webkit-scrollbar {
-    width: 12px;              
-  }
-  
- .content-modal .itensModal::-webkit-scrollbar-track {
-    background: var(--Background2);      
-  }
-  
- .content-modal .itensModal::-webkit-scrollbar-thumb {
-    background-color: var(--Background-man);   
-    border-radius: 20px;      
-    border: 3px solid var(--Background2); 
-  }
+
 
 .content-modal .itensModalMessages::-webkit-scrollbar {
     width: 12px;              
@@ -220,62 +139,7 @@
     border-radius: 20px;      
     border: 3px solid var(--Background2); 
   }
-.content-modal .itensModalFriend::-webkit-scrollbar {
-    width: 12px;              
-  }
-  
- .content-modal .itensModalFriend::-webkit-scrollbar-track {
-    background: var(--Background2);      
-  }
-  
- .content-modal .itensModalFriend::-webkit-scrollbar-thumb {
-    background-color: var(--Background-man);   
-    border-radius: 20px;      
-    border: 3px solid var(--Background2); 
-  }
-.content-modal .itensModalNotifications::-webkit-scrollbar {
-    width: 12px;              
-  }
-  
- .content-modal .itensModalNotifications::-webkit-scrollbar-track {
-    background: var(--Background2);      
-  }
-  
- .content-modal .itensModalNotifications::-webkit-scrollbar-thumb {
-    background-color: var(--Background-man);   
-    border-radius: 20px;      
-    border: 3px solid var(--Background2); 
-  }
 
-
-.content-modal .search{
-    display: flex;
-    align-items: flex-start;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-.content-modal  .search select{
-    padding: 7px;
-    background-color: var(--Primary);
-    color: var(--White);
-    font-size: 14px;
-    border: none;
-    border-radius: 6px;
-    margin: 3px;
-}
-.content-modal .search input{
-    padding: 7px;
-    background-color: var(--Primary);
-    color: var(--White);
-    font-size: 14px;
-    border: none;
-    border-radius: 6px;
-    margin: 3px;
-}
-
-.content-modal .search input::placeholder {
-    color: var(--Background2);
-}
 
 
 .content-modal .itensModal .accounts{
@@ -297,76 +161,8 @@
     border-radius: 6px;
     text-decoration: none;
 }
-.content-modal .itensModalFriend .friend .buttons {
-    width: 40%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: flex-end;
-    background-color: var(--Background);
-}
-.content-modal .itensModalFriend .friend .buttons .Acept {
-    padding: 10px;
-    background-color: var(--Primary);
-    color: var(--Background2);
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-    border-radius: 6px;
-    border: none;
-    margin: 0px 3px;
-}
-.content-modal .itensModalFriend .friend .buttons .Refuse {
-    padding: 10px;
-    background-color: rgb(204, 0, 0);
-    color: var(--Background2);
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-    border-radius: 6px;
-    border: none;
-    margin: 0px 3px;
-}
 
-.content-modal .itensModalFriend .friend {
-    width: 95%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: var(--Background);
-    margin: 5px;
-    padding: 5px 10px;
-    border-radius: 6px;
-    text-decoration: none;
-}
-.content-modal .itensModalFriend .friend .name {
-    width: 60%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-.content-modal .itensModalNotifications .notification {
-    width: 95%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: var(--Background);
-    margin: 5px;
-    border-radius: 6px;
-    text-decoration: none;
-}
-.content-modal .itensModalNotifications .notification .name {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: flex-start;
-}
+
 
 
 .content-modal  .buttons-modal .butont-White {
@@ -382,30 +178,7 @@
 
 
 
-@media (max-width: 1200px) {
-    .topBar .search {
-        width: 120px;
-    }
-
- 
-
-
-    @media (max-width: 1100px) {
-        .topBar .search {
-            width: 120px;
-        }
-
-
-
-        @media (max-width: 1000px) {
-            .topBar .search {
-                width: 120px;
-            }
-
-
-
-
-            @media (max-width: 900px) {
+    @media (max-width: 900px) {
                 .topBar {
                     padding: 0 0 0 0;
                 }
@@ -428,9 +201,6 @@
 
                 @media (max-width: 850px) {
 
-                    .topBar .search {
-                        width: 120px;
-                    }
                     .topBar .links .account h4 {
                         display: none;
                     }
@@ -441,12 +211,6 @@
 
 
                     @media (max-width: 650px) {
-
-                        .topBar .search {
-                            width: 80px;
-                            font-size: 12px;
-                        }
-
                         .topBar .links {
                             width: 60%;
                            padding: 10px 5px 10px 0 ;
@@ -457,24 +221,6 @@
                         }
     
                         @media (max-width: 550px) {
-
-                            .topBar .search {
-                                width: 50px;
-                                padding: 10px;
- 
-                            }
-                            
-
-                            .topBar .search svg {
-                                font-size: 14px;
-                            
-                            }
-    
-                            .topBar .search p {
-                               display: none;
-                            
-                            }
-                        
                             @media(max-width: 400px ) {
                                 .topBar .links .account {
                                     display: none;
@@ -489,6 +235,3 @@
         }
         
     }
-}   
- }
-}
