@@ -15,7 +15,6 @@ function UsersSearch({id, username}) {
         async function loadInformations() {
             const idAccount = id
             await api.get(`informations/${idAccount}`).then((result) => {
-                console.log(result.data[0])
                 setNickname(result.data[0].nickname)
                 setAvatar(result.data[0].avatar)
             }).catch((error) => {

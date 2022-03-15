@@ -62,9 +62,6 @@ function SettingsCharacteristcs() {
             const idAccount = user.id
             await api.get(`characteristics/${idAccount}`)
             .then((res) => {
-              console.log(res.data[0])
-              console.log(res.data[1])
-              console.log(res.data[2])
               setCharacteristics(res.data[0])
               setCharacteristics2(res.data[1])
               setCharacteristics3(res.data[2])

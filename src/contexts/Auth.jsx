@@ -40,7 +40,7 @@ function AuthProvider({children}) {
             toast.info(`Cadastro criado com sucesso!`);
 
             const text = `Seu amigo ${username}, ingressou na Foursome, dê as boas vindas.`
-            const data = {idPatrono: patron, idAccount: result.data.id, text, }
+            const data = {idPatrono: patron, text, }
             await api.post("/notifications", data).then(() => {
                 console.log("Notificação criada com sucesso");
                 navigate("/")
@@ -346,6 +346,8 @@ async function newUpdateCharacteristcs3({id, birthDate,
 async function preferencesAccount({idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal}) {
     await api.post('/preferences', {idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal})
     .then((res) => {
+        const DataUser = localStorage.getItem("foursome");
+        const user = JSON.parse(DataUser);
         console.log("Preferences")
         const data = res.data
         console.log(data);

@@ -95,7 +95,7 @@ function getDistanceFromLatLonInKm(lat1, long1, lat2, long2) {
 
         const distanceCalc = (R * c).toString();
         
-        if(distanceCalc.includes("0.")) {
+        if(distanceCalc.includes("00.")) {
             distance = "- " + ((R * c *1000)/1000).toFixed() + "Km"
         } else{
             distance = ((R * c *1000)/1000).toFixed() + "Km"

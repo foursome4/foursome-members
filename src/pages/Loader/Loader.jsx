@@ -26,7 +26,7 @@ function Loader() {
                     console.log(data2)
                  navigate("/feed");
         
-                } else {
+                } else if (data2 === undefined) {
                     console.log("Redirecionar")
                     console.log(data2)
                   navigate("/completeregistration");       
@@ -45,7 +45,7 @@ function Loader() {
     return(
         <div className="loader">
             <img src={loader} alt="Carregando" />
-            <h3>Olá, {data.nickname}</h3>
+            <h3>Olá</h3>
             <h3>Estamos preparando tudo para você!</h3>
         </div>
     )

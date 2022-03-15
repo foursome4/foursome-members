@@ -34,8 +34,31 @@ function TopBar() {
     const [searchId, setSearchId] = useState('')
     const [type, setType] = useState("username")
     const [date, setDate] = useState(new Date("Tue Mar 06 2022 03:38:05 GMT-0300 (Hora padrão de Brasília)"))
+    const [dateRead, setDateRead] = useState([])
  
     useEffect(() => {
+        async function loadDateRead() {
+            const idAccount = user.id
+            await api.get(`/dateread/${idAccount}`)
+            .then( async (res) => {
+                if(res.data.length !== 0) {
+                    setDateRead(res.data[0]);
+                } else {
+                    const data = {
+                        idAccount: user.id,
+                        DateRead: new Date() 
+                    }
+                    await api.post(`/dateread`, data) .then((res) => {
+                        console.log("Data inicial definida com sucesso!")
+                    }).catch(error => {
+                console.log("Erro ao buscar dados" + error)
+            })
+                }
+            }).catch(error => {
+                console.log("Erro ao buscar dados" + error)
+            })
+        }
+
         async function loadRoomIdAccount() {
             const idAccount = user.id
             await api.get(`conversations/account/filter/${idAccount}`)
@@ -79,17 +102,16 @@ function TopBar() {
           loadAccounts()
           loadRoomIdAccount()
           loadRoomIDFriend()
-    }, [user.id])
+          loadDateRead()
+    }, [user.id, dateRead])
 
 
   const newRooms = rooms.concat(rooms2)
   const SearchUsers = accounts.filter((account) => account.username.startsWith(search))
   const SearchUsersId = accounts.filter((account) => account.id.startsWith(searchId))
 
-  const notificationsFilter = notifications.filter((notification) => (new Date(notification.created_at) > date))
+  const notificationsFilter = notifications.filter((notification) => (new Date(notification.created_at) > new Date(dateRead.DateRead) ))
   const friendPending = myFriends.filter(friend => (friend.status === 'pending' && friend.idFriend === user.id))
-
-
 
     function Tologout(e) {
         e.preventDefault();
@@ -135,10 +157,22 @@ function TopBar() {
     function handleOpenModalNotifications() {
         setIsOpenModalNotifications(true)
       }
-    function handleNotifications() {
+    async function handleNotifications() {
         handleOpenModalNotifications()
         const date = new Date()
         handleNewDate(date)
+
+        const id = dateRead.id
+        const data = {
+            DateRead: new Date()
+        }
+
+    await api.patch(`/dateread/${id}`, data).then((res) => {
+        console.log("Data inicial alterada com sucesso!")
+        }).catch(error => {
+        console.log("Erro ao buscar dados" + error)
+    })
+
       }
     
       function handleCloseModalNotifications() {

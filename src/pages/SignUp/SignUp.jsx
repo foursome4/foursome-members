@@ -132,7 +132,7 @@ function SignUp() {
           <input type="text" placeholder="E-mail" value={email} disabled/>
           <input type="text" placeholder="Código de verificação" value={code} onChange={(e) => setCode(e.target.value)} />
           <input type="text" placeholder="Id do Patrono" value={patron} onChange={(e) => setPatron(e.target.value)} />
-          <input type="text" placeholder="Username" value={username.toLowerCase()} onChange={(e) => setUsername(e.target.value)}/>
+          <input type="text" placeholder="Nome de usuário (Junto e sem espaço)" value={username.toLowerCase()} onChange={(e) => setUsername(e.target.value)}/>
           <select value={type} onChange={handleSetectType}>
                                 <option value="">Tipo de conta</option>
                                 <option value="Homem">Homem </option>

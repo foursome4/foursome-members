@@ -7,15 +7,13 @@ import { NewReply } from '../NewReply/NewReply';
 import { EditComment } from '../EditComment/EditComment';
 
 function UserComment({idAccount, username, date, idComment, text}) {
-    const {user, newComment, deleteComment} = useContext(AuthContext);
+    const {deleteComment} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
+
 
 
     const [reply, setReply] = useState(false);
-    const [commentText, setReplyText] = useState("");
     const [edit, setEdit] = useState(false);
     const [nickname, setNickname] = useState('')
     const [avatar, setAvatar] = useState('')

@@ -4,18 +4,16 @@ import api from "../../services/api";
 import './usersPending.css'
 
 
-function UsersPending({id, username}) {
+function UsersPending({id}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
     const [nickname, setNickname] = useState('')
     const [avatar, setAvatar] = useState('')
-    console.log(id)
     useEffect(() => {
         async function loadInformations() {
             const idAccount = id
             await api.get(`informations/${idAccount}`).then((result) => {
-                console.log(result.data[0])
                 setNickname(result.data[0].nickname)
                 setAvatar(result.data[0].avatar)
             }).catch((error) => {
