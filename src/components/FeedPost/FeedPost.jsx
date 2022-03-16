@@ -10,7 +10,7 @@ import { NewComment } from '../NewComment/NewComment';
 import { Link } from 'react-router-dom';
 import { EditPost } from '../EditPost/EditPost';
 import { UsersPosts } from '../UsersPosts/UsersPosts';
-import { ForwardControl, Player, FullscreenToggle } from 'video-react';
+import { Player, BigPlayButton } from 'video-react';
 
 function FeedPost() {
     const Local = localStorage.getItem("foursome");
@@ -247,15 +247,18 @@ function FeedPost() {
                                             <h4 className='white'>{userData.id}</h4>
                     
                                                 </div>
-                                                <div className="videoReact">
+                                                {/* <div className="videoReact">
                                                 <Player
+                                                fluid={true}
                                                     playsInline 
                                                     src={postsData.link}
                                                     />
-                                                </div>
-                                         {/* <video controls controlsList="nofullscreen nodownload" >
+                                                </div> */}
+                                         <video controls controlsList="nofullscreen nodownload" playsInline type='video/mp4' >
                                             <source src={postsData.link} type="video/mp4"/>
-                                            </video> */}
+                                            <source src={postsData.link}  type="video/ogg"/>
+                                            <source src={postsData.link}  type="video/webm"/>
+                                            </video>
                                         </div>
                                         </div> :
                                          postsData.type === "post-photo-group"  ?

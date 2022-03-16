@@ -156,7 +156,6 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    z-index: 91;
 }
 .feedPost .posts-feed .feed-post .post-data-media .image-video .markBottom{
     width: 400px;
@@ -169,7 +168,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     margin-top: 250px;
-    z-index: 90;
 }
 
 .feedPost .posts-feed .feed-post .post-data-media .mark .black{
@@ -221,15 +219,24 @@
    object-fit: contain;
    border-radius: 10px;
 }
-.feedPost .posts-feed .feed-post .post-data-media .videoReact{
+.feedPost .posts-feed .feed-post .post-data-media .image-video .videoReact{
    height: 100%;
    width: 100%;
-   object-fit: cover;
+   object-fit: contain;
    border-radius: 10px;
    display: flex;
    align-items: center;
    justify-content: center;
 }
+
+.feedPost .posts-feed .feed-post .post-data-media .image-video .videoReact .videoReact2{
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+ }
 
 
 
