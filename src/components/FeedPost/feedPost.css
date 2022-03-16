@@ -150,7 +150,7 @@
     width: 400px;
     height: 150px;
     position: absolute;
-    object-fit: contain;
+    object-fit: cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -161,7 +161,7 @@
     width: 400px;
     height: 150px;
     position: absolute;
-    object-fit: contain;
+    object-fit: cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -328,11 +328,18 @@
 
         }
           
-        .feedPost .posts-feed .feed-post .post-data-media .image-video .mark{
+        .feedPost .posts-feed .feed-post .post-data-media .image-video .markTop{
             width: 350px;
-            height: 350px;
-
+            height: 100px;
+ 
         }
+        .feedPost .posts-feed .feed-post .post-data-media .image-video .markBottom{
+            width: 350px;
+            height: 100px;
+
+            margin-top: 225px
+        }
+        
           
 
 
@@ -472,10 +479,17 @@
                         height: 300px;
             
                     }
-                    .feedPost .posts-feed .feed-post .post-data-media .image-video .mark{
+                    .feedPost .posts-feed .feed-post .post-data-media .image-video .markTop{
                         width: 300px;
-                        height: 300px;
-            
+                        height: 100px;
+
+             
+                    }
+                    .feedPost .posts-feed .feed-post .post-data-media .image-video .markBottom{
+                        width: 300px;
+                        height: 100px;
+
+                        margin-top: 200px
                     }
                       
                
@@ -538,11 +552,19 @@
                         height: 250px;
             
                     }
-                    .feedPost .posts-feed .feed-post .post-data-media .image-video .mark{
+                    .feedPost .posts-feed .feed-post .post-data-media .image-video .markTop{
                         width: 250px;
-                        height: 250px;
-            
-                    }      
+                        height: 80px;
+
+             
+                    }
+                    .feedPost .posts-feed .feed-post .post-data-media .image-video .markBottom{
+                        width: 250px;
+                        height: 80px;
+
+                        margin-top: 170px
+                    }
+                         
     
                 }
             }

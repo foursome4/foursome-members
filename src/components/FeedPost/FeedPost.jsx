@@ -204,9 +204,6 @@ function FeedPost() {
                                     postsData.type === "post-video"  ?
                                     <div className="post-data-media"  >
                                          <div className='image-video'>
-                                         {/* <Player>
-                                            <source src={postsData.link} />
-                                        </Player> */}
                                         
                                             <div className="markTop">
                                             <h5 className='black'>{userData.id}</h5>
@@ -250,18 +247,8 @@ function FeedPost() {
                                             <h5 className='black'>{userData.id}</h5>
                                             <h5 className='white'>{userData.id}</h5>
                                             <h5 className='black'>{userData.id}</h5>
-                                            <h5 className='white'>{userData.id}</h5>
-                                            <h5 className='black'>{userData.id}</h5>
-                                            <h5 className='white'>{userData.id}</h5>
-                                            <h5 className='black'>{userData.id}</h5>
-                                            <h5 className='white'>{userData.id}</h5>
-                                            <h5 className='black'>{userData.id}</h5>
-                                            <h5 className='white'>{userData.id}</h5>
-                                            <h5 className='black'>{userData.id}</h5>
-                                            <h5 className='white'>{userData.id}</h5>
-                                            <h5 className='black'>{userData.id}</h5>
-                                            <h5 className='white'>{userData.id}</h5>
-                                            <h5 className='black'>{userData.id}</h5>
+      
+
                                                 </div>
 
 
@@ -307,18 +294,7 @@ function FeedPost() {
                                             <h5 className='black'>{userData.id}</h5>
                                             <h5 className='white'>{userData.id}</h5>
                                             <h5 className='black'>{userData.id}</h5>
-                                            <h5 className='white'>{userData.id}</h5>
-                                            <h5 className='black'>{userData.id}</h5>
-                                            <h5 className='white'>{userData.id}</h5>
-                                            <h5 className='black'>{userData.id}</h5>
-                                            <h5 className='white'>{userData.id}</h5>
-                                            <h5 className='black'>{userData.id}</h5>
-                                            <h5 className='white'>{userData.id}</h5>
-                                            <h5 className='black'>{userData.id}</h5>
-                                            <h5 className='white'>{userData.id}</h5>
-                                            <h5 className='black'>{userData.id}</h5>
-                                            <h5 className='white'>{userData.id}</h5>
-                                            <h5 className='black'>{userData.id}</h5>
+                    
                                                 </div>
                                          <video controls controlsList="nofullscreen nodownload" >
                                             <source src={postsData.link} type="video/mp4"/>
