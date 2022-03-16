@@ -117,6 +117,7 @@
     width: 400px;
     height: 400px;
      object-fit: contain;
+     border-radius: 10px;
  }
 
 .feedPostIndividual2 .posts-feed .feed-post .post-data-media .image .mark{

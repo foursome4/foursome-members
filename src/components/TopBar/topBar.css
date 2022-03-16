@@ -9,7 +9,7 @@
     border-bottom: 2px solid var(--Background);
     position: fixed;
     top: 0;
-    z-index: 0;
+    z-index: 98;
    padding: 0 10% 0 10%; 
 }
 

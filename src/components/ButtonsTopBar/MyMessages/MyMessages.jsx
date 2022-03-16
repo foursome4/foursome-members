@@ -1,7 +1,7 @@
 import './myMessages.css'
 import Modal from 'react-modal';
 import api from '../../../services/api';
-import { UserConversation } from '../../UserConversation/UserConversation';
+import { UserConversation } from './UserConversation/UserConversation';
 import { FiMessageSquare, FiX} from 'react-icons/fi';
 import { useEffect, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
@@ -60,6 +60,9 @@ function MyMessages() {
     return (
         <>
                 <div className="link" onClick={handleMessages} data-tip data-for='Mensagens'>
+
+                    <div className="counter"></div>
+                    
                   <FiMessageSquare />
                 </div>
                 <ReactTooltip id='Mensagens' place="bottom" type="dark" effect="solid">
