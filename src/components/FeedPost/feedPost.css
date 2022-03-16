@@ -148,7 +148,7 @@
 
 .feedPost .posts-feed .feed-post .post-data-media .image-video .markTop{
     width: 400px;
-    height: 150px;
+    height: 100px;
     position: absolute;
     object-fit: cover;
     display: flex;
@@ -156,10 +156,11 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    z-index: 91;
 }
 .feedPost .posts-feed .feed-post .post-data-media .image-video .markBottom{
     width: 400px;
-    height: 150px;
+    height: 100px;
     position: absolute;
     object-fit: cover;
     display: flex;
@@ -168,6 +169,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     margin-top: 250px;
+    z-index: 90;
 }
 
 .feedPost .posts-feed .feed-post .post-data-media .mark .black{
@@ -218,6 +220,15 @@
    width: 100%;
    object-fit: contain;
    border-radius: 10px;
+}
+.feedPost .posts-feed .feed-post .post-data-media .videoReact{
+   height: 100%;
+   width: 100%;
+   object-fit: cover;
+   border-radius: 10px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
 
 

@@ -247,9 +247,15 @@ function FeedPost() {
                                             <h4 className='white'>{userData.id}</h4>
                     
                                                 </div>
-                                         <video controls controlsList="nofullscreen nodownload" >
+                                                <div className="videoReact">
+                                                <Player
+                                                    playsInline 
+                                                    src={postsData.link}
+                                                    />
+                                                </div>
+                                         {/* <video controls controlsList="nofullscreen nodownload" >
                                             <source src={postsData.link} type="video/mp4"/>
-                                            </video>
+                                            </video> */}
                                         </div>
                                         </div> :
                                          postsData.type === "post-photo-group"  ?
