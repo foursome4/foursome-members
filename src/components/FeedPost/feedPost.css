@@ -180,6 +180,28 @@
     margin: 2px;
     font-weight: 500;
 }
+.feedPost .posts-feed .feed-post .post-data-media .markTop .black {
+    color: rgba(0, 0, 0, 0.07);
+    margin: 2px;
+    font-weight: 500;
+}
+.feedPost .posts-feed .feed-post .post-data-media .markTop .white {
+    color: rgba(255, 255, 255, 0.07);
+    margin: 2px;
+    font-weight: 500;
+}
+.feedPost .posts-feed .feed-post .post-data-media .markBottom .black {
+    color: rgba(0, 0, 0, 0.07);
+    margin: 2px;
+    font-weight: 500;
+    object-fit: cover;
+}
+.feedPost .posts-feed .feed-post .post-data-media .markBottom .white {
+    color: rgba(255, 255, 255, 0.07);
+    margin: 2px;
+    font-weight: 500;
+    object-fit: cover;
+}
 
 
 .feedPost .posts-feed .feed-post .post-data-media h1 {
