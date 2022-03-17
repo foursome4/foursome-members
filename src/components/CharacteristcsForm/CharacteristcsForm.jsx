@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { FiRefreshCcw } from 'react-icons/fi';
+import { toast } from 'react-toastify';
 import logoImg from '../../assets/images/logo.png';
 import { AuthContext } from '../../contexts/Auth';
 import './characteristcsForm.css'
@@ -28,6 +29,7 @@ function CharacteristcsForm() {
         e.preventDefault()
         
         if(data && sex && sign && sexualOption && data2 && sex2 && sign2 && sexualOption2 && data3 && sex3 && sign3 && sexualOption3 !== "") {
+            toast.info("Salvando Caracteristicas do trisal. Aguarde...")
             updateCharacteristcs3({
                 idAccount: user.id,
                 data3,
@@ -43,7 +45,7 @@ function CharacteristcsForm() {
                 sign,
                 sexualOption})
         } else if ( data && sex && sign && sexualOption && data2 && sex2 && sign2 && sexualOption2 !== "") {
-            
+            toast.info("Salvando Caracteristicas do casal. Aguarde...")
             updateCharacteristcs2({
                 idAccount: user.id,
                 data2,
@@ -57,6 +59,7 @@ function CharacteristcsForm() {
             })
 
         } else if ( data && sex && sign && sexualOption !== "") {
+            toast.info("Salvando Caracteristicas. Aguarde...")
             updateCharacteristcs({
                 idAccount: user.id,
                 data,
@@ -115,26 +118,26 @@ function CharacteristcsForm() {
                     <img src={logoImg} alt="" />
                     <h2>Caracteristicas</h2>
                     </div>
-                        <form action="">
+                        <form onSubmit={handleUpdateCharacteristcs}>
                             <div className="data">
                             <br /><br />
                    {user.type === "Trisal" ?
                     <div className="data-form">   
                     <span>Membro casal 1</span><br />
-                    <input type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
-                    <select value={sex} onChange={handleSelectSex}>
+                    <input required type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
+                    <select required value={sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
-                            <select value={sexualOption} onChange={handleSelectSexualOption}>
+                            <select required value={sexualOption} onChange={handleSelectSexualOption}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
-                            <select value={sign} onChange={handleSelectSign}>
+                            <select required value={sign} onChange={handleSelectSign}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -151,20 +154,20 @@ function CharacteristcsForm() {
                             </select>
                     <br /><br />
                     <span>Membro casal 2</span><br />
-                    <input type="date" placeholder="Data de Nascimenrto" value={data2}  onChange={(e) => setData2(e.target.value)}/>
-                    <select value={sex2} onChange={handleSelectSex2}>
+                    <input required type="date" placeholder="Data de Nascimenrto" value={data2}  onChange={(e) => setData2(e.target.value)}/>
+                    <select required value={sex2} onChange={handleSelectSex2}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
-                            <select value={sexualOption2} onChange={handleSelectSexualOption2}>
+                            <select required value={sexualOption2} onChange={handleSelectSexualOption2}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
-                            <select value={sign2} onChange={handleSelectSign2}>
+                            <select required value={sign2} onChange={handleSelectSign2}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -182,20 +185,20 @@ function CharacteristcsForm() {
 
                             <br /><br />
                     <span>Membro casal 3</span><br />
-                    <input type="date" placeholder="Data de Nascimenrto" value={data3}  onChange={(e) => setData3(e.target.value)}/>
-                    <select value={sex3} onChange={handleSelectSex3}>
+                    <input required type="date" placeholder="Data de Nascimenrto" value={data3}  onChange={(e) => setData3(e.target.value)}/>
+                    <select required value={sex3} onChange={handleSelectSex3}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
-                            <select value={sexualOption3} onChange={handleSelectSexualOption3}>
+                            <select required value={sexualOption3} onChange={handleSelectSexualOption3}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
-                            <select value={sign3} onChange={handleSelectSign3}>
+                            <select required value={sign3} onChange={handleSelectSign3}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -214,20 +217,20 @@ function CharacteristcsForm() {
              : user.type === "Casal"?
              <div className="data-form">
                   <span>Membro casal 1</span><br />
-                  <input type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
-                    <select value={sex} onChange={handleSelectSex}>
+                  <input required type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
+                    <select required value={sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
-                            <select value={sexualOption} onChange={handleSelectSexualOption}>
+                            <select required value={sexualOption} onChange={handleSelectSexualOption}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
-                            <select value={sign} onChange={handleSelectSign}>
+                            <select required value={sign} onChange={handleSelectSign}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -245,20 +248,20 @@ function CharacteristcsForm() {
                             
                             <br /><br />
                     <span>Membro casal 2</span><br />
-                    <input type="date" placeholder="Data de Nascimenrto" value={data2}  onChange={(e) => setData2(e.target.value)}/>
-                    <select value={sex2} onChange={handleSelectSex2}>
+                    <input required type="date" placeholder="Data de Nascimenrto" value={data2}  onChange={(e) => setData2(e.target.value)}/>
+                    <select required value={sex2} onChange={handleSelectSex2}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
-                            <select value={sexualOption2} onChange={handleSelectSexualOption2}>
+                            <select required value={sexualOption2} onChange={handleSelectSexualOption2}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
-                            <select value={sign2} onChange={handleSelectSign2}>
+                            <select required value={sign2} onChange={handleSelectSign2}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -277,20 +280,20 @@ function CharacteristcsForm() {
              </div>
              :
              <div className="data-form">
-                                      <input type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
-                    <select value={sex} onChange={handleSelectSex}>
+                                      <input required type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
+                    <select required value={sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
-                            <select value={sexualOption} onChange={handleSelectSexualOption}>
+                            <select required value={sexualOption} onChange={handleSelectSexualOption}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
-                            <select value={sign} onChange={handleSelectSign}>
+                            <select required value={sign} onChange={handleSelectSign}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -311,10 +314,10 @@ function CharacteristcsForm() {
                 <br />
                     <div className='confirmation'>
                         <div className="confirmation_characteristcsForm">
-                        <input type="checkbox"/>
+                        <input required type="checkbox"/>
                         <span>Minhas informações estão corretas!</span>
                         </div>
-                        <button onClick={handleUpdateCharacteristcs}>{loading === true ? <FiRefreshCcw /> : "Salvar e avançar"}</button>
+                        <button type='submit'>"Salvar e avançar"</button>
                         
                     </div>
                         </form>

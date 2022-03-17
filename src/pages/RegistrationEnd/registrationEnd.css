@@ -80,3 +80,27 @@ border-radius: 10px;
     margin-left: 5px;
     color: var(--Primary);
 }
+
+
+@media(max-width: 400px) {
+    .content-registration .registrationEnd .orientations h4 {
+        font-size: 12px;
+    }
+    
+    .content-registration .registrationEnd .orientations h4 svg {
+        font-size: 12px;
+    }
+
+    .content-registration .registrationEnd .informations {
+        width: 100%;
+    }
+
+    .content-registration .registrationEnd .informations h3 {
+        font-size: 16px;
+    }
+
+    .content-registration .registrationEnd .informations h4 {
+        text-align: left;
+    }
+    
+}

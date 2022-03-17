@@ -111,7 +111,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
 .feedPost .posts-feed .feed-post .post-data-media .image-video{
@@ -138,7 +138,7 @@
     width: 400px;
     height: 400px;
     position: absolute;
-    object-fit: contain;
+    object-fit: cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -156,6 +156,7 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    
 }
 .feedPost .posts-feed .feed-post .post-data-media .image-video .markBottom{
     width: 400px;
@@ -174,11 +175,13 @@
     color: rgba(0, 0, 0, 0.07);
     margin: 2px;
     font-weight: 500;
+    object-fit: cover;
 }
 .feedPost .posts-feed .feed-post .post-data-media .mark .white{
     color: rgba(255, 255, 255, 0.07);
     margin: 2px;
     font-weight: 500;
+    object-fit: cover;
 }
 .feedPost .posts-feed .feed-post .post-data-media .markTop .black {
     color: rgba(0, 0, 0, 0.07);

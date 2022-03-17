@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { toast } from 'react-toastify';
 import logoImg from '../../assets/images/logo.png';
 import { AuthContext } from '../../contexts/Auth';
 import './preferencesForm.css'
@@ -19,6 +20,7 @@ function PreferencesForm() {
     
     function handlePreferences(e) {
         e.preventDefault();
+        toast.info("Salvando Preferências. Aguarde...")
         preferencesAccount({idAccount: user.id, men:homem, woman:mulher, couple:casal, trisal:trisal, transvestites:travestis, transsexuals:transexuais, groups:grupos, proposal:proposal})
     }
 
@@ -74,7 +76,7 @@ function PreferencesForm() {
 
 
     return (
-
+            <div className="content-Login">
             <div className="preferencesForm">
                 <div className="title">
                     <img src={logoImg} alt="" />
@@ -116,6 +118,11 @@ function PreferencesForm() {
                         <button onClick={handlePreferences}>Salvar e Avançar</button>
                     </div>
                         </form>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
             </div>
     )
 }

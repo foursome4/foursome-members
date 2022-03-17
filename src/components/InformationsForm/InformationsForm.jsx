@@ -68,7 +68,11 @@ function InformationsForm() {
 
     async function handleUploadAccount(e) {
         e.preventDefault();
-        //Avatar
+
+        if(avatarUrl === null || coverUrl === null || nickname === "" || city === "" || uf === "" || relationship === "") {
+            toast.error("Favor preencher todos os campos")
+        } else {
+                //Avatar
         setLoadding(true);
         console.log(loadding);
         const uuid = uuidv4();
@@ -97,6 +101,8 @@ function InformationsForm() {
         console.log({idAccount: user.id, avatar: photoUrlAvatar, cover: photoUrl, city, uf, relationship, nickname});
         console.log(loadding);
         setLoadding(false);
+        }
+    
         
     }
 

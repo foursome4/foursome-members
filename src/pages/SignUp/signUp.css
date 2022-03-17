@@ -307,6 +307,15 @@
             width: 60%;
             margin-bottom: 20px;
         }
+
+        .content-Login .signUp .form .terms {
+            width: 70%;
+        }
+
+        .content-Login .signUp .form .terms span {
+            font-size: 14px;
+        }
+        
     }
     
 }

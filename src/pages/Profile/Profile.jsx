@@ -360,30 +360,8 @@ function Profile() {
                                              <h5 className='black'>{user.id}</h5>
                                              <h5 className='white'>{user.id}</h5>
                                              <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
+     
+  
                 
 
                                          </div>

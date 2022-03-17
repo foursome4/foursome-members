@@ -1,4 +1,4 @@
-.preferencesForm {
+.content-Login .preferencesForm {
     width: 100%;
     height: 100%;
     display: flex;
@@ -8,7 +8,7 @@
     padding: 20px;
 }
 
-.preferencesForm .title {
+.content-Login .preferencesForm .title {
     width: 90%;
     display: flex;
     flex-direction: row;
@@ -17,11 +17,11 @@
     color: var(--White);
 }
 
-.preferencesForm .title img {
+.content-Login .preferencesForm .title img {
     width: 150px;
 }
 
-.preferencesForm form {
+.content-Login .preferencesForm form {
     width: 90%;
     height: 400px;
     display: flex;
@@ -30,7 +30,7 @@
     justify-content: space-evenly;
 }
 
-.preferencesForm form .proposal {
+.content-Login .preferencesForm form .proposal {
     width: 70%;
     display: flex;
     flex-direction: row;
@@ -38,7 +38,7 @@
     justify-content: center;
 }
 
-.preferencesForm form .proposal textarea{
+.content-Login .preferencesForm form .proposal textarea{
     resize: none;
     border-radius: 6px;
     border: none;
@@ -47,7 +47,7 @@
 }
 
 
-.preferencesForm form .data {
+.content-Login .preferencesForm form .data {
     width: 100%;
     color: blanchedalmond;
     display: flex;
@@ -58,19 +58,19 @@
     flex-wrap: wrap;
 }
 
-.preferencesForm form .data .search {
+.content-Login .preferencesForm form .data .search {
     margin: 5px;
     font-size: 18px;
     padding: 5px;
 }
 
-.preferencesForm form .data .search input[type="checkbox"] {
+.content-Login .preferencesForm form .data .search input[type="checkbox"] {
     width: 50px;
     background-color: cadetblue;
 }
 
 
-.preferencesForm form .confirmation {
+.content-Login .preferencesForm form .confirmation {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -78,7 +78,7 @@
     width: 100%;
 }
 
-.preferencesForm form .confirmation button {
+.content-Login .preferencesForm form .confirmation button {
     width: 150px;
     padding: 10px 5px;
     font-size: 14px;
@@ -88,7 +88,7 @@
     color: var(--Primary);
 }
 
-.preferencesForm form .confirmation .confirmation_preferencesForm {
+.content-Login .preferencesForm form .confirmation .confirmation_preferencesForm {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -96,12 +96,12 @@
     color: var(--White);
 }
 
-.preferencesForm form .confirmation .confirmation_preferencesForm span {
+.content-Login .preferencesForm form .confirmation .confirmation_preferencesForm span {
     margin-left: 10px;
 }
 
 @media (max-width: 600px) {
-    .preferencesForm .title {
+    .content-Login .preferencesForm .title {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -111,11 +111,11 @@
         margin-bottom: 20px;
     }
 
-    .preferencesForm .title img{
+    .content-Login .preferencesForm .title img{
         margin-bottom: 20px;
     }
 
-    .preferencesForm form .confirmation {
+    .content-Login .preferencesForm form .confirmation {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -124,16 +124,49 @@
         margin-top: 20px;
     }
 
-    .preferencesForm form .confirmation button{
+    .content-Login .preferencesForm form .confirmation button{
         margin-top: 20px;
     }
 
     @media (max-width: 450px) {
-        .preferencesForm form .data {
+        .content-Login .preferencesForm form .data {
             flex-direction: column;
             align-items: flex-start;
             margin-left: 50px;
+            width: 90%;
         }
+
+        
+.content-Login .preferencesForm form .data .search {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 5px;
+    font-size: 18px;
+    padding: 5px;
+    width: 50%;
+    text-align: left;
+}
+
+.content-Login .preferencesForm form .data .search input[type="checkbox"] {
+    width: 50px;
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 5px;
+}
+
+.content-Login .preferencesForm form .proposal {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
     }
+
 }
 
