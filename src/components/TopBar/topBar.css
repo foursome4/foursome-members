@@ -150,6 +150,16 @@
                                 .topBar .links .account {
                                     display: none;
                                 }
+
+                                .topBar .logo2 img{
+                                    margin-right: -20px;
+                                    height: 50px;
+                                }
+
+                                .topBar .links {
+                                   margin-left: -10px;
+                                }
+        
                             }
         
                     }
@@ -160,3 +170,5 @@
         }
         
     }
+
+

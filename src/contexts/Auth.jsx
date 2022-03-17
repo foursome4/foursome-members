@@ -814,8 +814,8 @@ async function deleteGroup(id){
         }
         function resetTimer() {
         clearTimeout(time);
-     time = setTimeout(doSomething, 300000000000000000)
-     // time = setTimeout(doSomething, 300000)
+     //time = setTimeout(doSomething, 300000000000000000)
+      time = setTimeout(doSomething, 300000)
        // time = setTimeout(doSomething, 50000)
     }
 }

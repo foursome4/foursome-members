@@ -9,6 +9,7 @@ import { v4 as uuidv4} from 'uuid'
 import { FaWhatsapp } from "react-icons/fa"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import api from "../../services/api"
+import { toast } from "react-toastify"
 
 
 function Invite() {
@@ -41,6 +42,7 @@ function Invite() {
 
     function createInvite(e) {
         e.preventDefault();
+        toast.info("Enviando convite. Aguarde...")
 
         const remove1Paranteses = phone.replace('(', '')
         const remove2Paranteses = remove1Paranteses.replace(')', '')
@@ -66,6 +68,7 @@ function Invite() {
 
     function createInviteWhatsapp(e) {
         e.preventDefault();
+        toast.info("Enviando convite. Aguarde...")
 
         const remove1Paranteses = phone.replace('(', '')
         const remove2Paranteses = remove1Paranteses.replace(')', '')
@@ -156,8 +159,6 @@ function Invite() {
                                       <span>Convite por e-mail</span>
                                     <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome"/>
                                     <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
-                                    <input type="text" id="telefone" onKeyUp={mascaraFone} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
-
                                     <button onClick={createInvite}> Enviar Convite</button>
                                     <br />
                                     <br />
@@ -168,7 +169,7 @@ function Invite() {
                                     <form action="">
                                       <span>Convite por whatsapp</span>
                                     <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome"/>
-                                    <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
+                                     <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
                                     <input type="text" id="telefone" onKeyUp={mascaraFone} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
 
                                     <button onClick={createInviteWhatsapp}> Enviar Convite</button>
@@ -181,9 +182,10 @@ function Invite() {
                                 typeInvite === "Invites" ?
                                 myInvites.map((invite) => {
                                   return (
-                                    <div className="inviteUnic">
+                                    <div className="inviteUnic" key={invite.email}>
                                       <h5><b>{invite.name}</b></h5>
-                                      <h5>{invite.email !== "" ? invite.email : ""} - {invite.phone !== "" ? invite.phone : ""}</h5>
+                                      <h5>{invite.email !== "" ? invite.email : ""} </h5>
+                                      <h5>{invite.phone !== "" ? invite.phone : ""}</h5>
                                       <button>Deletar</button> 
                                     
                                     </div>

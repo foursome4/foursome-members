@@ -130,8 +130,14 @@
     justify-content: center;
     padding: 10px;
     border: none;
-    border-bottom: 1px solid var(--Primary);
     color: var(--Primary);
+    background-color: var(--Background);
+    border-radius: 6px;
+    margin: 5px 0;
+    text-align: center;
+}
+.content-invite .aside .invites .invites-all .invites-unic .inviteUnic h5{
+    text-align: center;
 }
 
 .content-invite .aside .invites .invites-all .invites-unic .inviteUnic button{
@@ -183,6 +189,7 @@
     color: var(--Primary);
     margin-left: 0 auto;
     margin-right: 0 auto;
+    width: 100%;
 }
 
 .content-invite .aside .invites .invites-all .invites-unic .informationInvite h4 {
@@ -242,3 +249,43 @@
     margin-top: 10px;
 }
 
+
+
+@media(max-width: 900px) {
+    .content-invite .aside .invites .invites-all {
+        width: 100%;
+    }
+
+    .content-invite .aside .invites .invites-all .invites-unic .buttons {
+        width: 90%;
+    }
+
+    .content-invite .aside .invites .invites-all .invites-unic form {
+        width: 100%;
+    }
+       
+    
+    .content-invite .aside .invites .invites-all .invites-unic form input {
+        width: 70%;
+    }
+
+    @media(max-width: 550px) {
+        .content-invite .aside .invites .invites-all .invites-unic .buttons {
+            width: 100%;
+        }
+
+        .content-invite .aside .invites .invites-all .invites-unic form input {
+            width: 90%;
+        }
+
+        .content-invite .aside .invites .invites-all .invites-unic .inviteUnic {
+            width: 100%;
+        }
+
+        .content-invite .aside .invites .invites-all .invites-unic .informationInvite p {
+            font-size: 12px;
+        }
+    
+    }
+
+} 

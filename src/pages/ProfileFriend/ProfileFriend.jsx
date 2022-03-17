@@ -509,17 +509,7 @@ function ProfileFriend() {
                
               </div>
             </div>
-            <div className="photo">
-              <button>Vídeos</button>
-              <div className="image">
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
-              </div>
-            </div>
+
               </div>
                      <div className="feed">
                   {feed === "feed" ?

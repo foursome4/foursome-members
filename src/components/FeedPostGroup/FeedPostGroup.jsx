@@ -12,8 +12,6 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
     function FeedPostGroup({idGroup}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
 
 
     const [post, setPost] = useState("");
@@ -269,7 +267,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
                                             <FiMessageCircle />
                                             
                                         </button>
-                                        {postsData.idAccount === user.id ?
+                                        {postsData.idAccount === userData.id ?
                                         <>
                                             <button> <FiEdit />  </button>
                                             <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 />  </button>

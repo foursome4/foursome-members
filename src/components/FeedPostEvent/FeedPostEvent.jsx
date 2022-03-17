@@ -8,6 +8,10 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
 
 
     function FeedPostEvent({idEvent}) {
+        const Local = localStorage.getItem("foursome");
+        const userData = JSON.parse(Local);
+
+
     const [data, setData] = useState([]); 
     const {user, deletePost} = useContext(AuthContext);
 
@@ -50,7 +54,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
                                         <p>{postsData.text}</p>
                                     </div>
                                     <div className="reactions-individual" >
-                                        {postsData.idAccount === user.id ?
+                                        {postsData.idAccount === userData.id ?
                                         <>
                                             <button> <FiEdit />  </button>
                                             <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 />  </button>

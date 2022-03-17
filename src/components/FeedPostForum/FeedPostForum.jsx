@@ -10,6 +10,8 @@ import { NewComment } from '../NewComment/NewComment';
 import { UsersPosts } from '../UsersPosts/UsersPosts';
 
     function FeedPostForum({idForum}) {
+        const Local = localStorage.getItem("foursome");
+        const userData = JSON.parse(Local);
 
     const [data, setData] = useState([]);
     const [comment, setComment] = useState(false);
@@ -60,7 +62,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
                                             <FiMessageCircle />
                                             Comentar
                                         </button> */}
-                                        {postsData.idAccount === user.id ?
+                                        {postsData.idAccount === userData.id ?
                                         <>
                                             <button> <FiEdit />  </button>
                                             <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 />  </button>

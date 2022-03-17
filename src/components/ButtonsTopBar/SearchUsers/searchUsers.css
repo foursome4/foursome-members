@@ -159,6 +159,15 @@
 
                     }
 
+                    @media (max-width: 550px) {
+
+                        .topBar .search {
+                           margin-right: -10px;
+
+                        }
+
+                }
+
                     
                 }
 

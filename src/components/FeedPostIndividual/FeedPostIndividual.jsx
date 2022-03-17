@@ -8,19 +8,16 @@ import { FeedComments } from '../FeedComments/FeedComments';
 import { ListReactions } from '../ListReactions/ListReactions';
 import { NewComment } from '../NewComment/NewComment';
 import { UsersPosts } from '../UsersPosts/UsersPosts';
+import { EditPost } from '../EditPost/EditPost';
 
     function FeedPostIndividual({id}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
-
 
     const [post, setPost] = useState("");
     const [data, setData] = useState([]);
     const [comment, setComment] = useState(false);
-    const [viewComment, setViewComment] = useState(true);
-    const [textComment, setTextComment] = useState("");
+    const [edit, setEdit] = useState(false);
 
     const {user, deletePost} = useContext(AuthContext);
     useEffect(() => {
@@ -73,6 +70,14 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
         }
     }
 
+    function handleHabiliteEdit () {
+        if(edit === false) {
+            setEdit(true)
+            setComment(false) 
+        } else {
+            setEdit(false) 
+        }
+    }
 
     function handleDeletePost(id) {
         const deletar = window.confirm("Deseja deletar a postagem?");
@@ -110,6 +115,14 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
                                     <div className="post-data" >
                                         <p>{postsData.text}</p>
                                     </div>
+
+                                    <div className={edit === true ? "edit" : "editHidden"}>
+                                    {postsData.idAccount === userData.id ? 
+                                         <EditPost data={postsData.text} id={postsData.id} />
+                                         : ""
+                                        }
+                                    </div>
+
 
                                     {postsData.type === "post-photo" ?
                                   
@@ -275,7 +288,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
                                         </button>
                                         {postsData.idAccount === userData.id ?
                                         <>
-                                            <button> <FiEdit />  </button>
+                                             <button onClick={handleHabiliteEdit}> <FiEdit /> </button>
                                             <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 />  </button>
                                             </>
                                         : ""}

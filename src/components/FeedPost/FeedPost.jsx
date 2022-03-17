@@ -19,7 +19,7 @@ function FeedPost() {
     const [data, setData] = useState([]);
     const [comment, setComment] = useState(false);
     const [edit, setEdit] = useState(false);
-    const {user, deletePost} = useContext(AuthContext);
+    const {deletePost} = useContext(AuthContext);
 
 
     

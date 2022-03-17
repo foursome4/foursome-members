@@ -411,8 +411,8 @@ function Profile() {
                     <div className="name">
                      
                         <br />
-                        <h4>Meu Id: <a href="#"> {user.id}</a></h4>
-                        <h4>Patrono: {patron !== null ?  <a href={patron.id === user.id ? `/profile` : `/profile-friend/${patron.id}`}>{patron.username}</a> :"Patrono não eocnotrado"}</h4>
+                        <h5>Meu Id: <a href="#"> {user.id}</a></h5>
+                        <h5>Patrono: {patron !== null ?  <a href={patron.id === user.id ? `/profile` : `/profile-friend/${patron.id}`}>{patron.username}</a> :"Patrono não eocnotrado"}</h5>
                         <br />
                     </div>
 
@@ -481,6 +481,23 @@ function Profile() {
                 </div>
             
 
+            <div className="visits">
+              <h5><b>Últimas visitas</b></h5>
+              <div className="names">
+              <h6>@jefersonmmacedo</h6>
+              <h6>@casalcampista</h6>
+              <h6>@casalaventura</h6>
+              <h6>@casaladventure</h6>
+              <h6>@gugu</h6>
+              <h6>@foursome</h6>
+              <h6>@lindachique</h6>
+              <h6>@moreninha10</h6>
+              <h6>@casaldoideira</h6>
+              <h6>@moreno23</h6>
+              <h6>@brunafogosa</h6>
+              </div>
+            </div>
+
             <div className="photo">
               <button>Fotos</button>
               <div className="image">
@@ -493,17 +510,6 @@ function Profile() {
                 })}
  
                
-              </div>
-            </div>
-            <div className="photo">
-              <button>Vídeos</button>
-              <div className="image">
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
-                <img src={avatar} alt="" />
               </div>
             </div>
               </div>
