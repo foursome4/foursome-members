@@ -10,7 +10,7 @@ import { NewComment } from '../NewComment/NewComment';
 import { Link } from 'react-router-dom';
 import { EditPost } from '../EditPost/EditPost';
 import { UsersPosts } from '../UsersPosts/UsersPosts';
-import { Player, BigPlayButton } from 'video-react';
+//import { Player, BigPlayButton } from 'video-react';
 
 function FeedPost() {
     const Local = localStorage.getItem("foursome");
@@ -198,7 +198,7 @@ function FeedPost() {
                                              <h5 className='white'>{userData.id}</h5>
                                              <h5 className='black'>{userData.id}</h5>
                                          </div>
-                                            <img src={postsData.link} alt={"Post Image"} width={500}/>
+                                            <img src={postsData.link} alt={postsData.link} width={500}/>
                                          </div>
                                         </div> :
                                     postsData.type === "post-video"  ?
@@ -254,10 +254,10 @@ function FeedPost() {
                                                     src={postsData.link}
                                                     />
                                                 </div> */}
-                                         <video controls controlsList="nofullscreen nodownload" playsInline type='video/mp4' >
-                                            <source src={postsData.link} type="video/mp4"/>
-                                            <source src={postsData.link}  type="video/ogg"/>
-                                            <source src={postsData.link}  type="video/webm"/>
+                                         <video playsInline controls controlsList="nofullscreen nodownload"  type='video/mp4' >
+                                            <source playsInline src={postsData.link} type="video/mp4"/>
+                                            <source playsInline src={postsData.link}  type="video/ogg"/>
+                                            <source playsInline src={postsData.link}  type="video/webm"/>
                                             </video>
                                         </div>
                                         </div> :
@@ -334,7 +334,7 @@ function FeedPost() {
                                              <h5 className='white'>{userData.id}</h5>
                                              <h5 className='black'>{userData.id}</h5>
                                          </div>
-                                            <img src={postsData.link} alt={"Post Image"} width={500}/>
+                                            <img src={postsData.link} alt={postsData.link} width={500}/>
                                          </div>
                                         </div> :
                                               postsData.type === "post-video-group"  ?

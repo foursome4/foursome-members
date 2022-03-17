@@ -1,12 +1,11 @@
 import { useContext, useState } from 'react';
-import { FiRefreshCcw } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import logoImg from '../../assets/images/logo.png';
 import { AuthContext } from '../../contexts/Auth';
 import './characteristcsForm.css'
 
 function CharacteristcsForm() {
-    const {loading, updateCharacteristcs, updateCharacteristcs2, updateCharacteristcs3} = useContext(AuthContext);
+    const {updateCharacteristcs, updateCharacteristcs2, updateCharacteristcs3} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
 

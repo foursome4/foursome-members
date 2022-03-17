@@ -1,4 +1,4 @@
-import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiThumbsUp, FiMinus, FiSend, FiChevronDown } from 'react-icons/fi'
+import { FiImage, FiVideo, FiMenu, FiTrash2, FiEdit, FiMessageCircle } from 'react-icons/fi'
 import './feedPostGroup.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
@@ -17,10 +17,8 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
     const [post, setPost] = useState("");
     const [data, setData] = useState([]);
     const [comment, setComment] = useState(false);
-    const [viewComment, setViewComment] = useState(true);
-    const [textComment, setTextComment] = useState("");
 
-    const {user, deletePost} = useContext(AuthContext);
+    const {deletePost} = useContext(AuthContext);
     useEffect(() => {
           async function findPosts() {
             if(post === "") {
@@ -36,7 +34,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
         }
         findPosts()
 
-    }, [user, post, data.sort()])
+    }, [idGroup, post])
 
     function postAll() {
         setPost("")
@@ -52,14 +50,6 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
 
     function postVideo(){
         setPost("post-video-group")
-    }
-
-    function postGroup(){
-        setPost("post-group")
-    }
-
-    function postForum(){
-        setPost("post-forum")
     }
 
     function handleHabiliteComment () {
@@ -178,7 +168,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
                                              <h5 className='white'>{userData.id}</h5>
                                              <h5 className='black'>{userData.id}</h5>
                                          </div>
-                                            <img src={postsData.link} alt={"Post Image"} width={500}/>
+                                            <img src={postsData.link} alt={postsData.link} width={500}/>
                                         </div> 
                                         </div> :
                                     postsData.type === "post-video-group" ?

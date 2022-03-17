@@ -1,4 +1,4 @@
-import {createContext, useEffect, useState} from 'react';
+import {createContext, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import api from '../services/api';
@@ -10,7 +10,6 @@ const AuthContext = createContext({});
 
 function AuthProvider({children}) {
     const [user, setUser] = useState(null);
-    const [userDataNew, setUserDataNew] = useState(null);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
@@ -843,7 +842,6 @@ inactivityTime()
             updatePreferencesAccount,
             newPost,
             CreateInviteNewUsew,
-            userDataNew,
             newComment,
             newReply,
             deletePost,

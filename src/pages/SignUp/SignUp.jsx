@@ -5,8 +5,7 @@ import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import './signUp.css';
 import { toast } from 'react-toastify';
-import { FiEye, FiEyeOff, FiX } from 'react-icons/fi';
-import Modal from 'react-modal'
+import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 function SignUp() {
   const {email} = useParams()
@@ -21,7 +20,6 @@ function SignUp() {
   const [passwordView, setPasswordView] = useState(false)
   const [checked, setChecked] = useState(false);
 
-  const [isOpenModal, setIsOpenModal] = useState(false);
 
 
   const navigate = useNavigate();
@@ -30,7 +28,7 @@ function SignUp() {
       if(localStorage.getItem("foursome") !== null) {
         navigate("/loader")
       }
-  },[])
+  },[navigate])
 
 
   function handleCreateAccount(e) {
@@ -102,21 +100,7 @@ function SignUp() {
   }
 
 
-  function handleOpenModal() {
-    setIsOpenModal(true)
-  }
 
-  function handleCloseModal() {
-    setIsOpenModal(false)
-  }
-
-  function handleTerms() {
-    handleOpenModal()
-    console.log("Modal")
-  }
-
-
-  Modal.setAppElement('#root');
 
   return (
     <div className="content-Login">
@@ -158,7 +142,7 @@ function SignUp() {
 
           <div className="terms">
           <input type="checkbox" checked={checked} onChange={handleChange}/>
-          <span>Li e concordo com os </span><span onClick={handleTerms} className="pointer"> <b > Termos de uso</b></span>
+          <span>Li e concordo com os </span><span className="pointer"> <b > Termos de uso</b></span>
           </div>
 
           <div className="buttons">

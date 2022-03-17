@@ -1,12 +1,9 @@
-import { FiTrash2, FiEdit, FiMessageCircle } from 'react-icons/fi'
+import { FiTrash2, FiEdit } from 'react-icons/fi'
 import './feedPostForum.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import api from "../../services/api";
 import { parseISO, format} from 'date-fns';
-import { FeedComments } from '../FeedComments/FeedComments';
-import { ListReactions } from '../ListReactions/ListReactions';
-import { NewComment } from '../NewComment/NewComment';
 import { UsersPosts } from '../UsersPosts/UsersPosts';
 
     function FeedPostForum({idForum}) {
@@ -14,9 +11,8 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
         const userData = JSON.parse(Local);
 
     const [data, setData] = useState([]);
-    const [comment, setComment] = useState(false);
 
-    const {user, deletePost} = useContext(AuthContext);
+    const {deletePost} = useContext(AuthContext);
     useEffect(() => {
           async function findPosts() {
     
@@ -26,7 +22,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
         }
         findPosts()
 
-    }, [user, data.sort()])
+    }, [idForum])
 
 
     function handleDeletePost(id) {

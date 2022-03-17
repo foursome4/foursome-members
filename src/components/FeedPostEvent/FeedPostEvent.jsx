@@ -13,7 +13,7 @@ import { UsersPosts } from '../UsersPosts/UsersPosts';
 
 
     const [data, setData] = useState([]); 
-    const {user, deletePost} = useContext(AuthContext);
+    const { deletePost} = useContext(AuthContext);
 
     useEffect(() => {
           async function findPosts() {
