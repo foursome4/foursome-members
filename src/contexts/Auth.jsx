@@ -388,6 +388,7 @@ async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, 
         console.log(result.data)
         console.log("Post Realizado com sucesso!");      
     toast.info("Post publicado com sucesso!")
+    window.location.reload(false)
         setLoading(false)
     }).catch(error => {
         console.log("Post não foi realizado" + error)
@@ -408,6 +409,7 @@ async function editPost(id, text) {
         const res = await api.patch(`/posts/${id}`, {text});
         if(res.status===201) {
             toast.success('post editado com sucesso!');
+            window.location.reload(false)
          } else {
             toast.error('Deu algo errado ao deletar!');
          }
@@ -416,7 +418,6 @@ async function editComment(id, text) {
     console.log(id, text)
         const res = await api.patch(`/comments/${id}`, {text});
         if(res.status===201) {
-            toast.success('comentário editado com sucesso!');
          } else {
             toast.error('Deu algo errado ao deletar!');
          }
@@ -434,7 +435,6 @@ async function editReply(id, text) {
     console.log(id, text)
         const res = await api.patch(`/reply/${id}`, {text});
         if(res.status===201) {
-            toast.success('comentário editado com sucesso!');
          } else {
             toast.error('Deu algo errado ao deletar!');
          }
@@ -443,7 +443,7 @@ async function editReply(id, text) {
 async function deleteReply(id) {
     const res = await api.delete(`/reply/${id}`);
     if(res.status===201) {
-        toast.success('post deletado com sucesso!');
+        toast.success('Resposta deletada com sucesso!');
      } else {
         toast.error('Deu algo errado ao deletar!');
      }

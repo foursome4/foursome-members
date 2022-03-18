@@ -1,4 +1,4 @@
-import { FiImage, FiVideo, FiMenu, FiTrash2, FiEdit, FiMessageCircle } from 'react-icons/fi'
+import { FiImage, FiVideo, FiMenu, FiTrash2, FiEdit, FiMessageCircle, FiRefreshCw } from 'react-icons/fi'
 import './feedPost.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
@@ -10,7 +10,8 @@ import { NewComment } from '../NewComment/NewComment';
 import { Link } from 'react-router-dom';
 import { EditPost } from '../EditPost/EditPost';
 import { UsersPosts } from '../UsersPosts/UsersPosts';
-import { Player, BigPlayButton } from 'video-react';
+//import { Player } from 'video-react';
+import { toast } from 'react-toastify';
 
 function FeedPost() {
     const Local = localStorage.getItem("foursome");
@@ -25,9 +26,10 @@ function FeedPost() {
     
     useEffect(() => {
         async function findPosts() {
-            if(post === "") {
+            if(post === "" || post === "All") {
               const res = await api.get(`/posts/all`);
               const dataPosts = (res.data)
+              console.log(res.data)
               setData(dataPosts)
             } else {
             const res = await api.get(`/posts/filter/${post}`);
@@ -38,10 +40,27 @@ function FeedPost() {
 
         findPosts()
 
-    }, [post, data])
+    }, [post])
+
+    // const name = "Jeferson"
+
+    // useEffect(() => {
+    //  if(name === "Jeferson Macedo") {
+    //      toast.error("Nome Certo")
+         
+    //  } else {
+    //      toast.error("NOme errado")
+    //  }
+
+    // }, [post])
+
 
     
 
+    function postUpdate() {
+        setPost("All")
+        toast.info("Atualizando posts...")
+    }
     function postAll() {
         setPost("")
     }
@@ -89,6 +108,7 @@ function FeedPost() {
         <div className="feedPost">
             <div className="posts-feed">
             <div className="buttons">
+            <button className={""} onClick={postUpdate}> <FiRefreshCw /> Atualizar </button>
             <button className={post === "" ? 'selected' : ""} onClick={postAll}> <FiMenu /> Todos </button>
             <button className={post === "post-text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
             <button className={post === "post-photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button>
@@ -187,16 +207,7 @@ function FeedPost() {
                                              <h5 className='black'>{userData.id}</h5>
                                              <h5 className='white'>{userData.id}</h5>
                                              <h5 className='black'>{userData.id}</h5>
-                                             <h5 className='white'>{userData.id}</h5>
-                                             <h5 className='black'>{userData.id}</h5>
-                                             <h5 className='white'>{userData.id}</h5>
-                                             <h5 className='black'>{userData.id}</h5>
-                                             <h5 className='white'>{userData.id}</h5>
-                                             <h5 className='black'>{userData.id}</h5>
-                                             <h5 className='white'>{userData.id}</h5>
-                                             <h5 className='black'>{userData.id}</h5>
-                                             <h5 className='white'>{userData.id}</h5>
-                                             <h5 className='black'>{userData.id}</h5>
+    
                                          </div>
                                             <img src={postsData.link} alt={postsData.link} width={500}/>
                                          </div>
@@ -247,18 +258,18 @@ function FeedPost() {
                                             <h4 className='white'>{userData.id}</h4>
                     
                                                 </div>
-                                                <div className="videoReact">
+                                                {/* <div className="videoReact">
                                                 <Player
                                                 fluid={true}
                                                     playsInline 
                                                     src={postsData.link}
                                                     />
-                                                </div>
-                                         {/* <video playsInline controls controlsList="nofullscreen nodownload"  type='video/mp4' >
+                                                </div> */}
+                                         <video playsInline controls controlsList="nofullscreen nodownload"  type='video/mp4' >
                                             <source playsInline src={postsData.link} type="video/mp4"/>
                                             <source playsInline src={postsData.link}  type="video/ogg"/>
                                             <source playsInline src={postsData.link}  type="video/webm"/>
-                                            </video> */}
+                                            </video>
                                         </div>
                                         </div> :
                                          postsData.type === "post-photo-group"  ?

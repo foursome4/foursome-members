@@ -146,6 +146,10 @@
     flex-wrap: wrap;
 }
 
+.feedPost .posts-feed .feed-post .post-data-media .image .mark h5 {
+    object-fit: cover;
+}
+
 .feedPost .posts-feed .feed-post .post-data-media .image-video .markTop{
     width: 400px;
     height: 100px;
