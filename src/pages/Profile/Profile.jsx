@@ -456,9 +456,7 @@ function Profile() {
                             <h5>Vídeos</h5>
                         </div>
                     </div>
-                </div>
-            
-
+                    
             <div className="visits">
               <h5><b>Últimas visitas</b></h5>
               <div className="names">
@@ -475,6 +473,9 @@ function Profile() {
               <h6>@brunafogosa</h6>
               </div>
             </div>
+                </div>
+            
+
 
             <div className="photo">
               <button>Fotos</button>

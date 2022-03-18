@@ -10,7 +10,7 @@ import { NewComment } from '../NewComment/NewComment';
 import { Link } from 'react-router-dom';
 import { EditPost } from '../EditPost/EditPost';
 import { UsersPosts } from '../UsersPosts/UsersPosts';
-//import { Player, BigPlayButton } from 'video-react';
+import { Player, BigPlayButton } from 'video-react';
 
 function FeedPost() {
     const Local = localStorage.getItem("foursome");
@@ -247,18 +247,18 @@ function FeedPost() {
                                             <h4 className='white'>{userData.id}</h4>
                     
                                                 </div>
-                                                {/* <div className="videoReact">
+                                                <div className="videoReact">
                                                 <Player
                                                 fluid={true}
                                                     playsInline 
                                                     src={postsData.link}
                                                     />
-                                                </div> */}
-                                         <video playsInline controls controlsList="nofullscreen nodownload"  type='video/mp4' >
+                                                </div>
+                                         {/* <video playsInline controls controlsList="nofullscreen nodownload"  type='video/mp4' >
                                             <source playsInline src={postsData.link} type="video/mp4"/>
                                             <source playsInline src={postsData.link}  type="video/ogg"/>
                                             <source playsInline src={postsData.link}  type="video/webm"/>
-                                            </video>
+                                            </video> */}
                                         </div>
                                         </div> :
                                          postsData.type === "post-photo-group"  ?
