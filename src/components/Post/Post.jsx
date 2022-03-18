@@ -112,6 +112,7 @@ function Post() {
         setLoading(true)
         
         if(post === "photo") {
+            toast.info("Salvando a foto. Aguarde...")
             const uuid = uuidv4();
             let newAvatarUrlFirebase = ref(storage, `images/posts/${uuid}`);
             
@@ -138,6 +139,7 @@ function Post() {
             setPost("text")
             reset()
         } else if(post === "video" ){
+            toast.info("Salvando o vídeo. Aguarde...")
                 const uuid = uuidv4();
                 let newVideoUrlFirebase = ref(storage, `videos/posts/${uuid}`);
                 

@@ -68,10 +68,11 @@ function InformationsForm() {
 
     async function handleUploadAccount(e) {
         e.preventDefault();
-
+        
         if(avatarUrl === null || coverUrl === null || nickname === "" || city === "" || uf === "" || relationship === "") {
             toast.error("Favor preencher todos os campos")
         } else {
+       toast.info("Salvando as informações. Aguarde...")
                 //Avatar
         setLoadding(true);
         console.log(loadding);
