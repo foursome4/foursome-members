@@ -81,7 +81,13 @@ function Chat() {
     }
 }
 
-
+async function NotificationMessage() {
+  // const text = `Seu amigo ${user.id}, enviou uma nova mensagem`
+  //   const data = {idAccount: user.id, idFriend, text}
+  //   await api.post("/notificationsMessage", data).then((res) => {
+  //     console.log("notificação enviada com sucesso!")
+  //   })
+}
 
 async function handleUploadAccount(img) {
 
@@ -114,7 +120,7 @@ async function handleUploadAccount(img) {
     setText("");
     setAvatarUrl(null);
     setImageAvatar('');
-
+    NotificationMessage()
 }
   function handleNewMessage(e) {
     e.preventDefault();
