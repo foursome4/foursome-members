@@ -14,6 +14,7 @@ import { Groups } from '../pages/Groups/Groups';
 import { InformationsFoursome } from '../pages/InformationsFoursome/InformationsFoursome';
 import { Invitation } from '../pages/Invitation/Invitation';
 import { Invite } from '../pages/Invite/Invite';
+import { InvitesList } from '../pages/InvitesList/InvitesList';
 import { Lgpd } from '../pages/Lgpd/Lgpd';
 import { Loader } from '../pages/Loader/Loader';
 import { Preferences } from '../pages/Preferences/Preferences';
@@ -85,6 +86,8 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Invitation /> </PrivateRoute>} />
             <Route path="/chat/:room" 
                 element={ <PrivateRoute> <Chat /> </PrivateRoute>} />
+            <Route path="/invitelist" 
+                element={ <PrivateRoute> <InvitesList /> </PrivateRoute>} />
             <Route path="/invite" 
                 element={ <PrivateRoute> <Invite /> </PrivateRoute>} />
             <Route path="/infos" 

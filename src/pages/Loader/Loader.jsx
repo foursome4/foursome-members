@@ -6,7 +6,6 @@ import "./loader.css"
 
 
 function Loader() {
-    const [data, setData] = useState([])
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
     const navigate = useNavigate();
@@ -18,8 +17,7 @@ function Loader() {
             .then((res) => {
                 const data2 = res.data[0]
                 console.log("data2");               
-                console.log(res.data[0]);               
-                setData(res.data[0]);     
+                console.log(res.data[0]);     
 
                 if(data2 !== undefined) {
                     console.log("Redirecionar feed")

@@ -6,14 +6,11 @@ import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { FiCheck, FiMail, FiSend} from "react-icons/fi"
 import { FaWhatsapp } from "react-icons/fa"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
-import { ListInvites } from "../../components/ComponentsInvites/ListInvites/ListInvites"
 import { InviteEmail } from "../../components/ComponentsInvites/InviteEmail/InviteEmail"
 import { InviteWhatsapp } from "../../components/ComponentsInvites/InviteWhatsapp/InviteWhatsapp"
 
 
 function Invite() {
-    const Local = localStorage.getItem("foursome");
-    const user = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(LocalInformation);
 
@@ -27,9 +24,6 @@ function Invite() {
       }
       function handleInviteForWhatsapp(){
         setTypeInvite("Whatsapp")
-      }
-      function handleInviteMyInvites(){
-        setTypeInvite("Invites")
       }
 
    
@@ -59,7 +53,6 @@ function Invite() {
                                     <div className="buttons">
                                       <button onClick={handleInviteForEmail}>E-mail <FiMail /></button>
                                       <button onClick={handleInviteForWhatsapp}>Whatsapp <FaWhatsapp /></button>
-                                      <button onClick={handleInviteMyInvites}>Enviados <FiSend /> </button>
                                     </div>
                                     <br />
                                     { typeInvite === "Email" ?
@@ -67,10 +60,7 @@ function Invite() {
                                   :
                                   typeInvite === "Whatsapp" ?
                                   <InviteWhatsapp />
-                                :
-                                typeInvite === "Invites" ?
-                              <ListInvites />
-                                  :""
+                                :""
                                   
                                   }
                                    

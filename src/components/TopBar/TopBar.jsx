@@ -1,6 +1,7 @@
 import logoFoursomemini from '../../assets/images/logo-mini2.png';
 import logoFoursome from '../../assets/images/logo2.png';
-import {FiMail, FiLogOut, FiInfo} from 'react-icons/fi';
+import {FiMail, FiLogOut} from 'react-icons/fi';
+import {IoMailOpenOutline} from 'react-icons/io5';
 import avatarImg from '../../assets/images/avatar.png';
 import './topBar.css';
 import { useContext } from 'react';
@@ -55,6 +56,14 @@ function TopBar() {
                 <ReactTooltip id='Convidar' place="bottom" type="dark" effect="solid">
                      <span>Convidar</span>
                 </ReactTooltip>
+                <a href="/invitelist">
+                <div className="link" data-tip data-for='Enviados'>
+                    <IoMailOpenOutline />
+                </div>
+                </ a>
+                <ReactTooltip id='Enviados' place="bottom" type="dark" effect="solid">
+                     <span>Convites Enviados</span>
+                </ReactTooltip>
 
 
                 <MyMessages />
@@ -76,14 +85,6 @@ function TopBar() {
                     <h4>@{user !== null ? user.username : "Usuário não encontrado"}</h4>
                     </a>
                 </div>
-                <a href="/invite">
-                <div className="link" data-tip data-for='Informações'>
-                    <FiInfo />
-                </div>
-                </a>
-                <ReactTooltip id='Informações' place="bottom" type="dark" effect="solid">
-                     <span>Informações</span>
-                </ReactTooltip>
                 
             </div>
            

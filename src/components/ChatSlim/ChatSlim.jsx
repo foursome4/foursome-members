@@ -3,7 +3,6 @@ import './chatSlim.css'
 import { useEffect, useState } from 'react'
 import { FaCircle } from 'react-icons/fa'
 import api from '../../services/api'
-import { Link } from 'react-router-dom'
 
 function ChatSlim() {
     const Local = localStorage.getItem("foursome");

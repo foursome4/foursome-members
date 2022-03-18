@@ -5,7 +5,6 @@ import api from '../../../services/api';
 function ListInvites() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
-
     const [invites, setInvites] = useState([])
 
     useEffect(() => {
