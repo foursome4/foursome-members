@@ -24,7 +24,7 @@ import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 
 function ProfileFriend() {
   const navigate = useNavigate()
-  const {newFriend, newFollower, deleteFriend, deleteFollower} = useContext(AuthContext)
+  const {newFriend, newFollower, deleteFriend, deleteFollower, newVisit} = useContext(AuthContext)
   const Local = localStorage.getItem("foursome");
   const myUser = JSON.parse(Local);
   const {id} = useParams();
@@ -172,6 +172,18 @@ function ProfileFriend() {
       loadFollowers();
     }, [id]);
 
+    useEffect(() => {
+      function createVisit() {
+        const idAccount = myUser.id;
+        const username = myUser.username;
+        const idFriend = id;
+    
+        newVisit(idAccount, username, idFriend)
+      }
+    
+      createVisit()
+    }, [])
+
     
     function handleNewFriend(e) {
     const idAccount = myUser.id
@@ -200,6 +212,8 @@ function ProfileFriend() {
 
     deleteFollower(FollowingExists[0].id)
   }
+
+
 
 
 

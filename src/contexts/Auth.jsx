@@ -691,6 +691,14 @@ async function deleteGroup(id){
     })
 }
 
+async function newVisit(idAccount, username, idFriend) {
+    const data = {idAccount, username, idFriend}
+    await api.post("/visits", data).then((res) => {
+        console.log(res.data);
+        console.log("Novo visitante criado com sucesso!")
+    })
+}
+
 // Fim da Sessão grupos
 
     // function storageUser(data) {
@@ -867,6 +875,7 @@ inactivityTime()
             editPost,
             editComment,
             editReply,
+            newVisit
 
         }}>
             {children}

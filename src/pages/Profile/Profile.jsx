@@ -40,6 +40,7 @@ function Profile() {
   const [myFriends, setMyFriends] = useState([]);
   const [myFollowers, setMyFollowers] = useState([]);
   const [patron, setPatron] = useState([]);
+  const [visits, setVisits] = useState([]);
   const [friends, setFriends] = useState("friends");
   const [following, setFollowing] = useState("following");
   const [followers, setFollowers] = useState("");
@@ -56,6 +57,12 @@ function Profile() {
     })
       }
 
+      loadInformations()
+
+    }, [user.id]);
+
+
+      useEffect(() => {
       async function loadCharacteristcs() {
         const idAccount = user.id
         await api.get(`characteristics/${idAccount}`)
@@ -66,6 +73,12 @@ function Profile() {
       })
       }
 
+      loadCharacteristcs()
+
+    }, [user.id]);
+
+
+      useEffect(() => {
       async function loadPreferences() {
         const idAccount = user.id;
         await api.get(`/preferences/${idAccount}`)
@@ -75,40 +88,72 @@ function Profile() {
           console.log("Erro ao buscar dados" + error)
       })
       }
+      loadPreferences() 
 
+    }, [user.id]);
+
+
+      useEffect(() => {
       async function loadPosts() {
           const res = await api.get(`/posts/filter/accounts/${user.id}`);
           const dataPosts = (res.data)
           setPosts(dataPosts)
       }
 
+      loadPosts()
+
+    }, [user.id]);
+
+
+      useEffect(() => {
       async function loadFriends() {
         const idAccount = user.id;
         const result = await api.get(`/friends/${idAccount}`);
         setMyFriends(result.data)
       }
 
+      loadFriends()
+
+    }, [user.id]);
+
+
+      useEffect(() => {
       async function loadFollowers() {
         const idAccount = user.id;
         const result = await api.get(`/followers/filter/${idAccount}`);
           setMyFollowers(result.data)
       }
 
+      loadFollowers()
 
+    }, [user.id]);
+
+
+      useEffect(() => {
       async function searchPatron() {
         const id = user.patron;
         const patron = await api.get(`accounts/filter/${id}`);
         setPatron(patron.data[0])
       }
 
-      loadInformations();
-      loadCharacteristcs();
-      loadPreferences()
-      loadPosts();
-      searchPatron();
-      loadFriends();
-      loadFollowers();
-    }, [user.id, user.patron]);
+      searchPatron()
+      
+    }, [user.patron]);
+
+
+      useEffect(() => {
+      async function loadVisits() {
+        const idFriend = user.id;
+        const friend = await api.get(`visits/${idFriend}`);
+        setVisits(friend.data)
+        console.log(friend.data)
+      }
+      loadVisits()
+    }, [user.id]);
+
+
+
+
 
 
      function handleFeed() {
@@ -460,17 +505,14 @@ function Profile() {
             <div className="visits">
               <h5><b>Últimas visitas</b></h5>
               <div className="names">
-              <h6>@jefersonmmacedo</h6>
-              <h6>@casalcampista</h6>
-              <h6>@casalaventura</h6>
-              <h6>@casaladventure</h6>
-              <h6>@gugu</h6>
-              <h6>@foursome</h6>
-              <h6>@lindachique</h6>
-              <h6>@moreninha10</h6>
-              <h6>@casaldoideira</h6>
-              <h6>@moreno23</h6>
-              <h6>@brunafogosa</h6>
+                {visits.map((visit) => {
+                    return(
+                      <div key={visit.id}>
+                        <a href={`/profile-friend/${visit.idAccount}`}>
+                        <h6>@{visit.username}</h6> 
+                        </a>
+                      </div>
+                    )})}
               </div>
             </div>
                 </div>
