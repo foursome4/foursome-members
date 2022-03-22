@@ -132,6 +132,7 @@ function AuthProvider({children}) {
             }
             localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));
             navigate("/feed") 
+            window.location.reload(false)
            
         }).catch(error => {
             console.log("Erro ao buscar dados" + error)
