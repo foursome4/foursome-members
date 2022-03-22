@@ -2,7 +2,7 @@ import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { TopBar } from '../../components/TopBar/TopBar'
 import coverImg from '../../assets/images/cover.png'
 import avatar from '../../assets/images/avatar.png'
-import {FiHome, FiImage, FiVideo,  FiSettings, FiMoreVertical, FiUser, FiHeart, FiCheck} from 'react-icons/fi'
+import {FiHome, FiImage, FiVideo,  FiSettings, FiMoreVertical, FiUser, FiHeart} from 'react-icons/fi'
 import {IoShieldCheckmark} from 'react-icons/io5'
 import './profile.css'
 import { Post } from '../../components/Post/Post'
@@ -10,10 +10,10 @@ import { Photos } from '../../components/Photos/Photos'
 import { Video } from '../../components/Video/Video'
 import { SettingsUser } from '../../components/SettingsUser/SettingsUser'
 import { ListFriends } from '../../components/ListFriends/ListFriends'
-import { FaMars, FaVenus } from 'react-icons/fa'
 import {useEffect, useState } from 'react'
 import api from '../../services/api'
 import { FeedPostIndividual } from '../../components/FeedPostIndividual/FeedPostIndividual'
+import { InformationsUser } from '../../components/InformationsUser/InformationsUser'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
@@ -21,16 +21,12 @@ import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 
 
 function Profile() {
-  const [dataUser, setDataUser] = useState(null)
   const Local = localStorage.getItem("foursome");
   const user = JSON.parse(Local);
   const LocalInformations = localStorage.getItem("informations-foursome");
   const userInformations = JSON.parse(LocalInformations);
 
-  const [characteristics, setCharacteristics] = useState([])
-  const [preferences, setPreferences] = useState([])
-  const [posts, setPosts] = useState([]);
-
+ 
   const [feed, setFeed] = useState("feed");
   const [friend, setFriend] = useState("");
   const [photo, setPhoto] = useState("");
@@ -40,8 +36,6 @@ function Profile() {
   const [setting, setSetting] = useState("");
   const [myFriends, setMyFriends] = useState([]);
   const [myFollowers, setMyFollowers] = useState([]);
-  const [patron, setPatron] = useState([]);
-  const [visits, setVisits] = useState([]);
   const [friends, setFriends] = useState("friends");
   const [following, setFollowing] = useState("following");
   const [followers, setFollowers] = useState("");
@@ -60,70 +54,12 @@ setHeigth((window.innerHeight > 0) ? window.innerHeight : window.screen.height);
 
 widthView()
 },[])
-    useEffect(() => {
-      const idUser = user.id;
-      async function loadInformations() {
-        await api.get(`/informations/${idUser}`)
-    .then((res) => {
-        setDataUser(res.data[0])
-    }).catch(error => {
-        console.log("Erro ao buscar dados" + error)
-    })
-      }
-
-      loadInformations()
-
-    }, [user.id]);
-
-
-      useEffect(() => {
-      async function loadCharacteristcs() {
-        const idAccount = user.id
-        await api.get(`characteristics/${idAccount}`)
-        .then((res) => {
-          setCharacteristics(res.data)
-        }).catch(error => {
-          console.log("Erro ao buscar dados" + error)
-      })
-      }
-
-      loadCharacteristcs()
-
-    }, [user.id]);
-
-
-      useEffect(() => {
-      async function loadPreferences() {
-        const idAccount = user.id;
-        await api.get(`/preferences/${idAccount}`)
-        .then((res) => {
-          setPreferences(res.data[0])
-        }).catch(error => {
-          console.log("Erro ao buscar dados" + error)
-      })
-      }
-      loadPreferences() 
-
-    }, [user.id]);
-
-
-      useEffect(() => {
-      async function loadPosts() {
-          const res = await api.get(`/posts/filter/accounts/${user.id}`);
-          const dataPosts = (res.data)
-          setPosts(dataPosts)
-      }
-
-      loadPosts()
-
-    }, [user.id]);
-
 
       useEffect(() => {
       async function loadFriends() {
         const idAccount = user.id;
         const result = await api.get(`/friends/${idAccount}`);
-        setMyFriends(result.data)
+       setMyFriends(result.data)
       }
 
       loadFriends()
@@ -143,32 +79,6 @@ widthView()
     }, [user.id]);
 
 
-      useEffect(() => {
-      async function searchPatron() {
-        const id = user.patron;
-        const patron = await api.get(`accounts/filter/${id}`);
-        setPatron(patron.data[0])
-      }
-
-      searchPatron()
-      
-    }, [user.patron]);
-
-
-      useEffect(() => {
-      async function loadVisits() {
-        const idFriend = user.id;
-        const friend = await api.get(`visits/${idFriend}`);
-        setVisits(friend.data)
-        console.log(friend.data)
-      }
-      loadVisits()
-    }, [user.id]);
-
-
-
-
-
 
      function handleFeed() {
         setFeed("feed")
@@ -179,6 +89,7 @@ widthView()
         setForum("")
         setSetting("")
     }
+
     function handleFriend() {
       setFeed("")
       setFriend("friend")
@@ -188,6 +99,7 @@ widthView()
       setForum("")
       setSetting("")
     }
+
     function handlePhoto() {
       setFeed("")
       setFriend("")
@@ -197,6 +109,7 @@ widthView()
       setForum("")
       setSetting("")
     }
+
     function handleVideo() {
       setFeed("")
       setFriend("")
@@ -206,6 +119,7 @@ widthView()
       setForum("")
       setSetting("")
     }
+
     function handleForum() {
       setFeed("")
       setFriend("")
@@ -215,6 +129,7 @@ widthView()
       setForum("forum")
       setSetting("")
     }
+
     function handleSetting() {
       setFeed("")
       setFriend("")
@@ -229,20 +144,18 @@ widthView()
     function handleFriends() {
       setFriends("friends");
     }
-    function handleFollowing() {
 
+    function handleFollowing() {
       setFollowing("following");
       setFollowers("");
-
     }
+
     function handleFollowers() {
       setFollowing("");
       setFollowers("followers");
     }
 
-    const photos = posts.filter(post => (post.type === "post-photo"));
-    const allPhotos = photos.slice(0, 6)
-    const videos = posts.filter(post => (post.type === "post-video"));
+
 
     const friendAproveds = myFriends.filter(friend => (friend.status === 'aproved'))
     const followersMy = myFollowers.filter(friend => (friend.idFriend === user.id))
@@ -435,125 +348,17 @@ widthView()
                   <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/> Fotos</button>
                   <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/> Vídeos</button>
                   <button className={setting === "" ? "" : "select"} onClick={handleSetting}><FiSettings size={16}/> Opções</button>
-                  <button  className='settings'><FiMoreVertical size={16}/></button>
+                  {/* <button  className='settings'><FiMoreVertical size={16}/></button> */}
                 </div>
             </div>
           <div className="sections">
                    {width <= 900 && feed !== "feed" ? "":
-                 <div className="infos">
-                    <div className="info">
-                    <div className="name">
-                        <h5>@{user !== null ? user.username :"User Test"}</h5>
-                        <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
-                    </div>
-                    <div className="name">
-                     
-                        <br />
-                        <h5>Meu Id: <a href="/profile"> {user.id}</a></h5>
-                        <h5>Patrono: {patron !== null ?  <a href={patron.id === user.id ? `/profile` : `/profile-friend/${patron.id}`}>{patron.username}</a> :"Patrono não eocnotrado"}</h5>
-                        <br />
-                    </div>
-
-                    <div className="info-user-preferences">
-                        <div className="informations">
-                            <h5 className='title'>Preferências</h5>
-                          <div className="selects">
-                              <div className="itens">{preferences.men !== "" ? <h5><FiCheck /> {preferences.men}</h5> : "" }  </div>
-                              <div className="itens"> {preferences.woman !== "" ? <h5><FiCheck /> {preferences.woman}</h5> : "" } </div>
-                              <div className="itens"> {preferences.couple !== "" ? <h5><FiCheck /> {preferences.couple}</h5> : "" } </div>
-                              <div className="itens"> {preferences.trisal !== "" ? <h5><FiCheck /> {preferences.trisal}</h5> : "" } </div>
-                              <div className="itens"> {preferences.transsexuals !== "" ? <h5><FiCheck /> {preferences.transsexuals}</h5> : "" } </div>
-                              <div className="itens"> {preferences.transvestites !== "" ? <h5><FiCheck /> {preferences.transvestites}</h5> : "" } </div>
-                              <div className="itens"> {preferences.groups !== "" ? <h5><FiCheck /> {preferences.groups}</h5> : "" } </div>
-                          </div>
-                          <div className="proposal">
-                            <h5 className='title'>Proposta</h5>
-                            {preferences.proposal !== "" ? <h5>{preferences.proposal}</h5> : "" }
-                          </div>
-                        </div>
-                      </div>
-
-
-                {characteristics.map((characteristicsUser) => {
-
-                  const nascimento = new Date(characteristicsUser.birthDate);
-                  const hoje = new Date()
-                  
-                  const idade =  Math.floor(Math.ceil(Math.abs(nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25);
-
-                  return (
-                    <div className={characteristicsUser.sex === "Mulher" ? "info-user-woman" : "info-user-man"} key={characteristicsUser.id}>
-                      <h4>{characteristicsUser.sex === "Mulher" ? <FaVenus size={20} /> : <FaMars size={20} />} </h4>
-                        <div className="info-user-data">
-                            <h5>Idade</h5>
-                            <p>{idade}</p>
-                        </div>
-                        <div className="info-user-data">
-                            <h5>Signo</h5>
-                            <p>{characteristicsUser.sign}</p>
-                        </div>
-                        <div className="info-user-data">
-                            <h5>Opção</h5>
-                            <p>{characteristicsUser.sexualOption}</p>
-                        </div>
-                    </div>
-                        )
-                      })}
-
-                     
-                  
-                    <div className="info-social">
-                        <div className="info-social-data">
-                            <p>{friendAproveds.length}</p>
-                            <h5>Amigos</h5>
-                        </div>
-                        <div className="info-social-data">
-                            <p>{photos.length}</p>
-                            <h5>Fotos</h5>
-                        </div>
-                        <div className="info-social-data">
-                            <p>{videos.length}</p>
-                            <h5>Vídeos</h5>
-                        </div>
-                    </div>
-                    
-            <div className="visits">
-              <h5><b>Últimas visitas</b></h5>
-              <div className="names">
-                {visits.map((visit) => {
-                    return(
-                      <div key={visit.id}>
-                        <a href={`/profile-friend/${visit.idAccount}`}>
-                        <h6>@{visit.username}</h6> 
-                        </a>
-                      </div>
-                    )})}
-              </div>
-            </div>
-                </div>
-            
-
-
-            <div className="photo">
-              <button>Fotos</button>
-              <div className="image">
-                {allPhotos.map((photos) => {
-                  return (
-                    <div className="photos-list" key={photos.id}>
-                <img src={photos.link} alt="" />
-                    </div>
-                  )
-                })}
- 
-               
-              </div>
-            </div>
-              </div>
+                   <InformationsUser />
           }
                      <div className="feed">
                   {feed === "feed" ?
                   <>
-                    <Post user={dataUser}/>
+                    <Post user={user.id}/>
                     <br /><br />
                     <FeedPostIndividual idAccount={user.id} />
                   </>

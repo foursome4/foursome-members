@@ -1,13 +1,14 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import logoImg from '../../assets/images/logo.png';
 import { AuthContext } from '../../contexts/Auth';
 import './characteristcsForm.css'
 
 function CharacteristcsForm() {
-    const {updateCharacteristcs, updateCharacteristcs2, updateCharacteristcs3} = useContext(AuthContext);
+    const {updateCharacteristcs, updateCharacteristcs2, updateCharacteristcs3, logout} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
+    const LocalCharacteristics = localStorage.getItem("characteritics-foursome");
 
     const [data,setData] = useState("");
     const [sex,setSex] = useState("");
@@ -23,6 +24,15 @@ function CharacteristcsForm() {
     const [sex3,setSex3] = useState("");
     const [sign3,setSign3] = useState("");
     const [sexualOption3,setSexualOption3] = useState("");
+
+    useEffect(() => {
+        function redirectToPage() {
+            if(LocalCharacteristics !== "undefined") {
+                logout(user.id)
+            }
+        }
+        redirectToPage()
+    },[])
 
     function handleUpdateCharacteristcs(e){
         e.preventDefault()

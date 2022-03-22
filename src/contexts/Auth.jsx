@@ -100,6 +100,28 @@ function AuthProvider({children}) {
         await api.get(`/informations/${id}`)
         .then((res) => {
             localStorage.setItem("informations-foursome", JSON.stringify(res.data[0]));
+            findPreferencesAccount(id)
+           
+        }).catch(error => {
+            console.log("Erro ao buscar dados" + error)
+        })
+        
+    }
+    async function findPreferencesAccount(id) {
+        await api.get(`/preferences/${id}`)
+        .then((res) => {
+            localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
+            findCharacteriticsAccount(id)
+           
+        }).catch(error => {
+            console.log("Erro ao buscar dados" + error)
+        })
+        
+    }
+    async function findCharacteriticsAccount(id) {
+        await api.get(`/characteristics/${id}`)
+        .then((res) => {
+            localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));
             navigate("/profile") 
            
         }).catch(error => {
@@ -107,6 +129,8 @@ function AuthProvider({children}) {
         })
         
     }
+
+  
 
 
 
@@ -706,12 +730,15 @@ async function newVisit(idAccount, username, idFriend) {
     //     navigate("/loader") 
     //   //  findInformationsAccount(data.id);
     // }
-
+    
+    
 
 
     async function logout(idAccount) {
         localStorage.removeItem("foursome");
         localStorage.removeItem("informations-foursome");
+        localStorage.removeItem("preferences-foursome");
+        localStorage.removeItem("characteritics-foursome");
         await api.delete(`/online/${idAccount}`)
         setUser(null);
         navigate("/");

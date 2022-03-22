@@ -1,11 +1,12 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import logoImg from '../../assets/images/logo.png';
 import { AuthContext } from '../../contexts/Auth';
 import './preferencesForm.css'
 
 function PreferencesForm() {
-    const {preferencesAccount} = useContext(AuthContext);
+    const LocalPreferences = localStorage.getItem("preferences-foursome");
+    const {preferencesAccount, logout} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
     const [homem, setHomem] = useState("");
@@ -16,6 +17,16 @@ function PreferencesForm() {
     const [transexuais, setTransexuais] = useState("");
     const [grupos, setGrupos] = useState("");
     const [proposal, setProposal] = useState("");
+
+
+    useEffect(() => {
+        function redirectToPage() {
+            if(LocalPreferences !== "undefined") {
+                logout(user.id)
+            }
+        }
+        redirectToPage()
+    },[])
 
     
     function handlePreferences(e) {
