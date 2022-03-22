@@ -1,7 +1,7 @@
 import './searchUsers.css'
 import { useEffect, useState } from 'react';
 import { UsersSearch } from '../../UsersSearch/UsersSearch';
-import { FiSearch, FiX} from 'react-icons/fi';
+import { IoSearchOutline, IoCloseOutline} from 'react-icons/io5';
 import Modal from 'react-modal';
 import api from '../../../services/api';
 
@@ -50,7 +50,7 @@ function SearchUsers() {
     return (
         <>
             <div className="search" onClick={handleSearch}>
-                <FiSearch />
+                <IoSearchOutline />
                <p>Pesquisar</p>
             </div>
 
@@ -59,7 +59,7 @@ function SearchUsers() {
             overlayClassName="react-modal-overlay"
             className="react-modal-content">
             <button type="button" className="react-modal-button" onClick={handleCloseModalSearch}>
-            <FiX /> 
+            <IoCloseOutline /> 
             </button>
             <div className="content-modal">
             <h3>Busca de usuários</h3>

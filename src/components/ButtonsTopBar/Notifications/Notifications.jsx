@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import api from "../../../services/api";
 import ReactTooltip from 'react-tooltip';
 import { UsersNotifications } from '../../UsersNotifications/UsersNotifications';
-import { FiBell, FiX } from 'react-icons/fi';
+import { IoNotificationsOutline, IoCloseOutline} from 'react-icons/io5';
 
 function Notifications() {
     const Local = localStorage.getItem("foursome");
@@ -48,7 +48,7 @@ function Notifications() {
 
         loadDateRead()
         loadNotifications()
-    }, [user.id]);
+    }, [user.id, dateRead]);
 
 
     const notificationsFilter = notifications.filter((notification) => (new Date(notification.created_at) > new Date(dateRead.DateRead) ))
@@ -93,7 +93,7 @@ function Notifications() {
                 {notificationsFilter.length === 0 ? "" :
                     <div className="counter"> {notificationsFilter.length}</div>
                     }
-                    <FiBell />
+                    <IoNotificationsOutline />
                 </div>
                 <ReactTooltip id='Notificações'  place="bottom" type="dark" effect="solid">
                      <span>Notificações</span>
@@ -106,7 +106,7 @@ function Notifications() {
             overlayClassName="react-modal-overlay"
             className="react-modal-content">
             <button type="button" className="react-modal-button" onClick={handleCloseModalNotifications}>
-            <FiX /> 
+            <IoCloseOutline /> 
             </button>
             <div className="content-modal">
             <h3>Notificações</h3>

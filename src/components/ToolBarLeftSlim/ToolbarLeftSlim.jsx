@@ -1,4 +1,6 @@
-import { FiCalendar, FiHome, FiList, FiRadio, FiUserCheck, FiUsers, FiInfo } from "react-icons/fi"
+import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoPeopleOutline, IoBusinessOutline,
+    IoInformationCircleOutline, IoNewspaperOutline, IoMailOpenOutline } from "react-icons/io5"
+
 import avatarImg from '../../assets/images/avatar.png';
 import './toolbarLeftSlim.css'
 
@@ -19,13 +21,13 @@ function ToolbarLeftSlim () {
 
                 <a href="/feed" >
                  <button className="toolIcon" >
-                        <FiHome size={20}/>Feed
+                        <IoNewspaperOutline size={20}/>Feed
                     </button>
                     </a>
 
                     <a href="/profile" >
                     <button className="toolIcon" >
-                        <FiUserCheck size={20}/>Perfil
+                        <IoPersonOutline size={20}/>Perfil
                     </button>
                     </a>
           
@@ -45,41 +47,47 @@ function ToolbarLeftSlim () {
 
                     <a href="/groups" >
                     <button className="toolIcon" >
-                        <FiUsers size={20}/>
+                        <IoPeopleOutline size={20}/>
                        Grupos
                     </button>
                     </a>
 
                     <a href="/foruns" >
                     <button className="toolIcon" >
-                        <FiList size={20}/>
+                        <IoList size={20}/>
                        Fóruns
                     </button>
                     </a>
 
                     <a href="/events" >
                     <button className="toolIcon" >
-                        <FiCalendar size={20}/>
+                        <IoCalendarOutline size={20}/>
                        Eventos
                     </button>
                     </a>
                     
                     <a href="/radar" >
                     <button className="toolIcon" >
-                        <FiRadio size={20}/>
+                        <IoRadio size={20}/>
                        Radar
                     </button>
                     </a>
-{/* 
+                    <a href="/invitelist" >
+                    <button className="toolIcon" >
+                        <IoMailOpenOutline size={20}/>
+                       Enviados
+                    </button>
+                    </a>
+
                     <a href="/locals" >
                     <button className="toolIcon" >
-                        <FiMapPin size={20}/>Locais
+                        <IoBusinessOutline size={20}/>Locais
                     </button>
-                    </a> */}
+                    </a>
 
                     <a href="/infos" >
                     <button className="toolIcon" >
-                        <FiInfo size={20}/>Infos
+                        <IoInformationCircleOutline size={20}/>Infos
                     </button>
                     </a>
                 </div>

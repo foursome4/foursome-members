@@ -131,13 +131,13 @@
                     }
 
                     .topBar .links {
-                        width: 50%;
+                        width: 60%;
                     }
 
 
                     @media (max-width: 650px) {
                         .topBar .links {
-                            width: 60%;
+                            width: 65%;
                            padding: 10px 5px 10px 0 ;
                         }
 

@@ -2,7 +2,8 @@ import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { TopBar } from '../../components/TopBar/TopBar'
 import coverImg from '../../assets/images/cover.png'
 import avatar from '../../assets/images/avatar.png'
-import {FiHome, FiImage, FiVideo,  FiSettings, FiMoreVertical, FiUser, FiHeart, FiCheck, FiShield} from 'react-icons/fi'
+import {FiHome, FiImage, FiVideo,  FiSettings, FiMoreVertical, FiUser, FiHeart, FiCheck} from 'react-icons/fi'
+import {IoShieldCheckmark} from 'react-icons/io5'
 import './profile.css'
 import { Post } from '../../components/Post/Post'
 import { Photos } from '../../components/Photos/Photos'
@@ -412,7 +413,7 @@ function Profile() {
                                          </div>
                    <img src={userInformations !== null ? userInformations.avatar : avatar} alt="" />
                    </div>
-                  <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b> {user.role !== "Membro" ? <FiShield />: ""}</h3>
+                  <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b> {user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
                 </div>
                 <div className="tools">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed}><FiHome size={16}/> Home</button>

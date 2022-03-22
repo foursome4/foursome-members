@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaCircle } from "react-icons/fa";
-import { FiCalendar, FiHome, FiList, FiRadio, FiUserCheck, FiUsers, FiSmile, FiMenu, FiInfo } from "react-icons/fi"
+import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoPeopleOutline, IoMenuOutline, IoInformationCircleOutline, IoChatbubblesOutline, IoNewspaperOutline } from "react-icons/io5"
 import api from "../../services/api";
 import './barBottomMenu.css'
 
@@ -37,17 +36,17 @@ function BarBottomMenu () {
                 <div className="Buttons">
 
                  <button className="ButtonsUnic" onClick={handleOpenUsersOnline}>
-                        <FiSmile size={20}/>Online
+                        <IoChatbubblesOutline size={20}/>Online
                     </button>
                 <a href="/feed" >
                  <button className="ButtonsUnic" >
-                        <FiHome size={20}/>Feed
+                        <IoNewspaperOutline size={20}/>Feed
                     </button>
                     </a>
 
                     <a href="/profile" >
                     <button className="ButtonsUnic" >
-                        <FiUserCheck size={20}/>Perfil
+                        <IoPersonOutline size={20}/>Perfil
                     </button>
                     </a>
           
@@ -67,28 +66,28 @@ function BarBottomMenu () {
 
                     <a href="/groups" >
                     <button className="ButtonsUnic" >
-                        <FiUsers size={20}/>
+                        <IoPeopleOutline size={20}/>
                        Grupos
                     </button>
                     </a>
 
                     <a href="/foruns" >
                     <button className="ButtonsUnic" >
-                        <FiList size={20}/>
+                        <IoList size={20}/>
                        Fóruns
                     </button>
                     </a>
 
                     <a href="/events" >
                     <button className="ButtonsUnic" >
-                        <FiCalendar size={20}/>
+                        <IoCalendarOutline size={20}/>
                        Eventos
                     </button>
                     </a>
                     
                     <a href="/radar" >
                     <button className="ButtonsUnic" >
-                        <FiRadio size={20}/>
+                        <IoRadio size={20}/>
                        Radar
                     </button>
                     </a>
@@ -100,7 +99,7 @@ function BarBottomMenu () {
                     </a> */}
                     <a href="/infos" >
                     <button className="ButtonsUnic" >
-                        <FiInfo size={20}/>Infos
+                        <IoInformationCircleOutline size={20}/>Infos
                     </button>
                     </a>
                 </div>
@@ -108,7 +107,7 @@ function BarBottomMenu () {
                 <div className="Buttons">
 
                 <button className="ButtonsUnic" onClick={handleOpenBar}>
-                       <FiMenu size={20}/>Menu
+                       <IoMenuOutline size={20}/>Menu
                    </button>
 
                    {users.map((user) => {
@@ -116,7 +115,7 @@ function BarBottomMenu () {
                     user.idAccount === userData.id ? "" :
                <a href={`/profile-friend/${user.idAccount}`} key={user.idAccount}>
                 <div className="divUser" key={user.idAccount}>
-                    <FaCircle />
+                    <IoChatbubblesOutline />
                     <div className="image">
                      <img src={user.avatar} alt={user.idAccount} />
                     </div>

@@ -814,14 +814,13 @@ async function newVisit(idAccount, username, idFriend) {
         const DataUserInformations = localStorage.getItem("informations-foursome");
         const userInformations = JSON.parse(DataUserInformations);
 
-            if(userInformations !== null || userInformations !== undefined || userInformations !== "") {
-                toast.error("Finalizando a sessão")
+            if(user !== null || user !== undefined || user !== "") {
+              //  toast.error("Finalizando a sessão")
                 logout(user.id)
             }
         }
         function resetTimer() {
         clearTimeout(time);
-     //time = setTimeout(doSomething, 300000000000000000)
       time = setTimeout(doSomething, 300000)
        // time = setTimeout(doSomething, 50000)
     }
