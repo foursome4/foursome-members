@@ -49,6 +49,21 @@ function ProfileFriend() {
   const [friends, setFriends] = useState("friends");
   const [following, setFollowing] = useState("");
   const [followers, setFollowers] = useState("");
+  const [width, setWidth] = useState("")
+  const [heigth, setHeigth] = useState("")
+
+useEffect(() => {
+function widthView() {
+  //resolução navegador
+console.log(window.screen.width+'x'+window.screen.height);
+
+//resolução 'real' navegador
+setWidth((window.innerWidth > 0) ? window.innerWidth : window.screen.width);
+setHeigth((window.innerHeight > 0) ? window.innerHeight : window.screen.height);
+}
+
+widthView()
+},[])
 
   useEffect(() => {
     async function loadAccount() {
@@ -433,6 +448,7 @@ function ProfileFriend() {
                 </div>
             </div>
           <div className="sections">
+          {width <= 900 && feed !== "feed" ? "":
               <div className="infos">
                     <div className="info">
                     <div className="name">
@@ -526,6 +542,7 @@ function ProfileFriend() {
             </div>
 
               </div>
+          }
                      <div className="feed">
                   {feed === "feed" ?
                   <>
