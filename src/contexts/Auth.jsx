@@ -99,6 +99,9 @@ function AuthProvider({children}) {
     async function findInformationsAccount(id) {
         await api.get(`/informations/${id}`)
         .then((res) => {
+            if(res.data === undefined || res.data === []) {
+                navigate("/completeregistration")
+            }
             localStorage.setItem("informations-foursome", JSON.stringify(res.data[0]));
             findPreferencesAccount(id)
            
@@ -110,6 +113,9 @@ function AuthProvider({children}) {
     async function findPreferencesAccount(id) {
         await api.get(`/preferences/${id}`)
         .then((res) => {
+            if(res.data === undefined || res.data === []) {
+                navigate("/preferences")
+            }
             localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
             findCharacteriticsAccount(id)
            
@@ -121,17 +127,17 @@ function AuthProvider({children}) {
     async function findCharacteriticsAccount(id) {
         await api.get(`/characteristics/${id}`)
         .then((res) => {
+            if(res.data === undefined || res.data === []) {
+                navigate("/characteristcs")
+            }
             localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));
-            navigate("/profile") 
+            navigate("/feed") 
            
         }).catch(error => {
             console.log("Erro ao buscar dados" + error)
         })
         
     }
-
-  
-
 
 
     // function loadNavigator() {

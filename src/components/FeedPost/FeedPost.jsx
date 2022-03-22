@@ -40,22 +40,9 @@ function FeedPost() {
 
         findPosts()
 
-    }, [post])
+    }, [post, data])
 
-    // const name = "Jeferson"
-
-    // useEffect(() => {
-    //  if(name === "Jeferson Macedo") {
-    //      toast.error("Nome Certo")
-         
-    //  } else {
-    //      toast.error("NOme errado")
-    //  }
-
-    // }, [post])
-
-
-    
+     
 
     function postUpdate() {
         setPost("All")
@@ -97,10 +84,9 @@ function FeedPost() {
 
     function handleDeletePost(id) {
     const deletar = window.confirm("Deseja deletar a postagem?");
-
-    if(deletar === true) {
-       deletePost(id);
-        } 
+         if(deletar === true) {
+             deletePost(id);
+           } 
     }
 
     return (
@@ -123,12 +109,7 @@ function FeedPost() {
                                 );
                                     return (   
                                         <>   
-                             {postsData.type === "post-text" ||
-                             postsData.type === "post-text-group" ||
-                             postsData.type === "post-photo" ||
-                             postsData.type === "post-video" ||                  
-                             postsData.type === "post-photo-group" ||                   
-                             postsData.type === "post-video-group" ?                   
+                  
                                 <div className="feed-post" key={postsData.id} >
                            <UsersPosts idAccount={postsData.idAccount} username={postsData.username} date={dateFormated} />
                                         <Link to={``} ><h5>{postsData.nameGroup !== "" ? postsData.nameGroup : postsData.nameForum  !== "" ? postsData.nameForum : ""  } </h5></Link>
@@ -145,7 +126,8 @@ function FeedPost() {
                                         }
                                     </div>
 
-                                    {postsData.type === "post-photo"  ?
+
+                                    { postsData.type === "post-photo"  ?
                                         <div className="post-data-media" >
                                        
                                          <div className='image'>
@@ -448,14 +430,12 @@ function FeedPost() {
 
                                 <FeedComments idPost={postsData.id} />
                                 </div>
-                                : "" }
                                 </>
                                 )
                             }))}
                            </div>
         </div>   
-      
-                        
+                   
     )
 }
 

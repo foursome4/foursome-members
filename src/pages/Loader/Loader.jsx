@@ -31,7 +31,7 @@ function Loader() {
             } else {
                 navigate("/feed")
             }
-            
+
             window.location.reload(false)
         }
 
@@ -43,8 +43,8 @@ function Loader() {
     return(
         <div className="loader">
             <img src={loader} alt="Carregando" />
-            <h3>Olá</h3>
-            <h3>Estamos preparando tudo para você!</h3>
+            <h4>Olá</h4>
+            <h4>Estamos preparando tudo para você!</h4>
         </div>
     )
 }

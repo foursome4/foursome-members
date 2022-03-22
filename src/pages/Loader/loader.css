@@ -7,5 +7,8 @@
     height: 100vh;
     background-color: var(--Background2);
     padding: 20px;
+    position: absolute;
+    z-index: 99;
+    margin-top: 500px;
 }
 
