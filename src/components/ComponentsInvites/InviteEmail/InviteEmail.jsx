@@ -35,7 +35,7 @@ function InviteEmail() {
 
  return (   <>
        <form action="">
-            <span>Convite por e-mail</span>
+            <span>Envie um convite por e-mail</span>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome"/>
             <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
             <button onClick={createInvite}> Enviar Convite</button>

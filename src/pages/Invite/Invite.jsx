@@ -15,16 +15,16 @@ function Invite() {
     const userInformation = JSON.parse(LocalInformation);
 
 
-    const [typeInvite, setTypeInvite] = useState("Email");
+    // const [typeInvite, setTypeInvite] = useState("Email");
 
 
 
-      function handleInviteForEmail(){
-        setTypeInvite("Email")
-      }
-      function handleInviteForWhatsapp(){
-        setTypeInvite("Whatsapp")
-      }
+    //   function handleInviteForEmail(){
+    //     setTypeInvite("Email")
+    //   }
+    //   function handleInviteForWhatsapp(){
+    //     setTypeInvite("Whatsapp")
+    //   }
 
    
     return (
@@ -49,20 +49,20 @@ function Invite() {
                                         <p><FiCheck /> Você se torna amplamente responsável pelos atos de seu convidado, podendo sofrer as mesmas punições que ele, em caso de má conduta.</p>
                                        </div>
                                     </div>
-
+{/* 
                                     <div className="buttons">
                                       <button onClick={handleInviteForEmail}>E-mail <FiMail /></button>
                                       <button onClick={handleInviteForWhatsapp}>Whatsapp <FaWhatsapp /></button>
                                     </div>
                                     <br />
-                                    { typeInvite === "Email" ?
+                                    { typeInvite === "Email" ? */}
                                  <InviteEmail />
-                                  :
-                                  typeInvite === "Whatsapp" ?
-                                  <InviteWhatsapp />
-                                :""
+                                  {/* // :
+                                  // typeInvite === "Whatsapp" ?
+                                  // <InviteWhatsapp />
+                                // :""
                                   
-                                  }
+                                //   } */}
                                    
                                 
                                 </div>

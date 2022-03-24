@@ -36,13 +36,6 @@ function Chat() {
   const [click, setClick] = useState(false);
 
   useEffect(() => {
-    if(messageRef.current) {
-      messageRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end',
-        inline: 'nearest'
-      })
-    }
     async function findMessages() {
       const idRoom = room
       await api.get(`/messages/${idRoom}`).then((result) => {
