@@ -70,7 +70,7 @@ function MyMessages() {
 
 
       loadDateRead()
-    }, [user.id, dateReadMessage])
+    }, [user.id])
 
     useEffect(() => {
       async function loadNotificationsMessage() {

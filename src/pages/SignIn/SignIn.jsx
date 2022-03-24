@@ -15,11 +15,11 @@ function SignIn() {
   const [passwordView, setPasswordView] = useState(false)
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //     if(localStorage.getItem("foursome") !== null) {
-  //       navigate("/loader")
-  //     }
-  //   },[])
+  useEffect(() => {
+      if(localStorage.getItem("foursome") !== null) {
+        navigate("/feed")
+      }
+    },[])
 
 
   function handleCreateAccount(e) {

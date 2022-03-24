@@ -26,7 +26,7 @@ function SignUp() {
 
   useEffect(() => {
       if(localStorage.getItem("foursome") !== null) {
-        navigate("/loader")
+        navigate("/feed")
       }
   },[navigate])
 

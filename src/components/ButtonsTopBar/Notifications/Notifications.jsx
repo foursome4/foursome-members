@@ -48,7 +48,7 @@ function Notifications() {
 
         loadDateRead()
         loadNotifications()
-    }, [user.id, dateRead]);
+    }, [user.id]);
 
 
     const notificationsFilter = notifications.filter((notification) => (new Date(notification.created_at) > new Date(dateRead.DateRead) ))
