@@ -2,7 +2,7 @@ import './myMessages.css'
 import Modal from 'react-modal';
 import api from '../../../services/api';
 import { UserConversation } from './UserConversation/UserConversation';
-import { FiMessageSquare, FiX} from 'react-icons/fi';
+import { IoChatboxOutline, IoCloseOutline} from 'react-icons/io5';
 import { useEffect, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 
@@ -10,9 +10,13 @@ function MyMessages() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
 
+    const [date, setDate] = useState(new Date("Tue Mar 06 2022 03:38:05 GMT-0300 (Hora padrão de Brasília)"));
+    const [dateReadMessage, setDateReadMessage] = useState([])
+
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [rooms, setRooms] = useState([])
     const [rooms2, setRooms2] = useState([])
+    const [notification, setNotification] = useState([])
 
  
     useEffect(() => {
@@ -40,8 +44,52 @@ function MyMessages() {
           loadRoomIDFriend()
     }, [user.id])
 
+    useEffect(() => {
+      async function loadDateRead() {
+        const idAccount = user.id
+        await api.get(`/datereadmessage/${idAccount}`)
+        .then( async (res) => {
+          console.log(res.data)
+            if(res.data.length !== 0) {
+                      setDateReadMessage(res.data[0]);
+            } else {
+                const data = {
+                    idAccount: user.id,
+                    DateReadMessage: new Date() 
+                }
+                await api.post(`/datereadmessage`, data) .then((res) => {
+                    console.log("Data inicial definida com sucesso!")
+                }).catch(error => {
+            console.log("Erro ao buscar dados" + error)
+        })
+            }
+        }).catch(error => {
+            console.log("Erro ao buscar dados" + error)
+        })
+    }
 
-    const newRooms = rooms.concat(rooms2)
+
+      loadDateRead()
+    }, [user.id, dateReadMessage])
+
+    useEffect(() => {
+      async function loadNotificationsMessage() {
+        const idFriend = user.id;
+        await api.get(`notificationsmessage/my/${idFriend}`).then((res) => {
+          console.log(res.data)
+          setNotification(res.data)
+        }).catch((error) => {
+          console.log(error)
+        })
+      }
+
+      loadNotificationsMessage()
+    }, [user.id])
+
+
+    const newRooms = rooms.concat(rooms2);
+    const notificationsFilter = notification.filter((notification) => (new Date(notification.created_at) > new Date(dateReadMessage.DateReadMessage) ))
+    console.log(notificationsFilter)
 
     function handleOpenModal() {
         setIsOpenModal(true)
@@ -51,9 +99,27 @@ function MyMessages() {
         setIsOpenModal(false)
       }
 
-      function handleMessages() {
-        handleOpenModal()
+      async function handleMessages() {
+        handleOpenModal();
+
+        const date = new Date()
+        handleNewDate(date)
+
+        const id = dateReadMessage.id
+        const data = {
+            DateReadMessage: new Date()
+        }
+
+    await api.patch(`/datereadmessage/${id}`, data).then((res) => {
+        console.log("Data inicial alterada com sucesso!")
+        }).catch(error => {
+        console.log("Erro ao buscar dados" + error)
+    })
       }
+
+      function handleNewDate(date) {
+        setDate(date)
+    }
 
 
       Modal.setAppElement('#root');
@@ -61,9 +127,11 @@ function MyMessages() {
         <>
                 <div className="link" onClick={handleMessages} data-tip data-for='Mensagens'>
 
+                {notificationsFilter.length === 0 ? "" :
                     <div className="counter"></div>
+                    }
                     
-                  <FiMessageSquare />
+                  <IoChatboxOutline />
                 </div>
                 <ReactTooltip id='Mensagens' place="bottom" type="dark" effect="solid">
                    <span>Mensagens</span>
@@ -76,7 +144,7 @@ function MyMessages() {
             overlayClassName="react-modal-overlay"
             className="react-modal-content">
             <button type="button" className="react-modal-button" onClick={handleCloseModal}>
-            <FiX /> 
+            <IoCloseOutline /> 
             </button>
             <div className="content-modal">
             <h3>Conversas</h3>

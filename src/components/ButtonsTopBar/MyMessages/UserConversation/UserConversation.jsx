@@ -10,6 +10,7 @@ function UserConversation({idAccount, room}) {
     const [nickname, setNickname] = useState('')
     const [avatar, setAvatar] = useState('')
     const [messages, setMessages] = useState([])
+    const [idFriend, setIdFriend]  = useState('')
 
     useEffect(() => {
         async function loadInformations() {
@@ -38,11 +39,16 @@ function UserConversation({idAccount, room}) {
     console.log(messages)
     let newMessages;
     const myMessages = messages.filter((message) => (message.idAccount === user.id));
+    console.log("myMessages")
+    console.log(myMessages)
     const friendMessage = messages.filter((message) => (message.idAccount !== user.id));
+    console.log("friendMessage")
+    console.log(friendMessage)
     if(myMessages.length !== 0 && friendMessage.length !== 0 ) {
         newMessages = friendMessage.filter((messages) => (new Date(messages.created_at) > new Date(myMessages[0].created_at)));
     }
  
+    console.log("newMessages");
     console.log(newMessages);
 
     return (
@@ -53,7 +59,7 @@ function UserConversation({idAccount, room}) {
            <img src={avatar} alt="" />
            </Link>
            </div>
-           <Link to={`/chat/${room}`}>
+           <Link to={`/chat/${room}/${idAccount}`}>
            <h4>Eu & {nickname}</h4>
            </Link>
            {newMessages === undefined ? "" :

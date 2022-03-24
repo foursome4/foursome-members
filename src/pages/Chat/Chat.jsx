@@ -13,6 +13,7 @@ import { ref, getDownloadURL, uploadBytes} from 'firebase/storage'
 import { v4 as uuidv4 } from 'uuid'
 import {DeleteMessage} from '../../components/DeleteMessage/DeleteMessage'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu';
+import {toast} from 'react-toastify';
 
    
 function Chat() {
@@ -74,16 +75,18 @@ function Chat() {
     }
 }
 
-async function NotificationMessage() {
-  // const text = `Seu amigo ${user.id}, enviou uma nova mensagem`
-  //   const data = {idAccount: user.id, idFriend, text}
-  //   await api.post("/notificationsMessage", data).then((res) => {
-  //     console.log("notificação enviada com sucesso!")
-  //   })
+function NotificationMessage() {
+  const text = `Seu amigo ${user.id}, enviou uma nova mensagem`
+    const data = {idAccount: user.id, idFriend, text}
+    console.log(data)
+    api.post("/notificationsmessage", data).then((res) => {
+      console.log("notificação enviada com sucesso!")
+    })
+  // toast.success(`${user.id} - Room ${room} - IdFriend ${idFriend}`)
+  // console.log("Nofificaçoes")
 }
 
 async function handleUploadAccount(img) {
-
   setLoadding(true);
   console.log(loadding);
   const uuid = uuidv4();
@@ -108,12 +111,12 @@ async function handleUploadAccount(img) {
   }
   console.log(data);
 
+
    socket.emit("message", data)
     setListMessages([data, ...listMessages]);
     setText("");
     setAvatarUrl(null);
     setImageAvatar('');
-    NotificationMessage()
 }
   function handleNewMessage(e) {
     e.preventDefault();
@@ -129,6 +132,7 @@ async function handleUploadAccount(img) {
       created_at: new Date()
     }
     console.log(data);
+    NotificationMessage()
     socket.emit("message", data)
     setListMessages([data, ...listMessages]);
     setText("")

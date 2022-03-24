@@ -99,8 +99,40 @@ function AuthProvider({children}) {
     async function findInformationsAccount(id) {
         await api.get(`/informations/${id}`)
         .then((res) => {
+            if(res.data === undefined || res.data === []) {
+                navigate("/completeregistration")
+            }
             localStorage.setItem("informations-foursome", JSON.stringify(res.data[0]));
-            navigate("/profile") 
+            findPreferencesAccount(id)
+           
+        }).catch(error => {
+            console.log("Erro ao buscar dados" + error)
+        })
+        
+    }
+    async function findPreferencesAccount(id) {
+        await api.get(`/preferences/${id}`)
+        .then((res) => {
+            if(res.data === undefined || res.data === []) {
+                navigate("/preferences")
+            }
+            localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
+            findCharacteriticsAccount(id)
+           
+        }).catch(error => {
+            console.log("Erro ao buscar dados" + error)
+        })
+        
+    }
+    async function findCharacteriticsAccount(id) {
+        await api.get(`/characteristics/${id}`)
+        .then((res) => {
+            if(res.data === undefined || res.data === []) {
+                navigate("/characteristcs")
+            }
+            localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));
+            navigate("/feed") 
+            window.location.reload(false)
            
         }).catch(error => {
             console.log("Erro ao buscar dados" + error)
@@ -108,6 +140,26 @@ function AuthProvider({children}) {
         
     }
 
+
+    // function loadNavigator() {
+    //     var sBrowser, sUsrAg = navigator.userAgent;
+
+    //     if(sUsrAg.indexOf("Chrome") > -1) {
+    //         sBrowser = "Google Chrome";
+    //     } else if (sUsrAg.indexOf("Safari") > -1) {
+    //         sBrowser = "Apple Safari";
+    //     } else if (sUsrAg.indexOf("Opera") > -1) {
+    //         sBrowser = "Opera";
+    //     } else if (sUsrAg.indexOf("Firefox") > -1) {
+    //         sBrowser = "Mozilla Firefox";
+    //     } else if (sUsrAg.indexOf("MSIE") > -1) {
+    //         sBrowser = "Microsoft Internet Explorer";
+    //     }
+        
+    //     alert("Você está utilizando: " + sBrowser);
+    // }
+
+    // loadNavigator() 
 
 
 
@@ -706,12 +758,15 @@ async function newVisit(idAccount, username, idFriend) {
     //     navigate("/loader") 
     //   //  findInformationsAccount(data.id);
     // }
-
+    
+    
 
 
     async function logout(idAccount) {
         localStorage.removeItem("foursome");
         localStorage.removeItem("informations-foursome");
+        localStorage.removeItem("preferences-foursome");
+        localStorage.removeItem("characteritics-foursome");
         await api.delete(`/online/${idAccount}`)
         setUser(null);
         navigate("/");
@@ -814,14 +869,13 @@ async function newVisit(idAccount, username, idFriend) {
         const DataUserInformations = localStorage.getItem("informations-foursome");
         const userInformations = JSON.parse(DataUserInformations);
 
-            if(userInformations !== null || userInformations !== undefined || userInformations !== "") {
-                toast.error("Finalizando a sessão")
+            if(user !== null || user !== undefined || user !== "") {
+              //  toast.error("Finalizando a sessão")
                 logout(user.id)
             }
         }
         function resetTimer() {
         clearTimeout(time);
-     //time = setTimeout(doSomething, 300000000000000000)
       time = setTimeout(doSomething, 300000)
        // time = setTimeout(doSomething, 50000)
     }

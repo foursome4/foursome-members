@@ -3,7 +3,7 @@ import { useEffect, useContext, useState } from "react";
 import Modal from 'react-modal';
 import api from "../../../services/api";
 import ReactTooltip from 'react-tooltip';
-import {  FiX, FiCheckSquare, FiHeart, FiXSquare, FiUserPlus } from 'react-icons/fi';
+import { IoPersonAddOutline, IoCloseOutline, IoCheckboxOutline, IoHeartOutline,IoTrashOutline} from 'react-icons/io5';
 import { UsersPending } from '../../UsersPending/UsersPending';
 import { AuthContext } from "../../../contexts/Auth";
 
@@ -64,7 +64,7 @@ function SolicitationsFriend() {
         {friendPending.length === 0 ? "" :
         <div className="counter"> {friendPending.length}</div>
         }
-        <FiUserPlus />
+        <IoPersonAddOutline />
     </div>
     <ReactTooltip id='Solicitações' place="bottom" type="dark" effect="solid">
          <span>Solicitações</span>
@@ -77,7 +77,7 @@ function SolicitationsFriend() {
             overlayClassName="react-modal-overlay"
             className="react-modal-content">
             <button type="button" className="react-modal-button" onClick={handleCloseModalFriend}>
-            <FiX /> 
+            <IoCloseOutline /> 
             </button>
             <div className="content-modal">
             <h3>Solicitações de amizade</h3>
@@ -90,15 +90,15 @@ function SolicitationsFriend() {
                         <UsersPending id={friend.idAccount} />
                         </div>
                         <div className="buttons">
-                            <button className='Acept' data-tip data-for='Aceitar' onClick={() => handleAprovedFriend(friend.id)}><FiCheckSquare /></button>
+                            <button className='Acept' data-tip data-for='Aceitar' onClick={() => handleAprovedFriend(friend.id)}><IoCheckboxOutline /></button>
                             <ReactTooltip id='Aceitar' place="bottom" type="dark" effect="solid">
                              <span>Aceitar</span>
                             </ReactTooltip>
-                            <button className='Acept' data-tip data-for='Seguir' onClick={() => handleFollowerFriend(friend.id, friend.idAccount )}> <FiHeart /></button>
+                            <button className='Acept' data-tip data-for='Seguir' onClick={() => handleFollowerFriend(friend.id, friend.idAccount )}> <IoHeartOutline /></button>
                             <ReactTooltip id='Seguir' place="bottom" type="dark" effect="solid">
                              <span>Seguir</span>
                             </ReactTooltip>
-                            <button className='Refuse' data-tip data-for='Recusar' onClick={() => handleDeleteFriend(friend.id)}> <FiXSquare /></button>
+                            <button className='Refuse' data-tip data-for='Recusar' onClick={() => handleDeleteFriend(friend.id)}> <IoTrashOutline /></button>
                             <ReactTooltip id='Recusar' place="bottom" type="dark" effect="solid">
                              <span>Recusar</span>
                             </ReactTooltip>

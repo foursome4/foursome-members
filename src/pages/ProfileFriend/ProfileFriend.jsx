@@ -2,8 +2,9 @@ import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { TopBar } from '../../components/TopBar/TopBar'
 import coverImg from '../../assets/images/cover.png'
 import avatar from '../../assets/images/avatar.png'
-import {FiHome, FiImage, FiVideo, FiMoreVertical, FiUser, FiUserPlus, FiHeart, FiUserMinus, FiMessageSquare, FiCheck, FiShield} from 'react-icons/fi'
+import {FiHome, FiImage, FiVideo, FiMoreVertical, FiUser, FiUserPlus, FiHeart, FiUserMinus, FiMessageSquare, FiCheck} from 'react-icons/fi'
 import {FaHeart} from 'react-icons/fa'
+import {IoShieldCheckmark} from 'react-icons/io5'
 import './profileFriend.css'
 import { Photos } from '../../components/Photos/Photos'
 import { Video } from '../../components/Video/Video'
@@ -48,6 +49,21 @@ function ProfileFriend() {
   const [friends, setFriends] = useState("friends");
   const [following, setFollowing] = useState("");
   const [followers, setFollowers] = useState("");
+  const [width, setWidth] = useState("")
+  const [heigth, setHeigth] = useState("")
+
+useEffect(() => {
+function widthView() {
+  //resolução navegador
+console.log(window.screen.width+'x'+window.screen.height);
+
+//resolução 'real' navegador
+setWidth((window.innerWidth > 0) ? window.innerWidth : window.screen.width);
+setHeigth((window.innerHeight > 0) ? window.innerHeight : window.screen.height);
+}
+
+widthView()
+},[])
 
   useEffect(() => {
     async function loadAccount() {
@@ -118,11 +134,11 @@ function ProfileFriend() {
           const v4 = uuidv4();
           const room = v4.substring(0, 6);
           const data = {room, idAccount: myUser.id, idFriend: id}
+          setRooms(data)
           console.log(data)
 
           await api.post(`/conversations`, data).then((res) => {
             console.log("Conversa criada com sucesso!");
-            window.location.reload(false);
           })
 
 
@@ -145,7 +161,7 @@ function ProfileFriend() {
 
  function handleChat() {
    console.log(rooms.room)
-  navigate(`/chat/${rooms.room}`);
+  navigate(`/chat/${rooms.room}/${id}`);
   }
 
 
@@ -413,7 +429,7 @@ function ProfileFriend() {
                                          </div>
                   <img src={userInformations !== null ? userInformations.avatar : avatar} alt="" />
                   </div>
-                  <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b>{user.role !== "Membro" ? <FiShield />: ""}</h3>
+                  <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
                 </div>
                 <div className="tool">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed }><FiHome size={16}/></button>
@@ -432,6 +448,7 @@ function ProfileFriend() {
                 </div>
             </div>
           <div className="sections">
+          {width <= 900 && feed !== "feed" ? "":
               <div className="infos">
                     <div className="info">
                     <div className="name">
@@ -525,6 +542,7 @@ function ProfileFriend() {
             </div>
 
               </div>
+          }
                      <div className="feed">
                   {feed === "feed" ?
                   <>
