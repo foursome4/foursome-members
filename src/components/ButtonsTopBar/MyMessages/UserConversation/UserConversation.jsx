@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import api from "../../../../services/api";
 import './userConversation.css'
@@ -10,7 +10,6 @@ function UserConversation({idAccount, room}) {
     const [nickname, setNickname] = useState('')
     const [avatar, setAvatar] = useState('')
     const [messages, setMessages] = useState([])
-    const [idFriend, setIdFriend]  = useState('')
 
     useEffect(() => {
         async function loadInformations() {
@@ -36,20 +35,23 @@ function UserConversation({idAccount, room}) {
         loadMesages()
     }, [idAccount]);
 
-    console.log(messages)
-    let newMessages;
-    const myMessages = messages.filter((message) => (message.idAccount === user.id));
-    console.log("myMessages")
-    console.log(myMessages)
-    const friendMessage = messages.filter((message) => (message.idAccount !== user.id));
-    console.log("friendMessage")
-    console.log(friendMessage)
-    if(myMessages.length !== 0 && friendMessage.length !== 0 ) {
-        newMessages = friendMessage.filter((messages) => (new Date(messages.created_at) > new Date(myMessages[0].created_at)));
-    }
  
-    console.log("newMessages");
-    console.log(newMessages);
+
+     const myMessages = useMemo(() => {
+        messages.filter((message) => (message.idAccount === user.id));
+    }, [messages]) ;
+
+    const friendMessage = useMemo(() => {
+    messages.filter((message) => (message.idAccount !== user.id));
+    }, [messages]) ;
+
+    const newMessages = useMemo(() => {
+            if(myMessages !== undefined && friendMessage !== undefined ) {
+        friendMessage.filter((messages) => (new Date(messages.created_at) > new Date(myMessages[0].created_at)));
+    }
+    }, [friendMessage,myMessages ]) ;
+ 
+
 
     return (
         messages.length === 0 ? "" :       

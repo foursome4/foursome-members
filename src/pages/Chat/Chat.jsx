@@ -29,6 +29,7 @@ function Chat() {
   console.log(`Room: ${room}`)
   console.log(`IdFriend: ${idFriend}`)
 
+
   const [listMessages, setListMessages] = useState([]);
   const [text, setText] = useState('');
   const [avatarUrl, setAvatarUrl] = useState(null);
@@ -73,6 +74,8 @@ function Chat() {
             return null;
         }
     }
+
+    console.log(`Chamando função ao clicar`)
 }
 
 function NotificationMessage() {
@@ -84,9 +87,11 @@ function NotificationMessage() {
     })
   // toast.success(`${user.id} - Room ${room} - IdFriend ${idFriend}`)
   // console.log("Nofificaçoes")
+  console.log(`Chamando função ao clicar`)
 }
 
 async function handleUploadAccount(img) {
+  console.log(`Chamando função ao clicar`)
   setLoadding(true);
   console.log(loadding);
   const uuid = uuidv4();
@@ -120,7 +125,7 @@ async function handleUploadAccount(img) {
 }
   function handleNewMessage(e) {
     e.preventDefault();
-    
+    console.log(`Chamando função ao clicar`)
     const data = {
       room: room,
       idAccount: user.id,
@@ -144,6 +149,7 @@ async function handleUploadAccount(img) {
 
 
 function handlePressMessage() {
+  console.log(`Chamando função ao clicar`)
   if(click === false) {
     setClick(false)
   } else {

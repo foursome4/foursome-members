@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import api from "../../services/api";
-import './usersSearch.css'
+import api from "../../../../services/api";
+import './usersPending.css'
 
 
-function UsersSearch({id, username}) {
+function UsersPending({id}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
-    
+
     const [nickname, setNickname] = useState('')
     const [avatar, setAvatar] = useState('')
-    console.log(id)
     useEffect(() => {
         async function loadInformations() {
             const idAccount = id
@@ -29,19 +28,18 @@ function UsersSearch({id, username}) {
     return (
        <div className="item">
            <div className="image">
-           <Link to={userData.id === id ? `/profile` : `/profile-friend/${id}`}>
+           <Link to={userData.id === id ? `/profile` :`/profile-friend/${id}`}>
            <img src={avatar} alt="" />
            </Link>
            </div>
            <div className="name">
-             <Link to={userData.id === id ? `/profile` : `/profile-friend/${id}`}>
+             <Link to={userData.id === id ? `/profile` :`/profile-friend/${id}`}>
            <h3>{nickname}</h3>
            </Link>
-           <h5>{id} - {username}</h5>
            </div>
        </div>
     ) 
 }
 
 
-export { UsersSearch }
+export { UsersPending }

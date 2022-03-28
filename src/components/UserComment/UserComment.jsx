@@ -5,6 +5,7 @@ import { FiTrash2, FiEdit, FiCornerDownLeft } from 'react-icons/fi'
 import { AuthContext } from '../../contexts/Auth';
 import { NewReply } from '../NewReply/NewReply';
 import { EditComment } from '../EditComment/EditComment';
+import { DateFormat } from '../DateFormat/DateFormat';
 
 function UserComment({idAccount, username, date, idComment, text}) {
     const {deleteComment} = useContext(AuthContext);
@@ -71,7 +72,7 @@ function UserComment({idAccount, username, date, idComment, text}) {
            <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
                <h5>{nickname}</h5>
                </a>
-           <p>{date}</p>
+                                     <DateFormat date={date}/>
            </div>
            </div>
            {userData.id === idAccount ?

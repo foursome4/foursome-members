@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import api from '../../../services/api';
 import { UserConversation } from './UserConversation/UserConversation';
 import { IoChatboxOutline, IoCloseOutline} from 'react-icons/io5';
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useMemo } from 'react';
 import ReactTooltip from 'react-tooltip';
 
 function MyMessages() {
@@ -49,7 +49,6 @@ function MyMessages() {
         const idAccount = user.id
         await api.get(`/datereadmessage/${idAccount}`)
         .then( async (res) => {
-          console.log(res.data)
             if(res.data.length !== 0) {
                       setDateReadMessage(res.data[0]);
             } else {
@@ -57,8 +56,7 @@ function MyMessages() {
                     idAccount: user.id,
                     DateReadMessage: new Date() 
                 }
-                await api.post(`/datereadmessage`, data) .then((res) => {
-                    console.log("Data inicial definida com sucesso!")
+                await api.post(`/datereadmessage`, data) .then(() => {
                 }).catch(error => {
             console.log("Erro ao buscar dados" + error)
         })
@@ -88,8 +86,10 @@ function MyMessages() {
 
 
     const newRooms = rooms.concat(rooms2);
-    const notificationsFilter = notification.filter((notification) => (new Date(notification.created_at) > new Date(dateReadMessage.DateReadMessage) ))
-    console.log(notificationsFilter)
+    const notificationsFilter = useMemo(() => {
+      notification.filter((notification) => (new Date(notification.created_at) > new Date(dateReadMessage.DateReadMessage) ))
+    }, [notification])
+
 
     function handleOpenModal() {
         setIsOpenModal(true)
@@ -110,8 +110,7 @@ function MyMessages() {
             DateReadMessage: new Date()
         }
 
-    await api.patch(`/datereadmessage/${id}`, data).then((res) => {
-        console.log("Data inicial alterada com sucesso!")
+    await api.patch(`/datereadmessage/${id}`, data).then(() => {
         }).catch(error => {
         console.log("Erro ao buscar dados" + error)
     })
@@ -127,7 +126,7 @@ function MyMessages() {
         <>
                 <div className="link" onClick={handleMessages} data-tip data-for='Mensagens'>
 
-                {notificationsFilter.length === 0 ? "" :
+                {notificationsFilter === undefined ? "" :
                     <div className="counter"></div>
                     }
                     

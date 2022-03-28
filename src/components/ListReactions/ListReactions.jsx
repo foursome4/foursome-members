@@ -1,11 +1,11 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState, memo } from "react"
 import {FiThumbsUp } from 'react-icons/fi'
 import { AuthContext } from "../../contexts/Auth";
 import api from "../../services/api"
 import "./listReactions.css"
 
 
-function ListReactions({idPost}) {
+function ListReactionsComponent({idPost}) {
     const {likePost, deleteLike} = useContext(AuthContext);
     const [like, setLike] = useState([]);
     const Local = localStorage.getItem("foursome");
@@ -47,4 +47,4 @@ function ListReactions({idPost}) {
 }
 
 
-export {ListReactions}
+export const ListReactions = memo(ListReactionsComponent)

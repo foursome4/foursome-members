@@ -5,6 +5,7 @@ import { FiTrash2, FiEdit } from 'react-icons/fi'
 import { AuthContext } from '../../contexts/Auth';
 import { NewReply } from '../NewReply/NewReply';
 import { EditReply } from '../EditReply/EditReply';
+import { DateFormat } from '../DateFormat/DateFormat';
 
 function UserReply({idAccount, username, date, id, text}) {
     const {newComment, deleteReply} = useContext(AuthContext);
@@ -63,7 +64,7 @@ function UserReply({idAccount, username, date, id, text}) {
            <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
                <h6>{nickname}</h6>
                </a>
-           <p>{date}</p>
+           <DateFormat date={date} />
            </div>
            </div>
            {userData.id === idAccount ?

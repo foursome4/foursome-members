@@ -1,3 +1,4 @@
+import './wdyr';
 import './polyfill'
 import 'react-app-polyfill/stable';
 import React from 'react';

@@ -1,10 +1,10 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, memo } from 'react';
 import { FiSend } from 'react-icons/fi';
 import { AuthContext } from '../../contexts/Auth';
 import './editPost.css'
 
 
-function EditPost({data, id}) {
+function EditPostComponent({data, id}) {
     const {editPost} = useContext(AuthContext);
     const [text, setText] = useState(data);
 
@@ -21,4 +21,4 @@ function EditPost({data, id}) {
     )
 }
 
-export {EditPost}
+export const EditPost = memo(EditPostComponent)

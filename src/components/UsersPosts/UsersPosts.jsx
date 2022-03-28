@@ -1,9 +1,10 @@
-import { useState,useEffect} from 'react'
+import { useState,useEffect, memo} from 'react'
 import { Link } from 'react-router-dom';
 import api from '../../services/api'
+import { DateFormat } from '../DateFormat/DateFormat';
 import './usersPosts.css'
 
-function UsersPosts({idAccount, username, date}) {
+function UsersPostsComponent({idAccount, username, date, keyId}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
     
@@ -24,7 +25,7 @@ function UsersPosts({idAccount, username, date}) {
     }, [idAccount])
 
     return (
-       <div className="itemUsers">
+       <div className="itemUsers" key={keyId}>
            <div className="image">
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
            <img src={avatar} alt="" />
@@ -34,11 +35,11 @@ function UsersPosts({idAccount, username, date}) {
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
                <h4>{nickname}</h4>
                </Link>
-           <p>{date}</p>
+           <DateFormat date={date} />
            </div>
        </div>
     ) 
 }
 
 
-export {UsersPosts}
+export const UsersPosts = memo(UsersPostsComponent)

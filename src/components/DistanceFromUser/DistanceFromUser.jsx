@@ -1,18 +1,18 @@
 import apiGoogleDistance from "../../services/apiGoogleDistance";
 
 function DistanceFromUser({myLat, myLong, latFriend, longFriend}) {
-    function reverseGeolocalization() {
-        apiGoogleDistance.get(`/distancematrix/json?origins=${myLong},${myLong}&destinations=${latFriend},${longFriend}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`).then((result) => {
-        console.log("Distance")
-        console.log(result)
-    }).catch(error => {
-        console.log(error)
-    })
-}
+//     function reverseGeolocalization() {
+//         apiGoogleDistance.get(`/distancematrix/json?origins=${myLong},${myLong}&destinations=${latFriend},${longFriend}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`).then((result) => {
+//         console.log("Distance")
+//         console.log(result)
+//     }).catch(error => {
+//         console.log(error)
+//     })
+// }
 
 
-reverseGeolocalization();
-console.log(myLat, myLong, latFriend, longFriend);
+// reverseGeolocalization();
+// console.log(myLat, myLong, latFriend, longFriend);
 
 let distance = 0;
 function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend) {

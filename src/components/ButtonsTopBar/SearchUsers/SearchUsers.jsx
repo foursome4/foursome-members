@@ -1,6 +1,6 @@
 import './searchUsers.css'
 import { useEffect, useState } from 'react';
-import { UsersSearch } from '../../UsersSearch/UsersSearch';
+import { UsersSearch } from './UsersSearch/UsersSearch';
 import { IoSearchOutline, IoCloseOutline} from 'react-icons/io5';
 import Modal from 'react-modal';
 import api from '../../../services/api';

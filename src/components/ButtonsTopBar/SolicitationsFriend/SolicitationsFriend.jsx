@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import api from "../../../services/api";
 import ReactTooltip from 'react-tooltip';
 import { IoPersonAddOutline, IoCloseOutline, IoCheckboxOutline, IoHeartOutline,IoTrashOutline} from 'react-icons/io5';
-import { UsersPending } from '../../UsersPending/UsersPending';
+import { UsersPending } from './UsersPending/UsersPending';
 import { AuthContext } from "../../../contexts/Auth";
 
 function SolicitationsFriend() {

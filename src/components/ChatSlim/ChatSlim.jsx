@@ -18,7 +18,7 @@ useEffect(() => {
     }
 
     loadUsersONline()
-}, [users])
+}, [])
 
      
     return (

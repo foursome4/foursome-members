@@ -1,10 +1,10 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, memo } from 'react';
 import { FiSend } from 'react-icons/fi';
 import { AuthContext } from '../../contexts/Auth';
 import './editReply.css'
 
 
-function EditReply({data, id}) {
+function EditReplyComponent({data, id}) {
     const {editReply} = useContext(AuthContext);
     const [text, setTextReply] = useState(data);
 
@@ -21,4 +21,4 @@ function EditReply({data, id}) {
     )
 }
 
-export {EditReply}
+export const EditReply = memo(EditReplyComponent)

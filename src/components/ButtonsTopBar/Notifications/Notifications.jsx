@@ -1,9 +1,9 @@
 import './notifications.css'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Modal from 'react-modal';
 import api from "../../../services/api";
 import ReactTooltip from 'react-tooltip';
-import { UsersNotifications } from '../../UsersNotifications/UsersNotifications';
+import { UsersNotifications } from './UsersNotifications/UsersNotifications';
 import { IoNotificationsOutline, IoCloseOutline} from 'react-icons/io5';
 
 function Notifications() {
@@ -17,38 +17,42 @@ function Notifications() {
     const [notifications, setNotifications] = useState([]);
 
 
-    useEffect(() => {
-        async function loadDateRead() {
-            const idAccount = user.id
-            await api.get(`/dateread/${idAccount}`)
-            .then( async (res) => {
-                if(res.data.length !== 0) {
-                    setDateRead(res.data[0]);
-                } else {
-                    const data = {
-                        idAccount: user.id,
-                        DateRead: new Date() 
-                    }
-                    await api.post(`/dateread`, data) .then((res) => {
-                        console.log("Data inicial definida com sucesso!")
-                    }).catch(error => {
-                console.log("Erro ao buscar dados" + error)
-            })
-                }
-            }).catch(error => {
-                console.log("Erro ao buscar dados" + error)
-            })
-        }
 
-        async function loadNotifications() {
+         const loadDateRead = useCallback(async () => {
+             const idAccount = user.id
+             await api.get(`/dateread/${idAccount}`)
+             .then( async (res) => {
+                 if(res.data.length !== 0) {
+                     setDateRead(res.data[0]);
+                     console.log(res.data[0]);
+                 } else {
+                     const data = {
+                         idAccount: user.id,
+                         DateRead: new Date() 
+                     }
+                     await api.post(`/dateread`, data) .then((res) => {
+                         console.log("Data inicial definida com sucesso!")
+                     }).catch(error => {
+                 console.log("Erro ao buscar dados" + error)
+             })
+                 }
+             }).catch(error => {
+                 console.log("Erro ao buscar dados" + error)
+             })
+         
+         }, [user.id]) 
+
+         const loadNotifications = useCallback(async () => {
             const idPatrono = user.id
           const result = await api.get(`/notifications/my/${idPatrono}`);
           setNotifications(result.data)
-        }
+          console.log(result.data)
+        }, [user.id]) 
 
+    useEffect(() => {
         loadDateRead()
         loadNotifications()
-    }, [user.id]);
+    }, [loadDateRead, loadNotifications ]);
 
 
     const notificationsFilter = notifications.filter((notification) => (new Date(notification.created_at) > new Date(dateRead.DateRead) ))
