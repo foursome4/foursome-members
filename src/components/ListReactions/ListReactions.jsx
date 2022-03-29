@@ -3,6 +3,7 @@ import {FiThumbsUp } from 'react-icons/fi'
 import { AuthContext } from "../../contexts/Auth";
 import api from "../../services/api"
 import "./listReactions.css"
+import {v4 as uuiv4} from 'uuid'
 
 
 function ListReactionsComponent({idPost}) {
@@ -21,14 +22,25 @@ function ListReactionsComponent({idPost}) {
     }, [idPost]);
 
     const myLike = like.filter(likes => (likes.idAccount === userData.id));
+
     function handleLikePost(e) {
         e.preventDefault()
-       likePost({idAccount: userData.id, username: userData.username, idPost})
+        console.log("Curti")
+        const data = {id: uuiv4(), idAccount: userData.id, username: userData.username, idPost}
+        setLike([...like, data]);
+       likePost({idAccount: userData.id, username: userData.username, idPost});
     }
 
     function handleDeleteLike(e) {
-        e.preventDefault()
-      deleteLike(like[0].id)
+        e.preventDefault();
+        deleteLike(like[0].id)
+        let removeLike = like.findIndex(user => user.id === like[0].id);
+        if(removeLike >= 0) {
+          let newlike = like;
+          newlike.splice(removeLike, 1);
+          like.push(...newlike)
+        }
+        
      }
 
 
