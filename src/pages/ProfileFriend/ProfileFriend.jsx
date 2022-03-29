@@ -312,121 +312,11 @@ widthView()
         <div className="main">
          <div className="section">
           <div className="cover">
-          <div className="mark">
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                         </div>
               <img src={ userInformations !== null ? userInformations.cover : coverImg} alt="" />
           </div>
             <div className="profile-tools">
                 <div className="users">
                 <div className="users-img">
-                <div className="mark">
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                                             <h5 className='white'>{user.id}</h5>
-                                             <h5 className='black'>{user.id}</h5>
-                
-
-                                         </div>
                   <img src={userInformations !== null ? userInformations.avatar : avatar} alt="" />
                   </div>
                   <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
@@ -441,7 +331,7 @@ widthView()
                     {FollowingExists.length === 0 ? <FiHeart size={16} /> : <FaHeart size={16} />}
                     </button>
                   <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/></button>
-                  <button className="" onClick={rooms.length !== 0 ? handleChat : ""}><FiMessageSquare size={16}/></button>
+                  <button className="" onClick={handleChat}><FiMessageSquare size={16}/></button>
                   <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/></button>
                   <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/></button>
                   <button  className='settings'><FiMoreVertical size={16}/></button>

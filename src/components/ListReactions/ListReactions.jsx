@@ -22,6 +22,7 @@ function ListReactionsComponent({idPost}) {
     }, [idPost]);
 
     const myLike = like.filter(likes => (likes.idAccount === userData.id));
+    console.log(myLike)
 
     function handleLikePost(e) {
         e.preventDefault()
@@ -29,17 +30,15 @@ function ListReactionsComponent({idPost}) {
         const data = {id: uuiv4(), idAccount: userData.id, username: userData.username, idPost}
         setLike([...like, data]);
        likePost({idAccount: userData.id, username: userData.username, idPost});
+       console.log(myLike)
     }
 
     function handleDeleteLike(e) {
         e.preventDefault();
         deleteLike(like[0].id)
-        let removeLike = like.findIndex(user => user.id === like[0].id);
-        if(removeLike >= 0) {
-          let newlike = like;
-          newlike.splice(removeLike, 1);
-          like.push(...newlike)
-        }
+        let newLike = like.filter(user => user.id !== like[0].id);
+          setLike(newLike)
+        console.log(myLike)
         
      }
 

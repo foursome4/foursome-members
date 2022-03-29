@@ -5,7 +5,7 @@ import './newComment.css'
 
 
 function NewComment({postData}) {
-    const {newComment} = useContext(AuthContext);
+    const {newComment, comentsPosts, setComentsPosts} = useContext(AuthContext);
 
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
@@ -14,8 +14,10 @@ function NewComment({postData}) {
     const [textComment, setTextComment] = useState("");
 
     function handleComment(postData) {
+        const data = {text: textComment, idPost: postData, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username}
         newComment({text: textComment, idPost: postData, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username})
         setTextComment("");
+        setComentsPosts([...comentsPosts, data])
         }
 
     return (

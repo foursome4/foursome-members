@@ -32,6 +32,25 @@
     text-decoration: none;
 }
 
+.feedComments .feed-comment .buttonsComment {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+        
+    }
+    
+    .feedComments .feed-comment .buttonsComment button {
+        width: 30px;
+        height: 30px;
+        background-color: var(--Background);
+        color: var(--Gray_font2);
+        border: none;
+        border-radius: 6px;
+        font-size: 12px;
+        margin: 0 3px;
+    }
+
 .feedComments .feed-comment .comment-user .avatar {
     width: 25px;
     height: 25px;

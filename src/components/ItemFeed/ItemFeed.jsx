@@ -40,6 +40,9 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
         const deletar = window.confirm("Deseja deletar a postagem?");
         if(deletar === true) {
         deletePost(id);
+    //     let deletePostActual = dataComments.filter(post => post.id !== id);
+    //     setDataComments(deletePostActual)
+    //   console.log(deletePostActual)
         } 
     }
     

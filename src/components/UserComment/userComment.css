@@ -55,24 +55,7 @@
     color: var(--Primary);
 }
 
-.itemComment .block1 .buttonsComment {
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: flex-end;
-    
-}
 
-.itemComment .block1 .buttonsComment button {
-    width: 30px;
-    height: 30px;
-    background-color: var(--Background);
-    color: var(--Gray_font2);
-    border: none;
-    border-radius: 6px;
-    font-size: 12px;
-    margin: 0 3px;
-}
 
 .itemComment .comment-data {
     margin: 2px 0;

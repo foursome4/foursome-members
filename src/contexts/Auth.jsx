@@ -11,6 +11,7 @@ const AuthContext = createContext({});
 function AuthProvider({children}) {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+    const [comentsPosts, setComentsPosts] = useState([])
 
     
     const [lat, setlat] = useState("");
@@ -366,7 +367,7 @@ async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, 
     setLoading(true)
     await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent }).then( async () => {      
     toast.info("Post publicado com sucesso!")
-    // window.location.reload(false)
+   window.location.reload(false)
         setLoading(false)
     }).catch(error => {
         console.log("Post não foi realizado" + error)
@@ -378,6 +379,7 @@ async function deletePost(id) {
     const res = await api.delete(`/posts/${id}`);
     if(res.status===201) {
         toast.success('post deletado com sucesso!');
+        window.location.reload(false)
      } else {
         toast.error('Deu algo errado ao deletar!');
      }
@@ -788,7 +790,9 @@ async function newVisit(idAccount, username, idFriend) {
             editPost,
             editComment,
             editReply,
-            newVisit
+            newVisit,
+            comentsPosts,
+            setComentsPosts
 
         }}>
             {children}

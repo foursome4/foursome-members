@@ -1,21 +1,13 @@
 import { useState,useEffect, useContext} from 'react'
 import api from '../../services/api'
 import './userComment.css'
-import { FiTrash2, FiEdit, FiCornerDownLeft } from 'react-icons/fi'
 import { AuthContext } from '../../contexts/Auth';
-import { NewReply } from '../NewReply/NewReply';
-import { EditComment } from '../EditComment/EditComment';
+
 import { DateFormat } from '../DateFormat/DateFormat';
 
-function UserComment({idAccount, username, date, idComment, text}) {
-    const {deleteComment} = useContext(AuthContext);
+function UserComment({idAccount, date}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
-
-
-
-    const [reply, setReply] = useState(false);
-    const [edit, setEdit] = useState(false);
     const [nickname, setNickname] = useState('')
     const [avatar, setAvatar] = useState('')
     useEffect(() => {
@@ -33,31 +25,7 @@ function UserComment({idAccount, username, date, idComment, text}) {
     }, [idAccount]);
 
 
-    
-    function handleHabiliteReply () {
-        if(reply === false) {
-            setReply(true)
-        } else {
-            setReply(false) 
-        }
-    }
 
-    function handleDeleteComment(idComment) {
-        const deletar = window.confirm("Deseja deletar a postagem?");
-
-        if(deletar === true) {
-           deleteComment(idComment)
-            } 
-        }
-
-
-        function handleHabiliteEdit () {
-            if(edit === false) {
-                setEdit(true)
-            } else {
-                setEdit(false) 
-            }
-        }
 
     return (
        <div className="itemComment" key={userData.id}>
@@ -75,31 +43,8 @@ function UserComment({idAccount, username, date, idComment, text}) {
                                      <DateFormat date={date}/>
            </div>
            </div>
-           {userData.id === idAccount ?
-           <div className="buttonsComment">
-               <button onClick={handleHabiliteReply} ><FiCornerDownLeft /></button>
-               <button onClick={handleHabiliteEdit}><FiEdit /></button>
-               <button onClick={() => {handleDeleteComment(idComment)}}><FiTrash2 /></button>
-           </div>
-           : 
-           <div className="buttonsComment">
-           <button onClick={handleHabiliteReply}><FiCornerDownLeft /></button>
-               </div>
-            }
-            </div>
-            <div className="comment-data" >
-                <p><i>{text}</i></p>
-            </div>
-
-            {edit ===  true ?
-            <EditComment data={text} id={idComment}/>
-            : ""
-            }
-
-            {reply === true ?
-            <NewReply idComment={idComment} username={username}/>
-                     :
-                     ""}
+          
+       </div>
        </div>
     ) 
 }
