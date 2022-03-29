@@ -721,29 +721,29 @@ async function newVisit(idAccount, username, idFriend) {
 }
 
 
-   //Deslogandop após tempo de inatividade
-//    function inactivityTime() {
-//        let time;
-//        // reset timer
-//        window.onload = resetTimer;
-//        document.onmousemove = resetTimer;
-//        document.onkeydown = resetTimer;
-//        function doSomething() {
-//         const DataUser = localStorage.getItem("foursome");
-//         const user = JSON.parse(DataUser);
+  // Deslogandop após tempo de inatividade
+   function inactivityTime() {
+       let time;
+       // reset timer
+       window.onload = resetTimer;
+       document.onmousemove = resetTimer;
+       document.onkeydown = resetTimer;
+       function doSomething() {
+        const DataUser = localStorage.getItem("foursome");
+        const user = JSON.parse(DataUser);
 
-//             if(user !== null || user !== undefined || user !== "") {
-//               //  toast.error("Finalizando a sessão")
-//                 logout(user.id)
-//             }
-//         }
-//         function resetTimer() {
-//         clearTimeout(time);
-//       time = setTimeout(doSomething, 300000)
-//     }
-// }
+            if(user !== null || user !== undefined || user !== "") {
+              //  toast.error("Finalizando a sessão")
+                logout(user.id)
+            }
+        }
+        function resetTimer() {
+        clearTimeout(time);
+      time = setTimeout(doSomething, 300000)
+    }
+}
 
-//inactivityTime()
+inactivityTime()
 
 
 
