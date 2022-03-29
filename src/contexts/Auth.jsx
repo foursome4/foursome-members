@@ -63,7 +63,7 @@ function AuthProvider({children}) {
                     return
                 }
                 localStorage.setItem("foursome", JSON.stringify(result.data));
-                findInformationsAccount(result.data.id)
+                navigate("/loader") 
                 
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
@@ -80,7 +80,7 @@ function AuthProvider({children}) {
                    return
                 }
                 localStorage.setItem("foursome", JSON.stringify(result.data));
-                findInformationsAccount(result.data.id)
+                navigate("/loader") 
                 
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
@@ -91,49 +91,49 @@ function AuthProvider({children}) {
         
     }
 
-    async function findInformationsAccount(id) {
-        await api.get(`/informations/${id}`)
-        .then((res) => {
-            if(res.data === undefined || res.data === []) {
-                navigate("/completeregistration")
-            }
-            localStorage.setItem("informations-foursome", JSON.stringify(res.data[0]));
-            findPreferencesAccount(id)
+    // async function findInformationsAccount(id) {
+    //     await api.get(`/informations/${id}`)
+    //     .then((res) => {
+    //         if(res.data === undefined || res.data === []) {
+    //             navigate("/completeregistration")
+    //         }
+    //         localStorage.setItem("informations-foursome", JSON.stringify(res.data[0]));
+    //         findPreferencesAccount(id)
            
-        }).catch(error => {
-            console.log("Erro ao buscar dados" + error)
-        })
+    //     }).catch(error => {
+    //         console.log("Erro ao buscar dados" + error)
+    //     })
         
-    }
-    async function findPreferencesAccount(id) {
-        await api.get(`/preferences/${id}`)
-        .then((res) => {
-            if(res.data === undefined || res.data === []) {
-                navigate("/preferences")
-            }
-            localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
-            findCharacteriticsAccount(id)
+    // }
+    // async function findPreferencesAccount(id) {
+    //     await api.get(`/preferences/${id}`)
+    //     .then((res) => {
+    //         if(res.data === undefined || res.data === []) {
+    //             navigate("/preferences")
+    //         }
+    //         localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
+    //         findCharacteriticsAccount(id)
            
-        }).catch(error => {
-            console.log("Erro ao buscar dados" + error)
-        })
+    //     }).catch(error => {
+    //         console.log("Erro ao buscar dados" + error)
+    //     })
         
-    }
-    async function findCharacteriticsAccount(id) {
-        await api.get(`/characteristics/${id}`)
-        .then((res) => {
-            if(res.data === undefined || res.data === []) {
-                navigate("/characteristcs")
-            }
-            localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));
-            navigate("/feed") 
-            window.location.reload(false)
+    // }
+    // async function findCharacteriticsAccount(id) {
+    //     await api.get(`/characteristics/${id}`)
+    //     .then((res) => {
+    //         if(res.data === undefined || res.data === []) {
+    //             navigate("/characteristcs")
+    //         }
+    //         localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));
+    //         navigate("/feed") 
+    //         window.location.reload(false)
            
-        }).catch(error => {
-            console.log("Erro ao buscar dados" + error)
-        })
+    //     }).catch(error => {
+    //         console.log("Erro ao buscar dados" + error)
+    //     })
         
-    }
+    // }
     //------------------------------------------------------------------------------//
 
     async function updateInformationsAccount({idAccount, avatar, cover, relationship, nickname, city, uf}) {

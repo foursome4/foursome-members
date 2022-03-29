@@ -8,36 +8,54 @@ import "./loader.css"
 function Loader() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
-    const LocalInformations = localStorage.getItem("informations-foursome");
-    console.log(LocalInformations)
-    // const informations = JSON.parse(LocalInformations);
-    const LocalCharacteristics = localStorage.getItem("characteritics-foursome");
-    // const characteristics = JSON.parse(LocalCharacteristics);
-    const LocalPreferences = localStorage.getItem("preferences-foursome");
-    // const preferences = JSON.parse(LocalPreferences);
 
     const navigate = useNavigate();
 
 
 
     useEffect(() => {
-        function redirectToPage() {
-            if(LocalInformations === "undefined") {
-                navigate("/completeregistration")
-            } else if(LocalCharacteristics === "undefined") {
-                navigate("/characteristcs")
-            } else if(LocalPreferences === "undefined") {
-                navigate("/preferences")
-            } else {
-                navigate("/feed")
-            }
+        async function findInformationsAccount() {
+            let id = user.id
+          const res = await api.get(`/informations/${id}`)
+                if(res.data.length === 0) {
+                    navigate("/completeregistration")
+                }
+                localStorage.setItem("informations-foursome", JSON.stringify(res.data[0]));  
+                findInformationsCharacteristcs()      
+        }
 
+        async function findInformationsCharacteristcs() {
+            let id = user.id
+          const res = await api.get(`/characteristics/${id}`)
+                if(res.data === undefined || res.data === []) {
+                    navigate("/characteristcs")
+                }
+                localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));  
+                findInformationsPreferences()     
+        }
+
+        async function findInformationsPreferences() {
+            let id = user.id
+          const res = await api.get(`/preferences/${id}`)
+          if(res.data === undefined || res.data === []) {
+            navigate("/preferences")
+        } else {
+            localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0])); 
+            redirectToPage()    
+        }
+        }
+
+        findInformationsAccount();
+
+
+    }, [navigate, user.id]);
+
+
+        async function redirectToPage() {
+           await navigate("/feed");
             window.location.reload(false)
         }
 
-
-        redirectToPage()
-    }, [navigate])
 
 
     return(
@@ -53,34 +71,6 @@ export { Loader }
 
 
 
-    // useEffect(() => {
-    //     async function findInformationsAccount() {
-    //         let id = user.id
-    //         await api.get(`/informations/${id}`)
-    //         .then((res) => {
-    //             let data2 = res.data[0]
-    //             console.log("data2");               
-    //             console.log(res.data[0]);     
-
-    //             if(data2 !== undefined) {
-    //                 console.log("Redirecionar feed")
-    //                 console.log(data2)
-    //              navigate("/feed");
-        
-    //             } else if (data2 === undefined) {
-    //                 console.log("Redirecionar")
-    //                 console.log(data2)
-    //               navigate("/completeregistration");       
-    //             }
-    //            window.location.reload(false)
-               
-    //         }).catch(error => {
-    //             console.log("Erro ao buscar dados" + error)
-    //         })
-            
-    //     }
-    //     findInformationsAccount()
-    // }, [navigate, user.id])    
 
 
 
