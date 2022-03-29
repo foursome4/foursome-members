@@ -1,10 +1,11 @@
 import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoPeopleOutline, IoBusinessOutline,
-    IoInformationCircleOutline, IoNewspaperOutline, IoMailOpenOutline } from "react-icons/io5"
+    IoInformationCircleOutline, IoNewspaperOutline, IoMailOpenOutline } from "react-icons/io5";
+import {memo} from 'react' 
 
 import avatarImg from '../../assets/images/avatar.png';
 import './toolbarLeftSlim.css'
 
-function ToolbarLeftSlim () {
+function ToolbarLeftSlimComponent() {
     const Local = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(Local);
 
@@ -96,4 +97,4 @@ function ToolbarLeftSlim () {
     )
 }
 
-export {ToolbarLeftSlim}
+export const ToolbarLeftSlim = memo(ToolbarLeftSlimComponent)

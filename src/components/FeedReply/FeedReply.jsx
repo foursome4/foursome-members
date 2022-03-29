@@ -2,7 +2,6 @@ import './feedReply.css';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import api from "../../services/api";
-import { parseISO, format} from 'date-fns';
 import { UserReply } from '../UserReply/UserReply';
 
 function FeedReply({idComment}) {
@@ -15,7 +14,7 @@ function FeedReply({idComment}) {
             setReply(dataPosts)
         }
         Comments()
-    }, [user, idComment, reply])
+    }, [idComment])
 
 
 

@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoPeopleOutline, IoMenuOutline, IoInformationCircleOutline, IoChatbubblesOutline, IoNewspaperOutline } from "react-icons/io5"
 import api from "../../services/api";
 import './barBottomMenu.css'
 
-function BarBottomMenu () {
+function BarBottomMenuComponenet() {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
     const [select, setSelect] = useState(false);
@@ -17,7 +17,7 @@ function BarBottomMenu () {
     }
 
     loadUsersONline()
-}, [users])
+}, [])
 
 
     function handleOpenUsersOnline (e) {
@@ -136,4 +136,4 @@ function BarBottomMenu () {
     )
 }
 
-export {BarBottomMenu}
+export const BarBottomMenu = memo(BarBottomMenuComponenet)

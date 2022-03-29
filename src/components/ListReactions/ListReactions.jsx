@@ -18,7 +18,7 @@ function ListReactionsComponent({idPost}) {
         }
 
         loadReactions()
-    }, [like,idPost]);
+    }, [idPost]);
 
     const myLike = like.filter(likes => (likes.idAccount === userData.id));
     function handleLikePost(e) {

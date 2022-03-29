@@ -13,7 +13,6 @@ function FeedPostComponent({}) {
     const  findPosts = useCallback(async () => {
         const res = await api.get(`/posts/all`);
         const dataPosts = (res.data)
-        console.log(res.data)
         setData(dataPosts)
     }, [])
 
@@ -24,11 +23,8 @@ function FeedPostComponent({}) {
 
   
     const filterPosts = useMemo(() => {
-        console.log(post)
         return data.filter(postData => post !== "" ? postData.type === post : postData)
     }, [data, post]);
-
-    console.log(filterPosts);
 
 
     function postUpdate() {
@@ -42,17 +38,14 @@ function FeedPostComponent({}) {
 
     function postText() {
         setPost("post-text")
-       console.log("post-text")
     }
 
     function postPhoto(){
         setPost("post-photo")
-       console.log("post-photo")
     }
 
     function postVideo(){
         setPost("post-video")
-       console.log("post-video")
     }
 
 

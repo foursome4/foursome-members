@@ -19,7 +19,7 @@ function FeedCommentsComponent({idPost}) {
 
         Comments()
 
-    }, [user, idPost, dataComments])
+    }, [idPost])
 
 
 

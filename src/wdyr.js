@@ -4,4 +4,4 @@ import React from 'react';
   whyDidYouRender(React, {
     trackAllPureComponents: true,
     logOwnerReasons: true
-})
+  });
