@@ -87,7 +87,9 @@ function Post() {
             const video = e.target.files[0];
             
             if(
-                video.type === 'video/mp4' 
+                video.type === 'video/mp4' || 
+                video.type === 'video/HEIF' || 
+                video.type === 'video/HEVC'
                 ) {
                     setVideoAvatar(video);
                     setVideoUrl(URL.createObjectURL(e.target.files[0]));

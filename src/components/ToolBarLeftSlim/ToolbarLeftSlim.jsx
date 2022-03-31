@@ -1,5 +1,5 @@
 import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoPeopleOutline, IoBusinessOutline,
-    IoInformationCircleOutline, IoNewspaperOutline, IoMailOpenOutline } from "react-icons/io5";
+    IoInformationCircleOutline, IoNewspaperOutline, IoMailOpenOutline, IoSettingsOutline, IoCashOutline, IoLocateOutline } from "react-icons/io5";
 import {memo} from 'react' 
 
 import avatarImg from '../../assets/images/avatar.png';
@@ -76,13 +76,24 @@ function ToolbarLeftSlimComponent() {
                     <a href="/invitelist" >
                     <button className="toolIcon" >
                         <IoMailOpenOutline size={20}/>
-                       Enviados
+                       Enviado
                     </button>
                     </a>
 
                     <a href="/locals" >
                     <button className="toolIcon" >
                         <IoBusinessOutline size={20}/>Locais
+                    </button>
+                    </a>
+                    
+                    <a href="/settings" >
+                    <button className="toolIcon" >
+                        <IoSettingsOutline size={20}/>Configs
+                    </button>
+                    </a>
+                    <a href="/plains" >
+                    <button className="toolIcon" >
+                        <IoCashOutline size={20}/>Planos
                     </button>
                     </a>
 

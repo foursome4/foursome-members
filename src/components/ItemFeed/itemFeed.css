@@ -68,7 +68,6 @@
 
 .feed-post .post-data-media .image{
     width: 400px;
-    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,7 +77,6 @@
 }
 .feed-post .post-data-media .image-video{
     width: 400px;
-    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,8 +88,7 @@
 
 
 .feed-post .post-data-media .image img{
-    width: 400px;
-    height: 400px;
+    width: 100%;
      object-fit: contain;
      border-radius: 10px;
  }
@@ -183,10 +180,9 @@
 .feed-post .post-data-media video{
    margin-left: 0 auto;
    margin-right: 0 auto;
-   height: 100%;
    width: 100%;
    object-fit: contain;
-   border-radius: 10px;
+   margin: 10px;
 }
 .feed-post .post-data-media .image-video .videoReact{
    height: 100%;
@@ -292,11 +288,7 @@
         margin-right: 0px;
     }
 
-    .feed-post .post-data-media video{
-        margin-left: 0 auto;
-        margin-right: 0 auto;
-         width: 90%;
-     }
+
      
     
 
@@ -307,16 +299,13 @@
 
         .feed-post .post-data-media .image{
             width: 350px;
-            height: 350px;
         }
         .feed-post .post-data-media .image-video{
             width: 350px;
-            height: 350px;
         }
         
         .feed-post .post-data-media .image img{
-            width: 350px;
-            height: 350px;
+            width: 100%;
          }
         
         .feed-post .post-data-media .image .mark{
@@ -347,16 +336,13 @@
 
                 .feed-post .post-data-media .image{
             width: 350px;
-            height: 350px;
         }
                 .feed-post .post-data-media .image-video{
             width: 350px;
-            height: 350px;
         }
         
         .feed-post .post-data-media .image img{
-            width: 350px;
-            height: 350px;
+            width: 100%;
          }
         
         .feed-post .post-data-media .image .mark{
@@ -400,16 +386,13 @@
 
             .feed-post .post-data-media .image{
                 width: 350px;
-                height: 350px;
             }
             .feed-post .post-data-media .image-video{
                 width: 350px;
-                height: 350px;
             }
             
             .feed-post .post-data-media .image img{
-                width: 350px;
-                height: 350px;
+                width: 100%;
              }
             
             .feed-post .post-data-media .image .mark{
@@ -428,16 +411,13 @@
                 @media(max-width: 450px) {
                     .feed-post .post-data-media .image{
                         width: 300px;
-                        height: 300px;
                     }
                     .feed-post .post-data-media .image-video{
                         width: 300px;
-                        height: 300px;
                     }
                     
                     .feed-post .post-data-media .image img{
-                        width: 300px;
-                        height: 300px;
+                        width: 100%;
                      }
                     
                     .feed-post .post-data-media .image .mark{
@@ -492,17 +472,14 @@
 
                     .feed-post .post-data-media .image{
                         width: 250px;
-                        height: 250px;
                     }
                     
                     .feed-post .post-data-media .image-video{
                         width: 250px;
-                        height: 250px;
                     }
                     
                     .feed-post .post-data-media .image img{
-                        width: 250px;
-                        height: 250px;
+                        width: 100%;
                      }
                     
                     .feed-post .post-data-media .image .mark{

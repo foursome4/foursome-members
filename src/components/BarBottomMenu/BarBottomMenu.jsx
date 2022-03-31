@@ -1,5 +1,6 @@
 import { useEffect, useState, memo } from "react";
-import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoPeopleOutline, IoMenuOutline, IoInformationCircleOutline, IoChatbubblesOutline, IoNewspaperOutline } from "react-icons/io5"
+import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoCashOutline, IoSettingsOutline, IoPeopleOutline, IoMenuOutline,
+    IoInformationCircleOutline, IoChatbubblesOutline, IoNewspaperOutline, IoBusinessOutline } from "react-icons/io5"
 import api from "../../services/api";
 import './barBottomMenu.css'
 
@@ -92,11 +93,21 @@ function BarBottomMenuComponenet() {
                     </button>
                     </a>
 
-                    {/* <a href="/locals" >
+                    <a href="/locals" >
                     <button className="ButtonsUnic" >
-                        <FiMapPin size={20}/>Locais
+                        <IoBusinessOutline size={20}/>Locais
                     </button>
-                    </a> */}
+                    </a>
+                    <a href="/settings" >
+                    <button className="ButtonsUnic" >
+                        <IoSettingsOutline size={20}/>Configs
+                    </button>
+                    </a>
+                    <a href="/plains" >
+                    <button className="ButtonsUnic" >
+                        <IoCashOutline size={20}/>Planos
+                    </button>
+                    </a>
                     <a href="/infos" >
                     <button className="ButtonsUnic" >
                         <IoInformationCircleOutline size={20}/>Infos
