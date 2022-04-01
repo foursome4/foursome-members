@@ -8,6 +8,7 @@ import { FiTrash2, FiEdit, FiMessageCircle } from 'react-icons/fi'
 import { useState, useContext, memo } from 'react'
 import './itemFeed.css'
 import { AuthContext } from '../../contexts/Auth'
+import { Player } from 'video-react';
 
 
 function ItemFeedComponent({idAccount, link, date, text, type, id, username, group, forum, key}) {
@@ -72,6 +73,9 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
              type === "post-video"  ?
              <div className="post-data-media"  >
                   <div className='image-video'>
+                  {/* <div className="videoReact">
+                  <Player fluid={true} playsInline src={link} className="videoReact2"/>
+                  </div> */}
                   <video playsInline controls controlsList="nofullscreen nodownload"  type='video/mp4' >
                      <source playsInline src={link} type="video/mp4"/>
                      <source playsInline src={link}  type="video/ogg"/>

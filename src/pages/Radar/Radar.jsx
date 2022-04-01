@@ -7,6 +7,7 @@ import { FaPlane} from "react-icons/fa"
 import {  useEffect, useState } from "react"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import api from "../../services/api"
+import apiInstagram from "../../services/api-instagram"
 import { Link } from "react-router-dom"
 
 function Radar() {
@@ -33,13 +34,21 @@ useEffect(() => {
         })
     }
 
-    loadUsersONline();   
+    async function dataApi() {
+        const dados = await apiInstagram.get('/jefersonmacedo.dev/?__a=1');
+        console.log(dados)
+    }
+
+    loadUsersONline();  
+    dataApi(); 
 
       
  }, [userData.id])
 
  console.log(lat1)
  console.log(long1)
+
+ 
 
 
     return (

@@ -652,16 +652,16 @@ async function newVisit(idAccount, username, idFriend) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
     
-
         setlat(latitude)
- 
         setLong(longitude)
    
        reverseGeolocalization(latitude, longitude)
-   
+
+       console.log("Localização coletada: " + latitude + "," + longitude)
       }
     
       function error() {
+        console.log('Unable to retrieve your location');
         console.log('Unable to retrieve your location');
       }
    
@@ -669,11 +669,13 @@ async function newVisit(idAccount, username, idFriend) {
        return window.navigator.geolocation.getCurrentPosition(success, error);
         }
    
-    async function reverseGeolocalization(lat, long) {
+        async function reverseGeolocalization(lat, long) {
         const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
 
         setCity(address.data.results[0].address_components[3].long_name)
         setUf(address.data.results[0].address_components[4].short_name)  
+
+        console.log("Cidade e Estado: " + address.data.results[0].address_components[3].long_name + "," + address.data.results[0].address_components[4].short_name)
     }
 
     const DataUser = localStorage.getItem("foursome");
@@ -681,11 +683,9 @@ async function newVisit(idAccount, username, idFriend) {
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformations = JSON.parse(LocalInformation);
 
-
     async function getInformations() {
        
         let equalCity = " "
-
         if(city === userInformations.city && uf === userInformations.uf ) {
         equalCity = true
         } else {
@@ -704,16 +704,17 @@ async function newVisit(idAccount, username, idFriend) {
         equalCity: equalCity
         }
 
-        
         if(data.idAccount && data.username && data.nickname && data.avatar && data.lat && data.long && data.city && data.uf !== "") {
                 socket.on("connection", () => {
                     console.log("Conexão estabelecida")
                 })
-                await api.post("/online", data)
+                await api.post("/online", data).then(() => {
+                    console.log("Usuário online: " + data)
+                })
+
             } else {
                 console.log("Imformações não coletadas com sucesso!")
             }
-
     }
 
     getLocation()

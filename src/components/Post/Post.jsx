@@ -87,7 +87,19 @@ function Post() {
             const video = e.target.files[0];
             
             if(
+                video.type === 'video/quicktime' || 
                 video.type === 'video/mp4' || 
+                video.type === 'video/MOV' || 
+                video.type === 'video/wmv' || 
+                video.type === 'video/flv' || 
+                video.type === 'video/avi' || 
+                video.type === 'video/avchd' || 
+                video.type === 'video/webm' || 
+                video.type === 'video/mkv' || 
+                video.type === 'video/mpeg' || 
+                video.type === 'video/mpeg4' || 
+                video.type === 'video/mpeg-4' || 
+                video.type === 'video/ogg' || 
                 video.type === 'video/HEIF' || 
                 video.type === 'video/HEVC'
                 ) {
@@ -97,7 +109,8 @@ function Post() {
                     toast.success('Vídeo carregado com sucesso. Publique sua postagem!');
                     
             } else {
-                console.log('Tipo dearquivo não aceito. Envie video do tipo: .mp4');
+                console.log('Tipo dearquivo não aceito. Envie video do tipo: .mp4 ou MOV');
+                toast.error('Tipo dearquivo não aceito. Envie video do tipo: .mp4 ou MOV');
                 setVideoAvatar("");
                 return null;
             }

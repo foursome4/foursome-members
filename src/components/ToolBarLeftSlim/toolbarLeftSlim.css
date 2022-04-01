@@ -5,7 +5,7 @@
     align-items: center;
     justify-content:space-between;
     flex-direction: column;    
-    background-color: var(--Background);
+    background-color: var(--White);
     position: fixed;
     top: 0;
     left: 0;
@@ -86,6 +86,7 @@
     padding: 5px;
     font-size: 12px;
     border: none;
+    background-color: var(--Background);
 }
 .content-toolbar .ToolBarLeftSlim .tools .toolIcon:hover {
     background-color: var(--Primary);

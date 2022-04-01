@@ -72,7 +72,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  
     border-radius: 10px;
 }
 .feed-post .post-data-media .image-video{
@@ -80,7 +80,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background-color: black;
     border-radius: 10px;
 }
@@ -184,14 +184,14 @@
    object-fit: contain;
    margin: 10px;
 }
-.feed-post .post-data-media .image-video .videoReact{
-   height: 100%;
+.feed-post .post-data-media .videoReact{
    width: 100%;
    object-fit: contain;
    border-radius: 10px;
    display: flex;
    align-items: center;
    justify-content: center;
+   background-color: aqua;
 }
 
 .feed-post .post-data-media .image-video .videoReact .videoReact2{
