@@ -15,7 +15,8 @@ function Feed() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
     const navigate = useNavigate();
-           const {socketDataLocation} = useContext(AuthContext)
+           const {socketDataLocation} = useContext(AuthContext);
+
            useEffect(() => {
                if(user.status === "blocked") {
                 navigate("/profile");
@@ -23,6 +24,7 @@ function Feed() {
            socketDataLocation()
 
            }, [])
+
 
 
 return (
