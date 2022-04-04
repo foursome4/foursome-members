@@ -11,12 +11,13 @@ import { ForumIndividual } from '../pages/ForumIndividual/ForumIndividual';
 import { Foruns } from '../pages/Foruns/Foruns';
 import { GroupIndividual } from '../pages/GroupIndividual/GroupIndividual';
 import { Groups } from '../pages/Groups/Groups';
-import { InformationsFoursome } from '../pages/InformationsFoursome/InformationsFoursome';
+import { Informations } from '../pages/Informations/Informations';
 import { Invitation } from '../pages/Invitation/Invitation';
 import { Invite } from '../pages/Invite/Invite';
 import { InvitesList } from '../pages/InvitesList/InvitesList';
 import { Lgpd } from '../pages/Lgpd/Lgpd';
 import { Loader } from '../pages/Loader/Loader';
+import { Plains } from '../pages/Plains/Plains';
 import { Preferences } from '../pages/Preferences/Preferences';
 import { PrivacityPolice } from '../pages/PrivacityPolice/PrivacityPolice';
 import { Profile } from '../pages/Profile/Profile';
@@ -25,6 +26,7 @@ import { Radar } from '../pages/Radar/Radar';
 import { Ranking } from '../pages/Ranking/Ranking';
 import { Recuperation } from '../pages/Recuperation/Recuperation';
 import { RegistrationEnd } from '../pages/RegistrationEnd/RegistrationEnd';
+import { Settings } from '../pages/Settings/Settings';
 import { SignIn } from '../pages/SignIn/SignIn';
 import { SignUp } from '../pages/SignUp/SignUp';
 import { UseOfTerms } from '../pages/UseOfTerms/UseOfTerms';
@@ -91,7 +93,11 @@ function PrivateRoute({children} ) {
             <Route path="/invite" 
                 element={ <PrivateRoute> <Invite /> </PrivateRoute>} />
             <Route path="/infos" 
-                element={ <PrivateRoute> <InformationsFoursome /> </PrivateRoute>} />
+                element={ <PrivateRoute> <Informations /> </PrivateRoute>} />
+            <Route path="/settings" 
+                element={ <PrivateRoute> <Settings /> </PrivateRoute>} />
+            <Route path="/plain" 
+                element={ <PrivateRoute> <Plains /> </PrivateRoute>} />
             </Routes>
            
     )

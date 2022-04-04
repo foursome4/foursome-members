@@ -25,15 +25,6 @@ function CharacteristcsForm() {
     const [sign3,setSign3] = useState("");
     const [sexualOption3,setSexualOption3] = useState("");
 
-    useEffect(() => {
-        function redirectToPage() {
-            if(LocalCharacteristics !== "undefined") {
-                logout(user.id)
-            }
-        }
-        redirectToPage()
-    },[])
-
     function handleUpdateCharacteristcs(e){
         e.preventDefault()
         
@@ -133,6 +124,7 @@ function CharacteristcsForm() {
                    {user.type === "Trisal" ?
                     <div className="data-form">   
                     <span>Membro casal 1</span><br />
+                    <h5>Data de nascimento</h5>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
                     <select required value={sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
@@ -163,6 +155,7 @@ function CharacteristcsForm() {
                             </select>
                     <br /><br />
                     <span>Membro casal 2</span><br />
+                    <h5>Data de nascimento</h5>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data2}  onChange={(e) => setData2(e.target.value)}/>
                     <select required value={sex2} onChange={handleSelectSex2}>
                                 <option value="">Sexo</option>
@@ -194,6 +187,7 @@ function CharacteristcsForm() {
 
                             <br /><br />
                     <span>Membro casal 3</span><br />
+                    <h5>Data de nascimento</h5>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data3}  onChange={(e) => setData3(e.target.value)}/>
                     <select required value={sex3} onChange={handleSelectSex3}>
                                 <option value="">Sexo</option>
@@ -226,6 +220,7 @@ function CharacteristcsForm() {
              : user.type === "Casal"?
              <div className="data-form">
                   <span>Membro casal 1</span><br />
+                  <h5>Data de nascimento</h5>
                   <input required type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
                     <select required value={sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
@@ -257,6 +252,7 @@ function CharacteristcsForm() {
                             
                             <br /><br />
                     <span>Membro casal 2</span><br />
+                    <h5>Data de nascimento</h5>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data2}  onChange={(e) => setData2(e.target.value)}/>
                     <select required value={sex2} onChange={handleSelectSex2}>
                                 <option value="">Sexo</option>
@@ -289,7 +285,8 @@ function CharacteristcsForm() {
              </div>
              :
              <div className="data-form">
-                                      <input required type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
+                     <h5>Data de nascimento</h5>
+                    <input required type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
                     <select required value={sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>

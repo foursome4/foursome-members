@@ -1,13 +1,12 @@
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSlim'
 import { TopBar } from '../../components/TopBar/TopBar'
-import profile from '../../assets/images/profile.jpg';
 import './chat.css';
 import { useState, useEffect, useRef} from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { socket } from '../../services/websocket'
 import api from '../../services/api'
-import { FiSend, FiUpload } from 'react-icons/fi'
+import { FiSend, FiUpload, FiPlus, FiVideo, FiImage } from 'react-icons/fi'
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes} from 'firebase/storage'
 import { v4 as uuidv4 } from 'uuid'
@@ -36,6 +35,7 @@ function Chat() {
   const [imageAvatar, setImageAvatar] = useState('');
   const [loadding, setLoadding] = useState(false);
   const [click, setClick] = useState(false);
+  const [media, setMedia] = useState(false);
 
   useEffect(() => {
     async function findMessages() {
@@ -157,6 +157,14 @@ function handlePressMessage() {
   }
 }
 
+function handleMedia() {
+    if(media === false) {
+      setMedia(true)
+    } else {
+      setMedia(false)
+    }
+}
+
 
   return (
     <div className="content">
@@ -227,12 +235,25 @@ function handlePressMessage() {
 
             </div>
             <div className="text">
-            <label className="label-avatar">
-                            <span><FiUpload color="#f65" size={25} /></span>
-                            <input type="file" accept="image/*" onChange={handleFile}/><br />
-                            <img src={avatarUrl === null ? profile : avatarUrl} alt="Avatar" height={45} width={45}/>
-                        </label>
+                <button className="button-media" onClick={handleMedia}><FiPlus size={20}/></button>
+
+               {media === false ? "" : 
+               <>
+              <label className="label-avatar">
+                  <span><FiImage size={20} /></span>
+                  <input type="file" accept="image/*" onChange={handleFile}/><br />                     
+              </label>
+
+              <label className="label-avatar">
+                  <span><FiVideo size={20} /></span>
+                  <input type="file" accept="image/*" onChange={handleFile}/><br />                     
+              </label>
+              </>
+              }
+
+              {media === true ? "" :
                 <textarea name="" id=""  value={text} autoFocus  autoComplete='off' placeholder='Digite uma mensagem' onChange={(e) => setText(e.target.value)}></textarea>
+              }
                 <button className="button1" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}>Enviar <FiSend /></button>
                 <button className="button2" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}><FiSend /></button>
             </div>

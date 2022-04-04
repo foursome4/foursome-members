@@ -1,13 +1,13 @@
 import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoPeopleOutline, IoBusinessOutline,
     IoInformationCircleOutline, IoNewspaperOutline, IoMailOpenOutline, IoSettingsOutline, IoCashOutline, IoLocateOutline } from "react-icons/io5";
 import {memo} from 'react' 
-
-import avatarImg from '../../assets/images/avatar.png';
 import './toolbarLeftSlim.css'
 
 function ToolbarLeftSlimComponent() {
     const Local = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(Local);
+
+    const avatarImg = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
 
 
     return (

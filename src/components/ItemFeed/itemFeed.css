@@ -64,6 +64,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: black;
+    object-fit: cover;
+}
+.feed-post .post-data-media .marcadagua {
+    width: 400px;
+    height: 100%;
+    background-color: aqua;
+    position: absolute;
 }
 
 .feed-post .post-data-media .image{

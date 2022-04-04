@@ -2,7 +2,6 @@ import { FiImage, FiVideo, FiMenu, FiSend, FiUpload, FiRefreshCcw} from 'react-i
 import './post.css';
 import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../contexts/Auth';
-import profile from '../../assets/images/profile.jpg';
 import { v4 as uuidv4} from 'uuid'
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
@@ -15,6 +14,8 @@ function Post() {
     const user = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(LocalInformation);
+
+    const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
     
     const [loading, setLoading] = useState(false)
     const [avatarUrl, setAvatarUrl] = useState(null);

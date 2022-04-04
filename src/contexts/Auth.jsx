@@ -63,7 +63,7 @@ function AuthProvider({children}) {
                     return
                 }
                 localStorage.setItem("foursome", JSON.stringify(result.data));
-                navigate("/loader") 
+                findInformationsAccount(result.data.id)
                 
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
@@ -80,7 +80,7 @@ function AuthProvider({children}) {
                    return
                 }
                 localStorage.setItem("foursome", JSON.stringify(result.data));
-                navigate("/loader") 
+                findInformationsAccount(result.data.id)
                 
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
@@ -91,50 +91,49 @@ function AuthProvider({children}) {
         
     }
 
-    // async function findInformationsAccount(id) {
-    //     await api.get(`/informations/${id}`)
-    //     .then((res) => {
-    //         if(res.data === undefined || res.data === []) {
-    //             navigate("/completeregistration")
-    //         }
-    //         localStorage.setItem("informations-foursome", JSON.stringify(res.data[0]));
-    //         findPreferencesAccount(id)
+    async function findInformationsAccount(id) {
+        await api.get(`/informations/${id}`)
+        .then((res) => {
+            if(res.data === undefined || res.data === []) {
+                navigate("/completeregistration")
+            }
+            localStorage.setItem("informations-foursome", JSON.stringify(res.data[0]));
+            findPreferencesAccount(id)
            
-    //     }).catch(error => {
-    //         console.log("Erro ao buscar dados" + error)
-    //     })
+        }).catch(error => {
+            console.log("Erro ao buscar dados" + error)
+        })
         
-    // }
-    // async function findPreferencesAccount(id) {
-    //     await api.get(`/preferences/${id}`)
-    //     .then((res) => {
-    //         if(res.data === undefined || res.data === []) {
-    //             navigate("/preferences")
-    //         }
-    //         localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
-    //         findCharacteriticsAccount(id)
+    }
+    async function findPreferencesAccount(id) {
+        await api.get(`/preferences/${id}`)
+        .then((res) => {
+            if(res.data === undefined || res.data === []) {
+                navigate("/preferences")
+            }
+            localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
+            findCharacteriticsAccount(id)
            
-    //     }).catch(error => {
-    //         console.log("Erro ao buscar dados" + error)
-    //     })
+        }).catch(error => {
+            console.log("Erro ao buscar dados" + error)
+        })
         
-    // }
-    // async function findCharacteriticsAccount(id) {
-    //     await api.get(`/characteristics/${id}`)
-    //     .then((res) => {
-    //         if(res.data === undefined || res.data === []) {
-    //             navigate("/characteristcs")
-    //         }
-    //         localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));
-    //         navigate("/feed") 
-    //         window.location.reload(false)
+    }
+    async function findCharacteriticsAccount(id) {
+        await api.get(`/characteristics/${id}`)
+        .then((res) => {
+            if(res.data === undefined || res.data === []) {
+                navigate("/characteristcs")
+            }
+            localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));
+            navigate("/feed") 
+            window.location.reload(false)
            
-    //     }).catch(error => {
-    //         console.log("Erro ao buscar dados" + error)
-    //     })
+        }).catch(error => {
+            console.log("Erro ao buscar dados" + error)
+        })
         
-    // }
-    //------------------------------------------------------------------------------//
+    }
 
     async function updateInformationsAccount({idAccount, avatar, cover, relationship, nickname, city, uf}) {
         await api.post("/informations", {idAccount, avatar, cover, relationship, nickname, city, uf}).then(() => {
@@ -396,6 +395,7 @@ async function editPost(id, text) {
 async function editComment(id, text) {
         const res = await api.patch(`/comments/${id}`, {text});
         if(res.status===201) {
+            window.location.reload(false)
          } else {
             toast.error('Deu algo errado ao deletar!');
          }
@@ -405,6 +405,7 @@ async function deleteComment(id) {
     const res = await api.delete(`/comments/${id}`);
     if(res.status===201) {
         toast.success('post deletado com sucesso!');
+        window.location.reload(false)
      } else {
         toast.error('Deu algo errado ao deletar!');
      }
@@ -412,6 +413,7 @@ async function deleteComment(id) {
 async function editReply(id, text) {
         const res = await api.patch(`/reply/${id}`, {text});
         if(res.status===201) {
+            window.location.reload(false)
          } else {
             toast.error('Deu algo errado ao deletar!');
          }
@@ -421,6 +423,7 @@ async function deleteReply(id) {
     const res = await api.delete(`/reply/${id}`);
     if(res.status===201) {
         toast.success('Resposta deletada com sucesso!');
+        window.location.reload(false)
      } else {
         toast.error('Deu algo errado ao deletar!');
      }
@@ -437,14 +440,14 @@ await api.post("/reactions", {idAccount, username, idPost}).then(() => {
 
 async function newComment({idAccount, idPost, text, avatar, username, nickname}) {
     await api.post("/comments", {idAccount, idPost, text,avatar, username, nickname}).then(() => {
-
+        window.location.reload(false)
     }).catch(error => {
         console.log("Comentário não foi realizado" + error)
     })
 }
 async function newReply({idAccount, idComment, text, avatar, username, nickname}) {
     await api.post("/reply", {idAccount, idComment, text,avatar, username, nickname}).then(() => {
-
+        window.location.reload(false)
     }).catch(error => {
         console.log("Resposta não foi realizado" + error)
     })
@@ -740,7 +743,7 @@ async function newVisit(idAccount, username, idFriend) {
         }
         function resetTimer() {
         clearTimeout(time);
-      time = setTimeout(doSomething, 300000)
+       time = setTimeout(doSomething, 300000)
     }
 }
 

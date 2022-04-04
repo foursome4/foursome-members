@@ -1,14 +1,11 @@
 import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSlim'
 import { TopBar } from '../../components/TopBar/TopBar'
-import coverImg from '../../assets/images/cover.png'
-import avatar from '../../assets/images/avatar.png'
-import {FiHome, FiImage, FiVideo,  FiSettings, FiMoreVertical, FiUser, FiHeart} from 'react-icons/fi'
+import {FiHome, FiImage, FiVideo, FiUser, FiHeart} from 'react-icons/fi'
 import {IoShieldCheckmark} from 'react-icons/io5'
 import './profile.css'
 import { Post } from '../../components/Post/Post'
 import { Photos } from '../../components/Photos/Photos'
 import { Video } from '../../components/Video/Video'
-import { SettingsUser } from '../../components/SettingsUser/SettingsUser'
 import { ListFriends } from '../../components/ListFriends/ListFriends'
 import {useEffect, useState } from 'react'
 import api from '../../services/api'
@@ -25,8 +22,10 @@ function Profile() {
   const user = JSON.parse(Local);
   const LocalInformations = localStorage.getItem("informations-foursome");
   const userInformations = JSON.parse(LocalInformations);
-
- 
+  
+  const coverImg = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
+  const avatar = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
+  
   const [feed, setFeed] = useState("feed");
   const [friend, setFriend] = useState("");
   const [photo, setPhoto] = useState("");
@@ -130,17 +129,6 @@ widthView()
       setSetting("")
     }
 
-    function handleSetting() {
-      setFeed("")
-      setFriend("")
-      setPhoto("")
-      setVideo("")
-      setGroup("")
-      setForum("")
-      setSetting("setting")
-    }
-
-
     function handleFriends() {
       setFriends("friends");
     }
@@ -189,7 +177,6 @@ widthView()
                   <button className={forum === "" ? "" : "select"} onClick={handleForum}><FiHeart size={16}/> Seguir</button>
                   <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/> Fotos</button>
                   <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/> Vídeos</button>
-                  <button className={setting === "" ? "" : "select"} onClick={handleSetting}><FiSettings size={16}/> Opções</button>
                   {/* <button  className='settings'><FiMoreVertical size={16}/></button> */}
                 </div>
             </div>
@@ -273,9 +260,6 @@ widthView()
                  </div>
                   
                    :
-                   setting === "setting" ?
-                   <SettingsUser idAccount={user.id} />
-                  :
                   ""
                   } 
                     </div>

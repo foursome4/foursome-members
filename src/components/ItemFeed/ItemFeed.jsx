@@ -67,7 +67,7 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
              {type === "post-photo"  ?
                  <div className="post-data-media" >
                   <div className='image'>
-                     <img src={link} alt={link} width={500}/>
+                     <img src={link} alt={link}/>
                   </div>
                  </div> :
              type === "post-video"  ?
@@ -76,10 +76,14 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
                   {/* <div className="videoReact">
                   <Player fluid={true} playsInline src={link} className="videoReact2"/>
                   </div> */}
-                  <video playsInline controls controlsList="nofullscreen nodownload"  type='video/mp4' >
+
+                  <video playsInline controls controlsList="nofullscreen nodownload">
                      <source playsInline src={link} type="video/mp4"/>
+                     <source playsInline src={link} type="video/quicktime"/>
+                     <source playsInline src={link} type="video/mov"/>
                      <source playsInline src={link}  type="video/ogg"/>
                      <source playsInline src={link}  type="video/webm"/>
+                     <source playsInline src={link}  type="video/avi"/>
                      </video>
                  </div>
                  </div> :

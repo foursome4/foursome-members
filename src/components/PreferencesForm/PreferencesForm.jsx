@@ -19,16 +19,7 @@ function PreferencesForm() {
     const [proposal, setProposal] = useState("");
 
 
-    useEffect(() => {
-        function redirectToPage() {
-            if(LocalPreferences !== "undefined") {
-                logout(user.id)
-            }
-        }
-        redirectToPage()
-    },[])
-
-    
+   
     function handlePreferences(e) {
         e.preventDefault();
         toast.info("Salvando Preferências. Aguarde...")

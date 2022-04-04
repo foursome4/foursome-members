@@ -274,6 +274,15 @@
   }
 
 
+.content .chat .main-chat .section-chat .text .button-media {
+    width: 55px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid var(--Primary);
+    background-color: var(--Background2);
+    color: var(--Primary);
+    margin-right: 10px;
+}
 .content .chat .main-chat .section-chat .text .button1 {
     width: 80px;
     height: 45px;
@@ -303,7 +312,7 @@
 
 
 .content .chat .main-chat .section-chat .text .label-avatar{
-    width: 45px;
+    width: 55px;
     height: 45px;
     display: flex;
     align-items: center;
@@ -311,6 +320,9 @@
     flex-direction: column;
     cursor: pointer;
     margin: 0 10px 0 0;
+    background-color: var(--Background);
+    border-radius: 6px;
+    color: var(--Primary);
 }
 
 .content .chat .main-chat .section-chat .text .label-avatar input {

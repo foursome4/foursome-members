@@ -1,7 +1,6 @@
 import logoFoursomemini from '../../assets/images/logo-mini2.png';
 import logoFoursome from '../../assets/images/logo2.png';
 import { IoMailOutline, IoLogOutOutline} from 'react-icons/io5';
-import avatarImg from '../../assets/images/avatar.png';
 import './topBar.css';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/Auth';
@@ -19,6 +18,8 @@ function TopBar() {
     const user = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(LocalInformation);
+
+    const avatarImg = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
 
     function Tologout(e) {
         e.preventDefault();

@@ -1,7 +1,5 @@
 import { FiRefreshCcw, FiUpload } from 'react-icons/fi';
 import logoImg from '../../assets/images/logo.png';
-import profile from '../../assets/images/profile.jpg';
-import cover from '../../assets/images/cover.jpg';
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes} from 'firebase/storage';
 import './informationsForm.css'
@@ -27,6 +25,9 @@ function InformationsForm() {
     const [relationship, setRelationship] = useState("");
     const [nickname, setNickname] = useState("")
     const [loadding, setLoadding] = useState(false);
+
+    const cover = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
+    const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
 
     function handleFile(e) {
         console.log(e.target.files[0])
@@ -95,10 +96,13 @@ function InformationsForm() {
 
         console.log(upload.ref.name, photoUrl);
 
+        const linkProfile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
+        const avatar = photoUrlAvatar === "" || photoUrlAvatar === undefined || photoUrlAvatar === null ? linkProfile : photoUrlAvatar
 
-        
+        const linkCover = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
+        const avatarCover = photoUrl === "" || photoUrl === undefined || photoUrl === null ? linkCover : photoUrl
         //Salvando no banco de dados
-       updateInformationsAccount({idAccount: user.id, avatar: photoUrlAvatar, cover: photoUrl, city, uf, relationship, nickname});
+       updateInformationsAccount({idAccount: user.id, avatar: avatar, cover: avatarCover, city, uf, relationship, nickname});
         console.log({idAccount: user.id, avatar: photoUrlAvatar, cover: photoUrl, city, uf, relationship, nickname});
         console.log(loadding);
         setLoadding(false);
@@ -127,7 +131,7 @@ function InformationsForm() {
 
 
     return (
-            <div className="informations">
+            <div className="complete-informations">
                 <div className="title">
                     <img src={logoImg} alt="" />
                     <h2>Informações Complementares</h2>

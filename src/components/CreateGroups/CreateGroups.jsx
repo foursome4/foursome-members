@@ -1,8 +1,6 @@
 import "./createGroups.css"
 import { FiUpload } from "react-icons/fi";
 import { useContext, useState } from "react";
-import avatar from  "../../assets/images/avatar.png"
-import cover from  "../../assets/images/cover.jpg"
 import { AuthContext } from "../../contexts/Auth";
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes} from 'firebase/storage';
@@ -15,6 +13,9 @@ function CreateGroups() {
     const user = JSON.parse(Local)
     const LocalInformations = localStorage.getItem("informations-foursome");
     const userInformations= JSON.parse(LocalInformations);
+
+    const cover = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
+    const avatar = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
 
 
     const [avatarUrl, setAvatarUrl] = useState(null);
