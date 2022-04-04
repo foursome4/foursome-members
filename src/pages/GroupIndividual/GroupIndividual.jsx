@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom'
 import { PostGroup } from '../../components/PostGroup/PostGroup'
 import { FeedPostGroup } from '../../components/FeedPostGroup/FeedPostGroup'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
+import { Footer } from '../../components/Footer/Footer'
 
 
 function GroupIndividual() {
@@ -152,6 +153,7 @@ console.log(member)
                
                     </div>
             </div>
+            <Footer />
          </div>
          <ChatSlim /> 
         </div>

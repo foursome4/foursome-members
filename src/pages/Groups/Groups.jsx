@@ -8,6 +8,7 @@ import { useState } from "react"
 import { GroupsCreated } from "../../components/GroupsCreated/GroupsCreated"
 import { CreateGroups } from "../../components/CreateGroups/CreateGroups"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
+import { Footer } from "../../components/Footer/Footer"
 
 function Groups() {
 
@@ -61,6 +62,7 @@ function Groups() {
                     </div>
                 <ChatSlim />
                 </div>
+                <Footer />
             </div>
         </div>
     )

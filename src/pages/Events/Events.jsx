@@ -9,6 +9,7 @@ import { ListEvents } from "../../components/ListEvents/ListEvents"
 import { MyEvents } from "../../components/MyEvents/MyEvents"
 import { CreateEvents } from "../../components/CreateEvents/CreateEvents"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
+import { Footer } from "../../components/Footer/Footer"
 
 function Events() {
 
@@ -67,6 +68,7 @@ function Events() {
                     </div>
                 <ChatSlim />
                 </div>
+            <Footer />
             </div>
         </div>
     )

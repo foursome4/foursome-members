@@ -12,6 +12,7 @@ import { FeedPostEvent } from '../../components/FeedPostEvent/FeedPostEvent'
 import { PostTextEvent } from '../../components/PostTextEvent/PostTextEvent'
 import { set } from 'date-fns/esm'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
+import { Footer } from '../../components/Footer/Footer'
 
 
 function EventIndividual() {
@@ -192,6 +193,7 @@ function EventIndividual() {
                
                     </div>
             </div>
+            <Footer />
          </div>
          <ChatSlim /> 
         </div>

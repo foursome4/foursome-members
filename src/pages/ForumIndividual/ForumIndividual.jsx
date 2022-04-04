@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom'
 import { PostText } from '../../components/PostText/PostText'
 import { FeedPostForum } from '../../components/FeedPostForum/FeedPostForum'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
+import { Footer } from '../../components/Footer/Footer'
 
 
 function ForumIndividual() {
@@ -134,6 +135,7 @@ console.log(idAccount, theme)
                
                     </div>
             </div>
+            <Footer />
          </div>
          <ChatSlim /> 
         </div>

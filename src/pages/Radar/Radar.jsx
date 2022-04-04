@@ -9,6 +9,7 @@ import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import api from "../../services/api"
 import apiInstagram from "../../services/api-instagram"
 import { Link } from "react-router-dom"
+import { Footer } from "../../components/Footer/Footer"
 
 function Radar() {
     const Local = localStorage.getItem("foursome");
@@ -84,6 +85,7 @@ useEffect(() => {
                     </div>
                 <ChatSlim />
                 </div>
+                <Footer />
             </div>
         </div>
     )

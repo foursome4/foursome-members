@@ -1,5 +1,6 @@
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { TopBar } from "../../components/TopBar/TopBar"
+import { Footer } from "../../components/Footer/Footer"
 import './ranking.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import { useEffect, useState } from "react"
@@ -132,6 +133,7 @@ function Ranking() {
                     </div>
                 <ChatSlim />
                 </div>
+                <Footer />
             </div>
         </div>
     )

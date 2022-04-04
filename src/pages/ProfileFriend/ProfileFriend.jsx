@@ -19,6 +19,7 @@ import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 import { v4 as uuidv4 } from 'uuid'
 import { useNavigate } from 'react-router-dom';
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
+import { Footer } from '../../components/Footer/Footer'
 
 
 function ProfileFriend() {
@@ -501,6 +502,7 @@ widthView()
          </div>
          <ChatSlim /> 
         </div>
+        <Footer />
       </div>
     </div>
     </div>
