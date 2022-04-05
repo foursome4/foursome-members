@@ -4,33 +4,34 @@ import { useEffect, useState, memo, useCallback, useMemo} from 'react';
 import api from "../../services/api";
 import { toast } from 'react-toastify';
 import { ItemFeed } from '../ItemFeed/ItemFeed';
+import { useFetch } from '../../hooks/useFetch';
 
 function FeedPostComponent({}) {
     const [post, setPost] = useState("");
-    const [data, setData] = useState([]);
+    // const [datas, setDatas] = useState([]);
  
    
-    const  findPosts = useCallback(async () => {
-        const res = await api.get(`/posts/all`);
-        const dataPosts = (res.data)
-        setData(dataPosts)
-    }, [])
+    // const  findPosts = useCallback(async () => {
+    //     const res = await api.get(`/posts/all`);
+    //     const dataPosts = (res.data)
+    //     setDatas(dataPosts)
+    // }, [])
 
     
-    useEffect(() => {
-        findPosts()
-    }, [findPosts])
+    // useEffect(() => {
+    //     findPosts()
+    // }, [findPosts])
 
   
-    const filterPosts = useMemo(() => {
-        return data.filter(postData => post !== "" ? postData.type === post : postData)
-    }, [data, post]);
+    // const filterPosts = useMemo(() => {
+    //     return data.filter(postData => post !== "" ? postData.type === post : postData)
+    // }, [data, post]);
 
 
     function postUpdate() {
         setPost("")
         toast.info("Atualizando posts...")
-        findPosts()
+        // findPosts()
     }
     function postAll() {
         setPost("")
@@ -49,9 +50,10 @@ function FeedPostComponent({}) {
     }
 
 
+    const {data} = useFetch(post === "" ? `https://api-foursome.herokuapp.com/posts/all` : `https://api-foursome.herokuapp.com/posts/filter/${post}`);
+    console.log(data)
 
-
-
+   
     return (
 
         <div className="feedPost">
@@ -63,7 +65,7 @@ function FeedPostComponent({}) {
             <button className={post === "post-photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button>
             <button className={post === "post-video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button>
             </div>
-                                {filterPosts.map((postsData => {
+                                {data?.map((postsData => {
                                     return (   
                                         <div className="preItem" key={postsData.id}>
                              {postsData.type === "post-text" ||

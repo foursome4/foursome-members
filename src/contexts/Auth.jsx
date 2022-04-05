@@ -370,7 +370,7 @@ async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, 
     setLoading(true)
     await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent }).then( async () => {      
     toast.info("Post publicado com sucesso!")
-   window.location.reload(false)
+//    window.location.reload(false)
         setLoading(false)
     }).catch(error => {
         console.log("Post não foi realizado" + error)
