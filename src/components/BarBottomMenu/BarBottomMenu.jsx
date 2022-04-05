@@ -1,6 +1,6 @@
 import { useEffect, useState, memo } from "react";
 import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoCashOutline, IoSettingsOutline, IoPeopleOutline, IoMenuOutline,
-    IoInformationCircleOutline, IoChatbubblesOutline, IoNewspaperOutline, IoBusinessOutline } from "react-icons/io5"
+    IoInformationCircleOutline, IoChatbubblesOutline, IoNewspaperOutline, IoBusinessOutline, IoMailOpenOutline } from "react-icons/io5"
 import api from "../../services/api";
 import './barBottomMenu.css'
 
@@ -90,6 +90,12 @@ function BarBottomMenuComponenet() {
                     <button className="ButtonsUnic" >
                         <IoRadio size={20}/>
                        Radar
+                    </button>
+                    </a>
+                    <a href="/invitelist" >
+                    <button className="ButtonsUnic" >
+                        <IoMailOpenOutline size={20}/>
+                       Enviado
                     </button>
                     </a>
 
