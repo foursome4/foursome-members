@@ -64,7 +64,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: black;
     object-fit: cover;
 }
 .feed-post .post-data-media .marcadagua {
@@ -75,7 +74,7 @@
 }
 
 .feed-post .post-data-media .image{
-    width: 400px;
+    width: 425px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,7 +83,7 @@
     border-radius: 10px;
 }
 .feed-post .post-data-media .image-video{
-    width: 400px;
+    width: 425px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,7 +102,6 @@
 
 .feed-post .post-data-media .image .mark{
     width: 400px;
-    height: 400px;
     position: absolute;
     object-fit: cover;
     display: flex;
@@ -111,6 +109,7 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    background-color: rgba(216, 0, 0, 0.07);
 }
 
 .feed-post .post-data-media .image .mark h5 {
@@ -142,13 +141,13 @@
     margin-top: 250px;
 }
 
-.feed-post .post-data-media .mark .black{
+.feed-post .post-data-media .image .mark .black{
     color: rgba(0, 0, 0, 0.07);
     margin: 2px;
     font-weight: 500;
     object-fit: cover;
 }
-.feed-post .post-data-media .mark .white{
+.feed-post .post-data-media .image .mark .white{
     color: rgba(255, 255, 255, 0.07);
     margin: 2px;
     font-weight: 500;
@@ -306,10 +305,10 @@
         }
 
         .feed-post .post-data-media .image{
-            width: 350px;
+            width: 375px;
         }
         .feed-post .post-data-media .image-video{
-            width: 350px;
+            width: 375px;
         }
         
         .feed-post .post-data-media .image img{
@@ -318,7 +317,6 @@
         
         .feed-post .post-data-media .image .mark{
             width: 350px;
-            height: 350px;
 
         }
           
@@ -355,7 +353,6 @@
         
         .feed-post .post-data-media .image .mark{
             width: 350px;
-            height: 350px;
 
         }
         .feed-post .post-data-media .image-video .mark{
@@ -405,7 +402,6 @@
             
             .feed-post .post-data-media .image .mark{
                 width: 350px;
-                height: 350px;
     
             }
               
@@ -430,9 +426,20 @@
                     
                     .feed-post .post-data-media .image .mark{
                         width: 300px;
-                        height: 300px;
             
                     }
+                    .feed-post .post-data-media .image .mark .white{
+                        font-size: 14px;
+                    }
+                    .feed-post .post-data-media .image .mark .black{
+                        font-size: 14px;
+                    }
+                    .feed-post .post-data-media .markTop .black {
+                        color: rgba(0, 0, 0, 0.07);
+                        margin: 2px;
+                        font-weight: 500;
+                    }
+
                     .feed-post .post-data-media .image-video .markTop{
                         width: 300px;
                         height: 100px;
@@ -492,7 +499,6 @@
                     
                     .feed-post .post-data-media .image .mark{
                         width: 250px;
-                        height: 250px;
             
                     }
                     .feed-post .post-data-media .image-video .markTop{

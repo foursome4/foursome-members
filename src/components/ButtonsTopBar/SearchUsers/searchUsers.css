@@ -36,7 +36,7 @@
 }
 
 
-.content-modal .itensModal {
+.content-modal .itensModalSearch {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -46,25 +46,28 @@
     border: none;
     overflow-y: scroll;
     text-decoration: none;
-    background-color: var(--Background2);
     margin-bottom:7px ;
 }
 
 
-.content-modal .itensModal::-webkit-scrollbar {
+.content-modal .itensModalSearch::-webkit-scrollbar {
     width: 12px;              
   }
   
- .content-modal .itensModal::-webkit-scrollbar-track {
+ .content-modal .itensModalSearch::-webkit-scrollbar-track {
     background: var(--Background2);      
   }
   
- .content-modal .itensModal::-webkit-scrollbar-thumb {
+ .content-modal .itensModalSearch::-webkit-scrollbar-thumb {
     background-color: var(--Background-man);   
     border-radius: 20px;      
     border: 3px solid var(--Background2); 
   }
 
+
+  .content-modal .itensModalSearch .accounts {
+      width: 92%;
+  }
   
 
 .content-modal .search{

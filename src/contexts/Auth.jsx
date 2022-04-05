@@ -97,8 +97,7 @@ function AuthProvider({children}) {
         .then((res) => {
             console.log(res.data.length)
                if(res.data.length === 0) {
-                navigate("/completeregistration");
-                window.location.reload(false)
+                window.open("/completeregistration");
                 return
             }
             localStorage.setItem("informations-foursome", JSON.stringify(res.data[0]));
@@ -113,8 +112,7 @@ function AuthProvider({children}) {
         await api.get(`/preferences/${id}`)
         .then((res) => {
             if(res.data.length === 0) {
-                navigate("/preferences");
-                window.location.reload(false)
+                window.open("/preferences");
                 return
             }
             localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
@@ -129,13 +127,11 @@ function AuthProvider({children}) {
         await api.get(`/characteristics/${id}`)
         .then((res) => {
             if(res.data.length === 0) {
-                navigate("/characteristcs")
-                window.location.reload(false)
+                window.open("/characteristcs")
                 return
             }
             localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));
-            navigate("/feed") 
-            window.location.reload(false)
+            window.open("/feed", "_self") 
            
         }).catch(error => {
             console.log("Erro ao buscar dados" + error)
@@ -431,6 +427,15 @@ async function deleteReply(id) {
     const res = await api.delete(`/reply/${id}`);
     if(res.status===201) {
         toast.success('Resposta deletada com sucesso!');
+        window.location.reload(false)
+     } else {
+        toast.error('Deu algo errado ao deletar!');
+     }
+}
+async function deleteInvite(id) {
+    const res = await api.delete(`/invites/${id}`);
+    if(res.status===201) {
+        toast.success('Convite deletado com sucesso!');
         window.location.reload(false)
      } else {
         toast.error('Deu algo errado ao deletar!');
@@ -804,7 +809,8 @@ inactivityTime()
             editReply,
             newVisit,
             comentsPosts,
-            setComentsPosts
+            setComentsPosts,
+            deleteInvite
 
         }}>
             {children}

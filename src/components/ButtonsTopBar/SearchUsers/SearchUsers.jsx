@@ -76,7 +76,7 @@ function SearchUsers() {
             }
             </div>
             
-            <div className="itensModal">
+            <div className="itensModalSearch">
             {type === "username" ?
             SearchUsers.map((account) => {
                 return(
