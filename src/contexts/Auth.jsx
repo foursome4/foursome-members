@@ -111,8 +111,10 @@ function AuthProvider({children}) {
     async function findPreferencesAccount(id) {
         await api.get(`/preferences/${id}`)
         .then((res) => {
-            if(res.data === undefined || res.data === []) {
-                navigate("/preferences")
+            if(res.data.length === 0) {
+                navigate("/preferences");
+                window.location.reload(false)
+                return
             }
             localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
             findCharacteriticsAccount(id)
@@ -125,8 +127,10 @@ function AuthProvider({children}) {
     async function findCharacteriticsAccount(id) {
         await api.get(`/characteristics/${id}`)
         .then((res) => {
-            if(res.data === undefined || res.data === []) {
+            if(res.data.length === 0) {
                 navigate("/characteristcs")
+                window.location.reload(false)
+                return
             }
             localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));
             navigate("/feed") 
