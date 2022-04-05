@@ -14,6 +14,8 @@ import { Footer } from "../../components/Footer/Footer"
 function Feed() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
+
+
     const navigate = useNavigate();
            const {socketDataLocation} = useContext(AuthContext);
 
@@ -21,28 +23,26 @@ function Feed() {
                if(user.status === "blocked") {
                 navigate("/profile");
                }
-           socketDataLocation()
 
+                socketDataLocation()
            }, [])
-
-
 
 return (
         <div className="container">
             <div className="content">
                 <div className="main">
-                    <TopBar />
-                    <div className="aside">
-                        <div className="feed">
-                        <Post />
-                        <FeedPost /> 
-                        </div>
-                    <ChatSlim />
+                <TopBar />
+                <div className="aside">
+                    <div className="feed">
+                    <Post />
+                    <FeedPost /> 
                     </div>
-                    <Footer />
-                     <ToolbarLeftSlim />
-                     <BarBottomMenu />
+                <ChatSlim />
                 </div>
+                <Footer />
+                 <ToolbarLeftSlim />
+                 <BarBottomMenu />
+                 </div>
             </div>
         </div>
     )

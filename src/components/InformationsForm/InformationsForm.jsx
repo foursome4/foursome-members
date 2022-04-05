@@ -14,7 +14,7 @@ function InformationsForm() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
     const {logout} = useContext(AuthContext)
-    const {updateInformationsAccount} = useContext(AuthContext)
+    const {createInformationsAccount} = useContext(AuthContext)
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [coverUrl, setCoverUrl] = useState(null);
     const [imageAvatar, setImageAvatar] = useState('');
@@ -102,7 +102,7 @@ function InformationsForm() {
         const linkCover = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
         const avatarCover = photoUrl === "" || photoUrl === undefined || photoUrl === null ? linkCover : photoUrl
         //Salvando no banco de dados
-       updateInformationsAccount({idAccount: user.id, avatar: avatar, cover: avatarCover, city, uf, relationship, nickname});
+       createInformationsAccount({idAccount: user.id, avatar: avatar, cover: avatarCover, city, uf, relationship, nickname});
         console.log({idAccount: user.id, avatar: photoUrlAvatar, cover: photoUrl, city, uf, relationship, nickname});
         console.log(loadding);
         setLoadding(false);

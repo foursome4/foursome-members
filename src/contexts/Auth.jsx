@@ -12,6 +12,7 @@ function AuthProvider({children}) {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const [comentsPosts, setComentsPosts] = useState([])
+    const [dataInformations, setDataInformations] = useState("feed")
 
     
     const [lat, setlat] = useState("");
@@ -95,8 +96,8 @@ function AuthProvider({children}) {
         await api.get(`/informations/${id}`)
         .then((res) => {
             console.log(res.data.length)
-            if(res.data.length === 0) {
-                navigate("/completeregistration")
+               if(res.data.length === 0) {
+                navigate("/completeregistration");
                 window.location.reload(false)
                 return
             }
@@ -142,7 +143,7 @@ function AuthProvider({children}) {
         
     }
 
-    async function updateInformationsAccount({idAccount, avatar, cover, relationship, nickname, city, uf}) {
+    async function createInformationsAccount({idAccount, avatar, cover, relationship, nickname, city, uf}) {
         await api.post("/informations", {idAccount, avatar, cover, relationship, nickname, city, uf}).then(() => {
             navigate("/characteristcs");
         }).catch(error => {
@@ -168,7 +169,7 @@ function AuthProvider({children}) {
     }
 
 
-    async function updateCharacteristcs({idAccount, data,
+    async function createCharacteristcs({idAccount, data,
         sex, sign, sexualOption}) {
             setLoading(true)
             await api.post("/characteristics", {
@@ -183,7 +184,7 @@ function AuthProvider({children}) {
 
 
 
-    async function updateCharacteristcs2({idAccount, data,
+    async function createCharacteristcs2({idAccount, data,
         sex, sign, sexualOption, data2, sex2, sign2, sexualOption2}) {
             setLoading(true)
             await api.post("/characteristics", {
@@ -207,7 +208,7 @@ function AuthProvider({children}) {
 
 
 
-    async function updateCharacteristcs3({idAccount, data,
+    async function createCharacteristcs3({idAccount, data,
         sex, sign, sexualOption, data2, sex2, sign2, sexualOption2, data3, sex3, sign3, sexualOption3 }) {
             setLoading(true)
             await api.post("/characteristics", {
@@ -764,11 +765,11 @@ inactivityTime()
             createAccount,
             loading,
             logout,
-            updateInformationsAccount,
+            createInformationsAccount,
             NewUpdateInformationsAccount,
-            updateCharacteristcs,
-            updateCharacteristcs2,
-            updateCharacteristcs3,
+            createCharacteristcs,
+            createCharacteristcs2,
+            createCharacteristcs3,
             newUpdateCharacteristcs,
             newUpdateCharacteristcs2,
             newUpdateCharacteristcs3,

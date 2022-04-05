@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/Auth';
 import './characteristcsForm.css'
 
 function CharacteristcsForm() {
-    const {updateCharacteristcs, updateCharacteristcs2, updateCharacteristcs3, logout} = useContext(AuthContext);
+    const {createCharacteristcs, createCharacteristcs2, createCharacteristcs3, logout} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
     const LocalCharacteristics = localStorage.getItem("characteritics-foursome");
@@ -25,12 +25,12 @@ function CharacteristcsForm() {
     const [sign3,setSign3] = useState("");
     const [sexualOption3,setSexualOption3] = useState("");
 
-    function handleUpdateCharacteristcs(e){
+    function handleCreateCharacteristcs(e){
         e.preventDefault()
         
         if(data && sex && sign && sexualOption && data2 && sex2 && sign2 && sexualOption2 && data3 && sex3 && sign3 && sexualOption3 !== "") {
             toast.info("Salvando Caracteristicas do trisal. Aguarde...")
-            updateCharacteristcs3({
+            createCharacteristcs3({
                 idAccount: user.id,
                 data3,
                 sex3,
@@ -46,7 +46,7 @@ function CharacteristcsForm() {
                 sexualOption})
         } else if ( data && sex && sign && sexualOption && data2 && sex2 && sign2 && sexualOption2 !== "") {
             toast.info("Salvando Caracteristicas do casal. Aguarde...")
-            updateCharacteristcs2({
+            createCharacteristcs2({
                 idAccount: user.id,
                 data2,
                 sex2,
@@ -60,7 +60,7 @@ function CharacteristcsForm() {
 
         } else if ( data && sex && sign && sexualOption !== "") {
             toast.info("Salvando Caracteristicas. Aguarde...")
-            updateCharacteristcs({
+            createCharacteristcs({
                 idAccount: user.id,
                 data,
                 sex,
@@ -118,7 +118,7 @@ function CharacteristcsForm() {
                     <img src={logoImg} alt="" />
                     <h2>Caracteristicas</h2>
                     </div>
-                        <form onSubmit={handleUpdateCharacteristcs}>
+                        <form onSubmit={handleCreateCharacteristcs}>
                             <div className="data">
                             <br /><br />
                    {user.type === "Trisal" ?

@@ -24,7 +24,7 @@ function Loader() {
         function redirectToPage() {
             if(LocalInformations === "undefined") {
                 navigate("/completeregistration")
-            } else if(LocalCharacteristics === "undefined") {
+            } else if(LocalCharacteristics === "" || LocalCharacteristics === []) {
                 navigate("/characteristcs")
             } else if(LocalPreferences === "undefined") {
                 navigate("/preferences")
