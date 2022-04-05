@@ -97,7 +97,7 @@ function AuthProvider({children}) {
         .then((res) => {
             console.log(res.data.length)
                if(res.data.length === 0) {
-                window.open("/completeregistration");
+                window.open("/completeregistration","_self");
                 return
             }
             localStorage.setItem("informations-foursome", JSON.stringify(res.data[0]));
@@ -112,7 +112,7 @@ function AuthProvider({children}) {
         await api.get(`/preferences/${id}`)
         .then((res) => {
             if(res.data.length === 0) {
-                window.open("/preferences");
+                window.open("/preferences","_self");
                 return
             }
             localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
@@ -127,7 +127,7 @@ function AuthProvider({children}) {
         await api.get(`/characteristics/${id}`)
         .then((res) => {
             if(res.data.length === 0) {
-                window.open("/characteristcs")
+                window.open("/characteristcs","_self")
                 return
             }
             localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));
