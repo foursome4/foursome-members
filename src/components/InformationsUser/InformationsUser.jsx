@@ -7,8 +7,6 @@ import {FaVenus, FaMars} from 'react-icons/fa'
 function InformationsUser() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
-    const LocalInformations = localStorage.getItem("informations-foursome");
-    const informations = JSON.parse(LocalInformations);
     const LocalCharacteristics = localStorage.getItem("characteritics-foursome");
     const characteristics = JSON.parse(LocalCharacteristics);
     const LocalPreferences = localStorage.getItem("preferences-foursome");
@@ -18,7 +16,6 @@ function InformationsUser() {
     const [visits, setVisits] = useState([]);
     const [posts, setPosts] = useState([]);
     const [myFriends, setMyFriends] = useState([]);
-    const [friend, setFriend] = useState("");
     
 
 

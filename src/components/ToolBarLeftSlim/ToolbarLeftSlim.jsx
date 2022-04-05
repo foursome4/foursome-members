@@ -1,5 +1,5 @@
 import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoPeopleOutline, IoBusinessOutline,
-    IoInformationCircleOutline, IoNewspaperOutline, IoMailOpenOutline, IoSettingsOutline, IoCashOutline, IoLocateOutline } from "react-icons/io5";
+    IoInformationCircleOutline, IoNewspaperOutline, IoMailOpenOutline, IoSettingsOutline, IoCashOutline } from "react-icons/io5";
 import {memo} from 'react' 
 import './toolbarLeftSlim.css'
 

@@ -1,39 +1,13 @@
-import { FiImage, FiVideo, FiMenu, FiRefreshCw } from 'react-icons/fi'
+import { FiImage, FiVideo, FiMenu } from 'react-icons/fi'
 import './feedPost.css';
-import { useEffect, useState, memo, useCallback, useMemo} from 'react';
-import api from "../../services/api";
-import { toast } from 'react-toastify';
+import { useState, memo, } from 'react';
 import { ItemFeed } from '../ItemFeed/ItemFeed';
 import { useFetch } from '../../hooks/useFetch';
 
-function FeedPostComponent({}) {
+function FeedPostComponent() {
     const [post, setPost] = useState("");
-    // const [datas, setDatas] = useState([]);
- 
-   
-    // const  findPosts = useCallback(async () => {
-    //     const res = await api.get(`/posts/all`);
-    //     const dataPosts = (res.data)
-    //     setDatas(dataPosts)
-    // }, [])
 
-    
-    // useEffect(() => {
-    //     findPosts()
-    // }, [findPosts])
-
-  
-    // const filterPosts = useMemo(() => {
-    //     return data.filter(postData => post !== "" ? postData.type === post : postData)
-    // }, [data, post]);
-
-
-    function postUpdate() {
-        setPost("")
-        toast.info("Atualizando posts...")
-        // findPosts()
-    }
-    function postAll() {
+      function postAll() {
         setPost("")
     }
 
@@ -66,7 +40,6 @@ function FeedPostComponent({}) {
         <div className="feedPost">
             <div className="posts-feed">
             <div className="buttons">
-            <button className={""} onClick={postUpdate}> <FiRefreshCw /> Atualizar </button>
             <button className={post === "" ? 'selected' : ""} onClick={postAll}> <FiMenu /> Todos </button>
             <button className={post === "post-text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
             <button className={post === "post-photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button>

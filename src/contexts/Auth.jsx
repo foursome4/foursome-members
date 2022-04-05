@@ -12,7 +12,6 @@ function AuthProvider({children}) {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const [comentsPosts, setComentsPosts] = useState([])
-    const [dataInformations, setDataInformations] = useState("feed")
 
     
     const [lat, setlat] = useState("");
@@ -382,7 +381,7 @@ async function deletePost(id) {
     const res = await api.delete(`/posts/${id}`);
     if(res.status===201) {
         toast.success('post deletado com sucesso!');
-        // window.location.reload(false)
+       
      } else {
         toast.error('Deu algo errado ao deletar!');
      }
@@ -391,7 +390,7 @@ async function editPost(id, text) {
         const res = await api.patch(`/posts/${id}`, {text});
         if(res.status===201) {
             toast.success('post editado com sucesso!');
-            // window.location.reload(false)
+           
          } else {
             toast.error('Deu algo errado ao deletar!');
          }
@@ -399,7 +398,7 @@ async function editPost(id, text) {
 async function editComment(id, text) {
         const res = await api.patch(`/comments/${id}`, {text});
         if(res.status===201) {
-            // window.location.reload(false)
+           
          } else {
             toast.error('Deu algo errado ao deletar!');
          }
@@ -409,7 +408,7 @@ async function deleteComment(id) {
     const res = await api.delete(`/comments/${id}`);
     if(res.status===201) {
         toast.success('post deletado com sucesso!');
-        // window.location.reload(false)
+       
      } else {
         toast.error('Deu algo errado ao deletar!');
      }
@@ -417,7 +416,7 @@ async function deleteComment(id) {
 async function editReply(id, text) {
         const res = await api.patch(`/reply/${id}`, {text});
         if(res.status===201) {
-            // window.location.reload(false)
+           
          } else {
             toast.error('Deu algo errado ao deletar!');
          }
@@ -427,7 +426,7 @@ async function deleteReply(id) {
     const res = await api.delete(`/reply/${id}`);
     if(res.status===201) {
         toast.success('Resposta deletada com sucesso!');
-        // window.location.reload(false)
+       
      } else {
         toast.error('Deu algo errado ao deletar!');
      }
@@ -436,7 +435,7 @@ async function deleteInvite(id) {
     const res = await api.delete(`/invites/${id}`);
     if(res.status===201) {
         toast.success('Convite deletado com sucesso!');
-        // window.location.reload(false)
+       
      } else {
         toast.error('Deu algo errado ao deletar!');
      }
@@ -453,14 +452,14 @@ await api.post("/reactions", {idAccount, username, idPost}).then(() => {
 
 async function newComment({idAccount, idPost, text, avatar, username, nickname}) {
     await api.post("/comments", {idAccount, idPost, text,avatar, username, nickname}).then(() => {
-        // window.location.reload(false)
+       
     }).catch(error => {
         console.log("Comentário não foi realizado" + error)
     })
 }
 async function newReply({idAccount, idComment, text, avatar, username, nickname}) {
     await api.post("/reply", {idAccount, idComment, text,avatar, username, nickname}).then(() => {
-        // window.location.reload(false)
+       
     }).catch(error => {
         console.log("Resposta não foi realizado" + error)
     })

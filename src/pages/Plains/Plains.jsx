@@ -5,8 +5,6 @@ import { TopBar } from "../../components/TopBar/TopBar";
 import './plains.css'
 
 function Plains() {
-    const Local = localStorage.getItem("foursome");
-    const user = JSON.parse(Local);
 
     return(
         <div className="plains">

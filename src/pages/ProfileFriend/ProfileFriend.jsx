@@ -52,7 +52,6 @@ function ProfileFriend() {
   const [following, setFollowing] = useState("");
   const [followers, setFollowers] = useState("");
   const [width, setWidth] = useState("")
-  const [heigth, setHeigth] = useState("")
 
 useEffect(() => {
 function widthView() {
@@ -61,7 +60,6 @@ console.log(window.screen.width+'x'+window.screen.height);
 
 //resolução 'real' navegador
 setWidth((window.innerWidth > 0) ? window.innerWidth : window.screen.width);
-setHeigth((window.innerHeight > 0) ? window.innerHeight : window.screen.height);
 }
 
 widthView()
@@ -200,7 +198,7 @@ widthView()
       }
     
       createVisit()
-    }, [])
+    }, [myUser.id, myUser.username, id, newVisit ])
 
     
     function handleNewFriend(e) {
@@ -284,11 +282,6 @@ widthView()
       setFollowers("followers");
     }
 
-
-
-
-
-
     const photos = posts.filter(post => (post.type === "post-photo"));
     const allPhotos = photos.slice(0, 6)
     const videos = posts.filter(post => (post.type === "post-video"));
@@ -298,11 +291,6 @@ widthView()
     const followersMy = myFollowers.filter(friend => (friend.idFriend === user.id))
     const followingMy = myFollowers.filter(friend => (friend.idAccount === user.id))
     const FollowingExists = myFollowers.filter(friend => (friend.idAccount === myUser.id))
-
-
-
-
-   
 
   return (
       <div className="container">

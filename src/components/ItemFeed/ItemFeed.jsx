@@ -8,14 +8,11 @@ import { FiTrash2, FiEdit, FiMessageCircle } from 'react-icons/fi'
 import { useState, useContext, memo } from 'react'
 import './itemFeed.css'
 import { AuthContext } from '../../contexts/Auth'
-import { Player } from 'video-react';
 
 
 function ItemFeedComponent({idAccount, link, date, text, type, id, username, group, forum, key}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
-
-    const dateActual = new Date()
 
     const [comment, setComment] = useState(false);
     const [edit, setEdit] = useState(false);
@@ -43,9 +40,6 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
         const deletar = window.confirm("Deseja deletar a postagem?");
         if(deletar === true) {
         deletePost(id);
-    //     let deletePostActual = dataComments.filter(post => post.id !== id);
-    //     setDataComments(deletePostActual)
-    //   console.log(deletePostActual)
         } 
     }
     
@@ -147,9 +141,6 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
              type === "post-video"  ?
              <div className="post-data-media"  >
                   <div className='image-video'>
-                  {/* <div className="videoReact">
-                  <Player fluid={true} playsInline src={link} className="videoReact2"/>
-                  </div> */}
 
                   <video playsInline controls controlsList="nofullscreen nodownload">
                      <source playsInline src={link} type="video/mp4"/>

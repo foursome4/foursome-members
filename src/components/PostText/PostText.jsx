@@ -31,7 +31,6 @@ function PostText({nameForum, idForum}) {
                 idForum: idForum,
                 type: "post-text-forum",
                 text,
-                idAccount: user.id,
                 idPatrono: null
             })
         

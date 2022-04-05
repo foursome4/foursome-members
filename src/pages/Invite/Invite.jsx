@@ -2,13 +2,10 @@ import { TopBar } from "../../components/TopBar/TopBar"
 import './invite.css'
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { Footer } from "../../components/Footer/Footer"
-import { useState } from "react"
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
-import { FiCheck, FiMail, FiSend} from "react-icons/fi"
-import { FaWhatsapp } from "react-icons/fa"
+import { FiCheck, } from "react-icons/fi"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { InviteEmail } from "../../components/ComponentsInvites/InviteEmail/InviteEmail"
-import { InviteWhatsapp } from "../../components/ComponentsInvites/InviteWhatsapp/InviteWhatsapp"
 
 
 function Invite() {
@@ -16,18 +13,7 @@ function Invite() {
     const userInformation = JSON.parse(LocalInformation);
 
 
-    // const [typeInvite, setTypeInvite] = useState("Email");
-
-
-
-    //   function handleInviteForEmail(){
-    //     setTypeInvite("Email")
-    //   }
-    //   function handleInviteForWhatsapp(){
-    //     setTypeInvite("Whatsapp")
-    //   }
-
-   
+  
     return (
         <div className="content-invite">
             <ToolbarLeftSlim />
@@ -50,21 +36,8 @@ function Invite() {
                                         <p><FiCheck /> Você se torna amplamente responsável pelos atos de seu convidado, podendo sofrer as mesmas punições que ele, em caso de má conduta.</p>
                                        </div>
                                     </div>
-{/* 
-                                    <div className="buttons">
-                                      <button onClick={handleInviteForEmail}>E-mail <FiMail /></button>
-                                      <button onClick={handleInviteForWhatsapp}>Whatsapp <FaWhatsapp /></button>
-                                    </div>
-                                    <br />
-                                    { typeInvite === "Email" ? */}
-                                 <InviteEmail />
-                                  {/* // :
-                                  // typeInvite === "Whatsapp" ?
-                                  // <InviteWhatsapp />
-                                // :""
-                                  
-                                //   } */}
-                                   
+
+                                 <InviteEmail />       
                                 
                                 </div>
 

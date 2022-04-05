@@ -1,16 +1,14 @@
 import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSlim'
 import { TopBar } from '../../components/TopBar/TopBar'
-import {FiCheck, FiCheckSquare, FiHome, FiInfo, FiMoreVertical, FiUser, FiXSquare} from 'react-icons/fi'
+import { FiCheckSquare, FiHome, FiInfo, FiMoreVertical, FiUser, FiXSquare} from 'react-icons/fi'
 import './eventIndividual.css'
 
-import {useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
-import { Link, useParams } from 'react-router-dom'
-import { AuthContext } from '../../contexts/Auth'
+import {  useParams } from 'react-router-dom'
 import { FeedPostEvent } from '../../components/FeedPostEvent/FeedPostEvent'
 import { PostTextEvent } from '../../components/PostTextEvent/PostTextEvent'
-import { set } from 'date-fns/esm'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 import { Footer } from '../../components/Footer/Footer'
 
@@ -44,6 +42,7 @@ function EventIndividual() {
       const [username, setUsername] = useState("");
       const [avatarUser, setAvatarUser] = useState("");
 
+      console.log(theme, date, cep, idEvent, idAccount)
 
   useEffect(() => {
     async function loadGroups(){
@@ -72,7 +71,7 @@ function EventIndividual() {
     }
 
     loadGroups()
-}, []);
+}, [id]);
 
 
      function handleFeed() {

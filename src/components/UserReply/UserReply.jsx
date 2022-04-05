@@ -3,20 +3,15 @@ import api from '../../services/api'
 import './userReply.css'
 import { FiTrash2, FiEdit } from 'react-icons/fi'
 import { AuthContext } from '../../contexts/Auth';
-import { NewReply } from '../NewReply/NewReply';
 import { EditReply } from '../EditReply/EditReply';
 import { DateFormat } from '../DateFormat/DateFormat';
 
 function UserReply({idAccount, username, date, id, text}) {
-    const {newComment, deleteReply} = useContext(AuthContext);
+    const { deleteReply} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
 
 
-    const [reply, setReply] = useState(false);
-    const [commentText, setReplyText] = useState("");
     const [edit, setEdit] = useState(false);
     const [nickname, setNickname] = useState('')
     const [avatar, setAvatar] = useState('')
@@ -81,10 +76,6 @@ function UserReply({idAccount, username, date, id, text}) {
 
             {edit === true ?
             <EditReply id={id} data={text}/>
-                     :
-                     ""}
-            {reply === true ?
-            <NewReply id={id} username={username}/>
                      :
                      ""}
        </div>

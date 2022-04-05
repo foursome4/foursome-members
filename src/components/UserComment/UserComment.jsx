@@ -1,7 +1,6 @@
-import { useState,useEffect, useContext} from 'react'
+import { useState,useEffect} from 'react'
 import api from '../../services/api'
 import './userComment.css'
-import { AuthContext } from '../../contexts/Auth';
 
 import { DateFormat } from '../DateFormat/DateFormat';
 

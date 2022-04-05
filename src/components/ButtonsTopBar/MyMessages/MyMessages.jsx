@@ -18,7 +18,7 @@ function MyMessages() {
     const [rooms2, setRooms2] = useState([])
     const [notification, setNotification] = useState([])
 
- 
+  console.log(date)
     useEffect(() => {
         async function loadRoomIdAccount() {
             const idAccount = user.id
@@ -56,7 +56,7 @@ function MyMessages() {
                     idAccount: user.id,
                     DateReadMessage: new Date() 
                 }
-                await api.post(`/datereadmessage`, data) .then(() => {
+                await api.post(`/datereadmessage`, data).then(() => {
                 }).catch(error => {
             console.log("Erro ao buscar dados" + error)
         })
@@ -88,7 +88,7 @@ function MyMessages() {
     const newRooms = rooms.concat(rooms2);
     const notificationsFilter = useMemo(() => {
       notification.filter((notification) => (new Date(notification.created_at) > new Date(dateReadMessage.DateReadMessage) ))
-    }, [notification])
+    }, [notification, dateReadMessage.DateReadMessage])
 
 
     function handleOpenModal() {

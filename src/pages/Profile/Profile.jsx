@@ -33,14 +33,12 @@ function Profile() {
   const [video, setVideo] = useState("");
   const [group, setGroup] = useState("");
   const [forum, setForum] = useState("");
-  const [setting, setSetting] = useState("");
   const [myFriends, setMyFriends] = useState([]);
   const [myFollowers, setMyFollowers] = useState([]);
   const [friends, setFriends] = useState("friends");
   const [following, setFollowing] = useState("following");
   const [followers, setFollowers] = useState("");
   const [width, setWidth] = useState("")
-    const [heigth, setHeigth] = useState("")
 
 useEffect(() => {
   function widthView() {
@@ -49,7 +47,6 @@ console.log(window.screen.width+'x'+window.screen.height);
 
 //resolução 'real' navegador
 setWidth((window.innerWidth > 0) ? window.innerWidth : window.screen.width);
-setHeigth((window.innerHeight > 0) ? window.innerHeight : window.screen.height);
 }
 
 widthView()
@@ -87,7 +84,7 @@ widthView()
         setVideo("")
         setGroup("")
         setForum("")
-        setSetting("")
+
     }
 
     function handleFriend() {
@@ -97,7 +94,6 @@ widthView()
       setVideo("")
       setGroup("")
       setForum("")
-      setSetting("")
     }
 
     function handlePhoto() {
@@ -107,7 +103,6 @@ widthView()
       setVideo("")
       setGroup("")
       setForum("")
-      setSetting("")
     }
 
     function handleVideo() {
@@ -117,7 +112,6 @@ widthView()
       setVideo("video")
       setGroup("")
       setForum("")
-      setSetting("")
     }
 
     function handleForum() {
@@ -127,7 +121,6 @@ widthView()
       setVideo("")
       setGroup("")
       setForum("forum")
-      setSetting("")
     }
 
     function handleFriends() {

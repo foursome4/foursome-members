@@ -12,7 +12,7 @@ function FeedCommentsComponent({idPost}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
-    const {deleteComment, comentsPosts} = useContext(AuthContext);
+    const {deleteComment} = useContext(AuthContext);
     const [dataComments, setDataComments] = useState([]);
     const [reply, setReply] = useState(false);
     const [edit, setEdit] = useState(false);

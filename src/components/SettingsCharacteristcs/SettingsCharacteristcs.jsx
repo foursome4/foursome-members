@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import { FiRefreshCcw } from 'react-icons/fi';
-import logoImg from '../../assets/images/logo.png';
 import { AuthContext } from '../../contexts/Auth';
 import api from '../../services/api';
 import './settingsCharacteristcs.css'
@@ -71,7 +70,7 @@ function SettingsCharacteristcs() {
           }
 
           loadCharacteristcs()
-    }, [])
+    }, [user.id])
 
 
     function handleUpdateCharacteristcs(e){

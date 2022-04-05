@@ -1,6 +1,5 @@
 import './listInvites.css'
-import {useState, useEffect, useContext} from 'react'
-import api from '../../../services/api';
+import { useContext} from 'react'
 import { AuthContext } from '../../../contexts/Auth';
 import { useFetch } from '../../../hooks/useFetch';
 

@@ -18,7 +18,7 @@ function Photos({idAccount, type}) {
 
       findPosts()
 
-  }, [])
+  }, [idAccount, type])
 
 
     return(

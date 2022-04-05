@@ -17,7 +17,7 @@ function Recuperation() {
       if(localStorage.getItem("foursome") !== null) {
         navigate("/loader")
       }
-    },[])
+    },[navigate])
 
 
   function handleCreateAccount(e) {

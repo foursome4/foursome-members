@@ -10,7 +10,7 @@ function Footer() {
             </div>
 
             <div className="developer">
-                <p> Feito por <b> <a href="https://www.codingit.com.br/" target="_blank">Coding.It</a></b></p>
+                <p> Feito por <b> <a href="https://www.codingit.com.br/" target="_blank" rel="noreferrer">Coding.It</a></b></p>
             </div>
         </div>
     )

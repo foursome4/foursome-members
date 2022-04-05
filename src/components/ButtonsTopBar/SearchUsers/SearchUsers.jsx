@@ -1,34 +1,27 @@
 import './searchUsers.css'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { UsersSearch } from './UsersSearch/UsersSearch';
 import { IoSearchOutline, IoCloseOutline} from 'react-icons/io5';
 import Modal from 'react-modal';
-import api from '../../../services/api';
+import { useFetch } from '../../../hooks/useFetch';
 
 function SearchUsers() {
     const [isOpenModalSearch, setIsOpenModalSearch] = useState(false);
 
-    const [accounts, setAccoounts] = useState([]) 
     const [search, setSearch] = useState('')
     const [searchId, setSearchId] = useState('')
     const [type, setType] = useState("username")
 
 
-    useEffect(() => {
-        async function loadAccounts() {
-            await api.get("/accounts").then((result) => {
-                setAccoounts(result.data)
-            })
-        }
+    const {data} = useFetch(`/accounts`);
 
-        loadAccounts() 
-    }, [])
-    
+    let SearchUsers = []
+    let SearchUsersId = []
 
-
-    const SearchUsers = accounts.filter((account) => account.username.startsWith(search))
-    const SearchUsersId = accounts.filter((account) => account.id.startsWith(searchId))
-
+    if(data) {
+        SearchUsers = data?.filter((account) => account.username.startsWith(search))
+        SearchUsersId = data?.filter((account) => account.id.startsWith(searchId))
+    }
 
     function handleOpenModalSearch() {
         setIsOpenModalSearch(true)

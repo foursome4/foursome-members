@@ -1,14 +1,13 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import logoImg from '../../assets/images/logo.png';
 import { AuthContext } from '../../contexts/Auth';
 import './characteristcsForm.css'
 
 function CharacteristcsForm() {
-    const {createCharacteristcs, createCharacteristcs2, createCharacteristcs3, logout} = useContext(AuthContext);
+    const {createCharacteristcs, createCharacteristcs2, createCharacteristcs3} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
-    const LocalCharacteristics = localStorage.getItem("characteritics-foursome");
 
     const [data,setData] = useState("");
     const [sex,setSex] = useState("");

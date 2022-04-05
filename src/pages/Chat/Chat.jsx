@@ -6,13 +6,12 @@ import { useState, useEffect, useRef} from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { socket } from '../../services/websocket'
 import api from '../../services/api'
-import { FiSend, FiUpload, FiPlus, FiVideo, FiImage } from 'react-icons/fi'
+import { FiSend, FiPlus, FiVideo, FiImage } from 'react-icons/fi'
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes} from 'firebase/storage'
 import { v4 as uuidv4 } from 'uuid'
 import {DeleteMessage} from '../../components/DeleteMessage/DeleteMessage'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu';
-import {toast} from 'react-toastify';
 
    
 function Chat() {

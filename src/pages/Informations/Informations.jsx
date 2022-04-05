@@ -5,8 +5,6 @@ import { TopBar } from "../../components/TopBar/TopBar";
 import './informations.css'
 
 function Informations() {
-    const Local = localStorage.getItem("foursome");
-    const user = JSON.parse(Local);
 
     return(
         <div className="informations">

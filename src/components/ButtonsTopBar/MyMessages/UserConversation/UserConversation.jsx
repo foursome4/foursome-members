@@ -33,17 +33,17 @@ function UserConversation({idAccount, room}) {
 
         loadInformations()
         loadMesages()
-    }, [idAccount]);
+    }, [idAccount, room ]);
 
  
 
      const myMessages = useMemo(() => {
         messages.filter((message) => (message.idAccount === user.id));
-    }, [messages]) ;
+    }, [messages, user.id]) ;
 
     const friendMessage = useMemo(() => {
     messages.filter((message) => (message.idAccount !== user.id));
-    }, [messages]) ;
+    }, [messages, user.id]) ;
 
     const newMessages = useMemo(() => {
             if(myMessages !== undefined && friendMessage !== undefined ) {

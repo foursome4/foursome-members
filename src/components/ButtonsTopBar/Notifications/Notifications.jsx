@@ -16,7 +16,7 @@ function Notifications() {
     const [isOpenModalNotifications, setIsOpenModalNotifications] = useState(false);
     const [notifications, setNotifications] = useState([]);
 
-
+    console.log(date)
 
          const loadDateRead = useCallback(async () => {
              const idAccount = user.id
@@ -30,7 +30,7 @@ function Notifications() {
                          idAccount: user.id,
                          DateRead: new Date() 
                      }
-                     await api.post(`/dateread`, data) .then((res) => {
+                     await api.post(`/dateread`, data).then(() => {
                          console.log("Data inicial definida com sucesso!")
                      }).catch(error => {
                  console.log("Erro ao buscar dados" + error)

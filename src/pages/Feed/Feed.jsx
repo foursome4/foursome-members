@@ -25,7 +25,7 @@ function Feed() {
                }
 
                 socketDataLocation()
-           }, [])
+           }, [navigate, socketDataLocation, user.status])
 
 return (
         <div className="container">

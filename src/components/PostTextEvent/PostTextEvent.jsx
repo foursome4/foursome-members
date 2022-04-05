@@ -29,7 +29,6 @@ function PostTextEvent({nameEvent, idEvent}) {
                 idForum: "",
                 type: "post-text-event",
                 text,
-                idAccount: user.id,
                 idPatrono: null
             })
     

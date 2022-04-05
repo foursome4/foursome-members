@@ -11,10 +11,6 @@ import { TopBar } from "../../components/TopBar/TopBar";
 import './settings.css'
 
 function Settings() {
-    const Local = localStorage.getItem("foursome");
-    const user = JSON.parse(Local);
-
-
     const [informations, setInformations] = useState("informations");
     const [characteristcs, setCharacteristcs] = useState("");
     const [preferences, setPreferences] = useState("");
