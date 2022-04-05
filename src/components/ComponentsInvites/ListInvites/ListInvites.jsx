@@ -8,19 +8,6 @@ function ListInvites() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
     const {deleteInvite} = useContext(AuthContext);
-    // const [invites, setInvites] = useState([])
-
-    // useEffect(() => {
-    //     const idAccount = user.id
-    //     async function loadInvites() {
-    //       await api.get(`/invites/${idAccount}`).then((result) => {
-    //         const data = result.data;
-    //         console.log(result.data)
-    //         setInvites(data)
-    //       })
-    //     }
-    //     loadInvites()
-    //   }, [user.id])
 
     const idAccount = user.id
     const {data} = useFetch(`/invites/${idAccount}`);
@@ -29,8 +16,6 @@ function ListInvites() {
         const deletar = window.confirm("Deseja deletar a postagem?");
         if(deletar === true) {
         deleteInvite(id);
-        // let deletePostActual = invites.filter(invite => invite.id !== id);
-        // setInvites(deletePostActual)
         } 
       }
 
