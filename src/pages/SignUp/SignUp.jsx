@@ -149,11 +149,7 @@ function SignUp() {
           <button onClick={handleCreateAccount}> Cadastrar </button>
           </div>
         </div>
-        {/* <div className="footer">
-          <a href="https://www.codingit.com.br" target="_blank" rel="noreferrer">
-            <img src={codingIt} alt="" />
-          </a>
-        </div> */}
+
         
       </div>
     </div>
