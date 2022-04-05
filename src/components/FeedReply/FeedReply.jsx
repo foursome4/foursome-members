@@ -1,28 +1,19 @@
 import './feedReply.css';
-import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../contexts/Auth';
-import api from "../../services/api";
 import { UserReply } from '../UserReply/UserReply';
+import { useFetch } from '../../hooks/useFetch';
 
 function FeedReply({idComment}) {
-    const [reply, setReply] = useState([]);
-    const {user} = useContext(AuthContext);
-    useEffect(() => {
-          async function Comments() {
-            const res = await api.get(`/reply/${idComment}`);
-            const dataPosts = (res.data)
-            setReply(dataPosts)
-        }
-        Comments()
-    }, [idComment])
+
+    const {data} = useFetch(`/reply/${idComment}`);
+
 
 
 
     return (
-        reply.length === 0 ? "" :    
+        data?.length === 0 ? "" :    
         <div className="feedReply">
            
-                             {reply.map((replys) => {
+                             {data?.map((replys) => {
                                  return (
                                     <div className="feed-reply" key={replys.id}>
                                     <UserReply idAccount={replys.idAccount} username={replys.username} date={replys.created_at} text={replys.text} id={replys.id}/>

@@ -2,31 +2,35 @@ import './listInvites.css'
 import {useState, useEffect, useContext} from 'react'
 import api from '../../../services/api';
 import { AuthContext } from '../../../contexts/Auth';
+import { useFetch } from '../../../hooks/useFetch';
 
 function ListInvites() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
     const {deleteInvite} = useContext(AuthContext);
-    const [invites, setInvites] = useState([])
+    // const [invites, setInvites] = useState([])
 
-    useEffect(() => {
-        const idAccount = user.id
-        async function loadInvites() {
-          await api.get(`/invites/${idAccount}`).then((result) => {
-            const data = result.data;
-            console.log(result.data)
-            setInvites(data)
-          })
-        }
-        loadInvites()
-      }, [user.id])
+    // useEffect(() => {
+    //     const idAccount = user.id
+    //     async function loadInvites() {
+    //       await api.get(`/invites/${idAccount}`).then((result) => {
+    //         const data = result.data;
+    //         console.log(result.data)
+    //         setInvites(data)
+    //       })
+    //     }
+    //     loadInvites()
+    //   }, [user.id])
+
+    const idAccount = user.id
+    const {data} = useFetch(`/invites/${idAccount}`);
 
       function handleDeleteInvite(id) {
         const deletar = window.confirm("Deseja deletar a postagem?");
         if(deletar === true) {
         deleteInvite(id);
-        let deletePostActual = invites.filter(invite => invite.id !== id);
-        setInvites(deletePostActual)
+        // let deletePostActual = invites.filter(invite => invite.id !== id);
+        // setInvites(deletePostActual)
         } 
       }
 
@@ -34,7 +38,7 @@ function ListInvites() {
 
     return(
         <>
-        {invites.map((invite) => {
+        {data?.map((invite) => {
                                   return (
                                     <div className="inviteUnic" key={invite.email}>
                                       <h5><b>{invite.name}</b></h5>

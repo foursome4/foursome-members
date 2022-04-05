@@ -23,6 +23,7 @@ function SearchUsers() {
 
         loadAccounts() 
     }, [])
+    
 
 
     const SearchUsers = accounts.filter((account) => account.username.startsWith(search))

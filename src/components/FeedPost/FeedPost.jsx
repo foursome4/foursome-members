@@ -50,10 +50,17 @@ function FeedPostComponent({}) {
     }
 
 
+    // const {data} = useFetch(`https://api-foursome.herokuapp.com/posts/all`);
     const {data} = useFetch(post === "" ? `https://api-foursome.herokuapp.com/posts/all` : `https://api-foursome.herokuapp.com/posts/filter/${post}`);
     console.log(data)
 
-   
+    if(!data) {
+        return (
+            <div className="load">
+                <h3>Carregando...</h3>
+            </div>
+        )
+    }
     return (
 
         <div className="feedPost">

@@ -1,11 +1,11 @@
 import './solicitationsFriend.css';
-import { useEffect, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import Modal from 'react-modal';
-import api from "../../../services/api";
 import ReactTooltip from 'react-tooltip';
 import { IoPersonAddOutline, IoCloseOutline, IoCheckboxOutline, IoHeartOutline,IoTrashOutline} from 'react-icons/io5';
 import { UsersPending } from './UsersPending/UsersPending';
 import { AuthContext } from "../../../contexts/Auth";
+import { useFetch } from '../../../hooks/useFetch';
 
 function SolicitationsFriend() {
     const {friendAproved, deleteFriend, deleteFriendAndFollower} = useContext(AuthContext);
@@ -13,22 +13,18 @@ function SolicitationsFriend() {
     const user = JSON.parse(Local);
 
     const [isOpenModalFriend, setIsOpenModalFriend] = useState(false);
-    const [myFriends, setMyFriends] = useState([]);
 
 
-    useEffect(() => {
-        async function loadFriends() {
-            const idAccount = user.id;
-            const result = await api.get(`/friends/${idAccount}`);
-            setMyFriends(result.data)
-          }
+    const idAccount = user.id;
+    const {data} = useFetch(`/friends/${idAccount}`);
 
-          loadFriends()
+    let friendPending = []
 
-    }, [user.id]);
+    if(data) {
+        friendPending = data?.filter(friend => (friend.status === 'pending' && friend.idFriend === user.id));
+    }
 
 
-    const friendPending = myFriends.filter(friend => (friend.status === 'pending' && friend.idFriend === user.id));
 
 
     function handleOpenModalFriend() {

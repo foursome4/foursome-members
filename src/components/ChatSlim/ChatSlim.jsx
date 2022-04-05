@@ -1,29 +1,18 @@
 
 import './chatSlim.css'
-import { useEffect, useState } from 'react'
 import { FaCircle } from 'react-icons/fa'
-import api from '../../services/api'
+import { useFetch } from '../../hooks/useFetch';
 
 function ChatSlim() {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
-    const [users, setUsers] = useState([])
-
-useEffect(() => {
-    async function loadUsersONline() {
-        await api.get("/online").then((res) => {
-            setUsers(res.data)
-        })
-    }
-
-    loadUsersONline()
-}, [])
+const {data} = useFetch(`/online`);
 
      
     return (
         <div className="content-chat">
-            {users.map((user) => {
+            {data?.map((user) => {
                 return (
                     user.idAccount === userData.id ? "" :
                     <div className="chat-avatar" key={user.idAccount}>

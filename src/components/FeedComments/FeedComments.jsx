@@ -1,12 +1,12 @@
 import './FeedComments.css';
-import { useContext, useEffect, useState, memo } from 'react';
+import { useContext, useState, memo } from 'react';
 import { AuthContext } from '../../contexts/Auth';
-import api from "../../services/api";
 import { UserComment } from '../UserComment/UserComment';
 import { FeedReply } from '../FeedReply/FeedReply';
 import { NewReply } from '../NewReply/NewReply';
 import { EditComment } from '../EditComment/EditComment';
 import { FiTrash2, FiEdit, FiCornerDownLeft } from 'react-icons/fi'
+import { useFetch } from '../../hooks/useFetch';
 
 function FeedCommentsComponent({idPost}) {
     const Local = localStorage.getItem("foursome");
@@ -17,17 +17,7 @@ function FeedCommentsComponent({idPost}) {
     const [reply, setReply] = useState(false);
     const [edit, setEdit] = useState(false);
 
-    useEffect(() => {
-          async function Comments() {
-            const res = await api.get(`/comments/${idPost}`);
-            const dataPosts = (res.data)
-            setDataComments(dataPosts)
-
-        }
-
-        Comments()
-
-    }, [idPost])
+       const {data} = useFetch(`/comments/${idPost}`);
 
 
 
@@ -64,10 +54,10 @@ function FeedCommentsComponent({idPost}) {
 
     return (
         <div className="feedComments">
-            <h5>{dataComments.length} {dataComments.length === 1 ? "comentário" : "comentários"}</h5>
+            <h5>{data?.length} {data?.length === 1 ? "comentário" : "comentários"}</h5>
 
                     
-                             {dataComments.map((comments) => {
+                             {data?.map((comments) => {
                                  return (
                                     <div className="feed-comment" key={comments.id}>
                                     <UserComment idAccount={comments.idAccount} username={comments.username}

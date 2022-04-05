@@ -1,25 +1,16 @@
-import { useEffect, useState, memo } from "react";
+import { useState, memo } from "react";
 import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoCashOutline, IoSettingsOutline, IoPeopleOutline, IoMenuOutline,
     IoInformationCircleOutline, IoChatbubblesOutline, IoNewspaperOutline, IoBusinessOutline, IoMailOpenOutline } from "react-icons/io5"
-import api from "../../services/api";
+import { useFetch } from "../../hooks/useFetch";
 import './barBottomMenu.css'
 
 function BarBottomMenuComponenet() {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
     const [select, setSelect] = useState(false);
-    const [users, setUsers] = useState([]);
 
-    useEffect(() => {
-        async function loadUsersONline() {
-            await api.get("/online").then((res) => {
-                setUsers(res.data)
-        })
-    }
 
-    loadUsersONline()
-}, [])
-
+const {data} = useFetch(`/online`);
 
     function handleOpenUsersOnline (e) {
         e.preventDefault()
@@ -127,7 +118,7 @@ function BarBottomMenuComponenet() {
                        <IoMenuOutline size={20}/>Menu
                    </button>
 
-                   {users.map((user) => {
+                   {data?.map((user) => {
                        return(             
                     user.idAccount === userData.id ? "" :
                <a href={`/profile-friend/${user.idAccount}`} key={user.idAccount}>

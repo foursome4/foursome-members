@@ -1,3 +1,13 @@
+.load {
+    margin-top: 20px;
+    width: 70%;
+    padding: 20px;
+    background-color: var(--Background);
+    color: var(--Gray_font1);
+    border-radius: 6px;
+    margin-bottom: 300px;
+}
+
 .feedPost {
     display: flex;
     flex-direction: column;
