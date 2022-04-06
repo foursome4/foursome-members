@@ -57,7 +57,7 @@ function UserConversation({idAccount, room}) {
         messages.length === 0 ? "" :       
        <div className="item">
            <div className="image">
-           <Link to={`/chat/${room}`}>
+           <Link to={`/chat/${room}/${idAccount}`}>
            <img src={avatar} alt="" />
            </Link>
            </div>
