@@ -5,6 +5,7 @@ import { UserConversation } from './UserConversation/UserConversation';
 import { IoChatboxOutline, IoCloseOutline} from 'react-icons/io5';
 import { useEffect, useState,useMemo } from 'react';
 import ReactTooltip from 'react-tooltip';
+import { useFetch } from '../../../hooks/useFetch';
 
 function MyMessages() {
     const Local = localStorage.getItem("foursome");
@@ -42,7 +43,14 @@ function MyMessages() {
 
           loadRoomIdAccount()
           loadRoomIDFriend()
-    }, [user.id])
+    }, [user.id]);
+
+
+    const newRooms = rooms.concat(rooms2);
+
+
+
+
 
     useEffect(() => {
       async function loadDateRead() {
@@ -70,25 +78,16 @@ function MyMessages() {
       loadDateRead()
     }, [user.id])
 
-    useEffect(() => {
-      async function loadNotificationsMessage() {
-        const idFriend = user.id;
-        await api.get(`notificationsmessage/my/${idFriend}`).then((res) => {
-          console.log(res.data)
-          setNotification(res.data)
-        }).catch((error) => {
-          console.log(error)
-        })
-      }
+    const idFriend = user.id;
+    const {data} = useFetch(`notificationsmessage/my/${idFriend}`);
 
-      loadNotificationsMessage()
-    }, [user.id])
+    let notificationsFilter = [];
+
+    if(data) {
+      notificationsFilter = data?.filter((notification) => (new Date(notification.created_at) > new Date(dateReadMessage.DateReadMessage) ))
+    }
 
 
-    const newRooms = rooms.concat(rooms2);
-    const notificationsFilter = useMemo(() => {
-      notification.filter((notification) => (new Date(notification.created_at) > new Date(dateReadMessage.DateReadMessage) ))
-    }, [notification, dateReadMessage.DateReadMessage])
 
 
     function handleOpenModal() {
@@ -114,6 +113,8 @@ function MyMessages() {
         }).catch(error => {
         console.log("Erro ao buscar dados" + error)
     })
+
+    console.log(data)
       }
 
       function handleNewDate(date) {
@@ -126,7 +127,7 @@ function MyMessages() {
         <>
                 <div className="link" onClick={handleMessages} data-tip data-for='Mensagens'>
 
-                {notificationsFilter === undefined ? "" :
+                {notificationsFilter.length === 0 ? "" :
                     <div className="counter"></div>
                     }
                     

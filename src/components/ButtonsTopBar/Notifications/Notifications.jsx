@@ -5,6 +5,7 @@ import api from "../../../services/api";
 import ReactTooltip from 'react-tooltip';
 import { UsersNotifications } from './UsersNotifications/UsersNotifications';
 import { IoNotificationsOutline, IoCloseOutline} from 'react-icons/io5';
+import { useFetch } from '../../../hooks/useFetch';
 
 function Notifications() {
     const Local = localStorage.getItem("foursome");
@@ -42,20 +43,17 @@ function Notifications() {
          
          }, [user.id]) 
 
-         const loadNotifications = useCallback(async () => {
-            const idPatrono = user.id
-          const result = await api.get(`/notifications/my/${idPatrono}`);
-          setNotifications(result.data)
-          console.log(result.data)
-        }, [user.id]) 
-
     useEffect(() => {
         loadDateRead()
-        loadNotifications()
-    }, [loadDateRead, loadNotifications ]);
+    }, [loadDateRead ]);
 
+    const idPatrono = user.id
+    const {data} = useFetch(`/notifications/my/${idPatrono}`);
 
-    const notificationsFilter = notifications.filter((notification) => (new Date(notification.created_at) > new Date(dateRead.DateRead) ))
+    let notificationsFilter = [];
+    if(data) {
+        notificationsFilter = data?.filter((notification) => (new Date(notification.created_at) > new Date(dateRead.DateRead) ))
+    }
 
 
     function handleOpenModalNotifications() {
@@ -119,7 +117,7 @@ function Notifications() {
             </div>
             
             <div className="itensModalNotifications">
-            {notifications.map((notification) => {
+            {data?.map((notification) => {
 
                 return(
                     <div className="notification" key={notification.id}>
