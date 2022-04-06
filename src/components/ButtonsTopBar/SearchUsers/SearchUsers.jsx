@@ -9,18 +9,16 @@ function SearchUsers() {
     const [isOpenModalSearch, setIsOpenModalSearch] = useState(false);
 
     const [search, setSearch] = useState('')
-    const [searchId, setSearchId] = useState('')
     const [type, setType] = useState("username")
 
 
-    const {data} = useFetch(`/accounts`);
+    const {data} = useFetch(`/informations`);
 
     let SearchUsers = []
-    let SearchUsersId = []
+    const searchLower = search.toLowerCase()
 
     if(data) {
-        SearchUsers = data?.filter((account) => account.username.startsWith(search))
-        SearchUsersId = data?.filter((account) => account.id.startsWith(searchId))
+        SearchUsers = data?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower))
     }
 
     function handleOpenModalSearch() {
@@ -59,38 +57,18 @@ function SearchUsers() {
             <h3>Busca de usuários</h3>
         
             <div className="search">
-           <select  value={type} onChange={handleSelectTypeSearch}>
-                <option value="username">Usuário</option>
-                <option value="id">id</option>
-            </select>
-            {type === "username" ?
-            <input type="text" placeholder='buscar usuário' value={search.toLowerCase()} onChange={(e) => setSearch(e.target.value)}/>
-            :
-            <input type="text" placeholder='buscar pelo Id' value={searchId.toLowerCase()} onChange={(e) => setSearchId(e.target.value)}/>
-            }
+            <input type="text" placeholder='Buscar usuário' value={search.toLowerCase()} onChange={(e) => setSearch(e.target.value)}/>
             </div>
             
             <div className="itensModalSearch">
-            {type === "username" ?
-            SearchUsers.map((account) => {
+          
+            {SearchUsers.map((information) => {
                 return(
-                    
-                    <div className="accounts" key={account.id}>
-                      <UsersSearch id={account.id} username={account.username} />
+                    <div className="accounts" key={information.idAccount}>
+                      <UsersSearch id={information.idAccount} nickname={information.nickname} avatar={information.avatar}/>
                     </div>
                 )
-            })
-                :
-                SearchUsersId.map((account) => {
-                    return(
-                        
-                        <div className="accounts" key={account.id}>
-                           <UsersSearch id={account.id} username={account.username} />
-                        </div>
-                    )
-            
-                })
-            }
+            })}
             
             </div>
             <div className="buttons-modal">

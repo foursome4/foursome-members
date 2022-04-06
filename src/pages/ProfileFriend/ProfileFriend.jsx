@@ -332,11 +332,9 @@ widthView()
               <div className="infos">
                     <div className="info">
                     <div className="name">
-                        <h5>@{user !== null ? user.username :"User Test"}</h5>
                         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
                     </div>
                     <div className="name">
-                        <br />
                         <h4>Patrono: {patron !== null ?  <Link to={patron.id === user.id ? `/profile` : `/profile-friend/${patron.id}`}>{patron.username}</Link> :"Patrono não eocnotrado"}</h4>
                         <br />
                        </div>
