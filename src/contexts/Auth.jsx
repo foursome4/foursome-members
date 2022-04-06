@@ -138,6 +138,64 @@ function AuthProvider({children}) {
         
     }
 
+
+//Deletando conta
+
+
+async function deleteAccount() {
+    toast.success("Deletendo sua conta")
+    const Local = localStorage.getItem("foursome");
+    const user = JSON.parse(Local);
+    const res = await api.delete(`/accounts/${user.id}`);
+    if(res.status===201) {
+        deleteInformations()
+       
+     } else {
+        toast.error('Deu algo errado ao deletar!');
+     }
+}
+
+async function deleteInformations() {
+    const Local = localStorage.getItem("informations-foursome");
+    const user = JSON.parse(Local);
+
+    const res = await api.delete(`/informations/${user.idAccount}`);
+    if(res.status===201) {
+        deleteCharacteristcs()
+       
+     } else {
+        toast.error('Deu algo errado ao deletar!');
+     }
+}
+async function deleteCharacteristcs() {
+    const Local = localStorage.getItem("characteritics-foursome");
+    const user = JSON.parse(Local);
+    const res = await api.delete(`/characteristics/${user.idAccount}`);
+    if(res.status===201) {
+        deletePreferences()
+       
+     } else {
+        toast.error('Deu algo errado ao deletar!');
+     }
+}
+async function deletePreferences() {
+    const Local = localStorage.getItem("preferences-foursome");
+    const user = JSON.parse(Local);
+
+    const res = await api.delete(`/preferences/${user.idAccount}`);
+    if(res.status===201) {
+        toast.success("Conta deletada com sucesso")
+        logout(user.idAccount)
+       
+     } else {
+        toast.error('Deu algo errado ao deletar!');
+     }
+}
+
+//Fim deletando conta
+
+
+
     async function createInformationsAccount({idAccount, avatar, cover, relationship, nickname, city, uf}) {
         await api.post("/informations", {idAccount, avatar, cover, relationship, nickname, city, uf}).then(() => {
             navigate("/characteristcs");
@@ -809,7 +867,8 @@ inactivityTime()
             newVisit,
             comentsPosts,
             setComentsPosts,
-            deleteInvite
+            deleteInvite,
+            deleteAccount
 
         }}>
             {children}

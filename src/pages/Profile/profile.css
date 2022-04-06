@@ -188,6 +188,19 @@
     justify-content: center;
     flex-direction: column;
 }
+.content-profile .profile .main .section .profile-tool .tools .deleteAccount {
+    padding: 8px;
+    width: 55px;
+    background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
 .content-profile .profile .main .section .profile-tool .tools .settings {
     width: 55px;
