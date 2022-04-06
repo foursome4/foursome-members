@@ -195,7 +195,6 @@
     background-color: var(--Primary);
 }
 
-
 .content .chat .main-chat .section-chat .messages .my-message .data .image .mark{
     width: 250px;
     height: 250px;
@@ -489,6 +488,29 @@
                     width: 200px;
                     height: 200px;
  
+                }
+
+                .content .chat .main-chat .section-chat .messages .my-message .data .video-chat {
+                    margin-top: 5px;
+                    border-radius: 6px;
+                    width: 200px;
+                    background-color: var(--Primary);
+                }
+                .content .chat .main-chat .section-chat .messages .message-friend .data .video-chat {
+                    margin-top: 5px;
+                    border-radius: 6px;
+                    width: 200px;
+                    background-color: var(--Primary);
+                }
+                
+                .content .chat .main-chat .section-chat .messages .my-message .data .video-chat video {
+                    width: 200px;
+                    border-radius: 6px;
+                }
+                .content .chat .main-chat .section-chat .messages .message-friend .data .video-chat video {
+                    width: 200px;
+                    border-radius: 6px;
+                
                 }
             }
             
