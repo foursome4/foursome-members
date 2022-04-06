@@ -69,7 +69,8 @@ widthView()
     async function loadAccount() {
       await api.get(`/accounts/filter/${id}`).then( async (res) => {
         setUser(res.data[0]);
-        await api.get(`accounts/filter/${res.data[0].patron}`)
+        const idAccount = res.data[0].patron
+        await api.get(`informations/${idAccount}`)
         .then((patron) => {
           setPatron(patron.data[0])
         }).catch((error) => {
@@ -335,7 +336,7 @@ widthView()
                         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
                     </div>
                     <div className="name">
-                        <h4>Patrono: {patron !== null ?  <Link to={patron.id === user.id ? `/profile` : `/profile-friend/${patron.id}`}>{patron.username}</Link> :"Patrono não eocnotrado"}</h4>
+                        <h4>Patrono: {patron !== null ?  <Link to={patron.idAccount === user.id ? `/profile` : `/profile-friend/${patron.idAccount}`}>{patron.nickname}</Link> :"Patrono não eocnotrado"}</h4>
                         <br />
                        </div>
 

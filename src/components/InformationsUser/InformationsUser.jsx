@@ -21,8 +21,8 @@ function InformationsUser() {
 
     useEffect(() => {
         async function searchPatron() {
-          const id = user.patron;
-          const patron = await api.get(`accounts/filter/${id}`);
+          const idAccount = user.patron;
+          const patron = await api.get(`informations/${idAccount}`);
           setPatron(patron.data[0])
         }
   
@@ -86,7 +86,7 @@ return (
      
         <br />
         <h5>Meu Id: <a href="/profile"> {user.id}</a></h5>
-        <h5>Patrono: {patron !== null ?  <a href={patron.id === user.id ? `/profile` : `/profile-friend/${patron.id}`}>{patron.username}</a> :"Patrono não eocnotrado"}</h5>
+        <h5>Patrono: {patron !== null ?  <a href={patron.idAccount === user.id ? `/profile` : `/profile-friend/${patron.idAccount}`}>{patron.nickname}</a> :"Patrono não eocnotrado"}</h5>
         <br />
     </div>
 
