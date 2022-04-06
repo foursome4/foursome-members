@@ -182,6 +182,18 @@
     height: 250px;
     object-fit: contain;
 }
+.content .chat .main-chat .section-chat .messages .my-message .data .video-chat {
+    margin-top: 5px;
+    border-radius: 6px;
+    width: 250px;
+    background-color: var(--Primary);
+}
+.content .chat .main-chat .section-chat .messages .message-friend .data .video-chat {
+    margin-top: 5px;
+    border-radius: 6px;
+    width: 250px;
+    background-color: var(--Primary);
+}
 
 
 .content .chat .main-chat .section-chat .messages .my-message .data .image .mark{
@@ -239,6 +251,15 @@
     height: 250px;
     border-radius: 6px;
     object-fit: contain;
+
+}
+.content .chat .main-chat .section-chat .messages .my-message .data .video-chat video {
+    width: 250px;
+    border-radius: 6px;
+}
+.content .chat .main-chat .section-chat .messages .message-friend .data .video-chat video {
+    width: 250px;
+    border-radius: 6px;
 
 }
 

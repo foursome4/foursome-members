@@ -32,6 +32,8 @@ function Chat() {
   const [text, setText] = useState('');
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [imageAvatar, setImageAvatar] = useState('');
+  const [videorUrl, setVideoUrl] = useState(null);
+  const [videoAvatar, setVideoAvatar] = useState('');
   const [loadding, setLoadding] = useState(false);
   const [click, setClick] = useState(false);
   const [media, setMedia] = useState(false);
@@ -76,6 +78,42 @@ function Chat() {
 
     console.log(`Chamando função ao clicar`)
 }
+  function handleFileVideo(e) {
+    console.log(e.target.files[0])
+
+   if(e.target.files[0]){
+       const video = e.target.files[0];
+
+       if( 
+          video.type === 'video/quicktime' || 
+          video.type === 'video/mp4' || 
+          video.type === 'video/MOV' || 
+          video.type === 'video/wmv' || 
+          video.type === 'video/flv' || 
+          video.type === 'video/avi' || 
+          video.type === 'video/avchd' || 
+          video.type === 'video/webm' || 
+          video.type === 'video/mkv' || 
+          video.type === 'video/mpeg' || 
+          video.type === 'video/mpeg4' || 
+          video.type === 'video/mpeg-4' || 
+          video.type === 'video/ogg' || 
+          video.type === 'video/HEIF' || 
+          video.type === 'video/HEVC'
+          ) {
+           setVideoAvatar(video);
+           setVideoUrl(URL.createObjectURL(e.target.files[0]));
+           console.log(videorUrl);
+           handleUploadAccountVideo(video)
+        } else {
+            console.log('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
+            setVideoAvatar(null);
+            return null;
+        }
+    }
+
+    console.log(`Chamando função ao clicar`)
+}
 
 function NotificationMessage() {
   const text = `Seu amigo ${user.id}, enviou uma nova mensagem`
@@ -104,8 +142,10 @@ async function handleUploadAccount(img) {
 
   
   const data = {
+    id: uuidv4(),
     room: room,
     idAccount: user.id,
+    type: "photo",
     text,
     link: photoUrlAvatar,
     avatar: userInformations.avatar,
@@ -122,12 +162,51 @@ async function handleUploadAccount(img) {
     setAvatarUrl(null);
     setImageAvatar('');
 }
+
+async function handleUploadAccountVideo(img) {
+  console.log(`Chamando função ao clicar`)
+  setLoadding(true);
+  console.log(loadding);
+  const uuid = uuidv4();
+
+  console.log(videoAvatar)
+  let newAvatarUrlFirebase = ref(storage, `videos/video-chat/${uuid}`);
+  let uploadAvatar = await uploadBytes(newAvatarUrlFirebase, img);
+  let photoUrlAvatar = await getDownloadURL(uploadAvatar.ref);
+      
+  console.log(uploadAvatar.ref.name, photoUrlAvatar);
+
+  
+  const data = {
+    id: uuidv4(),
+    room: room,
+    idAccount: user.id,
+    type: "video",
+    text,
+    link: photoUrlAvatar,
+    avatar: userInformations.avatar,
+    nickname: userInformations.nickname,
+    username: user.username,
+    created_at: new Date()
+  }
+  console.log(data);
+
+
+   socket.emit("message", data)
+    setListMessages([data, ...listMessages]);
+    setText("");
+    setAvatarUrl(null);
+    setVideoAvatar('');
+}
+
   function handleNewMessage(e) {
     e.preventDefault();
     console.log(`Chamando função ao clicar`)
     const data = {
+      id: uuidv4(),
       room: room,
       idAccount: user.id,
+      type: "text",
       text,
       link: "",
       avatar: userInformations.avatar,
@@ -187,10 +266,20 @@ function handleMedia() {
                         </Link>
                        <h5>{message.text}</h5>
                      {message.link !== "" ?
+                     message.type === "photo" ?
                        <div className="image">
-                    
                             <img src={message.link} alt="" />
-                    
+                      </div>
+                      :
+                       <div className="video-chat">
+                              <video playsInline controls controlsList="nofullscreen nodownload">
+                                <source playsInline src={message.link} type="video/mp4"/>
+                                <source playsInline src={message.link} type="video/quicktime"/>
+                                <source playsInline src={message.link} type="video/mov"/>
+                                <source playsInline src={message.link}  type="video/ogg"/>
+                                <source playsInline src={message.link}  type="video/webm"/>
+                                <source playsInline src={message.link}  type="video/avi"/>
+                              </video>
                       </div>
                       : ""}
                     {click === true ?  message.idAccount === user.id ? <DeleteMessage _id={message._id} /> : "" :
@@ -247,7 +336,7 @@ function handleMedia() {
 
               <label className="label-avatar">
                   <span><FiVideo size={20} /></span>
-                  <input type="file" accept="image/*" onChange={handleFile}/><br />                     
+                  <input type="file" accept="video/*" onChange={handleFileVideo}/><br />                     
               </label>
               </>
               }
