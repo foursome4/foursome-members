@@ -1,31 +1,20 @@
-import { FiImage, FiVideo, FiUsers, FiList, FiMenu } from 'react-icons/fi'
+import { FiImage, FiVideo, FiUsers, FiList, FiMenu} from 'react-icons/fi'
 import './feedPostIndividual2.css';
-import {  useEffect, useState } from 'react';
-import api from "../../services/api";
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../contexts/Auth';
+import { useFetch } from '../../hooks/useFetch';
 import { ItemFeed } from '../ItemFeed/ItemFeed';
 
     function FeedPostIndividual2(idAccount) {
     const [myPosts, setMyPosts] = useState("");
-    const [data, setData] = useState([]);
+    const [comment, setComment] = useState(false);
+    const [edit, setEdit] = useState(false);
 
-    useEffect(() => {
-             async function findPosts() {
-            if(myPosts === "") {
-            const res = await api.get(`/posts/filter/accounts/${idAccount}`);
-            const dataPosts = (res.data)
-            setData(dataPosts)
+    const { deletePost} = useContext(AuthContext);
 
-        } else {
-            const type = myPosts;
-            const res = await api.get(`/posts/filter/${idAccount}/${type}`);
-            const dataPosts = (res.data)
-            setData(dataPosts)
-        }
-        }
-        findPosts();
-
-
-    }, [idAccount.idAccount, myPosts])
+      const type = myPosts;
+    const {data} = useFetch(type === "" ? `/posts/filter/accounts/${idAccount.idAccount}` : `/posts/filter/${idAccount.idAccount}/${type}`);
+    console.log(data)
 
     function postAll() {
         setMyPosts("")
@@ -51,7 +40,32 @@ import { ItemFeed } from '../ItemFeed/ItemFeed';
         setMyPosts("post-forum")
     }
 
+    function handleHabiliteComment () {
+        if(comment === false) {
+            setComment(true)
+        } else {
+            setComment(false) 
+        }
+    }
 
+    
+    function handleHabiliteEdit () {
+        if(edit === false) {
+            setEdit(true)
+            setComment(false) 
+        } else {
+            setEdit(false) 
+        }
+    }
+
+
+    function handleDeletePost(id) {
+        const deletar = window.confirm("Deseja deletar a postagem?");
+    
+        if(deletar === true) {
+           deletePost(id);
+            } 
+        }
 
     return (
         <div className="feedPostIndividual2">
@@ -65,7 +79,7 @@ import { ItemFeed } from '../ItemFeed/ItemFeed';
             <button className={myPosts === "post-forum" ? 'selected' : ""} onClick={postForum}> <FiList /> Fórum </button>
             </div>
                             
-                                {data.map((postsData => {
+                                {data?.map((postsData => {
                                      return (                    
                                         <div className="preItem" key={postsData.id}>
                                         <ItemFeed idAccount={postsData.idAccount} link={postsData.link}

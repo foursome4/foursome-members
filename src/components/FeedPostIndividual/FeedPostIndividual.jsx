@@ -1,32 +1,26 @@
 import { FiImage, FiVideo, FiUsers, FiList, FiMenu} from 'react-icons/fi'
 import './feedPostIndividual.css';
-import { useEffect, useState } from 'react';
-import api from "../../services/api";
+import {  useState } from 'react';
 import { ItemFeed } from '../ItemFeed/ItemFeed';
+import { useFetch } from '../../hooks/useFetch';
 
     function FeedPostIndividual({id}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
     const [post, setPost] = useState("");
-    const [data, setData] = useState([]);
-    useEffect(() => {
-          async function findPosts() {
-            if(post === "") {
-            const res = await api.get(`/posts/filter/accounts/${userData.id}`);
-            const dataPosts = (res.data)
-            setData(dataPosts)
-        } else {
-            const idAccount = userData.id;
-            const type = post;
-            const res = await api.get(`/posts/filter/${idAccount}/${type}`);
-            const dataPosts = (res.data)
-            setData(dataPosts)
-        }
-        }
-        findPosts()
 
-    }, [ post, userData.id])
+    const {data} = useFetch(post === "" ? `/posts/filter/accounts/${userData.id}` : `/posts/filter/${userData.id}/${post}`);
+    console.log(data)
+
+    if(!data) {
+        return (
+            <div className="load">
+                <h3>Carregando...</h3>
+            </div>
+        )
+    }
+
 
     function postAll() {
         setPost("")
@@ -66,7 +60,7 @@ import { ItemFeed } from '../ItemFeed/ItemFeed';
             <button className={post === "post-forum" ? 'selected' : ""} onClick={postForum}> <FiList /> Fórum </button>
             </div>
                             
-                                {data.map((postsData => {
+                                {data?.map((postsData => {
 
                                     return (                       
                                 <div className="preItem" key={postsData.id}>
