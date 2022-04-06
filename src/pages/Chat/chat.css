@@ -281,14 +281,23 @@
   }
 
 
-.content .chat .main-chat .section-chat .text .button-media {
+.content .chat .main-chat .section-chat .text .buttonMedia  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 55px;
-    height: 45px;
+    height: 55px;
+    margin-right: 10px;
+}
+.content .chat .main-chat .section-chat .text .buttonMedia .button-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
     border-radius: 50%;
     border: 1px solid var(--Primary);
     background-color: var(--Background2);
     color: var(--Primary);
-    margin-right: 10px;
 }
 .content .chat .main-chat .section-chat .text .button1 {
     width: 80px;

@@ -234,7 +234,9 @@ function handleMedia() {
 
             </div>
             <div className="text">
-                <button className="button-media" onClick={handleMedia}><FiPlus size={20}/></button>
+              <div className="buttonMedia">
+                <button className="button-media" onClick={handleMedia}><FiPlus /></button>
+              </div>
 
                {media === false ? "" : 
                <>
