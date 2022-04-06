@@ -90,26 +90,26 @@ const {data} = useFetch(`/online`);
                     </button>
                     </a>
 
-                    <a href="/locals" >
+                    {/* <a href="/locals" >
                     <button className="ButtonsUnic" >
                         <IoBusinessOutline size={20}/>Locais
                     </button>
-                    </a>
+                    </a> */}
                     <a href="/settings" >
                     <button className="ButtonsUnic" >
                         <IoSettingsOutline size={20}/>Configs
                     </button>
                     </a>
-                    <a href="/plains" >
+                    {/* <a href="/plains" >
                     <button className="ButtonsUnic" >
                         <IoCashOutline size={20}/>Planos
                     </button>
-                    </a>
-                    <a href="/infos" >
+                    </a> */}
+                    {/* <a href="/infos" >
                     <button className="ButtonsUnic" >
                         <IoInformationCircleOutline size={20}/>Infos
                     </button>
-                    </a>
+                    </a> */}
                 </div>
                 : select === true ?
                 <div className="Buttons">

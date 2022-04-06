@@ -80,28 +80,28 @@ function ToolbarLeftSlimComponent() {
                     </button>
                     </a>
 
-                    <a href="/locals" >
+                    {/* <a href="/locals" >
                     <button className="toolIcon" >
                         <IoBusinessOutline size={20}/>Locais
                     </button>
-                    </a>
+                    </a> */}
                     
                     <a href="/settings" >
                     <button className="toolIcon" >
                         <IoSettingsOutline size={20}/>Configs
                     </button>
                     </a>
-                    <a href="/plains" >
+                    {/* <a href="/plains" >
                     <button className="toolIcon" >
                         <IoCashOutline size={20}/>Planos
                     </button>
-                    </a>
+                    </a> */}
 
-                    <a href="/infos" >
+                    {/* <a href="/infos" >
                     <button className="toolIcon" >
                         <IoInformationCircleOutline size={20}/>Infos
                     </button>
-                    </a>
+                    </a> */}
                 </div>
             </div>
         </div>

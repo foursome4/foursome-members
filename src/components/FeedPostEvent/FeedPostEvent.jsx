@@ -1,69 +1,36 @@
-import { FiTrash2, FiEdit } from 'react-icons/fi'
 import './feedPostEvent.css';
-import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../contexts/Auth';
-import api from "../../services/api";
-import { parseISO, format} from 'date-fns';
-import { UsersPosts } from '../UsersPosts/UsersPosts';
+import { ItemFeed } from '../ItemFeed/ItemFeed';
+import { useFetch } from '../../hooks/useFetch';
 
 
     function FeedPostEvent({idEvent}) {
-        const Local = localStorage.getItem("foursome");
-        const userData = JSON.parse(Local);
 
 
-    const [data, setData] = useState([]); 
-    const { deletePost} = useContext(AuthContext);
-
-    useEffect(() => {
-          async function findPosts() {
+        const {data} = useFetch(`/posts/events/${idEvent}`);
+        console.log(data)
     
-            const res = await api.get(`/posts/events/${idEvent}`);
-            const dataPosts = (res.data)
-            setData(dataPosts)
-        }
-        findPosts()
-
-    }, [idEvent]);
-
-    function handleDeletePost(id) {
-        const deletar = window.confirm("Deseja deletar a postagem?");
-    
-        if(deletar === true) {
-           deletePost(id);
-            } 
+        if(!data) {
+            return (
+                <div className="load">
+                    <h3>Carregando...</h3>
+                </div>
+            )
         }
 
     return (
         <div className="feedPostIndividual">
             <div className="posts-feed">
                             
-                                {data.map((postsData => {
-                                const date = parseISO(postsData.created_at);
-                                const dateFormated = format(
-                                    date, 
-                                "dd'/'MM'/'yyyy', às 'HH:mm'h'"
-                                );
-
-                                    return (   
-                                        <>                      
-                                <div className="feed-post" key={postsData.id}>
-                                <UsersPosts idAccount={postsData.idAccount} username={postsData.username} date={dateFormated} />
-
-                                    <div className="post-data" >
-                                        <p>{postsData.text}</p>
-                                    </div>
-                                    <div className="reactions-individual" >
-                                        {postsData.idAccount === userData.id ?
-                                        <>
-                                            <button> <FiEdit />  </button>
-                                            <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 />  </button>
-                                            </>
-                                        : ""}
-                                    </div>
+                         {data?.map((postsData => {
+                                return (   
+                                    <div className="preItem" key={postsData.id}>
+                                    <ItemFeed idAccount={postsData.idAccount} link={postsData.link}
+                                           date={postsData.created_at} text={postsData.text}
+                                           type={postsData.type} id={postsData.id}
+                                           username={postsData.username} group={postsData.nameGroup}
+                                           forum={postsData.nameForum}/>
                                 </div>
-                                </>
-                                )
+                            )
                             }))}
                            </div>
 

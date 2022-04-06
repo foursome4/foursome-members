@@ -1,16 +1,11 @@
 import { FiImage, FiVideo, FiUsers, FiList, FiMenu} from 'react-icons/fi'
 import './feedPostIndividual2.css';
-import { useContext, useState } from 'react';
-import { AuthContext } from '../../contexts/Auth';
+import {  useState } from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import { ItemFeed } from '../ItemFeed/ItemFeed';
 
     function FeedPostIndividual2(idAccount) {
     const [myPosts, setMyPosts] = useState("");
-    const [comment, setComment] = useState(false);
-    const [edit, setEdit] = useState(false);
-
-    const { deletePost} = useContext(AuthContext);
 
       const type = myPosts;
     const {data} = useFetch(type === "" ? `/posts/filter/accounts/${idAccount.idAccount}` : `/posts/filter/${idAccount.idAccount}/${type}`);
@@ -39,33 +34,6 @@ import { ItemFeed } from '../ItemFeed/ItemFeed';
     function postForum(){
         setMyPosts("post-forum")
     }
-
-    function handleHabiliteComment () {
-        if(comment === false) {
-            setComment(true)
-        } else {
-            setComment(false) 
-        }
-    }
-
-    
-    function handleHabiliteEdit () {
-        if(edit === false) {
-            setEdit(true)
-            setComment(false) 
-        } else {
-            setEdit(false) 
-        }
-    }
-
-
-    function handleDeletePost(id) {
-        const deletar = window.confirm("Deseja deletar a postagem?");
-    
-        if(deletar === true) {
-           deletePost(id);
-            } 
-        }
 
     return (
         <div className="feedPostIndividual2">

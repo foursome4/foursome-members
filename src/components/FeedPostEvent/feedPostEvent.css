@@ -15,6 +15,14 @@
     width: 100%;
 }
 
+.feedPostIndividual .posts-feed .preItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
 .feedPostIndividual .posts-feed .buttons {
     display: flex;
     flex-direction: row;
