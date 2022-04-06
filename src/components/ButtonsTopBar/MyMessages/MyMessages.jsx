@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import api from '../../../services/api';
 import { UserConversation } from './UserConversation/UserConversation';
 import { IoChatboxOutline, IoCloseOutline} from 'react-icons/io5';
-import { useEffect, useState,useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 import { useFetch } from '../../../hooks/useFetch';
 
@@ -17,7 +17,6 @@ function MyMessages() {
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [rooms, setRooms] = useState([])
     const [rooms2, setRooms2] = useState([])
-    const [notification, setNotification] = useState([])
 
   console.log(date)
     useEffect(() => {

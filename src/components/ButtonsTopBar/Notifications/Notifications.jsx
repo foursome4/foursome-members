@@ -15,7 +15,6 @@ function Notifications() {
     const [dateRead, setDateRead] = useState([])
 
     const [isOpenModalNotifications, setIsOpenModalNotifications] = useState(false);
-    const [notifications, setNotifications] = useState([]);
 
     console.log(date)
 

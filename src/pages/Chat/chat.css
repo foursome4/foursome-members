@@ -144,6 +144,15 @@
     max-width: 100%;
     white-space: pre-line;
 }
+.content .chat .main-chat .section-chat .messages .my-message .data .date {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    color: var(--Background2);
+    padding: 5px;
+    width: 100%;
+}
 
 .content .chat .main-chat .section-chat .messages .my-message .data a {
     text-decoration: none;
@@ -168,19 +177,35 @@
     white-space: pre-line;
 }
 
+.content .chat .main-chat .section-chat .messages .message-friend .data .date {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    color: var(--Gray_font1);
+    padding: 5px;
+    width: 100%;
+}
+
+.content .chat .main-chat .section-chat .messages .message-friend .data h5 {
+    font-weight: 700;
+    margin: 5px 0;
+}
+.content .chat .main-chat .section-chat .messages .my-message .data h5 {
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+
 .content .chat .main-chat .section-chat .messages .my-message .data .image {
     margin-top: 5px;
     border-radius: 6px;
     width: 250px;
-    height: 250px;
-    object-fit: contain;
 }
 .content .chat .main-chat .section-chat .messages .message-friend .data .image {
     margin-top: 5px;
     border-radius: 6px;
     width: 250px;
-    height: 250px;
-    object-fit: contain;
 }
 .content .chat .main-chat .section-chat .messages .my-message .data .video-chat {
     margin-top: 5px;
@@ -241,15 +266,13 @@
 
 .content .chat .main-chat .section-chat .messages .my-message .data .image img {
     width: 250px;
-    height: 250px;
     border-radius: 6px;
-    object-fit: contain;
+
 }
 .content .chat .main-chat .section-chat .messages .message-friend .data .image img {
     width: 250px;
-    height: 250px;
     border-radius: 6px;
-    object-fit: contain;
+
 
 }
 .content .chat .main-chat .section-chat .messages .my-message .data .video-chat video {
@@ -283,7 +306,7 @@
     margin-right: 10px;
     background-color: var(--Background2);
     overflow-x: scroll;
-    height: 45px;
+    height: 55px;
 }
 
 .content .chat .main-chat .section-chat .text textarea::-webkit-scrollbar {
@@ -462,22 +485,16 @@
             @media(max-width: 450px) {
                 .content .chat .main-chat .section-chat .messages .my-message .data .image {
                     width: 200px;
-                    height: 200px;
                 }
                 .content .chat .main-chat .section-chat .messages .message-friend .data .image {
                     width: 200px;
-                    height: 200px;
                 }
                 
                 .content .chat .main-chat .section-chat .messages .my-message .data .image img {
                     width: 200px;
-                    height: 200px;
-                    object-fit: cover;
                 }
                 .content .chat .main-chat .section-chat .messages .message-friend .data .image img {
                     width: 200px;
-                    height: 200px;
-                    object-fit: cover;
                 }
                 .content .chat .main-chat .section-chat .messages .my-message .data .image .mark{
                     width: 200px;

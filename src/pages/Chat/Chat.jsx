@@ -1,8 +1,9 @@
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSlim'
 import { TopBar } from '../../components/TopBar/TopBar'
+import { DateFormat } from '../../components/DateFormat/DateFormat'
 import './chat.css';
-import { useState, useEffect, useRef} from 'react'
+import { useState, useRef} from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { socket } from '../../services/websocket'
 import api from '../../services/api'
@@ -12,6 +13,7 @@ import { ref, getDownloadURL, uploadBytes} from 'firebase/storage'
 import { v4 as uuidv4 } from 'uuid'
 import {DeleteMessage} from '../../components/DeleteMessage/DeleteMessage'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu';
+import { useFetch } from '../../hooks/useFetch';
 
    
 function Chat() {
@@ -28,7 +30,6 @@ function Chat() {
   console.log(`IdFriend: ${idFriend}`)
 
 
-  const [listMessages, setListMessages] = useState([]);
   const [text, setText] = useState('');
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [imageAvatar, setImageAvatar] = useState('');
@@ -38,23 +39,14 @@ function Chat() {
   const [click, setClick] = useState(false);
   const [media, setMedia] = useState(false);
 
-  useEffect(() => {
-    async function findMessages() {
-      const idRoom = room
-      await api.get(`/messages/${idRoom}`).then((result) => {
-        console.log("Mensagens do banco de dados")
-        console.log(result.data)
-        setListMessages(result.data);
-      })
-    }
-    findMessages()
-  }, [room])
+   const idRoom = room
+  const {data} = useFetch(`/messages/${idRoom}`);
 
   socket.emit("select_room", {
     room,
     idAccount: user.id,
     idFriend: idFriend
-  }, (messages) => {
+  }, () => {
 
   })
 
@@ -157,7 +149,6 @@ async function handleUploadAccount(img) {
 
 
    socket.emit("message", data)
-    setListMessages([data, ...listMessages]);
     setText("");
     setAvatarUrl(null);
     setImageAvatar('');
@@ -193,7 +184,7 @@ async function handleUploadAccountVideo(img) {
 
 
    socket.emit("message", data)
-    setListMessages([data, ...listMessages]);
+
     setText("");
     setAvatarUrl(null);
     setVideoAvatar('');
@@ -217,12 +208,10 @@ async function handleUploadAccountVideo(img) {
     console.log(data);
     NotificationMessage()
     socket.emit("message", data)
-    setListMessages([data, ...listMessages]);
     setText("")
   }
   
   socket.on("message", (data) => {
-    setListMessages([data, ...listMessages]);
   })
 
 
@@ -254,7 +243,7 @@ function handleMedia() {
          <div className="section-chat">
              <div className="messages" ref={messageRef}>
 
-               {listMessages.map((message) => {
+               {data?.map((message) => {
                  return (
                   message.idAccount === user.id ?
                   <div className={message.idAccount === user.id ? "messages2" : "messages1"} key={message.id} >
@@ -262,7 +251,7 @@ function handleMedia() {
                   
                        <div className="data">
                        <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>
-                        <p><b>Eu</b></p>
+                        <p><b>Eu - {message.idAccount}</b></p>
                         </Link>
                        <h5>{message.text}</h5>
                      {message.link !== "" ?
@@ -282,6 +271,9 @@ function handleMedia() {
                               </video>
                       </div>
                       : ""}
+                     <div className="date">
+                     <DateFormat date={message.created_at} />
+                       </div> 
                     {click === true ?  message.idAccount === user.id ? <DeleteMessage _id={message._id} /> : "" :
                       ""}
                        </div>
@@ -302,16 +294,29 @@ function handleMedia() {
                     </div>
                        <div className="data">
                        <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>
-                        <p><b>{message.nickname}</b></p>
+                        <p><b>{message.nickname} - {message.idAccount}</b></p>
                        </Link>
                        <h5>{message.text}</h5>
                      {message.link !== "" ?
+                       message.type === "photo" ?
                        <div className="image">
                             <img src={message.link} alt="" />
-
-                       
+                      </div>
+                      :
+                       <div className="video-chat">
+                              <video playsInline controls controlsList="nofullscreen nodownload">
+                                <source playsInline src={message.link} type="video/mp4"/>
+                                <source playsInline src={message.link} type="video/quicktime"/>
+                                <source playsInline src={message.link} type="video/mov"/>
+                                <source playsInline src={message.link}  type="video/ogg"/>
+                                <source playsInline src={message.link}  type="video/webm"/>
+                                <source playsInline src={message.link}  type="video/avi"/>
+                              </video>
                       </div>
                       : ""}
+                                          <div className="date">
+                                          <DateFormat date={message.created_at} />
+                                            </div> 
                       {click === true ?   message.idAccount === user.id ? <DeleteMessage _id={message._id} /> : "" :
                       ""}
                        </div>
@@ -342,7 +347,7 @@ function handleMedia() {
               }
 
               {media === true ? "" :
-                <textarea name="" id=""  value={text} autoFocus  autoComplete='off' placeholder='Digite uma mensagem' onChange={(e) => setText(e.target.value)}></textarea>
+                <textarea value={text} autoFocus  autoComplete='off' placeholder='Digite uma mensagem' onChange={(e) => setText(e.target.value)}></textarea>
               }
                 <button className="button1" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}>Enviar <FiSend /></button>
                 <button className="button2" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}><FiSend /></button>
