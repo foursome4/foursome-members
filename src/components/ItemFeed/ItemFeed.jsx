@@ -14,6 +14,8 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
+    const dateActual = new Date();
+
     const [comment, setComment] = useState(false);
     const [edit, setEdit] = useState(false);
     const {deletePost} = useContext(AuthContext);
@@ -63,84 +65,83 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
              {type === "post-photo"  ?
                  <div className="post-data-media" >
                   <div className='image'>
-                     {/* <div className="mark">
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                     <div className="marcadagua">
+                     <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                     <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='white'>{userData.id}</h3>
-                         <h3 className='black'>{userData.id}</h3>
-                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                         <h3 className='black'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3>
-                     </div> */}
+
+                     </div>
                      <img src={link} alt={link}/>
                   </div>
                  </div> :
              type === "post-video"  ?
              <div className="post-data-media"  >
                   <div className='image-video'>
+                  <div className="markTop">
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                     </div>
+                  <div className="markBottom">
+                  <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()}`}</h3> -
+                         <h3 className='white'>{userData.id}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                         <h3 className='white'>{`${dateActual.getDay()}/${dateActual.getMonth()}/${dateActual.getFullYear()} -`}</h3>
+                         <h3 className='white'>{userData.id}</h3>
+                     </div>
 
                   <video playsInline controls controlsList="nofullscreen nodownload">
                      <source playsInline src={link} type="video/mp4"/>

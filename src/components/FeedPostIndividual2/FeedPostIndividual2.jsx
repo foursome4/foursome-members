@@ -1,34 +1,23 @@
-import { FiImage, FiVideo, FiUsers, FiList, FiMenu, FiTrash2, FiEdit, FiMessageCircle } from 'react-icons/fi'
+import { FiImage, FiVideo, FiUsers, FiList, FiMenu } from 'react-icons/fi'
 import './feedPostIndividual2.css';
-import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../contexts/Auth';
+import {  useEffect, useState } from 'react';
 import api from "../../services/api";
-import { FeedComments } from '../FeedComments/FeedComments';
-import { ListReactions } from '../ListReactions/ListReactions';
-import { NewComment } from '../NewComment/NewComment';
-import { UsersPosts } from '../UsersPosts/UsersPosts';
-import { EditPost } from '../EditPost/EditPost';
+import { ItemFeed } from '../ItemFeed/ItemFeed';
 
     function FeedPostIndividual2(idAccount) {
-    const Local = localStorage.getItem("foursome");
-    const userData = JSON.parse(Local);
-
     const [myPosts, setMyPosts] = useState("");
     const [data, setData] = useState([]);
-    const [comment, setComment] = useState(false);
-    const [edit, setEdit] = useState(false);
 
-    const { deletePost} = useContext(AuthContext);
     useEffect(() => {
              async function findPosts() {
             if(myPosts === "") {
-            const res = await api.get(`/posts/filter/accounts/${idAccount.idAccount}`);
+            const res = await api.get(`/posts/filter/accounts/${idAccount}`);
             const dataPosts = (res.data)
             setData(dataPosts)
 
         } else {
             const type = myPosts;
-            const res = await api.get(`/posts/filter/${idAccount.idAccount}/${type}`);
+            const res = await api.get(`/posts/filter/${idAccount}/${type}`);
             const dataPosts = (res.data)
             setData(dataPosts)
         }
@@ -62,32 +51,7 @@ import { EditPost } from '../EditPost/EditPost';
         setMyPosts("post-forum")
     }
 
-    function handleHabiliteComment () {
-        if(comment === false) {
-            setComment(true)
-        } else {
-            setComment(false) 
-        }
-    }
 
-    
-    function handleHabiliteEdit () {
-        if(edit === false) {
-            setEdit(true)
-            setComment(false) 
-        } else {
-            setEdit(false) 
-        }
-    }
-
-
-    function handleDeletePost(id) {
-        const deletar = window.confirm("Deseja deletar a postagem?");
-    
-        if(deletar === true) {
-           deletePost(id);
-            } 
-        }
 
     return (
         <div className="feedPostIndividual2">
@@ -103,59 +67,13 @@ import { EditPost } from '../EditPost/EditPost';
                             
                                 {data.map((postsData => {
                                      return (                    
-                                <div className="feed-post" key={postsData.id}>
-                                <UsersPosts idAccount={postsData.idAccount} username={postsData.username} date={postsData.created_at} />
-
-                                    <div className="post-data" >
-                                        <p>{postsData.text}</p>
+                                        <div className="preItem" key={postsData.id}>
+                                        <ItemFeed idAccount={postsData.idAccount} link={postsData.link}
+                                               date={postsData.created_at} text={postsData.text}
+                                               type={postsData.type} id={postsData.id}
+                                               username={postsData.username} group={postsData.nameGroup}
+                                               forum={postsData.nameForum}/>
                                     </div>
-
-                                    <div className={edit === true ? "edit" : "editHidden"}>
-                                    {postsData.idAccount === userData.id ? 
-                                         <EditPost data={postsData.text} id={postsData.id} />
-                                         : ""
-                                        }
-                                    </div>
-
-                                    {postsData.type === "post-photo" ?
-                                  
-                                        <div className="post-data-media" >
-                                              <div className='image'>
-                                            <img src={postsData.link} alt={postsData.link} width={500}/>
-                                            </div> 
-                                        </div> :
-                                    postsData.type === "post-video" ?
-                                        <div className="post-data-media" >
-                                                   <div className='image-video'>
-                                        <video controls controlsList="nofullscreen nodownload">
-                                            <source src={postsData.link} type="video/mp4"/>
-                                            </video>
-                                            </div>
-                                        </div> :
-                                    ""
-                                      }
-
-                                    <div className="reactions2-individual" >
-
-                                        <ListReactions idPost={postsData.id} idAccount={postsData.idAccount}/>
-                                        <button onClick={handleHabiliteComment}>
-                                            <FiMessageCircle />
-                                            
-                                        </button>
-                                        {postsData.idAccount === userData.id ?
-                                        <>
-                                              <button onClick={handleHabiliteEdit}> <FiEdit /> </button>
-                                            <button onClick={() => {handleDeletePost(postsData.id)}}> <FiTrash2 />  </button>
-                                            </>
-                                        : ""}
-                                    </div>
-
-                                    <div className={comment === true ? "comment" : "commentHidden"}>
-                                    <NewComment postData={postsData.id}/>
-                                    </div>
-
-                            <FeedComments idPost={postsData.id} />
-                                </div>
                                 )
                             }))}
                            </div>

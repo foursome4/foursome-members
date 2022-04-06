@@ -14,6 +14,7 @@ import { v4 as uuidv4 } from 'uuid'
 import {DeleteMessage} from '../../components/DeleteMessage/DeleteMessage'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu';
 import { useFetch } from '../../hooks/useFetch';
+import { toast } from 'react-toastify';
 
    
 function Chat() {
@@ -121,6 +122,7 @@ function NotificationMessage() {
 
 async function handleUploadAccount(img) {
   console.log(`Chamando função ao clicar`)
+  toast.info("Enviando a foto, aguarde...")
   setLoadding(true);
   console.log(loadding);
   const uuid = uuidv4();
@@ -156,6 +158,7 @@ async function handleUploadAccount(img) {
 
 async function handleUploadAccountVideo(img) {
   console.log(`Chamando função ao clicar`)
+  toast.info("Enviando o video, aguarde...")
   setLoadding(true);
   console.log(loadding);
   const uuid = uuidv4();
@@ -192,7 +195,7 @@ async function handleUploadAccountVideo(img) {
 
   function handleNewMessage(e) {
     e.preventDefault();
-    console.log(`Chamando função ao clicar`)
+    console.log(`Chamando função ao clicar`);
     const data = {
       id: uuidv4(),
       room: room,
