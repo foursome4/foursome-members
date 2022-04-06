@@ -61,12 +61,16 @@ useEffect(() => {
                 <div className="aside">
                     <div className="radar">
                             <div className="radar-selected">
+  
                                 <button className="selected">Radar</button>
                             </div>
                             <div className="radar-range">
-                                <h4>0 km</h4>
+                                {/* <h4>0 km</h4>
                                 <input type="range" />
-                                <h4>1.000 km</h4>
+                                <h4>1.000 km</h4> */}
+                                <br />
+                                <br />
+                                <br />
                             </div>
                             <div className="radar-all">
                                 {users.map((user) => {

@@ -18,9 +18,9 @@ function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend) {
         const distanceCalc = (R * c).toString();
         
         if(distanceCalc.includes("00.")) {
-            distance = "- " + ((R * c *1000)/1000).toFixed() + "Km"
+            distance = "- " + ((R * c *1000)/1000).toFixed()
         } else{
-            distance = ((R * c *1000)/1000).toFixed() + "Km"
+            distance = ((R * c *1000)/1000).toFixed()
         }
     return ((R * c *1000).toFixed());
 }
@@ -29,7 +29,7 @@ getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend )
 
     return (
         <>
-        <h6>{distance} de você</h6>
+        <h6>{distance === "0" ? "- 1Km de você" : `+/- ${distance}Km de você`}</h6>
         </>
     )
 }

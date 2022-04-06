@@ -145,6 +145,13 @@
     white-space: pre-line;
 }
 
+.content .chat .main-chat .section-chat .messages .my-message .data a {
+    text-decoration: none;
+}
+.content .chat .main-chat .section-chat .messages .message-friend .data a {
+    text-decoration: none;
+}
+
 
 
 .content .chat .main-chat .section-chat .messages .message-friend .data {
