@@ -45,7 +45,7 @@ function SignUp() {
     const removeTrace = removeSpace.replace('-', '')
     const phone = removeTrace;
 
-    const username = username.toLowerCase()
+    // const username = username.toLowerCase()
 
     if(checked) {
         if(passordConfirm === password) {
