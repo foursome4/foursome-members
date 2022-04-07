@@ -472,6 +472,7 @@
                     width: 85%;
                 }
 
+
                 @media (max-width: 380px) {
         
                     .feed-post .reactions {
@@ -512,15 +513,16 @@
                     
                     .feed-post .post-data-media .image-video .markTop{
                         width: 250px;
-                        height: 80px;
+                        height: 150px;
+                        margin-top: -200px
 
              
                     }
                     .feed-post .post-data-media .image-video .markBottom{
                         width: 250px;
-                        height: 80px;
+                        height: 150px;
 
-                        margin-top: 170px
+                        margin-top: 200px;
                     }
 
                     .feed-post .post-data-media .markTop .white {

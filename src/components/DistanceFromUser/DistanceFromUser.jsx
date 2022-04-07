@@ -1,3 +1,5 @@
+import "./distanceFromUser.css"
+
 function DistanceFromUser({myLat, myLong, latFriend, longFriend}) {
 
 let distance = 0;

@@ -9,6 +9,7 @@ import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import api from "../../services/api"
 import apiInstagram from "../../services/api-instagram"
 import { Link } from "react-router-dom"
+import { UserRadar } from "../../components/UserRadar/UserRadar"
 
 function Radar() {
     const Local = localStorage.getItem("foursome");
@@ -75,11 +76,11 @@ useEffect(() => {
                                 {users.map((user) => {
                                     return (
                                user.idAccount === userData.id ? "" :
-                               <div className="forun-unic" key={user.idAccount}>
+                               <div className="radar-unic" key={user.idAccount}>
                                    <div className="img">
                                <img src={user.avatar} alt="" className="profile"/>
                                    </div>
-                               <h5>{user.nickname} {user.equalCity === true ? "" : <FaPlane/>}</h5>
+                                    <UserRadar nickname={user.nickname} equalCity={user.equalCity} idAccount={user.idAccount}/>
                                <DistanceFromUser myLat={lat1} myLong={long1} latFriend={user.lat} longFriend={user.long}/>
                                <Link to={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>Ver perfil</Link>
                            </div>

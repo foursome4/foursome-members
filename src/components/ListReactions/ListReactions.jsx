@@ -8,7 +8,6 @@ import "./listReactions.css"
 
 function ListReactionsComponent({idPost}) {
     const {likePost, deleteLike} = useContext(AuthContext);
-    const [like, setLike] = useState([]);
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
