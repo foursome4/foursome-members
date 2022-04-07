@@ -11,6 +11,7 @@ function UserConversation({idAccount, room}) {
 
     const [nickname, setNickname] = useState('')
     const [avatar, setAvatar] = useState('')
+    const [uf, setUf] = useState('')
 
     useEffect(() => {
         async function loadInformations() {
@@ -19,6 +20,7 @@ function UserConversation({idAccount, room}) {
                     console.log(result.data[0])
                     setAvatar(result.data[0].avatar)
                     setNickname(result.data[0].nickname)
+                    setUf(result.data[0].uf)
                 }
             }).catch((error) => {
                 console.log(error)
@@ -55,7 +57,7 @@ function UserConversation({idAccount, room}) {
            </Link>
            </div>
            <Link to={`/chat/${room}/${idAccount}`}>
-           <h4>Eu & {nickname}</h4>
+           <h4>Eu & {nickname} - {uf}</h4>
            </Link>
            {newMessages.length === 0 ? "" :
            <div className="counter-conversation">

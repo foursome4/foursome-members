@@ -9,11 +9,15 @@ function UserComment({idAccount, date}) {
     const userData = JSON.parse(Local);
     const [nickname, setNickname] = useState('')
     const [avatar, setAvatar] = useState('')
+    const [uf, setUf] = useState('')
+    const [city, setCity] = useState('')
     useEffect(() => {
         async function loadInformations() {
             await api.get(`informations/${idAccount}`).then((result) => {
                 setNickname(result.data[0].nickname)
                 setAvatar(result.data[0].avatar)
+                setCity(result.data[0].city)
+                setUf(result.data[0].uf)
             }).catch((error) => {
                 console.log(error)
                 console.log("Erro aos buscar informações")
@@ -37,7 +41,7 @@ function UserComment({idAccount, date}) {
            </div>
            <div className="name">
            <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-               <h5>{nickname}</h5>
+               <h5>{nickname} - {uf}</h5>
                </a>
                                      <DateFormat date={date}/>
            </div>

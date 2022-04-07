@@ -15,11 +15,15 @@ function UserReply({idAccount, username, date, id, text}) {
     const [edit, setEdit] = useState(false);
     const [nickname, setNickname] = useState('')
     const [avatar, setAvatar] = useState('')
+    const [uf, setUf] = useState('')
+    const [city, setCity] = useState('')
     useEffect(() => {
         async function loadInformations() {
             await api.get(`informations/${idAccount}`).then((result) => {
                 setNickname(result.data[0].nickname)
                 setAvatar(result.data[0].avatar)
+                setCity(result.data[0].city)
+                setUf(result.data[0].uf)
             }).catch((error) => {
                 console.log(error)
                 console.log("Erro aos buscar informações")
@@ -57,7 +61,7 @@ function UserReply({idAccount, username, date, id, text}) {
            </div>
            <div className={userData.id === idAccount ? "MyName":"name"}>
            <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-               <h6>{nickname}</h6>
+               <h6>{nickname} - {uf}</h6>
                </a>
            <DateFormat date={date} />
            </div>

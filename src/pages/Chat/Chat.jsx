@@ -297,7 +297,7 @@ function handleMedia() {
                     </div>
                        <div className="data">
                        <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>
-                        <p><b>{message.nickname} - {message.idAccount}</b></p>
+                        <p><b>{message.nickname} - </b></p>
                        </Link>
                        <h5>{message.text}</h5>
                      {message.link !== "" ?
