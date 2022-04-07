@@ -43,7 +43,7 @@ function AuthProvider({children}) {
             })
         }).catch(error => {
             console.log("Cadastro não foi realizado: "+ error);
-            toast.error(`Falha na criação do cadastro. Revise suas informações!`);
+            toast.error(`Username ou E-mail ja utilizados. Tente outro por favor!`);
         });
     }
 
