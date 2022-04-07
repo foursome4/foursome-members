@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState, memo } from "react"
 import {FiThumbsUp } from 'react-icons/fi'
 import { AuthContext } from "../../contexts/Auth";
+import { useFetch } from "../../hooks/useFetch";
 import api from "../../services/api"
 import "./listReactions.css"
-import {v4 as uuiv4} from 'uuid'
 
 
 function ListReactionsComponent({idPost}) {
@@ -12,34 +12,25 @@ function ListReactionsComponent({idPost}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
-    useEffect(() => {
-        async function loadReactions() {
-           const res =  await api.get(`/reactions/${idPost}`)
-                setLike(res.data);
-        }
+    const {data} = useFetch(`/reactions/${idPost}`);
 
-        loadReactions()
-    }, [idPost]);
+    let myLike = []
 
-    const myLike = like.filter(likes => (likes.idAccount === userData.id));
+    if(data) {
+       myLike = data?.filter(likes => (likes.idAccount === userData.id));
+    }
+
     console.log(myLike)
 
     function handleLikePost(e) {
         e.preventDefault()
         console.log("Curti")
-        const data = {id: uuiv4(), idAccount: userData.id, username: userData.username, idPost}
-        setLike([...like, data]);
        likePost({idAccount: userData.id, username: userData.username, idPost});
-       console.log(myLike)
     }
 
     function handleDeleteLike(e) {
         e.preventDefault();
-        deleteLike(like[0].id)
-        let newLike = like.filter(user => user.id !== like[0].id);
-          setLike(newLike)
-        console.log(myLike)
-        
+        deleteLike(data[0]?.id)  
      }
 
 
@@ -47,9 +38,9 @@ function ListReactionsComponent({idPost}) {
     return (
         <div className="reactionsList">
               <button className={myLike.length === 0 ? "" :"selected"} onClick={myLike.length === 0 ? handleLikePost : handleDeleteLike}>
-                  <FiThumbsUp /> {like.length === 0 ? "" :
+                  <FiThumbsUp /> {data?.length === 0 ? "" :
             <>
-            {like.length}
+            {data?.length}
             </>
             }
                   </button>
