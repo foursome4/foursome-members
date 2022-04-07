@@ -44,8 +44,8 @@ function UserConversation({idAccount, room}) {
 
         friendMessage =  data?.filter((message) => (message.idAccount !== user.id));
 
-        newMessages = friendMessage?.filter((messages) => (myMessages !== undefined && friendMessage !== undefined ? new Date(messages.created_at) > new Date(myMessages[0].created_at) : ""))
     }
+    newMessages = friendMessage?.filter((messages) => (myMessages !== undefined && friendMessage !== undefined ? new Date(messages.created_at) > new Date(myMessages[0]?.created_at) : ""))
 
 
     return (

@@ -8,13 +8,11 @@ import { toast } from 'react-toastify';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 function SignUp() {
-  const {email} = useParams()
+  const {email, code, patron} = useParams()
   const  {createAccount} = useContext(AuthContext)
   const [username, setUsername] = useState("");
-  const [code, setCode] = useState("");
   const [newPhone, setPhone] = useState("");
   const [type, setType] = useState("");
-  const [patron, setPatron] = useState("");
   const [password, setPassword] = useState("");
   const [passordConfirm, setPassordConfirm] = useState("");
   const [passwordView, setPasswordView] = useState(false)
@@ -117,8 +115,8 @@ function SignUp() {
             <h3>CADASTRE-SE</h3>
           </div>
           <input type="text" placeholder="E-mail" value={email} disabled/>
-          <input type="text" placeholder="Código de verificação" value={code} onChange={(e) => setCode(e.target.value)} />
-          <input type="text" placeholder="Id do Patrono" value={patron} onChange={(e) => setPatron(e.target.value)} />
+          <input type="text" placeholder="Código de verificação" value={code} disabled/>
+          <input type="text" placeholder="Id do Patrono" value={patron} disabled/>
           <input type="text" placeholder="Nome de usuário (Junto e sem espaço)" value={username.toLowerCase()} onChange={(e) => setUsername(e.target.value)}/>
           <select value={type} onChange={handleSetectType}>
                                 <option value="">Tipo de conta</option>

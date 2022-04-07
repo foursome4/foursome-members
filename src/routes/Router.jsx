@@ -44,7 +44,7 @@ function PrivateRoute({children} ) {
 
             <Routes>
             <Route path="/" element={<SignIn />}/>
-            <Route path="/signup/:email" element={ <SignUp />} />
+            <Route path="/signup/:email/:code/:patron" element={ <SignUp />} />
             <Route path="/forgotit" element={ <Forgotit />} />
             <Route path="/recuperation" element={ <Recuperation />} />       
             <Route path="/loader" element={ <Loader />} />       
