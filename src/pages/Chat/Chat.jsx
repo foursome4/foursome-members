@@ -69,7 +69,7 @@ function Chat() {
         }
     }
 
-    console.log(`Chamando função ao clicar`)
+
 }
   function handleFileVideo(e) {
     console.log(e.target.files[0])
@@ -105,7 +105,7 @@ function Chat() {
         }
     }
 
-    console.log(`Chamando função ao clicar`)
+
 }
 
 function NotificationMessage() {
@@ -115,13 +115,9 @@ function NotificationMessage() {
     api.post("/notificationsmessage", data).then((res) => {
       console.log("notificação enviada com sucesso!")
     })
-  // toast.success(`${user.id} - Room ${room} - IdFriend ${idFriend}`)
-  // console.log("Nofificaçoes")
-  console.log(`Chamando função ao clicar`)
 }
 
 async function handleUploadAccount(img) {
-  console.log(`Chamando função ao clicar`)
   toast.info("Enviando a foto, aguarde...")
   setLoadding(true);
   console.log(loadding);
@@ -157,7 +153,6 @@ async function handleUploadAccount(img) {
 }
 
 async function handleUploadAccountVideo(img) {
-  console.log(`Chamando função ao clicar`)
   toast.info("Enviando o video, aguarde...")
   setLoadding(true);
   console.log(loadding);
@@ -195,7 +190,7 @@ async function handleUploadAccountVideo(img) {
 
   function handleNewMessage(e) {
     e.preventDefault();
-    console.log(`Chamando função ao clicar`);
+;
     const data = {
       id: uuidv4(),
       room: room,
@@ -219,7 +214,6 @@ async function handleUploadAccountVideo(img) {
 
 
 function handlePressMessage() {
-  console.log(`Chamando função ao clicar`)
   if(click === false) {
     setClick(false)
   } else {

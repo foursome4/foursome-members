@@ -9,7 +9,6 @@ import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import api from "../../services/api"
 import apiInstagram from "../../services/api-instagram"
 import { Link } from "react-router-dom"
-import { Footer } from "../../components/Footer/Footer"
 
 function Radar() {
     const Local = localStorage.getItem("foursome");
@@ -77,7 +76,9 @@ useEffect(() => {
                                     return (
                                user.idAccount === userData.id ? "" :
                                <div className="forun-unic" key={user.idAccount}>
+                                   <div className="img">
                                <img src={user.avatar} alt="" className="profile"/>
+                                   </div>
                                <h5>{user.nickname} {user.equalCity === true ? "" : <FaPlane/>}</h5>
                                <DistanceFromUser myLat={lat1} myLong={long1} latFriend={user.lat} longFriend={user.long}/>
                                <Link to={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>Ver perfil</Link>
@@ -89,7 +90,6 @@ useEffect(() => {
                     </div>
                 <ChatSlim />
                 </div>
-                <Footer />
             </div>
         </div>
     )

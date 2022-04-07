@@ -128,6 +128,20 @@
     border-radius: 20px;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
     margin: 10px 0;
+
+}
+
+.content .aside .radar .radar-all .forun-unic .img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+.content .aside .radar .radar-all .forun-unic .img img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 .content .aside .radar .radar-all .forun-unic .cover {
@@ -195,4 +209,85 @@
     font-weight: 500;
     color: var(--Gray_font1);
     margin: 5px 0 5px 0;
+}
+
+
+
+
+
+@media(max-width: 850px) {
+    .content .aside .radar .radar-all {
+        width: 100%;    
+}
+
+.content .aside .radar .radar-all .forun-unic {
+    width: 150px;
+    text-align: center;
+
+}
+
+.content .aside .radar .radar-all .forun-unic .img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+.content .aside .radar .radar-all .forun-unic .img img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+
+.content .aside .radar .radar-all .forun-unic button {
+    border: 1px solid var(--Primary);
+    padding: 5px;
+    border-radius: 20px;
+    width: 80%;
+    font-size: 14px;
+    color: var(--Primary);
+    font-weight: 600;
+    background-color: var(--Background2);
+    margin: 5px 0;
+}
+
+@media(max-width: 650px) {
+    .content .aside .radar .radar-all {
+        width: 100%;    
+}
+
+.content .aside .radar .radar-all .forun-unic {
+    width: 150px;
+    text-align: center;
+
+}
+
+.content .aside .radar .radar-all .forun-unic .img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+.content .aside .radar .radar-all .forun-unic .img img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+
+.content .aside .radar .radar-all .forun-unic button {
+    border: 1px solid var(--Primary);
+    padding: 5px;
+    border-radius: 20px;
+    width: 80%;
+    font-size: 14px;
+    color: var(--Primary);
+    font-weight: 600;
+    background-color: var(--Background2);
+    margin: 5px 0;
+}
+
+}
 }
