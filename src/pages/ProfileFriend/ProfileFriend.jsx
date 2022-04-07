@@ -69,8 +69,8 @@ widthView()
     async function loadAccount() {
       await api.get(`/accounts/filter/${id}`).then( async (res) => {
         setUser(res.data[0]);
-        console.log(res.data[0])
-        const idAccount = res.data[0].patron
+        console.log(res.data[0].patron.toLowerCase())
+        const idAccount = res.data[0].patron.toLowerCase()
         await api.get(`informations/${idAccount}`)
         .then((patron) => {
           setPatron(patron.data[0])
@@ -295,6 +295,9 @@ widthView()
     const followingMy = myFollowers.filter(friend => (friend.idAccount === user.id))
     const FollowingExists = myFollowers.filter(friend => (friend.idAccount === myUser.id))
 
+
+    console.log(patron)
+
   return (
       <div className="container">
     <div className="content-profile">
@@ -338,7 +341,7 @@ widthView()
                         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
                     </div>
                     <div className="name">
-                        {/* <h4>Patrono: {patron !== null ?  <Link to={patron.idAccount === user.id ? `/profile` : `/profile-friend/${patron.idAccount}`}>{patron.nickname}</Link> :"Patrono não eocnotrado"}</h4> */}
+                        <h4>Patrono: {patron !== null ?  <Link to={patron.idAccount === user.id ? `/profile` : `/profile-friend/${patron.idAccount}`}>{patron.nickname}</Link> :"Patrono não eocnotrado"}</h4>
                         <br />
                        </div>
 

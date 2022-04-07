@@ -21,7 +21,7 @@ function InformationsUser() {
 
     useEffect(() => {
         async function searchPatron() {
-          const idAccount = user.patron;
+          const idAccount = user.patron.toLowerCase();
           const patron = await api.get(`informations/${idAccount}`);
           setPatron(patron.data[0])
         }
