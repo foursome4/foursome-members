@@ -31,7 +31,7 @@
     text-decoration: none;
     color: var(--Primary);
 }
-.item .counter {
+.item .counter-conversation {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,8 +42,8 @@
     height: 20px;
     font-size: 12px;
     border-radius: 50%;
-    position: absolute;
     margin: -15px;
-    margin-top: -60px;
+    margin-top: -40px;
+    margin-left: -165px;
 
 }

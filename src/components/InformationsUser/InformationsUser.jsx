@@ -7,6 +7,8 @@ import {FaVenus, FaMars} from 'react-icons/fa'
 function InformationsUser() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
+    const informations = localStorage.getItem("informations-foursome");
+    const userInformations = JSON.parse(informations);
     const LocalCharacteristics = localStorage.getItem("characteritics-foursome");
     const characteristics = JSON.parse(LocalCharacteristics);
     const LocalPreferences = localStorage.getItem("preferences-foursome");
@@ -83,7 +85,8 @@ return (
         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
     </div>
     <div className="name">
-     
+        <br />
+        <h4>{userInformations.city} - {userInformations.uf}</h4>
         <br />
         <h5>Meu Id: <a href="/profile"> {user.id}</a></h5>
         <h5>Patrono: {patron !== null ?  <a href={patron.idAccount === user.id ? `/profile` : `/profile-friend/${patron.idAccount}`}>{patron.nickname}</a> :"Patrono não eocnotrado"}</h5>

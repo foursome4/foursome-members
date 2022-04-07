@@ -5,6 +5,7 @@ import api from "../../../../services/api";
 import './userConversation.css'
 
 function UserConversation({idAccount, room}) {
+    console.log(idAccount)
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
 
@@ -14,8 +15,11 @@ function UserConversation({idAccount, room}) {
     useEffect(() => {
         async function loadInformations() {
             await api.get(`informations/${idAccount}`).then((result) => {
-                setNickname(result.data[0].nickname)
-                setAvatar(result.data[0].avatar)
+                if(result.data[0] !== undefined) {
+                    console.log(result.data[0])
+                    setAvatar(result.data[0].avatar)
+                    setNickname(result.data[0].nickname)
+                }
             }).catch((error) => {
                 console.log(error)
                 console.log("Erro aos buscar informações")
@@ -38,7 +42,7 @@ function UserConversation({idAccount, room}) {
 
         friendMessage =  data?.filter((message) => (message.idAccount !== user.id));
 
-        newMessages = friendMessage.filter((messages) => (myMessages !== undefined && friendMessage !== undefined ? new Date(messages.created_at) > new Date(myMessages[0].created_at) : ""))
+        newMessages = friendMessage?.filter((messages) => (myMessages !== undefined && friendMessage !== undefined ? new Date(messages.created_at) > new Date(myMessages[0].created_at) : ""))
     }
 
 
@@ -54,11 +58,12 @@ function UserConversation({idAccount, room}) {
            <h4>Eu & {nickname}</h4>
            </Link>
            {newMessages.length === 0 ? "" :
-           <div className="counter">
+           <div className="counter-conversation">
                {newMessages.length }
             </div>
 }
        </div>
+       
     ) 
 }
 

@@ -64,7 +64,7 @@ function SearchUsers() {
           
             {SearchUsers.map((information) => {
                 return(
-                    <div className="accounts" key={information.idAccount}>
+                    <div className="accounts" key={information.nickname}>
                       <UsersSearch id={information.idAccount} nickname={information.nickname} avatar={information.avatar}/>
                     </div>
                 )

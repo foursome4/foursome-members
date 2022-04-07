@@ -315,7 +315,7 @@ widthView()
                 <div className="users-img">
                   <img src={userInformations !== null ? userInformations.avatar : avatar} alt="" />
                   </div>
-                  <h3> <b>{userInformations !== null ? userInformations.nickname :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+                  <h3> <b>{userInformations !== null ? `${userInformations.nickname} - ${userInformations.uf}` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
                 </div>
                 <div className="tool">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed }><FiHome size={16}/></button>
@@ -341,6 +341,8 @@ widthView()
                         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
                     </div>
                     <div className="name">
+                        <h4>{userInformations.city} - {userInformations.uf}</h4>
+                      <br />
                         <h4>Patrono: {patron !== null ?  <Link to={patron.idAccount === user.id ? `/profile` : `/profile-friend/${patron.idAccount}`}>{patron.nickname}</Link> :"Patrono não eocnotrado"}</h4>
                         <br />
                        </div>

@@ -10,11 +10,15 @@ function UsersPostsComponent({idAccount, username, date, keyId}) {
     
     const [nickname, setNickname] = useState('')
     const [avatar, setAvatar] = useState('')
+    const [uf, setUf] = useState('')
+    const [city, setCity] = useState('')
     useEffect(() => {
         async function loadInformations() {
             await api.get(`informations/${idAccount}`).then((result) => {
                 setNickname(result.data[0].nickname)
                 setAvatar(result.data[0].avatar)
+                setCity(result.data[0].city)
+                setUf(result.data[0].uf)
             }).catch((error) => {
                 console.log(error)
                 console.log("Erro aos buscar informações")
@@ -33,7 +37,7 @@ function UsersPostsComponent({idAccount, username, date, keyId}) {
            </div>
            <div className="name">
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-               <h4>{nickname}</h4>
+               <h4>{nickname} - {uf}</h4>
                </Link>
            <DateFormat date={date} />
            </div>

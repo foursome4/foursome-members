@@ -46,7 +46,7 @@ function MyMessages() {
 
 
     const newRooms = rooms.concat(rooms2);
-
+    console.log(newRooms)
 
 
 
@@ -152,7 +152,7 @@ function MyMessages() {
 
             {newRooms.map((rooms) => {
                 return(
-                    <div className="rooms" key={rooms.id}>
+                    <div className="rooms" key={rooms.room}>
                         <UserConversation idAccount={rooms.idAccount !== user.id ? rooms.idAccount : rooms.idFriend} room={rooms.room}/>
 
                     </div>
