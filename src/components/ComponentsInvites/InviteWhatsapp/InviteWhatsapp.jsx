@@ -18,18 +18,47 @@ function InviteWhatsapp() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
 
+
+    function mascaraFone(event) {
+        var valor = document.getElementById("telefone").attributes[0].ownerElement['value'];
+        var retorno = valor.replace(/\D/g,"");
+        retorno = retorno.replace(/^0/,"");
+        if (retorno.length > 10) {
+          retorno = retorno.replace(/^(\d\d)(\d{5})(\d{4}).*/,"($1) $2-$3");
+        } else if (retorno.length > 5) {
+          if (retorno.length === 6 && event.code === "Backspace") { 
+            // necessário pois senão o "-" fica sempre voltando ao dar backspace
+            return; 
+          } 
+          retorno = retorno.replace(/^(\d\d)(\d{4})(\d{0,4}).*/,"($1) $2-$3");
+        } else if (retorno.length > 2) {
+          retorno = retorno.replace(/^(\d\d)(\d{0,5})/,"($1) $2");
+        } else {
+          if (retorno.length !== 0) {
+            retorno = retorno.replace(/^(\d*)/,"($1");
+          }
+        }
+        document.getElementById("telefone").attributes[0].ownerElement['value'] = retorno;
+      }
+
+
     function createInviteWhatsapp(e) {
         e.preventDefault();
-        if(phone.length !== 11) {
-            console.log(phone)
-            toast.error("Telefone incorreto. siga a instrução DDD + Número")
-            return
-        }
+        
         toast.info("Enviando convite. Aguarde...")
-        const inviteCode = uuidv4();     
+
+        const remove1Paranteses = phone.replace('(', '')
+        const remove2Paranteses = remove1Paranteses.replace(')', '')
+        const removeSpace = remove2Paranteses.replace(' ', '')
+        const removeTrace = removeSpace.replace('-', '')
+        const newPhone = removeTrace;
+
+        console.log(newPhone)
+        const inviteCode = uuidv4()
+       
         const code = inviteCode.substring(0, 4)
 
-       CreateInviteNewUsew({code, name, email, phone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname })
+       CreateInviteNewUsew({code, name, email, phone:newPhone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname })
 
         setEmail("")
         setPhone("")
@@ -41,7 +70,7 @@ function InviteWhatsapp() {
                 <span>Convite por whatsapp</span>
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome"/>
                 <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
-                <input type="text" id="telefone"  value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Ex.: 21999888899"/>
+                <input type="text" id="telefone"  onKeyUp={mascaraFone} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Ex.: 21999888899"/>
 
                 <button onClick={createInviteWhatsapp}> Enviar Convite</button>
 

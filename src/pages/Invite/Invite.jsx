@@ -3,16 +3,26 @@ import './invite.css'
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { Footer } from "../../components/Footer/Footer"
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
-import { FiCheck, } from "react-icons/fi"
+import { FiCheck,FiMail } from "react-icons/fi"
+import { FaWhatsapp } from "react-icons/fa"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { InviteEmail } from "../../components/ComponentsInvites/InviteEmail/InviteEmail"
+import { useState } from "react"
+import { InviteWhatsapp } from "../../components/ComponentsInvites/InviteWhatsapp/InviteWhatsapp"
 
 
 function Invite() {
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(LocalInformation);
 
+    const [typeInvite, setTypeInvite] = useState("Email");
 
+    function handleInviteForEmail(){
+        setTypeInvite("Email")
+      }
+      function handleInviteForWhatsapp(){
+        setTypeInvite("Whatsapp")
+      }
   
     return (
         <div className="content-invite">
@@ -37,8 +47,17 @@ function Invite() {
                                        </div>
                                     </div>
 
+                                    <div className="buttons">
+                                      <button onClick={handleInviteForEmail}>E-mail <FiMail /></button>
+                                      <button onClick={handleInviteForWhatsapp}>Whatsapp <FaWhatsapp /></button>
+                                    </div>
+
+                                    { typeInvite === "Email" ?
+
                                  <InviteEmail />       
-                                
+                                 : typeInvite === "Whatsapp" ?
+                                 <InviteWhatsapp />
+                                 : "" }
                                 </div>
 
                             </div>

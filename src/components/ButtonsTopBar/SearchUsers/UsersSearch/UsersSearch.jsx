@@ -9,7 +9,7 @@ function UsersSearch({id, nickname, avatar}) {
     console.log(id)
 
     return (
-       <div className="item">
+       <div className="item" key={id}>
            <div className="image">
            <Link to={userData.id === id ? `/profile` : `/profile-friend/${id}`}>
            <img src={avatar} alt="" />

@@ -32,8 +32,8 @@ function ProfileFriend() {
   const coverImg = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
   const avatar = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
 
-  const [userInformations, setuserInformations] = useState("null")
-  const [user, setUser] = useState("null")
+  const [userInformations, setuserInformations] = useState([])
+  const [user, setUser] = useState([])
 
   const [rooms, setRooms] = useState([])
   const [characteristics, setCharacteristics] = useState([])
@@ -69,10 +69,12 @@ widthView()
     async function loadAccount() {
       await api.get(`/accounts/filter/${id}`).then( async (res) => {
         setUser(res.data[0]);
+        console.log(res.data[0])
         const idAccount = res.data[0].patron
         await api.get(`informations/${idAccount}`)
         .then((patron) => {
           setPatron(patron.data[0])
+          console.log(patron.data[0])
         }).catch((error) => {
           console.log(error)
         })
@@ -336,7 +338,7 @@ widthView()
                         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
                     </div>
                     <div className="name">
-                        <h4>Patrono: {patron !== null ?  <Link to={patron.idAccount === user.id ? `/profile` : `/profile-friend/${patron.idAccount}`}>{patron.nickname}</Link> :"Patrono não eocnotrado"}</h4>
+                        {/* <h4>Patrono: {patron !== null ?  <Link to={patron.idAccount === user.id ? `/profile` : `/profile-friend/${patron.idAccount}`}>{patron.nickname}</Link> :"Patrono não eocnotrado"}</h4> */}
                         <br />
                        </div>
 
