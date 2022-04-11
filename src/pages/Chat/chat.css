@@ -194,6 +194,7 @@
 .content .chat .main-chat .section-chat .messages .my-message .data h5 {
     font-weight: 700;
     margin: 5px 0;
+    color: var(--White)
 }
 
 
