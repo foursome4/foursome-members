@@ -8,6 +8,25 @@
     background-color: var(--Primary);
 }
 
+.content .chat .main-chat .section-chat .messages .backgroundUserId {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    z-index:-2 ;
+    flex-wrap: wrap;
+            top: 0;
+            left: 0;
+            bottom: 0;
+    width:100%;
+}
+
+.content .backgroundUserId h4 {
+    color: rgb(240, 240, 240);
+    margin: 5px;
+}
+
 .content .chat {
     width: 100%;
     height: 100%;
@@ -50,6 +69,8 @@
     overflow: auto;
     margin-top: 50px;
     background-color: var(--Background2);
+    z-index: 1;
+
 }
 
 .content .chat .main-chat .section-chat .messages::-webkit-scrollbar {
@@ -73,6 +94,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    z-index: 2;
 }
 
 .content .chat .main-chat .section-chat .messages .messages2 {
@@ -81,6 +103,7 @@
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-start;
+    z-index: 2;
 }
 
 .content .chat .main-chat .section-chat .messages .message-friend {
@@ -90,6 +113,7 @@
     justify-content: flex-start;
     max-width: 50%;
     min-width: 10%;
+    z-index: 2;
 }
 
 .content .chat .main-chat .section-chat .messages .my-message {
@@ -99,6 +123,7 @@
     justify-content: flex-start;
     max-width: 50%;
     min-width: 10%;
+    z-index: 2;
 }
 
 
@@ -108,12 +133,14 @@
     height: 30px;
     margin-right: 10px;
     border-radius: 50%;
+    z-index: 2;
 }
 .content .chat .main-chat .section-chat .messages .my-message .avatar {
     width: 30px;
     height: 30px;
     margin-right: 10px;
     border-radius: 50%;
+    z-index: 2;
 }
 
 .content .chat .main-chat .section-chat .messages .my-message .avatar img {
@@ -121,6 +148,7 @@
     height: 30px;
     object-fit: cover;
     border-radius: 50%;
+    z-index: 2;
 
 }
 .content .chat .main-chat .section-chat .messages .message-friend .avatar img {
@@ -128,6 +156,7 @@
     height: 30px;
     object-fit: cover;
     border-radius: 50%;
+    z-index: 2;
 
 }
 
@@ -143,6 +172,7 @@
     margin-bottom: 10px;
     max-width: 100%;
     white-space: pre-line;
+    z-index: 2;
 }
 .content .chat .main-chat .section-chat .messages .my-message .data .date {
     display: flex;
@@ -169,12 +199,13 @@
     align-items: flex-start;
     justify-content: flex-end;
     color: var(--Primary);
-    background-color: var(--Background);
+    background-color: var(--Gray_font1);
     padding: 10px;
     border-radius: 8px;
     margin-bottom: 10px;
     max-width: 100%;
     white-space: pre-line;
+    z-index: 2;
 }
 
 .content .chat .main-chat .section-chat .messages .message-friend .data .date {
@@ -190,10 +221,17 @@
 .content .chat .main-chat .section-chat .messages .message-friend .data h5 {
     font-weight: 700;
     margin: 5px 0;
+    color: var(--White)
 }
 .content .chat .main-chat .section-chat .messages .my-message .data h5 {
     font-weight: 700;
     margin: 5px 0;
+    color: var(--White)
+}
+.content .chat .main-chat .section-chat .messages .message-friend .data p {
+    color: var(--White)
+}
+.content .chat .main-chat .section-chat .messages .my-message .data p {
     color: var(--White)
 }
 
@@ -296,7 +334,7 @@
     padding: 10px 40px;
     background-color: var(--Background2);
     border-top: 2px solid var(--Background);
-
+    z-index: 2;
 }
 
 .content .chat .main-chat .section-chat .text textarea {

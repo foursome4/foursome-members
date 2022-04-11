@@ -1,7 +1,7 @@
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSlim'
 import { TopBar } from '../../components/TopBar/TopBar'
-import { DateFormat } from '../../components/DateFormat/DateFormat'
+import { DateFormatChat } from '../../components/DateFormatChat/DateFormatChat'
 import './chat.css';
 import { useState, useRef} from 'react'
 import { Link, useParams } from 'react-router-dom'
@@ -29,6 +29,8 @@ function Chat() {
   console.log(`User: ${user.id}`)
   console.log(`Room: ${room}`)
   console.log(`IdFriend: ${idFriend}`)
+
+  const ActualDate = new Date();
 
 
   const [text, setText] = useState('');
@@ -239,6 +241,368 @@ function handleMedia() {
         <div className="main-chat">
          <div className="section-chat">
              <div className="messages" ref={messageRef}>
+      <div className="backgroundUserId">
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+        <h4>{user.id}</h4>
+        <h4>{`- ${ActualDate.getDay()}/${ActualDate.getMonth()}/${ActualDate.getFullYear()} -`}</h4>
+        <h4>Foursome.com.br</h4>
+      </div>
 
                {data?.map((message) => {
                  return (
@@ -269,7 +633,7 @@ function handleMedia() {
                       </div>
                       : ""}
                      <div className="date">
-                     <DateFormat date={message.created_at} />
+                     <DateFormatChat date={message.created_at} />
                        </div> 
                     {click === true ?  message.idAccount === user.id ? <DeleteMessage _id={message._id} /> : "" :
                       ""}
@@ -291,7 +655,7 @@ function handleMedia() {
                     </div>
                        <div className="data">
                        <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>
-                        <p><b>{message.nickname} - </b></p>
+                        <p><b>{message.nickname}</b></p>
                        </Link>
                        <h5>{message.text}</h5>
                      {message.link !== "" ?
@@ -312,7 +676,7 @@ function handleMedia() {
                       </div>
                       : ""}
                                           <div className="date">
-                                          <DateFormat date={message.created_at} />
+                                          <DateFormatChat date={message.created_at} />
                                             </div> 
                       {click === true ?   message.idAccount === user.id ? <DeleteMessage _id={message._id} /> : "" :
                       ""}
