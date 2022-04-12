@@ -9,7 +9,6 @@ function UsersNotifications({id, text}) {
     const userData = JSON.parse(Local);
 
     const [avatar, setAvatar] = useState('')
-    console.log(id)
     useEffect(() => {
         async function loadInformations() {
             const idAccount = id

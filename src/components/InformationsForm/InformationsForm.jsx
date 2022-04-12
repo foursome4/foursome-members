@@ -69,6 +69,7 @@ function InformationsForm() {
 
     async function handleUploadAccount(e) {
         e.preventDefault();
+        setLoadding(true)
         
         if(avatarUrl === null || coverUrl === null || nickname === "" || city === "" || uf === "" || relationship === "") {
             toast.error("Favor preencher todos os campos")
@@ -105,7 +106,6 @@ function InformationsForm() {
        createInformationsAccount({idAccount: user.id, avatar: avatar, cover: avatarCover, city, uf, relationship, nickname});
         console.log({idAccount: user.id, avatar: photoUrlAvatar, cover: photoUrl, city, uf, relationship, nickname});
         console.log(loadding);
-        setLoadding(false);
         }
     
         
@@ -173,7 +173,7 @@ function InformationsForm() {
                         <span>Minhas informações estão corretas!</span>
                         </div>
                         <div className='buttonsInformation'>
-                        <button onClick={handleUploadAccount}>{loadding === true ? <FiRefreshCcw /> : "Salvar e avançar"}</button>
+                        <button onClick={loadding === true ? " " : handleUploadAccount}>{loadding === true ? <FiRefreshCcw /> : "Salvar e avançar"}</button>
                         <button onClick={logout}>Sair</button>
                         </div>
                     </div>

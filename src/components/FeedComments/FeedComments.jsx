@@ -37,7 +37,6 @@ function FeedCommentsComponent({idPost}) {
            deleteComment(idComment);
            let newCommentDelete = dataComments.filter(comment => comment.id !== idComment);
            setDataComments(newCommentDelete)
-         console.log(newCommentDelete)
             } 
         }
 

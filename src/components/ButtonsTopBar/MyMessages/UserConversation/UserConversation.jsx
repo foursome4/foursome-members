@@ -17,7 +17,6 @@ function UserConversation({idAccount, room}) {
         async function loadInformations() {
             await api.get(`informations/${idAccount}`).then((result) => {
                 if(result.data[0] !== undefined) {
-                    console.log(result.data[0])
                     setAvatar(result.data[0].avatar)
                     setNickname(result.data[0].nickname)
                     setUf(result.data[0].uf)

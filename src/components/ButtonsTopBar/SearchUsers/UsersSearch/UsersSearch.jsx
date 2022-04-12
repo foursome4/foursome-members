@@ -6,8 +6,6 @@ function UsersSearch({id, nickname, avatar, uf}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
-    console.log(id)
-
     return (
        <div className="item-search" key={id}>
            <div className="image">

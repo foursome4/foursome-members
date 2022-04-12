@@ -16,15 +16,12 @@ function Notifications() {
 
     const [isOpenModalNotifications, setIsOpenModalNotifications] = useState(false);
 
-    console.log(date)
-
-         const loadDateRead = useCallback(async () => {
+           const loadDateRead = useCallback(async () => {
              const idAccount = user.id
              await api.get(`/dateread/${idAccount}`)
              .then( async (res) => {
                  if(res.data.length !== 0) {
                      setDateRead(res.data[0]);
-                     console.log(res.data[0]);
                  } else {
                      const data = {
                          idAccount: user.id,

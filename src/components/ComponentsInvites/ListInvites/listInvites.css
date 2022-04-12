@@ -12,6 +12,34 @@
     margin: 5px 0;
     text-align: center;
 }
+.inviteUnic .linkInvite {
+    width: 30%;
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: var(--White);
+    background-color: var(--Primary);
+    border-radius: 6px;
+    margin: 5px 0;
+    text-align: center;
+}
+.inviteUnic .linkInvite h5 {
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    justify-content: center;
+    margin: 6px;
+}
+.inviteUnic .linkInvite h5 a{
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    color: var(--White);
+}
 .inviteUnic h5{
     text-align: center;
 }

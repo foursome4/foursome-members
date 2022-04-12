@@ -19,7 +19,6 @@ function ListReactionsComponent({idPost}) {
        myLike = data?.filter(likes => (likes.idAccount === userData.id));
     }
 
-    console.log(myLike)
 
     function handleLikePost(e) {
         e.preventDefault()

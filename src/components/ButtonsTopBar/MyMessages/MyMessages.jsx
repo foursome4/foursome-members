@@ -18,7 +18,6 @@ function MyMessages() {
     const [rooms, setRooms] = useState([])
     const [rooms2, setRooms2] = useState([])
 
-  console.log(date)
     useEffect(() => {
         async function loadRoomIdAccount() {
             const idAccount = user.id
@@ -46,7 +45,6 @@ function MyMessages() {
 
 
     const newRooms = rooms.concat(rooms2);
-    console.log(newRooms)
 
 
 
@@ -113,7 +111,6 @@ function MyMessages() {
         console.log("Erro ao buscar dados" + error)
     })
 
-    console.log(data)
       }
 
       function handleNewDate(date) {

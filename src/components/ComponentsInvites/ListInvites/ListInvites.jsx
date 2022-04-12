@@ -10,6 +10,9 @@ function ListInvites() {
 
     const idAccount = user.id
     const {data} = useFetch(`/invites/${idAccount}`);
+    if(data) {
+      console.log(data)
+    }
 
       function handleDeleteInvite(id) {
         const deletar = window.confirm("Deseja deletar a postagem?");
@@ -27,7 +30,9 @@ function ListInvites() {
                                     <div className="inviteUnic" key={invite.email}>
                                       <h5><b>{invite.name}</b></h5>
                                       <h5>{invite.email !== "" ? invite.email : ""} </h5>
-                                      <h5>{invite.phone !== "" ? invite.phone : ""}</h5>
+                                      <div className="linkInvite">
+                                        <h5> <a href={`https://foursome.com.br/signup/${invite.email}/${invite.code}/${invite.idAccount}`}>Copiar link de convite</a></h5>
+                                      </div>
                                       <button onClick={() => {handleDeleteInvite(invite.id)}}>Deletar</button> 
                                     
                                     </div>

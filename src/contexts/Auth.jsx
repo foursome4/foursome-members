@@ -778,12 +778,25 @@ async function newVisit(idAccount, username, idFriend) {
         }
 
         if(data.idAccount && data.username && data.nickname && data.avatar && data.lat && data.long && data.city && data.uf !== "") {
+
+                const usersOnline = api.get("/online");
+                console.log(usersOnline)
+
+                let selectUserOnline = usersOnline.filter(online => online.idAccount === data.idAccount);
+                console.log(selectUserOnline)
+
                 socket.on("connection", () => {
                     console.log("Conexão estabelecida")
                 })
-                await api.post("/online", data).then(() => {
-                    console.log("Usuário online: " + data)
-                })
+
+                if(selectUserOnline.length === 0) {
+                    toast.success("Cadastrando usuário")
+                    // await api.post("/online", data).then(() => {
+                    //     console.log("Usuário online: " + data)
+                    // })
+                } else {
+                    toast.error("Usuário ja está online")
+                }
 
             } else {
                 console.log("Imformações não coletadas com sucesso!")
