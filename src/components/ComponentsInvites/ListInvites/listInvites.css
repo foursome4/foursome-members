@@ -13,7 +13,7 @@
     text-align: center;
 }
 .inviteUnic .linkInvite {
-    width: 30%;
+    width: 50%;
     display: flex;
     flex-direction: center;
     align-items: center;
@@ -43,6 +43,12 @@
 .inviteUnic h5{
     text-align: center;
 }
+.inviteUnic p{
+    text-align: center;
+    color: var(--Gray_font1);
+    margin-bottom:10px;
+}
+
 
 .inviteUnic button{
     display: flex;
@@ -55,4 +61,12 @@
     background-color: var(--Primary);
     padding: 5px 10px;
     margin-top: 5px;
+}
+
+
+
+@media(max-width: 600px) {
+    .inviteUnic .linkInvite {
+        width: 90%;
+    }
 }
