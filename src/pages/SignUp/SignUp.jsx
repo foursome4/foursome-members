@@ -13,9 +13,9 @@ function SignUp() {
   const [usernameNative, setUsernameNative] = useState("");
   const [newPhone, setPhone] = useState("");
   const [type, setType] = useState("");
-  const [password, setPassword] = useState("");
-  const [passordConfirm, setPassordConfirm] = useState("");
-  const [passwordView, setPasswordView] = useState(false)
+  const [passwordNative, setPasswordNative] = useState("");
+  const [passwordConfirmNative, setPasswordConfirmNative] = useState("");
+  const [passwordView, setPasswordView] = useState(true)
   const [checked, setChecked] = useState(false);
 
 
@@ -46,10 +46,11 @@ function SignUp() {
     // const usernameNative = usernameNative.toLowerCase()
 
 
-    const username = usernameNative.replace(/( )+/g, "")
-
+    
     if(checked) {
-        if(passordConfirm === password) {
+      if(passwordConfirmNative === passwordNative) {
+          const username = usernameNative.replace(/( )+/g, "")
+          const password = passwordNative.replace(/( )+/g, "")
      //  createAccount(username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
           console.log( username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
         } else {
@@ -133,12 +134,12 @@ function SignUp() {
                             <input type="text" id="telefone" onKeyUp={mascaraFone} value={newPhone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
 
           <div className="inputPassword">
-          <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
+          <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={passwordNative} onChange={(e) => setPasswordNative(e.target.value)}/>
           <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
           </div>
 
           <div className="inputPassword">
-          <input type={passwordView === false ? "password" : "text" } placeholder="Confirmar senha" value={passordConfirm} onChange={(e) => setPassordConfirm(e.target.value)}/>
+          <input type={passwordView === false ? "password" : "text" } placeholder="Confirmar senha" value={passwordConfirmNative} onChange={(e) => setPasswordConfirmNative(e.target.value)}/>
           <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
           </div>
 
