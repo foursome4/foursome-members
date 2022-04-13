@@ -60,6 +60,28 @@
     color: var(--Primary);
     font-weight: bold;
 }
+.content-Login form .data input[type=date] {
+    width: 48%;
+    margin: 5px;
+    border: none;
+    background-color: var(--Background2);
+    border-radius: 6px;
+    font-size: 14px;
+    padding:10px;
+    color: var(--Primary);
+    font-weight: bold;
+}
+
+
+.content-Login form .data input[type=date]::-webkit-datetime-edit-month-field {
+    color: var(--Primary);
+  }
+  .content-Login form .data input[type=date]::-webkit-datetime-edit-day-field {
+    color: var(--Primary);
+  }
+  .content-Login form .data input[type=date]::-webkit-datetime-edit-year-field {
+    color: var(--Primary);
+  }
 
 .content-Login form .data select {
     width: 48%;
