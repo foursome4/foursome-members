@@ -51,7 +51,7 @@ function SignUp() {
       if(passwordConfirmNative === passwordNative) {
           const username = usernameNative.replace(/( )+/g, "")
           const password = passwordNative.replace(/( )+/g, "")
-     //  createAccount(username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
+          createAccount(username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
           console.log( username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
         } else {
           toast.error("As senhas não combinam!")
