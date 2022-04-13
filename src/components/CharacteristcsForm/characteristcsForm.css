@@ -51,27 +51,26 @@
 
 .content-Login form .data input {
     width: 48%;
-    font-size: 14px;
-    padding: 5px;
-    margin: 5px 0;
-    border-radius: 1px;
+    margin: 5px;
     border: none;
-    border-bottom: 1px solid var(--White);
-    background-color: var(--Primary);
-    color: var(--White);
-    margin: 4px;
+    background-color: var(--Background2);
+    border-radius: 6px;
+    font-size: 14px;
+    padding:10px;
+    color: var(--Primary);
+    font-weight: bold;
 }
 
 .content-Login form .data select {
     width: 48%;
-    font-size: 14px;
-    padding: 5px;
-    margin: 5px 0;
+    margin: 5px;
     border: none;
-    border-bottom: 1px solid var(--White);
-    background-color: var(--Primary);
-    color: var(--White);
-    margin: 4px;
+    background-color: var(--Background2);
+    border-radius: 6px;
+    font-size: 14px;
+    padding:10px;
+    color: var(--Primary);
+    font-weight: bold;
 }
 
 .content-Login form .data input::placeholder {
@@ -97,7 +96,8 @@
     color: var(--Primary);
 }
 
-.content-Login form .confirmation .confirmation_content-Login {
+.content-Login form .confirmation .confirmation_characteristcsForm {
+    width:20%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -105,7 +105,7 @@
     color: var(--White);
 }
 
-.content-Login form .confirmation .confirmation_content-Login span {
+.content-Login form .confirmation .confirmation_characteristcsForm span {
     margin-left: 10px;
 }
 

@@ -102,7 +102,7 @@ function PreferencesForm() {
                         <input type="checkbox" value="Travestis" onChange={handleSelectTravestis}/><span>Travestis</span>
                     </div>
                     <div className="search">
-                        <input type="checkbox" value="Transexuais" onChange={handleSelectTransexuais}/><span>Transexuais</span>
+                        <input type="checkbox" value="Transexuais" onChange={handleSelectTransexuais}/><span>Transex</span>
                     </div>
                     <div className="search">
                         <input type="checkbox" value="Grupos" onChange={handleSelectGrupos}/><span>Grupos</span>

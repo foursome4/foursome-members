@@ -16,18 +16,18 @@ function InformationsForm() {
     const {logout} = useContext(AuthContext)
     const {createInformationsAccount} = useContext(AuthContext)
     const [avatarUrl, setAvatarUrl] = useState(null);
-    const [coverUrl, setCoverUrl] = useState(null);
     const [imageAvatar, setImageAvatar] = useState('');
-    const [imageCover, setImageCover] = useState('');
     const [city, setCity] = useState("");
     const [uf, setUf] = useState("");
     const [cep, setCep] = useState("");
     const [relationship, setRelationship] = useState("");
     const [nickname, setNickname] = useState("")
     const [loadding, setLoadding] = useState(false);
+    const [location, setLocation] = useState(false);
 
-    const cover = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
+
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
+
 
     function handleFile(e) {
         console.log(e.target.files[0])
@@ -47,31 +47,11 @@ function InformationsForm() {
         }
     }
     
-    
-    function handleFileCover(e) {
-        console.log(e.target.files[0])
-        console.log(loadding);
-
-       if(e.target.files[0]){
-           const image = e.target.files[0];
-
-           if(image.type === 'image/jpeg' || image.type === 'image/jpg' || image.type === 'image/png') {
-            setImageCover(image);
-               setCoverUrl(URL.createObjectURL(e.target.files[0]));
-               console.log(coverUrl)
-           } else {
-               console.log('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
-               setImageCover(null);
-               return null;
-           }
-       }
-    }
-
     async function handleUploadAccount(e) {
         e.preventDefault();
         setLoadding(true)
         
-        if(avatarUrl === null || coverUrl === null || nickname === "" || city === "" || uf === "" || relationship === "") {
+        if(avatarUrl === null || nickname === "" || city === "" || uf === "" || relationship === "") {
             toast.error("Favor preencher todos os campos")
         } else {
        toast.info("Salvando as informações. Aguarde...")
@@ -88,23 +68,14 @@ function InformationsForm() {
 
         
 
-        // Cover
-        const uuid2 = uuidv4();
-
-        let newCoverUrlFirebase = ref(storage, `images/cover/${uuid2}`);
-        let upload = await uploadBytes(newCoverUrlFirebase, imageCover);
-        let photoUrl = await getDownloadURL(upload.ref);
-
-        console.log(upload.ref.name, photoUrl);
 
         const linkProfile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
         const avatar = photoUrlAvatar === "" || photoUrlAvatar === undefined || photoUrlAvatar === null ? linkProfile : photoUrlAvatar
 
         const linkCover = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
-        const avatarCover = photoUrl === "" || photoUrl === undefined || photoUrl === null ? linkCover : photoUrl
         //Salvando no banco de dados
-       createInformationsAccount({idAccount: user.id, avatar: avatar, cover: avatarCover, city, uf, relationship, nickname});
-        console.log({idAccount: user.id, avatar: photoUrlAvatar, cover: photoUrl, city, uf, relationship, nickname});
+       createInformationsAccount({idAccount: user.id, avatar: avatar, cover: linkCover, city, uf, relationship, nickname});
+        console.log({idAccount: user.id, avatar: photoUrlAvatar, cover: linkCover, city, uf, relationship, nickname});
         console.log(loadding);
         }
     
@@ -130,6 +101,16 @@ function InformationsForm() {
     }
 
 
+    function handleHabiliteLocation(e) {
+        e.preventDefault();
+        if(location === false) {
+            setLocation(true)
+        } else {
+            setLocation(false)
+        }
+    }
+
+
     return (
             <div className="complete-informations">
                 <div className="title">
@@ -137,6 +118,7 @@ function InformationsForm() {
                     <h2>Informações Complementares</h2>
                     </div>
                         <form action="">
+                            <p>Avatar</p>
                         <label className="label-avatar">
                             <span><FiUpload color="#f65" size={25} /></span>
                             <input type="file" accept="image/*" onChange={handleFile}/><br />
@@ -148,9 +130,21 @@ function InformationsForm() {
                         <input type="text" placeholder='Digite seu cep' value={cep} onChange={(e) => setCep(e.target.value)}/>
                         <button onClick={handleSearchCep}>Buscar Cep</button>
                         </div>
-                    <div className="data">                      
-                            <input type="text" placeholder='UF' value={uf} onChange={(e) => setUf(e.target.value)}/>
+                        <div className="digiteCep">
+                        <button onClick={handleHabiliteLocation}>Não sei meu CEP</button>
+                        </div>
+                    <div className="data"> 
+
+                    {location === true || uf !== "" ?
+                    <div className="location">
+                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf} onChange={(e) => setUf(e.target.value)}/>
                             <input type="text" placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)}/>
+                        </div>    
+                        :  "" }
+
+
+
+                        <div className="dataUser">
                             <input type="text" placeholder='Nome de Exibição' value={nickname} onChange={(e) => setNickname(e.target.value)}/>
                             <select value={relationship} onChange={handleRelationship}>
                                 <option value="">Status de Relacionamento</option>
@@ -159,21 +153,19 @@ function InformationsForm() {
                                 <option value="Enrolad@">Enrolad@</option>
                                 <option value="Relacionamento Aberto">Relacionamento Aberto</option>
                             </select>
+                            </div>             
 
                     </div>
 
-                    <label className="label-cover">
-                            <span><FiUpload color="#f65" size={25} /></span>
-                            <input type="file" accept="image/*" onChange={handleFileCover}/><br />
-                            <img src={coverUrl === null ? cover : coverUrl} alt="Avatar"/>
-                        </label>
                     <div className='confirmation'>
                         <div className="confirmation_informations">
                         <input type="checkbox"/>
                         <span>Minhas informações estão corretas!</span>
                         </div>
                         <div className='buttonsInformation'>
-                        <button onClick={loadding === true ? " " : handleUploadAccount}>{loadding === true ? <FiRefreshCcw /> : "Salvar e avançar"}</button>
+                            {loadding === true ? " " :
+                        <button onClick={handleUploadAccount}>{loadding === true ? <FiRefreshCcw /> : "Salvar e avançar"}</button>
+                              }
                         <button onClick={logout}>Sair</button>
                         </div>
                     </div>

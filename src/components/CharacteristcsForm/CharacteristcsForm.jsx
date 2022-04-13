@@ -322,7 +322,7 @@ function CharacteristcsForm() {
                         <input required type="checkbox"/>
                         <span>Minhas informações estão corretas!</span>
                         </div>
-                        <button type='submit'>"Salvar e avançar"</button>
+                        <button type='submit'>Salvar e avançar</button>
                         
                     </div>
                         </form>

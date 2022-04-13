@@ -151,7 +151,7 @@ async function deleteAccount() {
         deleteInformations()
        
      } else {
-        toast.error('Deu algo errado ao deletar!');
+        toast.error('Falha ao deletar, tente novamente!');
      }
 }
 
@@ -164,7 +164,7 @@ async function deleteInformations() {
         deleteCharacteristcs()
        
      } else {
-        toast.error('Deu algo errado ao deletar!');
+        toast.error('Falha ao deletar, tente novamente!');
      }
 }
 async function deleteCharacteristcs() {
@@ -175,7 +175,7 @@ async function deleteCharacteristcs() {
         deletePreferences()
        
      } else {
-        toast.error('Deu algo errado ao deletar!');
+        toast.error('Falha ao deletar, tente novamente!');
      }
 }
 async function deletePreferences() {
@@ -188,7 +188,7 @@ async function deletePreferences() {
         logout(user.idAccount)
        
      } else {
-        toast.error('Deu algo errado ao deletar!');
+        toast.error('Falha ao deletar, tente novamente!');
      }
 }
 
@@ -438,10 +438,10 @@ async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, 
 async function deletePost(id) {
     const res = await api.delete(`/posts/${id}`);
     if(res.status===201) {
-        toast.success('post deletado com sucesso!');
+        toast.success('Post deletado com sucesso!');
        
      } else {
-        toast.error('Deu algo errado ao deletar!');
+        toast.error('Falha ao deletar, tente novamente!');
      }
 }
 async function editPost(id, text) {
@@ -450,7 +450,7 @@ async function editPost(id, text) {
             toast.success('post editado com sucesso!');
            
          } else {
-            toast.error('Deu algo errado ao deletar!');
+            toast.error('Falha ao deletar, tente novamente!');
          }
  }
 async function editComment(id, text) {
@@ -458,17 +458,17 @@ async function editComment(id, text) {
         if(res.status===201) {
            
          } else {
-            toast.error('Deu algo errado ao deletar!');
+            toast.error('Falha ao deletar, tente novamente!');
          }
  }
 
 async function deleteComment(id) {
     const res = await api.delete(`/comments/${id}`);
     if(res.status===201) {
-        toast.success('post deletado com sucesso!');
+        toast.success('Comentário deletado com sucesso!');
        
      } else {
-        toast.error('Deu algo errado ao deletar!');
+        toast.error('Falha ao deletar, tente novamente!');
      }
 }
 async function editReply(id, text) {
@@ -476,7 +476,7 @@ async function editReply(id, text) {
         if(res.status===201) {
            
          } else {
-            toast.error('Deu algo errado ao deletar!');
+            toast.error('Falha ao deletar, tente novamente!');
          }
  }
 
@@ -486,7 +486,7 @@ async function deleteReply(id) {
         toast.success('Resposta deletada com sucesso!');
        
      } else {
-        toast.error('Deu algo errado ao deletar!');
+        toast.error('Falha ao deletar, tente novamente!');
      }
 }
 async function deleteInvite(id) {
@@ -495,7 +495,7 @@ async function deleteInvite(id) {
         toast.success('Convite deletado com sucesso!');
        
      } else {
-        toast.error('Deu algo errado ao deletar!');
+        toast.error('Falha ao deletar, tente novamente!');
      }
 }
 
@@ -693,7 +693,6 @@ async function createEvents( avatar, name, description, date, street, district, 
 
 
 async function deleteGroup(id){
-    console.log(id);
     await api.delete(`/groups/${id}`).then(() => {
     })
 }
@@ -729,12 +728,9 @@ async function newVisit(idAccount, username, idFriend) {
         setLong(longitude)
    
        reverseGeolocalization(latitude, longitude)
-
-       console.log("Localização coletada: " + latitude + "," + longitude)
       }
     
       function error() {
-        console.log('Unable to retrieve your location');
         console.log('Unable to retrieve your location');
       }
    
@@ -746,10 +742,8 @@ async function newVisit(idAccount, username, idFriend) {
         const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
 
         setCity(address.data.results[0].address_components[3].long_name)
-        setUf(address.data.results[0].address_components[4].short_name)  
-
-        console.log("Cidade e Estado: " + address.data.results[0].address_components[3].long_name + "," + address.data.results[0].address_components[4].short_name)
-    }
+        setUf(address.data.results[0].address_components[4].short_name) 
+     }
 
     const DataUser = localStorage.getItem("foursome");
     const user = JSON.parse(DataUser);
@@ -757,6 +751,14 @@ async function newVisit(idAccount, username, idFriend) {
     const userInformations = JSON.parse(LocalInformation);
 
     async function getInformations() {
+
+        let usersOnline = [];
+        await api.get("/online").then((res) => {
+           usersOnline = res.data
+        })
+       
+        let selectUserOnline = usersOnline.filter(online => online.idAccount === user.id);
+
        
         let equalCity = " "
         if(city === userInformations.city && uf === userInformations.uf ) {
@@ -779,23 +781,16 @@ async function newVisit(idAccount, username, idFriend) {
 
         if(data.idAccount && data.username && data.nickname && data.avatar && data.lat && data.long && data.city && data.uf !== "") {
 
-                const usersOnline = api.get("/online");
-                console.log(usersOnline)
-
-                let selectUserOnline = usersOnline.filter(online => online.idAccount === data.idAccount);
-                console.log(selectUserOnline)
-
                 socket.on("connection", () => {
                     console.log("Conexão estabelecida")
                 })
 
                 if(selectUserOnline.length === 0) {
-                    toast.success("Cadastrando usuário")
-                    // await api.post("/online", data).then(() => {
-                    //     console.log("Usuário online: " + data)
-                    // })
+                    console.log("Cadastrando usuário")
+                    await api.post("/online", data).then(() => {
+                    })
                 } else {
-                    toast.error("Usuário ja está online")
+                    console.log("Usuário ja está online")
                 }
 
             } else {
@@ -826,7 +821,7 @@ async function newVisit(idAccount, username, idFriend) {
         }
         function resetTimer() {
         clearTimeout(time);
-       time = setTimeout(doSomething, 300000)
+       time = setTimeout(doSomething, 1200000)
     }
 }
 

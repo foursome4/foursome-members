@@ -3,7 +3,6 @@ import { TopBar } from "../../components/TopBar/TopBar"
 import './radar.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import { DistanceFromUser } from "../../components/DistanceFromUser/DistanceFromUser"
-import { FaPlane} from "react-icons/fa"
 import {  useEffect, useState } from "react"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import api from "../../services/api"

@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .content-registration .registrationEnd .orientations h4 {
@@ -46,10 +46,12 @@
     align-items: center;
     justify-content: center;
     margin-top: 5px;
+    text-align: left;
 }
 
 .content-registration .registrationEnd .orientations h4 svg {
     margin-right: 5px;
+    width: 15px;
 }
 
 .content-registration .registrationEnd button {
@@ -84,11 +86,11 @@ border-radius: 10px;
 
 @media(max-width: 400px) {
     .content-registration .registrationEnd .orientations h4 {
-        font-size: 12px;
+        font-size: 14px;
     }
     
     .content-registration .registrationEnd .orientations h4 svg {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .content-registration .registrationEnd .informations {
