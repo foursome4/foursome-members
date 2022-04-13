@@ -10,7 +10,7 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 function SignUp() {
   const {email, code, patron} = useParams()
   const  {createAccount} = useContext(AuthContext)
-  const [username, setUsername] = useState("");
+  const [usernameNative, setUsernameNative] = useState("");
   const [newPhone, setPhone] = useState("");
   const [type, setType] = useState("");
   const [password, setPassword] = useState("");
@@ -43,12 +43,15 @@ function SignUp() {
     const removeTrace = removeSpace.replace('-', '')
     const phone = removeTrace;
 
-    // const username = username.toLowerCase()
+    // const usernameNative = usernameNative.toLowerCase()
+
+
+    const username = usernameNative.replace(/( )+/g, "")
 
     if(checked) {
         if(passordConfirm === password) {
-       createAccount(username, email, phone, type, password, status, role, code, online, patron)
-          console.log( username, email, phone, type, password, status, role, code, online, patron)
+     //  createAccount(username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
+          console.log( username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
         } else {
           toast.error("As senhas não combinam!")
         }
@@ -117,7 +120,7 @@ function SignUp() {
           <input type="text" placeholder="E-mail" value={email} disabled/>
           <input type="text" placeholder="Código de verificação" value={code} disabled/>
           <input type="text" placeholder="Id do Patrono" value={patron} disabled/>
-          <input type="text" placeholder="Nome de usuário (Junto e sem espaço)" value={username.toLowerCase()} onChange={(e) => setUsername(e.target.value)}/>
+          <input type="text" placeholder="Nome de usuário (Junto e sem espaço)" value={usernameNative.toLowerCase()} onChange={(e) => setUsernameNative(e.target.value)}/>
           <select value={type} onChange={handleSetectType}>
                                 <option value="">Tipo de conta</option>
                                 <option value="Homem">Homem </option>

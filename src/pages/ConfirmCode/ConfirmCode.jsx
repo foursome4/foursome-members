@@ -2,14 +2,12 @@ import { useContext, useEffect, useState } from 'react';
 import logoImg from '../../assets/images/logo.png'
 import { AuthContext } from '../../contexts/Auth';
 import { useNavigate } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid'
 
-import './recuperation.css';
+import './confirmCode.css';
 
-function Recuperation() {
-  const  {gerateCodeRecuperation} = useContext(AuthContext)
-  const [email, setEmail] = useState("");
-
+function ConfirmCode() {
+  const  {} = useContext(AuthContext)
+  const [code, setCode] = useState("");
 
   const navigate = useNavigate();
 
@@ -20,11 +18,9 @@ function Recuperation() {
     },[navigate])
 
 
-  function handleCreateCodeRecuperation(e) {
+  function handleCreateAccount(e) {
     e.preventDefault();
-    const inviteCode = uuidv4()
-    const code = inviteCode.substring(0, 6)
-    gerateCodeRecuperation(email, code)
+   
   }
 
   return (
@@ -36,12 +32,12 @@ function Recuperation() {
         </div>
         <div className="form">
           <div className="title">
-            <h3>DIGITE SEU E-MAIL DE CADASTRO</h3>
+            <h3>DIGITE O CÓDIGO DE RECUPERAÇÃO</h3>
           </div>
-          <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <input type="text" placeholder="Digite o código aqui" value={code} onChange={(e) => setCode(e.target.value)}/>
 
           <div className="buttons">
-          <button onClick={handleCreateCodeRecuperation}> Gerar código </button>
+          <button onClick={handleCreateAccount}> Confirmar </button>
 
 
           </div>
@@ -51,4 +47,4 @@ function Recuperation() {
   )
 }
 
-export { Recuperation }
+export { ConfirmCode }
