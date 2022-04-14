@@ -23,34 +23,60 @@
 
 
 .content-Login form{
-    height: 90%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+   
 }
 
 
 .content-Login form .data {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     padding-left: 20px ;
+}
+.content-Login form .data .data-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .content-Login form .data .data-form span {
     color: var(--White);
     font-weight: 600;
 }
+.content-Login form .data .data-form .date {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.content-Login form .data .data-form .date p {
+   color: aliceblue;
+   font-size: 25px;
+}
+.content-Login form .data .data-form .date svg {
+    width: 25px;
+    color: aliceblue;
+    margin-right: 5px;
+}
 .content-Login form .data .data-form h5 {
     color: var(--White);
 }
 
 
-.content-Login form .data input {
-    width: 48%;
+.content-Login form .data .data-form .date input {
+    width: 100%;
     margin: 5px;
     border: none;
     background-color: var(--Background2);
@@ -60,30 +86,7 @@
     color: var(--Primary);
     font-weight: bold;
 }
-.content-Login form .data input[type=date] {
-    width: 48%;
-    margin: 5px;
-    border: none;
-    background-color: var(--Background2);
-    border-radius: 6px;
-    font-size: 14px;
-    padding:10px;
-    color: var(--Primary);
-    font-weight: bold;
-}
-
-
-.content-Login form .data input[type=date]::-webkit-datetime-edit-month-field {
-    color: var(--Primary);
-  }
-  .content-Login form .data input[type=date]::-webkit-datetime-edit-day-field {
-    color: var(--Primary);
-  }
-  .content-Login form .data input[type=date]::-webkit-datetime-edit-year-field {
-    color: var(--Primary);
-  }
-
-.content-Login form .data select {
+.content-Login form .data .data-form .date input[type=date] {
     width: 48%;
     margin: 5px;
     border: none;
@@ -95,7 +98,30 @@
     font-weight: bold;
 }
 
-.content-Login form .data input::placeholder {
+
+.content-Login form .data .data-form .date input[type=date]::-webkit-datetime-edit-month-field {
+    color: var(--Primary);
+  }
+  .content-Login form .data .data-form .date input[type=date]::-webkit-datetime-edit-day-field {
+    color: var(--Primary);
+  }
+  .content-Login form .data .data-form .date input[type=date]::-webkit-datetime-edit-year-field {
+    color: var(--Primary);
+  }
+
+.content-Login form .data .data-form .date select {
+    width: 48%;
+    margin: 5px;
+    border: none;
+    background-color: var(--Background2);
+    border-radius: 6px;
+    font-size: 14px;
+    padding:10px;
+    color: var(--Primary);
+    font-weight: bold;
+}
+
+.content-Login form .data .data-form .date input::placeholder {
     color: var(--White);
 }
 
@@ -138,28 +164,34 @@
     }
 
     .content-Login form{
-        height: 90%;
+        height: 910%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
 
-    .content-Login form .data {
+    .content-Login form .data .data-form .date {
+        width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
         margin-bottom: 20px;
     }
 
-    .content-Login form .data input {
+    .content-Login form .data .data-form .date input {
         width: 95%;
     }
     
-    .content-Login form .data select {
+    .content-Login form .data .data-form .date select {
         width: 95%;
     }
+
+    .content-Login form .data .data-form .date input[type=date] {
+        width: 95%;
+    }
+    
 
     @media (max-width: 700px) {
         .content-Login form .confirmation {

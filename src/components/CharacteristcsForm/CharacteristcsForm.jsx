@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import logoImg from '../../assets/images/logo.png';
 import { AuthContext } from '../../contexts/Auth';
+import { IoCalendarOutline, IoHeartOutline, IoMaleFemaleOutline, IoTransgenderOutline} from 'react-icons/io5'
 import './characteristcsForm.css'
 
 function CharacteristcsForm() {
@@ -27,7 +28,7 @@ function CharacteristcsForm() {
     function handleCreateCharacteristcs(e){
         e.preventDefault()
         
-        if(data && sex && sign && sexualOption && data2 && sex2 && sign2 && sexualOption2 && data3 && sex3 && sign3 && sexualOption3 !== "") {
+        if(data !== "" && sex !== "" && sign !== "" && sexualOption !== "" && data2 !== "" && sex2 !== "" && sign2 !== "" && sexualOption2 !== "" && data3 !== "" && sex3 !== "" && sign3 !== "" && sexualOption3 !== "") {
             toast.info("Salvando Caracteristicas do trisal. Aguarde...")
             createCharacteristcs3({
                 idAccount: user.id,
@@ -43,7 +44,7 @@ function CharacteristcsForm() {
                 sex,
                 sign,
                 sexualOption})
-        } else if ( data && sex && sign && sexualOption && data2 && sex2 && sign2 && sexualOption2 !== "") {
+        } else if ( data !== "" && sex !== "" && sign !== "" && sexualOption !== "" && data2 !== "" && sex2 !== "" && sign2 !== "" && sexualOption2 !== "") {
             toast.info("Salvando Caracteristicas do casal. Aguarde...")
             createCharacteristcs2({
                 idAccount: user.id,
@@ -57,7 +58,7 @@ function CharacteristcsForm() {
                 sexualOption,
             })
 
-        } else if ( data && sex && sign && sexualOption !== "") {
+        } else if ( data !== "" && sex !== "" && sign !== "" && sexualOption !== "") {
             toast.info("Salvando Caracteristicas. Aguarde...")
             createCharacteristcs({
                 idAccount: user.id,
@@ -66,6 +67,8 @@ function CharacteristcsForm() {
                 sign,
                 sexualOption})
 
+        } else {
+            toast.error("Data de nascimento, sexo, opção sexual ou signo não estão preenchidos!")
         }
     }
 
@@ -124,12 +127,22 @@ function CharacteristcsForm() {
                     <div className="data-form">   
                     <span>Membro casal 1</span><br />
                     <h5>Data de nascimento</h5>
+                    <div className="date">
+                    <p> <IoCalendarOutline /></p>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
+                    </div>
+
+                    <div className="date">
+                    <p> <IoMaleFemaleOutline /></p>
                     <select required value={sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
+                            </div>
+
+                            <div className="date">
+                    <p> <IoTransgenderOutline /></p>
                             <select required value={sexualOption} onChange={handleSelectSexualOption}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
@@ -137,6 +150,10 @@ function CharacteristcsForm() {
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
+                            </div>
+
+                            <div className="date">
+                    <p> <IoHeartOutline /></p>
                             <select required value={sign} onChange={handleSelectSign}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
@@ -152,15 +169,26 @@ function CharacteristcsForm() {
                                 <option value="Aquário">Aquário</option>
                                 <option value="Peixes">Peixes</option>
                             </select>
+                            </div>
                     <br /><br />
                     <span>Membro casal 2</span><br />
                     <h5>Data de nascimento</h5>
+                    <div className="date">
+                    <p> <IoCalendarOutline /></p>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data2}  onChange={(e) => setData2(e.target.value)}/>
+                    </div>
+
+                    <div className="date">
+                    <p> <IoMaleFemaleOutline /></p>
                     <select required value={sex2} onChange={handleSelectSex2}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
+                            </div>
+
+                            <div className="date">
+                    <p> <IoTransgenderOutline /></p>
                             <select required value={sexualOption2} onChange={handleSelectSexualOption2}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
@@ -168,6 +196,10 @@ function CharacteristcsForm() {
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
+                            </div>
+
+                            <div className="date">
+                    <p> <IoHeartOutline /></p>
                             <select required value={sign2} onChange={handleSelectSign2}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
@@ -183,16 +215,27 @@ function CharacteristcsForm() {
                                 <option value="Aquário">Aquário</option>
                                 <option value="Peixes">Peixes</option>
                             </select>
+                            </div>
 
                             <br /><br />
                     <span>Membro casal 3</span><br />
                     <h5>Data de nascimento</h5>
+                    <div className="date">
+                    <p> <IoCalendarOutline /></p>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data3}  onChange={(e) => setData3(e.target.value)}/>
+                    </div>
+
+                    <div className="date">
+                    <p> <IoMaleFemaleOutline /></p>
                     <select required value={sex3} onChange={handleSelectSex3}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
+                            </div>
+
+                            <div className="date">
+                    <p> <IoTransgenderOutline /></p>
                             <select required value={sexualOption3} onChange={handleSelectSexualOption3}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
@@ -200,6 +243,10 @@ function CharacteristcsForm() {
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
+                            </div>
+
+                            <div className="date">
+                    <p> <IoHeartOutline /></p>
                             <select required value={sign3} onChange={handleSelectSign3}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
@@ -215,17 +262,28 @@ function CharacteristcsForm() {
                                 <option value="Aquário">Aquário</option>
                                 <option value="Peixes">Peixes</option>
                             </select>
+                            </div>
        </div>
              : user.type === "Casal"?
              <div className="data-form">
                   <span>Membro casal 1</span><br />
                   <h5>Data de nascimento</h5>
-                  <input required type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
+                  <div className="date">
+                    <p> <IoCalendarOutline /></p>
+                    <input required type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
+                    </div>
+
+                    <div className="date">
+                    <p> <IoMaleFemaleOutline /></p>
                     <select required value={sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
+                            </div>
+
+                            <div className="date">
+                    <p> <IoTransgenderOutline /></p>
                             <select required value={sexualOption} onChange={handleSelectSexualOption}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
@@ -233,6 +291,10 @@ function CharacteristcsForm() {
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
+                            </div>
+
+                            <div className="date">
+                    <p> <IoHeartOutline /></p>
                             <select required value={sign} onChange={handleSelectSign}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
@@ -248,16 +310,27 @@ function CharacteristcsForm() {
                                 <option value="Aquário">Aquário</option>
                                 <option value="Peixes">Peixes</option>
                             </select>
+                            </div>
                             
                             <br /><br />
                     <span>Membro casal 2</span><br />
                     <h5>Data de nascimento</h5>
+                    <div className="date">
+                    <p> <IoCalendarOutline /></p>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data2}  onChange={(e) => setData2(e.target.value)}/>
+                    </div>
+
+                    <div className="date">
+                    <p> <IoMaleFemaleOutline /></p>
                     <select required value={sex2} onChange={handleSelectSex2}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
+                            </div>
+
+                            <div className="date">
+                    <p> <IoTransgenderOutline /></p>
                             <select required value={sexualOption2} onChange={handleSelectSexualOption2}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
@@ -265,6 +338,10 @@ function CharacteristcsForm() {
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
+                            </div>
+
+                            <div className="date">
+                    <p> <IoHeartOutline /></p>
                             <select required value={sign2} onChange={handleSelectSign2}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
@@ -280,17 +357,28 @@ function CharacteristcsForm() {
                                 <option value="Aquário">Aquário</option>
                                 <option value="Peixes">Peixes</option>
                             </select>
+                            </div>
 
              </div>
              :
              <div className="data-form">
                      <h5>Data de nascimento</h5>
+                     <div className="date">
+                    <p> <IoCalendarOutline /></p>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
+                    </div>
+
+                    <div className="date">
+                    <p> <IoMaleFemaleOutline /></p>
                     <select required value={sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
                             </select>
+                            </div>
+
+                            <div className="date">
+                    <p> <IoTransgenderOutline /></p>
                             <select required value={sexualOption} onChange={handleSelectSexualOption}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
@@ -298,6 +386,10 @@ function CharacteristcsForm() {
                                 <option value="Bi Curioso">Bi Curioso</option>
                                 <option value="Pansexual">Pansexual</option>
                             </select>
+                            </div>
+
+                            <div className="date">
+                    <p> <IoHeartOutline /></p>
                             <select required value={sign} onChange={handleSelectSign}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
@@ -313,15 +405,14 @@ function CharacteristcsForm() {
                                 <option value="Aquário">Aquário</option>
                                 <option value="Peixes">Peixes</option>
                             </select>
+                            </div>
              </div>
                 }
                 </div>
                 <br />
                     <div className='confirmation'>
-                        <div className="confirmation_characteristcsForm">
-                        <input required type="checkbox"/>
-                        <span>Minhas informações estão corretas!</span>
-                        </div>
+                       <br />
+                       <br />
                         <button type='submit'>Salvar e avançar</button>
                         
                     </div>

@@ -112,10 +112,8 @@ function PreferencesForm() {
                         <textarea name="" id="" cols="100" rows="3" placeholder="proposta" value={proposal} onChange={(e) => setProposal((e.target.value))}></textarea>
                     </div>
                     <div className='confirmation'>
-                        <div className="confirmation_preferencesForm">
-                        <input type="checkbox"/>
-                        <span>Minhas informações estão corretas!</span>
-                        </div>
+                        <br />
+                        <br />
                         <button onClick={handlePreferences}>Salvar e Avançar</button>
                     </div>
                         </form>
