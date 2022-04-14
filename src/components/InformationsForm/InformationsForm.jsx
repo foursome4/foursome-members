@@ -49,11 +49,23 @@ function InformationsForm() {
     
     async function handleUploadAccount(e) {
         e.preventDefault();
-        setLoadding(true)
-        
-        if(avatarUrl === null || nickname === "" || city === "" || uf === "" || relationship === "") {
-            toast.error("Favor preencher todos os campos")
-        } else {
+
+                
+        if(avatarUrl === null ) {
+            toast.error("Favor adicionat foto de perfil")
+        }
+        if(nickname === "") {
+            toast.error("Favor preencher nome de exibição")
+        }
+        if(city === "" && uf === "" ) {
+            toast.error("Busque seu CEP para preencher Cidade e Estado")
+        }
+
+        if(relationship === "") {
+            toast.error("Favor preencher o status de relacionamento")
+        }
+           
+        if(avatarUrl !== null && nickname !== "" && city !== "" && uf !== "" && relationship !== "") {
        toast.info("Salvando as informações. Aguarde...")
                 //Avatar
         setLoadding(true);
@@ -77,8 +89,8 @@ function InformationsForm() {
        createInformationsAccount({idAccount: user.id, avatar: avatar, cover: linkCover, city, uf, relationship, nickname});
         console.log({idAccount: user.id, avatar: photoUrlAvatar, cover: linkCover, city, uf, relationship, nickname});
         console.log(loadding);
-        }
-    
+           
+    } 
         
     }
 
@@ -158,10 +170,6 @@ function InformationsForm() {
                     </div>
 
                     <div className='confirmation'>
-                        <div className="confirmation_informations">
-                        <input type="checkbox"/>
-                        <span>Minhas informações estão corretas!</span>
-                        </div>
                         <div className='buttonsInformation'>
                             {loadding === true ? " " :
                         <button onClick={handleUploadAccount}>{loadding === true ? <FiRefreshCcw /> : "Salvar e avançar"}</button>
