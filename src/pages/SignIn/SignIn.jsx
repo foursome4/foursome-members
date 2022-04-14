@@ -61,8 +61,8 @@ function SignIn() {
           <button onClick={handleCreateAccount}> Entrar </button>
           </div>
           <div className="buttons">
-            <a href="/recuperation"><p> ESQUECEU SUA SENHA?</p></a>
-            <a href="/recuperationuser"><p> ESQUECI MEU USUÁRIO</p></a>
+            <a href="/recuperation"><p>ESQUECEI MINHA SENHA?</p></a>
+            <a href="/recuperationuser"><p>ESQUECI MEU USUÁRIO</p></a>
           </div>
         </div>
       </div>

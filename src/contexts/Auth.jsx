@@ -499,8 +499,8 @@ async function newReply({idAccount, idComment, text, avatar, username, nickname}
     })
 }
 
-async function CreateInviteNewUsew({code, name, email, phone,idAccount, username, patron, patronNickname}) {
-    const text = `Parabens ${name}! %0AVocê foi convidado por ${patronNickname} a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa. %0A%0AEsse convite é valido por 10 dias e intransferível. %0A%0APara criar seu perfil agora, acesse: %0A https://foursome.com.br/signup/${email} %0A Utilize o Código: ${code}  %0A e adicione o código do seu Patrono: ${patron} %0A%0AEm caso de dúvida, fale conosco. %0AContato@foursome.com.br %0A%0AFOURSOME https://www.foursome.com.br`
+async function CreateInviteNewUsew({code, name, email, phone,idAccount, username, patron, type, patronNickname}) {
+    const text = `Parabens ${name}! %0AVocê foi convidado por ${patronNickname} a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa. %0A%0AEsse convite é valido por 10 dias e intransferível. %0A%0APara criar seu perfil agora, acesse: %0A https://foursome.com.br/signup/${email}/${code}/${patron}/${type} %0A%0AEm caso de dúvida, fale conosco. %0AContato@foursome.com.br %0A%0AFOURSOME https://www.foursome.com.br`
     
     const findAccountEmail = await api.get(`/accounts/find/${email}`);
 
@@ -509,7 +509,7 @@ async function CreateInviteNewUsew({code, name, email, phone,idAccount, username
         return
     } 
 
-    await api.post("/invites", {code, name, email, phone, idAccount, username, patron}).then(() =>{
+    await api.post("/invites", {code, name, email, phone, idAccount, username, type, patron}).then(() =>{
         window.open("https://wa.me/55"+ phone + "?text=" + text,
         '_blank')
     }).catch(error => {
@@ -518,7 +518,7 @@ async function CreateInviteNewUsew({code, name, email, phone,idAccount, username
     })  
 }
 
-async function CreateInviteMail({code, name, email, phone,idAccount, username, patron, patronNickname}) {
+async function CreateInviteMail({code, name, email, phone,idAccount, username, patron, type,  patronNickname}) {
   
     const findAccountEmail = await api.get(`/accounts/find/${email}`);
 
@@ -527,8 +527,8 @@ async function CreateInviteMail({code, name, email, phone,idAccount, username, p
         return
     } 
 
-    await api.post("/invites", {code, name, email, phone, idAccount, username, patron}).then(async () =>{
-        const data = {mail: email, name, code, patron, patronNickname}
+    await api.post("/invites", {code, name, email, phone, idAccount, username, type, patron}).then(async () =>{
+        const data = {mail: email, name, code, patron, type, patronNickname}
         const res = await api.post("/mail/invite", data);
         if(res.status === 200) {
             toast.success("Convite enviado com sucesso!")

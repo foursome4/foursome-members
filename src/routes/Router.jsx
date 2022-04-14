@@ -25,6 +25,7 @@ import { ProfileFriend } from '../pages/ProfileFriend/ProfileFriend';
 import { Radar } from '../pages/Radar/Radar';
 import { Ranking } from '../pages/Ranking/Ranking';
 import { Recuperation } from '../pages/Recuperation/Recuperation';
+import { RecuperationUser } from '../pages/RecuperationUser/RecuperationUser';
 import { RegistrationEnd } from '../pages/RegistrationEnd/RegistrationEnd';
 import { Settings } from '../pages/Settings/Settings';
 import { SignIn } from '../pages/SignIn/SignIn';
@@ -44,9 +45,10 @@ function PrivateRoute({children} ) {
 
             <Routes>
             <Route path="/" element={<SignIn />}/>
-            <Route path="/signup/:email/:code/:patron" element={ <SignUp />} />
+            <Route path="/signup/:email/:code/:patron/:type" element={ <SignUp />} />
             <Route path="/forgotit" element={ <Forgotit />} />
             <Route path="/recuperation" element={ <Recuperation />} />       
+            <Route path="/recuperationuser" element={ <RecuperationUser />} />       
             <Route path="/loader" element={ <Loader />} />       
             <Route path="/terms" element={ <UseOfTerms />} />       
             <Route path="/police" element={ <PrivacityPolice />} />       

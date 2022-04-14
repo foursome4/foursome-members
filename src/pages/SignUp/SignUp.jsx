@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import './signUp.css';
 import { toast } from 'react-toastify';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
-
+import { v4 as uuidv4} from 'uuid'
+ 
 function SignUp() {
-  const {email, code, patron} = useParams()
+  const {email, code, patron, type} = useParams()
   const  {createAccount} = useContext(AuthContext)
   const [usernameNative, setUsernameNative] = useState("");
   const [newPhone, setPhone] = useState("");
-  const [type, setType] = useState("");
   const [passwordNative, setPasswordNative] = useState("");
   const [passwordConfirmNative, setPasswordConfirmNative] = useState("");
   const [passwordView, setPasswordView] = useState(true)
@@ -61,19 +61,16 @@ function SignUp() {
         toast.info("Salvando informações. Aguarde...")
           const username = usernameNative.replace(/( )+/g, "")
           const password = passwordNative.replace(/( )+/g, "")
-          createAccount(username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
-          console.log( username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
+          const id = uuidv4();
+
+         // createAccount(id, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
+          console.log( id, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
         } else {
           toast.error("As senhas não combinam!")
         }
     } else {
       toast.error("Favor, confirmar a leitura do termo de uso")
     }
-  }
-
-  function handleSetectType(e) {
-    setType(e.target.value)
-    console.log(e.target.value)
   }
 
   function handleChange(e) {
@@ -128,22 +125,35 @@ function SignUp() {
         <div className="title">
             <h3>CADASTRE-SE</h3>
           </div>
+          <div className="titleInput">
+          <p>Meu email:</p>
+          </div>
           <input type="text" placeholder="E-mail" value={email} disabled/>
-          <input type="text" placeholder="Código de verificação" value={code} disabled/>
-          <input type="text" placeholder="Id do Patrono" value={patron} disabled/>
-          <p>O nome de usuário deve ser todo junto, minúsculo e sem espaço.</p>
-          <input type="text" placeholder="Nome de usuário (Junto e sem espaço)" value={usernameNative.toLowerCase()} onChange={(e) => setUsernameNative(e.target.value)}/>
-          <select value={type} onChange={handleSetectType}>
-                                <option value="">Tipo de conta</option>
-                                <option value="Homem">Homem </option>
-                                <option value="Mulher">Mulher </option>
-                                <option value="Casal">Casal </option>
-                                <option value="Trisal">Trisal </option>
-                                <option value="Transex">Transex </option>
-                                <option value="Travestis">Travestis </option>
-                            </select>
-                            <input type="text" id="telefone" onKeyUp={mascaraFone} value={newPhone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
 
+          <div className="titleInput">        
+          <p>Código do patrono:</p>
+            </div>
+          <input type="text" placeholder="Id do Patrono" value={patron} disabled/>
+
+
+          <div className="titleInput">
+          <p>Tipo de conta:</p>
+          </div>
+          <input type="text" placeholder="Tipo de conta" value={type} disabled/>
+
+          <div className="titleInput">
+          <p>O nome de usuário deve ser todo junto, minúsculo e sem espaço.</p>
+          </div>
+          <input type="text" placeholder="Nome de usuário (Junto e sem espaço)" value={usernameNative.toLowerCase()} onChange={(e) => setUsernameNative(e.target.value)}/>
+         
+          <div className="titleInput">
+          <p>Telefone:</p>
+          </div>
+          <input type="text" id="telefone" onKeyUp={mascaraFone} value={newPhone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
+
+          <div className="titleInput">
+          <p>Senha:</p>
+          </div>
           <div className="inputPassword">
           <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={passwordNative} onChange={(e) => setPasswordNative(e.target.value)}/>
           <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
