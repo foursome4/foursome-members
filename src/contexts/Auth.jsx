@@ -49,30 +49,7 @@ function AuthProvider({children}) {
 
 
     
-    async function loginSession({login, password}) {     
-       
-        let email;
-        let username;
-
-        
-        if(login.includes('@')) {
-            email = login
-            await api.post("/session", {email, password}).then((result) => {
-                if(result.data.status === "banned") {
-                    toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
-                    return
-                }
-                localStorage.setItem("foursome", JSON.stringify(result.data));
-                findInformationsAccount(result.data.id)
-                
-            }).catch(error => {
-                console.log("Login não foi realizado" + error)
-                toast.error(`Falha no login.
-                E-mail, usuário ou senha incorretos!`);
-            })
-            
-        } else {
-            username = login
+    async function loginSession({username, password}) {     
             await api.post("/session", {username, password})
             .then((result) => {
                 if(result.data.status === "banned") {
@@ -87,7 +64,6 @@ function AuthProvider({children}) {
                 toast.error(`Falha no login.
                 E-mail, usuário ou senha incorretos!`);
             })
-        }
         
     }
 
@@ -810,6 +786,8 @@ async function newVisit(idAccount, username, idFriend) {
        window.onload = resetTimer;
        document.onmousemove = resetTimer;
        document.onkeydown = resetTimer;
+       document.onclick = resetTimer;
+       document.onchange = resetTimer;
        function doSomething() {
         const DataUser = localStorage.getItem("foursome");
         const user = JSON.parse(DataUser);
@@ -821,7 +799,7 @@ async function newVisit(idAccount, username, idFriend) {
         }
         function resetTimer() {
         clearTimeout(time);
-       time = setTimeout(doSomething, 300000)
+      // time = setTimeout(doSomething, 300000)
     }
 }
 

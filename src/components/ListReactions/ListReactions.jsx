@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, memo } from "react"
-import {FiThumbsUp } from 'react-icons/fi'
+import {IoFlameOutline } from 'react-icons/io5'
 import { AuthContext } from "../../contexts/Auth";
 import { useFetch } from "../../hooks/useFetch";
 import api from "../../services/api"
@@ -36,7 +36,7 @@ function ListReactionsComponent({idPost}) {
     return (
         <div className="reactionsList">
               <button className={myLike.length === 0 ? "" :"selected"} onClick={myLike.length === 0 ? handleLikePost : handleDeleteLike}>
-                  <FiThumbsUp /> {data?.length === 0 ? "" :
+                  <IoFlameOutline /> {data?.length === 0 ? "" :
             <>
             {data?.length}
             </>
