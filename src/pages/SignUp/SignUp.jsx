@@ -131,6 +131,7 @@ function SignUp() {
           <input type="text" placeholder="E-mail" value={email} disabled/>
           <input type="text" placeholder="Código de verificação" value={code} disabled/>
           <input type="text" placeholder="Id do Patrono" value={patron} disabled/>
+          <p>O nome de usuário deve ser todo junto, minúsculo e sem espaço.</p>
           <input type="text" placeholder="Nome de usuário (Junto e sem espaço)" value={usernameNative.toLowerCase()} onChange={(e) => setUsernameNative(e.target.value)}/>
           <select value={type} onChange={handleSetectType}>
                                 <option value="">Tipo de conta</option>

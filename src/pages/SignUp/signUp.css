@@ -24,6 +24,10 @@
     color: var(--White);
    
 }
+.content-Login .signUp .form p {
+    margin: 5px 0;
+   font-weight: bold;
+}
 
 .content-Login .signUp .form .title {
     display: flex;
@@ -301,6 +305,12 @@
             justify-content: center;
             color: var(--White);
            margin-top: 30px;
+        }
+
+        .content-Login .signUp .form p {
+            margin: 5px 50px;
+           font-weight: bold;
+           text-align: center;
         }
 
         .content-Login .signUp .logo img{
