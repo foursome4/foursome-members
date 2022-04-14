@@ -799,7 +799,7 @@ async function newVisit(idAccount, username, idFriend) {
         }
         function resetTimer() {
         clearTimeout(time);
-      // time = setTimeout(doSomething, 300000)
+      time = setTimeout(doSomething, 300000)
     }
 }
 
