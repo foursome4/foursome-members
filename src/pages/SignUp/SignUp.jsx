@@ -31,7 +31,7 @@ function SignUp() {
 
   function handleCreateAccount(e) {
     e.preventDefault();
-    toast.info("Salvando informações. Aguarde...")
+
     const status = "active"; // Test = 7 Dias -- Active = Palno Ativo/Pago -- Bloqued = Plano Bloqueado/ Não pago-expirado -- Banned 
     const role = "Membro";
     const online = false;
@@ -43,12 +43,22 @@ function SignUp() {
     const removeTrace = removeSpace.replace('-', '')
     const phone = removeTrace;
 
-    // const usernameNative = usernameNative.toLowerCase()
+   if(newPhone === "") {
+    toast.error("Favor preencher o telefone")
+   }
+   if(type === "") {
+    toast.error("Favor selecionar o tipo de conta")
+   }
+   if(usernameNative === "") {
+    toast.error("Favor preencher o nome de usuário")
+   }
+   if(passwordNative === "") {
+    toast.error("Favor preencher a senha")
+   }
 
-
-    
     if(checked) {
       if(passwordConfirmNative === passwordNative) {
+        toast.info("Salvando informações. Aguarde...")
           const username = usernameNative.replace(/( )+/g, "")
           const password = passwordNative.replace(/( )+/g, "")
           createAccount(username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
