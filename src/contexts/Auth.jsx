@@ -410,6 +410,27 @@ async function updatePreferencesAccount({id, men, woman, couple, trisal, transve
 }
 
 
+
+// Recuperações
+
+async function recuperationUserForEmail(email) {
+    console.log(email)
+   const account =  await api.get(`/accounts/find/${email}`);
+   console.log(account)
+
+   if(account.data.length === 0) {
+       toast.error("Não existe conta com este e-mail em nossa base de dados!")
+       return
+   } 
+
+   const username = account.data[0].username
+   searchUsername(email, username)
+}
+
+
+// Fim recuperações
+
+
 async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent, idPatrono}) {
     setLoading(true)
     await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent }).then( async () => {      
@@ -560,6 +581,13 @@ async function CreateInviteMail({code, name, email, phone,idAccount, username, p
     async function createSuccess(email) {
         const res = await api.post("/mail/complete", {mail: email});
         if(res.status === 200) {
+        }
+    }
+    async function searchUsername(email, username) {
+        console.log(email, username)
+        const res = await api.post("/mail/username", {mail: email, username: username});
+        if(res.status === 200) {
+            toast.info("Nome de usuário encontrado. Verifique seu e-mail!")
         }
     }
 
@@ -865,7 +893,8 @@ inactivityTime()
             comentsPosts,
             setComentsPosts,
             deleteInvite,
-            deleteAccount
+            deleteAccount,
+            recuperationUserForEmail
 
         }}>
             {children}

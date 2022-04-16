@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import './recuperationUser.css';
 
 function RecuperationUser() {
-  //const  {recuperationUserForEmail} = useContext(AuthContext)
+  const  {recuperationUserForEmail} = useContext(AuthContext)
   const [email, setEmail] = useState("");
 
 
@@ -22,7 +22,7 @@ function RecuperationUser() {
 
   function handleCreateCodeRecuperation(e) {
     e.preventDefault();
-   // recuperationUserForEmail(email)
+ recuperationUserForEmail(email)
   }
 
   return (
