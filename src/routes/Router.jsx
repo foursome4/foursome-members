@@ -24,7 +24,9 @@ import { Profile } from '../pages/Profile/Profile';
 import { ProfileFriend } from '../pages/ProfileFriend/ProfileFriend';
 import { Radar } from '../pages/Radar/Radar';
 import { Ranking } from '../pages/Ranking/Ranking';
+import { RecoverPassword } from '../pages/RecoverPassword/RecoverPassword';
 import { Recuperation } from '../pages/Recuperation/Recuperation';
+import { RecuperationCode } from '../pages/RecuperationCode/RecuperationCode';
 import { RecuperationUser } from '../pages/RecuperationUser/RecuperationUser';
 import { RegistrationEnd } from '../pages/RegistrationEnd/RegistrationEnd';
 import { Settings } from '../pages/Settings/Settings';
@@ -49,6 +51,8 @@ function PrivateRoute({children} ) {
             <Route path="/forgotit" element={ <Forgotit />} />
             <Route path="/recuperation" element={ <Recuperation />} />       
             <Route path="/recuperationuser" element={ <RecuperationUser />} />       
+            <Route path="/recoverpassworsd" element={ <RecoverPassword />} />       
+            <Route path="/recuperationcode/:email" element={ <RecuperationCode />} />       
             <Route path="/loader" element={ <Loader />} />       
             <Route path="/terms" element={ <UseOfTerms />} />       
             <Route path="/police" element={ <PrivacityPolice />} />       

@@ -34,7 +34,7 @@ function RecoverPassword() {
         </div>
         <div className="form">
           <div className="title">
-            <h3>RECUPERAR SENHA</h3>
+            <h3>ALTERAR SENHA</h3>
           </div>
           <input type="text" placeholder="Nova senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
           <input type="text" placeholder="Confirme a nova senha" value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)}/>

@@ -22,9 +22,9 @@ function Recuperation() {
 
   function handleCreateCodeRecuperation(e) {
     e.preventDefault();
-    const inviteCode = uuidv4()
-    const code = inviteCode.substring(0, 6)
-    gerateCodeRecuperation(email, code)
+    const generateCode = uuidv4()
+    const code = generateCode.substring(0, 6)
+   gerateCodeRecuperation(email, code)
   }
 
   return (

@@ -428,6 +428,39 @@ async function recuperationUserForEmail(email) {
 }
 
 
+
+async function gerateCodeRecuperation(email, code) {
+    console.log(email)
+    const account =  await api.get(`/accounts/find/${email}`);
+    console.log(account)
+    
+    if(account.data.length === 0) {
+        toast.error("Não existe conta com este e-mail em nossa base de dados!")
+        return
+    } 
+    
+    await api.post("/recuperation", {email, code}).then((res) => {
+        console.log(res.data);
+        codeRecuperation(email, code);
+    }).catch((error) => {
+        console.log(error)
+    })
+}
+
+
+async function validadeCodeRecuperation(code, email) {
+    console.log(code, email)
+   const codeRecuperationData =  await api.get(`/recuperation/find/${email}/${code}`);
+   console.log(codeRecuperationData)
+
+   if(codeRecuperationData.data.length === 0) {
+       toast.error("Código inválido ou expirado!")
+       return
+   } 
+
+   window.open("/recoverpassworsd","_self")
+}
+
 // Fim recuperações
 
 
@@ -588,6 +621,16 @@ async function CreateInviteMail({code, name, email, phone,idAccount, username, p
         const res = await api.post("/mail/username", {mail: email, username: username});
         if(res.status === 200) {
             toast.info("Nome de usuário encontrado. Verifique seu e-mail!")
+        }
+    }
+
+
+    async function codeRecuperation(email, code) {
+        console.log(email, code)
+        const res = await api.post("/mail/passwordcode", {mail: email, code: code});
+        if(res.status === 200) {
+            toast.info("Nome de usuário encontrado. Verifique seu e-mail!");
+            window.open(`/recuperationcode/${email}`,"_self")
         }
     }
 
@@ -894,7 +937,9 @@ inactivityTime()
             setComentsPosts,
             deleteInvite,
             deleteAccount,
-            recuperationUserForEmail
+            recuperationUserForEmail,
+            gerateCodeRecuperation,
+            validadeCodeRecuperation
 
         }}>
             {children}
