@@ -154,6 +154,13 @@
     margin-top: 10px;
 }
 
+.content-Login .signUp .form .terms p a {
+    font-weight: 900;
+    color: var(--White);
+    text-decoration: none;
+    margin-left: 3px;
+}
+
 .content-Login .signUp .form .terms .pointer{
   cursor: pointer;
   margin-left: 3px;

@@ -17,6 +17,13 @@ function InviteWhatsapp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+    const [type, setType] = useState("");
+
+
+    function handleSetectType(e) {
+      setType(e.target.value)
+      console.log(e.target.value)
+    }
 
 
     function mascaraFone(event) {
@@ -58,11 +65,12 @@ function InviteWhatsapp() {
        
         const code = inviteCode.substring(0, 4)
 
-       CreateInviteNewUsew({code, name, email, phone:newPhone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname })
+       CreateInviteNewUsew({code, name, email, phone:newPhone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname, type })
 
         setEmail("")
         setPhone("")
         setName("")
+        setType("")
     }
     return (
         <>
@@ -70,6 +78,17 @@ function InviteWhatsapp() {
                 <span>Convite por whatsapp</span>
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome"/>
                 <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
+
+                <select className={type === "" ? "" : "active"} value={type} onChange={handleSetectType}>
+                <option value="">Tipo de conta</option>
+                <option value="Homem">Homem </option>
+                <option value="Mulher">Mulher </option>
+                <option value="Casal">Casal </option>
+                <option value="Trisal">Trisal </option>
+                <option value="Transex">Transex </option>
+                <option value="Travestis">Travestis </option>
+            </select>
+
                 <input type="text" id="telefone"  onKeyUp={mascaraFone} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Ex.: 21999888899"/>
 
                 <button onClick={createInviteWhatsapp}> Enviar Convite</button>

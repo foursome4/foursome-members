@@ -32,14 +32,26 @@ function InviteEmail() {
        
         const code = inviteCode.substring(0, 4)
 
+
+        if(name === "") {
+            toast.error("Preencha o nome")
+        }
+        if(email === "") {
+            toast.error("Preencha o e-mail")
+        }
+        if(type === "") {
+            toast.error("Preencha o tipo de conta")
+        }
+
         console.log(`Code: ${code}, Nome: ${name}, Email: ${email},
         isAccount: ${user.id}, username: ${user.username}, nickname: ${userInformation.nickname}, avatar: ${userInformation.avatar}`);
 
 
-       CreateInviteMail({code, name, email, phone: "Undefined", username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname })
+       CreateInviteMail({code, name, email, phone: "Undefined", username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname, type })
 
         setEmail("")
         setName("")
+        setType("")
     }
 
  return (   <>
@@ -48,7 +60,7 @@ function InviteEmail() {
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome"/>
             <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
             
-            <select value={type} onChange={handleSetectType}>
+            <select className={type === "" ? "" : "active"} value={type} onChange={handleSetectType}>
                 <option value="">Tipo de conta</option>
                 <option value="Homem">Homem </option>
                 <option value="Mulher">Mulher </option>

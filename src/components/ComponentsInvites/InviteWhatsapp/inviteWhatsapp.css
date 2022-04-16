@@ -18,6 +18,24 @@ form input {
     border-radius: 6px;
     color: var(--Primary);
 }
+form select {
+    width: 50%;
+    font-size: 14px;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid var(--Primary);
+    border-radius: 6px;
+    color: var(--Gray_font1);
+}
+form .active {
+    width: 50%;
+    font-size: 14px;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid var(--Primary);
+    border-radius: 6px;
+    color: var(--Primary);
+}
 
 form input::placeholder {
     color: var(--Gray_font1);

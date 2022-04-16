@@ -20,8 +20,9 @@ function AuthProvider({children}) {
     const [uf, setUf] = useState("");
 
 
-    async function createAccount(username, email, phone, type, password, status, role, code, online, patron) {
-        const data = {username, email, phone, type, password, status, role, code, online, patron}
+    async function createAccount(id, username, email, phone, type, password, status, role, code, online, patron) {
+        const data = {id, username, email, phone, type, password, status, role, code, online, patron}
+        const data2 = {id, username, email, phone, type, status, role, online, patron, date: new Date()}
  
         const dataInvite = await api.get(`/invites/find/${data.email}/${data.code}`);
 
@@ -33,11 +34,15 @@ function AuthProvider({children}) {
         await api.post('/accounts', data).then(async () => {
             completeAccount(email)
             toast.info(`Cadastro criado com sucesso!`);
-
+            
+            localStorage.setItem("foursome", JSON.stringify(data2));
+  
             const text = `Seu amigo ${username}, ingressou na Foursome, dê as boas vindas.`
             const data = {idPatrono: patron, text, }
+
+
             await api.post("/notifications", data).then(() => {
-                navigate("/")
+                window.open(`/completeregistration`,"_self")
             }).catch(error => {
                 console.log("Notificação não cadastrada" + error)
             })
@@ -98,6 +103,8 @@ function AuthProvider({children}) {
         })
         
     }
+
+
     async function findCharacteriticsAccount(id) {
         await api.get(`/characteristics/${id}`)
         .then((res) => {
@@ -172,13 +179,19 @@ async function deletePreferences() {
 
 
 
-    async function createInformationsAccount({idAccount, avatar, cover, relationship, nickname, city, uf}) {
-        await api.post("/informations", {idAccount, avatar, cover, relationship, nickname, city, uf}).then(() => {
-            navigate("/characteristcs");
+    async function createInformationsAccount({id, idAccount, avatar, cover, relationship, nickname, city, uf}) {
+        const data = {id, idAccount, avatar, cover, relationship, nickname, city, uf}
+        await api.post("/informations", {id, idAccount, avatar, cover, relationship, nickname, city, uf}).then(() => {
+            localStorage.setItem("informations-foursome", JSON.stringify(data));
+            window.open("/characteristcs","_self");
         }).catch(error => {
             console.log("Informações não enviadas" + error)
         })
     }
+
+
+
+
     async function NewUpdateInformationsAccount({id, idAccount, avatar, cover, relationship, nickname, city, uf, created_at, idPatrono, username}) {
         await api.patch(`/informations/${id}`, {avatar, cover, relationship, nickname, city, uf}).then( async () => {
             localStorage.setItem("informations-foursome", JSON.stringify({
@@ -198,13 +211,16 @@ async function deletePreferences() {
     }
 
 
-    async function createCharacteristcs({idAccount, data,
-        sex, sign, sexualOption}) {
+    async function createCharacteristcs({id1, idAccount, data, sex, sign, sexualOption}) {
+        const data1 = {id1, idAccount, data, sex, sign, sexualOption}
+        let dados = [];
             setLoading(true)
             await api.post("/characteristics", {
-                idAccount, birthDate: data, sex, sign, sexualOption
+                id: id1, idAccount, birthDate: data, sex, sign, sexualOption
             }).then(async () => {
-                navigate("/preferences");
+                dados.push(data1)
+                localStorage.setItem("characteritics-foursome", JSON.stringify(dados));
+                window.open("/preferences","_self");
                 setLoading(false)
             }).catch(error => {
                 console.log("Informações não enviadas" + error)
@@ -213,16 +229,21 @@ async function deletePreferences() {
 
 
 
-    async function createCharacteristcs2({idAccount, data,
-        sex, sign, sexualOption, data2, sex2, sign2, sexualOption2}) {
+    async function createCharacteristcs2({id1, id2, idAccount, data, sex, sign, sexualOption, data2, sex2, sign2, sexualOption2}) {
+        const data10 = {id1, idAccount, data, sex, sign, sexualOption}
+        const data20 = {id2, idAccount,  data2, sex2, sign2, sexualOption2}
+        let dados = [];
             setLoading(true)
             await api.post("/characteristics", {
-                idAccount, birthDate: data, sex, sign, sexualOption
+                id: id1, idAccount, birthDate: data, sex, sign, sexualOption
             }).then(async () => {
+                dados.push(data10)
                 await api.post("/characteristics",  {
-                    idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2
+                   id: id2, idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2
                 }).then(async () => {
-                    navigate("/preferences");
+                    dados.push(data20)
+                    localStorage.setItem("characteritics-foursome", JSON.stringify(dados));
+                    window.open("/preferences","_self");
                 }).catch(error => {
                     console.log("Informações não enviadas" + error)
                 })
@@ -237,20 +258,26 @@ async function deletePreferences() {
 
 
 
-    async function createCharacteristcs3({idAccount, data,
-        sex, sign, sexualOption, data2, sex2, sign2, sexualOption2, data3, sex3, sign3, sexualOption3 }) {
+    async function createCharacteristcs3({id1, id2, id3, idAccount, data, sex, sign, sexualOption, data2, sex2, sign2, sexualOption2, data3, sex3, sign3, sexualOption3 }) {
+        const data100 = {id1, idAccount, data, sex, sign, sexualOption}
+        const data200 = {id2, idAccount,  data2, sex2, sign2, sexualOption2}
+        const data300 = {id3, idAccount,  data3, sex3, sign3, sexualOption3}
+        let dados = [];
             setLoading(true)
             await api.post("/characteristics", {
-                idAccount: idAccount, birthDate: data, sex, sign, sexualOption
+               id: id1, idAccount: idAccount, birthDate: data, sex, sign, sexualOption
             }).then(async () => {
+                dados.push(data100)
                 await api.post("/characteristics",  {
-                    idAccount: idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2
+                   id: id2, idAccount: idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2
                 }).then(async () => {
-            
+                    dados.push(data200)
                     await api.post("/characteristics", {
-                        idAccount: idAccount, birthDate: data3, sex:sex3, sign:sign3, sexualOption: sexualOption3
+                       id: id3, idAccount: idAccount, birthDate: data3, sex:sex3, sign:sign3, sexualOption: sexualOption3
                     }).then(async () => {
-                        navigate("/preferences");
+                        dados.push(data300)
+                    localStorage.setItem("characteritics-foursome", JSON.stringify(dados));
+                        window.open("/preferences","_self");
                         setLoading(false)
                     }).catch(error => {
                         console.log("Informações não enviadas" + error)
@@ -269,12 +296,9 @@ async function deletePreferences() {
 
 async function newUpdateCharacteristcs({id, birthDate, sex, sign, sexualOption, idPatrono, username, idAccount}) {
         setLoading(true)
-
         await api.patch(`/characteristics/${id}`,
         {birthDate: birthDate, sex, sign, sexualOption})
         .then( async () => {
-
-
             const text = `Seu amigo ${username}, alterou as características de um de seus membros do perfil`
             const data = {idPatrono, idAccount, text, }
             await api.post("/notifications", data).then(() => {
@@ -283,15 +307,10 @@ async function newUpdateCharacteristcs({id, birthDate, sex, sign, sexualOption, 
                 console.log("Notificação não cadastrada" + error)
             })
             setLoading(false);
-
-
-
         }).catch(error => {
                 console.log("Informações não enviadas" + error)
      })
 }
-
-
 
 async function newUpdateCharacteristcs2({id, birthDate, sex, sign, sexualOption, id2, birthDate2, sex2, sign2, sexualOption2, idPatrono, username, idAccount}) {
         setLoading(true)
@@ -301,7 +320,6 @@ async function newUpdateCharacteristcs2({id, birthDate, sex, sign, sexualOption,
             await api.patch(`/characteristics/${id2}`,  {
                 birthDate: birthDate2, sex:sex2, sign:sign2, sexualOption: sexualOption2
             }).then(async () => {               
-
             const text = `Seu amigo ${username}, alterou as características de um de seus membros do perfil`
             const data = {idPatrono, idAccount, text, }
             await api.post("/notifications", data).then(() => {
@@ -310,9 +328,7 @@ async function newUpdateCharacteristcs2({id, birthDate, sex, sign, sexualOption,
                 console.log("Notificação não cadastrada" + error)
             })
             setLoading(false);
-
-
-           
+  
             }).catch(error => {
                 console.log("Informações não enviadas" + error)
             })
@@ -324,8 +340,6 @@ async function newUpdateCharacteristcs2({id, birthDate, sex, sign, sexualOption,
         setLoading(false)
 
 }
-
-
 
 async function newUpdateCharacteristcs3({id, birthDate,
     sex, sign, sexualOption, id2, birthDate2, sex2, sign2, sexualOption2, id3, birthDate3, sex3, sign3, sexualOption3, idPatrono, idAccount, username}) {
@@ -340,8 +354,6 @@ async function newUpdateCharacteristcs3({id, birthDate,
                 await api.patch(`/characteristics/${id3}`, {
                     birthDate: birthDate3, sex:sex3, sign:sign3, sexualOption: sexualOption3
                 }).then(async () => {
-                    
-
             const text = `Seu amigo ${username}, alterou as características de um de seus membros do perfil`
             const data = {idPatrono, idAccount, text, }
             await api.post("/notifications", data).then(() => {
@@ -351,8 +363,6 @@ async function newUpdateCharacteristcs3({id, birthDate,
             })
             setLoading(false);
 
-
-           
                     setLoading(false)
                 }).catch(error => {
                     console.log("Informações não enviadas" + error)
@@ -368,13 +378,14 @@ async function newUpdateCharacteristcs3({id, birthDate,
 
 }
 
-async function preferencesAccount({idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal}) {
+async function preferencesAccount({id, idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal, email}) {
+    const data = {id, idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal}
     await api.post('/preferences', {idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal})
     .then(() => {
-        const DataUser = localStorage.getItem("foursome");
-        const user = JSON.parse(DataUser);
-        createSuccess(user.email)
-        navigate("/registrationend");
+        localStorage.setItem("preferences-foursome", JSON.stringify(data));
+
+        createSuccess(email)
+        window.open("/registrationend","_self");
     }).catch(error => {
         console.log("Erro ao salvar dados" + error)
     })
@@ -518,7 +529,7 @@ async function CreateInviteNewUsew({code, name, email, phone,idAccount, username
     })  
 }
 
-async function CreateInviteMail({code, name, email, phone,idAccount, username, patron, type,  patronNickname}) {
+async function CreateInviteMail({code, name, email, phone,idAccount, username, patron, patronNickname, type}) {
   
     const findAccountEmail = await api.get(`/accounts/find/${email}`);
 

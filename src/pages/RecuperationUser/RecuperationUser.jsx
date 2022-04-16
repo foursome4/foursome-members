@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import './recuperationUser.css';
 
 function RecuperationUser() {
-  const  {gerateCodeRecuperation} = useContext(AuthContext)
+  //const  {recuperationUserForEmail} = useContext(AuthContext)
   const [email, setEmail] = useState("");
 
 
@@ -15,16 +15,14 @@ function RecuperationUser() {
 
   useEffect(() => {
       if(localStorage.getItem("foursome") !== null) {
-        navigate("/loader")
+        window.open("/feed")
       }
     },[navigate])
 
 
   function handleCreateCodeRecuperation(e) {
     e.preventDefault();
-    const inviteCode = uuidv4()
-    const code = inviteCode.substring(0, 6)
-    gerateCodeRecuperation(email, code)
+   // recuperationUserForEmail(email)
   }
 
   return (
@@ -41,7 +39,7 @@ function RecuperationUser() {
           <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)}/>
 
           <div className="buttons">
-          <button onClick={handleCreateCodeRecuperation}> Gerar código </button>
+          <button onClick={handleCreateCodeRecuperation}> Receber por e-mail </button>
 
 
           </div>

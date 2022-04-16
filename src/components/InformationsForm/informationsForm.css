@@ -178,6 +178,17 @@
     font-size: 14px;
     padding:10px;
     margin: 5px;
+    color: var(--Gray_font1);
+    font-weight: bold;
+}
+.complete-informations form .data .active {
+    width: 250px;
+    border: none;
+    background-color: var(--Background2);
+    border-radius: 6px;
+    font-size: 14px;
+    padding:10px;
+    margin: 5px;
     color: var(--Primary);
     font-weight: bold;
 }
@@ -190,7 +201,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 90%;
 }
 

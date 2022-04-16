@@ -12,8 +12,7 @@ import { toast } from 'react-toastify';
 
 function InformationsForm() {
     const Local = localStorage.getItem("foursome");
-    const user = JSON.parse(Local)
-    const {logout} = useContext(AuthContext)
+    const user = JSON.parse(Local);
     const {createInformationsAccount} = useContext(AuthContext)
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [imageAvatar, setImageAvatar] = useState('');
@@ -52,19 +51,14 @@ function InformationsForm() {
 
                 
         if(avatarUrl === null ) {
-            toast.error("Favor adicionat foto de perfil")
+            toast.error("Favor adicionar foto de perfil")
         }
-        if(nickname === "") {
-            toast.error("Favor preencher nome de exibição")
-        }
+
         if(city === "" && uf === "" ) {
             toast.error("Busque seu CEP para preencher Cidade e Estado")
         }
 
-        if(relationship === "") {
-            toast.error("Favor preencher o status de relacionamento")
-        }
-           
+          
         if(avatarUrl !== null && nickname !== "" && city !== "" && uf !== "" && relationship !== "") {
        toast.info("Salvando as informações. Aguarde...")
                 //Avatar
@@ -85,9 +79,11 @@ function InformationsForm() {
         const avatar = photoUrlAvatar === "" || photoUrlAvatar === undefined || photoUrlAvatar === null ? linkProfile : photoUrlAvatar
 
         const linkCover = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
+        
+        const id = uuidv4();
         //Salvando no banco de dados
-       createInformationsAccount({idAccount: user.id, avatar: avatar, cover: linkCover, city, uf, relationship, nickname});
-        console.log({idAccount: user.id, avatar: photoUrlAvatar, cover: linkCover, city, uf, relationship, nickname});
+       createInformationsAccount({id, idAccount: user.id, avatar: avatar, cover: linkCover, city, uf, relationship, nickname});
+        console.log({id, idAccount: user.id, avatar: photoUrlAvatar, cover: linkCover, city, uf, relationship, nickname});
         console.log(loadding);
            
     } 
@@ -129,15 +125,15 @@ function InformationsForm() {
                     <img src={logoImg} alt="" />
                     <h2>Informações Complementares</h2>
                     </div>
-                        <form action="">
+                        <form onSubmit={handleUploadAccount}>
                             <p>Avatar</p>
                         <label className="label-avatar">
                             <span><FiUpload color="#f65" size={25} /></span>
-                            <input type="file" accept="image/*" onChange={handleFile}/><br />
+                            <input type="file" accept="image/*" onChange={handleFile} required/><br />
                             <img src={avatarUrl === null ? profile : avatarUrl} alt="Avatar" height={100} width={100}/>
                         </label>
 
-
+                        <br />
                         <div className="SearchCep">
                         <input type="text" placeholder='Digite seu cep' value={cep} onChange={(e) => setCep(e.target.value)}/>
                         <button onClick={handleSearchCep}>Buscar Cep</button>
@@ -149,16 +145,16 @@ function InformationsForm() {
 
                     {location === true || uf !== "" ?
                     <div className="location">
-                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf} onChange={(e) => setUf(e.target.value)}/>
-                            <input type="text" placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)}/>
+                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf} onChange={(e) => setUf(e.target.value)} required/>
+                            <input type="text" placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required/>
                         </div>    
                         :  "" }
 
 
 
                         <div className="dataUser">
-                            <input type="text" placeholder='Nome de Exibição' value={nickname} onChange={(e) => setNickname(e.target.value)}/>
-                            <select value={relationship} onChange={handleRelationship}>
+                            <input type="text" placeholder='Nome de Exibição' value={nickname} onChange={(e) => setNickname(e.target.value)} required/>
+                            <select className={relationship === "" ? "" : "active"} value={relationship} onChange={handleRelationship} required>
                                 <option value="">Status de Relacionamento</option>
                                 <option value="Solteir@">Solteir@ </option>
                                 <option value="Casad@">Casad@</option>
@@ -171,10 +167,7 @@ function InformationsForm() {
 
                     <div className='confirmation'>
                         <div className='buttonsInformation'>
-                            {loadding === true ? " " :
-                        <button onClick={handleUploadAccount}>{loadding === true ? <FiRefreshCcw /> : "Salvar e avançar"}</button>
-                              }
-                        <button onClick={logout}>Sair</button>
+                        <button onClick={handleUploadAccount}> Salvar e avançar</button>
                         </div>
                     </div>
                         </form>

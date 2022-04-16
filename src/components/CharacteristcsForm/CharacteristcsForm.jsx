@@ -2,7 +2,8 @@ import { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import logoImg from '../../assets/images/logo.png';
 import { AuthContext } from '../../contexts/Auth';
-import { IoCalendarOutline, IoHeartOutline, IoMaleFemaleOutline, IoTransgenderOutline} from 'react-icons/io5'
+import { IoCalendarOutline, IoHeartOutline, IoMaleFemaleOutline, IoTransgenderOutline} from 'react-icons/io5';
+import {v4 as uuidv4} from 'uuid';
 import './characteristcsForm.css'
 
 function CharacteristcsForm() {
@@ -29,29 +30,40 @@ function CharacteristcsForm() {
         e.preventDefault()
         
         if(data !== "" && sex !== "" && sign !== "" && sexualOption !== "" && data2 !== "" && sex2 !== "" && sign2 !== "" && sexualOption2 !== "" && data3 !== "" && sex3 !== "" && sign3 !== "" && sexualOption3 !== "") {
-            toast.info("Salvando Caracteristicas do trisal. Aguarde...")
+            toast.info("Salvando Caracteristicas do trisal. Aguarde...");
+
+            const id1 = uuidv4();
+            const id2 = uuidv4();
+            const id3 = uuidv4();
             createCharacteristcs3({
                 idAccount: user.id,
+                id3,
                 data3,
                 sex3,
                 sign3,
                 sexualOption3,
+                id2,
                 data2,
                 sex2,
                 sign2,
                 sexualOption2,
+                id1,
                 data,
                 sex,
                 sign,
                 sexualOption})
         } else if ( data !== "" && sex !== "" && sign !== "" && sexualOption !== "" && data2 !== "" && sex2 !== "" && sign2 !== "" && sexualOption2 !== "") {
-            toast.info("Salvando Caracteristicas do casal. Aguarde...")
+            toast.info("Salvando Caracteristicas do casal. Aguarde...");
+            const id1 = uuidv4();
+            const id2 = uuidv4();
             createCharacteristcs2({
                 idAccount: user.id,
+                id2,
                 data2,
                 sex2,
                 sign2,
                 sexualOption2,
+                id1,
                 data,
                 sex,
                 sign,
@@ -59,9 +71,11 @@ function CharacteristcsForm() {
             })
 
         } else if ( data !== "" && sex !== "" && sign !== "" && sexualOption !== "") {
-            toast.info("Salvando Caracteristicas. Aguarde...")
+            toast.info("Salvando Caracteristicas. Aguarde...");
+            const id1 = uuidv4();
             createCharacteristcs({
                 idAccount: user.id,
+                id1,
                 data,
                 sex,
                 sign,
@@ -134,7 +148,7 @@ function CharacteristcsForm() {
 
                     <div className="date">
                     <p> <IoMaleFemaleOutline /></p>
-                    <select required value={sex} onChange={handleSelectSex}>
+                    <select className={sex === "" ? "" : "active"} required value={sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
@@ -143,7 +157,7 @@ function CharacteristcsForm() {
 
                             <div className="date">
                     <p> <IoTransgenderOutline /></p>
-                            <select required value={sexualOption} onChange={handleSelectSexualOption}>
+                            <select className={sexualOption === "" ? "" : "active"} required value={sexualOption} onChange={handleSelectSexualOption}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
@@ -154,7 +168,7 @@ function CharacteristcsForm() {
 
                             <div className="date">
                     <p> <IoHeartOutline /></p>
-                            <select required value={sign} onChange={handleSelectSign}>
+                            <select className={sign === "" ? "" : "active"} required value={sign} onChange={handleSelectSign}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -180,7 +194,7 @@ function CharacteristcsForm() {
 
                     <div className="date">
                     <p> <IoMaleFemaleOutline /></p>
-                    <select required value={sex2} onChange={handleSelectSex2}>
+                    <select className={sex2 === "" ? "" : "active"} required value={sex2} onChange={handleSelectSex2}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
@@ -189,7 +203,7 @@ function CharacteristcsForm() {
 
                             <div className="date">
                     <p> <IoTransgenderOutline /></p>
-                            <select required value={sexualOption2} onChange={handleSelectSexualOption2}>
+                            <select className={sexualOption2 === "" ? "" : "active"} required value={sexualOption2} onChange={handleSelectSexualOption2}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
@@ -200,7 +214,7 @@ function CharacteristcsForm() {
 
                             <div className="date">
                     <p> <IoHeartOutline /></p>
-                            <select required value={sign2} onChange={handleSelectSign2}>
+                            <select className={sign2 === "" ? "" : "active"} required value={sign2} onChange={handleSelectSign2}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -227,7 +241,7 @@ function CharacteristcsForm() {
 
                     <div className="date">
                     <p> <IoMaleFemaleOutline /></p>
-                    <select required value={sex3} onChange={handleSelectSex3}>
+                    <select className={sex3 === "" ? "" : "active"} required value={sex3} onChange={handleSelectSex3}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
@@ -236,7 +250,7 @@ function CharacteristcsForm() {
 
                             <div className="date">
                     <p> <IoTransgenderOutline /></p>
-                            <select required value={sexualOption3} onChange={handleSelectSexualOption3}>
+                            <select className={sexualOption3 === "" ? "" : "active"} required value={sexualOption3} onChange={handleSelectSexualOption3}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
@@ -247,7 +261,7 @@ function CharacteristcsForm() {
 
                             <div className="date">
                     <p> <IoHeartOutline /></p>
-                            <select required value={sign3} onChange={handleSelectSign3}>
+                            <select className={sign3 === "" ? "" : "active"} required value={sign3} onChange={handleSelectSign3}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -275,7 +289,7 @@ function CharacteristcsForm() {
 
                     <div className="date">
                     <p> <IoMaleFemaleOutline /></p>
-                    <select required value={sex} onChange={handleSelectSex}>
+                    <select className={sex === "" ? "" : "active"} required value={sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
@@ -284,7 +298,7 @@ function CharacteristcsForm() {
 
                             <div className="date">
                     <p> <IoTransgenderOutline /></p>
-                            <select required value={sexualOption} onChange={handleSelectSexualOption}>
+                            <select className={sexualOption === "" ? "" : "active"} required value={sexualOption} onChange={handleSelectSexualOption}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
@@ -295,7 +309,7 @@ function CharacteristcsForm() {
 
                             <div className="date">
                     <p> <IoHeartOutline /></p>
-                            <select required value={sign} onChange={handleSelectSign}>
+                            <select className={sign === "" ? "" : "active"} required value={sign} onChange={handleSelectSign}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -322,7 +336,7 @@ function CharacteristcsForm() {
 
                     <div className="date">
                     <p> <IoMaleFemaleOutline /></p>
-                    <select required value={sex2} onChange={handleSelectSex2}>
+                    <select className={sex2 === "" ? "" : "active"} required value={sex2} onChange={handleSelectSex2}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
@@ -331,7 +345,7 @@ function CharacteristcsForm() {
 
                             <div className="date">
                     <p> <IoTransgenderOutline /></p>
-                            <select required value={sexualOption2} onChange={handleSelectSexualOption2}>
+                            <select className={sexualOption2 === "" ? "" : "active"} required value={sexualOption2} onChange={handleSelectSexualOption2}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
@@ -342,7 +356,7 @@ function CharacteristcsForm() {
 
                             <div className="date">
                     <p> <IoHeartOutline /></p>
-                            <select required value={sign2} onChange={handleSelectSign2}>
+                            <select className={sign2 === "" ? "" : "active"} required value={sign2} onChange={handleSelectSign2}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>
@@ -370,7 +384,7 @@ function CharacteristcsForm() {
 
                     <div className="date">
                     <p> <IoMaleFemaleOutline /></p>
-                    <select required value={sex} onChange={handleSelectSex}>
+                    <select className={sex === "" ? "" : "active"} required value={sex} onChange={handleSelectSex}>
                                 <option value="">Sexo</option>
                                 <option value="Homem">Homem </option>
                                 <option value="Mulher">Mulher</option>
@@ -379,7 +393,7 @@ function CharacteristcsForm() {
 
                             <div className="date">
                     <p> <IoTransgenderOutline /></p>
-                            <select required value={sexualOption} onChange={handleSelectSexualOption}>
+                            <select className={sexualOption === "" ? "" : "active"} required value={sexualOption} onChange={handleSelectSexualOption}>
                                 <option value="">Opção Sexual</option>
                                 <option value="Hetero Sexual">Hetero Sexual </option>
                                 <option value="Bissexual">Bissexual</option>
@@ -390,7 +404,7 @@ function CharacteristcsForm() {
 
                             <div className="date">
                     <p> <IoHeartOutline /></p>
-                            <select required value={sign} onChange={handleSelectSign}>
+                            <select className={sign === "" ? "" : "active"} required value={sign} onChange={handleSelectSign}>
                                 <option value="">Signo</option>
                                 <option value="Áries">Áries </option>
                                 <option value="Touro">Touro </option>

@@ -2,6 +2,8 @@ import { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import logoImg from '../../assets/images/logo.png';
 import { AuthContext } from '../../contexts/Auth';
+import { v4 as uuidv4 } from 'uuid';
+import {IoMaleOutline, IoFemaleOutline, IoMaleFemaleOutline, IoTransgenderOutline, IoPeopleOutline} from 'react-icons/io5';
 import './preferencesForm.css'
 
 function PreferencesForm() {
@@ -16,63 +18,160 @@ function PreferencesForm() {
     const [transexuais, setTransexuais] = useState("");
     const [grupos, setGrupos] = useState("");
     const [proposal, setProposal] = useState("");
+    const [styleHomem, setStyleHomem] = useState(false);
+    const [styleMulher, setStyleMulher] = useState(false);
+    const [styleCasal, setStyleCasal] = useState(false);
+    const [styleTrisal, setStyleTrisal] = useState(false);
+    const [styleTravestis, setStyleTravestis] = useState(false);
+    const [styleTransex, setStyleTransex] = useState(false);
+    const [styleGrupos, setStyleGrupos] = useState(false);
 
 
    
     function handlePreferences(e) {
         e.preventDefault();
         toast.info("Salvando Preferências. Aguarde...")
-        preferencesAccount({idAccount: user.id, men:homem, woman:mulher, couple:casal, trisal:trisal, transvestites:travestis, transsexuals:transexuais, groups:grupos, proposal:proposal})
+        const id = uuidv4()
+        preferencesAccount({
+            id,
+            idAccount: user.id,
+            men:homem,
+            woman:mulher,
+            couple:casal,
+            trisal:trisal,
+            transvestites:travestis,
+            transsexuals:transexuais,
+            groups:grupos,
+            proposal:proposal,
+            email: user.email
+        })
+        console.log({
+            id,
+            idAccount: user.id,
+            men:homem,
+            woman:mulher,
+            couple:casal,
+            trisal:trisal,
+            transvestites:travestis,
+            transsexuals:transexuais,
+            groups:grupos,
+            proposal:proposal,
+            email: user.email
+        })
     }
 
     function handleSelectHomem(e) {
-        if(homem === "") {
-            setHomem(e.target.value);
-        } else {
-            setHomem("");
-        }
+            e.preventDefault();
+
+            if(styleHomem === false) {
+                setStyleHomem(true)
+            } else {
+                setStyleHomem(false)
+            }
+
+            if(homem === "") {
+                setHomem("Homem");
+            } else {
+                setHomem("");
+            }
+
     }
     function handleSelectMulher(e) {
-        if(mulher === "") {
-            setMulher(e.target.value);
-        } else {
-            setMulher("");
-        }
+            e.preventDefault();
+
+            if(styleMulher === false) {
+                setStyleMulher(true)
+            } else {
+                setStyleMulher(false)
+            }
+
+            if(mulher === "") {
+                setMulher("Mulher");
+            } else {
+                setMulher("");
+            }
+
+
+
     }
     function handleSelectCasal(e) {
-        if(casal === "") {
-            setCasal(e.target.value);
-        } else {
-            setCasal("");
-        }
+            e.preventDefault();
+            if(styleCasal === false) {
+                setStyleCasal(true)
+            } else {
+                setStyleCasal(false)
+            }
+
+
+            if(casal === "") {
+                setCasal("Casal");
+            } else {
+                setCasal("");
+            }
+
     }
     function handleSelectTrisal(e) {
-        if(trisal === "") {
-            setTrisal(e.target.value);
-        } else {
-            setTrisal("");
-        }
+            e.preventDefault();
+            if(styleTrisal === false) {
+                setStyleTrisal(true)
+            } else {
+                setStyleTrisal(false)
+            }
+
+            if(trisal === "") {
+                setTrisal("Trisal");
+            } else {
+                setTrisal("");
+            }
+
     }
     function handleSelectTravestis(e) {
-        if(travestis === "") {
-            setTravestis(e.target.value);
-        } else {
-            setTravestis(e.target.value);
-        }
+            e.preventDefault();
+
+            if(styleTravestis === false) {
+                setStyleTravestis(true)
+            } else {
+                setStyleTravestis(false)
+            }
+
+            if(travestis === "") {
+                setTravestis("Travestis");
+            } else {
+                setTravestis("");
+            }
+
     }
     function handleSelectTransexuais(e) {
-        if(transexuais === "") {
-            setTransexuais(e.target.value);
-        } else {
-            setTransexuais("");
-        }
+            e.preventDefault();
+
+            if(styleTransex === false) {
+                setStyleTransex(true)
+            } else {
+                setStyleTransex(false)
+            }
+
+            if(transexuais === "") {
+                setTransexuais("Transexuais");
+            } else {
+                setTransexuais("");
+            }
+
     }
     function handleSelectGrupos(e) {
-        if(grupos === "") {
-            setGrupos(e.target.value);
-        } else {
-            setGrupos("");
-        }
+            e.preventDefault();
+
+            if(styleGrupos === false) {
+                setStyleGrupos(true)
+            } else {
+                setStyleGrupos(false)
+            }
+
+            if(grupos === "") {
+                setGrupos("Grupos");
+            } else {
+                setGrupos("");
+            }
+
     }
 
 
@@ -85,28 +184,19 @@ function PreferencesForm() {
                     </div>
                         <form action="">
                     <div className="data">                      
-                   
-                    <div className="search">
-                        <input type="checkbox" value="Homem" onChange={handleSelectHomem}/><span>Homem</span>
-                    </div>
-                    <div className="search">
-                        <input type="checkbox" value="Mulher" onChange={handleSelectMulher}/><span>Mulher</span>
-                    </div>
-                    <div className="search">
-                        <input type="checkbox" value="Casal" onChange={handleSelectCasal}/><span>Casal</span>
-                    </div>
-                    <div className="search">
-                        <input type="checkbox" value="Trisal" onChange={handleSelectTrisal}/><span>Trisal</span>
-                    </div>
-                    <div className="search">
-                        <input type="checkbox" value="Travestis" onChange={handleSelectTravestis}/><span>Travestis</span>
-                    </div>
-                    <div className="search">
-                        <input type="checkbox" value="Transexuais" onChange={handleSelectTransexuais}/><span>Transex</span>
-                    </div>
-                    <div className="search">
-                        <input type="checkbox" value="Grupos" onChange={handleSelectGrupos}/><span>Grupos</span>
-                    </div>
+                        <button className={styleHomem === true ? "active" : ""} onClick={handleSelectHomem}><IoMaleOutline/> Homem</button>
+                    
+                        <button className={styleMulher === true ? "active" : ""} onClick={handleSelectMulher}><IoFemaleOutline/> Mulher</button>
+                    
+                        <button className={styleCasal === true ? "active" : ""} onClick={handleSelectCasal}><IoMaleFemaleOutline/> Casal</button>
+                    
+                        <button className={styleTrisal === true ? "active" : ""} onClick={handleSelectTrisal}><IoTransgenderOutline/> Trisal</button>
+                    
+                        <button className={styleTravestis === true ? "active" : ""} onClick={handleSelectTravestis}><IoTransgenderOutline/> Travestis</button>
+                    
+                        <button className={styleTransex === true ? "active" : ""} onClick={handleSelectTransexuais}><IoTransgenderOutline/> Transexuais</button>
+                    
+                        <button className={styleGrupos === true ? "active" : ""} onClick={handleSelectGrupos}><IoPeopleOutline/>Grupos</button>
                     </div>
                     <div className="proposal">
                         <textarea name="" id="" cols="100" rows="3" placeholder="proposta" value={proposal} onChange={(e) => setProposal((e.target.value))}></textarea>

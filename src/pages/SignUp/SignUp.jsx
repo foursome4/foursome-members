@@ -60,10 +60,12 @@ function SignUp() {
       if(passwordConfirmNative === passwordNative) {
         toast.info("Salvando informações. Aguarde...")
           const username = usernameNative.replace(/( )+/g, "")
-          const password = passwordNative.replace(/( )+/g, "")
-          const id = uuidv4();
+          const password = passwordNative.replace(/( )+/g, "");
 
-         // createAccount(id, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
+          const idGenerate = uuidv4();
+          const id = idGenerate.substring(0, 6);
+
+         createAccount(id, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
           console.log( id, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
         } else {
           toast.error("As senhas não combinam!")
@@ -167,7 +169,7 @@ function SignUp() {
 
           <div className="terms">
           <input type="checkbox" checked={checked} onChange={handleChange}/>
-          <span>Li e concordo com os </span><span className="pointer"> <b > Termos de uso</b></span>
+          <p>Li e concordo com os<b><a href="/lgpd" target="_blank">Termos de uso</a></b></p>
           </div>
 
           <div className="buttons">
