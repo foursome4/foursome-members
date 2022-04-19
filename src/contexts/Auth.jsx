@@ -53,9 +53,68 @@ function AuthProvider({children}) {
     }
 
 
-    
-    async function loginSession({username, password}) {     
+    async function loginSession({login, password}) {     
+       
+        let email;
+        let username;
+
+        
+        if(login.includes('@')) {
+            email = login
+            await api.post("/session", {email, password}).then((result) => {
+                if(result.data.status === "banned") {
+                    toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
+                    return
+                }
+                localStorage.setItem("foursome", JSON.stringify(result.data));
+                findInformationsAccount(result.data.id)
+                
+            }).catch(error => {
+                console.log("Login não foi realizado" + error)
+                toast.error(`Falha no login.
+                E-mail, usuário ou senha incorretos!`);
+            })
+            
+        } else {
+            username = login
             await api.post("/session", {username, password})
+            .then((result) => {
+                if(result.data.status === "banned") {
+                    toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
+                   return
+                }
+                localStorage.setItem("foursome", JSON.stringify(result.data));
+                findInformationsAccount(result.data.id)
+                
+            }).catch(error => {
+                console.log("Login não foi realizado" + error)
+                toast.error(`Falha no login.
+                E-mail, usuário ou senha incorretos!`);
+            })
+        }
+        
+    }
+
+    
+    // async function loginSession({username, password}) {     
+    //         await api.post("/session", {username, password})
+    //         .then((result) => {
+    //             if(result.data.status === "banned") {
+    //                 toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
+    //                return
+    //             }
+    //             localStorage.setItem("foursome", JSON.stringify(result.data));
+    //             findInformationsAccount(result.data.id)
+                
+    //         }).catch(error => {
+    //             console.log("Login não foi realizado" + error)
+    //             toast.error(`Falha no login.
+    //             E-mail, usuário ou senha incorretos!`);
+    //         })
+        
+    // }
+    async function sessionFast({id}) {     
+            await api.post("/session", {id})
             .then((result) => {
                 if(result.data.status === "banned") {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
@@ -939,7 +998,8 @@ inactivityTime()
             deleteAccount,
             recuperationUserForEmail,
             gerateCodeRecuperation,
-            validadeCodeRecuperation
+            validadeCodeRecuperation,
+            sessionFast
 
         }}>
             {children}
