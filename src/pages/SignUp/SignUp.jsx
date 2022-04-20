@@ -7,6 +7,7 @@ import './signUp.css';
 import { toast } from 'react-toastify';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { v4 as uuidv4} from 'uuid'
+import { mask as masker, unMask } from "remask";
  
 function SignUp() {
   const {email, code, patron, type} = useParams()
@@ -88,8 +89,6 @@ function SignUp() {
   }
 
 
-
-
   function mascaraFone(event) {
     var valor = document.getElementById("telefone").attributes[0].ownerElement['value'];
     var retorno = valor.replace(/\D/g,"");
@@ -112,6 +111,68 @@ function SignUp() {
     document.getElementById("telefone").attributes[0].ownerElement['value'] = retorno;
   }
 
+
+  function ChangeMask(e) {
+    const originalValue = unMask(e.target.value);
+    const maskedValue = masker(originalValue, [
+      "S",
+      "SS",
+      "SSS",
+      "SSSS",
+      "SSSSS",
+      "SSSSSS",
+      "SSSSSSS",
+      "SSSSSSSS",
+      "SSSSSSSSS",
+      "SSSSSSSSSS",
+      "SSSSSSSSSSS",
+      "SSSSSSSSSSSS",
+      "SSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+    ]);
+
+    setUsernameNative(maskedValue)
+  }
+  function ChangeMaskPhone(e) {
+    const originalValue = unMask(e.target.value);
+    const maskedValue = masker(originalValue, [
+      "(99)99999-9999",
+      "(99)99999-999",
+    ]);
+
+    setPhone(maskedValue)
+  }
 
 
 
@@ -146,12 +207,12 @@ function SignUp() {
           <div className="titleInput">
           <p>O nome de usuário deve ser todo junto, minúsculo e sem espaço.</p>
           </div>
-          <input type="text" placeholder="Nome de usuário (Junto e sem espaço)" value={usernameNative.toLowerCase()} onChange={(e) => setUsernameNative(e.target.value)}/>
+          <input type="text" placeholder="Nome de usuário (Junto e sem espaço)" value={usernameNative.toLowerCase()} onChange={ChangeMask}/>
          
           <div className="titleInput">
           <p>Telefone:</p>
           </div>
-          <input type="text" id="telefone" onKeyUp={mascaraFone} value={newPhone} onChange={(e) => setPhone(e.target.value)} placeholder="(XX)XXXXX-XXXX"/>
+          <input type="text" value={newPhone} onChange={ChangeMaskPhone} placeholder="(XX)XXXXX-XXXX"/>
 
           <div className="titleInput">
           <p>Senha:</p>
