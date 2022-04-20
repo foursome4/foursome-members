@@ -107,6 +107,21 @@ display: flex;
 .content-Login .signIn .form .buttons a {
     text-decoration: none;
 }
+.content-Login .signIn .form .links {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px
+}
+.content-Login .signIn .form .links p {
+    font-weight: bold;
+    color: #fff;
+}
+
+.content-Login .signIn .form .links a {
+    text-decoration: none;
+}
 
 .content-Login .signIn .logo {
     width: 50%;

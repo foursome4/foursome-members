@@ -517,7 +517,19 @@ async function validadeCodeRecuperation(code, email) {
        return
    } 
 
-   window.open("/recoverpassworsd","_self")
+   window.open(`/recoverpassword/${email}`,"_self")
+}
+
+
+async function recoverPasswordNew(email, password) {
+    console.log(email, password)
+    await api.patch(`accounts/recover/${email}`, {password}).then(() => {
+        toast.info("Senha atualizada com sucesso");
+        window.open("/","_self")
+    }).catch((error) => {
+        toast.error("Erro ao atualiza senha");
+        console.log(error)
+    })
 }
 
 // Fim recuperações
@@ -999,7 +1011,8 @@ inactivityTime()
             recuperationUserForEmail,
             gerateCodeRecuperation,
             validadeCodeRecuperation,
-            sessionFast
+            sessionFast,
+            recoverPasswordNew
 
         }}>
             {children}

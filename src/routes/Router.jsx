@@ -51,7 +51,7 @@ function PrivateRoute({children} ) {
             <Route path="/forgotit" element={ <Forgotit />} />
             <Route path="/recuperation" element={ <Recuperation />} />       
             <Route path="/recuperationuser" element={ <RecuperationUser />} />       
-            <Route path="/recoverpassworsd" element={ <RecoverPassword />} />       
+            <Route path="/recoverpassword/:email" element={ <RecoverPassword />} />       
             <Route path="/recuperationcode/:email" element={ <RecuperationCode />} />       
             <Route path="/loader" element={ <Loader />} />       
             <Route path="/terms" element={ <UseOfTerms />} />       

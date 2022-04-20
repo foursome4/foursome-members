@@ -1,27 +1,27 @@
 import { useContext, useEffect, useState } from 'react';
 import logoImg from '../../assets/images/logo.png'
 import { AuthContext } from '../../contexts/Auth';
-import { useNavigate } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import './recoverPassword.css';
 
 function RecoverPassword() {
-  const  {} = useContext(AuthContext)
+  const {email} = useParams()
+ const  {recoverPasswordNew} = useContext(AuthContext)
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
 
 
-  const navigate = useNavigate();
-
-  useEffect(() => {
-      if(localStorage.getItem("foursome") !== null) {
-        navigate("/loader")
-      }
-    },[navigate])
-
 
   function handleCreateAccount(e) {
     e.preventDefault();
+
+    if(password !== passwordConfirm) {
+      toast.error("As senhas não combinam!");
+      return
+    }
+    
+    recoverPasswordNew(email, password)
     
   }
 
