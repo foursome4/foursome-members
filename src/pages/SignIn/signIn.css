@@ -117,6 +117,7 @@ display: flex;
 .content-Login .signIn .form .links p {
     font-weight: bold;
     color: #fff;
+    margin: 5px 0;
 }
 
 .content-Login .signIn .form .links a {
@@ -206,6 +207,10 @@ display: flex;
                 width: 70%;
             }
 
+            .content-Login .signIn .form .links {
+                width: 100%;
+            }
+
             @media (max-width: 500px) {
 
 
@@ -239,6 +244,10 @@ display: flex;
                     margin-bottom: 20px;
                 }
 
+                .content-Login .signIn .form .links {
+                    width: 100%;
+                    flex-direction: column;
+                }
 
                 @media (max-width: 400px) {
 
