@@ -4,6 +4,7 @@ import { v4 as uuidv4} from 'uuid'
 import { toast } from "react-toastify"
 import { AuthContext } from "../../../contexts/Auth"
 import {useContext, useState} from 'react'
+import { mask as masker, unMask } from "remask";
 
 function InviteWhatsapp() {
     const Local = localStorage.getItem("foursome");
@@ -26,27 +27,16 @@ function InviteWhatsapp() {
     }
 
 
-    function mascaraFone(event) {
-        var valor = document.getElementById("telefone").attributes[0].ownerElement['value'];
-        var retorno = valor.replace(/\D/g,"");
-        retorno = retorno.replace(/^0/,"");
-        if (retorno.length > 10) {
-          retorno = retorno.replace(/^(\d\d)(\d{5})(\d{4}).*/,"($1) $2-$3");
-        } else if (retorno.length > 5) {
-          if (retorno.length === 6 && event.code === "Backspace") { 
-            // necessário pois senão o "-" fica sempre voltando ao dar backspace
-            return; 
-          } 
-          retorno = retorno.replace(/^(\d\d)(\d{4})(\d{0,4}).*/,"($1) $2-$3");
-        } else if (retorno.length > 2) {
-          retorno = retorno.replace(/^(\d\d)(\d{0,5})/,"($1) $2");
-        } else {
-          if (retorno.length !== 0) {
-            retorno = retorno.replace(/^(\d*)/,"($1");
-          }
-        }
-        document.getElementById("telefone").attributes[0].ownerElement['value'] = retorno;
-      }
+    function ChangeMaskPhone(e) {
+      const originalValue = unMask(e.target.value);
+      const maskedValue = masker(originalValue, [
+        "(99)99999-9999",
+        "(99)99999-999",
+      ]);
+  
+      setPhone(maskedValue)
+    }
+  
 
 
     function createInviteWhatsapp(e) {
@@ -89,7 +79,7 @@ function InviteWhatsapp() {
                 <option value="Travestis">Travestis </option>
             </select>
 
-                <input type="text" id="telefone"  onKeyUp={mascaraFone} value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Ex.: 21999888899"/>
+                <input type="text" value={phone} onChange={(e) => setPhone(ChangeMaskPhone)} placeholder="Ex.: 21999888899"/>
 
                 <button onClick={createInviteWhatsapp}> Enviar Convite</button>
 
