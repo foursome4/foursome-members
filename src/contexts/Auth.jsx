@@ -692,6 +692,7 @@ async function CreateInviteMail({code, name, email, phone,idAccount, username, p
         const res = await api.post("/mail/username", {mail: email, username: username});
         if(res.status === 200) {
             toast.info("Nome de usuário encontrado. Verifique seu e-mail!")
+            window.open(`/recuperationuserresult/${username}`,"_self")
         }
     }
 

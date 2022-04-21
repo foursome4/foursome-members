@@ -28,6 +28,7 @@ import { RecoverPassword } from '../pages/RecoverPassword/RecoverPassword';
 import { Recuperation } from '../pages/Recuperation/Recuperation';
 import { RecuperationCode } from '../pages/RecuperationCode/RecuperationCode';
 import { RecuperationUser } from '../pages/RecuperationUser/RecuperationUser';
+import { RecuperationUserResult } from '../pages/RecuperationUserResult/RecuperationUserResult';
 import { RegistrationEnd } from '../pages/RegistrationEnd/RegistrationEnd';
 import { Settings } from '../pages/Settings/Settings';
 import { SignIn } from '../pages/SignIn/SignIn';
@@ -53,6 +54,7 @@ function PrivateRoute({children} ) {
             <Route path="/recuperationuser" element={ <RecuperationUser />} />       
             <Route path="/recoverpassword/:email" element={ <RecoverPassword />} />       
             <Route path="/recuperationcode/:email" element={ <RecuperationCode />} />       
+            <Route path="/recuperationuserresult/:username" element={ <RecuperationUserResult />} />       
             <Route path="/loader" element={ <Loader />} />       
             <Route path="/terms" element={ <UseOfTerms />} />       
             <Route path="/police" element={ <PrivacityPolice />} />       
