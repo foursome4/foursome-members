@@ -2,6 +2,7 @@ import './listInvites.css'
 import { useContext} from 'react'
 import { AuthContext } from '../../../contexts/Auth';
 import { useFetch } from '../../../hooks/useFetch';
+import {AccountCreatedInvite} from '../AccountCreatedInvite/AccountCreatedInvite'
 
 function ListInvites() {
     const Local = localStorage.getItem("foursome");
@@ -29,6 +30,7 @@ function ListInvites() {
                                   return (
                                     <div className="inviteUnic" key={invite.email}>
                                       <h5><b>{invite.name}</b></h5>
+                                      <AccountCreatedInvite mail={invite.email} />
                                       <h5>{invite.email !== "" ? invite.email : ""} </h5>
                                       <div className="linkInvite">
                                         <h5> <a href={`https://foursome.com.br/signup/${invite.email}/${invite.code}/${invite.idAccount}/${invite.type}`}>Pressione para copiar link de convite</a></h5>
