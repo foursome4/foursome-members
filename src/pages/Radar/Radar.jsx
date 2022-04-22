@@ -3,7 +3,8 @@ import { TopBar } from "../../components/TopBar/TopBar"
 import './radar.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import { DistanceFromUser } from "../../components/DistanceFromUser/DistanceFromUser"
-import {  useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { AuthContext } from "../../contexts/Auth"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import api from "../../services/api"
 import apiInstagram from "../../services/api-instagram"
@@ -11,6 +12,10 @@ import { Link } from "react-router-dom"
 import { UserRadar } from "../../components/UserRadar/UserRadar"
 
 function Radar() {
+    const {inactivityTime} = useContext(AuthContext);
+
+    inactivityTime()
+
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 

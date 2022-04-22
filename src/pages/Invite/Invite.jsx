@@ -9,9 +9,14 @@ import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { InviteEmail } from "../../components/ComponentsInvites/InviteEmail/InviteEmail"
 import { useState } from "react"
 import { InviteWhatsapp } from "../../components/ComponentsInvites/InviteWhatsapp/InviteWhatsapp"
+import { useContext } from "react"
+import { AuthContext } from "../../contexts/Auth"
 
 
 function Invite() {
+    const {inactivityTime} = useContext(AuthContext);
+
+    inactivityTime()
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(LocalInformation);
 

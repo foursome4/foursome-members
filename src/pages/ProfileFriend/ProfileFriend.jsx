@@ -24,10 +24,13 @@ import { Footer } from '../../components/Footer/Footer'
 
 function ProfileFriend() {
   const navigate = useNavigate()
-  const {newFriend, newFollower, deleteFriend, deleteFollower, newVisit} = useContext(AuthContext)
+  const {newFriend, newFollower, deleteFriend, deleteFollower, newVisit, inactivityTime} = useContext(AuthContext)
   const Local = localStorage.getItem("foursome");
   const myUser = JSON.parse(Local);
   const {id} = useParams();
+
+  inactivityTime()
+
 
   const coverImg = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
   const avatar = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"

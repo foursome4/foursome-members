@@ -3,7 +3,8 @@ import { TopBar } from '../../components/TopBar/TopBar'
 import {FiHome, FiMoreVertical, FiUser} from 'react-icons/fi'
 import './forumIndividual.css'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from "react"
+import { AuthContext } from "../../contexts/Auth"
 import api from '../../services/api'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { useParams } from 'react-router-dom'
@@ -16,6 +17,10 @@ import { Footer } from '../../components/Footer/Footer'
 function ForumIndividual() {
   const {id} = useParams();
   console.log(id)
+
+  const {inactivityTime} = useContext(AuthContext);
+
+  inactivityTime()
 
   const [feed, setFeed] = useState("feed");
   const [friend, setFriend] = useState("");

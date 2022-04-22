@@ -3,13 +3,18 @@ import { TopBar } from "../../components/TopBar/TopBar"
 import { Footer } from "../../components/Footer/Footer"
 import './ranking.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
-import { useEffect, useState } from "react"
 import api from "../../services/api"
 import { CountReactions } from "../../components/CountReactions/CountReactions"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { Link } from "react-router-dom"
+import { useEffect, useState, useContext } from "react"
+import { AuthContext } from "../../contexts/Auth"
 
 function Ranking() {
+
+    const {inactivityTime} = useContext(AuthContext);
+
+    inactivityTime()
 
     const [photo, setPhoto] = useState([])
     const [video, setVideo] = useState([])

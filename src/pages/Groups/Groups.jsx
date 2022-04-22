@@ -4,13 +4,18 @@ import './groups.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import { ListGroups } from "../../components/ListGroups/ListGroups"
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { AuthContext } from "../../contexts/Auth"
 import { GroupsCreated } from "../../components/GroupsCreated/GroupsCreated"
 import { CreateGroups } from "../../components/CreateGroups/CreateGroups"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { Footer } from "../../components/Footer/Footer"
 
 function Groups() {
+
+      const {inactivityTime} = useContext(AuthContext);
+
+  inactivityTime()
 
     const [select, setSelect] = useState("All");
 

@@ -3,7 +3,8 @@ import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { TopBar } from '../../components/TopBar/TopBar'
 import { DateFormatChat } from '../../components/DateFormatChat/DateFormatChat'
 import './chat.css';
-import { useState, useRef} from 'react'
+import { useState, useContext, useRef } from "react"
+import { AuthContext } from "../../contexts/Auth"
 import { Link, useParams } from 'react-router-dom'
 import { socket } from '../../services/websocket'
 import api from '../../services/api'
@@ -19,7 +20,12 @@ import { toast } from 'react-toastify';
    
 function Chat() {
   const {room, idFriend} = useParams();
-  const messageRef = useRef(null)
+  const messageRef = useRef(null);
+
+
+  const {inactivityTime} = useContext(AuthContext);
+
+  inactivityTime()
   
   const Local = localStorage.getItem("foursome");
   const user = JSON.parse(Local);
@@ -29,9 +35,6 @@ function Chat() {
   console.log(`User: ${user.id}`)
   console.log(`Room: ${room}`)
   console.log(`IdFriend: ${idFriend}`)
-
-  const ActualDate = new Date();
-
 
   const [text, setText] = useState('');
   const [avatarUrl, setAvatarUrl] = useState(null);

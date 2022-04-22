@@ -10,7 +10,11 @@ import api from '../../services/api'
 
 
 function Invitation() {
-    const {logout, CreateInviteNewUsew, CreateInviteMail} = useContext(AuthContext);
+    const {logout,inactivityTime, CreateInviteNewUsew, CreateInviteMail} = useContext(AuthContext);
+
+    inactivityTime()
+
+
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");

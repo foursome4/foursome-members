@@ -17,7 +17,9 @@ function Feed() {
 
 
     const navigate = useNavigate();
-           const {socketDataLocation} = useContext(AuthContext);
+           const {socketDataLocation,inactivityTime} = useContext(AuthContext);
+
+           inactivityTime()
 
            useEffect(() => {
                if(user.status === "blocked") {

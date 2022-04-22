@@ -3,14 +3,20 @@ import { FiPlusCircle} from 'react-icons/fi'
 import './foruns.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { AuthContext } from "../../contexts/Auth"
 import { ListForuns } from "../../components/ListForuns/ListForuns"
 import { MyForuns } from "../../components/MyForuns/MyForuns"
 import { CreateForum } from "../../components/CreateForum/CreateForum"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { Footer } from "../../components/Footer/Footer"
 
+
 function Foruns() {
+
+    const {inactivityTime} = useContext(AuthContext);
+
+    inactivityTime()
 
     const [select, setSelect] = useState("All");
 

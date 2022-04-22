@@ -5,9 +5,14 @@ import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { ListInvites } from "../../components/ComponentsInvites/ListInvites/ListInvites"
 import { Footer } from "../../components/Footer/Footer"
+import { useContext } from "react"
+import { AuthContext } from "../../contexts/Auth"
 
 
 function InvitesList() {
+    const {inactivityTime} = useContext(AuthContext);
+
+    inactivityTime()
   const LocalInformation = localStorage.getItem("informations-foursome");
   const userInformation = JSON.parse(LocalInformation);
 

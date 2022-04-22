@@ -1,6 +1,6 @@
 import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSlim'
 import { TopBar } from '../../components/TopBar/TopBar'
-import {FiHome, FiImage, FiVideo, FiUser, FiHeart, FiX} from 'react-icons/fi'
+import {FiHome, FiImage, FiVideo, FiUser, FiHeart} from 'react-icons/fi'
 import {IoShieldCheckmark} from 'react-icons/io5'
 import './profile.css'
 import { Post } from '../../components/Post/Post'
@@ -26,7 +26,11 @@ function Profile() {
   const LocalInformations = localStorage.getItem("informations-foursome");
   const userInformations = JSON.parse(LocalInformations);
 
-  const {deleteAccount} = useContext(AuthContext);
+  const {deleteAccount, inactivityTime } = useContext(AuthContext);
+
+  inactivityTime()
+
+
   
   const coverImg = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
   const avatar = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"

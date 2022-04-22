@@ -3,7 +3,7 @@ import { TopBar } from '../../components/TopBar/TopBar'
 import { FiCheckSquare, FiHome, FiInfo, FiMoreVertical, FiUser, FiXSquare} from 'react-icons/fi'
 import './eventIndividual.css'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import api from '../../services/api'
 import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import {  useParams } from 'react-router-dom'
@@ -11,11 +11,16 @@ import { FeedPostEvent } from '../../components/FeedPostEvent/FeedPostEvent'
 import { PostTextEvent } from '../../components/PostTextEvent/PostTextEvent'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 import { Footer } from '../../components/Footer/Footer'
+import { AuthContext } from "../../contexts/Auth"
 
 
 function EventIndividual() {
   const {id} = useParams();
   console.log(id)
+
+  const {inactivityTime} = useContext(AuthContext);
+
+  inactivityTime()
 
   const [feed, setFeed] = useState("feed");
   const [member, setMember] = useState("");

@@ -12,7 +12,8 @@ function Notifications() {
     const user = JSON.parse(Local);
 
     const [date, setDate] = useState(new Date("Tue Mar 06 2022 03:38:05 GMT-0300 (Hora padrão de Brasília)"))
-    const [dateRead, setDateRead] = useState([])
+    const [dateRead, setDateRead] = useState([]);
+    console.log(date)
 
     const [isOpenModalNotifications, setIsOpenModalNotifications] = useState(false);
 
@@ -118,7 +119,9 @@ function Notifications() {
                 return(
                     <div className="notification" key={notification.id}>
                         <div className="name">
+                            <a href={`/profile-friend/${notification.idAccount}`}>
                         <UsersNotifications id={notification.idAccount} text={notification.text}/>
+                            </a>
                         </div>
                     </div>
                 )

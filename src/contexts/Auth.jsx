@@ -539,7 +539,7 @@ async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, 
     setLoading(true)
     await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent }).then( async () => {      
     toast.info("Post publicado com sucesso!")
-//    window.location.reload(false)
+    window.open(`/feed`,"_self")
         setLoading(false)
     }).catch(error => {
         console.log("Post não foi realizado" + error)
@@ -551,7 +551,7 @@ async function deletePost(id) {
     const res = await api.delete(`/posts/${id}`);
     if(res.status===201) {
         toast.success('Post deletado com sucesso!');
-       
+        window.open(`/feed`,"_self")
      } else {
         toast.error('Falha ao deletar, tente novamente!');
      }
@@ -957,7 +957,7 @@ async function newVisit(idAccount, username, idFriend) {
     }
 }
 
-inactivityTime()
+
 
 
 
@@ -1013,7 +1013,8 @@ inactivityTime()
             gerateCodeRecuperation,
             validadeCodeRecuperation,
             sessionFast,
-            recoverPasswordNew
+            recoverPasswordNew,
+            inactivityTime
 
         }}>
             {children}
