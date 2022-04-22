@@ -90,6 +90,7 @@
     padding: 5px 10px;
     font-weight: 900;
     margin: 5px;
+    width: 150px;
 }
 .content-Login .preferencesForm form .data  .active svg {
     margin-right: 5px;
