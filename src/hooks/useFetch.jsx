@@ -11,7 +11,7 @@ export function useFetch(url) {
         revalidateOnMount: true,
         revalidateOnFocus: true,
         revalidateOnReconnect: true,
-        refreshInterval: 100
+        refreshInterval: 1000
     })
 
     return {data, error}

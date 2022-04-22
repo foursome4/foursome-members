@@ -1,50 +1,48 @@
-import { FiImage, FiVideo, FiMenu } from 'react-icons/fi'
 import './feedPost.css';
-import { useState, memo, } from 'react';
+import { useState, memo, useEffect} from 'react';
 import { ItemFeed } from '../ItemFeed/ItemFeed';
 import { useFetch } from '../../hooks/useFetch';
+import gifLoader from '../../assets/images/gif/loader.gif'
 
 function FeedPostComponent() {
-    const [post, setPost] = useState("");
+    const [followers, setFollowers] = useState([]);
+    const [currentPage, setCurrentPage] = useState(0);
 
-      function postAll() {
-        setPost("")
-    }
+      const perPage = 5;
+      const {data} = useFetch(`https://api-foursome.herokuapp.com/posts/all?page=${currentPage}&limit=${perPage}`);
 
-    function postText() {
-        setPost("post-text")
-    }
+      useEffect(() => {
+          if(data) {
+              setFollowers(oldFollowers => [...oldFollowers, ...data])
+          }
+    }, [data]);
 
-    function postPhoto(){
-        setPost("post-photo")
-    }
+  
+    useEffect(() => {
+      const intersectionObserver = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) {
+          console.log('Sentinela appears!', currentPage + 1)
+          setCurrentPage((currentValue) => currentValue + 1);
+        }
+      })
+      intersectionObserver.observe(document.querySelector('#sentinela'));
+      return () => intersectionObserver.disconnect();
+    }, []);
 
-    function postVideo(){
-        setPost("post-video")
-    }
 
-
-    // const {data} = useFetch(`https://api-foursome.herokuapp.com/posts/all`);
-    const {data} = useFetch(post === "" ? `https://api-foursome.herokuapp.com/posts/all` : `https://api-foursome.herokuapp.com/posts/filter/${post}`);
-
-    if(!data) {
+  if(!followers) {
         return (
             <div className="load">
                 <h3>Carregando...</h3>
             </div>
         )
     }
+
     return (
 
         <div className="feedPost">
             <div className="posts-feed">
-            <div className="buttons">
-            <button className={post === "" ? 'selected' : ""} onClick={postAll}> <FiMenu /> Todos </button>
-            <button className={post === "post-text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
-            <button className={post === "post-photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button>
-            <button className={post === "post-video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button>
-            </div>
-                                {data?.map((postsData => {
+                                {followers?.map((postsData => {
                                     return (   
                                         <div className="preItem" key={postsData.id}>
                              {postsData.type === "post-text" ||
@@ -60,13 +58,15 @@ function FeedPostComponent() {
                                            forum={postsData.nameForum}/>
                                            : "" }
    
-                                           </div>               
+                                           </div> 
                                 )
                             }))}
+                            <div id="sentinela">
+                                <div className="image">
+                                    <img src={gifLoader} alt="Gif LOader more posts" />
+                                    </div></div>              
                            </div>
-        </div>   
-      
-                                    
+        </div>                                
     )
 }
 

@@ -24,6 +24,24 @@
     justify-content: flex-start;
     width: 90%;
 }
+
+.feedPost .posts-feed #sentinela {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.feedPost .posts-feed #sentinela .image {
+    width: 30px;
+    height: 30px;
+}
+.feedPost .posts-feed #sentinela .image img{
+    width: 30px;
+    height: 30px;
+}
+
 .feedPost .posts-feed .preItem {
     display: flex;
     flex-direction: column;
