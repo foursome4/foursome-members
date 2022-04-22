@@ -125,3 +125,8 @@
     flex-direction: row;
     justify-content: flex-start;
 }
+
+.content-modal .itensModalNotifications .notification .name a {
+    text-decoration: none;
+    cursor: pointer;
+}

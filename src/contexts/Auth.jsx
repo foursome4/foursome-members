@@ -38,7 +38,7 @@ function AuthProvider({children}) {
             localStorage.setItem("foursome", JSON.stringify(data2));
   
             const text = `Seu amigo ${username}, ingressou na Foursome, dê as boas vindas.`
-            const data = {idPatrono: patron, text, }
+            const data = {idPatrono: patron, text,idAccount: id, idFriend: "", type: "notification" }
 
 
             await api.post("/notifications", data).then(() => {

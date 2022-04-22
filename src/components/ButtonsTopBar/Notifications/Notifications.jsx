@@ -119,7 +119,7 @@ function Notifications() {
                 return(
                     <div className="notification" key={notification.id}>
                         <div className="name">
-                            <a href={`/profile-friend/${notification.idAccount}`}>
+                            <a href={notification.idAccount === null ? "#" : `/profile-friend/${notification.idAccount}`}>
                         <UsersNotifications id={notification.idAccount} text={notification.text}/>
                             </a>
                         </div>
