@@ -30,6 +30,7 @@ function ListInvites() {
                                   return (
                                     <div className="inviteUnic" key={invite.email}>
                                       <h5><b>{invite.name}</b></h5>
+                                      <h5>{invite.type === "" || invite.type === undefined ? "Tipo de conta não definida. Apague-a e reenvie em caso de conta não criada" : `Tipo de conta: ${invite.type}`}</h5>
                                       <AccountCreatedInvite mail={invite.email} />
                                       <h5>{invite.email !== "" ? invite.email : ""} </h5>
                                       <div className="linkInvite">
