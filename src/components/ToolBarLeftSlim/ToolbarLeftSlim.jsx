@@ -97,11 +97,11 @@ function ToolbarLeftSlimComponent() {
                     </button>
                     </a> */}
 
-                    {/* <a href="/infos" >
+                    <a href="/infos" >
                     <button className="toolIcon" >
                         <IoInformationCircleOutline size={20}/>Infos
                     </button>
-                    </a> */}
+                    </a>
                 </div>
             </div>
         </div>

@@ -105,11 +105,11 @@ const {data} = useFetch(`/online`);
                         <IoCashOutline size={20}/>Planos
                     </button>
                     </a> */}
-                    {/* <a href="/infos" >
+                    <a href="/infos" >
                     <button className="ButtonsUnic" >
                         <IoInformationCircleOutline size={20}/>Infos
                     </button>
-                    </a> */}
+                    </a>
                 </div>
                 : select === true ?
                 <div className="Buttons">
