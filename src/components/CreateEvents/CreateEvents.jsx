@@ -128,7 +128,7 @@ function CreateEvents() {
     return (
         <div className="createEvent">
         <form action="">
-            <h5><b>Folder do Evento</b></h5>
+            <h5><b>Folder do Evento (Tamanho: 500px x 500px)</b></h5>
     <label className="label-avatar">
                     <span><FiUpload color="#f65" size={25} /></span>
                     <input type="file" accept="image/*" onChange={handleFile}/><br />
@@ -162,7 +162,7 @@ function CreateEvents() {
                     </select>
 
             </div>
-            <h5><b>Capa da página do Evento</b></h5>
+            <h5><b>Capa da página do Evento. Slider no feed ( Tamanho: 1000px largura x 200px altura )</b></h5>
             <label className="label-cover">
                     <span><FiUpload color="#f65" size={25} /></span>
                     <input type="file" accept="image/*" onChange={handleFileCover}/><br />
