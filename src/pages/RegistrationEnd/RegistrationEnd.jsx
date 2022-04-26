@@ -28,6 +28,7 @@ function RegistrationEnd() {
                     <h4><b> Ao convidar um amigo, saiba que:</b></h4>
                     <h4> - Você se torna amplamente responsável pelos atos de seu convidado dentro do site.</h4>
                     <h4> - Em caso de má conduta de seu convidado, as punições impostas a ele, também são impostas a você.</h4> <br />
+                    <h4><b> Não é permitido postar imagens de Flyers de eventos no Feed. Todos os eventos devem ser criados na aba eventos.</b></h4>
                    
                     </div>
                 </div> 

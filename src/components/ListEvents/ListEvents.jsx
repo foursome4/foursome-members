@@ -24,6 +24,7 @@ function ListEvents() {
              <div className="events-all">
                              {events.map((event) => {
                                  return(
+                                     event.status === "aproved" ?
                                     <div className="events-unic" key={event.id}>
                                         <div className="imageCover"> 
                                     <img src={event.cover} alt="" className="cover"/>
@@ -32,6 +33,7 @@ function ListEvents() {
                                     <h4>{event.name}</h4>
                                     <Link to={`/event/${event.id}`}>Saber mais</Link>
                                 </div>
+                                : ""
                            
                                  )
                              })}
