@@ -29,6 +29,11 @@ function RegistrationEnd() {
                     <h4> - Você se torna amplamente responsável pelos atos de seu convidado dentro do site.</h4>
                     <h4> - Em caso de má conduta de seu convidado, as punições impostas a ele, também são impostas a você.</h4> <br />
                     <h4><b> Não é permitido postar imagens de Flyers de eventos no Feed. Todos os eventos devem ser criados na aba eventos.</b></h4>
+
+                    <br /><br />
+                    <h4><b>Qualquer problema ou dúvida. Entra em conato:</b></h4>
+                    <h4><b>Whatsapp</b> (22)99791-0510</h4>
+                    <h4><b>E-mail:</b> contato@foursome.com.br</h4>
                    
                     </div>
                 </div> 
