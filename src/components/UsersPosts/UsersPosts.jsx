@@ -37,7 +37,7 @@ function UsersPostsComponent({idAccount, username, date, keyId}) {
            </div>
            <div className="name">
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-               <h4>{nickname} - {uf}</h4>
+               <h4>{nickname} - {userData.role === "Administrador" || userData.role === "Moderador"? "" : uf}</h4>
                </Link>
            <DateFormat date={date} />
            </div>

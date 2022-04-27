@@ -7,6 +7,7 @@ import './feed.css';
 import { useContext, useEffect } from "react"
 import { AuthContext } from "../../contexts/Auth"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
+import { ListEventsFeed } from "../../components/ListEventsFeed/ListEventsFeed"
 import { useNavigate } from 'react-router-dom';
 import { Footer } from "../../components/Footer/Footer"
 
@@ -36,6 +37,7 @@ return (
                 <TopBar />
                 <div className="aside">
                     <div className="feed">
+                        <ListEventsFeed />
                     <Post />
                     <FeedPost /> 
                     </div>

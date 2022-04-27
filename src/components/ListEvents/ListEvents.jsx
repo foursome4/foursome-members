@@ -24,7 +24,7 @@ function ListEvents() {
              <div className="events-all">
                              {events.map((event) => {
                                  return(
-                                     event.status === "aproved" ?
+                                     event.status === "Aproved" ?
                                     <div className="events-unic" key={event.id}>
                                         <div className="imageCover"> 
                                     <img src={event.cover} alt="" className="cover"/>

@@ -1,0 +1,30 @@
+.listEventsFeed  {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    color: var(--Gray_font2)
+}
+
+
+.listEventsFeed .imageCover img {
+    width: 100%;
+    margin-top: 5px;
+}
+
+@media(max-width:750px) {
+    .listEventsFeed  {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 5px;
+        color: var(--Gray_font2)
+    }
+}
+
+
+

@@ -61,7 +61,7 @@ function UserReply({idAccount, username, date, id, text}) {
            </div>
            <div className={userData.id === idAccount ? "MyName":"name"}>
            <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-               <h6>{nickname} - {uf}</h6>
+               <h6>{nickname} - {userData.role === "Administrador" || userData.role === "Moderador"? "" : uf}</h6>
                </a>
            <DateFormat date={date} />
            </div>
