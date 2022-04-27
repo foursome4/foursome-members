@@ -4,7 +4,7 @@ import api from '../../services/api'
 import { DateFormat } from '../DateFormat/DateFormat';
 import './usersPosts.css'
 
-function UsersPostsComponent({idAccount, username, date, keyId}) {
+function UsersPostsComponent({idAccount, username, date, keyId, role}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
     
@@ -37,7 +37,7 @@ function UsersPostsComponent({idAccount, username, date, keyId}) {
            </div>
            <div className="name">
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-               <h4>{nickname} - {userData.role === "Administrador" || userData.role === "Moderador"? "" : uf}</h4>
+               <h4>{nickname} {`${uf}`}</h4>
                </Link>
            <DateFormat date={date} />
            </div>

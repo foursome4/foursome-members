@@ -4,7 +4,7 @@ import './userComment.css'
 
 import { DateFormat } from '../DateFormat/DateFormat';
 
-function UserComment({idAccount, date}) {
+function UserComment({idAccount, date, role}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
     const [nickname, setNickname] = useState('')
@@ -41,7 +41,7 @@ function UserComment({idAccount, date}) {
            </div>
            <div className="name">
            <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-               <h5>{nickname} - {userData.role === "Administrador" || userData.role === "Moderador"? "" : uf}</h5>
+               <h5>{nickname} {`${uf}`}</h5>
                </a>
                                      <DateFormat date={date}/>
            </div>

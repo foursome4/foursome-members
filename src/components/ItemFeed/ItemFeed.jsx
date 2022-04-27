@@ -47,7 +47,7 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
     
    return (
          <div className="feed-post" key={id} >
-    <UsersPosts idAccount={idAccount} username={username} date={date} keyId={id}/>
+    <UsersPosts idAccount={idAccount} username={username} date={date} keyId={id} role={userData.role}/>
     <Link to={``} ><h5>{group !== "" ? group : forum  !== "" ? forum : ""  } </h5></Link>
 
              <div className="post-data" >

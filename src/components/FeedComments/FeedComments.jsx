@@ -60,7 +60,7 @@ function FeedCommentsComponent({idPost}) {
                                  return (
                                     <div className="feed-comment" key={comments.id}>
                                     <UserComment idAccount={comments.idAccount} username={comments.username}
-                                    date={comments.created_at}/>
+                                    date={comments.created_at} role={userData.role}/>
 
                                      {userData.id === comments.idAccount ?
                                         <div className="buttonsComment">

@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/Auth';
 import { EditReply } from '../EditReply/EditReply';
 import { DateFormat } from '../DateFormat/DateFormat';
 
-function UserReply({idAccount, username, date, id, text}) {
+function UserReply({idAccount, username, date, id, text, role}) {
     const { deleteReply} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
@@ -61,7 +61,7 @@ function UserReply({idAccount, username, date, id, text}) {
            </div>
            <div className={userData.id === idAccount ? "MyName":"name"}>
            <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-               <h6>{nickname} - {userData.role === "Administrador" || userData.role === "Moderador"? "" : uf}</h6>
+               <h6>{nickname} {`${uf}`}</h6>
                </a>
            <DateFormat date={date} />
            </div>
