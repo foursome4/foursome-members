@@ -260,7 +260,8 @@ async function deletePreferences() {
             const text = `Seu amigo ${username}, alterou informações em seu perfil`
             const data = {idPatrono, idAccount, text, }
             await api.post("/notifications", data).then(() => {
-                window.location.reload(false)
+                toast.info("Dados atualizados com sucesso!")
+                window.open("/profile","_self");
             }).catch(error => {
                 console.log("Notificação não cadastrada" + error)
             })
