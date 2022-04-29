@@ -916,13 +916,14 @@ async function newVisit(idAccount, username, idFriend) {
                     console.log("Conexão estabelecida")
                 })
 
-                if(selectUserOnline.length === 0) {
-                    console.log("Cadastrando usuário")
-                    await api.post("/online", data).then(() => {
-                    })
-                } else {
+                if(selectUserOnline.length !== 0) {
                     console.log("Usuário ja está online")
+                    return;
                 }
+
+                await api.post("/online", data).then(() => {
+                    console.log("Cadastrando usuário")
+                })
 
             } else {
                 console.log("Imformações não coletadas com sucesso!")

@@ -1,6 +1,6 @@
 import { useState, memo } from "react";
 import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoCashOutline, IoSettingsOutline, IoPeopleOutline, IoMenuOutline,
-    IoInformationCircleOutline, IoChatbubblesOutline, IoNewspaperOutline, IoBusinessOutline, IoMailOpenOutline } from "react-icons/io5"
+    IoInformationCircleOutline, IoChatbubblesOutline, IoMailOutline, IoNewspaperOutline, IoBusinessOutline, IoMailOpenOutline } from "react-icons/io5"
 import { useFetch } from "../../hooks/useFetch";
 import './barBottomMenu.css'
 
@@ -30,6 +30,11 @@ const {data} = useFetch(`/online`);
                  <button className="ButtonsUnic" onClick={handleOpenUsersOnline}>
                         <IoChatbubblesOutline size={20}/>Online
                     </button>
+                <a href="/invite" >
+                 <button className="ButtonsUnicSelect" >
+                        <IoMailOutline size={20}/>Convite
+                    </button>
+                    </a>
                 <a href="/feed" >
                  <button className="ButtonsUnic" >
                         <IoNewspaperOutline size={20}/>Feed

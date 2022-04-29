@@ -49,6 +49,21 @@
     margin: 0 2px;
     cursor: pointer;
 }
+.topBar .links .linkSelect {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 50%;
+    background-color: var(--Primary);
+    color: var(--White);
+    padding: 8px;
+    margin: 0 2px;
+    cursor: pointer;
+}
+.topBar .links .linkSelect svg{
+    color: var(--White);
+}
 .topBar .links .link .counter{
     display: flex;
     flex-direction: row;

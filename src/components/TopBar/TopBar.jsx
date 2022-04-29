@@ -49,7 +49,7 @@ function TopBar() {
                 <Notifications /> 
 
                 <a href="/invite">
-                <div className="link" data-tip data-for='Convidar'>
+                <div className="linkSelect" data-tip data-for='Convidar'>
                     <IoMailOutline />
                 </div>
                 </ a>
