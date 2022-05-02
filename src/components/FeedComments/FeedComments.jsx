@@ -53,12 +53,12 @@ function FeedCommentsComponent({idPost}) {
 
     return (
         <div className="feedComments">
-            <h5>{data?.length} {data?.length === 1 ? "comentário" : "comentários"}</h5>
-
-                    
+            {/* <h5>{data?.length} {data?.length === 1 ? "comentário" : "comentários"}</h5> */}
+                   
                              {data?.map((comments) => {
                                  return (
                                     <div className="feed-comment" key={comments.id}>
+                                        <div className="block1Comment">
                                     <UserComment idAccount={comments.idAccount} username={comments.username}
                                     date={comments.created_at} role={userData.role}/>
 
@@ -73,8 +73,9 @@ function FeedCommentsComponent({idPost}) {
                                         <button onClick={handleHabiliteReply}><FiCornerDownLeft /></button>
                                             </div>
                                             }
+                             </div>
                                             <div className="comment-data" >
-                                                <p><i>{comments.text}</i></p>
+                                                <p>{comments.text}</p>
                                             </div>
 
                                             {edit ===  true ?
@@ -86,6 +87,7 @@ function FeedCommentsComponent({idPost}) {
                                             <NewReply idComment={comments.id} username={comments.username}/>
                                                     :
                                                     ""}
+
                                     <FeedReply idComment={comments.id} />
                                     </div>
                                  )

@@ -1,0 +1,16 @@
+.ListCommentsAndReactions {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: row;
+    width: 100%;
+    color: var(--Primary);
+    flex-wrap: wrap;
+}
+
+.ListCommentsAndReactions h5 {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: row;
+}

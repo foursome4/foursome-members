@@ -41,7 +41,7 @@ function UserComment({idAccount, date, role}) {
            </div>
            <div className="name">
            <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-               <h5>{nickname} {`${uf}`}</h5>
+               <h4>{nickname} {`${uf}`}</h4>
                </a>
                                      <DateFormat date={date}/>
            </div>

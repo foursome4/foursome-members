@@ -8,6 +8,7 @@ import { FiTrash2, FiEdit, FiMessageCircle } from 'react-icons/fi'
 import { useState, useContext, memo } from 'react'
 import './itemFeed.css'
 import { AuthContext } from '../../contexts/Auth'
+import { ListCommentsAndReactions } from '../ListCommentsAndReactions/ListCommentsAndReactions'
 
 
 function ItemFeedComponent({idAccount, link, date, text, type, id, username, group, forum, key}) {
@@ -177,7 +178,7 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
                   <NewComment postData={id}/>
              </div>
             
-
+        <ListCommentsAndReactions idPost={id} />
          <FeedComments idPost={id}/>
          </div>
          )

@@ -75,7 +75,7 @@ function UserReply({idAccount, username, date, id, text, role}) {
             }
             </div>
             <div className="Reply-data" >
-                <p><i>{text}</i></p>
+                <p>{text}</p>
             </div>
 
             {edit === true ?
