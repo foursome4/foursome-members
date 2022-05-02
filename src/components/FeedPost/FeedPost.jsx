@@ -2,7 +2,7 @@ import './feedPost.css';
 import { useState, memo, useEffect} from 'react';
 import { ItemFeed } from '../ItemFeed/ItemFeed';
 import { useFetch } from '../../hooks/useFetch';
-import gifLoader from '../../assets/images/gif/loader.gif'
+import gifLoader from '../../assets/images/gif/loader.gif';
 
 function FeedPostComponent() {
     const [followers, setFollowers] = useState([]);

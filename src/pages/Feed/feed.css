@@ -40,12 +40,12 @@
 
 @media (max-width: 650px) {
     .content .aside .feed {
-        width: 80%;
+        width: 90%;
         margin-bottom: 100px;
     }
 @media (max-width: 550px) {
     .content .aside .feed {
-        width: 90%;
+        width: 95%;
         margin-bottom: 100px;
     }
     }
