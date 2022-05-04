@@ -1,5 +1,4 @@
 import "./listCommentsAndReactions.css";
-import {useState, useEffect} from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import { UsersLike } from "../UsersLike/UsersLike";
 

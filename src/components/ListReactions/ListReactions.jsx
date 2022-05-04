@@ -1,15 +1,16 @@
-import { useContext, useEffect, useState, memo } from "react"
+import { useContext, memo } from "react"
 import {IoFlameOutline } from 'react-icons/io5'
 import { AuthContext } from "../../contexts/Auth";
 import { useFetch } from "../../hooks/useFetch";
-import api from "../../services/api"
 import "./listReactions.css"
 
 
-function ListReactionsComponent({idPost}) {
+function ListReactionsComponent({idPost, idAccount}) {
     const {likePost, deleteLike} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
+    const LocalInformations = localStorage.getItem("informations-foursome");
+    const userInformations = JSON.parse(LocalInformations);
 
     const {data} = useFetch(`/reactions/${idPost}`);
 
@@ -23,12 +24,13 @@ function ListReactionsComponent({idPost}) {
     function handleLikePost(e) {
         e.preventDefault()
         console.log("Curti")
-       likePost({idAccount: userData.id, username: userData.username, idPost});
+       likePost({idAccount: userData.id, username: userData.username, idPost, idPatrono: idAccount, nickname: userInformations.nickname});
     }
 
     function handleDeleteLike(e) {
         e.preventDefault();
-        deleteLike(data[0]?.id)  
+      deleteLike(myLike[0].id)  
+       console.log(myLike[0].id);
      }
 
 

@@ -162,7 +162,7 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
                }
 
              <div className="reactions" >
-              <ListReactions idPost={id} />
+              <ListReactions idPost={id} idAccount={idAccount}/>
                  <button onClick={handleHabiliteComment}>
                      <FiMessageCircle />
                  </button>
@@ -175,7 +175,7 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
              </div>
 
              <div className={comment === true ? "comment" : "commentHidden"}>
-                  <NewComment postData={id}/>
+                  <NewComment postData={id} idAccount={idAccount}/>
              </div>
             
         <ListCommentsAndReactions idPost={id} />

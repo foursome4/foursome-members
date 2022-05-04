@@ -612,17 +612,41 @@ async function deleteInvite(id) {
      }
 }
 
-async function likePost({idAccount, username, idPost}) {
-await api.post("/reactions", {idAccount, username, idPost}).then(() => {
-    setLoading(false)
+async function likePost({idAccount, username, idPost, idPatrono, nickname}) {
+await api.post("/reactions", {idAccount, username, idPost}).then( async () => {
+    const text = `Seu amigo ${nickname}, curtiu sua postagem.`
+    const data = {idPatrono: idPatrono, text,idAccount: idAccount, idFriend: "", type: "notification-post",idPost:idPost }
+
+    if(idAccount === idPatrono) {
+        return;
+    }
+
+    await api.post("/notifications", data).then(() => {
+        console.log("Comentário/Notificação feito com sucesso")
+    }).catch(error => {
+        console.log("Notificação não cadastrada" + error)
+    })
+   
 }).catch(error => {
     console.log(error)
 
     })
 }
 
-async function newComment({idAccount, idPost, text, avatar, username, nickname}) {
-    await api.post("/comments", {idAccount, idPost, text,avatar, username, nickname}).then(() => {
+async function newComment({idAccount, idPost, text, avatar, username, nickname, idPatrono}) {
+    await api.post("/comments", {idAccount, idPost, text,avatar, username, nickname}).then( async () => {
+
+        const text = `Seu amigo ${nickname}, comentou em sua postagem.`
+        const data = {idPatrono: idPatrono, text,idAccount: idAccount, idFriend: "", type: "notification-post",idPost:idPost }
+
+        if(idAccount === idPatrono) {
+            return;
+        }
+        await api.post("/notifications", data).then(() => {
+            console.log("Comentário/Notificação feito com sucesso")
+        }).catch(error => {
+            console.log("Notificação não cadastrada" + error)
+        })
        
     }).catch(error => {
         console.log("Comentário não foi realizado" + error)

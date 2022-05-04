@@ -1,4 +1,4 @@
-import "./distanceFromUser.css"
+import "./distanceFromUser.css";
 
 function DistanceFromUser({myLat, myLong, latFriend, longFriend}) {
 
@@ -28,6 +28,7 @@ function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend) {
 }
 
 getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend )
+
 
     return (
         <>

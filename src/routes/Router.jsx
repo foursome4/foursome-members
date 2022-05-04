@@ -18,6 +18,7 @@ import { InvitesList } from '../pages/InvitesList/InvitesList';
 import { Lgpd } from '../pages/Lgpd/Lgpd';
 import { Loader } from '../pages/Loader/Loader';
 import { Plains } from '../pages/Plains/Plains';
+import { PostIndividual } from '../pages/PostIndividual/PostIndividual';
 import { Preferences } from '../pages/Preferences/Preferences';
 import { PrivacityPolice } from '../pages/PrivacityPolice/PrivacityPolice';
 import { Profile } from '../pages/Profile/Profile';
@@ -61,7 +62,9 @@ function PrivateRoute({children} ) {
             <Route path="/lgpd" element={ <Lgpd />} />       
             
             <Route path="/feed"
-                    element={ <PrivateRoute> <Feed/> </PrivateRoute>} />
+                    element={ <PrivateRoute> <Feed /> </PrivateRoute>} />
+            <Route path="/post/:id"
+                    element={ <PrivateRoute> <PostIndividual /> </PrivateRoute>} />
             <Route path="/profile"
                     element={ <PrivateRoute> <Profile/> </PrivateRoute>} />
             <Route path="/profile-friend/:id"

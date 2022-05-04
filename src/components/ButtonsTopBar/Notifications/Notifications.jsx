@@ -119,9 +119,15 @@ function Notifications() {
                 return(
                     <div className="notification" key={notification.id}>
                         <div className="name">
-                            <a href={notification.idAccount === null ? "#" : `/profile-friend/${notification.idAccount}`}>
-                        <UsersNotifications id={notification.idAccount} text={notification.text}/>
-                            </a>
+                            {notification.type === "notification-post" ?
+                             <a href={notification.idPost === null || notification.idPost === undefined ? "#" : `/post/${notification.idPost}`}>
+                             <UsersNotifications id={notification.idAccount} text={notification.text}/>
+                                 </a>
+                            :
+                            <a href={notification.idAccount === null ? "#" : notification.idAccount === user.id ? `/profile` :`/profile-friend/${notification.idAccount}`}>
+                            <UsersNotifications id={notification.idAccount} text={notification.text}/>
+                                </a>
+                             }
                         </div>
                     </div>
                 )

@@ -20,7 +20,7 @@ function SignIn() {
       if(localStorage.getItem("foursome") !== null) {
         navigate("/feed")
       }
-    },[])
+    },[navigate])
 
 
   function handleCreateAccount(e) {

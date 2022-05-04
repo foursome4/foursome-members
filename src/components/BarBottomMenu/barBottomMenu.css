@@ -21,7 +21,7 @@ display: none;
     }
 
    .BarBottom::-webkit-scrollbar {
-        width: 12px;              
+        width: 6px;              
       }
       
      .BarBottom::-webkit-scrollbar-track {
@@ -31,7 +31,7 @@ display: none;
      .BarBottom::-webkit-scrollbar-thumb {
         background-color: var(--Background-man);   
         border-radius: 20px;      
-        border: 3px solid var(--Background2); 
+        border: 1px solid var(--Background2); 
       }
     
 

@@ -3,8 +3,9 @@ import api from '../../services/api'
 import './usersLike.css'
 
 function UsersLikeComponent({idAccount, username}) {
-
-    
+    const LocalInformations = localStorage.getItem("informations-foursome");
+    const userInformations = JSON.parse(LocalInformations);
+        
     const [nickname, setNickname] = useState('')
     useEffect(() => {
         async function loadInformations() {
@@ -21,7 +22,7 @@ function UsersLikeComponent({idAccount, username}) {
 
     return (
        <div>
-          {nickname === "" ? username : nickname } 
+          {nickname === "" ? username : userInformations.nickname === nickname ? "Você" : nickname} 
        </div>
     ) 
 }
