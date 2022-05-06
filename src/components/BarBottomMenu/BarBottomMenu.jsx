@@ -1,6 +1,6 @@
 import { useState, memo } from "react";
 import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoCashOutline, IoSettingsOutline, IoPeopleOutline, IoMenuOutline,
-    IoInformationCircleOutline, IoChatbubblesOutline, IoMailOutline, IoNewspaperOutline, IoBusinessOutline, IoMailOpenOutline } from "react-icons/io5"
+    IoInformationCircleOutline, IoChatbubblesOutline, IoMailOutline, IoNewspaperOutline, IoBusinessOutline, IoMailOpenOutline, IoStatsChartOutline } from "react-icons/io5"
 import { useFetch } from "../../hooks/useFetch";
 import './barBottomMenu.css'
 
@@ -54,12 +54,33 @@ const {data} = useFetch(`/online`);
                     </button>
                     </a> */}
 
+                    <a href="/invitelist" >
+                    <button className="ButtonsUnic" >
+                        <IoMailOpenOutline size={20}/>
+                       Enviado
+                    </button>
+                    </a>
+                  
+                    <a href="/radar" >
+                    <button className="ButtonsUnic" >
+                        <IoRadio size={20}/>
+                       Radar
+                    </button>
+                    </a>
+
                     {/* <a href="/ranking" >
                     <button className="ButtonsUnic" >
-                        <FiTrendingUp size={20}/>
+                        <IoStatsChartOutline size={20}/>
                        Ranking
                     </button>
                     </a> */}
+
+                    <a href="/events" >
+                    <button className="ButtonsUnic" >
+                        <IoCalendarOutline size={20}/>
+                       Eventos
+                    </button>
+                    </a>
 
                     <a href="/groups" >
                     <button className="ButtonsUnic" >
@@ -75,25 +96,7 @@ const {data} = useFetch(`/online`);
                     </button>
                     </a>
 
-                    <a href="/events" >
-                    <button className="ButtonsUnic" >
-                        <IoCalendarOutline size={20}/>
-                       Eventos
-                    </button>
-                    </a>
-                    
-                    <a href="/radar" >
-                    <button className="ButtonsUnic" >
-                        <IoRadio size={20}/>
-                       Radar
-                    </button>
-                    </a>
-                    <a href="/invitelist" >
-                    <button className="ButtonsUnic" >
-                        <IoMailOpenOutline size={20}/>
-                       Enviado
-                    </button>
-                    </a>
+
 
                     {/* <a href="/locals" >
                     <button className="ButtonsUnic" >

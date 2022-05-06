@@ -9,6 +9,19 @@
     padding: 10px 5px;
     margin-top: 20px;
 }
+.post .counter {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px 10px;
+}
+
+.post .counter h5 {
+    color: var(--Gray_font2);
+    margin-right: 10px;
+}
 
 .post .post-data {
     width: 100%;

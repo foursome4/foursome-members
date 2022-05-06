@@ -18,25 +18,49 @@ function Ranking() {
 
     const [photo, setPhoto] = useState([])
     const [video, setVideo] = useState([])
-    const [type, setType] = useState("Photo")
+    const [type, setType] = useState("Photo");
 
+    const [dados, setDatos] = useState([]);
+    const list = [];
     useEffect(() => {
         async function loadPostsPhoto() {
         const res = await api.get(`/posts/filter/post-photo`);
-        const dataPhoto = (res.data)
-        console.log("Fotos")
-        console.log(res.data)
-        setPhoto(dataPhoto)
+
+    res.data.forEach((photos) => {
+         async function loadReactions() {
+           await api.get(`/reactions/${photos.id}`).then((res) => {
+            console.log(res.data.length)
+            const data = {
+                id: photos.id,
+                likes: res.data.length,
+                idAccount: photos.idAccount,
+                link: photos.link,
+                username: photos.username
+            }
+            list.push(data)
+           })
         }
+        loadReactions()
+    })            
+        }
+
+
+        loadPostsPhoto();
+        setPhoto(list);
+    }, []);
+
+    console.log("dados")
+    console.log(photo)
+
+    useEffect(() => {
         async function loadPostsVideo() {
         const res = await api.get(`/posts/filter/post-video`);
         const dataVideo = (res.data)
-        console.log("Vídeos")
-        console.log(res.data)
+        // console.log("Vídeos")
+        // console.log(res.data)
         setVideo(dataVideo)
         }
 
-        loadPostsPhoto();
         loadPostsVideo();
     }, [])
 
@@ -48,6 +72,21 @@ function Ranking() {
         setType("Video")
     }
 
+
+
+    if(photo) {
+        photo.sort(function(a,b) {
+            if(a.likes > b.likes ) {
+                return -1
+            } else {
+                return true
+            }
+        })
+    }
+
+    console.log(photo)
+    
+const limit = photo.slice(0,10)
 
     return (
         <div className="content">
@@ -68,19 +107,20 @@ function Ranking() {
 
                             {type === "Photo" ?
                                 <div className="ranking-all">
-                                {photo.map((photos) => {
+                                {limit.map((photos) => {
                                     return(
                                       <div className="ranking-unic" key={photos.id}>
+                                          <h1>{photos.likes} Votos</h1>
                                           <div className="title">   
                                           <div className="image">
-                                             <img src={photos.avatar} alt="" className="profile"/>
+                                             <img src={photos.username} alt="" className="profile"/>
                                           </div>                                       
-                                             <h5><Link to={`profile-friend/${photos.idAccount}`}>{photos.nickname}</Link></h5>
+                                             <h5><Link to={`profile-friend/${photos.idAccount}`}>{photos.username}</Link></h5>
                                           </div>
                                           <div className="post">
                                           <img src={photos.link} alt="" />
                                           </div>
-                                         <CountReactions idPost={photos.id} />
+                                         {/* <CountReactions idPost={photos.idAccount} /> */}
                                           
                                   </div>
                                     )
@@ -112,29 +152,6 @@ function Ranking() {
                           :
                           "Nada a mostrar. Escolha um ranking"
                             }
-
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
                     </div>
                 <ChatSlim />
                 </div>

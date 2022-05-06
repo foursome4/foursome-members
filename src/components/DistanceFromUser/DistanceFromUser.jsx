@@ -13,9 +13,9 @@ function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend) {
             * Math.cos(deg2rad(latFriend))
             * Math.sin(dLng / 2) * Math.sin(dLng / 2),
         c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        console.log(((R * c *1000)/10).toFixed());
-        console.log("Teste de Distancia")
-        console.log((R * c*1000)/1000)
+        // console.log(((R * c *1000)/10).toFixed());
+        // console.log("Teste de Distancia")
+        // console.log((R * c*1000)/1000)
 
         const distanceCalc = (R * c).toString();
         

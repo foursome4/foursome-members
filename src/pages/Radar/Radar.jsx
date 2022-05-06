@@ -20,7 +20,11 @@ function Radar() {
     const userData = JSON.parse(Local);
 
     const [lat1, setLat] = useState();
-    const [long1, setLong] = useState()
+    const [long1, setLong] = useState();
+    const [distancia, setDistancia] = useState();
+
+    const list = [];
+    var number ;
 
 const [users, setUsers] = useState([])
 useEffect(() => {
@@ -39,19 +43,64 @@ useEffect(() => {
         })
     }
 
-    async function dataApi() {
-        const dados = await apiInstagram.get('/jefersonmacedo.dev/?__a=1');
-        console.log(dados)
-    }
 
-    loadUsersONline();  
-    dataApi(); 
+
+    loadUsersONline();   
 
       
  }, [userData.id])
 
- console.log(lat1)
- console.log(long1)
+ useEffect(() => {
+    users.forEach((userLocation) => {
+             let distance = 0;
+            function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend) {
+                var deg2rad = function (deg) { return deg * (Math.PI / 180); },
+                    R = 6371,
+                    dLat = deg2rad(latFriend - myLat),
+                    dLng = deg2rad(myLong - longFriend),
+                    a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                        + Math.cos(deg2rad(myLat))
+                        * Math.cos(deg2rad(latFriend))
+                        * Math.sin(dLng / 2) * Math.sin(dLng / 2),
+                    c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                    console.log(((R * c *1000)/10).toFixed());
+                    console.log("Teste de Distancia")
+                    console.log((R * c*1000)/1000)
+            
+                    const distanceCalc = (R * c).toString();
+                    
+                    if(distanceCalc.includes("00.")) {
+                        number = (((R * c *1000)/1000).toFixed())
+                    } else{
+                        number = (((R * c *1000)/1000).toFixed())
+                    }
+                    const dados = {
+                        distance: number,
+                        id: userLocation.id,
+                        idAccount: userLocation.idAccount,
+                        avatar: userLocation.avatar,
+                        nickname: userLocation.nickname,
+                        equalCity: userLocation.equalCity,     
+                    }
+
+                    console.log("dados")
+                    console.log(dados)
+                    list.push(dados)
+            }
+            
+            getDistanceFromLatLonInKm(lat1, long1, userLocation.lat, userLocation.long )
+
+
+
+    })
+
+    // setDistancia(list)
+ }, [])
+
+ console.log("DistanciaArray")
+ console.log(distancia)
+ console.log("List Array")
+ console.log(list)
 
  
 

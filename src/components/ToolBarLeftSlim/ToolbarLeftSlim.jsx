@@ -1,4 +1,4 @@
-import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoPeopleOutline, IoBusinessOutline,
+import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoPeopleOutline, IoBusinessOutline, IoStatsChartOutline,
     IoInformationCircleOutline, IoNewspaperOutline, IoMailOpenOutline, IoSettingsOutline, IoCashOutline } from "react-icons/io5";
 import {memo} from 'react' 
 import './toolbarLeftSlim.css'
@@ -39,12 +39,33 @@ function ToolbarLeftSlimComponent() {
                     </button>
                     </a> */}
 
+                    <a href="/invitelist" >
+                    <button className="toolIcon" >
+                        <IoMailOpenOutline size={20}/>
+                       Enviado
+                    </button>
+                    </a>
+
+                    <a href="/radar" >
+                    <button className="toolIcon" >
+                        <IoRadio size={20}/>
+                       Radar
+                    </button>
+                    </a>
+
                     {/* <a href="/ranking" >
                     <button className="toolIcon" >
-                        <FiTrendingUp size={20}/>
+                        <IoStatsChartOutline size={20}/>
                        Ranking
                     </button>
                     </a> */}
+
+                    <a href="/events" >
+                    <button className="toolIcon" >
+                        <IoCalendarOutline size={20}/>
+                       Eventos
+                    </button>
+                    </a>
 
                     <a href="/groups" >
                     <button className="toolIcon" >
@@ -60,25 +81,9 @@ function ToolbarLeftSlimComponent() {
                     </button>
                     </a>
 
-                    <a href="/events" >
-                    <button className="toolIcon" >
-                        <IoCalendarOutline size={20}/>
-                       Eventos
-                    </button>
-                    </a>
+
                     
-                    <a href="/radar" >
-                    <button className="toolIcon" >
-                        <IoRadio size={20}/>
-                       Radar
-                    </button>
-                    </a>
-                    <a href="/invitelist" >
-                    <button className="toolIcon" >
-                        <IoMailOpenOutline size={20}/>
-                       Enviado
-                    </button>
-                    </a>
+
 
                     {/* <a href="/locals" >
                     <button className="toolIcon" >
