@@ -17,6 +17,7 @@ import { Invite } from '../pages/Invite/Invite';
 import { InvitesList } from '../pages/InvitesList/InvitesList';
 import { Lgpd } from '../pages/Lgpd/Lgpd';
 import { Loader } from '../pages/Loader/Loader';
+import { Messages } from '../pages/Messages/Messages';
 import { Notifications } from '../pages/Notifications/Notifications';
 import { Plains } from '../pages/Plains/Plains';
 import { PostIndividual } from '../pages/PostIndividual/PostIndividual';
@@ -36,6 +37,7 @@ import { Search } from '../pages/Search/Search';
 import { Settings } from '../pages/Settings/Settings';
 import { SignIn } from '../pages/SignIn/SignIn';
 import { SignUp } from '../pages/SignUp/SignUp';
+import { Solicitations } from '../pages/Solicitations/Solicitations';
 import { UseOfTerms } from '../pages/UseOfTerms/UseOfTerms';
 
 
@@ -115,6 +117,10 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Notifications /> </PrivateRoute>} />
             <Route path="/search" 
                 element={ <PrivateRoute> <Search /> </PrivateRoute>} />
+            <Route path="/solicitations" 
+                element={ <PrivateRoute> <Solicitations /> </PrivateRoute>} />
+            <Route path="/messages" 
+                element={ <PrivateRoute> <Messages /> </PrivateRoute>} />
             </Routes>
            
     )

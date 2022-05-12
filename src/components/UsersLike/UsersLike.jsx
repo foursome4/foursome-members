@@ -21,8 +21,8 @@ function UsersLikeComponent({idAccount, username}) {
     }, [idAccount])
 
     return (
-       <div>
-          {nickname === "" ? username : userInformations.nickname === nickname ? "Você" : nickname} 
+       <div className="user">
+          {nickname === "" ? <a href={`/profile-friend/${idAccount}`}>{username}</a> : userInformations.nickname === nickname ? <a href={`/profile`}>Você</a>: <a href={`/profile-friend/${idAccount}`}>{nickname}</a>} 
        </div>
     ) 
 }

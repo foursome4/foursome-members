@@ -124,7 +124,7 @@ button {
   width: 100%;
   max-width: 576px;
   background-color: var(--White);
-  padding: 20px;
+  padding: 20px 0;
   position: relative;
   border-radius: 8px;
   border: none;

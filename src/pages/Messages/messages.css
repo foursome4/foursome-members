@@ -1,0 +1,42 @@
+.Messages{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    background-color: var(--Background2)
+}
+
+.Messages h2{
+    margin-top: 80px;
+    color: var(--Primary)
+}
+
+.Messages .itensMessages {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    height: 80%;
+    border: none;
+    overflow-y: scroll;
+    text-decoration: none;
+    background-color: var(--Background2);
+    margin-bottom:7px ;
+}
+
+.Messages .itensMessages .rooms {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--Background);
+    margin: 5px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+
+

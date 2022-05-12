@@ -1,45 +1,30 @@
-import './solicitationsFriend.css';
-import { useContext, useState } from "react";
-import Modal from 'react-modal';
 import ReactTooltip from 'react-tooltip';
-import { IoPersonAddOutline, IoCloseOutline, IoCheckboxOutline, IoHeartOutline,IoTrashOutline} from 'react-icons/io5';
-import { UsersPending } from './UsersPending/UsersPending';
-import { AuthContext } from "../../../contexts/Auth";
-import { useFetch } from '../../../hooks/useFetch';
+import {UsersPending} from '../../components/ButtonsTopBar/SolicitationsFriend/UsersPending/UsersPending';
+import {IoCheckboxOutline, IoHeartOutline, IoTrashOutline} from 'react-icons/io5';
+import { useFetch } from '../../hooks/useFetch';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/Auth';
+import "./solicitations.css"
+import { TopBar } from '../../components/TopBar/TopBar';
+import { ChatSlim } from '../../components/ChatSlim/ChatSlim';
+import { Footer } from '../../components/Footer/Footer';
+import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSlim';
+import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu';
 
-function SolicitationsFriend() {
+function Solicitations() {
     const {friendAproved, deleteFriend, deleteFriendAndFollower} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
-
-    const [isOpenModalFriend, setIsOpenModalFriend] = useState(false);
-
-
     const idAccount = user.id;
     const {data} = useFetch(`/friends/${idAccount}`);
 
     let friendPending = []
-
     if(data) {
         friendPending = data?.filter(friend => (friend.status === 'pending' && friend.idFriend === user.id));
     }
 
 
-
-
-    function handleOpenModalFriend() {
-        setIsOpenModalFriend(true)
-      }
-    function handleFriends() {
-        handleOpenModalFriend();
-        window.open("/solicitations", "_self")
-      }
-    
-      function handleCloseModalFriend() {
-        setIsOpenModalFriend(false)
-      }
-
-      function handleAprovedFriend(id) {
+    function handleAprovedFriend(id) {
         friendAproved(id)
     }
 
@@ -54,32 +39,13 @@ function SolicitationsFriend() {
         deleteFriendAndFollower(id, idAccount, idFriend, type, status)
     }
 
-    Modal.setAppElement('#root');
+
     return (
-        <>
-        <div className="link"  onClick={handleFriends} data-tip data-for='Solicitações'>
-        {friendPending.length === 0 ? "" :
-        <div className="counter"> {friendPending.length}</div>
-        }
-        <IoPersonAddOutline />
-    </div>
-    <ReactTooltip id='Solicitações' place="bottom" type="dark" effect="solid">
-         <span>Solicitações</span>
-    </ReactTooltip>
-
-
-
-                {/* Modal Friends  */}
-                <Modal isOpen={isOpenModalFriend} onRequestClose={handleCloseModalFriend}
-            overlayClassName="react-modal-overlay"
-            className="react-modal-content">
-            <button type="button" className="react-modal-button" onClick={handleCloseModalFriend}>
-            <IoCloseOutline /> 
-            </button>
-            <div className="content-modal">
-            <h3>Solicitações de amizade</h3>
+        <div className="Solicitations">
+              <TopBar />
+              <h2>Solicitações de amizade</h2>
             
-            <div className="itensModalFriend">
+            <div className="itensFriend">
             {friendPending.map((friend) => {
                 return(
                     <div className="friend" key={friend.idAccount}>
@@ -100,18 +66,18 @@ function SolicitationsFriend() {
                              <span>Recusar</span>
                             </ReactTooltip>
                         </div>
+
+                <ChatSlim />
+                <Footer />
+                 <ToolbarLeftSlim />
+                 <BarBottomMenu />
+
                     </div>
                 )
             })}
             </div>
-            <div className="buttons-modal">
-            <button className="butont-White" onClick={handleCloseModalFriend}>Cancelar</button>
-            </div>
-            </div>
-            </Modal>
-            {/* FIM Modal Friends  */}
-    </>
+        </div>
     )
 }
 
-export {SolicitationsFriend}
+export {Solicitations} 

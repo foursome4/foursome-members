@@ -11,42 +11,7 @@ function MyMessages() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
 
-    const [date, setDate] = useState(new Date("Tue Mar 06 2022 03:38:05 GMT-0300 (Hora padrão de Brasília)"));
     const [dateReadMessage, setDateReadMessage] = useState([])
-
-    const [isOpenModal, setIsOpenModal] = useState(false);
-    const [rooms, setRooms] = useState([])
-    const [rooms2, setRooms2] = useState([])
-
-    useEffect(() => {
-        async function loadRoomIdAccount() {
-            const idAccount = user.id
-            await api.get(`conversations/account/filter/${idAccount}`)
-            .then( async (res) => {
-                setRooms(res.data)
-            }).catch(error => {
-              console.log("Erro ao buscar dados" + error)
-          })
-          }
-
-          async function loadRoomIDFriend() {
-            const idFriend = user.id
-            await api.get(`conversations/friend/filter/${idFriend}`)
-            .then( async (res) => {
-                setRooms2(res.data)
-            }).catch(error => {
-              console.log("Erro ao buscar dados" + error)
-           })
-          }
-
-          loadRoomIdAccount()
-          loadRoomIDFriend()
-    }, [user.id]);
-
-
-    const newRooms = rooms.concat(rooms2);
-
-
 
 
     useEffect(() => {
@@ -85,40 +50,22 @@ function MyMessages() {
     }
 
 
-
-
-    function handleOpenModal() {
-        setIsOpenModal(true)
-      }
-    
-      function handleCloseModal() {
-        setIsOpenModal(false)
-      }
-
       async function handleMessages() {
-        handleOpenModal();
-
-        const date = new Date()
-        handleNewDate(date)
-
         const id = dateReadMessage.id
         const data = {
             DateReadMessage: new Date()
         }
 
     await api.patch(`/datereadmessage/${id}`, data).then(() => {
+      window.open("/messages", "_self")
         }).catch(error => {
         console.log("Erro ao buscar dados" + error)
     })
 
       }
 
-      function handleNewDate(date) {
-        setDate(date)
-    }
 
 
-      Modal.setAppElement('#root');
     return (
         <>
                 <div className="link" onClick={handleMessages} data-tip data-for='Mensagens'>
@@ -136,7 +83,7 @@ function MyMessages() {
 
                  
             {/* Modal Conversations  */}
-            <Modal isOpen={isOpenModal} onRequestClose={handleCloseModal}
+            {/* <Modal isOpen={isOpenModal} onRequestClose={handleCloseModal}
             overlayClassName="react-modal-overlay"
             className="react-modal-content">
             <button type="button" className="react-modal-button" onClick={handleCloseModal}>
@@ -162,7 +109,7 @@ function MyMessages() {
             <button className="butont-White" onClick={handleCloseModal}>Cancelar</button>
             </div>
             </div>
-            </Modal>
+            </Modal> */}
             {/* FIM Modal Conversations  */}
 
         </>
