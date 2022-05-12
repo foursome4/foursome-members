@@ -5,7 +5,6 @@ import { Footer } from "../../components/Footer/Footer";
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim";
 import { TopBar } from "../../components/TopBar/TopBar";
 import { useFetch } from "../../hooks/useFetch";
-import gifLoader from '../../assets/images/gif/loader.gif';
 import "./notifications.css"
 
 function Notifications() {
@@ -40,12 +39,7 @@ function Notifications() {
                 </div>
             )
             })}
-             {/* <div id="sentinela">
-                <div className="image">
-                    <img src={gifLoader} alt="Gif LOader more posts" />
-                </div>
-            </div>               */}
-            
+           
             </div>
             <ChatSlim />
                 <Footer />
