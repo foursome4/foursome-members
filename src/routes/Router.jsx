@@ -17,6 +17,7 @@ import { Invite } from '../pages/Invite/Invite';
 import { InvitesList } from '../pages/InvitesList/InvitesList';
 import { Lgpd } from '../pages/Lgpd/Lgpd';
 import { Loader } from '../pages/Loader/Loader';
+import { Notifications } from '../pages/Notifications/Notifications';
 import { Plains } from '../pages/Plains/Plains';
 import { PostIndividual } from '../pages/PostIndividual/PostIndividual';
 import { Preferences } from '../pages/Preferences/Preferences';
@@ -109,6 +110,8 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Settings /> </PrivateRoute>} />
             <Route path="/plain" 
                 element={ <PrivateRoute> <Plains /> </PrivateRoute>} />
+            <Route path="/notifications" 
+                element={ <PrivateRoute> <Notifications /> </PrivateRoute>} />
             </Routes>
            
     )
