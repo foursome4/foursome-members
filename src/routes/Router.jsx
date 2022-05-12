@@ -32,6 +32,7 @@ import { RecuperationCode } from '../pages/RecuperationCode/RecuperationCode';
 import { RecuperationUser } from '../pages/RecuperationUser/RecuperationUser';
 import { RecuperationUserResult } from '../pages/RecuperationUserResult/RecuperationUserResult';
 import { RegistrationEnd } from '../pages/RegistrationEnd/RegistrationEnd';
+import { Search } from '../pages/Search/Search';
 import { Settings } from '../pages/Settings/Settings';
 import { SignIn } from '../pages/SignIn/SignIn';
 import { SignUp } from '../pages/SignUp/SignUp';
@@ -112,6 +113,8 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Plains /> </PrivateRoute>} />
             <Route path="/notifications" 
                 element={ <PrivateRoute> <Notifications /> </PrivateRoute>} />
+            <Route path="/search" 
+                element={ <PrivateRoute> <Search /> </PrivateRoute>} />
             </Routes>
            
     )
