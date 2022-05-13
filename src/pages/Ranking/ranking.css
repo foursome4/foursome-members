@@ -45,7 +45,7 @@
     align-items: center;
     justify-content: center;
     color: var(--Primary);
-    text-align: center;
+    text-align: centerg;
 }
 
 .content .aside .ranking .buttons{
@@ -260,4 +260,45 @@
     font-weight: 500;
     color: var(--Gray_font1);
     margin: 5px 0 5px 0;
+}
+
+
+@media(max-width: 768px) {
+    .content .aside .ranking .buttons{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        flex-wrap: wrap;
+    }
+
+    .content .aside .ranking .buttons button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--Primary);
+        background-color: var(--Background2);
+        border-radius: 20px;
+        color: var(--Primary);
+        width: 70%;
+        padding: 5px 10px;
+        margin-top: 5px;
+    }
+    
+    .content .aside .ranking .buttons .selected {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--Primary);
+        background-color: var(--Primary);
+        border-radius: 20px;
+        color: var(--White);
+        width: 70%;
+        padding: 5px 10px;
+        margin-top: 5px;
+    }
 }
