@@ -66,16 +66,14 @@ function Solicitations() {
                              <span>Recusar</span>
                             </ReactTooltip>
                         </div>
-
-                <ChatSlim />
-                <Footer />
-                 <ToolbarLeftSlim />
-                 <BarBottomMenu />
-
                     </div>
                 )
             })}
             </div>
+            <ChatSlim />
+                <Footer />
+                 <ToolbarLeftSlim />
+                 <BarBottomMenu />
         </div>
     )
 }

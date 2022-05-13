@@ -18,7 +18,7 @@ function Ranking() {
 
     const [photo, setPhoto] = useState([])
     const [video, setVideo] = useState([])
-    const [type, setType] = useState("Photo");
+    const [type, setType] = useState("All");
 
     const [dados, setDatos] = useState([]);
     const list = [];
@@ -86,7 +86,7 @@ function Ranking() {
 
     console.log(photo)
     
-const limit = photo.slice(0,10)
+const limit = photo.slice(0,10);
 
     return (
         <div className="content">
@@ -100,10 +100,16 @@ const limit = photo.slice(0,10)
                                 <button className="selected">Ranking de curtidas</button>
                             </div>
 
+                            <div className="text">
+                             <h3>Seja bem vindo ao ranking. Aqui você verá as fotos mais curtidas 🔥</h3>
+                         </div>
+
                             <div className="buttons">
-                                <button onClick={handleSelectTypePhoto}>Ranking Fotos</button>
-                                <button onClick={handleSelectTypeVideo}>Ranking Vídeos</button>
+                                <button onClick={handleSelectTypePhoto}>Ver Ranking Fotos</button>
+                                <button onClick={handleSelectTypeVideo}>Ver Ranking Vídeos</button>
                             </div>
+
+
 
                             {type === "Photo" ?
                                 <div className="ranking-all">
@@ -150,12 +156,11 @@ const limit = photo.slice(0,10)
                             } )}
                           </div>
                           :
-                          "Nada a mostrar. Escolha um ranking"
+                            ""
                             }
                     </div>
                 <ChatSlim />
                 </div>
-                <Footer />
             </div>
         </div>
     )

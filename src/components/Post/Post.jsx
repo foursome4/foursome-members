@@ -22,7 +22,7 @@ function Post() {
     const [imageAvatar, setImageAvatar] = useState(''); 
     const [videoUrl, setVideoUrl] = useState(null);
     const [videoAvatar, setVideoAvatar] = useState(''); 
-    const [post, setPost] = useState("text");
+    const [post, setPost] = useState("");
     const [text, setText] = useState("");
     const [dataPhoto, setDataPhoto] = useState(false);
     const [dataVideo, setDataVideo] = useState(false);
@@ -213,22 +213,37 @@ function Post() {
     function reset() {
         setAvatarUrl(null)
         setVideoUrl(null)
-        setText("")
+        setText("");
+        setPost("")
     }
         
 
     function postText() {
-            setPost("text")
+        if(post === "") {
+            setPost("text")    
+        } else {
+            setPost("") 
+        }
     }
 
     function postPhoto(){
-        setPost("photo")
-        setText("")
+        if(post === "") {
+            setPost("photo")
+            setText("")  
+        } else {
+            setPost("") 
+        }
+
     }
     
     function postVideo(){
-        setPost("video")
-        setText("")
+        if(post === "") {
+            setPost("video")
+            setText("")
+        } else {
+            setPost("") 
+        }
+
     }
 
 
