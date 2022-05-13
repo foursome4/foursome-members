@@ -4,9 +4,8 @@ import { UsersPending } from "../../components/ButtonsTopBar/SolicitationsFriend
 import './ranking.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import api from "../../services/api"
-import { CountReactions } from "../../components/CountReactions/CountReactions"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
-import { Link } from "react-router-dom"
+import {IoFlameOutline} from 'react-icons/io5'
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from "../../contexts/Auth"
 
@@ -148,7 +147,7 @@ const limitVideo = video.slice(0,10);
                                       <div className="ranking-unic" key={photos.id}>
                                           <div className="title">   
                                            <UsersPending id={photos.idAccount} />                                  
-                                          <h3>{photos.likes} Votos</h3>
+                                          <h3><IoFlameOutline /> {photos.likes} Votos</h3>
                                           </div>
                                           <div className="post">
                                           <img src={photos.link} alt="" />
@@ -165,7 +164,7 @@ const limitVideo = video.slice(0,10);
                                     <div className="ranking-unic" key={videos.id}>
                                     <div className="title">   
                                      <UsersPending id={videos.idAccount} />                                  
-                                    <h3>{videos.likes} Votos</h3>
+                                     <h3><IoFlameOutline /> {videos.likes} Votos</h3>
                                     </div>
                                       <div className="post">
                                       <video controls controlsList="nofullscreen nodownload" >
