@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import logoImg from '../../assets/images/logo.png'
 import { AuthContext } from '../../contexts/Auth';
 import { FiEye, FiEyeOff} from 'react-icons/fi';
+import { IoLogoWhatsapp} from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -15,6 +16,9 @@ function SignIn() {
   const [password, setPassword] = useState("");
   const [passwordView, setPasswordView] = useState(false)
   const navigate = useNavigate();
+
+  const text = `Olá, gotariamos de solicitar um convite para ingressar em sua rede social`
+  const phone = "22997910510"
 
   useEffect(() => {
       if(localStorage.getItem("foursome") !== null) {
@@ -37,6 +41,11 @@ function SignIn() {
     }
   }
 
+  function handleInviteWhatsapp() {
+    window.open("https://wa.me/55"+ phone + "?text=" + text,
+    '_blank')
+  }
+
 
   return (
     <div className="content-Login">
@@ -56,6 +65,10 @@ function SignIn() {
           <div className="links">
           <a href="/recuperation"><p> ESQUECI MINHA SENHA</p></a>
             <a href="/recuperationuser"><p> ESQUECI MEU USUÁRIO</p></a>
+          </div>
+
+          <div className="whatsapp" onClick={handleInviteWhatsapp}>
+            <h4> Solicite um convite <IoLogoWhatsapp /></h4>
           </div>
         </div>
       </div>

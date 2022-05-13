@@ -123,6 +123,31 @@ display: flex;
 .content-Login .signIn .form .links a {
     text-decoration: none;
 }
+.content-Login .signIn .form .whatsapp {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 10px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(18, 22, 87, 0.37);
+    backdrop-filter: blur(4px);
+    border: 2px solid rgba(255,255,255, 0.18);
+    margin-top: 20px;
+    cursor: pointer;
+}
+.content-Login .signIn .form .whatsapp h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    color: var(--White);
+}
+.content-Login .signIn .form .whatsapp h4 svg {
+    margin-left: 5px;
+}
 
 .content-Login .signIn .logo {
     width: 50%;
@@ -198,6 +223,10 @@ display: flex;
         
             .content-Login .signIn .form input {
                 width: 100%;
+            }
+
+            .content-Login .signIn .form .whatsapp {
+                width: 70%;
             }
 
             .content-Login .signIn .form .inputPassword {
