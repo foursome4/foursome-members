@@ -1,6 +1,6 @@
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { TopBar } from "../../components/TopBar/TopBar"
-import { Footer } from "../../components/Footer/Footer"
+import { UsersPending } from "../../components/ButtonsTopBar/SolicitationsFriend/UsersPending/UsersPending"
 import './ranking.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import api from "../../services/api"
@@ -22,6 +22,7 @@ function Ranking() {
 
     const [dados, setDatos] = useState([]);
     const list = [];
+    const listVideo = [];
     useEffect(() => {
         async function loadPostsPhoto() {
         const res = await api.get(`/posts/filter/post-photo`);
@@ -50,19 +51,38 @@ function Ranking() {
     }, []);
 
     console.log("dados")
-    console.log(photo)
+    console.log(photo);
 
     useEffect(() => {
         async function loadPostsVideo() {
         const res = await api.get(`/posts/filter/post-video`);
-        const dataVideo = (res.data)
-        // console.log("Vídeos")
-        // console.log(res.data)
-        setVideo(dataVideo)
+
+    res.data.forEach((videos) => {
+         async function loadReactions() {
+           await api.get(`/reactions/${videos.id}`).then((res) => {
+            console.log(res.data.length)
+            const dataVideo = {
+                id: videos.id,
+                likes: res.data.length,
+                idAccount: videos.idAccount,
+                link: videos.link,
+                username: videos.username
+            }
+            listVideo.push(dataVideo)
+           })
+        }
+        loadReactions()
+    })            
         }
 
+
         loadPostsVideo();
-    }, [])
+        setVideo(listVideo);
+    }, []);
+
+    console.log("dados")
+    console.log(video)
+
 
     function handleSelectTypePhoto() {
         setType("Photo")
@@ -83,10 +103,20 @@ function Ranking() {
             }
         })
     }
-
-    console.log(photo)
     
 const limit = photo.slice(0,10);
+
+    if(video) {
+        video.sort(function(a,b) {
+            if(a.likes > b.likes ) {
+                return -1
+            } else {
+                return true
+            }
+        })
+    }
+    
+const limitVideo = video.slice(0,10);
 
     return (
         <div className="content">
@@ -101,12 +131,12 @@ const limit = photo.slice(0,10);
                             </div>
 
                             <div className="text">
-                             <h3>Seja bem vindo ao ranking. Aqui você verá as fotos mais curtidas 🔥</h3>
+                             <h3>Seja bem vindo ao ranking. <br /> Aqui você verá as 10 fotos e vídeos mais curtidas 🔥</h3>
                          </div>
 
                             <div className="buttons">
-                                <button onClick={handleSelectTypePhoto}>Ver Ranking Fotos</button>
-                                <button onClick={handleSelectTypeVideo}>Ver Ranking Vídeos</button>
+                                <button className={type === "Photo" ? "selected" : ""} onClick={handleSelectTypePhoto}>Ver Ranking Fotos</button>
+                                <button className={type === "Video" ? "selected" : ""} onClick={handleSelectTypeVideo}>Ver Ranking Vídeos</button>
                             </div>
 
 
@@ -116,18 +146,13 @@ const limit = photo.slice(0,10);
                                 {limit.map((photos) => {
                                     return(
                                       <div className="ranking-unic" key={photos.id}>
-                                          <h1>{photos.likes} Votos</h1>
                                           <div className="title">   
-                                          <div className="image">
-                                             <img src={photos.username} alt="" className="profile"/>
-                                          </div>                                       
-                                             <h5><Link to={`profile-friend/${photos.idAccount}`}>{photos.username}</Link></h5>
+                                           <UsersPending id={photos.idAccount} />                                  
+                                          <h3>{photos.likes} Votos</h3>
                                           </div>
                                           <div className="post">
                                           <img src={photos.link} alt="" />
-                                          </div>
-                                         {/* <CountReactions idPost={photos.idAccount} /> */}
-                                          
+                                          </div>                                    
                                   </div>
                                     )
                                 } )}
@@ -135,22 +160,18 @@ const limit = photo.slice(0,10);
                             :
                             type === "Video" ?
                             <div className="ranking-all">
-                            {video.map((videos) => {
+                            {limitVideo.map((videos) => {
                                 return(
-                                  <div className="ranking-unic"  key={videos.id}>
-                                      <div className="title">   
-                                      <div className="image">
-                                         <img src={videos.avatar} alt="" className="profile"/>
-                                      </div>                                       
-                                         <h5><a href={`profile-friend/${videos.idAccount}`}>{videos.nickname}</a></h5>
-                                      </div>
+                                    <div className="ranking-unic" key={videos.id}>
+                                    <div className="title">   
+                                     <UsersPending id={videos.idAccount} />                                  
+                                    <h3>{videos.likes} Votos</h3>
+                                    </div>
                                       <div className="post">
                                       <video controls controlsList="nofullscreen nodownload" >
                                             <source src={videos.link} type="video/mp4"/>
                                             </video>
-                                      </div>
-                                     <CountReactions idPost={videos.id} />
-                                      
+                                      </div>                                     
                               </div>
                                 )
                             } )}

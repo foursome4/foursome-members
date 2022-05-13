@@ -68,12 +68,12 @@ const {data} = useFetch(`/online`);
                     </button>
                     </a>
 
-                    {/* <a href="/ranking" >
+                    <a href="/ranking" >
                     <button className="ButtonsUnic" >
                         <IoStatsChartOutline size={20}/>
                        Ranking
                     </button>
-                    </a> */}
+                    </a>
 
                     <a href="/events" >
                     <button className="ButtonsUnic" >

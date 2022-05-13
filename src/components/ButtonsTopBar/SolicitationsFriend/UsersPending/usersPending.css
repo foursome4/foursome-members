@@ -21,7 +21,7 @@
     object-fit: cover;
 }
 
-.item .name h3 {
+.item .name h4 {
     margin-left: 5px;
     color: var(--Primary);
     text-decoration: none;

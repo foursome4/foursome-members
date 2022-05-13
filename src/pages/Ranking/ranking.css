@@ -37,6 +37,16 @@
     justify-content: flex-start;
     padding: 20px;
 }
+.content .aside .ranking .text {
+    margin: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--Primary);
+    text-align: center;
+}
 
 .content .aside .ranking .buttons{
     width: 50%;
@@ -57,6 +67,18 @@
     background-color: var(--Background2);
     border-radius: 20px;
     color: var(--Primary);
+    width: 40%;
+    padding: 5px 10px;
+}
+.content .aside .ranking .buttons .selected {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--Primary);
+    background-color: var(--Primary);
+    border-radius: 20px;
+    color: var(--White);
     width: 40%;
     padding: 5px 10px;
 }
@@ -147,9 +169,15 @@
 
 .content .aside .ranking .ranking-all .ranking-unic .title {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+.content .aside .ranking .ranking-all .ranking-unic .title h3 {
+    background-color: var(--Primary);
+    color: var(--White);
+    padding: 5px 10px;
+    border-radius:6px;
 }
 
 .content .aside .ranking .ranking-all .ranking-unic .title .image {

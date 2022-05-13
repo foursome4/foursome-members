@@ -34,7 +34,7 @@ function UsersPending({id}) {
            </div>
            <div className="name">
              <Link to={userData.id === id ? `/profile` :`/profile-friend/${id}`}>
-           <h3>{nickname}</h3>
+           <h4>{nickname}</h4>
            </Link>
            </div>
        </div>
