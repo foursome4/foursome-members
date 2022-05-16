@@ -783,6 +783,9 @@
                     padding: 0px;
                     height: 130px;
                 }
+                .content-profile-events .profile .main .section .profile-tool .user {
+                    margin-top: 40px;
+                }
 
                 .content-profile-events .profile .main .section .profile-tool .tools {
                     flex-wrap: wrap;
@@ -793,13 +796,13 @@
                 .content-profile-events .profile .main .section .profile-tool .tools button {
                     width: 70px;
                     height: 55px;
-                    margin: 60px 5px 0 5px;
+                    margin: 40px 5px 0 5px;
                     font-size: 10px;
                 }
                 .content-profile-events .profile .main .section .profile-tool .tools .select {
                     width: 70px;
                     height: 55px;
-                    margin: 60px 5px 0 5px;
+                    margin: 40px 5px 0 5px;
                     font-size: 10px;
                 }
 
