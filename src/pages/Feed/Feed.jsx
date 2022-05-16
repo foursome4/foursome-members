@@ -9,7 +9,6 @@ import { AuthContext } from "../../contexts/Auth"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { ListEventsFeed } from "../../components/ListEventsFeed/ListEventsFeed"
 import { useNavigate } from 'react-router-dom';
-import { Footer } from "../../components/Footer/Footer"
 
 
 function Feed() {
@@ -43,7 +42,6 @@ return (
                     </div>
                 <ChatSlim />
                 </div>
-                <Footer />
                  <ToolbarLeftSlim />
                  <BarBottomMenu />
                  </div>

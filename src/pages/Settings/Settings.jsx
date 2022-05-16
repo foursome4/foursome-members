@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu";
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim";
-import { Footer } from "../../components/Footer/Footer";
 import { SettingsCharacteristcs } from "../../components/SettingsCharacteristcs/SettingsCharacteristcs";
 import { SettingsDataAccess } from "../../components/SettingsDataAccess/SettingsDataAccess";
 import { SettingsInformations } from "../../components/SettingsInformations/SettingsInformations";
@@ -73,7 +72,6 @@ function Settings() {
             }
         </div>
         <ChatSlim />
-        <Footer />
         </div>
     )
 }

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu";
 import { UserConversation } from "../../components/ButtonsTopBar/MyMessages/UserConversation/UserConversation"
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim";
-import { Footer } from "../../components/Footer/Footer";
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim";
 import { TopBar } from "../../components/TopBar/TopBar";
 import api from "../../services/api";
@@ -59,7 +58,6 @@ function Messages() {
         </div>
 
         <ChatSlim />
-                <Footer />
                  <ToolbarLeftSlim />
                  <BarBottomMenu />
 

@@ -15,7 +15,6 @@ import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
-import { Footer } from '../../components/Footer/Footer'
 import { useContext } from 'react'
 import { AuthContext } from '../../contexts/Auth'
 
@@ -277,7 +276,6 @@ widthView()
          </div>
          <ChatSlim /> 
         </div>
-        <Footer />
       </div>
     </div>
     </div>

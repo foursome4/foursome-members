@@ -11,7 +11,6 @@ import { FeedPostEvent } from '../../components/FeedPostEvent/FeedPostEvent'
 import { PostTextEvent } from '../../components/PostTextEvent/PostTextEvent'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 import { LisMembers } from '../../components/LisMembers/LisMembers'
-import { Footer } from '../../components/Footer/Footer'
 import { AuthContext } from "../../contexts/Auth"
 import { useFetch } from '../../hooks/useFetch';
 
@@ -230,7 +229,6 @@ console.log(data)
                
                     </div>
             </div>
-            <Footer />
          </div>
          <ChatSlim /> 
         </div>

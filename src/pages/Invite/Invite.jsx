@@ -1,7 +1,6 @@
 import { TopBar } from "../../components/TopBar/TopBar"
 import './invite.css'
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
-import { Footer } from "../../components/Footer/Footer"
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import { FiCheck,FiMail } from "react-icons/fi"
 import { FaWhatsapp } from "react-icons/fa"
@@ -74,7 +73,6 @@ function Invite() {
                     </div>
                 <ChatSlim />
                 </div>
-            <Footer />
             </div>
         </div>
     )

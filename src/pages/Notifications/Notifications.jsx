@@ -1,7 +1,6 @@
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu";
 import { UsersNotifications } from "../../components/ButtonsTopBar/Notifications/UsersNotifications/UsersNotifications";
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim";
-import { Footer } from "../../components/Footer/Footer";
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim";
 import { TopBar } from "../../components/TopBar/TopBar";
 import { useFetch } from "../../hooks/useFetch";
@@ -42,7 +41,6 @@ function Notifications() {
            
             </div>
             <ChatSlim />
-                <Footer />
                  <ToolbarLeftSlim />
                  <BarBottomMenu />
         </div>

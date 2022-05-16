@@ -1,6 +1,5 @@
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu";
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim";
-import { Footer } from "../../components/Footer/Footer";
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim";
 import { TopBar } from "../../components/TopBar/TopBar";
 import './plains.css'
@@ -27,7 +26,6 @@ function Plains() {
         <ChatSlim />
         <ToolbarLeftSlim />
         <BarBottomMenu />
-        <Footer />
         </div>
     )
 }

@@ -9,7 +9,6 @@ import { ListForuns } from "../../components/ListForuns/ListForuns"
 import { MyForuns } from "../../components/MyForuns/MyForuns"
 import { CreateForum } from "../../components/CreateForum/CreateForum"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
-import { Footer } from "../../components/Footer/Footer"
 
 
 function Foruns() {
@@ -64,7 +63,6 @@ function Foruns() {
                     </div>
                 <ChatSlim />
                 </div>
-            <Footer /> 
             </div>
         </div>
     )

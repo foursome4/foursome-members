@@ -45,10 +45,10 @@ Nosso objetivo é aproximar pessoas com o mesmo objetivo, trazendo uma experiên
                         <h4><b>Whatsapp:</b> (22)99791-0510</h4>
                         <h4><b>E-mail:</b> contato@foursome.com.br</h4>
                     </div>
-                    <button>Desenvolvimento</button>
+                    {/* <button>Desenvolvimento</button>
                     <div className="dev">
                         <h4>Desenvolvido e mantido pela empresa: <a href="https://www.codingit.com.br/" target="_blank" >Coding.It</a></h4>
-                    </div>
+                    </div> */}
 
                 </div>
                 <div className="informationsSelected">
