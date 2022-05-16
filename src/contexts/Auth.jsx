@@ -540,23 +540,32 @@ async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, 
     setLoading(true)
     await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent }).then( async () => {      
     toast.info("Post publicado com sucesso!")
-    window.open(`/feed`,"_self")
+    window.location.reload(false)
+        setLoading(false)
+    }).catch(error => {
+        console.log("Post não foi realizado" + error)
+    })
+}
+async function newPostEvent({idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent, idPatrono}) {
+    setLoading(true)
+    await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent }).then( async () => {      
+    toast.info("Post publicado com sucesso!")
         setLoading(false)
     }).catch(error => {
         console.log("Post não foi realizado" + error)
     })
 }
 
-
 async function deletePost(id) {
     const res = await api.delete(`/posts/${id}`);
     if(res.status===201) {
         toast.success('Post deletado com sucesso!');
-        window.open(`/feed`,"_self")
+        window.location.reload(false)
      } else {
         toast.error('Falha ao deletar, tente novamente!');
      }
 }
+
 async function editPost(id, text) {
         const res = await api.patch(`/posts/${id}`, {text});
         if(res.status===201) {
@@ -845,10 +854,26 @@ async function createEvents( avatar, name, description, date, street, district, 
         console.log(error)
     })
 }
+async function createMembersEvents( idAccount, idEvent, role, status, username ){
+    const data = { idAccount, idEvent, role, status, username };
+    await api.post("/membersevents", data).then(() => {
+        toast.success("Presença confirmada")
+    }).catch(error => {
+        console.log(error)
+    })
+}
 
 
 async function deleteGroup(id){
     await api.delete(`/groups/${id}`).then(() => {
+    })
+}
+async function deleteEvent(id){
+    await api.delete(`/events/${id}`).then(() => {
+    })
+}
+async function deleteMemberEvent(id){
+    await api.delete(`/membersevents/${id}`).then(() => {
     })
 }
 
@@ -1040,7 +1065,11 @@ async function newVisit(idAccount, username, idFriend) {
             validadeCodeRecuperation,
             sessionFast,
             recoverPasswordNew,
-            inactivityTime
+            inactivityTime,
+            newPostEvent,
+            createMembersEvents,
+            deleteEvent,
+            deleteMemberEvent
 
         }}>
             {children}

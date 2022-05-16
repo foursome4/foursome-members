@@ -33,69 +33,60 @@ useEffect(() => {
         await api.get("/online").then((res) => {
             setUsers(res.data)
             console.log(res.data);
-            const myLocation = res.data.filter((location) => (location.idAccount === userData.id));
-            console.log(myLocation[0])
-            console.log(myLocation[0].lat)
-            console.log(myLocation[0].long)
-           
-            setLat(myLocation[0].lat)
-            setLong(myLocation[0].long)
+            const myLocation = res.data.filter((location) => (location.idAccount === userData.id)); 
+            setLat(myLocation[0].lat);
+            setLong(myLocation[0].long);
+            console.log(myLocation[0].lat);
+            console.log(myLocation[0].long);
+            console.log(res.data.lat, res.data.long)
+
+            users.forEach((userLocation) => {
+                let distance = 0;
+               function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend) {
+                   var deg2rad = function (deg) { return deg * (Math.PI / 180); },
+                       R = 6371,
+                       dLat = deg2rad(latFriend - myLat),
+                       dLng = deg2rad(myLong - longFriend),
+                       a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                           + Math.cos(deg2rad(myLat))
+                           * Math.cos(deg2rad(latFriend))
+                           * Math.sin(dLng / 2) * Math.sin(dLng / 2),
+                       c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                       console.log(((R * c *1000)/10).toFixed());
+                       console.log("Teste de Distancia")
+                       console.log((R * c*1000)/1000)
+               
+                       const distanceCalc = (R * c).toString();
+                       
+                       if(distanceCalc.includes("00.")) {
+                           number = (((R * c *1000)/1000).toFixed())
+                       } else{
+                           number = (((R * c *1000)/1000).toFixed())
+                       }
+                       const dados = {
+                           distance: number,
+                           id: userLocation.id,
+                           idAccount: userLocation.idAccount,
+                           avatar: userLocation.avatar,
+                           nickname: userLocation.nickname,
+                           equalCity: userLocation.equalCity,     
+                       }
+   
+                       console.log("dados")
+                       console.log(dados)
+                       list.push(dados)
+               }
+               
+               getDistanceFromLatLonInKm(myLocation[0].lat, myLocation[0].long, res.data.lat, res.data.long )
+
+       })
+       console.log(list)
+       setDistancia(list);
         })
     }
-
-
-
     loadUsersONline();   
-
-      
  }, [userData.id])
 
- useEffect(() => {
-    users.forEach((userLocation) => {
-             let distance = 0;
-            function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend) {
-                var deg2rad = function (deg) { return deg * (Math.PI / 180); },
-                    R = 6371,
-                    dLat = deg2rad(latFriend - myLat),
-                    dLng = deg2rad(myLong - longFriend),
-                    a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
-                        + Math.cos(deg2rad(myLat))
-                        * Math.cos(deg2rad(latFriend))
-                        * Math.sin(dLng / 2) * Math.sin(dLng / 2),
-                    c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-                    console.log(((R * c *1000)/10).toFixed());
-                    console.log("Teste de Distancia")
-                    console.log((R * c*1000)/1000)
-            
-                    const distanceCalc = (R * c).toString();
-                    
-                    if(distanceCalc.includes("00.")) {
-                        number = (((R * c *1000)/1000).toFixed())
-                    } else{
-                        number = (((R * c *1000)/1000).toFixed())
-                    }
-                    const dados = {
-                        distance: number,
-                        id: userLocation.id,
-                        idAccount: userLocation.idAccount,
-                        avatar: userLocation.avatar,
-                        nickname: userLocation.nickname,
-                        equalCity: userLocation.equalCity,     
-                    }
-
-                    console.log("dados")
-                    console.log(dados)
-                    list.push(dados)
-            }
-            
-            getDistanceFromLatLonInKm(lat1, long1, userLocation.lat, userLocation.long )
-
-
-
-    })
-
-    // setDistancia(list)
- }, [])
 
  console.log("DistanciaArray")
  console.log(distancia)
@@ -129,7 +120,7 @@ useEffect(() => {
                                 {users.map((user) => {
                                     return (
                                user.idAccount === userData.id ? "" :
-                               <div className="radar-unic" key={user.idAccount}>
+                               <div className="radar-unic" key={user.id}>
                                    <div className="img">
                                <img src={user.avatar} alt="" className="profile"/>
                                    </div>

@@ -6,18 +6,19 @@ import { AuthContext } from '../../contexts/Auth';
 
 function PostTextEvent({nameEvent, idEvent}) {
     console.log(nameEvent, idEvent)
-    const {newPost, loading} = useContext(AuthContext)
+    const {newPostEvent} = useContext(AuthContext)
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(LocalInformation);
 
     const [text, setText] = useState("");
+    const [loading, setLoading] = useState(false);
     
     async function handlePost(e) {
         e.preventDefault();
 
-        newPost({
+        newPostEvent({
                 idAccount: user.id,
                 link: "",
                 username: user.username,
@@ -31,12 +32,14 @@ function PostTextEvent({nameEvent, idEvent}) {
                 text,
                 idPatrono: null
             })
-    
-            if(loading === false) {
-                setText("")
-            }
-         
+            setText("")
+            reset()
+           
             
+    }
+
+    function reset() {
+        setText("")
     }
     
     return (
