@@ -10,6 +10,7 @@ import {  useParams } from 'react-router-dom'
 import { FeedPostEvent } from '../../components/FeedPostEvent/FeedPostEvent'
 import { PostTextEvent } from '../../components/PostTextEvent/PostTextEvent'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
+import { LisMembers } from '../../components/LisMembers/LisMembers'
 import { Footer } from '../../components/Footer/Footer'
 import { AuthContext } from "../../contexts/Auth"
 import { useFetch } from '../../hooks/useFetch';
@@ -49,7 +50,20 @@ function EventIndividual() {
       const [username, setUsername] = useState("");
       const [avatarUser, setAvatarUser] = useState("");
 
-      console.log(theme, date, cep, idEvent, idAccount)
+      const [width, setWidth] = useState("")
+
+      useEffect(() => {
+        function widthView() {
+          //resolução navegador
+      console.log(window.screen.width+'x'+window.screen.height);
+      
+      //resolução 'real' navegador
+      setWidth((window.innerWidth > 0) ? window.innerWidth : window.screen.width);
+      }
+      
+      widthView()
+      },[])
+      
 
   useEffect(() => {
     async function loadGroups(){
@@ -155,6 +169,7 @@ console.log(data)
                 </div>
             </div>
           <div className="sections">
+            {feed === "feed" ?
               <div className="infos">
               <div className="info">
               <div className="name">
@@ -183,6 +198,8 @@ console.log(data)
             </div>
             </div>
             </div>
+            : ""
+            }
                      <div className="feed">
                   {feed === "feed" ?
                   <>
@@ -204,9 +221,7 @@ console.log(data)
 
                   </div> 
                   :
-                 
-                  "Nada para mostrar"
-                  
+                  <LisMembers idEvent={id} />                 
                 }
                 </div>
 

@@ -17,7 +17,7 @@ function SignIn() {
   const [passwordView, setPasswordView] = useState(false)
   const navigate = useNavigate();
 
-  const text = `Olá, gotariamos de solicitar um convite para ingressar em sua rede social`
+  const text = `Olá, queremos solicitar um convite para ingressarmos em sua rede social`
   const phone = "22997910510"
 
   useEffect(() => {
