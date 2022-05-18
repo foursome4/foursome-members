@@ -111,37 +111,34 @@
     width: 80%;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
+    align-items: flex-start;
+    justify-content: center;
     padding: 5px 0;
     flex-wrap: wrap;
 }
 
 .content .aside .radar .radar-all .radar-unic {
-    width: 180px;
+    width: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content:center;
     flex-wrap: wrap;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
-    margin: 10px 0;
-
+    padding: 10px;
+    margin: 5px;
 }
 
 .content .aside .radar .radar-all .radar-unic .img {
     width: 80px;
     height: 80px;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 50%
 }
 .content .aside .radar .radar-all .radar-unic .img img {
     width: 80px;
     height: 80px;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 50%
 }
 
 .content .aside .radar .radar-all .radar-unic .cover {
@@ -173,20 +170,10 @@
 }
 
 .content .aside .radar .radar-all .radar-unic a {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
     text-decoration: none;
-    border: 1px solid var(--Primary);
-    padding: 5px;
-    border-radius: 20px;
-    width: 100%;
     font-size: 14px;
     color: var(--Primary);
     font-weight: 600;
-    background-color: var(--Background2);
-    margin: 5px 0;
 }
 
 
@@ -213,7 +200,7 @@
 }
 
 .content .aside .radar .radar-all .radar-unic {
-    width: 150px;
+    width: 80px;
     text-align: center;
 
 }
@@ -222,13 +209,13 @@
     width: 50px;
     height: 50px;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 50%;
 }
 .content .aside .radar .radar-all .radar-unic .img img {
     width: 50px;
     height: 50px;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 50%;
 }
 
 
@@ -250,7 +237,7 @@
 }
 
 .content .aside .radar .radar-all .radar-unic {
-    width: 150px;
+    width: 80px;
     text-align: center;
 
 }
@@ -259,13 +246,13 @@
     width: 50px;
     height: 50px;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 50%
 }
 .content .aside .radar .radar-all .radar-unic .img img {
     width: 50px;
     height: 50px;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 50%
 }
 
 

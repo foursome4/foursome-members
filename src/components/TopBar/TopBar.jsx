@@ -1,5 +1,5 @@
 import logoFoursomemini from '../../assets/images/logo-mini2.png';
-import logoFoursome from '../../assets/images/logo2.png';
+import logoFoursome from '../../assets/images/logo.png';
 import { IoMailOutline, IoLogOutOutline} from 'react-icons/io5';
 import './topBar.css';
 import { useContext } from 'react';

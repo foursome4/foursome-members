@@ -11,6 +11,8 @@ function UserReply({idAccount, username, date, id, text, role}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
+    const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
+
 
     const [edit, setEdit] = useState(false);
     const [nickname, setNickname] = useState('')
@@ -56,12 +58,19 @@ function UserReply({idAccount, username, date, id, text, role}) {
            <div className="title">
            <div className="image">
            <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-               <img src={avatar} alt="" />
+           {avatar === "" || avatar === undefined ? 
+                        <img src={profile} alt={"avatar"} />
+                        :
+                        <img src={avatar} alt={avatar} />
+                        }
            </a>
            </div>
            <div className={userData.id === idAccount ? "MyName":"name"}>
            <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-               <h6>{nickname} {`${uf}`}</h6>
+           {nickname === "" || nickname === undefined ?
+         <h6>Usuário deletado</h6>
+        :
+        <h6>{nickname} - {uf}</h6> }
                </a>
            <DateFormat date={date} />
            </div>

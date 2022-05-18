@@ -32,7 +32,7 @@ getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend )
 
     return (
         <>
-        <h6>{distance === "0" ? "- 1Km de você" : `+/- ${distance}Km de você`}</h6>
+        <h6>{distance === "0" ? "- 1Km" : `+/- ${distance}Km`}</h6>
         </>
     )
 }

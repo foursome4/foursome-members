@@ -122,11 +122,12 @@ useEffect(() => {
                                user.idAccount === userData.id ? "" :
                                <div className="radar-unic" key={user.id}>
                                    <div className="img">
+                                   <Link to={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>
                                <img src={user.avatar} alt="" className="profile"/>
+                                   </Link>
                                    </div>
-                                    <UserRadar nickname={user.nickname} equalCity={user.equalCity} idAccount={user.idAccount}/>
+                                    {/* <UserRadar nickname={user.nickname} equalCity={user.equalCity} idAccount={user.idAccount}/> */}
                                <DistanceFromUser myLat={lat1} myLong={long1} latFriend={user.lat} longFriend={user.long}/>
-                               <Link to={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>Ver perfil</Link>
                            </div>
                                     )
                                 })}

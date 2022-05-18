@@ -10,6 +10,8 @@ function BarBottomMenuComponenet() {
     const [select, setSelect] = useState(false);
 
 
+
+    const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
 const {data} = useFetch(`/online`);
 
     function handleOpenUsersOnline (e) {
@@ -20,6 +22,7 @@ const {data} = useFetch(`/online`);
         e.preventDefault()
        setSelect(false)
     }
+    
 
     return (
         <div className="BarBottom">
@@ -133,14 +136,18 @@ const {data} = useFetch(`/online`);
                 <div className="divUser" key={user.idAccount}>
                     <IoChatbubblesOutline />
                     <div className="image">
-                     <img src={user.avatar} alt={user.idAccount} />
+                        {user.avatar === "" || user.avatar === undefined ? 
+                        <img src={profile} alt={user.idAccount} />
+                        :
+                        <img src={user.avatar} alt={user.idAccount} />
+                        }
                     </div>
                    </div>
                    </a>
                        )
                    })}
 
-                 
+
                </div>
                 :
                     ""

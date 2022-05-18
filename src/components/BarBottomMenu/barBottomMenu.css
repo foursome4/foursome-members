@@ -12,12 +12,13 @@ display: none;
     align-items: flex-start;
     justify-content:center;
     flex-direction: row;    
-    background-color: var(--Background);
+    background-color: var(--Background2);
     position: fixed;
     margin-top: 90vh;
     bottom: 0;
     z-index: 99;
     overflow-x: scroll;
+    border-top: 1px solid var(--Background);
     }
 
    .BarBottom::-webkit-scrollbar {
@@ -83,6 +84,7 @@ display: none;
       padding: 5px;
       font-size: 12px;
       border: none;
+      background-color: var(--Background)
   }
   .BarBottom .BarBottomBlock .Buttons .ButtonsUnicSelect a {
       text-decoration: none;

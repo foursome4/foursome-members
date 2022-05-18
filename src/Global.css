@@ -6,11 +6,11 @@
 
 :root{
   --Primary: #8124E2;
-  --Background: #F6F2F8;
+  --Background: #121212;
   --Background-man: #ececff;
   --Background-woman: #ffecfc;
   --Background-preferences: #ffffec;
-  --Background2: #FEFEFE;
+  --Background2: #000000;
   --Gray_font1: #828CA9;
   --Gray_font2: #727376;
   --Black: #000000;
@@ -33,6 +33,7 @@ html {
 
 body {
   -webkit-font-smoothing: antialiased;
+  background: var(--Black);
 }
 
 .container {

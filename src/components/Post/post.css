@@ -8,6 +8,7 @@
     justify-content: center;
     padding: 10px 5px;
     margin-top: 20px;
+    border: 1px solid var(--Background);
 }
 .post .counter {
     width: 100%;
@@ -104,10 +105,11 @@
 .post .post-data .post-type .inputs textarea {
     width: 100%;
     height: 80px;
-    border: 1px solid var(--Gray-Border);
+    border: 1px solid var(--Background);
     border-radius: 20px;
     resize: none;
     margin-right: 10px;
+    background-color: var(--Black)
 }
 
 .post .post-data .post-type .inputs button {
@@ -144,6 +146,7 @@
     width: 160px;
     background-color: var(--Background2);
     margin-right: 10px;
+    color: var(--Gray-Border);
 }
 
 .post .post-data .post-type .buttons .selected {

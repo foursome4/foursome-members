@@ -1,11 +1,11 @@
 .content-toolbar {
-    width: 85px;
+    width: 100px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content:space-between;
     flex-direction: column;    
-    background-color: var(--White);
+    background-color: var(--Black);
     position: fixed;
     top: 0;
     left: 0;
@@ -72,21 +72,24 @@
 }
 
 .content-toolbar .ToolBarLeftSlim .tools .toolIcon {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 45px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     border-radius: 6px;
-    margin: 5px 0;
-    padding: 3px 0;
+    margin: 3px 0;
+    padding: 5px;
     color: var(--Primary);
     cursor: pointer;
     padding: 5px;
     font-size: 12px;
     border: none;
     background-color: var(--Background);
+}
+.content-toolbar .ToolBarLeftSlim .tools .toolIcon svg {
+    margin-right:3px;
 }
 .content-toolbar .ToolBarLeftSlim .tools .toolIcon:hover {
     background-color: var(--Primary);

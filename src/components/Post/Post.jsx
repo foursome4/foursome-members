@@ -50,16 +50,21 @@ function Post() {
 
   }, [user.id]);
 
-  const dailyPhoto = photos.filter((photo) => (
-    new Date(photo.created_at).getDate() + "/" + new Date(photo.created_at).getMonth() + "/" + new Date(photo.created_at).getFullYear() === new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear()));
+  const allPosts = photos.concat(videos);
 
-  const dailyVideo = videos.filter((video) => (
-    new Date(video.created_at).getDate() + "/" + new Date(video.created_at).getMonth() + "/" + new Date(video.created_at).getFullYear() === new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear()));
+  const dailyPost = allPosts.filter((posts) => (
+    new Date(posts.created_at).getDate() + "/" + new Date(posts.created_at).getMonth() + "/" + new Date(posts.created_at).getFullYear() === new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear()));
+ 
+//     const dailyPhoto = photos.filter((photo) => (
+//     new Date(photo.created_at).getDate() + "/" + new Date(photo.created_at).getMonth() + "/" + new Date(photo.created_at).getFullYear() === new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear()));
 
-    console.log(dailyPhoto)
-    console.log(dailyPhoto.length)
-    console.log(dailyVideo)
-    console.log(dailyVideo.length)
+//   const dailyVideo = videos.filter((video) => (
+//     new Date(video.created_at).getDate() + "/" + new Date(video.created_at).getMonth() + "/" + new Date(video.created_at).getFullYear() === new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear()));
+
+//     console.log(dailyPhoto)
+//     console.log(dailyPhoto.length)
+//     console.log(dailyVideo)
+//     console.log(dailyVideo.length)
    
     async function handleFile(e) {
         console.log(e.target.files[0])
@@ -301,16 +306,14 @@ function Post() {
                 </div>
                 <div className="buttons">
                     <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
-                  {dailyPhoto.length === 3 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
-                  {dailyVideo.length === 3 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
+                  {dailyPost.length === 3 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
+                  {dailyPost.length === 3 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
                 </div>
             </div>      
             </div>
             <div className="counter">
-                <h5>{dailyPhoto.length === 0 ? "Você pode postar 3 fotos" : dailyPhoto.length === 1 ? "Você pode postar 2 fotos" : dailyPhoto.length === 2 ? "Você pode postar 1 foto" : dailyPhoto.length === 3 ? "Você ja postou 3 fotos": "" }</h5>
-                <h5>|</h5>
-                <h5>{dailyVideo.length === 0 ? "Você pode postar 3 videos" : dailyVideo.length === 1 ? "Você pode postar 2 videos" : dailyVideo.length === 2 ? "Você pode postar 1 video" : dailyVideo.length === 3 ? "Você ja postou 3 videos": "" }</h5>
-            </div>
+                <h5>{dailyPost.length === 0 ? "Você pode postar 3 fotos ou videos" : dailyPost.length === 1 ? "Você pode postar 2 fotos ou videos" : dailyPost.length === 2 ? "Você pode postar 1 foto ou video" : dailyPost.length === 3 ? "Você ja efetuou 3 postagens entre fotos e vídeos": "" }</h5>
+                </div>
         </div>
          
          
