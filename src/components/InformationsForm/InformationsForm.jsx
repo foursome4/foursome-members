@@ -8,6 +8,7 @@ import { AuthContext } from '../../contexts/Auth';
 import { v4 as uuidv4 } from 'uuid'
 import buscaCep from '../../services/api-buscaCep';
 import { toast } from 'react-toastify';
+import { mask as masker, unMask } from "remask";
 
 
 function InformationsForm() {
@@ -119,6 +120,16 @@ function InformationsForm() {
     }
 
 
+    function ChangeMask(e) {
+        const originalValue = unMask(e.target.value);
+        const maskedValue = masker(originalValue, [
+          "SS",
+        ]);
+    
+        setUf(maskedValue)
+      }
+
+
     return (
             <div className="complete-informations">
                 <div className="title">
@@ -145,7 +156,7 @@ function InformationsForm() {
 
                     {location === true || uf !== "" ?
                     <div className="location">
-                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf} onChange={(e) => setUf(e.target.value)} required/>
+                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf.toUpperCase()} onChange={ChangeMask}  required/>
                             <input type="text" placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required/>
                         </div>    
                         :  "" }

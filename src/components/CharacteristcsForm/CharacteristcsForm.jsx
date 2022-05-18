@@ -7,9 +7,13 @@ import {v4 as uuidv4} from 'uuid';
 import './characteristcsForm.css'
 
 function CharacteristcsForm() {
-    const {createCharacteristcs, createCharacteristcs2, createCharacteristcs3} = useContext(AuthContext);
+    const {createCharacteristcs, createCharacteristcs2, createCharacteristcs3, deleteAccount} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
-    const user = JSON.parse(Local)
+    const user = JSON.parse(Local);
+
+    const [idade, setIdade] = useState(0);
+    const [idade2, setIdade2] = useState(0);
+    const [idade3, setIdade3] = useState(0);
 
     const [data,setData] = useState("");
     const [sex,setSex] = useState("");
@@ -25,6 +29,33 @@ function CharacteristcsForm() {
     const [sex3,setSex3] = useState("");
     const [sign3,setSign3] = useState("");
     const [sexualOption3,setSexualOption3] = useState("");
+
+
+    const nascimento = new Date(data);
+    const nascimento2 = new Date(data2);
+    const nascimento3 = new Date(data3);
+    const hoje = new Date();
+
+
+    let idadeAtual = 0
+    let idadeAtual2 = 0
+    let idadeAtual3 = 0
+    
+    if(data !== "") {
+        idadeAtual = Math.floor(Math.ceil(Math.abs(nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25) ;
+        console.log(idadeAtual);
+    }
+    if(data2 !== "") {
+        idadeAtual = Math.floor(Math.ceil(Math.abs(nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25)
+        console.log(idadeAtual2);
+    }
+    if(data3 !== "") {
+       idadeAtual3 = Math.floor(Math.ceil(Math.abs(nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25)
+       console.log(idadeAtual3);
+    }
+
+    
+      
 
     function handleCreateCharacteristcs(e){
         e.preventDefault()
@@ -124,6 +155,11 @@ function CharacteristcsForm() {
 
     function handleSelectSexualOption3(e) {
         setSexualOption3(e.target.value)
+    }
+
+    function handleDeleteAccount(e) {
+        e.preventDefault();
+        deleteAccount(user.id)
     }
 
 
@@ -377,6 +413,11 @@ function CharacteristcsForm() {
              :
              <div className="data-form">
                      <h5>Data de nascimento</h5>
+                    {data !== "" ?
+                         idadeAtual >= 18 ? 
+                     <h4>Sua idade é {idadeAtual} anos</h4>:
+                     <h3>Sua idade é {idadeAtual} anos</h3>
+                      : ""}
                      <div className="date">
                     <p> <IoCalendarOutline /></p>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
@@ -427,7 +468,15 @@ function CharacteristcsForm() {
                     <div className='confirmation'>
                        <br />
                        <br />
+                       {data === "" ? "" :
+                       idadeAtual < 18 ? 
+                       <div className="message">
+                       <h4>Não aceitamos membros menores de 18 anos. Você não pode prosseguir. </h4>
+                       <button onclick={handleDeleteAccount}>Deletar minha conta</button>
+                       </div>
+                       :
                         <button type='submit'>Salvar e avançar</button>
+                       }
                         
                     </div>
                         </form>

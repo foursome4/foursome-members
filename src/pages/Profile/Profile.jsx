@@ -85,9 +85,10 @@ widthView()
 
 
       function handleDeleteAccount(e) {
+        e.preventDefault()
         const deletar = window.confirm("Deseja realmente deletar sua conta?");
         if(deletar === true) {
-        deleteAccount()
+        deleteAccount(user.id)
         } 
 
       }

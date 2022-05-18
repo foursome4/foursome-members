@@ -30,6 +30,14 @@
     justify-content: center;
 
 }
+.content-Login .signIn .form h6 {
+    color: var(--White);
+    font-size:14px;
+    background-color: red;
+    border-radius: 6px;
+    padding:5px 10px;
+    margin: 0px 0px 20px 0px;
+}
 
 
 .content-Login .signIn .form input:focus {

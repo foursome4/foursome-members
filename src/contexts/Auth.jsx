@@ -184,11 +184,9 @@ function AuthProvider({children}) {
 //Deletando conta
 
 
-async function deleteAccount() {
+async function deleteAccount(id) {
     toast.success("Deletendo sua conta")
-    const Local = localStorage.getItem("foursome");
-    const user = JSON.parse(Local);
-    const res = await api.delete(`/accounts/${user.id}`);
+    const res = await api.delete(`/accounts/${id}`);
     if(res.status===201) {
         deleteInformations()
        

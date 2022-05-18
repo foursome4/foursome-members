@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/Auth';
 import { FiEye, FiEyeOff} from 'react-icons/fi';
 import { IoLogoWhatsapp} from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 import './signIn.css';
@@ -15,6 +16,7 @@ function SignIn() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [passwordView, setPasswordView] = useState(false)
+  const [never, setNever] = useState(false)
   const navigate = useNavigate();
 
   const text = `Olá, queremos solicitar um convite para ingressarmos em sua rede social`
@@ -46,6 +48,10 @@ function SignIn() {
     '_blank')
   }
 
+  let never1 = false
+  if(login.includes(" ")) {
+    never1 = true
+  }
 
   return (
     <div className="content-Login">
@@ -55,12 +61,14 @@ function SignIn() {
         </div>
         <div className="form">
           <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
+          {never1 === true ? <h6>Favor remover os espaços vazios no campo login</h6> : ""}
           <div className="inputPassword">
           <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
           <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
           </div>
           <div className="buttons">
-          <button onClick={handleCreateAccount}> Entrar </button>
+            <button onClick={handleCreateAccount}> Entrar </button>
+
           </div>
           <div className="links">
           <a href="/recuperation"><p> ESQUECI MINHA SENHA</p></a>

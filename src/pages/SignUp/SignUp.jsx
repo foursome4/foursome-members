@@ -150,6 +150,110 @@ function SignUp() {
 
     setPhone(maskedValue)
   }
+  function ChangeMaskPassword(e) {
+    const originalValue = unMask(e.target.value);
+    const maskedValue = masker(originalValue, [
+      "S",
+      "SS",
+      "SSS",
+      "SSSS",
+      "SSSSS",
+      "SSSSSS",
+      "SSSSSSS",
+      "SSSSSSSS",
+      "SSSSSSSSS",
+      "SSSSSSSSSS",
+      "SSSSSSSSSSS",
+      "SSSSSSSSSSSS",
+      "SSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+    ]);
+
+    setPasswordNative(maskedValue)
+  }
+  function ChangeMaskConfirmPassword(e) {
+    const originalValue = unMask(e.target.value);
+    const maskedValue = masker(originalValue, [
+      "S",
+      "SS",
+      "SSS",
+      "SSSS",
+      "SSSSS",
+      "SSSSSS",
+      "SSSSSSS",
+      "SSSSSSSS",
+      "SSSSSSSSS",
+      "SSSSSSSSSS",
+      "SSSSSSSSSSS",
+      "SSSSSSSSSSSS",
+      "SSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS",
+    ]);
+
+    setPasswordConfirmNative(maskedValue)
+  }
 
 
 
@@ -195,12 +299,12 @@ function SignUp() {
           <p>Senha:</p>
           </div>
           <div className="inputPassword">
-          <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={passwordNative} onChange={(e) => setPasswordNative(e.target.value)}/>
+          <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={passwordNative} onChange={ChangeMaskPassword}/>
           <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
           </div>
 
           <div className="inputPassword">
-          <input type={passwordView === false ? "password" : "text" } placeholder="Confirmar senha" value={passwordConfirmNative} onChange={(e) => setPasswordConfirmNative(e.target.value)}/>
+          <input type={passwordView === false ? "password" : "text" } placeholder="Confirmar senha" value={passwordConfirmNative} onChange={ChangeMaskConfirmPassword}/>
           <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
           </div>
 
