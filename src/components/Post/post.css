@@ -109,7 +109,6 @@
     border-radius: 20px;
     resize: none;
     margin-right: 10px;
-    background-color: var(--Black)
 }
 
 .post .post-data .post-type .inputs button {
@@ -141,12 +140,12 @@
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    border: 1px solid var(--Gray-Border);
+    border: 1px solid var(--Background);
     padding: 5px;
     width: 160px;
     background-color: var(--Background2);
     margin-right: 10px;
-    color: var(--Gray-Border);
+    color: var(--Gray_font2);
 }
 
 .post .post-data .post-type .buttons .selected {

@@ -5,13 +5,14 @@
     align-items: center;
     justify-content:space-between;
     flex-direction: column;    
-    background-color: var(--Black);
+    background-color: var(--White);
     position: fixed;
     top: 0;
     left: 0;
     z-index: 99;
     overflow-y: scroll;
     overflow: auto;
+    border-right: 2px solid var(--Background);
 }
 
 .content-toolbar::-webkit-scrollbar {

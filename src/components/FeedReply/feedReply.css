@@ -6,8 +6,7 @@
     width: 95%;
     border-top: 1px solid rgb(240, 240, 240);
     margin-top: 10px;
-    border: 1px solid var(--Background);
-    background-color: var(--Black);
+    border: 1px solid var(--Background2);
 }
 
 .feedReply .feed-reply {

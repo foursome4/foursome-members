@@ -10,8 +10,7 @@
     border-radius: 10px;
     padding: 20px 0;
     margin: 10px 0;
-    border: 1px solid var(--Background);
-    background-color: var(--Black);
+    border: 1px solid var(--Background2);
 }
 
 .feed-post .post-user {
