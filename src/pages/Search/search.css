@@ -5,21 +5,34 @@
     align-items:center;
     justify-content:center;
     width:100%;
-    background-color: var(--Background2)
+    background-color: var(--Background2);
+    height: 100%
 }
 .SearchPage h2{
     margin-top: 80px;
     color: var(--Primary)
 }
+.SearchPage .main{
+    display: flex;
+    flex-direction:row;
+    align-items:flex-start;
+    justify-content:center;
+    width:100%;
+    padding: 55px 100px 40px 120px ;
+    background-color: var(--Background2);
+    height: 100%
+}
 
 .SearchPage .searchButton{
     display: flex;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    width: 90%;  
-    padding: 2px;
+    width: 30%;  
+    padding: 10px;
     margin-bottom: 10px;
+    background-color: var(--Background);
+    height: 100%
 }
 
 .SearchPage .searchButton input{
@@ -30,39 +43,136 @@
     font-size: 14px;
     border-radius: 6px;
     margin: 3px;
-    width: 50%
+    width: 90%
+}
+.SearchPage .searchButton h3{
+    font-weight:700;
+    margin: 10px 10px 3px 10px ;
+    color: var(--Primary)
 }
 
 .SearchPage .searchButton input::placeholder {
     color: var(--Gray_font2);
 }
 
+.SearchPage .searchButton .filter {
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width: 100%;
+}
+.SearchPage .searchButton .filter h5 {
+    font-weight:700;
+    margin: 10px 10px 3px 10px ;
+}
+.SearchPage .searchButton .filter .buttons {
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.SearchPage .searchButton .filter .buttons button {
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 6px;
+    Border: none;
+    background-color: var(--Background2);
+    color: var(--Primary);
+}
+
+.SearchPage .searchButton .filter button {
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    padding: 10px;
+    margin: 50px 10px 10px 10px;
+    border-radius: 6px;
+    Border: none;
+    background-color: var(--Primary);
+    color: var(--Background2);
+}
+.SearchPage .searchButton .filter .buttons .select {
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    padding: 10px;
+    margin: 2px;
+    border-radius: 6px;
+    Border: none;
+    background-color: var(--Primary);
+    color: var(--Background2);
+}
+
+
 
 
 .SearchPage .itensSearch {
     display: flex;
-    flex-direction:column;
-    align-items:center;
+    flex-direction:row;
+    align-items:flex-start;
     justify-content:center;
-    width:90%;
-    background-color: var(--Background2)
+    width:70%;
+    background-color: var(--Background2);
+    height: 100%;
+    flex-wrap: wrap;
+    
 }
 .SearchPage .itensSearch .accounts {
     display: flex;
     flex-direction:column;
-    align-items:center;
+    align-items:flex-start;
     justify-content:center;
-    width: 60%;
-    background-color: var(--Background2)
+    width: 150px;
+    padding: 5px;
+    background-color: var(--Background);
+    margin: 5px;
+}
+.SearchPage .itensSearch .accounts .image {
+    width: 100%;
+}
+.SearchPage .itensSearch .accounts img {
+    width: 100%;
+}
+.SearchPage .itensSearch .accounts .infos {
+    display: flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    width: 100%;
+    background-color: var(--Background2);
+}
+.SearchPage .itensSearch .accounts .infos .moreInfos {
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    width: 100%;
+    background-color: var(--Background2);
+    flex-wrap: wrap;
 }
 
-@media (max-width:700px) {
-    .SearchPage .searchButton input{
-        width: 90%
-    }
 
-    .SearchPage .itensSearch .accounts {
-        width: 100%;
+@media (max-width:899px) {
+   
+    .SearchPage .main{
+        display: flex;
+        flex-direction:row;
+        align-items:flex-start;
+        justify-content:center;
+        width:100%;
+        padding: 55px 0px ;
+        background-color: var(--Background2);
+        height: 100%
     }
-    
 }
+
+

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import api from '../services/api';
 import { socket } from '../services/websocket';
-import apiGoogleReverse from '../services/apiGoogleReverse';
+
 
 
 const AuthContext = createContext({});
@@ -14,12 +14,6 @@ function AuthProvider({children}) {
     const [comentsPosts, setComentsPosts] = useState([])
 
     
-    const [lat, setlat] = useState("");
-    const [long, setLong] = useState("");
-    const [city, setCity] = useState("");
-    const [uf, setUf] = useState("");
-
-
     async function createAccount(id, username, email, phone, type, password, status, role, code, online, patron) {
         const data = {id, username, email, phone, type, password, status, role, code, online, patron}
         const data2 = {id, username, email, phone, type, status, role, online, patron, date: new Date()}
@@ -896,90 +890,6 @@ async function newVisit(idAccount, username, idFriend) {
 
 
 
- // Location
- function socketDataLocation() {
-    function success(position) {
-        const latitude  = position.coords.latitude;
-        const longitude = position.coords.longitude;
-    
-        setlat(latitude)
-        setLong(longitude)
-   
-       reverseGeolocalization(latitude, longitude)
-      }
-    
-      function error() {
-        console.log('Unable to retrieve your location');
-      }
-   
-      function getLocation() {
-       return window.navigator.geolocation.getCurrentPosition(success, error);
-        }
-   
-        async function reverseGeolocalization(lat, long) {
-        const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
-
-        setCity(address.data.results[0].address_components[3].long_name)
-        setUf(address.data.results[0].address_components[4].short_name) 
-     }
-
-    const DataUser = localStorage.getItem("foursome");
-    const user = JSON.parse(DataUser);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformations = JSON.parse(LocalInformation);
-
-    async function getInformations() {
-
-        let usersOnline = [];
-        await api.get("/online").then((res) => {
-           usersOnline = res.data
-        })
-       
-        let selectUserOnline = usersOnline.filter(online => online.idAccount === user.id);
-
-       
-        let equalCity = " "
-        if(city === userInformations.city && uf === userInformations.uf ) {
-        equalCity = true
-        } else {
-        equalCity = false
-        }
-
-        const data = {
-        idAccount: user === undefined ? "" : user.id,
-        username: user.username,
-        nickname: userInformations.nickname,
-        avatar: userInformations.avatar,
-        lat: lat.toString(),
-        long: long.toString(),
-        city,
-        uf,
-        equalCity: equalCity
-        }
-
-        if(data.idAccount && data.username && data.nickname && data.avatar && data.lat && data.long && data.city && data.uf !== "") {
-
-                socket.on("connection", () => {
-                    console.log("Conexão estabelecida")
-                })
-
-                if(selectUserOnline.length !== 0) {
-                    console.log("Usuário ja está online")
-                    return;
-                }
-
-                await api.post("/online", data).then(() => {
-                    console.log("Cadastrando usuário")
-                })
-
-            } else {
-                console.log("Imformações não coletadas com sucesso!")
-            }
-    }
-
-    getLocation()
-    getInformations()
-}
 
 
   // Deslogandop após tempo de inatividade
@@ -1042,7 +952,6 @@ async function newVisit(idAccount, username, idFriend) {
             deleteFriendAndFollower,
             deleteLike,
             socket,
-            socketDataLocation,
             creategroup,
             createMemberGroup,
             CreateInviteMail,

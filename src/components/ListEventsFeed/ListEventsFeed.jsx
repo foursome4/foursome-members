@@ -18,10 +18,12 @@ function ListEventsFeed() {
         loadGroups()
     }, []);
 
+    const eventsListNew = events.filter((event) => event.status === "Aproved")
+
 
     return (
         <div className="listEventsFeed">
-            <h4>Próximos eventos:</h4>
+            <h4>{eventsListNew.length > 0 ? "Próximos eventos:" : ""}</h4>
                              {events.map((event) => {
                                  return(
                                      event.status === "Aproved" ?

@@ -11,7 +11,7 @@ function SearchUsers() {
         <>
             <div className="search" onClick={handleSearch}>
                 <IoSearchOutline />
-               <p>Pesquisar</p>
+               <p>Encontrar pessoas</p>
             </div>
         </>
     )
