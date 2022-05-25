@@ -30,6 +30,7 @@ function AuthProvider({children}) {
             toast.info(`Cadastro criado com sucesso!`);
             
             localStorage.setItem("foursome", JSON.stringify(data2));
+            window.open("/completeregistration", "_self")
 
         }).catch(error => {
             console.log("Cadastro não foi realizado: "+ error);

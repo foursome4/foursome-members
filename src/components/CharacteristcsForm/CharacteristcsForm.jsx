@@ -46,11 +46,11 @@ function CharacteristcsForm() {
         console.log(idadeAtual);
     }
     if(data2 !== "") {
-        idadeAtual = Math.floor(Math.ceil(Math.abs(nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25)
+        idadeAtual2 = Math.floor(Math.ceil(Math.abs(nascimento2.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25)
         console.log(idadeAtual2);
     }
     if(data3 !== "") {
-       idadeAtual3 = Math.floor(Math.ceil(Math.abs(nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25)
+       idadeAtual3 = Math.floor(Math.ceil(Math.abs(nascimento3.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25)
        console.log(idadeAtual3);
     }
 
@@ -169,12 +169,14 @@ function handleLogout() {
 
 
     return (
-            <div className="content-Login">
+            <div className="content-caracteristicas">
+
                 <div className="title">
                     <img src={logoImg} alt="" />
                     <h2>Caracteristicas</h2>
                     </div>
                         <form onSubmit={handleCreateCharacteristcs}>
+
                             <div className="data">
                             <br /><br />
                    {user.type === "Trisal" ?
@@ -440,6 +442,7 @@ function handleLogout() {
 
              </div>
              :
+             
              <div className="data-form">
                      <h5>Data de nascimento</h5>
                     {data !== "" ?
@@ -498,7 +501,7 @@ function handleLogout() {
                        <br />
                        <br />
                        {data === "" ? <button className="delete" onClick={handleLogout}>Continuar depois</button> :
-                       idadeAtual < 18 && idadeAtual2 < 18 && idadeAtual3 < 18 ? 
+                       idadeAtual < 18 || idadeAtual2 < 18 || idadeAtual3 < 18 ? 
                        <div className="message">
                        <h4>Não aceitamos membros menores de 18 anos. Você não pode prosseguir. </h4>
                        <button onclick={handleDeleteAccount}>Deletar minha conta</button>
