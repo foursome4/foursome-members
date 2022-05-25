@@ -181,6 +181,11 @@ function handleLogout() {
                     <div className="data-form">   
                     <span>Membro casal 1</span><br />
                     <h5>Data de nascimento</h5>
+                    {data !== "" ?
+                         idadeAtual >= 18 ? 
+                     <h4>Sua idade é {idadeAtual} anos</h4>:
+                     <h3>Sua idade é {idadeAtual} anos</h3>
+                      : ""}
                     <div className="date">
                     <p> <IoCalendarOutline /></p>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
@@ -227,6 +232,11 @@ function handleLogout() {
                     <br /><br />
                     <span>Membro casal 2</span><br />
                     <h5>Data de nascimento</h5>
+                    {data2 !== "" ?
+                         idadeAtual2 >= 18 ? 
+                     <h4>Sua idade é {idadeAtual2} anos</h4>:
+                     <h3>Sua idade é {idadeAtual2} anos</h3>
+                      : ""}
                     <div className="date">
                     <p> <IoCalendarOutline /></p>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data2}  onChange={(e) => setData2(e.target.value)}/>
@@ -274,6 +284,11 @@ function handleLogout() {
                             <br /><br />
                     <span>Membro casal 3</span><br />
                     <h5>Data de nascimento</h5>
+                    {data3 !== "" ?
+                         idadeAtual3 >= 18 ? 
+                     <h4>Sua idade é {idadeAtual3} anos</h4>:
+                     <h3>Sua idade é {idadeAtual3} anos</h3>
+                      : ""}
                     <div className="date">
                     <p> <IoCalendarOutline /></p>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data3}  onChange={(e) => setData3(e.target.value)}/>
@@ -322,6 +337,11 @@ function handleLogout() {
              <div className="data-form">
                   <span>Membro casal 1</span><br />
                   <h5>Data de nascimento</h5>
+                  {data !== "" ?
+                         idadeAtual >= 18 ? 
+                     <h4>Sua idade é {idadeAtual} anos</h4>:
+                     <h3>Sua idade é {idadeAtual} anos</h3>
+                      : ""}
                   <div className="date">
                     <p> <IoCalendarOutline /></p>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data}  onChange={(e) => setData(e.target.value)}/>
@@ -369,6 +389,11 @@ function handleLogout() {
                             <br /><br />
                     <span>Membro casal 2</span><br />
                     <h5>Data de nascimento</h5>
+                    {data2 !== "" ?
+                         idadeAtual2 >= 18 ? 
+                     <h4>Sua idade é {idadeAtual2} anos</h4>:
+                     <h3>Sua idade é {idadeAtual2} anos</h3>
+                      : ""}
                     <div className="date">
                     <p> <IoCalendarOutline /></p>
                     <input required type="date" placeholder="Data de Nascimenrto" value={data2}  onChange={(e) => setData2(e.target.value)}/>
@@ -473,7 +498,7 @@ function handleLogout() {
                        <br />
                        <br />
                        {data === "" ? <button className="delete" onClick={handleLogout}>Continuar depois</button> :
-                       idadeAtual < 18 ? 
+                       idadeAtual < 18 && idadeAtual2 < 18 && idadeAtual3 < 18 ? 
                        <div className="message">
                        <h4>Não aceitamos membros menores de 18 anos. Você não pode prosseguir. </h4>
                        <button onclick={handleDeleteAccount}>Deletar minha conta</button>

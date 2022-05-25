@@ -410,7 +410,7 @@ async function preferencesAccount({id, idAccount, men, woman, couple, trisal, tr
 
           
         const text = `${username}, ingressou na Foursome, dê as boas vindas.`
-        const dataNotification = {idPatrono: patron, text,idAccount: id, idFriend: "", type: "notification" }
+        const dataNotification = {idPatrono: patron, text,idAccount: idAccount, idFriend: "", type: "notification" }
 
 
         await api.post("/notifications", dataNotification).then(() => {
