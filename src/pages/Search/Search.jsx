@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu";
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim";
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim";
 import { TopBar } from "../../components/TopBar/TopBar";
 import { useFetch } from "../../hooks/useFetch";
+import api from "../../services/api"
 import "./search.css"
 
 
 function Search() {
+    const [users, setUsers] = useState([])
+    const [online, setOnline] = useState([])
     const [search, setSearch] = useState('');
     const [type, setType] = useState('');
     const [username, setUsername] = useState('');
@@ -31,12 +34,58 @@ function Search() {
 
     let userFilter = []
     let SearchUsers = []
+    let list = [];
     const searchLower = search.toLowerCase()
 
     // if(data) {
     //     SearchUsers = data?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower))
     // }
 
+    useEffect(() => {
+        async function loadUsersONline() {
+            await api.get("/accounts").then((res) => {
+                setUsers(res.data);
+                console.log(res.data);
+    
+                users.forEach( async (user) => {
+                    await api.get(`/informations/${user.id}`).then((res) => {
+                      console.log(res.data[0]);
+
+                      if(res.data[0] === undefined) {
+                          return
+                      }
+                        const dados = {
+                            idAccount: res.data[0].idAccount,
+                            username: user.username,
+                            type: user.type,
+                            avatar: res.data[0].avatar,
+                            nickname: res.data[0].nickname,
+                            city: res.data[0].city,     
+                            uf: res.data[0].uf,     
+                        }
+                        
+                        setOnline(oldOnline => [...oldOnline, dados])
+                        console.log("dados")
+                        console.log(dados)
+                        
+                        //list.push(dados);
+
+                        // setOnline([...online, data])
+
+                    }).catch((error) => {
+                        console.log(error)
+                    })
+    
+              
+           })
+       //console.log(list)
+    //    setOnline(list);
+            })
+        }
+        loadUsersONline();   
+     }, [])
+
+    console.log(online)
     const UsersOnline = [
         {
             idAccount: 121212,
@@ -271,26 +320,28 @@ function Search() {
           
     ]
 
-    SearchUsers = UsersOnline.filter((informations) => informations.nickname.toLowerCase().includes(searchLower)
-                                                        || informations.city.toLowerCase().includes(searchLower) 
-                                                        || informations.uf.toLowerCase().includes(searchLower))
-    userFilter = UsersOnline.filter((online) =>
-                online.type === type      
-                || online.men === men             
-                || online.woman === woman             
-                || online.couple === couple             
-                || online.trisal === trisal             
-                || online.transsexuals === transsexuals             
-                || online.transvestites === transvestites             
-                || online.groups === groups          
+    SearchUsers = online.filter((informations) => informations.nickname.includes(search)
+                                                        || informations.city.includes(search) 
+                                                        || informations.uf.includes(search))
+
+                                                        console.log(SearchUsers)
+    userFilter = online.filter((onlines) =>
+                onlines.type === type      
+                // || online.men === men             
+                // || online.woman === woman             
+                // || online.couple === couple             
+                // || online.trisal === trisal             
+                // || online.transsexuals === transsexuals             
+                // || online.transvestites === transvestites             
+                // || online.groups === groups          
     )
 
+    console.log(userFilter)
 
     function handleSearch(e){
         e.preventDefault();
         setType("")
     }
-
 
     function handleTypeMen(e) {
         e.preventDefault();
@@ -361,8 +412,6 @@ function Search() {
         }
     }
 
-    
-
     function handlePreferencesTrisal(e) {
         e.preventDefault();
 
@@ -392,6 +441,7 @@ function Search() {
             setTransvestites('Vazio')
         }
     }
+
     function handlePreferencesGroups(e) {
         e.preventDefault();
         if(groups === 'Vazio') {
@@ -410,9 +460,9 @@ function Search() {
             <div className="itensSearch">
               
         
-            {usersNewArray.map((information) => {
+            {online.map((information) => {
                 return(
-                    <div className="accounts" key={information.nickname}>
+                    <div className="accounts" key={information.idAccount}>
                         <div className="image">
                             <img src={information.avatar} alt="" />
                         </div>
@@ -450,8 +500,8 @@ function Search() {
 
             <div className="filter">
                   <div className="itensFilter">
-                  <h5>Com distância de até:</h5>
-                  <input type="range" minValue={10} maxValue={100}/>
+                  {/* <h5>Com distância de até:</h5>
+                  <input type="range" minValue={10} maxValue={100}/> */}
                       <h5>Busca por:</h5>
                   <div className="buttons">
                       <button className={type === "Homem" ? "select" : ""} onClick={handleTypeMen}>Homem</button>

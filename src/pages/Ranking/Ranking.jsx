@@ -17,11 +17,9 @@ function Ranking() {
 
     const [photo, setPhoto] = useState([])
     const [video, setVideo] = useState([])
-    const [type, setType] = useState("All");
+    const [type, setType] = useState("Photo");
 
-    const [dados, setDatos] = useState([]);
-    const list = [];
-    const listVideo = [];
+
     useEffect(() => {
         async function loadPostsPhoto() {
         const res = await api.get(`/posts/filter/post-photo`);
@@ -37,20 +35,18 @@ function Ranking() {
                 link: photos.link,
                 username: photos.username
             }
-            list.push(data)
+            setPhoto(oldOnline => [...oldOnline, data])
            })
         }
         loadReactions()
-    })            
+    })           
         }
 
 
         loadPostsPhoto();
-        setPhoto(list);
     }, []);
 
-    console.log("dados")
-    console.log(photo);
+
 
     useEffect(() => {
         async function loadPostsVideo() {
@@ -67,20 +63,20 @@ function Ranking() {
                 link: videos.link,
                 username: videos.username
             }
-            listVideo.push(dataVideo)
+            setVideo(oldOnline => [...oldOnline, dataVideo])
            })
         }
         loadReactions()
-    })            
+    })  
+
+         
         }
 
 
         loadPostsVideo();
-        setVideo(listVideo);
+
     }, []);
 
-    console.log("dados")
-    console.log(video)
 
 
     function handleSelectTypePhoto() {
