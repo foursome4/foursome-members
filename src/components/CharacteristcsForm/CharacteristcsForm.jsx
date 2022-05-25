@@ -500,18 +500,46 @@ function handleLogout() {
                     <div className='confirmation'>
                        <br />
                        <br />
-                       {data === "" ? <button className="delete" onClick={handleLogout}>Continuar depois</button> :
-                       idadeAtual < 18 || idadeAtual2 < 18 || idadeAtual3 < 18 ? 
-                       <div className="message">
-                       <h4>Não aceitamos membros menores de 18 anos. Você não pode prosseguir. </h4>
-                       <button onclick={handleDeleteAccount}>Deletar minha conta</button>
-                       </div>
-                       :
-                       <>
-                        <button type='submit'>Salvar e avançar</button>
-                        <button className="delete" onClick={handleLogout}>Continuar depois</button>
-                       </>
-                       }
+
+                       {user.type === "Trisal" ?
+                            data === "" ? <button className="delete" onClick={handleLogout}>Continuar depois</button> :
+                            idadeAtual < 18 || idadeAtual2 < 18 || idadeAtual3 < 18 ? 
+                            <div className="message">
+                            <h4>Não aceitamos membros menores de 18 anos. Você não pode prosseguir. </h4>
+                            <button onclick={handleDeleteAccount}>Deletar minha conta</button>
+                            </div>
+                            :
+                            <>
+                            <button type='submit'>Salvar e avançar</button>
+                            <button className="delete" onClick={handleLogout}>Continuar depois</button>
+                            </>
+                        : user.type === "Casal"?
+                            data === "" ? <button className="delete" onClick={handleLogout}>Continuar depois</button> :
+                            idadeAtual < 18 || idadeAtual2 < 18  ? 
+                            <div className="message">
+                            <h4>Não aceitamos membros menores de 18 anos. Você não pode prosseguir. </h4>
+                            <button onclick={handleDeleteAccount}>Deletar minha conta</button>
+                            </div>
+                            :
+                            <>
+                            <button type='submit'>Salvar e avançar</button>
+                            <button className="delete" onClick={handleLogout}>Continuar depois</button>
+                            </>
+                        : 
+                            data === "" ? <button className="delete" onClick={handleLogout}>Continuar depois</button> :
+                            idadeAtual < 18  ? 
+                            <div className="message">
+                            <h4>Não aceitamos membros menores de 18 anos. Você não pode prosseguir. </h4>
+                            <button onclick={handleDeleteAccount}>Deletar minha conta</button>
+                            </div>
+                            :
+                            <>
+                            <button type='submit'>Salvar e avançar</button>
+                            <button className="delete" onClick={handleLogout}>Continuar depois</button>
+                            </>
+
+                        }
+
 
                     </div>
                         </form>
