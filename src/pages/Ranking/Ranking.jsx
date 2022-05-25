@@ -52,29 +52,25 @@ function Ranking() {
         async function loadPostsVideo() {
         const res = await api.get(`/posts/filter/post-video`);
 
-    res.data.forEach((videos) => {
-         async function loadReactions() {
-           await api.get(`/reactions/${videos.id}`).then((res) => {
-            console.log(res.data.length)
-            const dataVideo = {
-                id: videos.id,
-                likes: res.data.length,
-                idAccount: videos.idAccount,
-                link: videos.link,
-                username: videos.username
-            }
-            setVideo(oldOnline => [...oldOnline, dataVideo])
-           })
+            res.data.forEach((videos) => {
+                async function loadReactions() {
+                await api.get(`/reactions/${videos.id}`).then((res) => {
+                    console.log(res.data.length)
+                    const dataVideo = {
+                        id: videos.id,
+                        likes: res.data.length,
+                        idAccount: videos.idAccount,
+                        link: videos.link,
+                        username: videos.username
+                    }
+                    setVideo(oldOnline => [...oldOnline, dataVideo])
+                })
+                }
+                loadReactions()
+            })  
+   
         }
-        loadReactions()
-    })  
-
-         
-        }
-
-
         loadPostsVideo();
-
     }, []);
 
 

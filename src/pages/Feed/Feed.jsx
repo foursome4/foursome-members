@@ -15,6 +15,13 @@ import { useNavigate } from 'react-router-dom';
 function Feed() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
+    const LocalInformation = localStorage.getItem("informations-foursome");
+    const userInformation = JSON.parse(LocalInformation);
+    const Localcharacteritics = localStorage.getItem("characteritics-foursome");
+    const usercharacteritics = JSON.parse(Localcharacteritics);
+    const Localpreferences = localStorage.getItem("preferences-foursome");
+    const userpreferences = JSON.parse(Localpreferences);
+  
 
     // const [lat, setlat] = useState("");
     // const [long, setLong] = useState("");
@@ -30,6 +37,15 @@ function Feed() {
            useEffect(() => {
                if(user.status === "blocked") {
                 navigate("/profile");
+               }
+               if(userInformation === null || userInformation === undefined) {
+                navigate("/completeregistration");
+               }
+               if(usercharacteritics === null || usercharacteritics === undefined) {
+                navigate("/characteristcs");
+               }
+               if(Localpreferences === null || Localpreferences === undefined) {
+                navigate("/preferences");
                }
            }, [navigate, user.status]);
 

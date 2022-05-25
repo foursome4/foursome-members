@@ -7,7 +7,7 @@ import {IoMaleOutline, IoFemaleOutline, IoMaleFemaleOutline, IoTransgenderOutlin
 import './preferencesForm.css'
 
 function PreferencesForm() {
-    const {preferencesAccount} = useContext(AuthContext);
+    const {preferencesAccount, logout} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
     const [homem, setHomem] = useState("");
@@ -43,7 +43,9 @@ function PreferencesForm() {
             transsexuals:transexuais,
             groups:grupos,
             proposal:proposal,
-            email: user.email
+            email: user.email,
+            patron: user.patron,
+            username: user.username,
         })
         console.log({
             id,
@@ -59,6 +61,10 @@ function PreferencesForm() {
             email: user.email
         })
     }
+
+        function handleLogout() {
+            logout(user.id)
+        }
 
     function handleSelectHomem(e) {
             e.preventDefault();
@@ -205,6 +211,7 @@ function PreferencesForm() {
                         <br />
                         <br />
                         <button onClick={handlePreferences}>Salvar e Avançar</button>
+                        <button className="delete" onClick={handleLogout}>Continuar depois</button>
                     </div>
                         </form>
             </div>
@@ -212,6 +219,7 @@ function PreferencesForm() {
             <br />
             <br />
             <br />
+
             </div>
     )
 }

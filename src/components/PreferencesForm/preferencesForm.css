@@ -72,6 +72,7 @@
     font-weight: 900;
     margin: 5px;
 }
+
 .content-Login .preferencesForm form .data  button svg {
     margin-right: 5px;
     color: var(--Primary);
@@ -117,6 +118,17 @@
     border-radius: 8px;
     background-color: var(--White);
     color: var(--Primary);
+    margin: 5px;
+}
+.content-Login .preferencesForm form .confirmation .delete {
+    width: 150px;
+    padding: 18px 5px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: red;
+    color: var(--White);
+    margin: 5px;
 }
 
 .content-Login .preferencesForm form .confirmation .confirmation_preferencesForm {
@@ -150,7 +162,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         width: 100%;
         margin-top: 20px;
     }

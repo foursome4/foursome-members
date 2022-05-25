@@ -30,310 +30,61 @@ function Search() {
     const [groups, setGroups] = useState('Vazio');
 
 
-    const {data} = useFetch(`/informations`);
-
     let userFilter = []
     let SearchUsers = []
-    let list = [];
     const searchLower = search.toLowerCase()
 
-    // if(data) {
-    //     SearchUsers = data?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower))
-    // }
+
 
     useEffect(() => {
         async function loadUsersONline() {
-            await api.get("/accounts").then((res) => {
-                setUsers(res.data);
-                console.log(res.data);
-    
-                users.forEach( async (user) => {
+            const res = await api.get("/accounts");
+
+            res.data.forEach((user) => {
+                async function loadInformations() {
                     await api.get(`/informations/${user.id}`).then((res) => {
-                      console.log(res.data[0]);
-
-                      if(res.data[0] === undefined) {
-                          return
-                      }
-                        const dados = {
-                            idAccount: res.data[0].idAccount,
-                            username: user.username,
-                            type: user.type,
-                            avatar: res.data[0].avatar,
-                            nickname: res.data[0].nickname,
-                            city: res.data[0].city,     
-                            uf: res.data[0].uf,     
+                        console.log(res.data[0]);
+      
+                        if(res.data[0] === undefined) {
+                            return
                         }
-                        
-                        setOnline(oldOnline => [...oldOnline, dados])
-                        console.log("dados")
-                        console.log(dados)
-                        
-                        //list.push(dados);
+                          const dados = {
+                              idAccount: user.id,
+                              username: user.username,
+                              type: user.type,
+                              avatar: res.data[0].avatar,
+                              nickname: res.data[0].nickname,
+                              city: res.data[0].city,     
+                              uf: res.data[0].uf,     
+                          }
+                          
+                          setOnline(oldOnline => [...oldOnline, dados])
+                          console.log("dados")
+                          console.log(dados)
+      
+                      }).catch((error) => {
+                          console.log(error)
+                      })  
+                }
 
-                        // setOnline([...online, data])
-
-                    }).catch((error) => {
-                        console.log(error)
-                    })
-    
-              
-           })
-       //console.log(list)
-    //    setOnline(list);
-            })
+                loadInformations()
+ 
+       })
         }
         loadUsersONline();   
      }, [])
 
-    console.log(online)
-    const UsersOnline = [
-        {
-            idAccount: 121212,
-            type: "Homem",
-            username: "4suporte",
-            nickname: "Supoprte Foursome",
-            avatar: "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240",
-            city: "Rio Bonito",
-            uf: "RJ",
-            lat: 25.45856,
-            long: -24.12563,
-            distance: 10,
-            equalCity: true,
-            plane: false,
-            emoji: false,
-            song: false,
-            men:"Homem",
-            woman:"Mulher",
-            couple:"Casal",
-            trisal:"Trisal",
-            transvestites:"Travestis",
-            transsexuals:"Transexuais",
-            groups:"Grupos",
-          },
-        {
-            idAccount: 131313,
-            type: "Mulher",
-            username: "4moderacao",
-            nickname: "Moderacao Foursome",
-            avatar: "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240",
-            city: "Cabo Frio",
-            uf: "RJ",
-            lat: 25.45856,
-            long: -24.12563,
-            distance: 20,
-            equalCity: true,
-            plane: false,
-            emoji: false,
-            song: false,
-            men:"Homem",
-            woman:"Mulher",
-            couple:"Casal",
-            trisal:"Trisal",
-            transvestites:"",
-            transsexuals:"",
-            groups:"",
-          },
-          {
-            idAccount: 141414,
-            username: "foursome",
-            type: "Casal",
-            nickname: "Foursome",
-            avatar: "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240",
-            city: "Buzios",
-            uf: "RJ",
-            lat: 25.45856,
-            long: -24.12563,
-            distance: 100,
-            equalCity: true,
-            plane: false,
-            emoji: false,
-            song: false,
-            men:"Homem",
-            woman:"",
-            couple:"Casal",
-            trisal:"",
-            transvestites:"Travestis",
-            transsexuals:"Transexuais",
-            groups:"",
-          },
-          {
-            idAccount: 151515,
-            type: "Casal",
-            username: "casalaventura",
-            nickname: "Casal Aventura",
-            avatar: "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240",
-            city: "São Paulo",
-            uf: "SP",
-            lat: 25.45856,
-            long: -24.12563,
-            distance: 210,
-            equalCity: true,
-            plane: false,
-            emoji: false,
-            song: false,
-            men:"Homem",
-            woman:"Mulher",
-            couple:"",
-            trisal:"Trisal",
-            transvestites:"",
-            transsexuals:"",
-            groups:"Grupos",
-          },
-          {
-            idAccount: 161616,
-            type: "Transex",
-            username: "moreno",
-            nickname: "Moreno Dotado",
-            avatar: "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240",
-            city: "Paranavaí",
-            uf: "PR",
-            lat: 25.45856,
-            long: -24.12563,
-            distance: 95,
-            equalCity: true,
-            plane: false,
-            emoji: false,
-            song: false,
-            men:"",
-            woman:"Mulher",
-            couple:"Casal",
-            trisal:"Trisal",
-            transvestites:"Travestis",
-            transsexuals:"Transexuais",
-            groups:"Grupos",
-          },
-          {
-            idAccount: 171717,
-            type: "Trisal",
-            username: "manhosa",
-            nickname: "Gatinha Manhosa",
-            avatar: "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240",
-            city: "Belo Horizonte",
-            uf: "MG",
-            lat: 25.45856,
-            long: -24.12563,
-            distance: 45,
-            equalCity: true,
-            plane: false,
-            emoji: false,
-            song: false,
-            men:"Homem",
-            woman:"",
-            couple:"Casal",
-            trisal:"Trisal",
-            transvestites:"",
-            transsexuals:"",
-            groups:"",
-          },
-          {
-            idAccount: 181818,
-            type: "Transex",
-            username: "dotadosp",
-            nickname: "Dotado SP",
-            avatar: "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240",
-            city: "Campinas",
-            uf: "SP",
-            lat: 25.45856,
-            long: -24.12563,
-            distance: 10,
-            equalCity: true,
-            plane: false,
-            emoji: false,
-            song: false,
-            men:"Homem",
-            woman:"Mulher",
-            couple:"Casal",
-            trisal:"Trisal",
-            transvestites:"Travestis",
-            transsexuals:"Transexuais",
-            groups:"Grupos",
-          },
-          {
-            idAccount: 191919,
-            type: "Travestis",
-            username: "casalmec",
-            nickname: "Casal MEC",
-            avatar: "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240",
-            city: "Rio de Janeiro",
-            uf: "RJ",
-            lat: 25.45856,
-            long: -24.12563,
-            distance: 45,
-            equalCity: true,
-            plane: false,
-            emoji: false,
-            song: false,
-            men:"",
-            woman:"",
-            couple:"Casal",
-            trisal:"Trisal",
-            transvestites:"",
-            transsexuals:"",
-            groups:"Grupos",
-          },
-          {
-            idAccount: 202020,
-            type: "Mulher",
-            username: "safada",
-            nickname: "Safadinha",
-            avatar: "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240",
-            city: "São LUIZ",
-            uf: "MA",
-            lat: 25.45856,
-            long: -24.12563,
-            distance: 95,
-            equalCity: true,
-            plane: false,
-            emoji: false,
-            song: false,
-            men:"Homem",
-            woman:"",
-            couple:"",
-            trisal:"",
-            transvestites:"",
-            transsexuals:"",
-            groups:"",
-          },
-          {
-            idAccount: 212121,
-            type: "Casal",
-            username: "moreninha10",
-            nickname: "Morena 10",
-            avatar: "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240",
-            city: "Juíz de Fora",
-            uf: "MG",
-            lat: 25.45856,
-            long: -24.12563,
-            distance: 30,
-            equalCity: true,
-            plane: false,
-            emoji: false,
-            song: false,
-            men:"Homem",
-            woman:"",
-            couple:"Casal",
-            trisal:"Trisal",
-            transvestites:"Travestis",
-            transsexuals:"Transexuais",
-            groups:"",
-          },
-          
-    ]
 
-    SearchUsers = online.filter((informations) => informations.nickname.includes(search)
-                                                        || informations.city.includes(search) 
-                                                        || informations.uf.includes(search))
+
+
+
+    SearchUsers = online.filter((informations) => informations.nickname.includes(searchLower)
+                                                        || informations.city.includes(searchLower) 
+                                                        || informations.uf.includes(searchLower))
 
                                                         console.log(SearchUsers)
     userFilter = online.filter((onlines) =>
-                onlines.type === type      
-                // || online.men === men             
-                // || online.woman === woman             
-                // || online.couple === couple             
-                // || online.trisal === trisal             
-                // || online.transsexuals === transsexuals             
-                // || online.transvestites === transvestites             
-                // || online.groups === groups          
+                onlines.type === type               
     )
 
     console.log(userFilter)
@@ -460,7 +211,7 @@ function Search() {
             <div className="itensSearch">
               
         
-            {online.map((information) => {
+            {usersNewArray.map((information) => {
                 return(
                     <div className="accounts" key={information.idAccount}>
                         <div className="image">
@@ -472,15 +223,6 @@ function Search() {
                             <h6>{information.type}</h6>
                             <h6>{information.distance}</h6>
                             <h6>{information.city} - {information.uf}</h6>
-                            </div>
-                            <div className="moreInfos">
-                            <h6>{information.men}</h6>
-                            <h6>{information.woman}</h6>
-                            <h6>{information.couple}</h6>
-                            <h6>{information.trisal}</h6>
-                            <h6>{information.transvestites}</h6>
-                            <h6>{information.transsexuals}</h6>
-                            <h6>{information.groups}</h6>
                             </div>
                         </div>
                         </div>

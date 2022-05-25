@@ -213,7 +213,19 @@
     border-radius: 8px;
     background-color: var(--White);
     color: var(--Primary);
+    margin: 5px;
 }
+.complete-informations form .confirmation .delete {
+    width: 150px;
+    padding: 18px 5px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: red;
+    color: var(--White);
+    margin: 5px;
+}
+
 
 .complete-informations form .confirmation .confirmation_informations {
     display: flex;

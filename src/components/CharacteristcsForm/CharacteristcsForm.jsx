@@ -7,7 +7,7 @@ import {v4 as uuidv4} from 'uuid';
 import './characteristcsForm.css'
 
 function CharacteristcsForm() {
-    const {createCharacteristcs, createCharacteristcs2, createCharacteristcs3, deleteAccount} = useContext(AuthContext);
+    const {createCharacteristcs, createCharacteristcs2, createCharacteristcs3, deleteAccount, logout} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
 
@@ -118,6 +118,10 @@ function CharacteristcsForm() {
     }
 
 //-----------------------------------
+
+function handleLogout() {
+    logout(user.id)
+}
 
     function handleSelectSex(e) {
         setSex(e.target.value)
@@ -468,18 +472,24 @@ function CharacteristcsForm() {
                     <div className='confirmation'>
                        <br />
                        <br />
-                       {data === "" ? "" :
+                       {data === "" ? <button className="delete" onClick={handleLogout}>Continuar depois</button> :
                        idadeAtual < 18 ? 
                        <div className="message">
                        <h4>Não aceitamos membros menores de 18 anos. Você não pode prosseguir. </h4>
                        <button onclick={handleDeleteAccount}>Deletar minha conta</button>
                        </div>
                        :
+                       <>
                         <button type='submit'>Salvar e avançar</button>
+                        <button className="delete" onClick={handleLogout}>Continuar depois</button>
+                       </>
                        }
-                        
+
                     </div>
                         </form>
+                        <br />
+                        <br />
+                        <br />
             </div>
     )
 }

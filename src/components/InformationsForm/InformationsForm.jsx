@@ -14,7 +14,7 @@ import { mask as masker, unMask } from "remask";
 function InformationsForm() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
-    const {createInformationsAccount} = useContext(AuthContext)
+    const {createInformationsAccount, logout} = useContext(AuthContext)
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [imageAvatar, setImageAvatar] = useState('');
     const [city, setCity] = useState("");
@@ -46,6 +46,11 @@ function InformationsForm() {
             }
         }
     }
+
+    function handleLogout() {
+        logout(user.id)
+    }
+    
     
     async function handleUploadAccount(e) {
         e.preventDefault();
@@ -179,6 +184,7 @@ function InformationsForm() {
                     <div className='confirmation'>
                         <div className='buttonsInformation'>
                         <button onClick={handleUploadAccount}> Salvar e avançar</button>
+                        <button className="delete" onClick={handleLogout}>Continuar depois</button>
                         </div>
                     </div>
                         </form>
