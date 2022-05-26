@@ -21,22 +21,39 @@ function Radar() {
     const userData = JSON.parse(Local);
 
     const [range, setRange] = useState(0);
-    const [valor, setValor] = useState(0);
-    const [lat1, setLat] = useState();
-    const [long1, setLong] = useState();
     const [distancia, setDistancia] = useState([]);
     const [type, setType] = useState("");
     const [emojiSelect, setEmojiSelect] = useState("");
+    const [myType, setMyType] = useState("");
+    const [myEmojiSelect, setMyEmojiSelect] = useState("");
+    const [style, setStyle] = useState("recolher");
 
 
+
+    function handleSelectStyle(e) {
+        e.preventDefault();
+        if(style === "recolher") {
+            setStyle("selections")
+        } else {
+            setStyle("recolher")
+        }
+      }
 
     function handleSetectType(e) {
         setType(e.target.value)
-        toast(e.target.value)
       }
+
     function handleSetectTEmoji(e) {
         setEmojiSelect(e.target.value)
+      }
+    function handleSetectMyType(e) {
         toast(e.target.value)
+        setMyType(e.target.value)
+      }
+
+    function handleSetectTMyEmoji(e) {
+        toast(e.target.value)
+        setMyEmojiSelect(e.target.value)
       }
     
     var number ;
@@ -49,11 +66,6 @@ useEffect(() => {
         setUsers(res.data)
 
             const myLocation = res.data.filter((location) => (location.idAccount === userData.id)); 
-            setLat(myLocation[0].lat);
-            setLong(myLocation[0].long);
-            console.log(myLocation[0].lat);
-            console.log(myLocation[0].long);
-
             res.data.forEach((userLocation) => {
                 let distance = 0;
 
@@ -128,7 +140,6 @@ useEffect(() => {
     })
 }
 
-
 const searchAll = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.distanceKm <= range));
 const searchEmojiType = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type) );
 const searchEmojiRange = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.distanceKm <= range));
@@ -153,8 +164,6 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                 distancia
 
 
-
-
     return (
         <div className="content">
      <ToolbarLeftSlim />
@@ -167,10 +176,38 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
   
                                 <button className="selected">Radar</button>
                             </div>
+                                                        {/* <div className="mySelections">
+                                                        <div className="text">
+                                                        <h4>{myData[0].invisible === false ? " Você está Visível" : "Você está invisível"}</h4>
+                                                        <h4>{myData[0].emoji === "musica" ? " Hoje você quer balada" :
+                                                                myData[0].emoji === "emoji" ? "Hoje você quer sexo" :
+                                                                myData[0].emoji === "viagem" ? "Você está aqui de viagem" : "Deseja escolher um Status?"}</h4>
+                        
+                                                                <button onClick={handleSelectStyle}>Alterar Status ou visibilidade</button>
+                                                        </div>
+                                                        <div className={style === "selections" ? "selections" : "recolher"}>
+                                                            
+                                                    <select value={type} onChange={handleSetectMyType}>
+                                                        <option value="">Visibilidade</option>
+                                                        <option value={false}>Disponível</option>
+                                                        <option value={true}>Invisível</option>
+                                                    </select>
+                        
+                                                    <select value={emojiSelect} onChange={handleSetectTMyEmoji}>
+                                                        <option value="">Qual seu status de hoje?</option>
+                                                        <option value="viagem">De viagem ✈️</option>
+                                                        <option value="emoji">Que querem Sexo 😈</option>
+                                                        <option value="musica">Que querem Balada 🎶</option>
+                                                    </select>
+                        
+                                                        </div>
+                                                    </div> */}
+
+
                             <div className="radar-range">
                                 <h4>{range} Km</h4>
-                                <input type="range" min={0} max={2000} value={range} onChange={(e) => setRange(e.target.value)}/>
-                                <h4>2.000 km</h4>
+                                <input type="range" min={0} max={5000} value={range} onChange={(e) => setRange(e.target.value)}/>
+                                <h4>5.000 km</h4>
                                 <br />
                                 <br />
                                 <br />

@@ -939,9 +939,9 @@ async function newVisit(idAccount, username, idFriend) {
             actualCity: cityActual,
             actualUf: ufActual,
             equalCity: equalCity,
-            plane: false,
-            emoji: false,
-            song: false,
+            plane: "",
+            emoji: "",
+            song: "",
             invisible: false
         }
 
