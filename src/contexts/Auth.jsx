@@ -916,13 +916,7 @@ async function newVisit(idAccount, username, idFriend) {
         const LocalInformation = localStorage.getItem("informations-foursome");
         const userInformation = JSON.parse(LocalInformation);
 
-        let usersOnline = [];
-        await api.get("/online").then((res) => {
-           usersOnline = res.data
-        })
-       
-        let selectUserOnline = usersOnline.filter(online => online.idAccount === user.id);
-
+ 
        
         let equalCity = " "
         if(cityActual === userInformations.city && ufActual === userInformations.uf ) {
@@ -956,6 +950,14 @@ async function newVisit(idAccount, username, idFriend) {
                 socket.on("connection", () => {
                     console.log("Conexão estabelecida")
                 })
+
+                let usersOnline = [];
+                await api.get("/online").then((res) => {
+                   usersOnline = res.data
+                })
+               
+                let selectUserOnline = usersOnline.filter(online => online.idAccount === data.idAccount);
+        
 
                 if(selectUserOnline.length === 0) {
                     console.log("Cadastrando usuário")

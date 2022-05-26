@@ -25,8 +25,20 @@ function Radar() {
     const [lat1, setLat] = useState();
     const [long1, setLong] = useState();
     const [distancia, setDistancia] = useState([]);
+    const [type, setType] = useState("");
+    const [emojiSelect, setEmojiSelect] = useState("");
 
-    const list = [];
+
+
+    function handleSetectType(e) {
+        setType(e.target.value)
+        toast(e.target.value)
+      }
+    function handleSetectTEmoji(e) {
+        setEmojiSelect(e.target.value)
+        toast(e.target.value)
+      }
+    
     var number ;
 
 const [users, setUsers] = useState([])
@@ -34,6 +46,7 @@ useEffect(() => {
 
     async function loadUsersONline() {
         const res = await api.get(`/online`);
+        setUsers(res.data)
 
             const myLocation = res.data.filter((location) => (location.idAccount === userData.id)); 
             setLat(myLocation[0].lat);
@@ -80,7 +93,7 @@ useEffect(() => {
                            avatar: userLocation.avatar,
                            nickname: userLocation.nickname,
                            equalCity: userLocation.equalCity, 
-                           type:userLocation.equalCity,
+                           type:userLocation.type,
                            plane: userLocation.plane,
                            emoji: userLocation.emoji,
                            song: userLocation.song,
@@ -103,12 +116,10 @@ useEffect(() => {
 
  console.log("DistanciaArray")
  console.log(distancia)
-
-let orderUsers = [];
-
+ console.log(users)
 
  if(distancia) {
-    orderUsers =  distancia.sort(function(a,b) {
+     distancia.sort(function(a,b) {
         if(a.distanceKm < b.distanceKm ) {
             return -1
         } else {
@@ -117,12 +128,33 @@ let orderUsers = [];
     })
 }
 
-console.log(orderUsers)
-let SearchUsers = []
-SearchUsers = distancia.filter((distanciaUser) => parseInt(distanciaUser.distanceKm) <= parseInt(valor));
-console.log(parseInt(range))
 
-const filter = valor > 0 ? [""] : distancia
+const searchAll = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.distanceKm <= range));
+const searchEmojiType = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type) );
+const searchEmojiRange = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.distanceKm <= range));
+const searchTypeRange = distancia.filter((distanciaUser) => (distanciaUser.type === type && distanciaUser.distanceKm <= range));
+const searchEmoji= distancia.filter((distanciaUser) => distanciaUser.emoji === emojiSelect );
+const searchType= distancia.filter((distanciaUser) =>  distanciaUser.type === type);
+const searchDistance= distancia.filter((distanciaUser) => distanciaUser.distanceKm <= range);
+const myData = distancia.filter((user) => user.idAccount === userData.id);
+console.log(myData)
+console.log(parseInt(range))
+console.log(searchAll)
+console.log(emojiSelect)
+
+const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDistance : 
+                (range < 1) && (emojiSelect !== "") && (type === "" ) ? searchEmoji : 
+                (range < 1) && (emojiSelect === "") && (type !== "") ? searchType : 
+                (range < 1) && (emojiSelect !== "") && (type !== "") ? searchEmojiType : 
+                (range > 0) && (emojiSelect !== "") && (type === "" ) ? searchEmojiRange : 
+                (range > 0) && (emojiSelect === "") && (type !== "") ? searchTypeRange : 
+                (range > 0) && (emojiSelect !== "") && (type !== "") ? searchAll : 
+                (range < 1) && (emojiSelect === "") && (type === "") ? distancia : 
+                distancia
+
+
+
+
     return (
         <div className="content">
      <ToolbarLeftSlim />
@@ -135,15 +167,33 @@ const filter = valor > 0 ? [""] : distancia
   
                                 <button className="selected">Radar</button>
                             </div>
-                            {/* <div className="radar-range">
-                                <h4>{range}</h4>
-                                <input type="range" min={0} max={10000} value={range} onChange={(e) => setRange(e.target.value)}/>
-                                <h4>10.000 km</h4>
-                                <br />
-                                <input type="number" value={valor} onChange={(e) => setValor(e.target.value)}/>
+                            <div className="radar-range">
+                                <h4>{range} Km</h4>
+                                <input type="range" min={0} max={2000} value={range} onChange={(e) => setRange(e.target.value)}/>
+                                <h4>2.000 km</h4>
                                 <br />
                                 <br />
-                            </div> */}
+                                <br />
+                            </div>
+                            <div className="selectFilter">
+                            <select className={emojiSelect === "" ? "" : "active"} value={emojiSelect} onChange={handleSetectTEmoji}>
+                                <option value="">Quem deseja buscar hoje?</option>
+                                <option value="viagem">De viagem ✈️</option>
+                                <option value="emoji">Que querem Sexo 😈</option>
+                                <option value="musica">Que querem Balada 🎶</option>
+                            </select>
+
+                            <select className={type === "" ? "" : "active"} value={type} onChange={handleSetectType}>
+                                <option value="">Tipo de conta</option>
+                                <option value="Homem">Homem </option>
+                                <option value="Mulher">Mulher </option>
+                                <option value="Casal">Casal </option>
+                                <option value="Trisal">Trisal </option>
+                                <option value="Transex">Transex </option>
+                                <option value="Travestis">Travestis </option>
+                            </select>
+
+                            </div>
                             <div className="radar-all">
                                 {filter.map((user) => {
                                     return (
@@ -159,8 +209,10 @@ const filter = valor > 0 ? [""] : distancia
                         }}
                         />
                                    </Link>
+                                   <h4>{user.emoji === "musica" ? "🎶" : user.emoji === "emoji"? "😈" : user.emoji === "viagem" ? "✈️" :""  }</h4>
                                    </div>
-                                   <h6>{user.distanceKm === "0" ? "- 1Km" : ` ${user.distanceKm}Km`}</h6>
+                                   <h6>{user.distanceKm === 0 ? "- 1Km" : ` ${user.distanceKm}Km`}</h6>
+                                   <h6>{user.type}</h6>
                            </div>
                                     )
                                 })}
