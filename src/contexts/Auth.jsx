@@ -947,7 +947,8 @@ async function newVisit(idAccount, username, idFriend) {
             equalCity: equalCity,
             plane: false,
             emoji: false,
-            song: false
+            song: false,
+            invisible: false
         }
 
         if(data.idAccount && data.username && data.nickname && data.avatar && data.lat && data.long && data.city && data.uf !== "") {

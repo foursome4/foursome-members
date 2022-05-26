@@ -10,6 +10,7 @@ import api from "../../services/api"
 import apiInstagram from "../../services/api-instagram"
 import { Link } from "react-router-dom"
 import { UserRadar } from "../../components/UserRadar/UserRadar"
+import {toast} from 'react-toastify';
 
 function Radar() {
     const {inactivityTime} = useContext(AuthContext);
@@ -19,9 +20,11 @@ function Radar() {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
+    const [range, setRange] = useState(0);
+    const [valor, setValor] = useState(0);
     const [lat1, setLat] = useState();
     const [long1, setLong] = useState();
-    const [distancia, setDistancia] = useState();
+    const [distancia, setDistancia] = useState([]);
 
     const list = [];
     var number ;
@@ -30,19 +33,23 @@ const [users, setUsers] = useState([])
 useEffect(() => {
 
     async function loadUsersONline() {
-        await api.get("/online").then((res) => {
-            setUsers(res.data)
-            console.log(res.data);
+        const res = await api.get(`/online`);
+
             const myLocation = res.data.filter((location) => (location.idAccount === userData.id)); 
             setLat(myLocation[0].lat);
             setLong(myLocation[0].long);
             console.log(myLocation[0].lat);
             console.log(myLocation[0].long);
-            console.log(res.data.lat, res.data.long)
 
-            users.forEach((userLocation) => {
+            res.data.forEach((userLocation) => {
                 let distance = 0;
+
+                console.log("Variavel distancia ");
+
+
+
                function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend) {
+                   console.log(myLat, myLong, latFriend, longFriend)
                    var deg2rad = function (deg) { return deg * (Math.PI / 180); },
                        R = 6371,
                        dLat = deg2rad(latFriend - myLat),
@@ -60,29 +67,35 @@ useEffect(() => {
                        
                        if(distanceCalc.includes("00.")) {
                            number = (((R * c *1000)/1000).toFixed())
+                           console.log(((R * c *1000)/1000).toFixed())
                        } else{
                            number = (((R * c *1000)/1000).toFixed())
+                          console.log(((R * c *1000)/1000).toFixed())
                        }
+
                        const dados = {
-                           distance: number,
+                           distanceKm: parseInt(number),
                            id: userLocation.id,
                            idAccount: userLocation.idAccount,
                            avatar: userLocation.avatar,
                            nickname: userLocation.nickname,
-                           equalCity: userLocation.equalCity,     
+                           equalCity: userLocation.equalCity, 
+                           type:userLocation.equalCity,
+                           plane: userLocation.plane,
+                           emoji: userLocation.emoji,
+                           song: userLocation.song,
+                           invisible: userLocation.invisible    
                        }
    
                        console.log("dados")
-                       console.log(dados)
-                       list.push(dados)
+                       console.log(dados.distanceKm)
+                       setDistancia(oldDistancia => [...oldDistancia, dados])
                }
                
-               getDistanceFromLatLonInKm(myLocation[0].lat, myLocation[0].long, res.data.lat, res.data.long )
+               getDistanceFromLatLonInKm(myLocation[0].lat, myLocation[0].long, userLocation.lat, userLocation.long )
 
        })
-       console.log(list)
-       setDistancia(list);
-        })
+
     }
     loadUsersONline();   
  }, [userData.id])
@@ -90,12 +103,26 @@ useEffect(() => {
 
  console.log("DistanciaArray")
  console.log(distancia)
- console.log("List Array")
- console.log(list)
 
- 
+let orderUsers = [];
 
 
+ if(distancia) {
+    orderUsers =  distancia.sort(function(a,b) {
+        if(a.distanceKm < b.distanceKm ) {
+            return -1
+        } else {
+            return true
+        }
+    })
+}
+
+console.log(orderUsers)
+let SearchUsers = []
+SearchUsers = distancia.filter((distanciaUser) => parseInt(distanciaUser.distanceKm) <= parseInt(valor));
+console.log(parseInt(range))
+
+const filter = valor > 0 ? [""] : distancia
     return (
         <div className="content">
      <ToolbarLeftSlim />
@@ -108,16 +135,17 @@ useEffect(() => {
   
                                 <button className="selected">Radar</button>
                             </div>
-                            <div className="radar-range">
-                                {/* <h4>0 km</h4>
-                                <input type="range" />
-                                <h4>1.000 km</h4> */}
+                            {/* <div className="radar-range">
+                                <h4>{range}</h4>
+                                <input type="range" min={0} max={10000} value={range} onChange={(e) => setRange(e.target.value)}/>
+                                <h4>10.000 km</h4>
+                                <br />
+                                <input type="number" value={valor} onChange={(e) => setValor(e.target.value)}/>
                                 <br />
                                 <br />
-                                <br />
-                            </div>
+                            </div> */}
                             <div className="radar-all">
-                                {users.map((user) => {
+                                {filter.map((user) => {
                                     return (
                                user.idAccount === userData.id ? "" :
                                <div className="radar-unic" key={user.id}>
@@ -132,7 +160,7 @@ useEffect(() => {
                         />
                                    </Link>
                                    </div>
-                               <DistanceFromUser myLat={lat1} myLong={long1} latFriend={user.lat} longFriend={user.long}/>
+                                   <h6>{user.distanceKm === "0" ? "- 1Km" : ` ${user.distanceKm}Km`}</h6>
                            </div>
                                     )
                                 })}
