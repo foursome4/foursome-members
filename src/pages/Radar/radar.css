@@ -36,6 +36,11 @@
     justify-content: flex-start;
     padding: 20px;
     margin-top: 25px;
+    margin-bottom: 60px;
+}
+
+.content .aside .radar h1 {
+    color: var(--Background2);
 }
 
 .content .aside .radar .radar-selected {
@@ -207,6 +212,7 @@
     justify-content: center;
     padding: 5px 0;
     flex-wrap: wrap;
+    margin-bottom: 60px;
 }
 
 .content .aside .radar .radar-all .radar-unic {

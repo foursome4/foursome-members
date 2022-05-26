@@ -255,9 +255,14 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                                 })}
 
                             </div>
+                            <h1>Olá Mundo</h1>
+                    <h1>Olá Mundo</h1>
+
                     </div>
+
                 <ChatSlim />
                 </div>
+     
             </div>
         </div>
     )
