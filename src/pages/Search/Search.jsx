@@ -75,15 +75,13 @@ function Search() {
      }, [])
 
 
+     console.log(online)
 
 
-
-    SearchUsers = online.filter((informations) => informations.nickname.includes(searchLower)
-                                                        || informations.city.includes(searchLower) 
-                                                        || informations.uf.includes(searchLower))
+    SearchUsers = online?.filter((informations) => informations.uf.includes(searchLower))
 
                                                         console.log(SearchUsers)
-    userFilter = online.filter((onlines) =>
+    userFilter = online?.filter((onlines) =>
                 onlines.type === type               
     )
 
@@ -211,14 +209,15 @@ function Search() {
             <div className="itensSearch">
               
         
-            {usersNewArray.map((information) => {
+            {SearchUsers.map((information) => {
                 return(
                     <div className="accounts" key={information.idAccount}>
                         <div className="image">
                             <img src={information.avatar} alt="" />
                         </div>
                         <div className="infos">
-                            <h4>{information.nickname}</h4>
+                            <h5>{information.nickname}</h5>
+                            <h6>{information.username}</h6>
                             <div className="moreInfos">
                             <h6>{information.type}</h6>
                             <h6>{information.distance}</h6>

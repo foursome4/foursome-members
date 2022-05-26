@@ -2,6 +2,7 @@ import {createContext, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import api from '../services/api';
+import apiGoogleReverse from '../services/apiGoogleReverse';
 import { socket } from '../services/websocket';
 
 
@@ -12,6 +13,11 @@ function AuthProvider({children}) {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const [comentsPosts, setComentsPosts] = useState([])
+
+    const [lat, setlat] = useState("");
+    const [long, setLong] = useState("");
+    const [cityActual, setCityActual] = useState("");
+    const [ufActual, setUfActual] = useState("");
 
     
     async function createAccount(id, username, email, phone, type, password, status, role, code, online, patron) {
@@ -871,6 +877,103 @@ async function newVisit(idAccount, username, idFriend) {
     }
 
 
+         // Location
+ function socketDataLocation() {
+    function success(position) {
+        const latitude  = position.coords.latitude;
+        const longitude = position.coords.longitude;
+    
+        setlat(latitude)
+        setLong(longitude)
+   
+       reverseGeolocalization(latitude, longitude)
+      }
+    
+      function error() {
+        console.log('Unable to retrieve your location');
+      }
+   
+      function getLocation() {
+       return window.navigator.geolocation.getCurrentPosition(success, error);
+        }
+   
+        async function reverseGeolocalization(lat, long) {
+        const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
+
+        setCityActual(address.data.results[0].address_components[3].long_name)
+        setUfActual(address.data.results[0].address_components[4].short_name) 
+     }
+
+    const DataUser = localStorage.getItem("foursome");
+    const user = JSON.parse(DataUser);
+    const LocalInformation = localStorage.getItem("informations-foursome");
+    const userInformations = JSON.parse(LocalInformation);
+
+    async function getInformations() {
+
+        const Local = localStorage.getItem("foursome");
+        const user = JSON.parse(Local);
+        const LocalInformation = localStorage.getItem("informations-foursome");
+        const userInformation = JSON.parse(LocalInformation);
+
+        let usersOnline = [];
+        await api.get("/online").then((res) => {
+           usersOnline = res.data
+        })
+       
+        let selectUserOnline = usersOnline.filter(online => online.idAccount === user.id);
+
+       
+        let equalCity = " "
+        if(cityActual === userInformations.city && ufActual === userInformations.uf ) {
+        equalCity = true
+        } else {
+        equalCity = false
+        }
+
+        const data = {
+            idAccount: user.id,
+            username: user.username,
+            type: user.type,
+            nickname: userInformation.nickname,
+            avatar: userInformation.avatar,
+            relationship: userInformation.relationship,
+            lat: lat.toString(),
+            long: long.toString(),
+            city: userInformation.city,
+            uf: userInformation.uf,
+            actualCity: cityActual,
+            actualUf: ufActual,
+            equalCity: equalCity,
+            plane: false,
+            emoji: false,
+            song: false
+        }
+
+        if(data.idAccount && data.username && data.nickname && data.avatar && data.lat && data.long && data.city && data.uf !== "") {
+
+                socket.on("connection", () => {
+                    console.log("Conexão estabelecida")
+                })
+
+                if(selectUserOnline.length === 0) {
+                    console.log("Cadastrando usuário")
+                    await api.post("/online", data).then(() => {
+                    })
+                } else {
+                    console.log("Usuário ja está online")
+                }
+
+            } else {
+                console.log("Imformações não coletadas com sucesso!")
+            }
+    }
+
+    getLocation()
+    getInformations()
+}
+
+
 
 
 
@@ -897,7 +1000,13 @@ async function newVisit(idAccount, username, idFriend) {
         clearTimeout(time);
       time = setTimeout(doSomething, 300000)
     }
+
+
+
+
 }
+
+
 
 
 
@@ -905,6 +1014,7 @@ async function newVisit(idAccount, username, idFriend) {
 
     return(
         <AuthContext.Provider value={{
+            socketDataLocation,
             loginSession,
             createAccount,
             loading,

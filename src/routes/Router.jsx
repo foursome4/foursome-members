@@ -127,3 +127,27 @@ function PrivateRoute({children} ) {
 }
 
 export {Router}
+
+
+
+// const Local = localStorage.getItem("foursome");
+// const userLocal = JSON.parse(Local)
+// const LocalInformation = localStorage.getItem("informations-foursome");
+// const userInformation = JSON.parse(LocalInformation);
+// const Localcharacteritics = localStorage.getItem("characteritics-foursome");
+// const usercharacteritics = JSON.parse(Localcharacteritics);
+// const Localpreferences = localStorage.getItem("preferences-foursome");
+// const userpreferences = JSON.parse(Localpreferences);
+
+
+
+
+// function PrivateRoute({children} ) {
+//     return (
+//         userLocal !== null ? children :
+//         userInformation === null ? <Navigate to="/completeregistration"/> :
+//         usercharacteritics === null ? <Navigate to="/characteristcs"/> :
+//         userpreferences === null ? <Navigate to="/preferences"/> :
+//         <Navigate to="/"/>
+//     )
+// }

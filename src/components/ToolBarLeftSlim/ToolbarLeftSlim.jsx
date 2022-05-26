@@ -46,12 +46,12 @@ function ToolbarLeftSlimComponent() {
                     </button>
                     </a>
 
-                    {/* <a href="/radar" >
+                    <a href="/radar" >
                     <button className="toolIcon" >
                         <IoRadio size={20}/>
                        Radar
                     </button>
-                    </a> */}
+                    </a>
 
                     <a href="/ranking" >
                     <button className="toolIcon" >

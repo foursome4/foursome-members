@@ -27,7 +27,15 @@ function Post() {
     const [dataPhoto, setDataPhoto] = useState(false);
     const [dataVideo, setDataVideo] = useState(false);
     const [videos, setVideos] = useState([])
-    const [photos, setPhotos] = useState([])
+    const [photos, setPhotos] = useState([]);
+
+
+    useEffect(() => {
+        if(userInformation.avatar === null || userInformation.avatar === undefined) {
+         window.open("/completeregistration", "_self");
+        }
+    }, [userInformation.avatar]);
+
 
 
     useEffect(() => {

@@ -29,10 +29,10 @@ const {data} = useFetch(`/online`);
             <div className="BarBottomBlock">
                 { select === false ?
                 <div className="Buttons">
-{/* 
+
                  <button className="ButtonsUnic" onClick={handleOpenUsersOnline}>
                         <IoChatbubblesOutline size={20}/>Online
-                    </button> */}
+                    </button> 
                 <a href="/invite" >
                  <button className="ButtonsUnicSelect" >
                         <IoMailOutline size={20}/>Convite
@@ -64,12 +64,12 @@ const {data} = useFetch(`/online`);
                     </button>
                     </a>
                   
-                    {/* <a href="/radar" >
+                    <a href="/radar" >
                     <button className="ButtonsUnic" >
                         <IoRadio size={20}/>
                        Radar
                     </button>
-                    </a> */}
+                    </a> 
 
                     <a href="/ranking" >
                     <button className="ButtonsUnic" >
