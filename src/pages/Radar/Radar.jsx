@@ -14,7 +14,7 @@ import { UserRadar } from "../../components/UserRadar/UserRadar"
 function Radar() {
     const {inactivityTime} = useContext(AuthContext);
 
-    inactivityTime()
+    // inactivityTime()
 
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
@@ -126,7 +126,6 @@ useEffect(() => {
                                <img src={user.avatar} alt="" className="profile"/>
                                    </Link>
                                    </div>
-                                    {/* <UserRadar nickname={user.nickname} equalCity={user.equalCity} idAccount={user.idAccount}/> */}
                                <DistanceFromUser myLat={lat1} myLong={long1} latFriend={user.lat} longFriend={user.long}/>
                            </div>
                                     )
