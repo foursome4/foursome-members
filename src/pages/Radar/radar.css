@@ -118,25 +118,25 @@
 }
 
 .content .aside .radar .radar-all .radar-unic {
-    width: 120px;
+    width: 90px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content:center;
     flex-wrap: wrap;
-    padding: 10px;
+    padding: 5px;
     margin: 5px;
 }
 
 .content .aside .radar .radar-all .radar-unic .img {
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
     border-radius: 50%
 }
 .content .aside .radar .radar-all .radar-unic .img img {
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
     border-radius: 50%
 }

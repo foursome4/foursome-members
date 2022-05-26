@@ -56,9 +56,21 @@ function UserConversation({idAccount, room}) {
            <div className="image">
            <Link to={`/chat/${room}/${idAccount}`}>
            {avatar === "" || avatar === undefined ?
-          <img src={profile} alt="" />
+                                  <img 
+                                  src={profile}
+                                  onError={({ currentTarget }) => {
+                                      currentTarget.onerror = null; // previne loop
+                                      currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
+                                  }}
+                                  />
           :
-          <img src={avatar} alt="" />
+          <img 
+          src={avatar}
+          onError={({ currentTarget }) => {
+              currentTarget.onerror = null; // previne loop
+              currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
+          }}
+          />
            }
           
            </Link>

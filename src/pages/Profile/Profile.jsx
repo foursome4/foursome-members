@@ -172,12 +172,24 @@ widthView()
         <div className="main">
          <div className="section">
           <div className="cover">
-              <img src={ userInformations !== null ? userInformations.cover : coverImg} alt="" />
+          <img 
+                        src={userInformations.cover}
+                        onError={({ currentTarget }) => {
+                            currentTarget.onerror = null; // previne loop
+                            currentTarget.src={coverImg};
+                        }}
+                        />
           </div>
             <div className="profile-tool">
                 <div className="user">
                  <div className="user-img">
-                   <img src={userInformations !== null ? userInformations.avatar : avatar} alt="" />
+                   <img 
+                        src={userInformations.avatar}
+                        onError={({ currentTarget }) => {
+                            currentTarget.onerror = null; // previne loop
+                            currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
+                        }}
+                        />
                    </div>
                   <h3> <b>{userInformations !== null ? `${userInformations.nickname} - ${userInformations.uf}` :"User Test"}</b> {user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
                 </div>

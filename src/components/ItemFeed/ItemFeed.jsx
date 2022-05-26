@@ -105,7 +105,7 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
                          <h3 className='white'>{userData.id}</h3>
 
                      </div>
-                     <img src={link} alt={link}/>
+                      <img src={link} alt={link}/>
                   </div>
                  </div> :
              type === "post-video"  ?

@@ -18,7 +18,13 @@ const {data} = useFetch(`/online`);
                     <div className="chat-avatar" key={user.idAccount}>
                         <FaCircle />
                         <a href={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>
-                    <img src={user.avatar} alt={user.username} width="35px"/>
+                        <img 
+                        src={user.avatar}
+                        onError={({ currentTarget }) => {
+                            currentTarget.onerror = null; // previne loop
+                            currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
+                        }}
+                        />
                     </a>
                      </div>
                 )
