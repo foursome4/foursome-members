@@ -3,12 +3,15 @@ import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu";
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim";
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim";
 import { TopBar } from "../../components/TopBar/TopBar";
-import { useFetch } from "../../hooks/useFetch";
+import { Link } from "react-router-dom"
 import api from "../../services/api"
 import "./search.css"
 
 
 function Search() {
+    const Local = localStorage.getItem("foursome");
+    const userData = JSON.parse(Local);
+
     const [users, setUsers] = useState([])
     const [online, setOnline] = useState([])
     const [search, setSearch] = useState('');
@@ -28,10 +31,13 @@ function Search() {
     const [transvestites, setTransvestites] = useState('Vazio');
     const [transsexuals, setTranssexuals] = useState('Vazio');
     const [groups, setGroups] = useState('Vazio');
+    const [index, setIndex] = useState(0);
+    const [qtd, setQtd] = useState(20);
+    const [typeSearch, setTypeSearch] = useState('Nickname');
 
 
-    let userFilter = []
-    let SearchUsers = []
+
+
     const searchLower = search.toLowerCase()
 
 
@@ -78,129 +84,108 @@ function Search() {
      console.log(online)
 
 
-    SearchUsers = online?.filter((informations) => informations.uf.includes(searchLower))
-
-                                                        console.log(SearchUsers)
-    userFilter = online?.filter((onlines) =>
-                onlines.type === type               
-    )
 
     console.log(userFilter)
 
     function handleSearch(e){
         e.preventDefault();
-        setType("")
+        setIndex(0)
+        setQtd(20)
     }
 
     function handleTypeMen(e) {
         e.preventDefault();
         setType("Homem");
-        setSearch("");
+        setIndex(0)
+        setQtd(20)
     }
  
     function handleTypeCouple(e) {
         e.preventDefault();
         setType("Casal")
-        setSearch("");
+        setIndex(0)
+        setQtd(20)
     }
  
     function handleTypeWoman(e) {
         e.preventDefault();
         setType("Mulher")
-        setSearch("");
+        setIndex(0)
+        setQtd(20)
     }
  
     function handleTypeTrisal(e) {
         e.preventDefault();
         setType("Trisal")
-        setSearch("");
+        setIndex(0)
+        setQtd(20)
     }
  
     function handleTypeTransex(e) {
         e.preventDefault();
         setType("Transex")
-        setSearch("");
+        setIndex(0)
+        setQtd(20)
     }
  
     function handleTypeTravestis(e) {
         e.preventDefault();
         setType("Travestis")
-        setSearch("");
+        setIndex(0)
+        setQtd(20)
     }
 
 
 
-    //Preferences
-    function handlePreferencesMen(e) {
-        e.preventDefault();
+function handleClearFilter(e) {
+    e.preventDefault();
+    setSearch("");
+    setType("");
+}
 
-        if(men === 'Vazio') {
-            setMen("Homem")
-        } else {
-            setMen("Vazio")
-        }
-    }
- 
-    function handlePreferencesCouple(e) {
-        e.preventDefault();
+function HandleNext(e) {
+    e.preventDefault();
+    setIndex(index + 20)
+    setQtd(qtd + 20)
+}
+function HandlePrev(e) {
+    e.preventDefault();
+    setIndex(index - 20)
+    setQtd(qtd - 20)
+}
 
-        if(couple === 'Vazio') {
-            setCouple("Casal")
-        } else {
-            setCouple('Vazio')
-        }
-    }
- 
-    function handlePreferencesWoman(e) {
-        e.preventDefault();
+function handleTypeSearchNickname(e) {
+    e.preventDefault();
+    setTypeSearch("Nickname")
+}
+function handleTypeSearchCity(e) {
+    e.preventDefault();
+    setTypeSearch("City")
+}
+function handleTypeSearchUf(e) {
+    e.preventDefault();
+    setTypeSearch("Uf")
+}
 
-        if(woman === 'Vazio') {
-            setWoman("Mulher")
-        } else {
-            setWoman('Vazio')
-        }
-    }
 
-    function handlePreferencesTrisal(e) {
-        e.preventDefault();
+    
+    const SearchUsers = typeSearch === "Nickname" ? online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower))
+                    : typeSearch === "City" ? online?.filter((informations) => informations.city.includes(searchLower))
+                    : typeSearch === "Uf" ? online?.filter((informations) => informations.uf.toLowerCase().includes(searchLower)) : ""
 
-        if(trisal === 'Vazio') {
-            setTrisal("Trisal")
-        } else {
-            setTrisal('Vazio')
-        }
-    }
- 
-    function handlePreferencesTransex(e) {
-        e.preventDefault();
+    const SearchUsersFilter = online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower)
+                                                                ||  informations.uf.toLowerCase().includes(searchLower)
+                                                                && informations.type === type)
+    const userFilter = online?.filter((onlines) => onlines.type === type )
 
-        if(transsexuals === 'Vazio') {
-            setTranssexuals("Transexuais")
-        } else {
-            setTranssexuals('Vazio')
-        }
-    }
- 
-    function handlePreferencesTravestis(e) {
-        e.preventDefault();
+    const usersNewArray = type === "" && search !== "" ? SearchUsers :
+                          type !== "" && search === "" ? userFilter :
+                          type !== "" && search !== "" ? SearchUsersFilter :
+                          online
 
-        if(transvestites === 'Vazio') {
-            setTransvestites("Travestis")
-        } else {
-            setTransvestites('Vazio')
-        }
-    }
+                          const limitData = usersNewArray.slice(index,qtd);
 
-    function handlePreferencesGroups(e) {
-        e.preventDefault();
-        if(groups === 'Vazio') {
-            setGroups("Grupos")
-        } else {
-            setGroups('Vazio')
-        }
-    }
 
-    const usersNewArray = type === "" ? SearchUsers : userFilter
  
     return (
         <div className="SearchPage">
@@ -209,35 +194,50 @@ function Search() {
             <div className="itensSearch">
               
         
-            {SearchUsers.map((information) => {
+            {limitData.map((information) => {
                 return(
                     <div className="accounts" key={information.idAccount}>
                         <div className="image">
-                            <img src={information.avatar} alt="" />
+                            <Link to={information.idAccount === userData.id ? "/profile" : `/profile-friend/${information.idAccount}` } >
+                        <img 
+                        src={information.avatar}
+                        onError={({ currentTarget }) => {
+                            currentTarget.onerror = null; // previne loop
+                            currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
+                        }}
+                        />
+                        </Link>
                         </div>
-                        <div className="infos">
+                        <div className="infos2">
                             <h5>{information.nickname}</h5>
                             <h6>{information.username}</h6>
-                            <div className="moreInfos">
+                            <div className="moreInfos2">
                             <h6>{information.type}</h6>
-                            <h6>{information.distance}</h6>
                             <h6>{information.city} - {information.uf}</h6>
                             </div>
                         </div>
                         </div>
                 )
             })}
+                <div className="pages">
+           {index === 0 ? "" : <button onClick={HandlePrev}>Voltar</button> } 
+           <h5>Resoltados de {index + 1} a {qtd}</h5>
+            <button onClick={HandleNext}>Avançar</button>
+                </div>
             
             </div>
 
+
+
             <div className="searchButton">
             <h3>Filtro de busca</h3>
-                {/* <div className="buttons">
-                    <button onClick={handleSelectTypeNickname}>Nickname</button>
-                    <button onClick={handleSelectTypeUsername}>Nome de usuário</button>
-                    <button onClick={handleSelectTypeId}>Código ID</button>
-                </div> */}
-            <input type="text" placeholder='Nome, cidade ou estado(UF)' value={search.toLowerCase()} onChange={(e) => setSearch(e.target.value)} onClick={handleSearch}/>
+            <div className="buttons">
+                      <button className={typeSearch === "Nickname" ? "select" : ""} onClick={handleTypeSearchNickname}>Nome</button>
+                      {/* <button className={typeSearch === "City" ? "select" : ""} onClick={handleTypeSearchCity}>Cidade</button> */}
+                      <button className={typeSearch === "Uf" ? "select" : ""} onClick={handleTypeSearchUf}>Estado(UF)</button>
+                  </div>
+
+            <input type="text" placeholder={ typeSearch === "Nickname" ? 'Digite o nome' :  typeSearch === "City" ? 'Digite a cidade' :  typeSearch === "Uf" ? 'Digite o estado (UF)' : 'Ecolha a cima o tipo de busca'} value={search.toLowerCase()} onChange={(e) => setSearch(e.target.value)} onClick={handleSearch}/>
 
             <div className="filter">
                   <div className="itensFilter">
@@ -252,20 +252,7 @@ function Search() {
                       <button className={type === "Transex" ? "select" : ""} onClick={handleTypeTransex}>Transexuais</button>
                       <button className={type === "Travestis" ? "select" : ""} onClick={handleTypeTravestis}>Travestis</button>
                   </div>
-                      <h5>Que busca por:</h5>
-                  <div className="buttons">
-                      <button className={men === "Homem" ? "select" : ""} onClick={handlePreferencesMen}>Homem</button>
-                      <button className={woman === "Mulher" ? "select" : ""} onClick={handlePreferencesWoman}>Mulher</button>
-                      <button className={couple === "Casal" ? "select" : ""} onClick={handlePreferencesCouple}>Casal</button>
-                      <button className={trisal === "Trisal" ? "select" : ""} onClick={handlePreferencesTrisal}>Trisal</button>
-                      <button className={transsexuals === "Transexuais" ? "select" : ""} onClick={handlePreferencesTransex}>Transexuais</button>
-                      <button className={transvestites === "Travestis" ? "select" : ""} onClick={handlePreferencesTravestis}>Travestis</button>
-                      <button className={groups === "Grupos" ? "select" : ""} onClick={handlePreferencesGroups}>Grupos</button>
-                  </div>
-
-                  <h5>{type} - {men} - {woman} {couple} - {trisal} - {transsexuals} - {transvestites} - {groups}</h5>
-
-                  <button>Limpar Filtro</button>
+                  <button onClick={handleClearFilter}>Limpar Filtro</button>
                   </div>
                 </div>
             </div>
