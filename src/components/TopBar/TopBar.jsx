@@ -40,7 +40,7 @@ function TopBar() {
                 </a>
             </div>
 
-            {/* <SearchUsers /> */}
+            <SearchUsers />
   
             <div className="links">
 
