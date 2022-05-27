@@ -1,19 +1,17 @@
+import './radar.css'
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { TopBar } from "../../components/TopBar/TopBar"
-import './radar.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
-import { DistanceFromUser } from "../../components/DistanceFromUser/DistanceFromUser"
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useState, useContext, useLayoutEffect } from "react"
 import { AuthContext } from "../../contexts/Auth"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import api from "../../services/api"
-import apiInstagram from "../../services/api-instagram"
 import { Link } from "react-router-dom"
-import { UserRadar } from "../../components/UserRadar/UserRadar"
 import {toast} from 'react-toastify';
+import {IoLocationOutline, IoPersonOutline} from 'react-icons/io5'
 
 function Radar() {
-    const {inactivityTime} = useContext(AuthContext);
+    const {inactivityTime, updateUserOnline} = useContext(AuthContext);
 
     // inactivityTime()
 
@@ -24,12 +22,110 @@ function Radar() {
     const [distancia, setDistancia] = useState([]);
     const [type, setType] = useState("");
     const [emojiSelect, setEmojiSelect] = useState("");
-    const [myType, setMyType] = useState("");
+    const [myType, setMyType] = useState(false);
     const [myEmojiSelect, setMyEmojiSelect] = useState("");
     const [style, setStyle] = useState("recolher");
+    const [users, setUsers] = useState([]);
+
+
+    useEffect(() => {
+        async function loadUserOnlineOne() {
+            const idAccount = userData.id;
+            console.log("userData.id")
+            console.log(userData.id)
+            console.log("idAccount")
+            console.log(idAccount)
+            const res = await api.get(`/online/one/${idAccount}`);
+            setUsers(res.data[0]);
+            console.log("res.data")
+            console.log(res.data[0])
+        }
+    
+        loadUserOnlineOne()
+    
+        async function loadUsersONline() {
+            const res = await api.get(`/online`);
+            
+    
+                const myLocation = res.data.filter((location) => (location.idAccount === userData.id)); 
+                res.data.forEach((userLocation) => {
+    
+                   function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend) {
+                       console.log(myLat, myLong, latFriend, longFriend)
+                       var deg2rad = function (deg) { return deg * (Math.PI / 180); },
+                           R = 6371,
+                           dLat = deg2rad(latFriend - myLat),
+                           dLng = deg2rad(myLong - longFriend),
+                           a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                               + Math.cos(deg2rad(myLat))
+                               * Math.cos(deg2rad(latFriend))
+                               * Math.sin(dLng / 2) * Math.sin(dLng / 2),
+                           c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                           console.log(((R * c *1000)/10).toFixed());
+                           console.log("Teste de Distancia")
+                           console.log((R * c*1000)/1000)
+                   
+                           const distanceCalc = (R * c).toString();
+                           
+                           if(distanceCalc.includes("00.")) {
+                               number = (((R * c *1000)/1000).toFixed())
+                           } else{
+                               number = (((R * c *1000)/1000).toFixed())
+                           }
+    
+                           const dados = {
+                               distanceKm: parseInt(number),
+                               id: userLocation.id,
+                               idAccount: userLocation.idAccount,
+                               avatar: userLocation.avatar,
+                               nickname: userLocation.nickname,
+                               equalCity: userLocation.equalCity, 
+                               type:userLocation.type,
+                               plane: userLocation.plane,
+                               emoji: userLocation.emoji,
+                               song: userLocation.song,
+                               invisible: userLocation.invisible    
+                           }
+                           setDistancia(oldDistancia => [...oldDistancia, dados])
+                   }
+                   
+                   getDistanceFromLatLonInKm(myLocation[0].lat, myLocation[0].long, userLocation.lat, userLocation.long )
+    
+           })
+    
+        }
+        loadUsersONline();   
+     }, [userData.id])
+    
 
 
 
+    function handleUpdateInformations(e) {
+        e.preventDefault();
+            const id = users.id;
+            const idAccount = users.idAccount;
+            const username = users.username;
+            const type = users.type;
+            const nickname = users.nickname;
+            const avatar = users.avatar;
+            const relationship = users.relationship;
+            const lat = users.lat;
+            const long = users.long;
+            const city = users.city;
+            const uf = users.uf;
+            const actualCity = users.cityActual;
+            const actualUf = users.ufActual;
+            const equalCity = users.equalCity;
+            const plane = users.plane;
+            const emoji = myEmojiSelect;
+            const song = users.song;
+            const invisible = myType            
+
+
+        updateUserOnline(
+            id, idAccount, username, type ,nickname, avatar, relationship, lat, long, city, uf, actualCity, actualUf, equalCity, plane, emoji, song, invisible            
+        )
+      }
     function handleSelectStyle(e) {
         e.preventDefault();
         if(style === "recolher") {
@@ -58,76 +154,13 @@ function Radar() {
     
     var number ;
 
-const [users, setUsers] = useState([])
-useEffect(() => {
-
-    async function loadUsersONline() {
-        const res = await api.get(`/online`);
-        setUsers(res.data)
-
-            const myLocation = res.data.filter((location) => (location.idAccount === userData.id)); 
-            res.data.forEach((userLocation) => {
-                let distance = 0;
-
-                console.log("Variavel distancia ");
 
 
-
-               function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend) {
-                   console.log(myLat, myLong, latFriend, longFriend)
-                   var deg2rad = function (deg) { return deg * (Math.PI / 180); },
-                       R = 6371,
-                       dLat = deg2rad(latFriend - myLat),
-                       dLng = deg2rad(myLong - longFriend),
-                       a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
-                           + Math.cos(deg2rad(myLat))
-                           * Math.cos(deg2rad(latFriend))
-                           * Math.sin(dLng / 2) * Math.sin(dLng / 2),
-                       c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-                       console.log(((R * c *1000)/10).toFixed());
-                       console.log("Teste de Distancia")
-                       console.log((R * c*1000)/1000)
-               
-                       const distanceCalc = (R * c).toString();
-                       
-                       if(distanceCalc.includes("00.")) {
-                           number = (((R * c *1000)/1000).toFixed())
-                           console.log(((R * c *1000)/1000).toFixed())
-                       } else{
-                           number = (((R * c *1000)/1000).toFixed())
-                          console.log(((R * c *1000)/1000).toFixed())
-                       }
-
-                       const dados = {
-                           distanceKm: parseInt(number),
-                           id: userLocation.id,
-                           idAccount: userLocation.idAccount,
-                           avatar: userLocation.avatar,
-                           nickname: userLocation.nickname,
-                           equalCity: userLocation.equalCity, 
-                           type:userLocation.type,
-                           plane: userLocation.plane,
-                           emoji: userLocation.emoji,
-                           song: userLocation.song,
-                           invisible: userLocation.invisible    
-                       }
-   
-                       console.log("dados")
-                       console.log(dados.distanceKm)
-                       setDistancia(oldDistancia => [...oldDistancia, dados])
-               }
-               
-               getDistanceFromLatLonInKm(myLocation[0].lat, myLocation[0].long, userLocation.lat, userLocation.long )
-
-       })
-
-    }
-    loadUsersONline();   
- }, [userData.id])
 
 
  console.log("DistanciaArray")
  console.log(distancia)
+ console.log("User Online Unic")
  console.log(users)
 
  if(distancia) {
@@ -147,11 +180,10 @@ const searchTypeRange = distancia.filter((distanciaUser) => (distanciaUser.type 
 const searchEmoji= distancia.filter((distanciaUser) => distanciaUser.emoji === emojiSelect );
 const searchType= distancia.filter((distanciaUser) =>  distanciaUser.type === type);
 const searchDistance= distancia.filter((distanciaUser) => distanciaUser.distanceKm <= range);
-const myData = distancia.filter((user) => user.idAccount === userData.id);
-console.log(myData)
-console.log(parseInt(range))
-console.log(searchAll)
-console.log(emojiSelect)
+const myUserFilter= distancia.filter((distanciaUser) => distanciaUser.idAccount <= userData.id);
+
+console.log(myUserFilter)
+
 
 const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDistance : 
                 (range < 1) && (emojiSelect !== "") && (type === "" ) ? searchEmoji : 
@@ -163,6 +195,12 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                 (range < 1) && (emojiSelect === "") && (type === "") ? distancia : 
                 distancia
 
+
+                if(!users) {
+                    return (
+                        "Carregando..."
+                    )
+                }
 
     return (
         <div className="content">
@@ -176,33 +214,40 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
   
                                 <button className="selected">Radar</button>
                             </div>
-                                                        {/* <div className="mySelections">
-                                                        <div className="text">
-                                                        <h4>{myData[0].invisible === false ? " Você está Visível" : "Você está invisível"}</h4>
-                                                        <h4>{myData[0].emoji === "musica" ? " Hoje você quer balada" :
-                                                                myData[0].emoji === "emoji" ? "Hoje você quer sexo" :
-                                                                myData[0].emoji === "viagem" ? "Você está aqui de viagem" : "Deseja escolher um Status?"}</h4>
-                        
-                                                                <button onClick={handleSelectStyle}>Alterar Status ou visibilidade</button>
-                                                        </div>
-                                                        <div className={style === "selections" ? "selections" : "recolher"}>
-                                                            
-                                                    <select value={type} onChange={handleSetectMyType}>
-                                                        <option value="">Visibilidade</option>
-                                                        <option value={false}>Disponível</option>
-                                                        <option value={true}>Invisível</option>
-                                                    </select>
-                        
-                                                    <select value={emojiSelect} onChange={handleSetectTMyEmoji}>
-                                                        <option value="">Qual seu status de hoje?</option>
-                                                        <option value="viagem">De viagem ✈️</option>
-                                                        <option value="emoji">Que querem Sexo 😈</option>
-                                                        <option value="musica">Que querem Balada 🎶</option>
-                                                    </select>
-                        
-                                                        </div>
-                                                    </div> */}
 
+
+                            {users !== "" || users !== null || users !== undefined ?
+                           
+                           <div className="mySelections">
+                           <div className="text">
+                           <h6>{users.invisible === false ? " Você está Visível" : "Você está invisível"}</h6>
+                           <h6>{users.emoji === "musica" ? " Hoje você quer balada" :
+                                   users.emoji === "emoji" ? "Hoje você quer sexo" :
+                                   users.emoji === "viagem" ? "Você está aqui de viagem" : "Deseja escolher um Status?"}</h6>
+
+                                   <button onClick={handleSelectStyle}>Alterar </button>
+                           </div>
+                           <div className={style === "selections" ? "selections" : "recolher"}>
+                               
+                       <select value={myType} onChange={handleSetectMyType}>
+                           <option value="">Visibilidade</option>
+                           <option value={false}>Disponível</option>
+                           <option value={true}>Invisível</option>
+                       </select>
+
+                       <select value={myEmojiSelect} onChange={handleSetectTMyEmoji}>
+                           <option value="">Qual seu status de hoje?</option>
+                           <option value="viagem">De viagem ✈️</option>
+                           <option value="emoji">Quero Sexo 😈</option>
+                           <option value="musica">Partiu Balada 🎶</option>
+                       </select>
+
+                       <button onClick={handleUpdateInformations}>Atualizar</button>
+
+                           </div>
+                       </div>
+                       : "Carregando suas informações"
+}
 
                             <div className="radar-range">
                                 <h4>{range} Km</h4>
@@ -234,7 +279,8 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                             <div className="radar-all">
                                 {filter.map((user) => {
                                     return (
-                               user.idAccount === userData.id ? "" :
+                               user.idAccount === userData.id ? "":
+                               user.invisible === true ? "" :
                                <div className="radar-unic" key={user.id}>
                                    <div className="img">
                                    <Link to={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>
@@ -248,8 +294,8 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                                    </Link>
                                    <h4>{user.emoji === "musica" ? "🎶" : user.emoji === "emoji"? "😈" : user.emoji === "viagem" ? "✈️" :""  }</h4>
                                    </div>
-                                   <h6>{user.distanceKm === 0 ? "- 1Km" : ` ${user.distanceKm}Km`}</h6>
-                                   <h6>{user.type}</h6>
+                                   <h6><IoLocationOutline />{user.distanceKm === 0 ? "- 1Km" : ` ${user.distanceKm}Km`}</h6>
+                                   <h6><IoPersonOutline /> {user.type}</h6>
                            </div>
                                     )
                                 })}

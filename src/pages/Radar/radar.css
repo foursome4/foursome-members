@@ -113,7 +113,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 5px 0;
     background-color: var(--Background)
 }
 .content .aside .radar .mySelections .selections {
@@ -140,6 +139,19 @@
     color: var(--Primary);
     background-color: var(--Background2);
     border-radius: 6px;
+}
+.content .aside .radar .mySelections .selections button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius:6px;
+    background-color: var(--Primary);
+    color: var(--White);
+    border: none;
+    cursor: pointer;
 }
 
 .content .aside .radar .mySelections .text {
@@ -227,7 +239,7 @@
 }
 
 .content .aside .radar .radar-all .radar-unic h4 {
-    margin-top:-20px
+    margin-top:-20px;
 }
 
 .content .aside .radar .radar-all .radar-unic .img {
@@ -289,6 +301,10 @@
     font-weight: 500;
     color: var(--Gray_font1);
     margin: 2px 0px 0px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content:center;
 }
 
 
@@ -337,6 +353,84 @@
     .content .aside .radar .radar-all {
         width: 100%;    
 }
+
+
+
+
+.content .aside .radar .mySelections {
+    width: 95%;
+}
+.content .aside .radar .mySelections .selections {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 5px 0;
+    flex-wrap: wrap;
+}
+.content .aside .radar .mySelections .recolher {
+    display: none;
+}
+
+.content .aside .radar .mySelections .selections select {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 5px 0;
+    margin: 5px;
+    border: 1px solid var(--Primary);
+    color: var(--Primary);
+    background-color: var(--Background2);
+    border-radius: 6px;
+    font-size: 12px;
+}
+.content .aside .radar .mySelections .selections button {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius:6px;
+    background-color: var(--Primary);
+    color: var(--White);
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.content .aside .radar .mySelections .text {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 5px;
+    text-align: center;
+}
+.content .aside .radar .mySelections .text button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius:6px;
+    background-color: var(--Primary);
+    color: var(--White);
+    border: none;
+    cursor: pointer;
+    flex-wrap: wrap;
+    font-size: 12px;
+}
+
+
+
+
 
 .content .aside .radar .radar-range {
     width: 100%;

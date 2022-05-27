@@ -864,6 +864,18 @@ async function newVisit(idAccount, username, idFriend) {
     })
 }
 
+
+async function updateUserOnline( id, idAccount, username, type ,nickname, avatar, relationship, lat, long, city, uf, actualCity, actualUf, equalCity, plane, emoji, song, invisible) {
+    const data = {idAccount, username, type ,nickname, avatar, relationship, lat, long, city, uf, actualCity, actualUf, equalCity, plane, emoji, song, invisible};
+    console.log(data)
+    console.log(id)
+    await api.patch(`/online/${id}`, data).then(() => {
+        window.location.reload(false)
+    }).catch((error) => {
+        console.log(error)
+    })
+}
+
 // Fim da Sessão grupos
     async function logout(idAccount) {
         localStorage.removeItem("foursome");
@@ -1017,6 +1029,7 @@ async function newVisit(idAccount, username, idFriend) {
 
     return(
         <AuthContext.Provider value={{
+            updateUserOnline,
             socketDataLocation,
             loginSession,
             createAccount,
