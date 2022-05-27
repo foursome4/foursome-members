@@ -221,7 +221,7 @@ function handleTypeSearchUf(e) {
             })}
                 <div className="pages">
            {index === 0 ? "" : <button onClick={HandlePrev}>Voltar</button> } 
-           <h5>Resoltados de {index + 1} a {qtd}</h5>
+           <h5>Resultados de {index + 1} a {qtd}</h5>
             <button onClick={HandleNext}>Avançar</button>
                 </div>
             
