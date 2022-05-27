@@ -143,12 +143,10 @@ function Radar() {
         setEmojiSelect(e.target.value)
       }
     function handleSetectMyType(e) {
-        toast(e.target.value)
         setMyType(e.target.value)
       }
 
     function handleSetectTMyEmoji(e) {
-        toast(e.target.value)
         setMyEmojiSelect(e.target.value)
       }
     
