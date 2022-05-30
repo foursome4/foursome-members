@@ -5,8 +5,7 @@ import api from "../../../../services/api";
 import './userConversation.css';
 
 
-function UserConversation({idAccount, room}) {
-    console.log(idAccount)
+function UserConversation({idAccount, room, text}) {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
 
@@ -40,20 +39,24 @@ function UserConversation({idAccount, room}) {
     let friendMessage = [];
     let newMessages = [];
 
-    if(data) {
+    if(data) {  
 
         myMessages = data?.filter((message) => (message.idAccount === user.id));
-
+        console.log("myMessages")
+        console.log(myMessages)
         friendMessage =  data?.filter((message) => (message.idAccount !== user.id));
-
+        console.log("friendMessage")
+        console.log(friendMessage)
     }
     newMessages = friendMessage?.filter((messages) => (myMessages !== undefined && friendMessage !== undefined ? new Date(messages.created_at) > new Date(myMessages[0]?.created_at) : ""))
-
+    console.log("friendMessage")
+    console.log(newMessages.length)
 
     return (
         data?.length === 0 ? "" :       
        <div className="item">
            <div className="image">
+          
            <Link to={`/chat/${room}/${idAccount}`}>
            {avatar === "" || avatar === undefined ?
                                   <img 
@@ -74,18 +77,24 @@ function UserConversation({idAccount, room}) {
            }
           
            </Link>
+           {newMessages.length === 0 ? ""
+           :
+           <div className="counter-conversation">
+               {newMessages.length }
+            </div>
+            }
            </div>
            <Link to={`/chat/${room}/${idAccount}`}>
          {nickname === "" || nickname === undefined ?
          <h4>Usuário deletado</h4>
         :
-        <h4>{nickname} - {uf}</h4> }
+        <>
+        <h4>{nickname} - {uf}</h4>
+        <h6>{text.slice(0,45)}</h6>
+        </>
+        }
            </Link>
-           {newMessages.length === 0 ? "" :
-           <div className="counter-conversation">
-               {newMessages.length }
-            </div>
-}
+           
        </div>
        
     ) 

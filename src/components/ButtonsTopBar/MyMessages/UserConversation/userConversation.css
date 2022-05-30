@@ -19,19 +19,7 @@
     border-radius: 50%;
     object-fit: cover;
 }
-
-.item h4 {
-    margin-left: 5px;
-    color: var(--Primary);
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.item a {
-    text-decoration: none;
-    color: var(--Primary);
-}
-.item .counter-conversation {
+.item  .image .counter-conversation {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,8 +30,25 @@
     height: 20px;
     font-size: 12px;
     border-radius: 50%;
-    margin: -15px;
-    margin-top: -40px;
-    margin-left: -165px;
+    margin-top: -45px;
+    margin-left: -5px;
+    z-index: 50px;
+    position: absolute;
+}
+.item h4 {
+    margin-left: 5px;
+    color: var(--Primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+.item h6 {
+    margin-left: 5px;
+    color: var(--Gray_font2);
+    text-decoration: none;
+    font-weight: 400;
+}
 
+.item a {
+    text-decoration: none;
+    color: var(--Primary);
 }

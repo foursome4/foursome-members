@@ -20,7 +20,6 @@
     width: 90%;
     height: 80%;
     border: none;
-    overflow-y: scroll;
     text-decoration: none;
     background-color: var(--Background2);
     margin-bottom:7px ;
