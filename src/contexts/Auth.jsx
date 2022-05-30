@@ -889,6 +889,8 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
     }
 
 
+    
+
          // Location
  function socketDataLocation() {
     function success(position) {
@@ -962,22 +964,9 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
                 socket.on("connection", () => {
                     console.log("Conexão estabelecida")
                 })
-
-                let usersOnline = [];
-                await api.get("/online").then((res) => {
-                   usersOnline = res.data
-                })
-               
-                let selectUserOnline = usersOnline.filter(online => online.idAccount === data.idAccount);
-        
-
-                if(selectUserOnline.length === 0) {
-                    console.log("Cadastrando usuário")
                     await api.post("/online", data).then(() => {
                     })
-                } else {
-                    console.log("Usuário ja está online")
-                }
+ 
 
             } else {
                 console.log("Imformações não coletadas com sucesso!")

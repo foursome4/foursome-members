@@ -9,6 +9,7 @@ import { AuthContext } from "../../contexts/Auth"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { ListEventsFeed } from "../../components/ListEventsFeed/ListEventsFeed"
 import { useNavigate } from 'react-router-dom';
+import api from "../../services/api"
 
 
 function Feed() {
@@ -29,7 +30,21 @@ function Feed() {
            inactivityTime()
 
            useEffect(() => {
-            socketDataLocation()
+
+            async function loadUsersOnline() {
+               const res = await api.get("/online");
+               
+               const selectUserOnline = res.data.filter(online => online.idAccount === user.id);
+               console.log("selectUserOnline")
+               console.log(selectUserOnline)
+               console.log(selectUserOnline.length)
+   
+               if(selectUserOnline.length === 0) {
+                   console.log("Cadastrando usuário")
+               socketDataLocation()
+               }
+            }
+
                if(user.status === "blocked") {
                 window.open("/profile", "_self");
                }
@@ -42,7 +57,9 @@ function Feed() {
                if(userpreferences === null || userpreferences === undefined) {
                 window.open("/preferences", "_self");
                }
-           }, [navigate, socketDataLocation, user.status, userpreferences, usercharacteritics, userInformation]);
+
+               loadUsersOnline()
+           }, [navigate, socketDataLocation, user.status, user.id,  userpreferences, usercharacteritics, userInformation]);
 
 
 
