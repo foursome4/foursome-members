@@ -170,7 +170,7 @@ function handleTypeSearchUf(e) {
 
     
     const SearchUsers = typeSearch === "Nickname" ? online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower))
-                    : typeSearch === "City" ? online?.filter((informations) => informations.city.includes(searchLower))
+                    : typeSearch === "City" ? online?.filter((informations) => informations.city.toLowerCase().includes(searchLower))
                     : typeSearch === "Uf" ? online?.filter((informations) => informations.uf.toLowerCase().includes(searchLower)) : ""
 
     const SearchUsersFilter = online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower)
