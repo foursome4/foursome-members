@@ -297,7 +297,7 @@ widthView()
     const followingMy = myFollowers.filter(friend => (friend.idAccount === user.id))
     const FollowingExists = myFollowers.filter(friend => (friend.idAccount === myUser.id))
 
-
+    const date = new Date(user.created_at)
     console.log(patron)
 
   return (
@@ -352,6 +352,18 @@ widthView()
               <div className="infos">
                     <div className="info">
                     <div className="name">
+                        <h6> {`Membro desde ${date.getMonth()+1 === 1 ? "Janeiro":
+                                              date.getMonth()+1 === 2 ? "Fevereiro":
+                                              date.getMonth()+1 === 3 ? "Março" : 
+                                              date.getMonth()+1 === 4 ? "Abril":
+                                              date.getMonth()+1 === 5 ? "Maio" :
+                                              date.getMonth()+1 === 6 ? "Junho": 
+                                              date.getMonth()+1 === 7 ? "Julho":
+                                              date.getMonth()+1 === 8 ? "Agosto":
+                                              date.getMonth()+1 === 9 ? "Setembro":
+                                              date.getMonth()+1 === 10 ? "Outubro":
+                                              date.getMonth()+1 === 11 ? "Novembro":
+                                              date.getMonth()+1 === 12 ? "Desembro": ""} de ${date.getFullYear()}`}</h6>
                         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
                     </div>
                     <div className="name">

@@ -75,13 +75,25 @@ function InformationsUser() {
       const videos = posts.filter(post => (post.type === "post-video"));
 
       const friendAproveds = myFriends.filter(friend => (friend.status === 'aproved'))
-
+      const date = new Date(user.date)
 
 return (
     <div className="infos">
     <div className="info">
     <div className="name">
         <h5>@{user !== null ? user.username :"User Test"}</h5>
+        <h6> {`Membro desde ${date.getMonth()+1 === 1 ? "Janeiro":
+                                              date.getMonth()+1 === 2 ? "Fevereiro":
+                                              date.getMonth()+1 === 3 ? "Março" : 
+                                              date.getMonth()+1 === 4 ? "Abril":
+                                              date.getMonth()+1 === 5 ? "Maio" :
+                                              date.getMonth()+1 === 6 ? "Junho": 
+                                              date.getMonth()+1 === 7 ? "Julho":
+                                              date.getMonth()+1 === 8 ? "Agosto":
+                                              date.getMonth()+1 === 9 ? "Setembro":
+                                              date.getMonth()+1 === 10 ? "Outubro":
+                                              date.getMonth()+1 === 11 ? "Novembro":
+                                              date.getMonth()+1 === 12 ? "Desembro": ""} de ${date.getFullYear()}`}</h6>
         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
     </div>
     <div className="name">

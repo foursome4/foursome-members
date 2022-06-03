@@ -60,7 +60,7 @@ function Search() {
                               type: user.type,
                               avatar: res.data[0].avatar,
                               nickname: res.data[0].nickname,
-                              city: res.data[0].city,     
+                              city: res.data[0].city === null || res.data[0].city === undefined ? "" : res.data[0].city,     
                               uf: res.data[0].uf,     
                           }
                           
@@ -174,6 +174,7 @@ function handleTypeSearchUf(e) {
                     : typeSearch === "Uf" ? online?.filter((informations) => informations.uf.toLowerCase().includes(searchLower)) : ""
 
     const SearchUsersFilter = online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower)
+                                                                ||  informations.city.toLowerCase().includes(searchLower)
                                                                 ||  informations.uf.toLowerCase().includes(searchLower)
                                                                 && informations.type === type)
     const userFilter = online?.filter((onlines) => onlines.type === type )
@@ -221,7 +222,7 @@ function handleTypeSearchUf(e) {
             })}
                 <div className="pages">
            {index === 0 ? "" : <button onClick={HandlePrev}>Voltar</button> } 
-           <h5>Resultados de {index + 1} a {qtd}</h5>
+           <h5>Resultados de {index + 1} a {qtd} - Todal de {usersNewArray.length}</h5>
             <button onClick={HandleNext}>Avançar</button>
                 </div>
             
@@ -233,7 +234,7 @@ function handleTypeSearchUf(e) {
             <h3>Filtro de busca</h3>
             <div className="buttons">
                       <button className={typeSearch === "Nickname" ? "select" : ""} onClick={handleTypeSearchNickname}>Nome</button>
-                      {/* <button className={typeSearch === "City" ? "select" : ""} onClick={handleTypeSearchCity}>Cidade</button> */}
+                      <button className={typeSearch === "City" ? "select" : ""} onClick={handleTypeSearchCity}>Cidade</button>
                       <button className={typeSearch === "Uf" ? "select" : ""} onClick={handleTypeSearchUf}>Estado(UF)</button>
                   </div>
 
