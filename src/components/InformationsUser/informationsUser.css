@@ -91,7 +91,7 @@
 }
 
 .infos .info-user-man h4 {
-    z-index: 99;
+    z-index: 80;
     position: absolute;
     margin-bottom: 40px;
 }
@@ -133,7 +133,7 @@
 }
 
 .infos .info-user-woman h4 {
-    z-index: 99;
+    z-index: 80;
     position: absolute;
     margin-bottom: 40px;
 }

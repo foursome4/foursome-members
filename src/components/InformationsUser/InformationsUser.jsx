@@ -95,14 +95,14 @@ return (
                                               date.getMonth()+1 === 11 ? "Novembro":
                                               date.getMonth()+1 === 12 ? "Desembro": ""} de ${date.getFullYear()}`}</h6>
         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
+        <br />
+        <h6>Último acesso 1 dia</h6>
     </div>
     <div className="name">
         <br />
         <h4>{userInformations.city} - {userInformations.uf}</h4>
-        <br />
         <h5>Meu Id: <a href="/profile"> {user.id}</a></h5>
         <h5>Patrono: {patron !== null ?  <a href={patron.idAccount === user.id ? `/profile` : `/profile-friend/${patron.idAccount}`}>{patron.nickname}</a> :"Patrono não eocnotrado"}</h5>
-        <br />
     </div>
 
     <div className="info-user-preferences">

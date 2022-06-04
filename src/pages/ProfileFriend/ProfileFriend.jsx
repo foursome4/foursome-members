@@ -302,10 +302,10 @@ widthView()
 
   return (
       <div className="container">
-    <div className="content-profile">
+    <div className="content-profileFriend">
       <ToolbarLeftSlim />
       <BarBottomMenu />
-      <div className="profile">
+      <div className="profileFriend">
         <TopBar />
         <div className="main">
          <div className="section">
@@ -318,7 +318,7 @@ widthView()
                         }}
                         />
           </div>
-            <div className="profile-tools">
+            <div className="profileFriend-tools">
                 <div className="users">
                 <div className="users-img">
                 <img 
@@ -365,12 +365,13 @@ widthView()
                                               date.getMonth()+1 === 11 ? "Novembro":
                                               date.getMonth()+1 === 12 ? "Desembro": ""} de ${date.getFullYear()}`}</h6>
                         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
+                        <br />
+        <h6>Último acesso 1 dia</h6>
                     </div>
                     <div className="name">
-                        <h4>{userInformations.city} - {userInformations.uf}</h4>
                       <br />
+                        <h4>{userInformations.city} - {userInformations.uf}</h4>
                         <h4>Patrono: {patron !== null ?  <Link to={patron.idAccount === user.id ? `/profile` : `/profile-friend/${patron.idAccount}`}>{patron.nickname}</Link> :"Patrono não eocnotrado"}</h4>
-                        <br />
                        </div>
 
                        <div className="info-user-preferences">

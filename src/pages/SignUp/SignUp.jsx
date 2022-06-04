@@ -5,9 +5,11 @@ import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import './signUp.css';
 import { toast } from 'react-toastify';
-import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { FiEye, FiEyeOff, FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
+import {IoCloseOutline } from 'react-icons/io5';
 import { v4 as uuidv4} from 'uuid'
 import { mask as masker, unMask } from "remask";
+import Modal from 'react-modal';
  
 function SignUp() {
   const {email, code, patron, type} = useParams()
@@ -18,10 +20,18 @@ function SignUp() {
   const [passwordConfirmNative, setPasswordConfirmNative] = useState("");
   const [passwordView, setPasswordView] = useState(true)
   const [checked, setChecked] = useState(false);
-
-
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
+
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   useEffect(() => {
       if(localStorage.getItem("foursome") !== null) {
@@ -256,7 +266,7 @@ function SignUp() {
   }
 
 
-
+  Modal.setAppElement('#root');
   return (
     <div className="content-Login">
       <div className="signUp">
@@ -315,15 +325,40 @@ function SignUp() {
           </div>
 
           <div className="buttons">
-          <button onClick={handleCreateAccount}> Cadastrar </button>
+          <button onClick={openModal}> Cadastrar </button>
           </div>
         </div>
 
         
       </div>
+
+
+
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal}
+            overlayClassName="react-modal-overlay"
+            className="react-modal-content">
+            <button type="button" className="react-modal-button" onClick={closeModal}>
+            <IoCloseOutline /> 
+            </button>
+            <div className="content-modal">
+            <h3>Este site é para maiores de 18 anos</h3>
+        
+            <div className="itensModalMessages">
+
+            <h1>Você confirma que tem 18 anos ou mais?</h1>
+            <div className="buttons">
+            <button onClick={handleCreateAccount}><FiThumbsUp/>SIM</button>
+            <button  onClick={closeModal} className="down"><FiThumbsDown/>NÃO</button>
+            </div>
+            </div>
+            </div>
+            </Modal>  
     </div>
+    
   )
 }
+
+
 
 
 export { SignUp }
