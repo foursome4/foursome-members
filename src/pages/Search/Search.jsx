@@ -154,6 +154,10 @@ function HandlePrev(e) {
     setQtd(qtd - 20)
 }
 
+function handleTypeSearchId(e) {
+    e.preventDefault();
+    setTypeSearch("Id")
+}
 function handleTypeSearchNickname(e) {
     e.preventDefault();
     setTypeSearch("Nickname")
@@ -171,7 +175,8 @@ function handleTypeSearchUf(e) {
     
     const SearchUsers = typeSearch === "Nickname" ? online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower))
                     : typeSearch === "City" ? online?.filter((informations) => informations.city.toLowerCase().includes(searchLower))
-                    : typeSearch === "Uf" ? online?.filter((informations) => informations.uf.toLowerCase().includes(searchLower)) : ""
+                    : typeSearch === "Uf" ? online?.filter((informations) => informations.uf.toLowerCase().includes(searchLower))
+                    : typeSearch === "Id" ? online?.filter((informations) => informations.idAccount.toLowerCase().includes(searchLower)) : ""
 
     const SearchUsersFilter = online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower)
                                                                 ||  informations.city.toLowerCase().includes(searchLower)
@@ -233,6 +238,7 @@ function handleTypeSearchUf(e) {
             <div className="searchButton">
             <h3>Filtro de busca</h3>
             <div className="buttons">
+                      <button className={typeSearch === "Id" ? "select" : ""} onClick={handleTypeSearchId}>ID</button>
                       <button className={typeSearch === "Nickname" ? "select" : ""} onClick={handleTypeSearchNickname}>Nome</button>
                       <button className={typeSearch === "City" ? "select" : ""} onClick={handleTypeSearchCity}>Cidade</button>
                       <button className={typeSearch === "Uf" ? "select" : ""} onClick={handleTypeSearchUf}>Estado(UF)</button>

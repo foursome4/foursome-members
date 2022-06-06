@@ -98,7 +98,6 @@ function SignUp() {
     }
   }
 
-
   function ChangeMask(e) {
     const originalValue = unMask(e.target.value);
     const maskedValue = masker(originalValue, [
