@@ -9,7 +9,7 @@ function FeedPostComponent() {
     const [currentPage, setCurrentPage] = useState(0);
 
       const perPage = 5;
-      const {data} = useFetch(`https://api-foursome.herokuapp.com/posts/all?page=${currentPage}&limit=${perPage}`);
+      const {data} = useFetch(`/posts/all?page=${currentPage}&limit=${perPage}`);
 
       useEffect(() => {
           if(data) {
