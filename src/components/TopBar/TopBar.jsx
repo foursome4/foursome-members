@@ -48,22 +48,15 @@ function TopBar() {
                 <SolicitationsFriend />
                 <Notifications /> 
 
-                <a href="/invite">
+                {/* <a href="/invite">
                 <div className="linkSelect" data-tip data-for='Convidar'>
                     <IoMailOutline />
                 </div>
                 </ a>
                 <ReactTooltip id='Convidar' place="bottom" type="dark" effect="solid">
                      <span>Convidar</span>
-                </ReactTooltip>
-                {/* <a href="/invitelist">
-                <div className="link" data-tip data-for='Enviados'>
-                    <IoMailOpenOutline />
-                </div>
-                </ a> */}
-                <ReactTooltip id='Enviados' place="bottom" type="dark" effect="solid">
-                     <span>Convites Enviados</span>
-                </ReactTooltip>
+                </ReactTooltip> */}
+
 
 
                 <MyMessages />
