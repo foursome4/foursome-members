@@ -60,7 +60,7 @@ function SignIn() {
         <img src={logoImg} alt="Logo Foursome" />
         </div>
         <div className="form">
-          <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
+          {/* <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
           {never1 === true ? <h6>Favor remover os espaços vazios no campo login</h6> : ""}
           <div className="inputPassword">
           <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
@@ -69,15 +69,24 @@ function SignIn() {
           <div className="buttons">
             <button onClick={handleCreateAccount}> Entrar </button>
 
-          </div>
-          <div className="links">
+          </div> */}
+          {/* <div className="links">
           <a href="/recuperation"><p> ESQUECI MINHA SENHA</p></a>
             <a href="/recuperationuser"><p> ESQUECI MEU USUÁRIO</p></a>
-          </div>
-
+          </div> */}
+            <br />
+            <br />
           <div className="whatsapp" onClick={handleInviteWhatsapp}>
-            <h4> Solicite um convite <IoLogoWhatsapp /></h4>
+            <h2>Estamos em manutenção. <br />Em breve estaremos de volta!</h2>
           </div>
+          <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          {/* <div className="whatsapp" onClick={handleInviteWhatsapp}>
+            <h4> Solicite um convite <IoLogoWhatsapp /></h4>
+          </div> */}
         </div>
       </div>
     </div>

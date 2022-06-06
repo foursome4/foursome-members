@@ -23,6 +23,8 @@
 }
 
 
+
+
 .content-Login .signIn .form {
     width: 50%;
     display: flex;
@@ -146,6 +148,7 @@ display: flex;
     border: 2px solid rgba(0, 157, 162, 0.18);
     margin-top: 20px;
     cursor: pointer;
+    color: var(--White);
 }
 .content-Login .signIn .form .whatsapp h4 {
     display: flex;
