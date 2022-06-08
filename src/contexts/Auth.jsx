@@ -676,7 +676,7 @@ async function CreateInviteMail({code, name, email, phone,idAccount, username, p
   
     const findAccountEmail = await api.get(`/accounts/find/${email}`);
 
-    if(findAccountEmail.data.lenght > 1) {
+    if(findAccountEmail.data.length > 0) {
         toast.error("Já existe uma conta com este e-mail!")
         return
     } 
