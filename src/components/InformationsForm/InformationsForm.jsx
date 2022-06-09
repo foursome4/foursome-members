@@ -24,6 +24,7 @@ function InformationsForm() {
     const [nickname, setNickname] = useState("")
     const [loadding, setLoadding] = useState(false);
     const [location, setLocation] = useState(false);
+    const [textError, setTextError] = useState(false);
 
 
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
@@ -96,19 +97,31 @@ function InformationsForm() {
         
     }
 
-    async function handleSearchCep(e) {
-        e.preventDefault();
-        try {
-            const res = await buscaCep.get(`${cep}/json`);
-            console.log(res.data);
-            console.log(res.data.uf);
-            setUf(res.data.uf)
-            setCity(res.data.localidade)
-        }catch{
-            console.log("error")
-            toast.error("CEP não encontrado. Por favor, digite sua cidade e seu Estado(UF) - Sigla")
-        }
+    
+    if(cep.length === 9) {
+        handleSearchCep()
+    } else {
+        console.log("Nada")
     }
+
+    async function handleSearchCep() {
+            try {
+                const res = await buscaCep.get(`${cep}/json`);
+                console.log(res.data);
+                console.log(res.data.uf);
+                setUf(res.data.uf)
+                setCity(res.data.localidade)
+            }catch{
+                console.log("error")
+                toast.error("CEP não encontrado. Por favor, digite sua cidade e seu Estado(UF) - Sigla")
+                setLocation(true)
+                setTextError(true)
+            }
+            return
+        }
+
+
+
 
     function handleRelationship(e) {
         setRelationship(e.target.value)
@@ -133,6 +146,14 @@ function InformationsForm() {
     
         setUf(maskedValue)
       }
+    function ChangeMaskCEP(e) {
+        const originalValue = unMask(e.target.value);
+        const maskedValue = masker(originalValue, [
+          "99999-999",
+        ]);
+    
+        setCep(maskedValue)
+      }
 
 
     return (
@@ -151,8 +172,8 @@ function InformationsForm() {
 
                         <br />
                         <div className="SearchCep">
-                        <input type="text" placeholder='Digite seu cep' value={cep} onChange={(e) => setCep(e.target.value)}/>
-                        <button onClick={handleSearchCep}>Buscar Cep</button>
+                        <input type="text" placeholder='Digite seu cep' value={cep} onChange={ChangeMaskCEP}/>
+                        {/* <button onClick={handleSearchCep}>Buscar Cep</button> */}
                         </div>
                         <div className="digiteCep">
                         <button onClick={handleHabiliteLocation}>Não sei meu CEP</button>
@@ -161,7 +182,8 @@ function InformationsForm() {
 
                     {location === true || uf !== "" ?
                     <div className="location">
-                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf.toUpperCase()} onChange={ChangeMask}  required/>
+                        <h5>{textError === false ? "" : "CEP não encontrado, digite sua cidade e estado"}</h5>
+                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf} onChange={ChangeMask}  required/>
                             <input type="text" placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required/>
                         </div>    
                         :  "" }

@@ -7,6 +7,8 @@
     justify-content: space-between;
     padding: 20px;
     background-color: var(--Primary);
+    color: #fff;
+    text-align: center;
 }
 
 .complete-informations .title {
