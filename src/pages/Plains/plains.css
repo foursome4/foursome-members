@@ -16,6 +16,70 @@
     background-color: var(--Background2);
     padding: 100px 0;
 }
+.plains .plains-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 95%;
+    background-color: var(--Background2);
+    padding: 100px 0;
+}
+.plains .plains-page .myPlain {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 85%;
+    background-color: var(--Background);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+.plains .plains-page .mypayments {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 85%;
+    background-color: var(--Background);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+.plains .plains-page .mypayments .unic {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--Background);
+    padding: 10px 0;
+    border-radius: 10px;
+}
+.plains .plains-page .mypayments .unic hr{
+    width: 100%;
+    margin: 5px 0;
+}
+.plains .plains-page .mypayments .unic .dadosList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    margin: 5px 0;
+}
+.plains .plains-page .mypayments {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 85%;
+    background-color: var(--Background);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
 
 .plains .plains-page .buttons {
     width: 80%;

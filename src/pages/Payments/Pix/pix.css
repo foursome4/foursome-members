@@ -1,0 +1,33 @@
+﻿.Pix {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--Background2);
+}
+.Pix .pix-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 95%;
+    background-color: var(--Background2);
+    padding: 100px 0;
+}
+.Pix .pix-page a {
+    margin-top: 40px;
+}
+.Pix .pix-page .image {
+    margin: 20px;
+}
+.Pix .pix-page .chave {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: var(--Background);
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 5px;
+}

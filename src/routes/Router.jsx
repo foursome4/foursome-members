@@ -19,9 +19,13 @@ import { Lgpd } from '../pages/Lgpd/Lgpd';
 import { Loader } from '../pages/Loader/Loader';
 import { Messages } from '../pages/Messages/Messages';
 import { Notifications } from '../pages/Notifications/Notifications';
+import { Pix } from '../pages/Payments/Pix/Pix';
+import { PlainSelected } from '../pages/Payments/PlainSelected/PlainSelected';
+import { Voucher } from '../pages/Payments/Voucher/Voucher';
 import { Plains } from '../pages/Plains/Plains';
 import { PostIndividual } from '../pages/PostIndividual/PostIndividual';
 import { Preferences } from '../pages/Preferences/Preferences';
+import { Pricing } from '../pages/Pricing/Pricing';
 import { PrivacityPolice } from '../pages/PrivacityPolice/PrivacityPolice';
 import { Profile } from '../pages/Profile/Profile';
 import { ProfileFriend } from '../pages/ProfileFriend/ProfileFriend';
@@ -113,6 +117,14 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Settings /> </PrivateRoute>} />
             <Route path="/plain" 
                 element={ <PrivateRoute> <Plains /> </PrivateRoute>} />
+            <Route path="/pricing" 
+                element={ <PrivateRoute> <Pricing /> </PrivateRoute>} />
+            <Route path="/payment/:id" 
+                element={ <PrivateRoute> <Pix /> </PrivateRoute>} />
+            <Route path="/voucher/:id" 
+                element={ <PrivateRoute> <Voucher /> </PrivateRoute>} />
+            <Route path="/selectplain/:id" 
+                element={ <PrivateRoute> <PlainSelected /> </PrivateRoute>} />
             <Route path="/notifications" 
                 element={ <PrivateRoute> <Notifications /> </PrivateRoute>} />
             <Route path="/search" 

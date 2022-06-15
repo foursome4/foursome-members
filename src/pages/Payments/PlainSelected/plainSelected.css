@@ -1,0 +1,44 @@
+﻿.PlainSelected {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--Background2);
+}
+.PlainSelected .plains-informations {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 95%;
+    background-color: var(--Background2);
+    padding: 100px 0;
+}
+.PlainSelected .plains-informations .plain {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 55%;
+    background-color: var(--Primary);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    color: var(--White);
+}
+.PlainSelected .plains-informations .plain a {
+    background-color: var(--Background2);
+    color: var(--Primary);
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border-radius: 20px;
+    border: 1px solid var(--Primary);
+    font-weight: 500;
+    margin-top: 20px;
+    padding: 7px 40px;
+    text-decoration: none;
+}

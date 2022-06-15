@@ -59,9 +59,9 @@ function Search() {
                               username: user.username,
                               type: user.type,
                               avatar: res.data[0].avatar,
-                              nickname: res.data[0].nickname,
+                              nickname: res.data[0].nickname === null || res.data[0].nickname === undefined ? "" : res.data[0].nickname,     
                               city: res.data[0].city === null || res.data[0].city === undefined ? "" : res.data[0].city,     
-                              uf: res.data[0].uf,     
+                              uf: res.data[0].uf === null || res.data[0].uf === undefined ? "" : res.data[0].uf,         
                           }
                           
                           setOnline(oldOnline => [...oldOnline, dados])
