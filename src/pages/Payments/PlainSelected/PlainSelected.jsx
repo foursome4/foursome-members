@@ -31,9 +31,6 @@ function PlainSelected() {
             <a href={`/payment/${data?.[0].id}`}>Prossegir para Pagamento</a>
             </div>
 
-            <ChatSlim />
-        <ToolbarLeftSlim />
-        <BarBottomMenu />
         </div>
     )
 }

@@ -4,7 +4,7 @@ import { ChatSlim } from "../../../components/ChatSlim/ChatSlim";
 import { ToolbarLeftSlim } from "../../../components/ToolBarLeftSlim/ToolbarLeftSlim";
 import { TopBar } from "../../../components/TopBar/TopBar";
 import {FiUpload} from "react-icons/fi";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {toast} from 'react-toastify';
 import profile from '../../../assets/images/image.png';
 import {IoCheckmarkCircleOutline, IoBanOutline} from "react-icons/io5"
@@ -13,9 +13,11 @@ import { useFetch } from "../../../hooks/useFetch";
 import { v4 as uuidv4} from 'uuid';
 import { storage } from '../../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
+import { AuthContext } from "../../../contexts/Auth";
 
 function Voucher() {
     const {id} = useParams();
+    const{createPayment} = useContext(AuthContext)
 
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
@@ -72,6 +74,7 @@ function Voucher() {
         const period = data?.[0].period;
 
         console.log({linkComprovant, idPlain, namePlain, idAccount,username, value, period})
+        createPayment(linkComprovant, idPlain, namePlain, idAccount,username, value, period)
     }
 
 
@@ -106,9 +109,6 @@ function Voucher() {
 
                         <button onClick={handleUploadVoucher}>Enviar comprovante.</button>
             </div>
-            <ChatSlim />
-        <ToolbarLeftSlim />
-        <BarBottomMenu />
         </div>
     )
 }

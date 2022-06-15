@@ -24,9 +24,12 @@ function Plains() {
             <h4>Período: {data?.[0].period}</h4>
             <h4>Ativação: {data?.[0].created_at}</h4>
             <h4>Expira em: {data?.[0].created_at} Dias</h4>
+
+
+            <a href="/pricing">Renovar plano</a>
             </div>   
 
-            <div className="mypayments">
+            <div className="myPayment">
                     <h2>Histórico de pagamentos</h2>
                         {data?.map((payment) => {
                             return (

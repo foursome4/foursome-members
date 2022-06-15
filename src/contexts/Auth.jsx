@@ -892,6 +892,18 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
     }
 
 
+    //payments
+    async function createPayment(linkComprovant, idPlain, namePlain, idAccount,username, value, period) {
+        const data = {linkComprovant, idPlain, namePlain, idAccount,username, value, period}
+
+        await api.post("/payments", data).then(() => {
+            toast.info("Pagamento realizado com sucesso!");
+            window.open("/paymentConfirmed","_self")
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
     
 
          // Location
@@ -1076,8 +1088,8 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
             newPostEvent,
             createMembersEvents,
             deleteEvent,
-            deleteMemberEvent
-
+            deleteMemberEvent,
+            createPayment
         }}>
             {children}
         </AuthContext.Provider>

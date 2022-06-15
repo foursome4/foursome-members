@@ -1,12 +1,20 @@
-﻿function PaymentNotice(){
+﻿import "./paymentNotice.css";
+import { TopBar } from "../../../components/TopBar/TopBar";
+
+function PaymentNotice(){
     return (
         <div className="PaymentNotice">
-            <h2>Sua assunatura venceu 😔</h2>
+            <TopBar />
+            <div className="PaymentNotice-Page">
+                <h1>😔</h1>
+            <h2>Sua assunatura venceu!</h2>
             <h5>Renove e tenha seu acesso de volta!</h5>
             
-            <a href="">Renovar agora</a>
-            <a href="">Enviar comprovante</a>
+            <a href="/pricing">Renovar agora</a>
             <button>Renovar depois</button>
+            </div>
         </div>
     )
 }
+
+export {PaymentNotice}

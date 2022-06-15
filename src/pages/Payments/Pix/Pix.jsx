@@ -28,9 +28,6 @@ function Pix() {
             <a href={`/voucher/${id}`}>Enviar comprovante</a>
             </div>
             
-            <ChatSlim />
-        <ToolbarLeftSlim />
-        <BarBottomMenu />
         </div>
     )
 }

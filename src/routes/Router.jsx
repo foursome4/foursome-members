@@ -19,6 +19,8 @@ import { Lgpd } from '../pages/Lgpd/Lgpd';
 import { Loader } from '../pages/Loader/Loader';
 import { Messages } from '../pages/Messages/Messages';
 import { Notifications } from '../pages/Notifications/Notifications';
+import { PaymentConfirmed } from '../pages/Payments/PaymentConfirmed/PaymentConfirmed';
+import { PaymentNotice } from '../pages/Payments/PaymentNotice/PaymentNotice';
 import { Pix } from '../pages/Payments/Pix/Pix';
 import { PlainSelected } from '../pages/Payments/PlainSelected/PlainSelected';
 import { Voucher } from '../pages/Payments/Voucher/Voucher';
@@ -125,6 +127,10 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Voucher /> </PrivateRoute>} />
             <Route path="/selectplain/:id" 
                 element={ <PrivateRoute> <PlainSelected /> </PrivateRoute>} />
+            <Route path="/paymentConfirmed" 
+                element={ <PrivateRoute> <PaymentConfirmed /> </PrivateRoute>} />
+            <Route path="/paymentnotice" 
+                element={ <PrivateRoute> <PaymentNotice /> </PrivateRoute>} />
             <Route path="/notifications" 
                 element={ <PrivateRoute> <Notifications /> </PrivateRoute>} />
             <Route path="/search" 

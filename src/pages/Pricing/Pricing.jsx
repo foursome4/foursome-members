@@ -37,9 +37,6 @@ function Pricing() {
 
  
         </div>
-        <ChatSlim />
-        <ToolbarLeftSlim />
-        <BarBottomMenu />
         </div>
     )
 }
