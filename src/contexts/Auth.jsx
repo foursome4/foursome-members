@@ -142,7 +142,7 @@ function AuthProvider({children}) {
             const user = JSON.parse(Local);
 
             if(user.latitude === undefined || user.longitude === null) {
-                window.open("/update", "_self");
+                window.open("/feed", "_self");
             } else {
                 window.open("/feed", "_self");
             }
