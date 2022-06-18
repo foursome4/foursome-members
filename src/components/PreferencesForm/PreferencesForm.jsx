@@ -215,10 +215,7 @@ function PreferencesForm() {
                     </div>
                         </form>
             </div>
-            <br />
-            <br />
-            <br />
-            <br />
+
 
             </div>
     )

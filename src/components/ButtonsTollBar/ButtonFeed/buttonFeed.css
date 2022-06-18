@@ -1,0 +1,122 @@
+﻿
+a {
+    text-decoration: none;
+}
+ .toolIcon .counter{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--Primary);
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    color: var(--Background2);
+    margin-top: 0px;
+    margin-left:55px;
+    font-size: 10px;
+}
+ .toolIcon a {
+    text-decoration: none;
+
+}
+
+ .toolIcon {
+    width: 80px;
+    height: 45px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 6px;
+    margin: 3px 0;
+    padding: 5px;
+    color: var(--Primary);
+    cursor: pointer;
+    padding: 10px;
+    font-size: 12px;
+    border: none;
+    background-color: var(--Background);
+}
+ .toolIcon svg {
+    margin-right:3px;
+}
+ .toolIcon:hover {
+    background-color: var(--Primary);
+    color: var(--Background);
+}
+
+
+ .toolIcon p:hover {
+    color: var(--Background);
+}
+
+ .toolIcon svg:hover {
+    color: var(--Background);
+}
+
+
+
+@media (max-width: 900px) {
+ .toolIcon a {
+    text-decoration: none;
+    padding: 5px;
+
+}
+
+ .toolIcon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    margin: 0 5px;
+    padding: 3px 0;
+    color: var(--Primary);
+    cursor: pointer;
+    padding: 10px;
+    font-size: 12px;
+    border: none;
+    background-color: var(--Background)
+}
+ .toolIconSelect a {
+    text-decoration: none;
+    padding: 5px;
+
+}
+
+ .toolIcon:hover {
+    background-color: var(--Primary);
+    color: var(--Background);
+}
+
+
+ .toolIcon p:hover {
+    color: var(--Background);
+}
+
+ .toolIcon svg:hover {
+    color: var(--Background);
+}
+
+ .toolIcon .counter{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--Primary);
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    color: var(--Background2);
+    margin-bottom: 35px;
+    margin-left:35px;
+    font-size: 10px;
+}
+}

@@ -10,10 +10,6 @@ function ListCommentsAndReactions({idPost}) {
     const [isOpenModalFriend, setIsOpenModalFriend] = useState(false);
     const {data} = useFetch(`/reactions/${idPost}`);
 
-    if(data) {
-        console.log(data)
-    }
-
     if(!data) {
         return (
             <div className="load">

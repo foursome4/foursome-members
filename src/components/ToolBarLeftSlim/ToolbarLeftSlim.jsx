@@ -2,6 +2,7 @@ import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoPeopleOutline, I
     IoInformationCircleOutline, IoNewspaperOutline, IoMailOpenOutline, IoSettingsOutline, IoCashOutline } from "react-icons/io5";
 import {memo} from 'react' 
 import './toolbarLeftSlim.css'
+import { ButtonFeed } from "../ButtonsTollBar/ButtonFeed/ButtonFeed";
 
 function ToolbarLeftSlimComponent() {
     const Local = localStorage.getItem("informations-foursome");
@@ -20,11 +21,7 @@ function ToolbarLeftSlimComponent() {
                 </div>
                 <div className="tools">
 
-                <a href="/feed" >
-                 <button className="toolIcon" >
-                        <IoNewspaperOutline size={20}/>Feed
-                    </button>
-                    </a>
+                <ButtonFeed />
 
                     <a href="/profile" >
                     <button className="toolIcon" >

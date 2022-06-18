@@ -2,6 +2,7 @@ import { useState, memo } from "react";
 import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoCashOutline, IoSettingsOutline, IoPeopleOutline, IoMenuOutline,
     IoInformationCircleOutline, IoChatbubblesOutline, IoMailOutline, IoNewspaperOutline, IoBusinessOutline, IoMailOpenOutline, IoStatsChartOutline } from "react-icons/io5"
 import { useFetch } from "../../hooks/useFetch";
+import { ButtonFeed } from "../ButtonsTollBar/ButtonFeed/ButtonFeed";
 import './barBottomMenu.css'
 
 function BarBottomMenuComponenet() {
@@ -38,11 +39,8 @@ const {data} = useFetch(`/online`);
                         <IoMailOutline size={20}/>Convite
                     </button>
                     </a>
-                <a href="/feed" >
-                 <button className="ButtonsUnic" >
-                        <IoNewspaperOutline size={20}/>Feed
-                    </button>
-                    </a>
+
+                <ButtonFeed />
 
                     <a href="/profile" >
                     <button className="ButtonsUnic" >

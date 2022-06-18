@@ -13,7 +13,7 @@ function Notifications() {
 
 
 
-           const loadDateRead = useCallback(async () => {
+   const loadDateRead = useCallback(async () => {
              const idAccount = user.id
              await api.get(`/dateread/${idAccount}`)
              .then( async (res) => {

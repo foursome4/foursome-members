@@ -53,7 +53,8 @@ function ProfileFriend() {
   const [friends, setFriends] = useState("friends");
   const [following, setFollowing] = useState("");
   const [followers, setFollowers] = useState("");
-  const [width, setWidth] = useState("")
+  const [width, setWidth] = useState("");
+  const [login, setLogin] = useState([])
 
 useEffect(() => {
 function widthView() {
@@ -67,16 +68,24 @@ setWidth((window.innerWidth > 0) ? window.innerWidth : window.screen.width);
 widthView()
 },[])
 
+console.log(id)
+
   useEffect(() => {
+
+    async function loadDateLogin() {
+      await api.get(`/datereadlogin/${id}`).then((result) => {
+        setLogin(result.data)
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
     async function loadAccount() {
       await api.get(`/accounts/filter/${id}`).then( async (res) => {
         setUser(res.data[0]);
-        console.log(res.data[0].patron.toLowerCase())
         const idAccount = res.data[0].patron.toLowerCase()
         await api.get(`informations/${idAccount}`)
         .then((patron) => {
           setPatron(patron.data[0])
-          console.log(patron.data[0])
         }).catch((error) => {
           console.log(error)
         })
@@ -110,7 +119,6 @@ widthView()
       const idAccount = id;
       await api.get(`/preferences/${idAccount}`)
       .then((res) => {
-        console.log(res.data[0])
         setPreferences(res.data[0])
       }).catch(error => {
         console.log("Erro ao buscar dados" + error)
@@ -121,8 +129,6 @@ widthView()
       await api.get(`conversations/${myUser.id}/${id}`)
       .then( async (res) => {
         if(res.data.length !== 0) {
-          console.log("Busca Sala - Tentativa 1");
-          console.log(res.data[0])
           setRooms(res.data[0])
           return
         } 
@@ -130,8 +136,6 @@ widthView()
         await api.get(`conversations/${id}/${myUser.id}`)
         .then( async (res) => {
           if(res.data.length !== 0) {
-            console.log("Busca Sala - tentativa 2");
-            console.log(res.data[0])
             setRooms(res.data[0])
             return
           }
@@ -140,10 +144,8 @@ widthView()
           const room = v4.substring(0, 6);
           const data = {room, idAccount: myUser.id, idFriend: id}
           setRooms(data)
-          console.log(data)
 
           await api.post(`/conversations`, data).then((res) => {
-            console.log("Conversa criada com sucesso!");
           })
 
 
@@ -161,11 +163,12 @@ widthView()
     loadCharacteristcs()
     loadPreferences()
     loadRoom()
+    loadDateLogin()
   }, [myUser.id, id]);
 
 
+
  function handleChat() {
-   console.log(rooms.room)
   navigate(`/chat/${rooms.room}/${id}`);
   }
 
@@ -297,8 +300,14 @@ widthView()
     const followingMy = myFollowers.filter(friend => (friend.idAccount === user.id))
     const FollowingExists = myFollowers.filter(friend => (friend.idAccount === myUser.id))
 
-    const date = new Date(user.created_at)
-    console.log(patron)
+    const date = login.length === 0 ? new Date() : new Date(login[0].DateReadLogin);
+    const newDateFormated = ((date.getDate())) + "/" + ((date.getMonth() + 1)) + "/" + date.getFullYear();
+
+    const dateActual = new Date();
+    const timeDifference = Math.abs(dateActual.getTime() - date.getTime());
+    const datDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+
+
 
   return (
       <div className="container">
@@ -366,7 +375,24 @@ widthView()
                                               date.getMonth()+1 === 12 ? "Desembro": ""} de ${date.getFullYear()}`}</h6>
                         <h6> {user !== null ? user.role : "Função não encontrada"} / {user !== null ? user.type : "Tipo de conta não encontrada"}</h6>
                         <br />
-        <h6>Último acesso 1 dia</h6>
+                        
+        {login.length !== 0 ?
+        <h6> {datDifference === 0 ? "Ultimo Acesso hoje" :
+        datDifference === 1 ? "Ultimo Acesso a 1 dia" :
+        datDifference > 1 && datDifference < 7 ? `Último acesso a ${datDifference} dias`:
+        datDifference === 7 ? "Ultimo Acesso a 1 semana" :
+        datDifference > 7 && datDifference < 14 ? `Último acesso a ${datDifference} dias`:
+        datDifference === 14 ? "Ultimo Acesso a 2 semanas" :
+        datDifference > 14 && datDifference < 21 ? `Último acesso a ${datDifference} dias`:
+        datDifference === 21 ? "Ultimo Acesso a 3 semanas" :
+        datDifference > 21 && datDifference < 30 ? `Último acesso a ${datDifference} dias`:
+        datDifference === 30 ? "Ultimo Acesso a 4 semanas" :
+        "Ultimo Acesso mais de um mês" }</h6> :
+        <h6> Último acesso não registrado</h6>}
+        
+        
+
+
                     </div>
                     <div className="name">
                       <br />

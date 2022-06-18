@@ -4,7 +4,7 @@ import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { TopBar } from "../../components/TopBar/TopBar"
 import './feed.css';
-import { useContext, useEffect } from "react"
+import { useCallback, useContext, useEffect } from "react"
 import { AuthContext } from "../../contexts/Auth"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { ListEventsFeed } from "../../components/ListEventsFeed/ListEventsFeed"
@@ -27,7 +27,46 @@ function Feed() {
     const navigate = useNavigate();
     const {inactivityTime, socketDataLocation} = useContext(AuthContext);
 
-           inactivityTime()
+           inactivityTime();
+
+
+           const loadDateReadFeed = useCallback(async () => {
+                     const idAccount = user.id
+                     await api.get(`/datereadlogin/${idAccount}`)
+                     .then( async (res) => {
+                         if(res.data.length !== 0) {
+                            const id = res.data[0].id
+                            const data = {
+                                DateReadLogin: new Date()
+                            }
+                    
+                        await api.patch(`/datereadlogin/${id}`, data).then((res) => {
+                            console.log("Data inicial alterada com sucesso!");
+                            }).catch(error => {
+                            console.log("Erro ao buscar dados" + error)
+                        })
+                             return;
+                         } else {
+                             const data = {
+                                 idAccount: user.id,
+                                 DateReadLogin: new Date() 
+                             }
+                             await api.post(`/datereadlogin`, data).then(() => {
+                                 console.log("Data inicial definida com sucesso!")
+                                 return;
+                             }).catch(error => {
+                         console.log("Erro ao buscar dados" + error)
+                     })
+                         }
+                     }).catch(error => {
+                         console.log("Erro ao buscar dados" + error)
+                     })
+                 
+                 }, [user.id]) 
+        
+            useEffect(() => {
+                loadDateReadFeed()
+            }, [loadDateReadFeed ]);
 
            useEffect(() => {
 

@@ -1,15 +1,15 @@
 import { Router } from './routes/Router';
-import {AuthProvider} from './contexts/Auth'; 
+import {AuthContext, AuthProvider} from './contexts/Auth'; 
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Global.css';
+import { useContext } from 'react';
 
-
-// import {io} from 'socket.io-client';
-// const socket = io("https://api-foursome.herokuapp.com", {transports: ['websocket', 'polling', 'flashsocket']}); 
 
 function App() {
+  const {logout} = useContext(AuthContext);
+
   return (
     <BrowserRouter>
     <AuthProvider>

@@ -5,14 +5,10 @@ import { useFetch } from '../../hooks/useFetch';
 import { ItemFeed } from '../ItemFeed/ItemFeed';
 
     function FeedPostIndividual2({idAccount}) {
-        console.log(idAccount)
     const [myPosts, setMyPosts] = useState("");
 
       const type = myPosts;
     const {data} = useFetch(type === "" ? `/posts/filter/accounts/${idAccount}` : `/posts/filter/${idAccount}/${type}`);
-    if(data) {
-        console.log(data)
-    }
 
     function postAll() {
         setMyPosts("")

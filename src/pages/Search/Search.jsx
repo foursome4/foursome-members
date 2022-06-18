@@ -49,7 +49,6 @@ function Search() {
             res.data.forEach((user) => {
                 async function loadInformations() {
                     await api.get(`/informations/${user.id}`).then((res) => {
-                        console.log(res.data[0]);
       
                         if(res.data[0] === undefined) {
                             return
@@ -65,8 +64,7 @@ function Search() {
                           }
                           
                           setOnline(oldOnline => [...oldOnline, dados])
-                          console.log("dados")
-                          console.log(dados)
+
       
                       }).catch((error) => {
                           console.log(error)
@@ -81,11 +79,6 @@ function Search() {
      }, [])
 
 
-     console.log(online)
-
-
-
-    console.log(userFilter)
 
     function handleSearch(e){
         e.preventDefault();

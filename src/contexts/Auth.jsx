@@ -138,8 +138,14 @@ function AuthProvider({children}) {
                 return
             }
             localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
-           
-            window.open("/feed", "_self")
+            const Local = localStorage.getItem("foursome");
+            const user = JSON.parse(Local);
+
+            if(user.latitude === undefined || user.longitude === null) {
+                window.open("/update", "_self");
+            } else {
+                window.open("/feed", "_self");
+            }
             
            
         }).catch(error => {
@@ -1017,7 +1023,7 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         }
         function resetTimer() {
         clearTimeout(time);
-      time = setTimeout(doSomething, 300000)
+      time = setTimeout(doSomething, 900000)
     }
 
 
