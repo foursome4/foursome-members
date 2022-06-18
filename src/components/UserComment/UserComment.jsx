@@ -3,6 +3,7 @@ import api from '../../services/api'
 import './userComment.css'
 
 import { DateFormat } from '../DateFormat/DateFormat';
+import { Link } from 'react-router-dom';
 
 function UserComment({idAccount, date, role}) {
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
@@ -58,12 +59,13 @@ function UserComment({idAccount, date, role}) {
            </a>
            </div>
            <div className="name">
-           <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
            {nickname === "" || nickname === undefined ?
-         <h4>Usuário deletado</h4>
-        :
-        <h4>{nickname} - {uf}</h4> }
-               </a>
+            <Link to="">
+          <h4>Usuário deletado</h4>
+                </Link> :
+           <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
+                 <h4>{nickname} - {uf}</h4>
+               </Link>}
                                      <DateFormat date={date}/>
            </div>
            </div>

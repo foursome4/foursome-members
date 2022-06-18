@@ -5,6 +5,7 @@ import { FiTrash2, FiEdit } from 'react-icons/fi'
 import { AuthContext } from '../../contexts/Auth';
 import { EditReply } from '../EditReply/EditReply';
 import { DateFormat } from '../DateFormat/DateFormat';
+import { Link } from 'react-router-dom';
 
 function UserReply({idAccount, username, date, id, text, role}) {
     const { deleteReply} = useContext(AuthContext);
@@ -78,12 +79,13 @@ function UserReply({idAccount, username, date, id, text, role}) {
            </a>
            </div>
            <div className={userData.id === idAccount ? "MyName":"name"}>
-           <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
            {nickname === "" || nickname === undefined ?
-         <h6>Usuário deletado</h6>
-        :
-        <h6>{nickname} - {uf}</h6> }
-               </a>
+            <Link to="">
+          <h4>Usuário deletado</h4>
+                </Link> :
+           <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
+                 <h4>{nickname} - {uf}</h4>
+               </Link>}
            <DateFormat date={date} />
            </div>
            </div>

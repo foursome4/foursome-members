@@ -430,7 +430,7 @@ async function preferencesAccount({id, idAccount, men, woman, couple, trisal, tr
         newFriend(idAccount, idFriend, type, status);
 
         await api.post("/notifications", dataNotification).then(() => {
-            window.open(`/completeregistration`,"_self")
+            window.open(`/registrationend`,"_self")
         }).catch(error => {
             console.log("Notificação não cadastrada" + error)
         })
