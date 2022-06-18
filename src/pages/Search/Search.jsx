@@ -197,7 +197,7 @@ function handleTypeSearchUf(e) {
                 return(
                     <div className="accounts" key={information.idAccount}>
                         <div className="image">
-                            <Link to={information.idAccount === userData.id ? "/profile" : `/profile-friend/${information.idAccount}` } >
+                            <a href={information.idAccount === userData.id ? "/profile" : `/profile-friend/${information.idAccount}` } >
                         <img 
                         src={information.avatar}
                         onError={({ currentTarget }) => {
@@ -205,10 +205,12 @@ function handleTypeSearchUf(e) {
                             currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
                         }}
                         />
-                        </Link>
+                        </a>
                         </div>
                         <div className="infos2">
+                        <a href={information.idAccount === userData.id ? "/profile" : `/profile-friend/${information.idAccount}` } >
                             <h5>{information.nickname}</h5>
+                            </a>
                             <h6>{information.username}</h6>
                             <div className="moreInfos2">
                             <h6>{information.type}</h6>

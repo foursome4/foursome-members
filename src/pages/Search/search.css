@@ -229,6 +229,10 @@
     padding: 5px;
     color: var(--Background2);
 }
+.SearchPage .itensSearch .accounts .infos2 a {
+    text-decoration: none;
+    color: var(--Background2);
+}
 .SearchPage .itensSearch .accounts .infos2 h5 {
     font-weight:700;
 }
