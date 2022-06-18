@@ -445,21 +445,20 @@ console.log(id)
                     </div>
                         )
                       })}
-
-
-                  
+            
+         
                     <div className="info-social">
                         <div className="info-social-data">
-                            <p>{friendAproveds.length}</p>
-                              <h5>Amigos</h5>
+                            <p onClick={handleFriend}>{friendAproveds.length}</p>
+                              <h5 onClick={handleFriend}>Amigos</h5>
                         </div>
                         <div className="info-social-data">
-                            <p>{photos.length}</p>
-                            <h5>Fotos</h5>
+                            <p onClick={handlePhoto}>{photos.length}</p>
+                            <h5 onClick={handlePhoto}>Fotos</h5>
                         </div>
                         <div className="info-social-data">
-                            <p>{videos.length}</p>
-                            <h5>Vídeos</h5>
+                            <p onClick={handleVideo}>{videos.length}</p>
+                            <h5 onClick={handleVideo}>Vídeos</h5>
                         </div>
                     </div>
                 </div>

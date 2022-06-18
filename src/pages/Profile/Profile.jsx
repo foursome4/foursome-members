@@ -201,6 +201,8 @@ widthView()
                   <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/> Vídeos</button>
                   <button  className='deleteAccount' onClick={handleDeleteAccount}> Deletar Conta</button>
                 </div>
+
+
             </div>
           <div className="sections">
                    {width <= 900 && feed !== "feed" ? "":
