@@ -805,7 +805,7 @@ async function creategroup( name, description, theme, privacity, cover, avatar, 
     const data = { name, description, theme, privacity, cover, avatar, idAccount, username, avatarUser};
     await api.post("/groups", data).then(async (result) => {
         toast.success("Grupo Criado com socesso!");
-
+        window.location.reload(false)
         const data2 = {idAccount, idGroup: result.data.id, username, avatar, nickname, role: "Administrator", status: "Aproved"};
         await api.post("/groups/members", data2).then(() => {
         }).catch(error => {
@@ -823,6 +823,7 @@ async function createForum( name, description, theme, avatar, cover, idAccount, 
 
     await api.post("/foruns", data).then(async () => {
         toast.success("Forum Criado com socesso!");
+        window.location.reload(false)
     }).catch(error => {
         console.log(error)
     })
@@ -832,6 +833,7 @@ async function createMemberGroup( idAccount, idGroup, username, avatar, nickname
     const data = { idAccount, idGroup, username, avatar, nickname, role, status};
 
     await api.post("/groups/members", data).then(() => {
+        window.location.reload(false)
     }).catch(error => {
         console.log(error)
     })
@@ -840,6 +842,7 @@ async function createEvents( avatar, name, description, date, street, district, 
     const data = { avatar, name, description, date, street, district, city, uf, complement, reference, number, theme, cover, status, idAccount, username, avatarUser, nickname};
     await api.post("/events", data).then(() => {
         toast.success("Evento criado com sucesso! Aguarde a aprovação dos moderadores!")
+        window.location.reload(false)
     }).catch(error => {
         console.log(error)
     })
@@ -848,6 +851,7 @@ async function createMembersEvents( idAccount, idEvent, role, status, username )
     const data = { idAccount, idEvent, role, status, username };
     await api.post("/membersevents", data).then(() => {
         toast.success("Presença confirmada")
+        window.location.reload(false)
     }).catch(error => {
         console.log(error)
     })

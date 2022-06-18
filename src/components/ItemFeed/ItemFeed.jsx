@@ -11,7 +11,7 @@ import { AuthContext } from '../../contexts/Auth'
 import { ListCommentsAndReactions } from '../ListCommentsAndReactions/ListCommentsAndReactions'
 
 
-function ItemFeedComponent({idAccount, link, date, text, type, id, username, group, forum, key}) {
+function ItemFeedComponent({idAccount, link, date, text, type, id, username, group, forum, idGroup, idForum}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
@@ -49,7 +49,9 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
    return (
          <div className="feed-post" key={id} >
     <UsersPosts idAccount={idAccount} username={username} date={date} keyId={id} role={userData.role}/>
-    <Link to={``} ><h5>{group !== "" ? group : forum  !== "" ? forum : ""  } </h5></Link>
+    <div className="TextLink">
+    <Link to={group !== "" ? `/group/${idGroup}` : forum !== "" ? `/forum/${idForum}` : ""} ><h5>{group !== "" ? `Grupo: ${group}` : forum  !== "" ? `Forum: ${forum}` : ""  } </h5></Link>
+    </div>
 
              <div className="post-data" >
                  <p>{text}</p>

@@ -12,6 +12,26 @@
     margin: 10px 0;
     border: 1px solid var(--Background2);
 }
+.feed-post .TextLink{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    color: var(--Gray_font2);
+    padding: 0 10px;
+}
+.feed-post .TextLink a {
+    text-decoration: none;
+    font-weight: bold;
+    margin: 10px 0;
+    color: var(--Gray_font2);
+}
+.feed-post .TextLink a h5 {
+    font-weight: 500;
+    text-align: left;
+    color: var(--Gray_font2);
+}
 
 .feed-post .post-user {
     display: flex;

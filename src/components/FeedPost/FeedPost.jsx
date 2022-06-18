@@ -54,8 +54,12 @@ function FeedPostComponent() {
                                  <ItemFeed idAccount={postsData.idAccount} link={postsData.link}
                                            date={postsData.created_at} text={postsData.text}
                                            type={postsData.type} id={postsData.id}
-                                           username={postsData.username} group={postsData.nameGroup}
-                                           forum={postsData.nameForum}/>
+                                           username={postsData.username}
+                                           group={postsData.nameGroup}
+                                           forum={postsData.nameForum}
+                                           idGroup={postsData.idGroup}
+                                           idForum={postsData.idForum}
+                                           />
                                            : "" }
    
                                            </div> 
