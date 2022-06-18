@@ -217,7 +217,7 @@ widthView()
                   friend === "friend" ?
                   <div className="friends">
                   <div className="buttonsFriends">
-                    <button className={friends === "" ? "" : "select"} onClick={handleFriends}>Amigos</button>
+                    {/* <button className={friends === "" ? "" : "select"} onClick={handleFriends}>Amigos</button> */}
                   </div> 
 
 
