@@ -2,11 +2,13 @@ import { FiSend,  FiRefreshCcw} from 'react-icons/fi'
 import './postTextEvent.css';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
+import api from '../../services/api';
+import { toast } from 'react-toastify';
 
 
 function PostTextEvent({nameEvent, idEvent}) {
     console.log(nameEvent, idEvent)
-    const {newPostEvent} = useContext(AuthContext)
+    const {newPostEvent, logout} = useContext(AuthContext)
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
@@ -15,8 +17,19 @@ function PostTextEvent({nameEvent, idEvent}) {
     const [text, setText] = useState("");
     const [loading, setLoading] = useState(false);
     
-    async function handlePost(e) {
-        e.preventDefault();
+    async function handlePost() {
+        const res =  await api.get(`accounts/filter/${user.id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+              logout(user.id)
+          } else {
+            console.log("Pode postar")
+            handlePostNew()
+          } 
+      }
+
+
+    async function handlePostNew() {
 
         newPostEvent({
                 idAccount: user.id,
@@ -41,6 +54,11 @@ function PostTextEvent({nameEvent, idEvent}) {
     function reset() {
         setText("")
     }
+
+    async function handleMessage(e) {
+        e.preventDefault();
+        toast.error("Não é possível enviar um post vazio")
+    }
     
     return (
         <div className="post">
@@ -53,7 +71,7 @@ function PostTextEvent({nameEvent, idEvent}) {
                 <textarea name="" id="" cols={30} rows={10} placeholder="Deixe um comentário sobre o evento"
                 onChange={(e) => setText(e.target.value)}></textarea>
               
-                    <button className="public" onClick={handlePost}>
+                    <button className="public" onClick={ text !== ""? handlePost : handleMessage}>
                         {loading === true ? <FiRefreshCcw /> : <FiSend /> } </button>
                 </div>
             </div>      

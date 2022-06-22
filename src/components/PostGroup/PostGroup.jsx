@@ -6,10 +6,11 @@ import { v4 as uuidv4} from 'uuid'
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
 import {toast} from 'react-toastify';
+import api from '../../services/api';
 
 function PostGroup({nameGroup, idGroup}) {
     console.log(nameGroup, idGroup)
-    const {newPost} = useContext(AuthContext)
+    const {newPost, logout} = useContext(AuthContext)
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
@@ -22,7 +23,6 @@ function PostGroup({nameGroup, idGroup}) {
     const [videoAvatar, setVideoAvatar] = useState(''); 
     const [post, setPost] = useState("text");
     const [text, setText] = useState("");
-
 
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
       
@@ -72,9 +72,23 @@ function PostGroup({nameGroup, idGroup}) {
         }
     }
     
-    
-    async function handlePost(e) {
+    async function handleMessage(e) {
         e.preventDefault();
+        toast.error("Não é possível enviar um post vazio")
+    }
+
+    async function handlePost() {
+        const res =  await api.get(`accounts/filter/${user.id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+              logout(user.id)
+          } else {
+            console.log("Pode postar")
+            handlePostNew()
+          } 
+      }
+    
+    async function handlePostNew() {
         setLoading(true)
         
         if(post === "photo") {
@@ -231,9 +245,9 @@ function PostGroup({nameGroup, idGroup}) {
                         {loading === true ? <FiRefreshCcw /> : <FiSend /> } </button>
                 </div>
                 <div className="buttons">
-                    <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
-                    <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button>
-                    <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button>
+                    <button className={post === "text" ? 'selected' : ""} onClick={ text !== ""? handlePost : handleMessage}> <FiMenu /> Texto </button>
+                    <button className={post === "photo" ? 'selected' : ""} onClick={avatarUrl !== null ? handlePost : handleMessage}> <FiImage /> Foto </button>
+                    <button className={post === "video" ? 'selected' : ""} onClick={videoUrl !== null ? handlePost : handleMessage}> <FiVideo /> Vídeo </button>
                 </div>
             </div>      
             </div>

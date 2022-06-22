@@ -2,11 +2,13 @@ import { FiSend,  FiRefreshCcw} from 'react-icons/fi'
 import './postText.css';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
+import api from '../../services/api';
+import { toast } from 'react-toastify';
 
 
 function PostText({nameForum, idForum}) {
     console.log(nameForum, idForum)
-    const {newPost} = useContext(AuthContext)
+    const {newPost, logout} = useContext(AuthContext)
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
@@ -14,9 +16,19 @@ function PostText({nameForum, idForum}) {
     
     const [loading, setLoading] = useState(false)
     const [text, setText] = useState("");
+
+    async function handlePost() {
+        const res =  await api.get(`accounts/filter/${user.id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+              logout(user.id)
+          } else {
+            console.log("Pode postar")
+            handlePostNew()
+          } 
+      }
     
-    async function handlePost(e) {
-        e.preventDefault();
+    async function handlePostNew() {
         setLoading(true)
 
             newPost({
@@ -40,6 +52,11 @@ function PostText({nameForum, idForum}) {
     }
         
 
+    async function handleMessage(e) {
+        e.preventDefault();
+        toast.error("Não é possível enviar um post vazio")
+    }
+
  
     return (
         <div className="post">
@@ -52,7 +69,7 @@ function PostText({nameForum, idForum}) {
                 <textarea name="" id="" cols={30} rows={10} placeholder="Dê sua dica ou opnião"
                 onChange={(e) => setText(e.target.value)}></textarea>
               
-                    <button className="public" onClick={handlePost}>
+                    <button className="public" onClick={ text !== ""? handlePost : handleMessage}>
                         {loading === true ? <FiRefreshCcw /> : <FiSend /> } </button>
                 </div>
             </div>      

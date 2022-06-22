@@ -179,8 +179,20 @@ function Post() {
         e.preventDefault();
         toast.error("Não é possível enviar um post vazio")
     }
-    async function handlePost(e) {
-        e.preventDefault();
+
+    async function handlePost() {
+        const res =  await api.get(`accounts/filter/${user.id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+              logout(user.id)
+          } else {
+            console.log("Pode postar")
+            handlePostNew()
+          } 
+      }
+
+
+    async function handlePostNew() {
         setLoading(true)
         
         if(post === "photo") {
