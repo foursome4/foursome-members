@@ -60,37 +60,46 @@ function ProfileFriend() {
 
   useEffect(() => {
       async function searchAccount() {
+        const res =  await api.get(`accounts/filter/${myUser.id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+              logout(myUser.id)
+          } else {
+              console.log("Conta encontrada")
+          } 
+      }
+      async function searchAccountFriend() {
         const res =  await api.get(`accounts/filter/${id}`);
           console.log(res.data)
           if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-              logout(id)
+              window.open("/feed","_self")
           } else {
               console.log("Conta encontrada")
           } 
       }
       async function searchInformations() {
-        const res =  await api.get(`informations/${id}`);
+        const res =  await api.get(`informations/${myUser.id}`);
           console.log(res.data)
           if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-              logout(id)
+              logout(myUser.id)
           } else {
               console.log("Informações encontradas")
           } 
       }
       async function searchCharacteristcs() {
-        const res =  await api.get(`characteristics/${id}`);
+        const res =  await api.get(`characteristics/${myUser.id}`);
           console.log(res.data)
           if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-              logout(id)
+              logout(myUser.id)
           } else {
               console.log("Caracteristicas encontradas")
           } 
       }
       async function searchPreferences() {
-        const res =  await api.get(`preferences/${id}`);
+        const res =  await api.get(`preferences/${myUser.id}`);
           console.log(res.data)
           if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-              logout(id)
+              logout(myUser.id)
           } else {
               console.log("Preferencias encontradas")
               setMyInformations(true)
@@ -98,6 +107,7 @@ function ProfileFriend() {
       }
 
       searchAccount()
+      searchAccountFriend()
       searchInformations()
       searchCharacteristcs()
       searchPreferences()
