@@ -446,13 +446,20 @@ async function preferencesAccount({id, idAccount, men, woman, couple, trisal, tr
         localStorage.setItem("preferences-foursome", JSON.stringify(data));
 
         createSuccess(email);
+        function friend(idAccount) {
+            const idFriend = patron;
+            const type = "friend"
+            const status = "aproved"
+            newFriend(idAccount, idFriend, type, status);
+        }
 
-        const text = `${username}, ingressou na Foursome, dê as boas vindas.`
-        const idFriend = patron;
-        const type = "friend"
-        const status = "aproved"
-        newFriend(idAccount, idFriend, type, status);
-        notifications({idPatrono: patron, text, idAccount, idFriend: "", type: "notification", idPost: ""})
+        friend()
+        const idPatrono = patron;
+        const text = `${username}, ingressou na Foursome, dê as boas vindas.`;
+        const type = "notification";
+        const idPost = "";
+        const idFriend = "";
+        notifications(idPatrono, text, idAccount, idFriend, type, idPost)
 
     
         redirectToPageSucess()
