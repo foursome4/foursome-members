@@ -38,15 +38,20 @@ function UserComment({idAccount, date, role}) {
            <div className="block1">
            <div className="title">
            <div className="image">
-           <a href={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
+           {nickname === "" || nickname === undefined ?
+            <Link to="">
+               <img src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e24" />
+           </Link>
+           :
+           <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
            {avatar === "" || avatar === undefined ? 
-                                               <img 
-                                               src={profile}
-                                               onError={({ currentTarget }) => {
-                                                   currentTarget.onerror = null; // previne loop
-                                                   currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
-                                               }}
-                                               />
+                                                           <img 
+                                                           src={profile}
+                                                           onError={({ currentTarget }) => {
+                                                               currentTarget.onerror = null; // previne loop
+                                                               currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
+                                                           }}
+                                                           />
                         :
                         <img 
                         src={avatar}
@@ -56,7 +61,7 @@ function UserComment({idAccount, date, role}) {
                         }}
                         />
                         }
-           </a>
+           </Link>}
            </div>
            <div className="name">
            {nickname === "" || nickname === undefined ?

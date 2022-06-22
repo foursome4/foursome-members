@@ -175,6 +175,9 @@ function handleLogout() {
                     <img src={logoImg} alt="" />
                     <h2>Caracteristicas</h2>
                     </div>
+                    <br />
+                        <br />
+                        <br />
                         <form onSubmit={handleCreateCharacteristcs}>
 
                             <div className="data">
@@ -497,9 +500,11 @@ function handleLogout() {
                 }
                 </div>
                 <br />
+
+                        <br />
                     <div className='confirmation'>
                        <br />
-                       <br />
+
 
                        {user.type === "Trisal" ?
                             data === "" ? <button className="delete" onClick={handleLogout}>Continuar depois</button> :

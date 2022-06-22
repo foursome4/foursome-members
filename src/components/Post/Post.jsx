@@ -9,11 +9,13 @@ import {toast} from 'react-toastify';
 import api from '../../services/api'
 
 function Post() {
-    const {newPost} = useContext(AuthContext)
+    const {newPost, logout} = useContext(AuthContext)
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformation = JSON.parse(LocalInformation);
+
+    const id = user.id
 
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
     
@@ -29,12 +31,51 @@ function Post() {
     const [videos, setVideos] = useState([])
     const [photos, setPhotos] = useState([]);
 
-
     useEffect(() => {
-        if(userInformation.avatar === null || userInformation.avatar === undefined) {
-         window.open("/completeregistration", "_self");
+        async function searchAccount() {
+          const res =  await api.get(`accounts/filter/${id}`);
+            console.log(res.data)
+            if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+                logout(id)
+            } else {
+                console.log("Conta encontrada")
+            } 
         }
-    }, [userInformation.avatar]);
+        async function searchInformations() {
+          const res =  await api.get(`informations${id}`);
+            console.log(res.data)
+            if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+                logout(id)
+            } else {
+                console.log("Informações encontradas")
+            } 
+        }
+        async function searchCharacteristcs() {
+          const res =  await api.get(`characteristics${id}`);
+            console.log(res.data)
+            if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+                logout(id)
+            } else {
+                console.log("Caracteristicas encontradas")
+            } 
+        }
+        async function searchPreferences() {
+          const res =  await api.get(`preferences${id}`);
+            console.log(res.data)
+            if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+                logout(id)
+            } else {
+                console.log("Preferencias encontradas")
+            } 
+        }
+
+        searchAccount()
+        searchInformations()
+        searchCharacteristcs()
+        searchPreferences()
+       }, [])
+
+
 
 
 

@@ -25,7 +25,7 @@ function Profile() {
   const LocalInformations = localStorage.getItem("informations-foursome");
   const userInformations = JSON.parse(LocalInformations);
 
-  const {deleteAccount, inactivityTime } = useContext(AuthContext);
+  const {deleteAccount, inactivityTime, logout } = useContext(AuthContext);
 
   inactivityTime()
 
@@ -46,6 +46,53 @@ function Profile() {
   const [following, setFollowing] = useState("following");
   const [followers, setFollowers] = useState("");
   const [width, setWidth] = useState("")
+  const [myInformations, setMyInformations] = useState(false)
+  const id = user.id
+
+  useEffect(() => {
+      async function searchAccount() {
+        const res =  await api.get(`accounts/filter/${id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+              logout(id)
+          } else {
+              console.log("Conta encontrada")
+          } 
+      }
+      async function searchInformations() {
+        const res =  await api.get(`informations/${id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+              logout(id)
+          } else {
+              console.log("Informações encontradas")
+          } 
+      }
+      async function searchCharacteristcs() {
+        const res =  await api.get(`characteristics/${id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+              logout(id)
+          } else {
+              console.log("Caracteristicas encontradas")
+          } 
+      }
+      async function searchPreferences() {
+        const res =  await api.get(`preferences/${id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+              logout(id)
+          } else {
+              console.log("Preferencias encontradas")
+              setMyInformations(true)
+          } 
+      }
+
+      searchAccount()
+      searchInformations()
+      searchCharacteristcs()
+      searchPreferences()
+     }, []);
 
 useEffect(() => {
   function widthView() {
@@ -167,6 +214,7 @@ widthView()
     <div className="content-profile">
       <ToolbarLeftSlim />
       <BarBottomMenu />
+      {myInformations === false ? "" :
       <div className="profile">
         <TopBar />
         <div className="main">
@@ -292,6 +340,7 @@ widthView()
          <ChatSlim /> 
         </div>
       </div>
+      }
     </div>
     </div>
   )

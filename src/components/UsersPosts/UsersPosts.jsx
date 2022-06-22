@@ -33,6 +33,11 @@ function UsersPostsComponent({idAccount, username, date, keyId, role}) {
     return (
        <div className="itemUsers" key={keyId}>
            <div className="image">
+           {nickname === "" || nickname === undefined ?
+            <Link to="">
+               <img src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e24" />
+           </Link>
+           :
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
            {avatar === "" || avatar === undefined ? 
                                                            <img 
@@ -51,7 +56,7 @@ function UsersPostsComponent({idAccount, username, date, keyId, role}) {
                         }}
                         />
                         }
-           </Link>
+           </Link>}
            </div>
            <div className="name">
            {nickname === "" || nickname === undefined ?

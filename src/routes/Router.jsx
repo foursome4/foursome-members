@@ -45,6 +45,7 @@ import { SignIn } from '../pages/SignIn/SignIn';
 import { SignUp } from '../pages/SignUp/SignUp';
 import { Solicitations } from '../pages/Solicitations/Solicitations';
 import { UpdateAccounts } from '../pages/UpdateAccounts/UpdateAccounts';
+import { UsageTips } from '../pages/UsageTips/UsageTips';
 import { UseOfTerms } from '../pages/UseOfTerms/UseOfTerms';
 
 
@@ -74,6 +75,8 @@ function PrivateRoute({children} ) {
             
             <Route path="/feed"
                     element={ <PrivateRoute> <Feed /> </PrivateRoute>} />
+            <Route path="/usagetips"
+                    element={ <PrivateRoute> <UsageTips /> </PrivateRoute>} />
             <Route path="/update"
                     element={ <PrivateRoute> <UpdateAccounts /> </PrivateRoute>} />
             <Route path="/post/:id"

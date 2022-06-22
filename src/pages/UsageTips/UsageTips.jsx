@@ -1,24 +1,23 @@
-import './registrationEnd.css'
+import './usageTips.css'
 import logo from '../../assets/images/logo.png';
 
-function RegistrationEnd() {
+function UsageTips() {
     function handleRedirectFeed(e) {
         e.preventDefault();
-        window.open("/usagetips","_self")
+        window.open("/feed","_self")
     }
     return (
-        <div className="content-registration">
-            <div className="registrationEnd">
+        <div className="content-UsageTips">
+            <div className="UsageTips">
                 <div className="title">
                     <img src={logo} alt="" />
-                    <h2>Parabéns! <br /> Você concluiu a etapa do cadastro com sucesso.</h2>
+                    <h2>Dicas de uso!</h2>
                     <h3>Siga as seguintes orientações para aproveitar melhor o nosso site:</h3>
                     <br />
                     <div className="orientations">
-                    <h4><b> Não utilizar termos ofensivos em:</b></h4>
-                    <h4> - Conversas, postagens, comentários, respostas a comentários e em conversas pelo chat.</h4> <br />
-                    <h4><b> Seja gentil e faça sempre novas amizades</b></h4> <br />
-                    <h4><b> Você pode postar 1 (uma) foto e 1 (um) vídeo a cada dia.</b></h4> <br />
+                    <h4><b> Ao finalizar seu uso. Clique sempre no botão na barra /Botão de sair Icon/ superior</b></h4><br />
+                    <h4><b> Para convidar um amigo clique neste ícone</b></h4> <br />
+                    <h4><b> Clique neste ícone, para ver os convites enviados</b></h4> <br />
                     <h4><b> Utilizar suas fotos reais em Perfil/Capa. Não sendo permitido fotos de sites, revistas, plantas e/ou animais.</b></h4> <br />
                     <h4><b> Sugerimos não postar fotos/videos mostrando o rosto, seja em postagens, capa ou perfil.</b></h4> <br />
                     <h4><b> Sugerimos não por seu nome verdadeiro como nome de exibição, a fim de preservar seu sigilo e identidade.</b></h4>
@@ -44,4 +43,4 @@ function RegistrationEnd() {
     )
 }
 
-export {RegistrationEnd}
+export {UsageTips}

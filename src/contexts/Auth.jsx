@@ -20,9 +20,9 @@ function AuthProvider({children}) {
     const [ufActual, setUfActual] = useState("");
 
     
-    async function createAccount(id, username, email, phone, type, password, status, role, code, online, patron) {
-        const data = {id, username, email, phone, type, password, status, role, code, online, patron}
-        const data2 = {id, username, email, phone, type, status, role, online, patron, date: new Date()}
+    async function createAccount(id, username, email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship) {
+        const data = {id, username, email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship}
+        const data2 = {id, username, email, phone, type, status, role, online, patron, date: new Date(), avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship}
  
         const dataInvite = await api.get(`/invites/find/${data.email}/${data.code}`);
 
@@ -142,7 +142,7 @@ function AuthProvider({children}) {
             const user = JSON.parse(Local);
 
             if(user.latitude === undefined || user.longitude === null) {
-                window.open("/feed", "_self");
+                window.open("/update", "_self");
             } else {
                 window.open("/feed", "_self");
             }
@@ -155,9 +155,41 @@ function AuthProvider({children}) {
     }
 
 
+    async function updateAccount({id, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron}){
+        const Local = localStorage.getItem("foursome");
+        const user = JSON.parse(Local)
+        const Local2 = localStorage.getItem("informations-foursome");
+        const userInformations = JSON.parse(Local2)
+        const data = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron};
+        const data2 = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron, date:user.date , token:user.token  , expiresIn:user.expiresIn };
+        console.log(id)
+        console.log(data)
+        await api.patch(`/accounts/${id}`, data).then(res => {
+            localStorage.setItem("foursome", JSON.stringify(data2));
+            NewUpdateInformationsAccount({id: userInformations.id, idAccount:user.id, avatar, cover, relationship, nickname, city, uf, created_at: new Date(), idPatrono:user.patron , username})
+            window.open("/feed", "_self")
+        }).catch(error => {
+            console.log(error)
+        });
+    }
+    async function updateAccount2({id, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron}){
+        const Local = localStorage.getItem("foursome");
+        const user = JSON.parse(Local)
+        const data = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron};
+        const data2 = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron, date:user.date , token:user.token  , expiresIn:user.expiresIn };
+        console.log(id)
+        console.log(data)
+        await api.patch(`/accounts/${id}`, data).then(res => {
+            localStorage.setItem("foursome", JSON.stringify(data2));
+            window.open("/characteristcs","_self");
+        }).catch(error => {
+            console.log(error)
+        });
+    }
 
 
 
+    
 //Deletando conta
 
 
@@ -165,29 +197,29 @@ async function deleteAccount(id) {
     toast.success("Deletendo sua conta")
     const res = await api.delete(`/accounts/${id}`);
     if(res.status===201) {
-        deleteInformations()
+        deleteInformations(id)
        
      } else {
         toast.error('Falha ao deletar, tente novamente!');
      }
 }
 
-async function deleteInformations() {
+async function deleteInformations(id) {
     const Local = localStorage.getItem("informations-foursome");
     const user = JSON.parse(Local);
 
-    const res = await api.delete(`/informations/${user.idAccount}`);
+    const res = await api.delete(`/informations/${id}`);
     if(res.status===201) {
-        deleteCharacteristcs()
+        deleteCharacteristcs(id)
        
      } else {
         toast.error('Falha ao deletar, tente novamente!');
      }
 }
-async function deleteCharacteristcs() {
+async function deleteCharacteristcs(id) {
     const Local = localStorage.getItem("characteritics-foursome");
     const user = JSON.parse(Local);
-    const res = await api.delete(`/characteristics/${user.idAccount}`);
+    const res = await api.delete(`/characteristics/${id}`);
     if(res.status===201) {
         deletePreferences()
        
@@ -195,14 +227,14 @@ async function deleteCharacteristcs() {
         toast.error('Falha ao deletar, tente novamente!');
      }
 }
-async function deletePreferences() {
+async function deletePreferences(id) {
     const Local = localStorage.getItem("preferences-foursome");
     const user = JSON.parse(Local);
 
-    const res = await api.delete(`/preferences/${user.idAccount}`);
+    const res = await api.delete(`/preferences/${id}`);
     if(res.status===201) {
         toast.success("Conta deletada com sucesso")
-        logout(user.idAccount)
+        logout(id);
        
      } else {
         toast.error('Falha ao deletar, tente novamente!');
@@ -213,11 +245,11 @@ async function deletePreferences() {
 
 
 
-    async function createInformationsAccount({id, idAccount, avatar, cover, relationship, nickname, city, uf}) {
+    async function createInformationsAccount({id, idAccount, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron}) {
         const data = {id, idAccount, avatar, cover, relationship, nickname, city, uf}
         await api.post("/informations", {id, idAccount, avatar, cover, relationship, nickname, city, uf}).then(() => {
             localStorage.setItem("informations-foursome", JSON.stringify(data));
-            window.open("/characteristcs","_self");
+            updateAccount2({id: idAccount, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron})
         }).catch(error => {
             console.log("Informações não enviadas" + error)
         })
@@ -232,14 +264,13 @@ async function deletePreferences() {
                 id, _id: id, idAccount, avatar, cover, relationship, nickname, city, uf, created_at
             }))
 
-            const text = `${username}, alterou informações em seu perfil`
-            const data = {idPatrono, idAccount, text, }
-            await api.post("/notifications", data).then(() => {
-                toast.info("Dados atualizados com sucesso!")
-                window.open("/profile","_self");
-            }).catch(error => {
-                console.log("Notificação não cadastrada" + error)
-            })
+            const text = `${username}, alterou informações em seu perfil` 
+            const idFriend = ""; 
+            const type = "";
+            const idPost = "";
+    
+    
+            notifications(idPatrono, text, idAccount, idFriend, type, idPost)
         }).catch(error => {
             console.log("Informações não enviadas" + error)
         })
@@ -335,12 +366,9 @@ async function newUpdateCharacteristcs({id, birthDate, sex, sign, sexualOption, 
         {birthDate: birthDate, sex, sign, sexualOption})
         .then( async () => {
             const text = `${username}, alterou as características de um de seus membros do perfil`
-            const data = {idPatrono, idAccount, text, }
-            await api.post("/notifications", data).then(() => {
-                window.location.reload(false)
-            }).catch(error => {
-                console.log("Notificação não cadastrada" + error)
-            })
+           
+            notifications({idPatrono, text, idAccount, idFriend: "", type: "notification", idPost: ""})
+
             setLoading(false);
         }).catch(error => {
                 console.log("Informações não enviadas" + error)
@@ -356,12 +384,10 @@ async function newUpdateCharacteristcs2({id, birthDate, sex, sign, sexualOption,
                 birthDate: birthDate2, sex:sex2, sign:sign2, sexualOption: sexualOption2
             }).then(async () => {               
             const text = `${username}, alterou as características de um de seus membros do perfil`
-            const data = {idPatrono, idAccount, text, }
-            await api.post("/notifications", data).then(() => {
-                window.location.reload(false)
-            }).catch(error => {
-                console.log("Notificação não cadastrada" + error)
-            })
+          
+            notifications({idPatrono, text, idAccount, idFriend: "", type: "notification", idPost: ""})
+
+
             setLoading(false);
   
             }).catch(error => {
@@ -390,12 +416,12 @@ async function newUpdateCharacteristcs3({id, birthDate,
                     birthDate: birthDate3, sex:sex3, sign:sign3, sexualOption: sexualOption3
                 }).then(async () => {
             const text = `${username}, alterou as características de um de seus membros do perfil`
-            const data = {idPatrono, idAccount, text, }
-            await api.post("/notifications", data).then(() => {
-                window.location.reload(false)
-            }).catch(error => {
-                console.log("Notificação não cadastrada" + error)
-            })
+            if(idAccount === idPatrono) {
+                return;
+            }
+        
+            notifications({idPatrono, text, idAccount, idFriend: "", type: "notification", idPost: ""})
+
             setLoading(false);
 
                     setLoading(false)
@@ -421,37 +447,32 @@ async function preferencesAccount({id, idAccount, men, woman, couple, trisal, tr
 
         createSuccess(email);
 
-          
         const text = `${username}, ingressou na Foursome, dê as boas vindas.`
-        const dataNotification = {idPatrono: patron, text,idAccount: idAccount, idFriend: "", type: "notification" }
         const idFriend = patron;
         const type = "friend"
         const status = "aproved"
         newFriend(idAccount, idFriend, type, status);
+        notifications({idPatrono: patron, text, idAccount, idFriend: "", type: "notification", idPost: ""})
 
-        await api.post("/notifications", dataNotification).then(() => {
-            window.open(`/registrationend`,"_self")
-        }).catch(error => {
-            console.log("Notificação não cadastrada" + error)
-        })
-        
-        window.open("/registrationend","_self");
+    
+        redirectToPageSucess()
+
     }).catch(error => {
         console.log("Erro ao salvar dados" + error)
     })
+}
+
+async function redirectToPageSucess() {
+    window.open("/registrationend","_self");
 }
 async function updatePreferencesAccount({id, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal, idPatrono, username, idAccount}) {
     await api.patch(`/preferences/${id}`, { men, woman, couple, trisal, transvestites, transsexuals, groups, proposal})
     .then( async () => {
         const text = ` ${username}, alterou as características de um de seus membros do perfil`
         const data = {idPatrono, idAccount, text, }
-        await api.post("/notifications", data).then(() => {
-            window.location.reload(false)
-        }).catch(error => {
-            console.log("Notificação não cadastrada" + error)
-        })
-        setLoading(false);
+       
 
+        
 
        
     }).catch(error => {
@@ -614,17 +635,14 @@ async function deleteInvite(id) {
 async function likePost({idAccount, username, idPost, idPatrono, nickname}) {
 await api.post("/reactions", {idAccount, username, idPost}).then( async () => {
     const text = `${nickname}, curtiu sua postagem.`
-    const data = {idPatrono: idPatrono, text,idAccount: idAccount, idFriend: "", type: "notification-post",idPost:idPost }
+    const idFriend = ""; 
+    const type = "notification-post";
 
     if(idAccount === idPatrono) {
         return;
     }
 
-    await api.post("/notifications", data).then(() => {
-        console.log("Comentário/Notificação feito com sucesso")
-    }).catch(error => {
-        console.log("Notificação não cadastrada" + error)
-    })
+    notifications(idPatrono, text, idAccount, idFriend, type, idPost)
    
 }).catch(error => {
     console.log(error)
@@ -632,20 +650,27 @@ await api.post("/reactions", {idAccount, username, idPost}).then( async () => {
     })
 }
 
+async function notifications(idPatrono, text,idAccount, idFriend, type,idPost) {
+    const data = {idPatrono, text,idAccount, idFriend, type,idPost }
+    await api.post("/notifications", data).then(() => {
+        console.log("Comentário/Notificação feito com sucesso");
+    }).catch(error => {
+        console.log("Notificação não cadastrada" + error)
+    })
+}
+
 async function newComment({idAccount, idPost, text, avatar, username, nickname, idPatrono}) {
     await api.post("/comments", {idAccount, idPost, text,avatar, username, nickname}).then( async () => {
 
-        const text = `${nickname}, comentou em sua postagem.`
-        const data = {idPatrono: idPatrono, text,idAccount: idAccount, idFriend: "", type: "notification-post",idPost:idPost }
+        const text = `${nickname}, comentou em sua postagem.`    
+        const idFriend = ""; 
+        const type = "notification-post";
 
         if(idAccount === idPatrono) {
             return;
         }
-        await api.post("/notifications", data).then(() => {
-            console.log("Comentário/Notificação feito com sucesso")
-        }).catch(error => {
-            console.log("Notificação não cadastrada" + error)
-        })
+
+        notifications(idPatrono, text, idAccount, idFriend, type, idPost)
        
     }).catch(error => {
         console.log("Comentário não foi realizado" + error)
@@ -937,7 +962,7 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         }
    
         async function reverseGeolocalization(lat, long) {
-        const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyAKKy0iHlEZMQavlxNM5i-tkIYp4q7X_Y0`);
+        const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyABASerjYyootb_nxj7evIFsZLOiqcnQm4`);
 
         setCityActual(address.data.results[0].address_components[3].long_name)
         setUfActual(address.data.results[0].address_components[4].short_name) 
@@ -1043,6 +1068,7 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
 
     return(
         <AuthContext.Provider value={{
+            updateAccount,
             updateUserOnline,
             socketDataLocation,
             loginSession,

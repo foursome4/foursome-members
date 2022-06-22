@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid'
 import buscaCep from '../../services/api-buscaCep';
 import { toast } from 'react-toastify';
 import { mask as masker, unMask } from "remask";
+import apiGoogleReverse from '../../services/apiGoogleReverse';
 
 
 function InformationsForm() {
@@ -19,6 +20,8 @@ function InformationsForm() {
     const [imageAvatar, setImageAvatar] = useState('');
     const [city, setCity] = useState("");
     const [uf, setUf] = useState("");
+    const [city2, setCity2] = useState("");
+    const [uf2, setUf2] = useState("");
     const [cep, setCep] = useState("");
     const [relationship, setRelationship] = useState("");
     const [nickname, setNickname] = useState("")
@@ -42,9 +45,20 @@ function InformationsForm() {
             const lat  = position.coords.latitude;
             const long = position.coords.longitude;
         
-            setLatitude(lat)
-            setLongitude(long)
+            setLatitude(lat);
+            setLongitude(long);
+
+            reverseGeolocalization(lat, long);
           }
+
+          async function reverseGeolocalization(lat, long) {
+            console.log(lat, long)
+            const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyABASerjYyootb_nxj7evIFsZLOiqcnQm4`);
+            console.log(address.data.results[0])
+            setCity2(address.data.results[0].address_components[3].long_name)
+            setUf2(address.data.results[0].address_components[4].short_name) 
+            return
+         }
 
               
       function error() {
@@ -85,15 +99,21 @@ function InformationsForm() {
 
                 
         if(avatarUrl === null ) {
-            toast.error("Favor adicionar foto de perfil")
+            toast.error("Favor adicionar foto de perfil");
+            return
         }
 
-        if(city === "" && uf === "" ) {
-            toast.error("Busque seu CEP para preencher Cidade e Estado")
+        if(city === "" && city2 === "" ) {
+            toast.error("Busque seu CEP para preencher Cidade e Estado");
+            return
+        }
+        if(nickname === "" || relationship === "" ) {
+            toast.error("Favor preencher, todos os campos");
+            return
         }
 
           
-        if(avatarUrl !== null && nickname !== "" && city !== "" && uf !== "" && relationship !== "") {
+        if(avatarUrl !== null && nickname !== "" && relationship !== "") {
        toast.info("Salvando as informações. Aguarde...")
                 //Avatar
         setLoadding(true);
@@ -116,11 +136,20 @@ function InformationsForm() {
         
         const id = uuidv4();
         //Salvando no banco de dados
-       createInformationsAccount({id, idAccount: user.id, avatar: avatar, cover: linkCover, city, uf, relationship, nickname});
-        console.log({id, idAccount: user.id, avatar: photoUrlAvatar, cover: linkCover, city, uf, relationship, nickname});
-        console.log(loadding);
+        createInformationsAccount({id, idAccount: user.id, avatar: avatar, cover: linkCover,
+        city: cep === "" ? city2 : city,
+       uf: cep === "" ? uf2 : uf, relationship, nickname, cep, latitude, longitude,
+       username: user.username, role: user.role, status: user.status, type: user.type, email: user.email, phone: user.phone, online: user.online, patron: user.patron});
+
+        console.log({id, idAccount: user.id, avatar: avatar, cover: linkCover,
+            city: cep === "" ? city2 : city,
+           uf: cep === "" ? uf2 : uf, relationship, nickname, cep, latitude, longitude,
+           username: user.username, role: user.role, status: user.status, type: user.type, email: user.email, phone: user.phone, online: user.online, patron: user.patron});
            
-    } 
+    } else {
+        toast.error("Ainda há, campos em branco. Favor revisar");
+        return
+    }
         
     }
 
@@ -207,13 +236,19 @@ function InformationsForm() {
                         </div>
                     <div className="data"> 
 
-                    {location === true || uf !== "" ?
+                    {cep === "" ?
                     <div className="location">
-                        <h5>{textError === false ? "" : "CEP não encontrado, digite sua cidade e estado"}</h5>
-                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf} onChange={ChangeMask}  required/>
-                            <input type="text" placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required/>
+                            <br />
+                            <h5>Localização automática</h5>
+                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required/>
+                            <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity(e.target.value)} required/>
                         </div>    
-                        :  "" }
+                        : <div className="location">
+                        <br />
+                        <h5>Localização pelo cep</h5>
+                        <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf.toUpperCase()} onChange={ChangeMask}  required/>
+                        <input type="text" placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required/>
+                    </div> }
 
 
 

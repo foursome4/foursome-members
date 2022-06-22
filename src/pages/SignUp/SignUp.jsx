@@ -75,9 +75,18 @@ function SignUp() {
 
           const idGenerate = uuidv4();
           const id = idGenerate.substring(0, 6);
+          const avatar = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
+          const cover = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
+          const city = ""
+          const uf = ""
+          const latitude =""
+          const longitude = ""
+          const cep = ""
+          const nickname = ""
+          const relationship = ""
 
-         createAccount(id, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
-          console.log( id, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron)
+         createAccount(id, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship)
+          console.log( id, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship)
         } else {
           toast.error("As senhas não combinam!")
         }

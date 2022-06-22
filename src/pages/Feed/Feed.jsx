@@ -4,32 +4,79 @@ import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSli
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { TopBar } from "../../components/TopBar/TopBar"
 import './feed.css';
-import { useCallback, useContext, useEffect } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../contexts/Auth"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { ListEventsFeed } from "../../components/ListEventsFeed/ListEventsFeed"
 import { useNavigate } from 'react-router-dom';
 import api from "../../services/api"
+import { toast } from "react-toastify"
 
 
 function Feed() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
-    const Localcharacteritics = localStorage.getItem("characteritics-foursome");
-    const usercharacteritics = JSON.parse(Localcharacteritics);
-    const Localpreferences = localStorage.getItem("preferences-foursome");
-    const userpreferences = JSON.parse(Localpreferences);
+    // const LocalInformation = localStorage.getItem("informations-foursome");
+    // const userInformation = JSON.parse(LocalInformation);
+    // const Localcharacteritics = localStorage.getItem("characteritics-foursome");
+    // const usercharacteritics = JSON.parse(Localcharacteritics);
+    // const Localpreferences = localStorage.getItem("preferences-foursome");
+    // const userpreferences = JSON.parse(Localpreferences);
   
-
-
+    const id = user.id
+    const [myInformations, setMyInformations] = useState(false)
     const navigate = useNavigate();
-    const {inactivityTime, socketDataLocation} = useContext(AuthContext);
+    const {inactivityTime, logout, socketDataLocation} = useContext(AuthContext);
 
            inactivityTime();
 
 
+           useEffect(() => {
+            async function searchAccount() {
+              const res =  await api.get(`accounts/filter/${id}`);
+                console.log(res.data)
+                if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+                    logout(id)
+                } else {
+                    console.log("Conta encontrada")
+                } 
+            }
+            async function searchInformations() {
+              const res =  await api.get(`informations/${id}`);
+                console.log(res.data)
+                if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+                    logout(id)
+                } else {
+                    console.log("Informações encontradas")
+                } 
+            }
+            async function searchCharacteristcs() {
+              const res =  await api.get(`characteristics/${id}`);
+                console.log(res.data)
+                if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+                    logout(id)
+                } else {
+                    console.log("Caracteristicas encontradas")
+                } 
+            }
+            async function searchPreferences() {
+              const res =  await api.get(`preferences/${id}`);
+                console.log(res.data)
+                if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+                    logout(id)
+                } else {
+                    console.log("Preferencias encontradas")
+                    setMyInformations(true)
+                } 
+            }
+
+            searchAccount()
+            searchInformations()
+            searchCharacteristcs()
+            searchPreferences()
+           }, []);
+
+           
            const loadDateReadFeed = useCallback(async () => {
                      const idAccount = user.id
                      await api.get(`/datereadlogin/${idAccount}`)
@@ -87,18 +134,9 @@ function Feed() {
                if(user.status === "blocked") {
                 window.open("/profile", "_self");
                }
-               if(userInformation === null || userInformation === undefined) {
-                window.open("/completeregistration", "_self");
-               }
-               if(usercharacteritics === null || usercharacteritics === undefined) {
-                window.open("/characteristcs", "_self");
-               }
-               if(userpreferences === null || userpreferences === undefined) {
-                window.open("/preferences", "_self");
-               }
-
+ 
                loadUsersOnline()
-           }, [navigate, socketDataLocation, user.status, user.id,  userpreferences, usercharacteritics, userInformation]);
+           }, [navigate, socketDataLocation, user.status, user.id]);
 
 
 
@@ -111,7 +149,7 @@ return (
                 <div className="aside">
                     <div className="feed">
                     <ListEventsFeed />
-                    <Post />
+                   {myInformations === false ? "" : <Post />}
                     <FeedPost /> 
                     </div>
                     <ChatSlim />

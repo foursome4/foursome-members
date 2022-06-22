@@ -11,7 +11,7 @@ import {toast} from 'react-toastify';
 import {IoLocationOutline, IoPersonOutline} from 'react-icons/io5'
 
 function Radar() {
-    const {inactivityTime, updateUserOnline} = useContext(AuthContext);
+    const {inactivityTime, logout, updateUserOnline} = useContext(AuthContext);
 
     // inactivityTime()
 
@@ -26,19 +26,60 @@ function Radar() {
     const [myEmojiSelect, setMyEmojiSelect] = useState("");
     const [style, setStyle] = useState("recolher");
     const [users, setUsers] = useState([]);
+    const [myInformations, setMyInformations] = useState(false)
+    const id = userData.id
+
+    useEffect(() => {
+        async function searchAccount() {
+          const res =  await api.get(`accounts/filter/${id}`);
+            console.log(res.data)
+            if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+                logout(id)
+            } else {
+                console.log("Conta encontrada")
+            } 
+        }
+        async function searchInformations() {
+          const res =  await api.get(`informations/${id}`);
+            console.log(res.data)
+            if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+                logout(id)
+            } else {
+                console.log("Informações encontradas")
+            } 
+        }
+        async function searchCharacteristcs() {
+          const res =  await api.get(`characteristics/${id}`);
+            console.log(res.data)
+            if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+                logout(id)
+            } else {
+                console.log("Caracteristicas encontradas")
+            } 
+        }
+        async function searchPreferences() {
+          const res =  await api.get(`preferences/${id}`);
+            console.log(res.data)
+            if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+                logout(id)
+            } else {
+                console.log("Preferencias encontradas")
+                setMyInformations(true)
+            } 
+        }
+
+        searchAccount()
+        searchInformations()
+        searchCharacteristcs()
+        searchPreferences()
+       }, []);
 
 
     useEffect(() => {
         async function loadUserOnlineOne() {
             const idAccount = userData.id;
-            console.log("userData.id")
-            console.log(userData.id)
-            console.log("idAccount")
-            console.log(idAccount)
             const res = await api.get(`/online/one/${idAccount}`);
             setUsers(res.data[0]);
-            console.log("res.data")
-            console.log(res.data[0])
         }
     
         loadUserOnlineOne()

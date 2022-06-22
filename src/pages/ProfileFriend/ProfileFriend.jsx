@@ -18,12 +18,13 @@ import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 import { v4 as uuidv4 } from 'uuid'
 import { useNavigate } from 'react-router-dom';
-import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
+import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu';
+import moment from 'moment';
 
 
 function ProfileFriend() {
   const navigate = useNavigate()
-  const {newFriend, newFollower, deleteFriend, deleteFollower, newVisit, inactivityTime} = useContext(AuthContext)
+  const {newFriend, newFollower, deleteFriend, deleteFollower, newVisit, inactivityTime, logout} = useContext(AuthContext)
   const Local = localStorage.getItem("foursome");
   const myUser = JSON.parse(Local);
   const {id} = useParams();
@@ -54,7 +55,53 @@ function ProfileFriend() {
   const [following, setFollowing] = useState("");
   const [followers, setFollowers] = useState("");
   const [width, setWidth] = useState("");
-  const [login, setLogin] = useState([])
+  const [login, setLogin] = useState([]);
+  const [myInformations, setMyInformations] = useState(false)
+
+  useEffect(() => {
+      async function searchAccount() {
+        const res =  await api.get(`accounts/filter/${id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+              logout(id)
+          } else {
+              console.log("Conta encontrada")
+          } 
+      }
+      async function searchInformations() {
+        const res =  await api.get(`informations/${id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+              logout(id)
+          } else {
+              console.log("Informações encontradas")
+          } 
+      }
+      async function searchCharacteristcs() {
+        const res =  await api.get(`characteristics/${id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+              logout(id)
+          } else {
+              console.log("Caracteristicas encontradas")
+          } 
+      }
+      async function searchPreferences() {
+        const res =  await api.get(`preferences/${id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+              logout(id)
+          } else {
+              console.log("Preferencias encontradas")
+              setMyInformations(true)
+          } 
+      }
+
+      searchAccount()
+      searchInformations()
+      searchCharacteristcs()
+      searchPreferences()
+     }, []);
 
 useEffect(() => {
 function widthView() {
@@ -107,7 +154,7 @@ console.log(id)
 
     async function loadCharacteristcs() {
       const id_account = id
-      await api.get(`characteristics/${id_account}`)
+      await api.get(`/characteristics/${id_account}`)
       .then((res) => {
         setCharacteristics(res.data)
       }).catch(error => {
@@ -307,6 +354,12 @@ console.log(id)
     const timeDifference = Math.abs(dateActual.getTime() - date.getTime());
     const datDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
 
+    var d1 = date;
+    var d2 = new Date();
+    var diff = moment(d2,"DD/MM/YYYY HH:mm:ss").diff(moment(d1,"DD/MM/YYYY HH:mm:ss"));
+    var valor = moment.duration(diff).asDays();
+    var dias = Math.round(valor, 1);
+    console.log(dias);
 
 
   return (
@@ -314,6 +367,7 @@ console.log(id)
     <div className="content-profileFriend">
       <ToolbarLeftSlim />
       <BarBottomMenu />
+      {myInformations === false ? "" :
       <div className="profileFriend">
         <TopBar />
         <div className="main">
@@ -377,17 +431,17 @@ console.log(id)
                         <br />
                         
         {login.length !== 0 ?
-        <h6> {datDifference === 0 ? "Ultimo Acesso hoje" :
-        datDifference === 1 ? "Ultimo Acesso a 1 dia" :
-        datDifference > 1 && datDifference < 7 ? `Último acesso a ${datDifference} dias`:
-        datDifference === 7 ? "Ultimo Acesso a 1 semana" :
-        datDifference > 7 && datDifference < 14 ? `Último acesso a ${datDifference} dias`:
-        datDifference === 14 ? "Ultimo Acesso a 2 semanas" :
-        datDifference > 14 && datDifference < 21 ? `Último acesso a ${datDifference} dias`:
-        datDifference === 21 ? "Ultimo Acesso a 3 semanas" :
-        datDifference > 21 && datDifference < 30 ? `Último acesso a ${datDifference} dias`:
-        datDifference === 30 ? "Ultimo Acesso a 4 semanas" :
-        "Ultimo Acesso mais de um mês" }</h6> :
+        <h6> {dias === 0 ? "Ultimo Acesso hoje" :
+        dias === 1 ? "Ultimo Acesso a 1 dia" :
+        dias > 1 && dias < 7 ? `Último acesso a ${dias} dias`:
+        dias === 7 ? "Ultimo Acesso a 1 semana" :
+        dias > 7 && dias < 14 ? `Último acesso a ${dias} dias`:
+        dias === 14 ? "Ultimo Acesso a 2 semanas" :
+        dias > 14 && dias < 21 ? `Último acesso a ${dias} dias`:
+        dias === 21 ? "Ultimo Acesso a 3 semanas" :
+        dias > 21 && dias < 30 ? `Último acesso a ${dias} dias`:
+        dias === 30 ? "Ultimo Acesso a 4 semanas" :
+        `Último acesso em ${newDateFormated}` }</h6> :
         <h6> Último acesso não registrado</h6>}
         
         
@@ -549,6 +603,7 @@ console.log(id)
          <ChatSlim /> 
         </div>
       </div>
+}
     </div>
     </div>
   )

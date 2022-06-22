@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { toast } from 'react-toastify';
 import { mask as masker, unMask } from "remask";
 import buscaCep from '../../services/api-buscaCep';
+import apiGoogleReverse from '../../services/apiGoogleReverse';
 
 
 function UpdateAccounts() {
@@ -16,11 +17,13 @@ function UpdateAccounts() {
     const user = JSON.parse(Local);
     const LocalInformations = localStorage.getItem("informations-foursome");
     const userInformations = JSON.parse(LocalInformations);
-    const {createInformationsAccount, logout} = useContext(AuthContext)
+    const {updateAccount, logout} = useContext(AuthContext)
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [imageAvatar, setImageAvatar] = useState('');
-    const [city, setCity] = useState(userInformations.city);
-    const [uf, setUf] = useState(userInformations.uf);
+    const [city2, setCity2] = useState("");
+    const [uf2, setUf2] = useState("");
+    const [city, setCity] = useState("");
+    const [uf, setUf] = useState("");
     const [cep, setCep] = useState("");
     const [relationship, setRelationship] = useState(userInformations.relationship);
     const [nickname, setNickname] = useState(userInformations.nickname)
@@ -42,9 +45,20 @@ function UpdateAccounts() {
             const lat  = position.coords.latitude;
             const long = position.coords.longitude;
         
-            setLatitude(lat)
-            setLongitude(long)
+            setLatitude(lat);
+            setLongitude(long);
+
+            reverseGeolocalization(lat, long);
           }
+
+          async function reverseGeolocalization(lat, long) {
+            console.log(lat, long)
+            const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyABASerjYyootb_nxj7evIFsZLOiqcnQm4`);
+            console.log(address.data.results[0])
+            setCity2(address.data.results[0].address_components[3].long_name)
+            setUf2(address.data.results[0].address_components[4].short_name) 
+            return
+         }
 
               
       function error() {
@@ -81,12 +95,7 @@ function UpdateAccounts() {
     async function handleUploadAccount(e) {
         e.preventDefault();
 
-        if(cep === "" ) {
-            toast.error("Favor preencher o cep");
-            return;
-        }
-
-          
+        
         if(userInformations.avatar === null || userInformations.avatar === undefined ) {
        toast.info("Salvando as informações. Aguarde...")
                 //Avatar
@@ -106,14 +115,51 @@ function UpdateAccounts() {
         const id = uuidv4();
         //Salvando no banco de dados
        //createInformationsAccount({id, idAccount: user.id, avatar: avatar, cover: linkCover, city, uf, relationship, nickname, cep: cep, latitude: latitude, longitude: longitude});
-        console.log({id, avatar: avatar, cover: cover, city, uf, relationship, nickname, cep: cep, latitude: latitude, longitude: longitude});
-        console.log(loadding);
+        updateAccount({
+            id: user.id,
+             avatar: avatar,
+             cover: cover,
+             city: cep === "" ? city2 : city,
+             uf: cep === "" ? city2 : city,
+             relationship,
+             nickname,
+             cep: cep,
+             latitude: latitude,
+             longitude: longitude,
+            username: user.username,
+            role: user.role,
+            status: user.status,
+            type:   user.type,
+            email:  user.email,
+            phone:  user.phone,
+            online: user.online,
+            patron: user.patron,
+            password: "foursome*2025"
+        });
 
     } else {
         const avatar =  userInformations.avatar
         const cover =  userInformations.cover
-        console.log({id: user.id, avatar: avatar, cover: cover, city, uf, relationship, nickname, cep: cep, latitude: latitude, longitude: longitude});
-        console.log(loadding);
+        updateAccount({
+            id: user.id,
+             avatar: avatar,
+             cover: cover,
+             city: cep === "" ? city2 : city,
+             uf: cep === "" ? city2 : city,
+             relationship,
+             nickname,
+             cep: cep,
+             latitude: latitude,
+             longitude: longitude,
+            username: user.username,
+            role: user.role,
+            status: user.status,
+            type:   user.type,
+            email:  user.email,
+            phone:  user.phone,
+            online: user.online,
+            patron: user.patron,
+            password: "foursome*2025"});
     }
            
  
@@ -132,6 +178,7 @@ function UpdateAccounts() {
                 const res = await buscaCep.get(`${cep}/json`);
                 setUf(res.data.uf)
                 setCity(res.data.localidade)
+                return
             }catch{
                 console.log("error")
                 toast.error("CEP não encontrado. Por favor, digite sua cidade e seu Estado(UF) - Sigla")
@@ -199,17 +246,23 @@ function UpdateAccounts() {
                         {/* <button onClick={handleSearchCep}>Buscar Cep</button> */}
                         </div>
                         <div className="digiteCep">
-                        <button onClick={handleHabiliteLocation}>Não sei meu CEP</button>
+                        <h5>Digite seu CEP, caso a cidade e estado abaixo estejam incorretos</h5>
                         </div>
                     <div className="data"> 
 
-                    {location === true || uf !== "" ?
+                    {cep === "" ?
                     <div className="location">
-                        <h5>{textError === false ? "" : "CEP não encontrado, digite sua cidade e estado"}</h5>
-                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf.toUpperCase()} onChange={ChangeMask}  required/>
-                            <input type="text" placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required/>
+                            <br />
+                            <h5>Localização automática</h5>
+                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required/>
+                            <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity(e.target.value)} required/>
                         </div>    
-                        :  "" }
+                        : <div className="location">
+                        <br />
+                        <h5>Localização pelo cep</h5>
+                        <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf.toUpperCase()} onChange={ChangeMask}  required/>
+                        <input type="text" placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required/>
+                    </div> }
 
 
 
@@ -228,7 +281,7 @@ function UpdateAccounts() {
 
                     <div className='confirmation'>
                         <div className='buttonsInformation'>
-                        <button onClick={handleUploadAccount}> Salvar e avançar</button>
+                        <button onClick={handleUploadAccount}> Tudo certo. Avançar!</button>
                         </div>
                     </div>
                         </form>
