@@ -196,7 +196,16 @@ function AuthProvider({children}) {
 async function deleteAccount(id) {
     toast.success("Deletendo sua conta")
     const res = await api.delete(`/accounts/${id}`);
+    const Local = localStorage.getItem("informations-foursome");
+    const user = JSON.parse(Local);
     if(res.status===201) {
+        const idPatrono = user.patron;
+        const text = `${user.username}, Deletou sua conta em nosso site`;
+        const type = "notification";
+        const idPost = "";
+        const idFriend = "";
+        const idAccount = user.id;
+        notifications(idPatrono, text, idAccount, idFriend, type, idPost)
         deleteInformations(id)
        
      } else {
@@ -233,7 +242,7 @@ async function deletePreferences(id) {
 
     const res = await api.delete(`/preferences/${id}`);
     if(res.status===201) {
-        toast.success("Conta deletada com sucesso")
+        toast.success("Conta deletada com sucesso");
         logout(id);
        
      } else {

@@ -95,6 +95,10 @@ function UpdateAccounts() {
     async function handleUploadAccount(e) {
         e.preventDefault();
 
+        if(city === "" && city2 === "") {
+            toast.error("Favor preencher o CEP");
+            return
+        }
         
         if(userInformations.avatar === null || userInformations.avatar === undefined ) {
        toast.info("Salvando as informações. Aguarde...")
@@ -115,7 +119,7 @@ function UpdateAccounts() {
         const id = uuidv4();
         //Salvando no banco de dados
        //createInformationsAccount({id, idAccount: user.id, avatar: avatar, cover: linkCover, city, uf, relationship, nickname, cep: cep, latitude: latitude, longitude: longitude});
-        updateAccount({
+       updateAccount({
             id: user.id,
              avatar: avatar,
              cover: cover,
@@ -138,6 +142,10 @@ function UpdateAccounts() {
         });
 
     } else {
+        if(city === "" && city2 === "") {
+            toast.error("Favor preencher o CEP");
+            return
+        }
         const avatar =  userInformations.avatar
         const cover =  userInformations.cover
         updateAccount({
@@ -214,6 +222,14 @@ function UpdateAccounts() {
     
         setUf(maskedValue)
       }
+    function ChangeMask(e) {
+        const originalValue = unMask(e.target.value);
+        const maskedValue = masker(originalValue, [
+          "SS",
+        ]);
+    
+        setUf2(maskedValue)
+      }
     function ChangeMaskCEP(e) {
         const originalValue = unMask(e.target.value);
         const maskedValue = masker(originalValue, [
@@ -255,7 +271,7 @@ function UpdateAccounts() {
                             <br />
                             <h5>Localização automática</h5>
                             <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required/>
-                            <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity(e.target.value)} required/>
+                            <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity2(e.target.value)} required/>
                         </div>    
                         : <div className="location">
                         <br />

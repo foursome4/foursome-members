@@ -107,6 +107,7 @@ function InformationsForm() {
             toast.error("Busque seu CEP para preencher Cidade e Estado");
             return
         }
+        
         if(nickname === "" || relationship === "" ) {
             toast.error("Favor preencher, todos os campos");
             return
@@ -202,6 +203,14 @@ function InformationsForm() {
     
         setUf(maskedValue)
       }
+    function ChangeMask(e) {
+        const originalValue = unMask(e.target.value);
+        const maskedValue = masker(originalValue, [
+          "SS",
+        ]);
+    
+        setUf2(maskedValue)
+      }
     function ChangeMaskCEP(e) {
         const originalValue = unMask(e.target.value);
         const maskedValue = masker(originalValue, [
@@ -241,7 +250,7 @@ function InformationsForm() {
                             <br />
                             <h5>Localização automática</h5>
                             <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required/>
-                            <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity(e.target.value)} required/>
+                            <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity2(e.target.value)} required/>
                         </div>    
                         : <div className="location">
                         <br />
