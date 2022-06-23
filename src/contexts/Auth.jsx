@@ -277,9 +277,10 @@ async function deletePreferences(id) {
             const idFriend = ""; 
             const type = "";
             const idPost = "";
-    
+            
     
             notifications(idPatrono, text, idAccount, idFriend, type, idPost)
+            window.open("/profile","_self");
         }).catch(error => {
             console.log("Informações não enviadas" + error)
         })
@@ -379,6 +380,7 @@ async function newUpdateCharacteristcs({id, birthDate, sex, sign, sexualOption, 
             notifications({idPatrono, text, idAccount, idFriend: "", type: "notification", idPost: ""})
 
             setLoading(false);
+            window.open("/profile","_self");
         }).catch(error => {
                 console.log("Informações não enviadas" + error)
      })
@@ -398,6 +400,7 @@ async function newUpdateCharacteristcs2({id, birthDate, sex, sign, sexualOption,
 
 
             setLoading(false);
+            window.open("/profile","_self");
   
             }).catch(error => {
                 console.log("Informações não enviadas" + error)
@@ -432,7 +435,7 @@ async function newUpdateCharacteristcs3({id, birthDate,
             notifications({idPatrono, text, idAccount, idFriend: "", type: "notification", idPost: ""})
 
             setLoading(false);
-
+            window.open("/profile","_self");
                     setLoading(false)
                 }).catch(error => {
                     console.log("Informações não enviadas" + error)
@@ -486,11 +489,8 @@ async function updatePreferencesAccount({id, men, woman, couple, trisal, transve
     .then( async () => {
         const text = ` ${username}, alterou as características de um de seus membros do perfil`
         const data = {idPatrono, idAccount, text, }
-       
-
-        
-
-       
+        window.open("/profile","_self");
+      
     }).catch(error => {
         console.log("Erro ao salvar dados" + error)
     })
