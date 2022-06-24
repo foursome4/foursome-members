@@ -116,17 +116,14 @@ function UpdateAccounts() {
         const avatar = photoUrlAvatar === "" || photoUrlAvatar === undefined || photoUrlAvatar === null ? userInformations.avatar : photoUrlAvatar
         const cover = photoUrlAvatar === "" || photoUrlAvatar === undefined || photoUrlAvatar === null ? userInformations.cover : photoUrlAvatar
 
-        const id = uuidv4();
-        //Salvando no banco de dados
-       //createInformationsAccount({id, idAccount: user.id, avatar: avatar, cover: linkCover, city, uf, relationship, nickname, cep: cep, latitude: latitude, longitude: longitude});
        updateAccount({
             id: user.id,
              avatar: avatar,
              cover: cover,
              city: cep === "" ? city2 : city,
              uf: cep === "" ? city2 : city,
-             relationship,
-             nickname,
+             relationship: relationship,
+             nickname: nickname,
              cep: cep,
              latitude: latitude,
              longitude: longitude,
@@ -137,8 +134,7 @@ function UpdateAccounts() {
             email:  user.email,
             phone:  user.phone,
             online: user.online,
-            patron: user.patron,
-            password: "foursome*2025"
+            patron: user.patron
         });
 
     } else {
@@ -154,8 +150,8 @@ function UpdateAccounts() {
              cover: cover,
              city: cep === "" ? city2 : city,
              uf: cep === "" ? city2 : city,
-             relationship,
-             nickname,
+             relationship:relationship,
+             nickname: nickname,
              cep: cep,
              latitude: latitude,
              longitude: longitude,
@@ -166,8 +162,7 @@ function UpdateAccounts() {
             email:  user.email,
             phone:  user.phone,
             online: user.online,
-            patron: user.patron,
-            password: "foursome*2025"});
+            patron: user.patron});
     }
            
  
@@ -222,7 +217,7 @@ function UpdateAccounts() {
     
         setUf(maskedValue)
       }
-    function ChangeMask(e) {
+    function ChangeMask2(e) {
         const originalValue = unMask(e.target.value);
         const maskedValue = masker(originalValue, [
           "SS",
@@ -270,7 +265,7 @@ function UpdateAccounts() {
                     <div className="location">
                             <br />
                             <h5>Localização automática</h5>
-                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required/>
+                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask2}  required/>
                             <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity2(e.target.value)} required/>
                         </div>    
                         : <div className="location">
