@@ -286,7 +286,7 @@ function InformationsForm() {
                         </label>
 
                         <div className="digiteCep">
-                        <button onClick={handleHabiliteLocation}>{user.país === "Brasil" ? "Cidade/UF Errados? Clique aqui"
+                        <button onClick={handleHabiliteLocation}>{user.país === "Brasil" ? "Cidade/UF errados? Clique aqui"
                                                                     : user.país === "Portugal" ? "Cidade incorrta? Clique aqui" : ""}</button>
                         </div>
 
