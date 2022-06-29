@@ -133,7 +133,7 @@ function UpdateAccounts() {
         const avatar = photoUrlAvatar === "" || photoUrlAvatar === undefined || photoUrlAvatar === null ? userInformations.avatar : photoUrlAvatar
         const cover = photoUrlAvatar === "" || photoUrlAvatar === undefined || photoUrlAvatar === null ? userInformations.cover : photoUrlAvatar
 
-       console.log({
+        updateAccount({
             id: user.id,
              avatar: avatar,
              cover: cover,
@@ -162,7 +162,7 @@ function UpdateAccounts() {
         }
         const avatar =  userInformations.avatar
         const cover =  userInformations.cover
-        console.log({
+        updateAccount({
             id: user.id,
              avatar: avatar,
              cover: cover,
