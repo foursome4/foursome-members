@@ -54,6 +54,7 @@
     ]
   },
   "devDependencies": {
-    "@welldone-software/why-did-you-render": "^6.2.3"
+    "@welldone-software/why-did-you-render": "^6.2.3",
+    "css-minimizer-webpack-plugin": "^4.0.0"
   }
 }
