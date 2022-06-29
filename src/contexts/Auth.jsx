@@ -284,10 +284,10 @@ async function deletePreferences(id) {
 
 
 
-    async function NewUpdateInformationsAccount({id, idAccount, avatar, cover, relationship, nickname, city, uf, created_at, idPatrono, username}) {
-        await api.patch(`/informations/${id}`, {avatar, cover, relationship, nickname, city, uf}).then( async () => {
+    async function NewUpdateInformationsAccount({id, país, idAccount, avatar, cover, relationship, nickname, city, uf, created_at, idPatrono, username}) {
+        await api.patch(`/informations/${id}`, {avatar, cover, relationship, nickname, city, uf, país}).then( async () => {
             localStorage.setItem("informations-foursome", JSON.stringify({
-                id, _id: id, idAccount, avatar, cover, relationship, nickname, city, uf, created_at
+                id, _id: id, idAccount, avatar, cover, relationship, nickname, city, uf, país, created_at
             }))
 
             const text = `${username}, alterou informações em seu perfil` 

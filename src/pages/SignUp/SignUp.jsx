@@ -298,7 +298,7 @@ function SignUp() {
       <div className="signUp">
         <div className="top">
           <img src={logoImg} alt="Logotipo Foursome" />
-          <h1>Escolha sua nacionalidade</h1>
+          <h1>Escolha sua Nacionalidade</h1>
         </div>
         <div className="flags">
           <img src={Brasil} alt="Bandeira do Brasil" onClick={() => {selectFlag("Brasil")}}/>
