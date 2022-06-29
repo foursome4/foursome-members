@@ -354,7 +354,7 @@ function UpdateAccounts() {
 
 
                         <div className="dataUser">
-                            <select disabled={edit === false ? 'disabled' : '' } className={país === "" ? "" : "active"} value={país} onChange={handlePaís} required>
+                            <select className={país === "" ? "" : "active"} value={país} onChange={handlePaís} required>
                                 <option value="">Selecione seus país</option>
                                 <option value="Brasil">Brasil</option>
                                 <option value="Portugal">Portugal</option>
