@@ -10,6 +10,7 @@ import buscaCep from '../../services/api-buscaCep';
 import { toast } from 'react-toastify';
 import { mask as masker, unMask } from "remask";
 import apiGoogleReverse from '../../services/apiGoogleReverse';
+import buscaCepPortugal from '../../services/api-buscaCepPortugal';
 
 
 function InformationsForm() {
@@ -26,11 +27,18 @@ function InformationsForm() {
     const [relationship, setRelationship] = useState("");
     const [nickname, setNickname] = useState("")
     const [loadding, setLoadding] = useState(false);
-    const [location, setLocation] = useState(false);
+    const [location, setLocation] = useState("");
     const [textError, setTextError] = useState(false);
 
     const [latitude, setLatitude] = useState(false);
     const [longitude, setLongitude] = useState(false);
+
+    const [país, setPaís] = useState(user.país);
+    const [latitude2, setLatitude2] = useState("");
+    const [longitude2, setLongitude2] = useState("");
+    const [cityPortugal, setCityPortugal] = useState("");
+    const [ufPortugal, setUfPortugal] = useState("");
+    const [codigoPostal, setCodigoPostal] = useState("");
 
 
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
@@ -52,9 +60,9 @@ function InformationsForm() {
           }
 
           async function reverseGeolocalization(lat, long) {
-            console.log(lat, long)
+            //console.log(lat, long)
             const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyABASerjYyootb_nxj7evIFsZLOiqcnQm4`);
-            console.log(address.data.results[0])
+           // console.log(address.data.results[0])
             setCity2(address.data.results[0].address_components[3].long_name)
             setUf2(address.data.results[0].address_components[4].short_name) 
             return
@@ -72,7 +80,7 @@ function InformationsForm() {
 
 
     function handleFile(e) {
-        console.log(e.target.files[0])
+       // console.log(e.target.files[0])
 
        if(e.target.files[0]){
            const image = e.target.files[0];
@@ -137,14 +145,24 @@ function InformationsForm() {
         
         const id = uuidv4();
         //Salvando no banco de dados
-        createInformationsAccount({id, idAccount: user.id, avatar: avatar, cover: linkCover,
-        city: cep === "" ? city2 : city,
-       uf: cep === "" ? uf2 : uf, relationship, nickname, cep, latitude, longitude,
+        console.log({id, idAccount: user.id, avatar: avatar, cover: linkCover,
+            city: cep !== "" ? city :  codigoPostal !== "" ? cityPortugal : city2,
+            uf: cep !== "" ? uf :  codigoPostal !== "" ? ufPortugal : uf2,
+       relationship, nickname,
+       cep: cep === "" ? codigoPostal : cep,
+       latitude: latitude2 === "" ? latitude : latitude2,
+       longitude: longitude2 === "" ? longitude : longitude2,
+       país: user.país,
        username: user.username, role: user.role, status: user.status, type: user.type, email: user.email, phone: user.phone, online: user.online, patron: user.patron});
 
         console.log({id, idAccount: user.id, avatar: avatar, cover: linkCover,
-            city: cep === "" ? city2 : city,
-           uf: cep === "" ? uf2 : uf, relationship, nickname, cep, latitude, longitude,
+            city: cep !== "" ? city :  codigoPostal !== "" ? cityPortugal : city2,
+             uf: cep !== "" ? uf :  codigoPostal !== "" ? ufPortugal : uf2,
+           relationship, nickname,
+           cep: cep === "" ? codigoPostal : cep,
+           latitude: latitude2 === "" ? latitude : latitude2,
+           longitude: longitude2 === "" ? longitude : longitude2,
+           país: user.país,
            username: user.username, role: user.role, status: user.status, type: user.type, email: user.email, phone: user.phone, online: user.online, patron: user.patron});
            
     } else {
@@ -158,8 +176,13 @@ function InformationsForm() {
     if(cep.length === 9) {
         handleSearchCep()
     } else {
-        console.log("Nada")
+      
     }
+    if(codigoPostal.length === 7) {
+        handleSearchCepPortugal()
+    } else {
+        
+    } 
 
     async function handleSearchCep() {
             try {
@@ -168,6 +191,7 @@ function InformationsForm() {
                 console.log(res.data.uf);
                 setUf(res.data.uf)
                 setCity(res.data.localidade)
+                return
             }catch{
                 console.log("error")
                 toast.error("CEP não encontrado. Por favor, digite sua cidade e seu Estado(UF) - Sigla")
@@ -175,9 +199,26 @@ function InformationsForm() {
                 setTextError(true)
             }
             return
+
         }
 
-
+        async function handleSearchCepPortugal() {
+            try {
+                const res = await buscaCepPortugal.get(`${codigoPostal}`);
+                console.log(res.data[0])
+                setCityPortugal(res.data[0].Distrito)
+                setUfPortugal("")
+                setLatitude2(parseFloat(res.data[0].Latitude));
+                setLongitude2(parseFloat(res.data[0].Longitude));
+                return
+            }catch{
+                console.log("error")
+                toast.error("Código Postal não encontrado. Por favor, digite sua Cidade e sua Província")
+                setLocation(true)
+                setTextError(true)
+            }
+            return
+        }
 
 
     function handleRelationship(e) {
@@ -187,10 +228,10 @@ function InformationsForm() {
 
     function handleHabiliteLocation(e) {
         e.preventDefault();
-        if(location === false) {
-            setLocation(true)
-        } else {
-            setLocation(false)
+        if(location === "" && user.país === "Brasil") {
+            setLocation("Brasil")
+        } else if(location === "" && user.país === "Portugal") {
+            setLocation("Portugal")
         }
     }
 
@@ -220,6 +261,15 @@ function InformationsForm() {
         setCep(maskedValue)
       }
 
+      function ChangeMaskCEPPortugal(e) {
+        const originalValue = unMask(e.target.value);
+        const maskedValue = masker(originalValue, [
+          "9999999",
+        ]);
+    
+        setCodigoPostal(maskedValue)
+      }
+
 
     return (
             <div className="complete-informations">
@@ -235,29 +285,60 @@ function InformationsForm() {
                             <img src={avatarUrl === null ? profile : avatarUrl} alt="Avatar" height={100} width={100}/>
                         </label>
 
-                        <br />
-                        <div className="SearchCep">
+                        <div className="digiteCep">
+                        <button onClick={handleHabiliteLocation}>{user.país === "Brasil" ? "Cidade/UF Errados? Clique aqui"
+                                                                    : user.país === "Portugal" ? "Cidade incorrta? Clique aqui" : ""}</button>
+                        </div>
+
+
+
+
+                        {location === "Brasil" ?       
+                    <>
+                    <div className="SearchCep">
                         <input type="text" placeholder='Digite seu cep' value={cep} onChange={ChangeMaskCEP}/>
-                        {/* <button onClick={handleSearchCep}>Buscar Cep</button> */}
+                        </div>
+                        <div className="digiteCep">        
+                        <h5>Digite seu CEP, caso a cidade e estado abaixo estejam incorretos</h5>
+                        </div>
+                    </>
+                    : location === "Portugal" ?
+                    <>
+                        <div className="SearchCep">
+                        <input type="text" placeholder='Digite seu Código Postal' value={codigoPostal} onChange={ChangeMaskCEPPortugal}/>
                         </div>
                         <div className="digiteCep">
-                        <button onClick={handleHabiliteLocation}>Não sei meu CEP</button>
+                        <h5>Digite seu Código Postal, caso a cidade abaixo esteja incorreta</h5>
                         </div>
+                    </>
+                    : ""}
+
                     <div className="data"> 
 
-                    {cep === "" ?
+                 
+                    {location === "" ?
                     <div className="location">
                             <br />
                             <h5>Localização automática</h5>
                             <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required/>
                             <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity2(e.target.value)} required/>
-                        </div>    
-                        : <div className="location">
+                        </div>  : ""}  
+                        
+
+                        {location === "Brasil" ?       
+                    <>
+                     <div className="location">
                         <br />
                         <h5>Localização pelo cep</h5>
-                        <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf.toUpperCase()} onChange={ChangeMask}  required/>
-                        <input type="text" placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required/>
-                    </div> }
+                        <input type="text"  placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required/>
+                        <input type="text" autoComplete='off' placeholder='UF (Sigla. Ex.: RJ)' value={uf.toUpperCase()} onChange={ChangeMask}  required/>
+                    </div> </>
+                    : location === "Portugal" ?
+                    <>
+                    <input type="text" autoComplete='off' placeholder='Cidade' value={cityPortugal} onChange={(e) => setCityPortugal(e.target.value)} required/>
+                    <input type="text" autoComplete='off' placeholder='Província' value={ufPortugal} onChange={(e) => setUfPortugal(e.target.value)}  required/>
+                    </>
+                    : ""}
 
 
 

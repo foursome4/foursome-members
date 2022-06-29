@@ -10,6 +10,8 @@ import { toast } from 'react-toastify';
 import { mask as masker, unMask } from "remask";
 import buscaCep from '../../services/api-buscaCep';
 import apiGoogleReverse from '../../services/apiGoogleReverse';
+import buscaCepPortugal from '../../services/api-buscaCepPortugal';
+import { toNumber } from 'vanilla-masker';
 
 
 function UpdateAccounts() {
@@ -24,14 +26,20 @@ function UpdateAccounts() {
     const [uf2, setUf2] = useState("");
     const [city, setCity] = useState("");
     const [uf, setUf] = useState("");
+    const [cityPortugal, setCityPortugal] = useState("");
+    const [ufPortugal, setUfPortugal] = useState("");
     const [cep, setCep] = useState("");
-    const [relationship, setRelationship] = useState(userInformations.relationship);
-    const [nickname, setNickname] = useState(userInformations.nickname)
+    const [codigoPostal, setCodigoPostal] = useState("");
     const [loadding, setLoadding] = useState(false);
     const [location, setLocation] = useState(false);
     const [textError, setTextError] = useState(false);
-    const [latitude, setLatitude] = useState(false);
-    const [longitude, setLongitude] = useState(false);
+    const [latitude, setLatitude] = useState("");
+    const [longitude, setLongitude] = useState("");
+    const [latitude2, setLatitude2] = useState("");
+    const [longitude2, setLongitude2] = useState("");
+    const [edit, setEdit] = useState(false);
+    const [país, setPaís] = useState(user.país);
+
 
 
 
@@ -54,7 +62,7 @@ function UpdateAccounts() {
           async function reverseGeolocalization(lat, long) {
             console.log(lat, long)
             const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyABASerjYyootb_nxj7evIFsZLOiqcnQm4`);
-            console.log(address.data.results[0])
+            // console.log(address.data.results[0])
             setCity2(address.data.results[0].address_components[3].long_name)
             setUf2(address.data.results[0].address_components[4].short_name) 
             return
@@ -91,10 +99,19 @@ function UpdateAccounts() {
         logout(user.id)
     }
     
+    function handleEditInformations(e){
+        e.preventDefault();
+
+        setEdit(true)
+    }
     
     async function handleUploadAccount(e) {
         e.preventDefault();
 
+        if(país === "") {
+            toast.error("Favor escolha seu país");
+            return
+        }
         if(city === "" && city2 === "") {
             toast.error("Favor preencher o CEP");
             return
@@ -116,17 +133,17 @@ function UpdateAccounts() {
         const avatar = photoUrlAvatar === "" || photoUrlAvatar === undefined || photoUrlAvatar === null ? userInformations.avatar : photoUrlAvatar
         const cover = photoUrlAvatar === "" || photoUrlAvatar === undefined || photoUrlAvatar === null ? userInformations.cover : photoUrlAvatar
 
-       updateAccount({
+       console.log({
             id: user.id,
              avatar: avatar,
              cover: cover,
-             city: cep === "" ? city2 : city,
-             uf: cep === "" ? city2 : city,
-             relationship: relationship,
-             nickname: nickname,
-             cep: cep,
-             latitude: latitude,
-             longitude: longitude,
+             city: cep !== "" ? city :  codigoPostal !== "" ? cityPortugal : city2,
+             uf: cep !== "" ? uf :  codigoPostal !== "" ? ufPortugal : uf2,
+             relationship: userInformations.relationship,
+             nickname: userInformations.nickname,
+             cep: cep === "" ? codigoPostal : cep,
+             latitude: latitude2 === "" ? latitude : latitude2,
+             longitude: longitude2 === "" ? longitude : longitude2,
             username: user.username,
             role: user.role,
             status: user.status,
@@ -134,7 +151,8 @@ function UpdateAccounts() {
             email:  user.email,
             phone:  user.phone,
             online: user.online,
-            patron: user.patron
+            patron: user.patron,
+            país: user.país === undefined || user.país === null ? país : user.país,
         });
 
     } else {
@@ -144,17 +162,17 @@ function UpdateAccounts() {
         }
         const avatar =  userInformations.avatar
         const cover =  userInformations.cover
-        updateAccount({
+        console.log({
             id: user.id,
              avatar: avatar,
              cover: cover,
-             city: cep === "" ? city2 : city,
-             uf: cep === "" ? city2 : city,
-             relationship:relationship,
-             nickname: nickname,
-             cep: cep,
-             latitude: latitude,
-             longitude: longitude,
+             city: cep !== "" ? city :  codigoPostal !== "" ? cityPortugal : city2,
+             uf: cep !== "" ? uf :  codigoPostal !== "" ? ufPortugal : uf2,
+             relationship: userInformations.relationship,
+             nickname: userInformations.nickname,
+             cep: cep === "" ? codigoPostal : cep,
+             latitude: latitude2 === "" ? latitude : latitude2,
+             longitude: longitude2 === "" ? longitude : longitude2,
             username: user.username,
             role: user.role,
             status: user.status,
@@ -162,7 +180,8 @@ function UpdateAccounts() {
             email:  user.email,
             phone:  user.phone,
             online: user.online,
-            patron: user.patron});
+            patron: user.patron,
+            país: user.país === undefined || user.país === null ? país : user.país,});
     }
            
  
@@ -173,7 +192,12 @@ function UpdateAccounts() {
     if(cep.length === 9) {
         handleSearchCep()
     } else {
-        console.log("Nada")
+      
+    }
+    if(codigoPostal.length === 7) {
+        handleSearchCepPortugal()
+    } else {
+        
     }
 
     async function handleSearchCep() {
@@ -190,12 +214,31 @@ function UpdateAccounts() {
             }
             return
         }
+    async function handleSearchCepPortugal() {
+            try {
+                const res = await buscaCepPortugal.get(`${codigoPostal}`);
+                console.log(res.data[0])
+                setCityPortugal(res.data[0].Distrito)
+                setUfPortugal("")
+                setLatitude2(parseFloat(res.data[0].Latitude));
+                setLongitude2(parseFloat(res.data[0].Longitude));
+                return
+            }catch{
+                console.log("error")
+                toast.error("Código Postal não encontrado. Por favor, digite sua Cidade e sua Província")
+                setLocation(true)
+                setTextError(true)
+            }
+            return
+        }
 
 
 
 
-    function handleRelationship(e) {
-        setRelationship(e.target.value)
+
+    function handlePaís(e) {
+        setPaís(e.target.value)
+        console.log(e.target.value)
     }
 
 
@@ -225,6 +268,7 @@ function UpdateAccounts() {
     
         setUf2(maskedValue)
       }
+
     function ChangeMaskCEP(e) {
         const originalValue = unMask(e.target.value);
         const maskedValue = masker(originalValue, [
@@ -233,7 +277,16 @@ function UpdateAccounts() {
     
         setCep(maskedValue)
       }
+    function ChangeMaskCEPPortugal(e) {
+        const originalValue = unMask(e.target.value);
+        const maskedValue = masker(originalValue, [
+          "9999999",
+        ]);
+    
+        setCodigoPostal(maskedValue)
+      }
 
+      console.log({city, city2, uf, uf2, ufPortugal, cityPortugal})
 
     return (
         <div className="container">
@@ -251,40 +304,60 @@ function UpdateAccounts() {
                             <img src={avatarUrl === null ? userInformations.avatar : avatarUrl} alt="Avatar" height={100} width={100}/>
                         </label>
 
+                        
+
                         <br />
+                        {edit === false ? '' :
                         <div className="SearchCep">
+                            {user.país === "Brasil" ?
                         <input type="text" placeholder='Digite seu cep' value={cep} onChange={ChangeMaskCEP}/>
+                        :
+                        <input type="text" placeholder='Digite seu Código Postal' value={codigoPostal} onChange={ChangeMaskCEPPortugal}/>
+                            }
                         {/* <button onClick={handleSearchCep}>Buscar Cep</button> */}
                         </div>
+                        }
+                        {edit === false ? '' :
                         <div className="digiteCep">
+                              {user.país === "Brasil" ?
                         <h5>Digite seu CEP, caso a cidade e estado abaixo estejam incorretos</h5>
+                                 :
+                        <h5>Digite seu Código Postal, caso a cidade abaixo esteja incorreta</h5>
+                           }
                         </div>
+                         }
                     <div className="data"> 
 
-                    {cep === "" ?
+                    {edit === false ?
                     <div className="location">
                             <br />
                             <h5>Localização automática</h5>
-                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask2}  required/>
-                            <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity2(e.target.value)} required/>
+                            <input disabled={edit === false ? 'disabled' : '' } type="text" autoComplete='off' placeholder='' value={uf2.toUpperCase()} onChange={ChangeMask2}  required/>
+                            <input disabled={edit === false ? 'disabled' : '' } type="text" autoComplete='off' placeholder='' value={city2} onChange={(e) => setCity2(e.target.value)} required/>
                         </div>    
-                        : <div className="location">
+                        :
+                        <div className="location">
                         <br />
                         <h5>Localização pelo cep</h5>
-                        <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf.toUpperCase()} onChange={ChangeMask}  required/>
-                        <input type="text" placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required/>
+                        {cep !== "" ?
+                        <input disabled={edit === false ? 'disabled' : '' } type="text" autoComplete='off' placeholder='UF (Sigla. Ex.: RJ)' value={uf.toUpperCase()} onChange={ChangeMask}  required/>
+                        : codigoPostal !== "" ?
+                      <input disabled={edit === false ? 'disabled' : '' } type="text" autoComplete='off' placeholder='Província' value={ufPortugal} onChange={(e) => setUfPortugal(e.target.value)}  required/>
+                       : "" }
+                       {cep !== "" ?
+                        <input disabled={edit === false ? 'disabled' : '' } type="text"  placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required/>
+                        : codigoPostal !== "" ?
+                      <input disabled={edit === false ? 'disabled' : '' } type="text" autoComplete='off' placeholder='Cidade' value={cityPortugal} onChange={(e) => setCityPortugal(e.target.value)} required/>
+                      : "" }
                     </div> }
 
 
 
                         <div className="dataUser">
-                            <input type="text" placeholder='Nome de Exibição' value={nickname} onChange={(e) => setNickname(e.target.value)} required/>
-                            <select className={relationship === "" ? "" : "active"} value={relationship} onChange={handleRelationship} required>
-                                <option value="">Status de Relacionamento</option>
-                                <option value="Solteir@">Solteir@ </option>
-                                <option value="Casad@">Casad@</option>
-                                <option value="Enrolad@">Enrolad@</option>
-                                <option value="Relacionamento Aberto">Relacionamento Aberto</option>
+                            <select disabled={edit === false ? 'disabled' : '' } className={país === "" ? "" : "active"} value={país} onChange={handlePaís} required>
+                                <option value="">Selecione seus país</option>
+                                <option value="Brasil">Brasil</option>
+                                <option value="Portugal">Portugal</option>
                             </select>
                             </div>             
 
@@ -293,6 +366,7 @@ function UpdateAccounts() {
                     <div className='confirmation'>
                         <div className='buttonsInformation'>
                         <button onClick={handleUploadAccount}> Tudo certo. Avançar!</button>
+                        <button onClick={handleEditInformations}> Desejo Editar</button>
                         </div>
                     </div>
                         </form>

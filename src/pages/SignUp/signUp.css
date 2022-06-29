@@ -1,5 +1,6 @@
 .content-Login {
-    width: 80%;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,35 +8,83 @@
 
 .content-Login .signUp {
     width: 100%;
+    height: 100vh;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.content-Login .signUp .top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: #fff; 
+}
+
+.content-Login .signUp .top h1 {
+    text-align: center;
+    margin: 20px;
+}
+
+.content-Login .signUp .top img{
+    width: 250px;
+}
+.content-Login .signUp .flags {
+    width: 100%;
+    display: flex;
+    align-items: center;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    color: #fff; 
+}
+.content-Login .signUp .flags img{
+    width: 200px;
+    height: 125px;
+    margin: 20px;
+    cursor: pointer;
+    border: 3px solid #fff;
+    border-radius: 6px;
 }
 
-.content-Login .signUp .form {
+.content-Login .signUpBrasil {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+
+
+.content-Login .signUpBrasil .form {
     width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: var(--White);
+    margin-bottom:40px;
 }
-.content-Login .signUp .form .titleInput {
+.content-Login .signUpBrasil .form .titleInput {
     width: 70%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
 }
-.content-Login .signUp .form .titleInput p {
+.content-Login .signUpBrasil .form .titleInput p {
    font-weight: bold;
    text-align: left;
    margin-bottom: 3px;
 }
 
-.content-Login .signUp .form .title {
+.content-Login .signUpBrasil .form .title {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -45,21 +94,21 @@
     margin-bottom: 10px;
 }
 
-.content-Login .signUp .form input:focus{
+.content-Login .signUpBrasil .form input:focus{
     outline: none;
   }
 
-  .content-Login .signUp .form option:focus{
+  .content-Login .signUpBrasil .form option:focus{
     outline: none;
   }
-  .content-Login .signUp .form select:focus{
+  .content-Login .signUpBrasil .form select:focus{
     outline: none;
   }
 
 
-.content-Login .signUp .form input {
+.content-Login .signUpBrasil .form input {
     width: 70%;
-    height: 30px;
+    height: 40px;
     border: none;
     border-bottom: 1px solid #fff;
     background-color: var(--White);
@@ -71,9 +120,9 @@
     font-weight: bold;
 }
 
-.content-Login .signUp .form select {
+.content-Login .signUpBrasil .form select {
     width: 70%;
-    height: 30px;
+    height: 40px;
     border: none;
     border-bottom: 1px solid #fff;
     background-color: var(--White);
@@ -86,7 +135,8 @@
 
 }
 
-.content-Login .signUp .form option {
+
+.content-Login .signUpBrasil .form option {
     width: 70%;
     border: none;
     border-bottom: 1px solid #fff;
@@ -97,25 +147,26 @@
 
 }
 
-.content-Login .signUp .form input::placeholder {
+.content-Login .signUpBrasil .form input::placeholder {
     color: var(--Gray_font1);
 }
 
-.content-Login .signUp .form .inputPassword {
+.content-Login .signUpBrasil .form .inputPassword {
     width: 70%;
-    height: 35px;
+    height: 45px;
     display: flex;
     
     }
+
     
-    .content-Login .signUp .form .inputPassword input {
+    .content-Login .signUpBrasil .form .inputPassword input {
         width: 100%;
         border-radius: 6px 0 0 6px;
     }
     
-    .content-Login .signUp .form .password {
+    .content-Login .signUpBrasil .form .password {
         background-color: var(--White);
-        height: 30px;
+        height: 40px;
         width: 50px;
         border: none;
         border-radius: 0 6px 6px 0;
@@ -125,25 +176,37 @@
     
 
 
-.content-Login .signUp .form .buttons {
-    width: 70%;
+.content-Login .signUpBrasil .form .buttons {
+    width: 100%;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     margin-top: 20px;
 }
 
-.content-Login .signUp .form .buttons button {
+.content-Login .signUpBrasil .form .buttons button {
     background-color: var(--Button);
-    width: 100px;
+    width: 250px;
     height: 35PX;
     border: none;
     border-radius: 6px;
     font-weight: bold;
     color: #fff;
+    margin: 10px;
+}
+.content-Login .signUpBrasil .form .buttons .btn {
+    background-color: var(--White);
+    width: 250px;
+    height: 35PX;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    color: var(--Primary);
+    margin: 10px;
 }
 
-.content-Login .signUp .form .terms {
+.content-Login .signUpBrasil .form .terms {
     width: 70%;
     display: flex;
     flex-direction: row;
@@ -153,19 +216,19 @@
     margin-top: 10px;
 }
 
-.content-Login .signUp .form .terms p a {
+.content-Login .signUpBrasil .form .terms p a {
     font-weight: 900;
     color: var(--White);
     text-decoration: none;
     margin-left: 3px;
 }
 
-.content-Login .signUp .form .terms .pointer{
+.content-Login .signUpBrasil .form .terms .pointer{
   cursor: pointer;
   margin-left: 3px;
 }
 
-.content-Login .signUp .form .terms input[type="checkbox"] {
+.content-Login .signUpBrasil .form .terms input[type="checkbox"] {
     margin-left: 5px;
     margin-right: 10px;
     color: var(--Primary);
@@ -173,26 +236,466 @@
 }
 
 
-.content-Login .signUp .logo {
-    width: 50%;
+.content-Login .signUpBrasil .logo {
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     color: var(--White);
     text-align: center;
+    padding: 20px;
+    margin: 20px;
 }
 
-.content-Login .signUp .logo img{
-    width: 40%;
+.content-Login .signUpBrasil .logo img{
+    width: 250px;
     margin-bottom: 20px;
 }
 
-.content-Login .signUp .footer {
+.content-Login .signUpBrasil .footer {
     position: absolute;
     bottom: 0;
 }
-.content-Login .signUp .footer img{
+.content-Login .signUpBrasil .footer img{
+    width: 70px;
+    margin-bottom: 20px;
+}
+
+
+
+
+.content-modal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: var(--Background);
+}
+.content-modal h3 {
+    color: var(--Gray_font1);
+}
+
+.content-modal .itensModalMessages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;padding: 10px;
+}
+.content-modal .itensModalMessages h2 {
+    color: var(--Primary);
+    text-align: center;
+    font-weight:700;
+}
+.content-modal .itensModalMessages .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+.content-modal .itensModalMessages .buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 150px;
+    height: 80px;
+    flex-wrap: wrap;
+    margin: 10px;
+    font-size: 25px;
+    border-radius: 6px;
+    border: none;
+    background-color: green;
+    color: white;
+}
+.content-modal .itensModalMessages .buttons button svg {
+    margin-right: 10px;
+}
+.content-modal .itensModalMessages .buttons .down {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 150px;
+    height: 80px;
+    flex-wrap: wrap;
+    margin: 10px;
+    font-size: 25px;
+    border-radius: 6px;
+    border: none;background-color: red;
+    color: white;
+}
+.content-modal .itensModalMessages .buttons button svg {
+    margin-right: 10px;
+}
+
+@media (max-width: 800px) {
+    .content-Login .signUpBrasil {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .content-Login .signUpBrasil .logo {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: var(--White);
+        text-align: center;
+    }
+
+    .content-Login .signUpBrasil .form {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--White);
+       margin-top: 30px;
+    }
+
+    .content-Login .signUpBrasil .logo img{
+        width: 50%;
+        margin-bottom: 20px;
+    }
+
+    .content-Login .signUpBrasil .footer {
+        position: relative;
+        bottom: 0;
+    }
+    .content-Login .signUpBrasil .footer img{
+        margin-top: 40px;
+        width: 70px;
+        margin-bottom: 20px;
+    }
+    
+
+    @media (max-width: 500px) {
+        .content-Login .signUpBrasil {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+    
+        .content-Login .signUpBrasil .logo {
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--White);
+            text-align: center;
+        }
+    
+        .content-Login .signUpBrasil .form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--White);
+           margin-top: 30px;
+        }
+
+        
+    .content-Login .signUpBrasil .form .titleInput {
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .content-Login .signUpBrasil .form input {
+        width: 90%;
+        height: 40px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        background-color: var(--White);
+        border-radius: 6px;
+        font-size: 14px;
+        padding:10px;
+        margin-bottom: 5px;
+        color: var(--Primary);
+        font-weight: bold;
+    }
+    
+    .content-Login .signUpBrasil .form select {
+        width: 90%;
+        height: 40px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        background-color: var(--White);
+        border-radius: 6px;
+        font-size: 14px;
+        padding:5px;
+        margin-bottom: 5px;
+        color: var(--Primary);
+        font-weight: bold;
+    
+    }
+    
+    .content-Login .signUpBrasil .form option {
+        width: 90%;
+        border: none;
+        border-bottom: 1px solid #fff;
+        background-color: #fff;
+        padding:10px 5px;
+        margin-bottom: 10px;
+        color: var(--Primary);
+    
+    }
+.content-Login .signUpBrasil .form .inputPassword {
+    width: 90%;
+    height: 45px;
+    display: flex;
+    
+    }
+
+        .content-Login .signUpBrasil .form .titleInput p {
+           font-weight: bold;
+        }
+
+        .content-Login .signUpBrasil .logo img{
+            width: 60%;
+            margin-bottom: 20px;
+        }
+
+        .content-Login .signUpBrasil .form .terms {
+            width: 70%;
+        }
+
+        .content-Login .signUpBrasil .form .terms span {
+            font-size: 14px;
+        }
+        
+    }
+    
+}
+
+
+//Portugal
+.content-Login {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-Login .signUpPortugal {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.content-Login .signUpPortugal .form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--White);
+    margin-bottom:40px;
+}
+.content-Login .signUpPortugal .form .titleInput {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.content-Login .signUpPortugal .form .titleInput p {
+   font-weight: bold;
+   text-align: left;
+   margin-bottom: 3px;
+}
+
+.content-Login .signUpPortugal .form .title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 70%;
+    color: var(--White);
+    margin-bottom: 10px;
+}
+
+.content-Login .signUpPortugal .form input:focus{
+    outline: none;
+  }
+
+  .content-Login .signUpPortugal .form option:focus{
+    outline: none;
+  }
+  .content-Login .signUpPortugal .form select:focus{
+    outline: none;
+  }
+
+
+.content-Login .signUpPortugal .form input {
+    width: 70%;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: var(--White);
+    border-radius: 6px;
+    font-size: 14px;
+    padding:10px;
+    margin-bottom: 5px;
+    color: var(--Primary);
+    font-weight: bold;
+}
+
+.content-Login .signUpPortugal .form select {
+    width: 70%;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: var(--White);
+    border-radius: 6px;
+    font-size: 14px;
+    padding:5px;
+    margin-bottom: 5px;
+    color: var(--Primary);
+    font-weight: bold;
+
+}
+
+.content-Login .signUpPortugal .form option {
+    width: 70%;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+    padding:10px 5px;
+    margin-bottom: 10px;
+    color: var(--Primary);
+
+}
+
+.content-Login .signUpPortugal .form input::placeholder {
+    color: var(--Gray_font1);
+}
+
+.content-Login .signUpPortugal .form .inputPassword {
+    width: 70%;
+    height: 45px;
+    display: flex;
+    
+    }
+    
+    .content-Login .signUpPortugal .form .inputPassword input {
+        width: 100%;
+        border-radius: 6px 0 0 6px;
+    }
+    
+    .content-Login .signUpPortugal .form .password {
+        background-color: var(--White);
+        height: 40px;
+        width: 50px;
+        border: none;
+        border-radius: 0 6px 6px 0;
+        font-size: 20px;
+        color: var(--Primary);
+    }
+    
+
+
+.content-Login .signUpPortugal .form .buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.content-Login .signUpPortugal .form .buttons button {
+    background-color: var(--Button);
+    width: 250px;
+    height: 35PX;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #fff;
+}
+.content-Login .signUpPortugal .form .buttons .btn {
+    background-color: var(--White);
+    width: 250px;
+    height: 35PX;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    color: var(--Primary);
+    margin: 10px;
+}
+
+.content-Login .signUpPortugal .form .terms {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--White);
+    margin-top: 10px;
+}
+
+.content-Login .signUpPortugal .form .terms p a {
+    font-weight: 900;
+    color: var(--White);
+    text-decoration: none;
+    margin-left: 3px;
+}
+
+.content-Login .signUpPortugal .form .terms .pointer{
+  cursor: pointer;
+  margin-left: 3px;
+}
+
+.content-Login .signUpPortugal .form .terms input[type="checkbox"] {
+    margin-left: 5px;
+    margin-right: 10px;
+    color: var(--Primary);
+    width: 15px;
+}
+
+
+.content-Login .signUpPortugal .logo {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--White);
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+}
+
+.content-Login .signUpPortugal .logo img{
+    width: 250px;
+    margin-bottom: 20px;
+}
+
+.content-Login .signUpPortugal .footer {
+    position: absolute;
+    bottom: 0;
+}
+.content-Login .signUpPortugal .footer img{
     width: 70px;
     margin-bottom: 20px;
 }
@@ -266,9 +769,8 @@
 .content-modal .itensModalMessages .buttons button svg {
     margin-right: 10px;
 }
-
 @media (max-width: 800px) {
-    .content-Login .signUp {
+    .content-Login .signUpPortugal {
         width: 100%;
         display: flex;
         align-items: center;
@@ -277,7 +779,7 @@
         flex-wrap: wrap;
     }
 
-    .content-Login .signUp .logo {
+    .content-Login .signUpPortugal .logo {
         width: 80%;
         display: flex;
         align-items: center;
@@ -287,7 +789,7 @@
         text-align: center;
     }
 
-    .content-Login .signUp .form {
+    .content-Login .signUpPortugal .form {
         width: 80%;
         display: flex;
         flex-direction: column;
@@ -297,16 +799,16 @@
        margin-top: 30px;
     }
 
-    .content-Login .signUp .logo img{
+    .content-Login .signUpPortugal .logo img{
         width: 50%;
         margin-bottom: 20px;
     }
 
-    .content-Login .signUp .footer {
+    .content-Login .signUpPortugal .footer {
         position: relative;
         bottom: 0;
     }
-    .content-Login .signUp .footer img{
+    .content-Login .signUpPortugal .footer img{
         margin-top: 40px;
         width: 70px;
         margin-bottom: 20px;
@@ -314,7 +816,7 @@
     
 
     @media (max-width: 500px) {
-        .content-Login .signUp {
+        .content-Login .signUpPortugal {
             width: 100%;
             display: flex;
             align-items: center;
@@ -323,7 +825,7 @@
             flex-wrap: wrap;
         }
     
-        .content-Login .signUp .logo {
+        .content-Login .signUpPortugal .logo {
             width: 80%;
             display: flex;
             align-items: center;
@@ -333,7 +835,7 @@
             text-align: center;
         }
     
-        .content-Login .signUp .form {
+        .content-Login .signUpPortugal .form {
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -343,20 +845,74 @@
            margin-top: 30px;
         }
 
-        .content-Login .signUp .form .titleInput p {
+        
+    .content-Login .signUpPortugal .form .titleInput {
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .content-Login .signUpPortugal .form input {
+        width: 90%;
+        height: 40px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        background-color: var(--White);
+        border-radius: 6px;
+        font-size: 14px;
+        padding:10px;
+        margin-bottom: 5px;
+        color: var(--Primary);
+        font-weight: bold;
+    }
+    
+    .content-Login .signUpPortugal .form select {
+        width: 90%;
+        height: 40px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        background-color: var(--White);
+        border-radius: 6px;
+        font-size: 14px;
+        padding:5px;
+        margin-bottom: 5px;
+        color: var(--Primary);
+        font-weight: bold;
+    
+    }
+    
+    .content-Login .signUpPortugal .form option {
+        width: 90%;
+        border: none;
+        border-bottom: 1px solid #fff;
+        background-color: #fff;
+        padding:10px 5px;
+        margin-bottom: 10px;
+        color: var(--Primary);
+    
+    }
+.content-Login .signUpPortugal .form .inputPassword {
+    width: 90%;
+    height: 45px;
+    display: flex;
+    
+    }
+
+        .content-Login .signUpPortugal .form .titleInput p {
            font-weight: bold;
         }
 
-        .content-Login .signUp .logo img{
+        .content-Login .signUpPortugal .logo img{
             width: 60%;
             margin-bottom: 20px;
         }
 
-        .content-Login .signUp .form .terms {
+        .content-Login .signUpPortugal .form .terms {
             width: 70%;
         }
 
-        .content-Login .signUp .form .terms span {
+        .content-Login .signUpPortugal .form .terms span {
             font-size: 14px;
         }
         

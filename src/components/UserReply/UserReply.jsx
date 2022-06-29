@@ -20,6 +20,8 @@ function UserReply({idAccount, username, date, id, text, role}) {
     const [avatar, setAvatar] = useState('')
     const [uf, setUf] = useState('')
     const [city, setCity] = useState('')
+    const [país, setPaís] = useState('')
+
     useEffect(() => {
         async function loadInformations() {
             await api.get(`informations/${idAccount}`).then((result) => {
@@ -27,6 +29,7 @@ function UserReply({idAccount, username, date, id, text, role}) {
                 setAvatar(result.data[0].avatar)
                 setCity(result.data[0].city)
                 setUf(result.data[0].uf)
+                setPaís(result.data[0].país)
             }).catch((error) => {
                 console.log(error)
                 console.log("Erro aos buscar informações")
@@ -89,7 +92,7 @@ function UserReply({idAccount, username, date, id, text, role}) {
           <h4>Usuário deletado</h4>
                 </Link> :
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-                 <h4>{nickname} - {uf}</h4>
+                 <h4>{nickname} - {uf} {país === "Brasil" ? "🇧🇷" : país === "Portugal" ? "🇵🇹" : ""}</h4>
                </Link>}
            <DateFormat date={date} />
            </div>

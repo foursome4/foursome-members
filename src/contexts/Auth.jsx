@@ -20,9 +20,9 @@ function AuthProvider({children}) {
     const [ufActual, setUfActual] = useState("");
 
     
-    async function createAccount(id, username, email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship) {
-        const data = {id, username, email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship}
-        const data2 = {id, username, email, phone, type, status, role, online, patron, date: new Date(), avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship}
+    async function createAccount(id, país, username, email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship) {
+        const data = {id, país, username, email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship}
+        const data2 = {id, país, username, email, phone, type, status, role, online, patron, date: new Date(), avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship}
  
         const dataInvite = await api.get(`/invites/find/${data.email}/${data.code}`);
 
@@ -140,8 +140,20 @@ function AuthProvider({children}) {
             localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
             const Local = localStorage.getItem("foursome");
             const user = JSON.parse(Local);
+            const LocalInformations = localStorage.getItem("informations-foursome");
+            const userInformations = JSON.parse(LocalInformations);
 
-            if(user.latitude === undefined || user.longitude === null) {
+            if(user.latitude === undefined ||
+               user.longitude === undefined ||
+               user.latitude === null ||
+               user.longitude === null ||
+               user.latitude === false ||
+               user.longitude === false ||
+               user.país === undefined ||
+               user.país === null ||
+               user.país === false ||
+               userInformations.uf.length > 2
+               ) {
                 window.open("/update", "_self");
             } else {
                 window.open("/feed", "_self");
@@ -155,28 +167,33 @@ function AuthProvider({children}) {
     }
 
 
-    async function updateAccount({id, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron}){
+    async function updateAccount({id, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron}){
         const Local = localStorage.getItem("foursome");
         const user = JSON.parse(Local)
         const Local2 = localStorage.getItem("informations-foursome");
         const userInformations = JSON.parse(Local2)
-        const data = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron};
-        const data2 = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron, date:user.date , token:user.token  , expiresIn:user.expiresIn };
+        const data = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron};
+        const data2 = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron, date:user.date , token:user.token  , expiresIn:user.expiresIn };
         console.log(id)
         console.log(data)
         await api.patch(`/accounts/${id}`, data).then(res => {
             localStorage.setItem("foursome", JSON.stringify(data2));
-            NewUpdateInformationsAccount({id: userInformations.id, idAccount:user.id, avatar, cover, relationship, nickname, city, uf, created_at: new Date(), idPatrono:user.patron , username})
+            NewUpdateInformationsAccount({id: userInformations.id, idAccount:user.id, avatar, cover, relationship, nickname, city, uf, created_at: new Date(), idPatrono:user.patron , país, username})
             window.open("/feed", "_self")
         }).catch(error => {
             console.log(error)
         });
     }
-    async function updateAccount2({id, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron}){
+
+
+
+
+    
+    async function updateAccount2({id, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país,  username, role, status, type, email, phone, online, patron}){
         const Local = localStorage.getItem("foursome");
         const user = JSON.parse(Local)
-        const data = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron};
-        const data2 = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron, date:user.date , token:user.token  , expiresIn:user.expiresIn };
+        const data = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron};
+        const data2 = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron, date:user.date , token:user.token  , expiresIn:user.expiresIn };
         console.log(id)
         console.log(data)
         await api.patch(`/accounts/${id}`, data).then(res => {
@@ -254,11 +271,11 @@ async function deletePreferences(id) {
 
 
 
-    async function createInformationsAccount({id, idAccount, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron}) {
-        const data = {id, idAccount, avatar, cover, relationship, nickname, city, uf}
-        await api.post("/informations", {id, idAccount, avatar, cover, relationship, nickname, city, uf}).then(() => {
+    async function createInformationsAccount({id, idAccount, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron}) {
+        const data = {id, idAccount, avatar, cover, relationship, nickname, city, uf, país}
+        await api.post("/informations", {id, idAccount, avatar, cover, relationship, nickname, city, uf, país}).then(() => {
             localStorage.setItem("informations-foursome", JSON.stringify(data));
-            updateAccount2({id: idAccount, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, username, role, status, type, email, phone, online, patron})
+            updateAccount2({id: idAccount, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron})
         }).catch(error => {
             console.log("Informações não enviadas" + error)
         })

@@ -239,7 +239,7 @@ widthView()
                         }}
                         />
                    </div>
-                  <h3> <b>{userInformations !== null ? `${userInformations.nickname} - ${userInformations.uf}` :"User Test"}</b> {user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+                  <h3> <b>{userInformations !== null ? `${userInformations.nickname} - ${userInformations.uf} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""}` :"User Test"}</b> {user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
                 </div>
                 <div className="tools">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed}><FiHome size={16}/> Home</button>

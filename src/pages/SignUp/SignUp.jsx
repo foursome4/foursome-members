@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import logoImg from '../../assets/images/logo.png'
+import Brasil from '../../assets/images/flags/Brasil.png'
+import Portugal from '../../assets/images/flags/Portugal.png'
 import { AuthContext } from '../../contexts/Auth';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
@@ -16,11 +18,13 @@ function SignUp() {
   const  {createAccount} = useContext(AuthContext)
   const [usernameNative, setUsernameNative] = useState("");
   const [newPhone, setPhone] = useState("");
+  const [newPhonePortugal, setPhonePortugal] = useState("");
   const [passwordNative, setPasswordNative] = useState("");
   const [passwordConfirmNative, setPasswordConfirmNative] = useState("");
   const [passwordView, setPasswordView] = useState(true)
   const [checked, setChecked] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [país, setPaís] = useState("select")
 
   const navigate = useNavigate();
 
@@ -48,13 +52,13 @@ function SignUp() {
     const online = false;
 
 
-    const remove1Paranteses = newPhone.replace('(', '')
+    const remove1Paranteses = newPhone === "" ? newPhonePortugal.replace('(', '') : newPhone.replace('(', '')
     const remove2Paranteses = remove1Paranteses.replace(')', '')
     const removeSpace = remove2Paranteses.replace(' ', '')
     const removeTrace = removeSpace.replace('-', '')
     const phone = removeTrace;
 
-   if(newPhone === "") {
+   if(newPhone === "" && newPhonePortugal === "") {
     toast.error("Favor preencher o telefone")
    }
    if(type === "") {
@@ -85,8 +89,8 @@ function SignUp() {
           const nickname = ""
           const relationship = ""
 
-         createAccount(id, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship)
-          console.log( id, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship)
+       createAccount(id, país, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship)
+          console.log( {id, país, username:username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship})
         } else {
           toast.error("As senhas não combinam!")
         }
@@ -167,6 +171,14 @@ function SignUp() {
     ]);
 
     setPhone(maskedValue)
+  }
+  function ChangeMaskPhonePortugal(e) {
+    const originalValue = unMask(e.target.value);
+    const maskedValue = masker(originalValue, [
+      "999 99999-9999",
+    ]);
+
+    setPhonePortugal(maskedValue)
   }
   function ChangeMaskPassword(e) {
     const originalValue = unMask(e.target.value);
@@ -273,11 +285,28 @@ function SignUp() {
     setPasswordConfirmNative(maskedValue)
   }
 
+  function selectFlag(flag) {
+    setPaís(flag)
+
+  }
+
 
   Modal.setAppElement('#root');
   return (
     <div className="content-Login">
+      {país === "select" ?
       <div className="signUp">
+        <div className="top">
+          <img src={logoImg} alt="Logotipo Foursome" />
+          <h1>Escolha sua nacionalidade</h1>
+        </div>
+        <div className="flags">
+          <img src={Brasil} alt="Bandeira do Brasil" onClick={() => {selectFlag("Brasil")}}/>
+          <img src={Portugal} alt="Bandeira de Portugal" onClick={() => {selectFlag("Portugal")}}/>
+        </div>
+      </div>
+      : país === "Brasil" ?
+      <div className="signUpBrasil">
         <div className="logo">
         <img src={logoImg} alt="Logo Foursome" />
         <h2>Seja bem-vindo!</h2>
@@ -285,7 +314,9 @@ function SignUp() {
         </div>
         <div className="form">
         <div className="title">
-            <h3>CADASTRE-SE</h3>
+
+          
+            <h3>CADASTRE-SE: 🇧🇷</h3>
           </div>
           <div className="titleInput">
           <p>Meu email:</p>
@@ -334,11 +365,77 @@ function SignUp() {
 
           <div className="buttons">
           <button onClick={openModal}> Cadastrar </button>
+          <button className='btn' onClick={() => {selectFlag("select")}}> Alterar país </button>
           </div>
         </div>
 
         
       </div>
+      : país === "Portugal" ? 
+      <div className="signUpPortugal">
+        <div className="logo">
+        <img src={logoImg} alt="Logo Foursome" />
+        <h2>Bem-vindos!</h2>
+        <h3>Registe-se e desfrute de tudo o que preparámos.</h3>
+        </div>
+        <div className="form">
+        <div className="title">
+            <h3>CADASTRE-SE: 🇵🇹</h3>
+          </div>
+          <div className="titleInput">
+          <p>Meu email:</p>
+          </div>
+          <input type="text" placeholder="E-mail" value={email} disabled/>
+
+          <div className="titleInput">        
+          <p>Código do patrono:</p>
+            </div>
+          <input type="text" placeholder="Id do Patrono" value={patron} disabled/>
+
+
+          <div className="titleInput">
+          <p>Tipo de conta:</p>
+          </div>
+          <input type="text" placeholder="Tipo de conta" value={type} disabled/>
+
+          <div className="titleInput">
+          <p>O nome de utilizador deve ser todo junto, minúsculo e sem espaço.</p>
+          </div>
+          <input type="text" placeholder="Nome de utilizador (Juntos e sem espaço)" value={usernameNative.toLowerCase()} onChange={ChangeMask}/>
+         
+          <div className="titleInput">
+          <p>Telefone:</p>
+          </div>
+          <input type="text" value={newPhonePortugal} onChange={ChangeMaskPhonePortugal} placeholder="XXX XXXXX-XXXX"/>
+
+          <div className="titleInput">
+          <p>Senha:</p>
+          </div>
+          <div className="inputPassword">
+          <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={passwordNative} onChange={ChangeMaskPassword}/>
+          <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
+          </div>
+
+          <div className="inputPassword">
+          <input type={passwordView === false ? "password" : "text" } placeholder="Confirmar senha" value={passwordConfirmNative} onChange={ChangeMaskConfirmPassword}/>
+          <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
+          </div>
+
+
+          <div className="terms">
+          <input type="checkbox" checked={checked} onChange={handleChange}/>
+          <p>Li e concordo com os<b><a href="/lgpd" target="_blank">Termos de Utilização</a></b></p>
+          </div>
+
+          <div className="buttons">
+          <button onClick={openModal}> Cadastrar </button>
+          <button className='btn' onClick={() => {selectFlag("select")}}> Alterar país </button>
+          </div>
+        </div>
+
+        
+      </div>
+      : ""}
 
 
 
@@ -353,7 +450,7 @@ function SignUp() {
         
             <div className="itensModalMessages">
 
-            <h1>Você confirma que tem 18 anos ou mais?</h1>
+            <h2>Você confirma que tem 18 anos ou mais?</h2>
             <div className="buttons">
             <button onClick={handleCreateAccount}><FiThumbsUp/>SIM</button>
             <button  onClick={closeModal} className="down"><FiThumbsDown/>NÃO</button>

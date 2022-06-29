@@ -84,7 +84,6 @@ function Ranking() {
     }
 
 
-
     if(photo) {
         photo.sort(function(a,b) {
             if(a.likes > b.likes ) {

@@ -122,10 +122,24 @@
     flex-wrap: wrap;
     margin-bottom: 40px;
 }
+.updateAccount form .data .location {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.updateAccount form .data .dataUser {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
 
 .updateAccount form .SearchCep {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 50%;
@@ -263,11 +277,14 @@
         justify-content: center;
   
 }
-.updateAccount form .data input {
+.updateAccount form .data .location input {
     width: 90%;
   
 }
-.updateAccount form .data select {
+.updateAccount form .data .dataUser input {
+    width: 90%;
+}
+.updateAccount form .data .dataUser select {
     width: 90%;
 }
 
@@ -302,14 +319,14 @@
         align-items: center;
         justify-content: center;
         margin-top: 10px;
-
+        width: 100%;
     }
     .updateAccount form .data input {
-        width: 500px; 
+        width: 90%; 
     }
 
     .updateAccount form .data select {
-        width: 500px;
+        width: 90%;
     }
 
 

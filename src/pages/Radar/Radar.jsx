@@ -9,6 +9,7 @@ import api from "../../services/api"
 import { Link } from "react-router-dom"
 import {toast} from 'react-toastify';
 import {IoLocationOutline, IoPersonOutline} from 'react-icons/io5'
+import {FaCircle} from 'react-icons/fa'
 
 function Radar() {
     const {inactivityTime, logout, updateUserOnline} = useContext(AuthContext);
@@ -331,7 +332,8 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                         }}
                         />
                                    </Link>
-                                   <h4>{user.emoji === "musica" ? "🎶" : user.emoji === "emoji"? "😈" : user.emoji === "viagem" ? "✈️" :""  }</h4>
+                                   <h4>{user.emoji === "musica" ? "🎶" : user.emoji === "emoji"? "😈" : user.emoji === "viagem" ? "✈️" :""  }</h4>           
+                                   <FaCircle />
                                    </div>
                                    <h6><IoLocationOutline />{user.distanceKm === 0 ? "- 1Km" : ` ${user.distanceKm}Km`}</h6>
                                    <h6><IoPersonOutline /> {user.type}</h6>
