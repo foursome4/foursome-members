@@ -145,7 +145,7 @@ function InformationsForm() {
         
         const id = uuidv4();
         //Salvando no banco de dados
-        console.log({id, idAccount: user.id, avatar: avatar, cover: linkCover,
+        createInformationsAccount({id, idAccount: user.id, avatar: avatar, cover: linkCover,
             city: cep !== "" ? city :  codigoPostal !== "" ? cityPortugal : city2,
             uf: cep !== "" ? uf :  codigoPostal !== "" ? ufPortugal : uf2,
        relationship, nickname,
