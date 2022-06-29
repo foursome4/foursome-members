@@ -108,7 +108,7 @@ function UpdateAccounts() {
     async function handleUploadAccount(e) {
         e.preventDefault();
 
-        if(país === "") {
+        if(país === "" || país === null || país === undefined) {
             toast.error("Favor escolha seu país");
             return
         }
