@@ -223,9 +223,9 @@ function SettingsInformations() {
                 <button onClick={handleSearchCep}>Buscar Cep</button>
                 </div>
             <div className="data">                      
-                    <input type="text" placeholder='UF' value={uf === "" ? userInformations.uf : uf} onChange={(e) => setUf(e.target.value)}/>
-                    <input type="text" placeholder='Cidade' value={city === "" ? userInformations.city : city} onChange={(e) => setCity(e.target.value)}/>
-                    <input type="text" placeholder='Nome de Exibição' value={nickname === "" ? userInformations.nickname : nickname} onChange={(e) => setNickname(e.target.value)}/>
+                    <input type="text" placeholder={userInformations.uf} value={uf} onChange={(e) => setUf(e.target.value)}/>
+                    <input type="text" placeholder={userInformations.city} value={city} onChange={(e) => setCity(e.target.value)}/>
+                    <input type="text" placeholder={userInformations.nickname} value={nickname} onChange={(e) => setNickname(e.target.value)}/>
                     <select value={relationship} onChange={handleRelationship}>
                         <option value="">Status de Relacionamento</option>
                         <option value="Solteir@">Solteir@ </option>

@@ -236,9 +236,9 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                 distancia
 
 
-                if(!users) {
+                if(!users) { 
                     return (
-                        "Carregando..."
+                        "Ative sua localização"
                     )
                 }
 
