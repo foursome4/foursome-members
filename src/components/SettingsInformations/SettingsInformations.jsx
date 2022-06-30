@@ -6,6 +6,7 @@ import { AuthContext } from '../../contexts/Auth';
 import { v4 as uuidv4} from 'uuid'
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes} from 'firebase/storage';
+import {toast} from 'react-toastify';
 
 function SettingsInformations() {
     const {NewUpdateInformationsAccount} = useContext(AuthContext)
@@ -69,6 +70,8 @@ function SettingsInformations() {
 
     async function handleUploadAccount(e) {
         e.preventDefault();
+        toast.info("Atualizando informações. Aguarde...")
+
         //Avatar
         setLoadding(true);
         console.log(imageAvatar)
@@ -122,6 +125,8 @@ function SettingsInformations() {
 
     async function handleUploadAvatar(e) {
         e.preventDefault();
+        toast.info("Atualizando informações. Aguarde...")
+        
         //Avatar
         setLoadding(true);
         console.log(imageAvatar)
@@ -155,6 +160,7 @@ function SettingsInformations() {
 
     async function handleUploadCover(e) {
         e.preventDefault();
+        toast.info("Atualizando informações. Aguarde...")
         //Avatar
         setLoadding(true);
          // Cover
