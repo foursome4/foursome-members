@@ -33,12 +33,13 @@ function ListCommentsAndReactions({idPost}) {
 
     Modal.setAppElement('#root');
     return (
-        <div className="ListCommentsAndReactions">
+        <>
             {data.length === 0 ? "" :
+        <div className="ListCommentsAndReactions">
             <div className="text">
                <h5 onClick={handleFriends}>{data.length} {data.length === 1 ? "Curtida" : "Curtidas"}</h5>
             </div>
-            }
+
 
         
 
@@ -66,6 +67,8 @@ function ListCommentsAndReactions({idPost}) {
             </Modal>
             {/* FIM Modal Friends  */}
         </div>
+    }
+    </>
     )
 }
 

@@ -33,12 +33,13 @@ function ListComments({idPost}) {
 
     Modal.setAppElement('#root');
     return (
+        <>
+        {data.length === 0 ? "" :
         <div className="ListComments">
-            {data.length === 0 ? "" :
             <div className="text">
             <h5 onClick={handleFriends}>{data.length} {data.length === 1 ? "Comentário" : "Comentários"}</h5>
             </div>
-            }
+            
         
 
 
@@ -61,6 +62,8 @@ function ListComments({idPost}) {
             </Modal>
             {/* FIM Modal Friends  */}
         </div>
+            }
+            </>
     )
 }
 
