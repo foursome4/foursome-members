@@ -1,5 +1,4 @@
 import { EditPost } from '../EditPost/EditPost'
-import { FeedComments } from '../FeedComments/FeedComments'
 import { ListReactions } from '../ListReactions/ListReactions'
 import { NewComment } from '../NewComment/NewComment'
 import { UsersPosts } from '../UsersPosts/UsersPosts'
@@ -9,6 +8,7 @@ import { useState, useContext, memo } from 'react'
 import './itemFeed.css'
 import { AuthContext } from '../../contexts/Auth'
 import { ListCommentsAndReactions } from '../ListCommentsAndReactions/ListCommentsAndReactions'
+import { ListComments } from '../ListComments/ListComments'
 
 
 function ItemFeedComponent({idAccount, link, date, text, type, id, username, group, forum, idGroup, idForum}) {
@@ -161,9 +161,6 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
 
              <div className="reactions" >
               <ListReactions idPost={id} idAccount={idAccount}/>
-                 <button onClick={handleHabiliteComment}>
-                     <FiMessageCircle />
-                 </button>
                  {idAccount === userData.id ?
                  <>
                      <button onClick={handleHabiliteEdit}> <FiEdit /> </button>
@@ -172,12 +169,13 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
                  : ""}
              </div>
 
-             <div className={comment === true ? "comment" : "commentHidden"}>
+             <div className={"comment"}>
                   <NewComment postData={id} idAccount={idAccount}/>
              </div>
-            
+            <div className="infos">
         <ListCommentsAndReactions idPost={id} />
-         <FeedComments idPost={id}/>
+        <ListComments idPost={id}/>
+            </div>
          </div>
          )
 }

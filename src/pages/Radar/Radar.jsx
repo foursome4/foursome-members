@@ -12,9 +12,7 @@ import {IoLocationOutline, IoPersonOutline} from 'react-icons/io5'
 import {FaCircle} from 'react-icons/fa'
 
 function Radar() {
-    const {inactivityTime, logout, updateUserOnline} = useContext(AuthContext);
-
-    // inactivityTime()
+    const {logout, updateUserOnline, socketDataLocation} = useContext(AuthContext);
 
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
@@ -30,6 +28,8 @@ function Radar() {
     const [myInformations, setMyInformations] = useState(false)
     const id = userData.id
 
+    socketDataLocation();
+    
     useEffect(() => {
         async function searchAccount() {
           const res =  await api.get(`accounts/filter/${id}`);
@@ -126,7 +126,7 @@ function Radar() {
                                plane: userLocation.plane,
                                emoji: userLocation.emoji,
                                song: userLocation.song,
-                               invisible: userLocation.invisible    
+                               invisible: userLocation.invisible  
                            }
                            setDistancia(oldDistancia => [...oldDistancia, dados])
                    }
@@ -333,7 +333,7 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                         />
                                    </Link>
                                    <h4>{user.emoji === "musica" ? "🎶" : user.emoji === "emoji"? "😈" : user.emoji === "viagem" ? "✈️" :""  }</h4>           
-                                   <FaCircle />
+                                   {user.invisible === false ? <FaCircle /> : "" }
                                    </div>
                                    <h6><IoLocationOutline />{user.distanceKm === 0 ? "- 1Km" : ` ${user.distanceKm}Km`}</h6>
                                    <h6><IoPersonOutline /> {user.type}</h6>
@@ -342,9 +342,6 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                                 })}
 
                             </div>
-                            <h1>Olá Mundo</h1>
-                    <h1>Olá Mundo</h1>
-
                     </div>
 
                 <ChatSlim />

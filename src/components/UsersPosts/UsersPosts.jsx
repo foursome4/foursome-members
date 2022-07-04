@@ -63,10 +63,10 @@ function UsersPostsComponent({idAccount, username, date, keyId, role}) {
            <div className="name">
            {nickname === "" || nickname === undefined ?
             <Link to="">
-          <h4>Usuário deletado</h4>
+          <h4>Usuário não encontrado</h4>
                 </Link> :
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-                 <h4>{nickname} - {uf} {país === "Brasil" ? "🇧🇷" : país === "Portugal" ? "🇵🇹" : ""}</h4>
+                 <h4>{nickname} - {país === "Brasil" ? uf : city} {país === "Brasil" ? "🇧🇷" : país === "Portugal" ? "🇵🇹" : ""}</h4>
                </Link>}
            <DateFormat date={date} />
            </div>

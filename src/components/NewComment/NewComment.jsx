@@ -1,7 +1,8 @@
 import { useContext, useState } from 'react';
 import { FiSend } from 'react-icons/fi';
 import { AuthContext } from '../../contexts/Auth';
-import './newComment.css'
+import './newComment.css';
+
 
 
 function NewComment({postData, idAccount}) {
@@ -23,7 +24,7 @@ function NewComment({postData, idAccount}) {
     return (
         <div className='commentNew'>
                <input type="text" placeholder='Comentar' value={textComment} onChange={(e) => setTextComment(e.target.value)}/>
-               <button onClick={() => {handleComment(postData)}}><FiSend /> Comentar</button>
+               <button onClick={() => {handleComment(postData)}}><FiSend /></button>
         </div>
     )
 }

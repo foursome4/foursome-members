@@ -77,10 +77,17 @@
     margin: 5px 0;
     width: 90%;
 }
+.feed-post .infos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border:none;
+}
 
 .feed-post .post-data-media {
     margin: 5px 0;
-    width: 70%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -357,10 +364,10 @@
 
 
                 .feed-post .post-data-media .image{
-            width: 350px;
+            width: 500px;
         }
                 .feed-post .post-data-media .image-video{
-            width: 350px;
+            width: 500px;
         }
         
         .feed-post .post-data-media .image img{
@@ -368,12 +375,12 @@
          }
         
         .feed-post .post-data-media .image .marcadagua{
-            width: 350px;
+            width: 500px;
             height: 350px;
 
         }
         .feed-post .post-data-media .image-video .mark{
-            width: 350px;
+            width: 500px;
             height: 350px;
 
         }
@@ -407,10 +414,10 @@
             }
 
             .feed-post .post-data-media .image{
-                width: 350px;
+                width: 400px;
             }
             .feed-post .post-data-media .image-video{
-                width: 350px;
+                width: 400px;
             }
             
             .feed-post .post-data-media .image img{
@@ -418,13 +425,13 @@
              }
             
             .feed-post .post-data-media .image .marcadagua{
-                width: 350px;
+                width: 400px;
                 height: 350px;
     
             }
               
             .feed-post .post-data-media .image-video .mark{
-                width: 350px;
+                width: 400px;
                 height: 350px;
     
             }
@@ -432,10 +439,10 @@
 
                 @media(max-width: 450px) {
                     .feed-post .post-data-media .image{
-                        width: 300px;
+                        width: 350px;
                     }
                     .feed-post .post-data-media .image-video{
-                        width: 300px;
+                        width: 350px;
                     }
                     
                     .feed-post .post-data-media .image img{
@@ -443,7 +450,7 @@
                      }
                     
                     .feed-post .post-data-media .image .marcadagua{
-                        width: 300px;
+                        width: 350px;
                         height: 300px;
             
                     }
@@ -460,13 +467,13 @@
                     }
 
                     .feed-post .post-data-media .image-video .markTop{
-                        width: 300px;
+                        width: 350px;
                         height: 100px;
 
              
                     }
                     .feed-post .post-data-media .image-video .markBottom{
-                        width: 300px;
+                        width: 350px;
                         height: 100px;
 
                         margin-top: 200px
@@ -490,7 +497,7 @@
                 }
 
                 .feed-post .post-data-media {
-                    width: 85%;
+                    width: 100%;
                 }
 
 
@@ -506,15 +513,15 @@
                     }
     
                     .feed-post .post-data-media {
-                        width: 85%;
+                        width: 100%;
                     }
 
                     .feed-post .post-data-media .image{
-                        width: 250px;
+                        width: 300px;
                     }
                     
                     .feed-post .post-data-media .image-video{
-                        width: 250px;
+                        width: 300px;
                     }
                     
                     .feed-post .post-data-media .image img{
@@ -522,7 +529,7 @@
                      }
                     
                     .feed-post .post-data-media .image .marcadagua{
-                        width: 250px;
+                        width: 300px;
                         height: 250px;
                     }
                     .feed-post .post-data-media .image .marcadagua .white{
@@ -533,14 +540,14 @@
                     }
                     
                     .feed-post .post-data-media .image-video .markTop{
-                        width: 250px;
+                        width: 300px;
                         height: 150px;
                         margin-top: -200px
 
              
                     }
                     .feed-post .post-data-media .image-video .markBottom{
-                        width: 250px;
+                        width: 300px;
                         height: 150px;
 
                         margin-top: 200px;

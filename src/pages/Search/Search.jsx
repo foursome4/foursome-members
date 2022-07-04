@@ -16,6 +16,7 @@ function Search() {
     const [online, setOnline] = useState([])
     const [search, setSearch] = useState('');
     const [type, setType] = useState('');
+    const [país, setPaís] = useState('');
     const [username, setUsername] = useState('');
     const [nickname, setNickname] = useState('');
     const [city, setCity] = useState('');
@@ -57,6 +58,7 @@ function Search() {
                               idAccount: user.id,
                               username: user.username,
                               type: user.type,
+                              país: user.país === null || user.país === undefined ? "" : user.país,
                               avatar: res.data[0].avatar,
                               nickname: res.data[0].nickname === null || res.data[0].nickname === undefined ? "" : res.data[0].nickname,     
                               city: res.data[0].city === null || res.data[0].city === undefined ? "" : res.data[0].city,     
@@ -86,6 +88,18 @@ function Search() {
         setQtd(20)
     }
 
+    function handlePaísBrasil(e) {
+        e.preventDefault();
+        setPaís("Brasil");
+        setIndex(0)
+        setQtd(20)
+    }
+    function handlePaísPortugal(e) {
+        e.preventDefault();
+        setPaís("Portugal");
+        setIndex(0)
+        setQtd(20)
+    }
     function handleTypeMen(e) {
         e.preventDefault();
         setType("Homem");
@@ -174,12 +188,15 @@ function handleTypeSearchUf(e) {
     const SearchUsersFilter = online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower)
                                                                 ||  informations.city.toLowerCase().includes(searchLower)
                                                                 ||  informations.uf.toLowerCase().includes(searchLower)
-                                                                && informations.type === type)
+                                                                && informations.type === type
+                                                                && informations.país === país)
     const userFilter = online?.filter((onlines) => onlines.type === type )
+    const paísFilter = online?.filter((onlines) => onlines.país === país )
 
-    const usersNewArray = type === "" && search !== "" ? SearchUsers :
-                          type !== "" && search === "" ? userFilter :
-                          type !== "" && search !== "" ? SearchUsersFilter :
+    const usersNewArray = type === "" && search !== "" && país === "" ? SearchUsers :
+                          type !== "" && search === ""  && país === "" ? userFilter :
+                          type === "" && search === "" && país !== "" ? paísFilter :
+                          type !== "" && search !== "" && país !== "" ? SearchUsersFilter :
                           online
 
                           const limitData = usersNewArray.slice(index,qtd);
@@ -209,12 +226,12 @@ function handleTypeSearchUf(e) {
                         </div>
                         <div className="infos2">
                         <a href={information.idAccount === userData.id ? "/profile" : `/profile-friend/${information.idAccount}` } >
-                            <h5>{information.nickname}</h5>
+                            <h5>{information.nickname} {information.país === "Brasil" ? "🇧🇷" : information.país === "Portugal" ? "🇵🇹" : ""}</h5>
                             </a>
                             <h6>{information.username}</h6>
                             <div className="moreInfos2">
                             <h6>{information.type}</h6>
-                            <h6>{information.city} - {information.uf}</h6>
+                            <h6>{information.city} - {information.país === "Brasil" ? `${information.uf}` : information.país === "Portugal" ? `${information.país}` : information.uf} </h6>
                             </div>
                         </div>
                         </div>
@@ -253,6 +270,11 @@ function handleTypeSearchUf(e) {
                       <button className={type === "Trisal" ? "select" : ""} onClick={handleTypeTrisal}>Trisal</button>
                       <button className={type === "Transex" ? "select" : ""} onClick={handleTypeTransex}>Transexuais</button>
                       <button className={type === "Travestis" ? "select" : ""} onClick={handleTypeTravestis}>Travestis</button>
+                  </div>
+                      <h5>Escolha o país:</h5>
+                  <div className="buttons">
+                      <button className={país === "Brasil" ? "select" : ""} onClick={handlePaísBrasil}>Brasil</button>
+                      <button className={país === "Portugal" ? "select" : ""} onClick={handlePaísPortugal}>Portugal</button>
                   </div>
                   <button onClick={handleClearFilter}>Limpar Filtro</button>
                   </div>

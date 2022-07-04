@@ -38,7 +38,7 @@ function ListReactionsComponent({idPost, idAccount}) {
     return (
         <div className="reactionsList">
               <button className={myLike.length === 0 ? "" :"selected"} onClick={myLike.length === 0 ? handleLikePost : handleDeleteLike}>
-                  <IoFlameOutline />
+                  <IoFlameOutline /> Curtir
                   </button>
         </div>
     )
