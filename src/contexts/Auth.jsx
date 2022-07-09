@@ -154,7 +154,8 @@ function AuthProvider({children}) {
                user.país === false ||
                userInformations.uf.length > 2
                ) {
-                window.open("/update", "_self");
+                window.open("/feed", "_self");
+               // window.open("/update", "_self");
             } else {
                 window.open("/feed", "_self");
             }
@@ -954,7 +955,7 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         localStorage.removeItem("preferences-foursome");
         localStorage.removeItem("characteritics-foursome");
         await api.delete(`/online/${idAccount}`)
-        navigate("/");
+        window.open("/", "_self");
 
         window.location.reload(false)
     }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFetch } from "../../../../hooks/useFetch";
 import './usersSearchLikes.css'
@@ -7,9 +8,27 @@ function UsersSearchLikes({idAccount}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
+    const [nickname, setNickname] = useState("")
+    const [city, setCity] = useState("")
+    const [uf, setUf] = useState("")
+    const [país, setPaís] = useState("")
+    const [avatar, setAvatar] = useState("")
+
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
 
     const {data} = useFetch(`/informations/${idAccount}`);
+
+    if(data) {
+        console.log(data);
+
+        setNickname(data[0].nickname);
+        setAvatar(data[0].avatar);
+        setCity(data[0].city);
+        setUf(data[0].uf);
+        setPaís(data[0].país);
+    }
+
+    console.log({nickname, avatar, city, uf, país})
 
     if(!data) {
       return (
@@ -21,15 +40,17 @@ function UsersSearchLikes({idAccount}) {
 
 
     return (
+        <>
+        {data[0] === "" || data[0] === undefined ? "" :
        <div className="item-search" key={idAccount}>
            <div className="image">
-           {data[0].nickname === "" || data[0].nickname === undefined ?
+           {nickname === "" || nickname === undefined ||  nickname === null ?
             <Link to="">
                <img src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e24" />
            </Link>
            :
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-           {data[0].avatar === "" || data[0].avatar === undefined ? 
+           {avatar === "" || avatar === undefined ? 
                                                            <img 
                                                            src={profile}
                                                            onError={({ currentTarget }) => {
@@ -39,7 +60,7 @@ function UsersSearchLikes({idAccount}) {
                                                            />
                         :
                         <img 
-                        src={data[0].avatar}
+                        src={avatar}
                         onError={({ currentTarget }) => {
                             currentTarget.onerror = null; // previne loop
                             currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
@@ -49,15 +70,17 @@ function UsersSearchLikes({idAccount}) {
            </Link>}
             </div>
            <div className="name">
-           {data[0].nickname === "" || data[0].nickname === undefined ?
+           {nickname === "" || nickname === undefined ?
             <Link to="">
           <h4>Usuário não encontrado</h4>
                 </Link> :
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-                 <h4>{data[0].nickname} - {data[0].país === "Brasil" ? data[0].uf : data[0].city} {data[0].país === "Brasil" ? "🇧🇷" : data[0].país === "Portugal" ? "🇵🇹" : ""}</h4>
+                 <h4>{nickname} - {país === "Brasil" ? uf : city} {país === "Brasil" ? "🇧🇷" : país === "Portugal" ? "🇵🇹" : ""}</h4>
                </Link>}
            </div>
        </div>
+        }
+       </>
     ) 
 }
 
