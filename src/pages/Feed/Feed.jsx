@@ -10,6 +10,7 @@ import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { ListEventsFeed } from "../../components/ListEventsFeed/ListEventsFeed"
 import { useNavigate } from 'react-router-dom';
 import api from "../../services/api"
+import {FiArrowUpCircle} from 'react-icons/fi'
 import { toast } from "react-toastify"
 
 
@@ -138,7 +139,12 @@ function Feed() {
                loadUsersOnline()
            }, [navigate, socketDataLocation, user.status, user.id]);
 
-
+           function handleTop(e) {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            })
+        }
 
 
 return (
@@ -149,6 +155,7 @@ return (
                 <div className="aside">
                     <div className="feed">
                     <ListEventsFeed />
+                 <button className="topScroll" onClick={handleTop}><FiArrowUpCircle /></button>
                    {myInformations === false ? "" : <Post />}
                     <FeedPost /> 
                     </div>

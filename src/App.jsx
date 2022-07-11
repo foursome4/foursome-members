@@ -3,19 +3,20 @@ import {AuthContext, AuthProvider} from './contexts/Auth';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 import './Global.css';
 import { useContext } from 'react';
 
 
 function App() {
   const {logout} = useContext(AuthContext);
-
   return (
     <BrowserRouter>
     <AuthProvider>
     <div className='container'> 
     <ToastContainer autoClose={3000} theme="colored" /> 
     <Router />
+
     </div>
     </AuthProvider>
     </BrowserRouter>
