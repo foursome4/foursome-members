@@ -103,7 +103,7 @@
         right: 20px;
       }
 
-      @media (max-width: 380px) {
+      @media (max-width: 370px) {
         .content .aside .topScroll {
             display: flex;
             align-items: center;
