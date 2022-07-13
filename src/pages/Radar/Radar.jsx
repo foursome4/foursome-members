@@ -7,7 +7,7 @@ import { AuthContext } from "../../contexts/Auth"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import api from "../../services/api"
 import { Link } from "react-router-dom"
-import {toast} from 'react-toastify';
+import {toast, ToastContainer} from 'react-toastify';
 import {IoLocationOutline, IoPersonOutline} from 'react-icons/io5'
 import {FaCircle} from 'react-icons/fa'
 
@@ -17,6 +17,7 @@ function Radar() {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
+    const [load, setLoad] = useState(false)
     const [range, setRange] = useState(0);
     const [distancia, setDistancia] = useState([]);
     const [type, setType] = useState("");
@@ -87,7 +88,7 @@ function Radar() {
     
         async function loadUsersONline() {
             const res = await api.get(`/online`);
-            
+
     
                 const myLocation = res.data.filter((location) => (location.idAccount === userData.id)); 
                 res.data.forEach((userLocation) => {
@@ -132,11 +133,12 @@ function Radar() {
                    }
                    
                    getDistanceFromLatLonInKm(myLocation[0].lat, myLocation[0].long, userLocation.lat, userLocation.long )
+                   setLoad(true)
     
            })
     
         }
-        loadUsersONline();   
+        loadUsersONline();  
      }, [userData.id])
     
 
@@ -238,9 +240,27 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
 
                 if(!users) { 
                     return (
-                        "Ative sua localização"
+                        <div className="content">
+                                        <div className="main">
+                        <div className="messageLoad">
+                            <h4>Ative sua localização</h4>
+                        </div>
+                        </div>
+                        </div>
                     )
                 }
+                if(load === false) { 
+                    return (
+                        <div className="content">
+                         <div className="main">
+                        <div className="messageLoad">
+                        <h4>Carregando usuários do radar. Aguarde...</h4>
+                        </div>
+                    </div>
+                    </div>
+                    )
+                }
+
 
     return (
         <div className="content">
@@ -317,7 +337,7 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
 
                             </div>
                             <div className="radar-all">
-                                {filter.map((user) => {
+                                {filter?.map((user) => {
                                     return (
                                user.idAccount === userData.id ? "":
                                user.invisible === true ? "" :
