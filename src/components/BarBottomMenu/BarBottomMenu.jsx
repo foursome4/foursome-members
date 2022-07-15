@@ -34,11 +34,11 @@ const {data} = useFetch(`/online`);
                  <button className="ButtonsUnic" onClick={handleOpenUsersOnline}>
                         <IoChatbubblesOutline size={20}/>Online
                     </button> 
-                <a href="/invite" >
+                {/* <a href="/invite" >
                  <button className="ButtonsUnicSelect" >
                         <IoMailOutline size={20}/>Convite
                     </button>
-                    </a>
+                    </a> */}
 
                 <ButtonFeed />
 
