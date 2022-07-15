@@ -1086,7 +1086,8 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         }
         function resetTimer() {
         clearTimeout(time);
-      time = setTimeout(doSomething, 900000)
+      //time = setTimeout(doSomething, 900000)
+      time = setTimeout(doSomething, 1000)
     }
 
 

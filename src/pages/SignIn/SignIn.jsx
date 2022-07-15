@@ -60,7 +60,7 @@ function SignIn() {
         <img src={logoImg} alt="Logo Foursome" />
         </div>
         <div className="form">
-          <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
+          {/* <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
           {never1 === true ? <h6>Favor remover os espaços vazios no campo login</h6> : ""}
           <div className="inputPassword">
           <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
@@ -77,6 +77,9 @@ function SignIn() {
 
           <div className="whatsapp" onClick={handleInviteWhatsapp}>
             <h4> Quero me cadastrar <IoLogoWhatsapp /></h4>
+          </div> */}
+          <div className="whatsapp" onClick={handleInviteWhatsapp}>
+            <h4> Estamos em manutenção. <br />Em breve estaremos de volta</h4>
           </div>
         </div>
       </div>
