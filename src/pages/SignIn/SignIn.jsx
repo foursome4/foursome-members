@@ -19,7 +19,7 @@ function SignIn() {
   const [never, setNever] = useState(false)
   const navigate = useNavigate();
 
-  const text = `Olá, queremos solicitar um convite para ingressarmos em sua rede social`
+  const text = `Olá, queremos saber mais sobre como ingressar em sua rede social`
   const phone = "22997910510"
 
   useEffect(() => {
@@ -76,7 +76,7 @@ function SignIn() {
           </div>
 
           <div className="whatsapp" onClick={handleInviteWhatsapp}>
-            <h4> Solicite um convite <IoLogoWhatsapp /></h4>
+            <h4> Quero me cadastrar <IoLogoWhatsapp /></h4>
           </div>
         </div>
       </div>
