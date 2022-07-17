@@ -363,8 +363,6 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
 
                             </div>
                     </div>
-
-                <ChatSlim />
                 </div>
      
             </div>

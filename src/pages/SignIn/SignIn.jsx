@@ -79,7 +79,7 @@ function SignIn() {
             <h4> Quero me cadastrar <IoLogoWhatsapp /></h4>
           </div> */}
           <div className="whatsapp" onClick={handleInviteWhatsapp}>
-            <h4> Estamos em manutenção. <br />Em breve estaremos de volta</h4>
+            <h4> Manutenção finalizada. <br />Em breve estaremos de volta com muitas novidades...</h4>
           </div>
         </div>
       </div>

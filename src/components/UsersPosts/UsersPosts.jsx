@@ -62,7 +62,7 @@ function UsersPostsComponent({idAccount, username, date, keyId, role}) {
            </div>
            <div className="name">
            {nickname === "" || nickname === undefined ?
-            <Link to="">
+            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
           <h4>Usuário não encontrado</h4>
                 </Link> :
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>

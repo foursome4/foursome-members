@@ -156,10 +156,10 @@ return (
                     <div className="feed">
                     <ListEventsFeed />
                  <button className="topScroll" onClick={handleTop}><FiArrowUpCircle /></button>
-                   {myInformations === false ? "" : <Post />}
+                   {/* {myInformations === false ? "" : <Post />} */}
+                    <ChatSlim />
                     <FeedPost /> 
                     </div>
-                    <ChatSlim />
                     </div>
                  <ToolbarLeftSlim />
                  <BarBottomMenu />

@@ -2,12 +2,17 @@ import './listEventsFeed.css'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { Link } from 'react-router-dom';
+import Evento from '../../assets/images/evento.jpeg';
 
 function ListEventsFeed() {
 
     const [events, setEvents] = useState([])
 
-
+    const eventos = [{
+        id: "636363",
+        cover: Evento,
+        status: "Aproved"
+    }]
     useEffect(() => {
         async function loadGroups(){
             await api.get("/events").then((result) => {
@@ -18,13 +23,12 @@ function ListEventsFeed() {
         loadGroups()
     }, []);
 
-    const eventsListNew = events.filter((event) => event.status === "Aproved")
+    const eventsListNew = eventos.filter((event) => event.status === "Aproved")
 
 
     return (
         <div className="listEventsFeed">
-            <h4>{eventsListNew.length > 0 ? "Próximos eventos:" : ""}</h4>
-                             {events.map((event) => {
+                                 {eventos.map((event) => {
                                  return(
                                      event.status === "Aproved" ?
                                         <div className="imageCover" key={event.id}> 

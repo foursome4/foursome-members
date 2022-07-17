@@ -13,22 +13,40 @@
     z-index: 99;
     border-left: 2px solid var(--Background);
 }
+.content-chat .list {
+    width: 80px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--Background2);
+    position: fixed;
+    top: 0;
+    right: 0;
+    overflow:auto;
+    z-index: 99;
+    border-left: 2px solid var(--Background);
+}
+.content-chat .list2 {
+    display: none;
+}
 
-.content-chat::-webkit-scrollbar {
+.content-chat .list::-webkit-scrollbar {
     width: 12px;               /* width of the entire scrollbar */
   }
   
-  .content-chat::-webkit-scrollbar-track {
+  .content-chat .list::-webkit-scrollbar-track {
     background: var(--Background2);        /* color of the tracking area */
   }
   
-  .content-chat::-webkit-scrollbar-thumb {
+  .content-chat .list::-webkit-scrollbar-thumb {
     background-color: var(--Background-man);    /* color of the scroll thumb */
     border-radius: 20px;       /* roundness of the scroll thumb */
     border: 3px solid var(--Background2);  /* creates padding around scroll thumb */
   }
 
-.content-chat .chat-avatar {
+.content-chat .list .chat-avatar {
     width: 35px;
     height: 35px;
     display: flex;
@@ -43,14 +61,14 @@
 
 
 
-.content-chat .chat-avatar img {
+.content-chat .list .chat-avatar img {
   border-radius: 50%;
     width: 35px;
     height: 35px;
     object-fit: cover;
     z-index: 0;
 }
-.content-chat .chat-avatar img:before {
+.content-chat .list .chat-avatar img:before {
   content: " '"  attr("") "'";
   border-radius: 50%;
   width: 35px;
@@ -58,7 +76,7 @@
   object-fit: cover;
   z-index: 0;
 }
-.content-chat .chat-avatar img:after {
+.content-chat .list .chat-avatar img:after {
   content: " '"  attr("") "'";
   border-radius: 50%;
   width: 35px;
@@ -67,7 +85,7 @@
   z-index: 0;
 }
 
-.content-chat .chat-avatar svg {
+.content-chat .list .chat-avatar svg {
   z-index: 1;
   position: absolute;
   margin-left: 30%;
@@ -79,47 +97,125 @@
   background-color: var(--Background2);
 }
 
-.content-chat .chat-avatar button {
+.content-chat .list .chat-avatar button {
   display: none;
 }
 
 @media (max-width: 900px) {
-  .content-chat {
+  .content-chat .list {
     display: none;
   }}
 
 
-/* @media (max-width: 900px) {
+@media (max-width: 900px) {
   .content-chat {
+    position: static;
     width: 100%;
-    height: 80px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    flex-direction: column;
+    background-color: var(--Background);
+    border-radius: 6px;
+    padding: 5px;
+}
+  .content-chat .list {
+    display: none;
+}
+  .content-chat .online{
+    width: 100%;
     display: flex;
     align-items: flex-start;
-    justify-content:center;
-    flex-direction: row;    
-    background-color: var(--Background);
-    position: fixed;
-    margin-top: 80vh;
-    bottom: 0;
-    z-index: 1;
-    overflow-x: scroll;
-}
-
-.content-chat-hidden {
-  display: none;
-}
-
-.content-chat .chat-avatar button {
-  display: flex;
+    justify-content:space-between;
     flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.content-chat .list2::-webkit-scrollbar {
+  height: 8px;               /* width of the entire scrollbar */
+}
+
+.content-chat .list2::-webkit-scrollbar-track {
+  background: var(--Background2);        /* color of the tracking area */
+}
+
+.content-chat .list2::-webkit-scrollbar-thumb {
+  background-color: var(--Background-man);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 2px solid var(--Background2);  /* creates padding around scroll thumb */
+}
+
+  .content-chat .online .text{
+    width: 50%;
+    display: flex;
     align-items: center;
-    justify-content: center; 
-  border-radius: 6px;
-    background-color: var(--Primary);
-    width: 35px;
-    height: 50px;
-    color: var(--White);
-    border: none;
+    justify-content:flex-start;
+    flex-direction: row;
+}
+
+.content-chat .online .text h5 {
+  color: var(--Primary);
+}
+.content-chat .online .text h6 {
+  color: rgb(110, 218, 2);
+  margin-left: 3px;
+  font-size: 12px;
+}
+
+.content-chat .online .text2 h5 {
+  border: 1px solid var(--Foursome2);
+  border-radius: 15px;
+  padding: 3px 7px;
+  color: var(--Foursome2);
 } 
-}*/
+
+.content-chat .online .text2 h5 a {
+  color: var(--Foursome2);
+}
+  .content-chat .list2 {
+    position: static;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    flex-direction: row;
+    overflow:auto;
+}
+
+.content-chat .list2 .chat-avatar {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; 
+  border-radius: 50%;
+  margin: 0 5px;
+  object-fit: cover;
+}
+
+.content-chat .list2 .chat-avatar img {
+border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border: 3px solid rgb(110, 218, 2);
+  background-color: rgb(110, 218, 2);
+}
+
+.content-chat .list2 .chat-avatar svg {
+  position: static;
+  object-fit: cover;
+  margin-left: 13px;
+  margin-top: 13px;
+  color: rgb(110, 218, 2);
+  font-size: 10px;
+  border: 1px solid var(--Background2);
+  border-radius: 50%;
+  background-color: var(--Background2);
+}
+
+}
 

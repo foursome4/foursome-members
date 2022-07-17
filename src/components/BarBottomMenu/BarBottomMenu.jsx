@@ -1,5 +1,5 @@
 import { useState, memo } from "react";
-import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoCashOutline, IoSettingsOutline, IoPeopleOutline, IoMenuOutline,
+import { IoCalendarOutline, IoList, IoRadio,IoMailUnreadOutline, IoPersonOutline, IoCashOutline, IoSettingsOutline, IoPeopleOutline, IoMenuOutline, IoCameraOutline, IoArrowBackOutline,
     IoInformationCircleOutline, IoChatbubblesOutline, IoMailOutline, IoNewspaperOutline, IoBusinessOutline, IoMailOpenOutline, IoStatsChartOutline } from "react-icons/io5"
 import { useFetch } from "../../hooks/useFetch";
 import { ButtonFeed } from "../ButtonsTollBar/ButtonFeed/ButtonFeed";
@@ -28,54 +28,69 @@ const {data} = useFetch(`/online`);
     return (
         <div className="BarBottom">
             <div className="BarBottomBlock">
-                { select === false ?
-                <div className="Buttons">
+                  <div className="Buttons">
 
-                 <button className="ButtonsUnic" onClick={handleOpenUsersOnline}>
-                        <IoChatbubblesOutline size={20}/>Online
-                    </button> 
+                  <ButtonFeed />
+                    <div className="selectRemove2">
+                
+                    </div>
                 {/* <a href="/invite" >
                  <button className="ButtonsUnicSelect" >
                         <IoMailOutline size={20}/>Convite
                     </button>
                     </a> */}
-
-                <ButtonFeed />
+                    <div className="selectRemove"> 
+                    <a href="/invitelist" >
+                    <button className="ButtonsUnic" >
+                        <IoMailOpenOutline size={20}/>
+                       Enviados
+                    </button>
+                    </a>
+                    </div>
 
                     <a href="/profile" >
                     <button className="ButtonsUnic" >
                         <IoPersonOutline size={20}/>Perfil
                     </button>
                     </a>
-          
-                    {/* <a href="/messages" >
-                    <button className="ButtonsUnic" >
-                        <FiMail size={20}/>
-                       Recados
-                    </button>
-                    </a> */}
-
-                    <a href="/invitelist" >
-                    <button className="ButtonsUnic" >
-                        <IoMailOpenOutline size={20}/>
-                       Enviado
+                    <a href="#" >
+                 <button className="ButtonsUnicBig" >
+                        <IoCameraOutline size={20}/>Postar
                     </button>
                     </a>
+                    <div className="selectRemove2">         
+  
+                    </div>
+                    <a href="/messages" >
+                    <button className="ButtonsUnic" >
+                        <IoMailUnreadOutline size={20}/>
+                       Recados
+                    </button>
+                    </a>
+
                   
-                    <a href="/radar" >
+                    {/* <a href="/radar" >
                     <button className="ButtonsUnic" >
                         <IoRadio size={20}/>
                        Radar
                     </button>
-                    </a> 
+                    </a>  */}
+                    <a href="/menu" >
+                    <button className="ButtonsUnic" onClick={handleOpenBar}>
+                       <IoMenuOutline size={20}/>Menu
+                   </button>
+                   </a> 
 
+
+                    <div className="selectRemove">
                     <a href="/ranking" >
                     <button className="ButtonsUnic" >
                         <IoStatsChartOutline size={20}/>
                        Ranking
                     </button>
                     </a>
-
+                    </div>
+                    {/*
                     <a href="/events" >
                     <button className="ButtonsUnic" >
                         <IoCalendarOutline size={20}/>
@@ -95,7 +110,7 @@ const {data} = useFetch(`/online`);
                         <IoList size={20}/>
                        Fóruns
                     </button>
-                    </a>
+                    </a> */}
 
 
 
@@ -104,53 +119,22 @@ const {data} = useFetch(`/online`);
                         <IoBusinessOutline size={20}/>Locais
                     </button>
                     </a> */}
-                    <a href="/settings" >
+                    {/* <a href="/settings" >
                     <button className="ButtonsUnic" >
                         <IoSettingsOutline size={20}/>Configs
                     </button>
-                    </a>
+                    </a> */}
                     {/* <a href="/plains" >
                     <button className="ButtonsUnic" >
                         <IoCashOutline size={20}/>Planos
                     </button>
                     </a> */}
-                    <a href="/infos" >
+                    {/* <a href="/infos" >
                     <button className="ButtonsUnic" >
                         <IoInformationCircleOutline size={20}/>Infos
                     </button>
-                    </a>
+                    </a> */}
                 </div>
-                : select === true ?
-                <div className="Buttons">
-
-                <button className="ButtonsUnic" onClick={handleOpenBar}>
-                       <IoMenuOutline size={20}/>Menu
-                   </button>
-
-                   {data?.map((user) => {
-                       return(             
-                    user.idAccount === userData.id ? "" :
-               <a href={`/profile-friend/${user.idAccount}`} key={user.idAccount}>
-                <div className="divUser" key={user.idAccount}>
-                    <IoChatbubblesOutline />
-                    <div className="image">
-                        {user.avatar === "" || user.avatar === undefined ? 
-                        <img src={profile} alt={user.idAccount} />
-                        :
-                        <img src={user.avatar} alt={user.idAccount} />
-                        }
-                    </div>
-                   </div>
-                   </a>
-                       )
-                   })}
-
-
-               </div>
-                :
-                    ""
-                }
-
 
             </div>
         </div>

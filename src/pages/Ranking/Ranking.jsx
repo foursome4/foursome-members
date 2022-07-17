@@ -170,7 +170,6 @@ const limitVideo = video.slice(0,10);
                             ""
                             }
                     </div>
-                <ChatSlim />
                 </div>
             </div>
         </div>

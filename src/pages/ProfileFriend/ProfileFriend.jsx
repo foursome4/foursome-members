@@ -610,7 +610,6 @@ console.log(id)
                     </div>
             </div>
          </div>
-         <ChatSlim /> 
         </div>
       </div>
 }

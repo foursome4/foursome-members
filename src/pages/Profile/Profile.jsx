@@ -337,7 +337,6 @@ widthView()
                     </div>
             </div>
          </div>
-         <ChatSlim /> 
         </div>
       </div>
       }
