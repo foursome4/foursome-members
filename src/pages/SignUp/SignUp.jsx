@@ -335,7 +335,7 @@ function SignUp() {
           <div className="titleInput">
           <p>Meu email:</p>
           </div>
-          <input type="text" placeholder="E-mail" value={email}/>
+          <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)}/>
 
           {/* <div className="titleInput">        
           <p>Código do patrono:</p>
@@ -420,7 +420,7 @@ function SignUp() {
           <div className="titleInput">
           <p>Meu email:</p>
           </div>
-          <input type="text" placeholder="E-mail" value={email}/>
+          <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)}/>
 
           {/* <div className="titleInput">        
           <p>Código do patrono:</p>

@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import api from "../../services/api"
 import {FiArrowUpCircle} from 'react-icons/fi'
 import { toast } from "react-toastify"
+import { PostFeed } from "../../components/PostFeed/PostFeed"
 
 
 function Feed() {
@@ -158,6 +159,7 @@ return (
                  <button className="topScroll" onClick={handleTop}><FiArrowUpCircle /></button>
                    {/* {myInformations === false ? "" : <Post />} */}
                     <ChatSlim />
+                    <PostFeed />
                     <FeedPost /> 
                     </div>
                     </div>
