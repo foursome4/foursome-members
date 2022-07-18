@@ -335,12 +335,12 @@ function SignUp() {
           <div className="titleInput">
           <p>Meu email:</p>
           </div>
-          <input type="text" placeholder="E-mail" value={email} disabled/>
+          <input type="text" placeholder="E-mail" value={email}/>
 
           {/* <div className="titleInput">        
           <p>Código do patrono:</p>
             </div>
-          <input type="text" placeholder="Id do Patrono" value={patron} disabled/> */}
+          <input type="text" placeholder="Id do Patrono" value={patron}/> */}
 
 
           <div className="titleInput">
@@ -420,12 +420,12 @@ function SignUp() {
           <div className="titleInput">
           <p>Meu email:</p>
           </div>
-          <input type="text" placeholder="E-mail" value={email} disabled/>
+          <input type="text" placeholder="E-mail" value={email}/>
 
           {/* <div className="titleInput">        
           <p>Código do patrono:</p>
             </div>
-          <input type="text" placeholder="Id do Patrono" value={patron} disabled/> */}
+          <input type="text" placeholder="Id do Patrono" value={patron}/> */}
 
 
 <div className="titleInput">
