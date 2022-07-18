@@ -42,12 +42,12 @@ function FeedPostComponent() {
     return (
 
         <div className="feedPost">
-            <div className="settingsFeed">
+            {/* <div className="settingsFeed">
                 <button><IoOptionsOutline/></button>
                 <div className="options">
                     
                 </div>
-            </div>
+            </div> */}
             <div className="posts-feed">
                                 {followers?.map((postsData => {
                                     return (   
