@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import { mask as masker, unMask } from "remask";
 import apiGoogleReverse from '../../services/apiGoogleReverse';
 import buscaCepPortugal from '../../services/api-buscaCepPortugal';
+import { FaStreetView } from 'react-icons/fa';
 
 
 function InformationsForm() {
@@ -39,6 +40,7 @@ function InformationsForm() {
     const [cityPortugal, setCityPortugal] = useState("");
     const [ufPortugal, setUfPortugal] = useState("");
     const [codigoPostal, setCodigoPostal] = useState("");
+    const [view, setView] = useState(false);
 
 
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
@@ -270,6 +272,15 @@ function InformationsForm() {
         setCodigoPostal(maskedValue)
       }
 
+      function handleSelectView(e){
+        e.preventDefault();
+            if(view === false) {
+                setView(true)
+            } else {
+                setView(false)
+            }
+      } 
+
 
     return (
             <div className="complete-informations">
@@ -278,6 +289,8 @@ function InformationsForm() {
                     <h2>Informações Complementares</h2>
                     </div>
                         <form onSubmit={handleUploadAccount}>
+                            {view === false ?
+                            <>
                             <p>Avatar</p>
                         <label className="label-avatar">
                             <span><FiUpload color="#f65" size={25} /></span>
@@ -285,21 +298,42 @@ function InformationsForm() {
                             <img src={avatarUrl === null ? profile : avatarUrl} alt="Avatar" height={100} width={100}/>
                         </label>
 
-                        <div className="digiteCep">
-                        <button onClick={handleHabiliteLocation}>{user.país === "Brasil" ? "Cidade/UF errados? Clique aqui"
-                                                                    : user.país === "Portugal" ? "Cidade incorrta? Clique aqui" : ""}</button>
+                        <div className="infoavatar">
+                            <h4>Importante!</h4>
+                            <h5> <b>Sua foto de perfil deve seguir os seguintes padrões:</b> </h5>
+                            <h5>- Foto real dos membros da conta</h5>
+                            <h5>- Foto de parte do corpo ou do rosto ( Não é obrigatório foto de rosto)</h5>
+                            <br />
+                            <h5> <b>Não adicionar fotos de:</b> </h5>
+                            <h5>- Animais</h5>
+                            <h5>- Paísagem</h5>
+                            <h5>- Desenho</h5>
+                            <h5>- Emojis</h5>
+                            <h5>- Objetos</h5>
+                            <h5>- Artistas</h5>
+
+                            <div className="alert">
+                                <h5>Contas com fotos fora do pardão não serão aceitas!</h5>
+                            </div>
                         </div>
 
+                        <div className='confirmation'>
+                        <div className='buttonsInformation'>
+                        <button onClick={handleSelectView}> Avançar</button>
+                        </div>
+                    </div>
 
 
-
-                        {location === "Brasil" ?       
+                            </> :
+                            view === true ?
+                            <>
+                                        {location === "Brasil" ?       
                     <>
                     <div className="SearchCep">
                         <input type="text" placeholder='Digite seu cep' value={cep} onChange={ChangeMaskCEP}/>
                         </div>
                         <div className="digiteCep">        
-                        <h5>Digite seu CEP, caso a cidade e estado abaixo estejam incorretos</h5>
+                        <h5>Digite seu CEP, para buscar cidade e estado</h5>
                         </div>
                     </>
                     : location === "Portugal" ?
@@ -308,7 +342,7 @@ function InformationsForm() {
                         <input type="text" placeholder='Digite seu Código Postal' value={codigoPostal} onChange={ChangeMaskCEPPortugal}/>
                         </div>
                         <div className="digiteCep">
-                        <h5>Digite seu Código Postal, caso a cidade abaixo esteja incorreta</h5>
+                        <h5>Digite seu Código Postal, para buscar sua cidade</h5>
                         </div>
                     </>
                     : ""}
@@ -320,8 +354,8 @@ function InformationsForm() {
                     <div className="location">
                             <br />
                             <h5>Localização automática</h5>
-                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required/>
                             <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity2(e.target.value)} required/>
+                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required/>
                         </div>  : ""}  
                         
 
@@ -340,6 +374,11 @@ function InformationsForm() {
                     </>
                     : ""}
 
+                        <div className="digiteCep">
+                        <button onClick={handleHabiliteLocation}>{user.país === "Brasil" ? "Cidade/UF incorretos ou vazios? Clique aqui"
+                                                                    : user.país === "Portugal" ? "Cidade incorreta ou vazia? Clique aqui" : ""}</button>
+                        </div>
+
 
 
                         <div className="dataUser">
@@ -357,10 +396,19 @@ function InformationsForm() {
 
                     <div className='confirmation'>
                         <div className='buttonsInformation'>
+                        <button onClick={handleSelectView}> Voltar</button>
                         <button onClick={handleUploadAccount}> Salvar e avançar</button>
                         <button className="delete" onClick={handleLogout}>Continuar depois</button>
                         </div>
                     </div>
+                            </>
+                        : ""
+                            }
+
+
+
+
+            
                         </form>
             </div>
     )

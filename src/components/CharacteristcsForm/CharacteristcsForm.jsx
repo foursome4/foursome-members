@@ -10,6 +10,8 @@ function CharacteristcsForm() {
     const {createCharacteristcs, createCharacteristcs2, createCharacteristcs3, deleteAccount, logout} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
+    const LocalInformations = localStorage.getItem("informations-foursome");
+    const userInformations = JSON.parse(LocalInformations);
 
     const [idade, setIdade] = useState(0);
     const [idade2, setIdade2] = useState(0);
@@ -67,7 +69,7 @@ function CharacteristcsForm() {
             const id2 = uuidv4();
             const id3 = uuidv4();
             createCharacteristcs3({
-                idAccount: user.id,
+                idAccount: userInformations.idAccount,
                 id3,
                 data3,
                 sex3,
@@ -88,7 +90,7 @@ function CharacteristcsForm() {
             const id1 = uuidv4();
             const id2 = uuidv4();
             createCharacteristcs2({
-                idAccount: user.id,
+                idAccount: userInformations.idAccount,
                 id2,
                 data2,
                 sex2,
@@ -105,7 +107,7 @@ function CharacteristcsForm() {
             toast.info("Salvando Caracteristicas. Aguarde...");
             const id1 = uuidv4();
             createCharacteristcs({
-                idAccount: user.id,
+                idAccount: userInformations.idAccount,
                 id1,
                 data,
                 sex,

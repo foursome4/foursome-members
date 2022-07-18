@@ -59,7 +59,7 @@ function AuthProvider({children}) {
                     return
                 }
                 if(result.data.status === "pending") {
-                    toast.error(`Olá, ${result.data.username}. Sua Está em análise!`);
+                    toast.info(`Olá, ${result.data.username}. Sua conta está em análise!`);
                     return
                 }
                 localStorage.setItem("foursome", JSON.stringify(result.data));
@@ -81,7 +81,7 @@ function AuthProvider({children}) {
                    return
                 }
                 if(result.data.status === "pending") {
-                    toast.error(`Olá, ${result.data.username}. Sua Está em análise!`);
+                    toast.error(`Olá, ${result.data.username}. Sua conta está em análise!`);
                     return
                 }
                 localStorage.setItem("foursome", JSON.stringify(result.data));
@@ -479,7 +479,7 @@ async function newUpdateCharacteristcs3({id, birthDate,
 
 async function preferencesAccount({id, idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal, email, patron, username}) {
     const data = {id, idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal}
-    await api.post('/preferences', {idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal})
+    await api.post('/preferences', {id, idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal})
     .then(async () => {
         localStorage.setItem("preferences-foursome", JSON.stringify(data));
 

@@ -10,6 +10,11 @@ function PreferencesForm() {
     const {preferencesAccount, logout} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local)
+
+    const LocalInformations = localStorage.getItem("informations-foursome");
+    const userInformations = JSON.parse(LocalInformations);
+
+
     const [homem, setHomem] = useState("");
     const [mulher, setMulher] = useState("");
     const [casal, setCasal] = useState("");
@@ -29,12 +34,13 @@ function PreferencesForm() {
 
    
     function handlePreferences(e) {
+        
         e.preventDefault();
         toast.info("Salvando Preferências. Aguarde...")
         const id = uuidv4()
         preferencesAccount({
             id,
-            idAccount: user.id,
+            idAccount: userInformations.idAccount,
             men:homem,
             woman:mulher,
             couple:casal,
@@ -49,7 +55,7 @@ function PreferencesForm() {
         })
         console.log({
             id,
-            idAccount: user.id,
+            idAccount: userInformations.idAccount,
             men:homem,
             woman:mulher,
             couple:casal,

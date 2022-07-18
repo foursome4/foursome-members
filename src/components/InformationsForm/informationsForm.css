@@ -113,6 +113,34 @@
     width: 850px;
 }
 
+.complete-informations form .infoavatar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    background-color: var(--Button);
+    padding: 20px;
+    border-radius: 6px;
+}
+.complete-informations form .infoavatar .alert {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 5px 0;
+    background-color: red;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.complete-informations form .infoavatar h4 {
+    text-align: left;
+}
+.complete-informations form .infoavatar h5 {
+    text-align: left;
+}
 .complete-informations form .data {
     display: flex;
     flex-direction: column;
@@ -270,14 +298,14 @@
 
 .complete-informations form .confirmation  .buttonsInformation {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
 }
 
 .complete-informations form .confirmation  .buttonsInformation button {
-    margin-left: 10px;
+    margin: 5px;
 }
 
 

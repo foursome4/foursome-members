@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
     <AuthProvider>
     <div className='container'> 
-    <ToastContainer autoClose={3000} theme="colored" /> 
+    <ToastContainer autoClose={5000} theme="colored" /> 
     <Router />
 
     </div>
