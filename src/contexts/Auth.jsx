@@ -24,12 +24,12 @@ function AuthProvider({children}) {
         const data = {id, país, username, email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation}
         const data2 = {id, país, username, email, phone, type, status, role, online, patron, date: new Date(), avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation}
  
-        const dataInvite = await api.get(`/invites/find/${data.email}/${data.code}`);
+       //   const dataInvite = await api.get(`/invites/find/${data.email}/${data.code}`);
 
-        if(dataInvite.data[0] === undefined) {
-            toast.error("Código de verificação errado ou expirado!")
-            return
-        } 
+        // if(dataInvite.data[0] === undefined) {
+        //     toast.error("Código de verificação errado ou expirado!")
+        //     return
+        // } 
         
         await api.post('/accounts', data).then(() => {
             completeAccount(email)
@@ -581,9 +581,9 @@ async function recoverPasswordNew(email, password) {
 // Fim recuperações
 
 
-async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent, idPatrono}) {
+async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent, idPatrono, typeAccount}) {
     setLoading(true)
-    await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent }).then( async () => {      
+    await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent, typeAccount}).then( async () => {      
     toast.info("Post publicado com sucesso!")
     window.location.reload(false)
         setLoading(false)

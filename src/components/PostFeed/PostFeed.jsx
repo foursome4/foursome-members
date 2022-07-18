@@ -24,7 +24,7 @@ function PostFeed() {
     const [imageAvatar, setImageAvatar] = useState(''); 
     const [videoUrl, setVideoUrl] = useState(null);
     const [videoAvatar, setVideoAvatar] = useState(''); 
-    const [post, setPost] = useState("");
+    const [post, setPost] = useState("text");
     const [text, setText] = useState("");
     const [dataPhoto, setDataPhoto] = useState(false);
     const [dataVideo, setDataVideo] = useState(false);
@@ -209,6 +209,7 @@ function PostFeed() {
                 idAccount: user.id,
                 link: photoUrlAvatar !== null ? photoUrlAvatar : "",
                 username: user.username,
+                typeAccount: user.type,
                 nameGroup: "",
                 nameForum: "",
                 nameEvent: "",
@@ -236,6 +237,7 @@ function PostFeed() {
                     idAccount: user.id,
                     link: videoUrl !== null ? videoUrl : "",
                     username: user.username,
+                    typeAccount: user.type,
                     nameGroup: "",
                     nameForum: "",
                     nameEvent: "",
@@ -256,6 +258,7 @@ function PostFeed() {
                         idAccount: user.id,
                         link: "",
                         username: user.username,
+                        typeAccount: user.type,
                         nameGroup: "",
                         nameForum: "",
                         nameEvent: "",
@@ -285,29 +288,23 @@ function PostFeed() {
         
 
     function postText() {
-        if(post === "") {
+        if(post !== "text") {
             setPost("text")    
-        } else {
-            setPost("") 
-        }
+        } 
     }
 
     function postPhoto(){
-        if(post === "") {
+        if(post !== "photo") {
             setPost("photo")
             setText("")  
-        } else {
-            setPost("") 
-        }
+        } 
 
     }
     
     function postVideo(){
-        if(post === "") {
+        if(post !== "video") {
             setPost("video")
             setText("")
-        } else {
-            setPost("") 
         }
 
     }

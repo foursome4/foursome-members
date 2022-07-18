@@ -95,7 +95,7 @@ function SignUp() {
           const patron = "503465"
 
        createAccount(id, país, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation)
-          console.log( {id, país, username:username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation})
+         // console.log( {id, país, username:username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation})
         } else {
           toast.error("As senhas não combinam!")
         }
