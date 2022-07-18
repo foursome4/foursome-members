@@ -509,7 +509,7 @@ function handleLogout() {
 
 
                        {user.type === "Trisal" ?
-                            data === "" ? <button className="delete" onClick={handleLogout}>Continuar depois</button> :
+                            data === "" ? "":
                             idadeAtual < 18 || idadeAtual2 < 18 || idadeAtual3 < 18 ? 
                             <div className="message">
                             <h4>Não aceitamos membros menores de 18 anos. Você não pode prosseguir. </h4>
@@ -521,7 +521,7 @@ function handleLogout() {
                             <button className="delete" onClick={handleLogout}>Continuar depois</button>
                             </>
                         : user.type === "Casal"?
-                            data === "" ? <button className="delete" onClick={handleLogout}>Continuar depois</button> :
+                            data === "" ? "":
                             idadeAtual < 18 || idadeAtual2 < 18  ? 
                             <div className="message">
                             <h4>Não aceitamos membros menores de 18 anos. Você não pode prosseguir. </h4>
@@ -533,7 +533,7 @@ function handleLogout() {
                             <button className="delete" onClick={handleLogout}>Continuar depois</button>
                             </>
                         : 
-                            data === "" ? <button className="delete" onClick={handleLogout}>Continuar depois</button> :
+                            data === "" ? "":
                             idadeAtual < 18  ? 
                             <div className="message">
                             <h4>Não aceitamos membros menores de 18 anos. Você não pode prosseguir. </h4>

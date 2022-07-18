@@ -402,7 +402,6 @@ function InformationsForm() {
                         <div className='buttonsInformation'>
                         <button onClick={handleSelectView}> Voltar</button>
                         <button onClick={handleUploadAccount}> Salvar e avançar</button>
-                        <button className="delete" onClick={handleLogout}>Continuar depois</button>
                         </div>
                     </div>
                             </>

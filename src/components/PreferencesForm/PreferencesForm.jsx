@@ -217,7 +217,6 @@ function PreferencesForm() {
                         <br />
                         <br />
                         <button onClick={handlePreferences}>Salvar e Avançar</button>
-                        <button className="delete" onClick={handleLogout}>Continuar depois</button>
                     </div>
                         </form>
             </div>
