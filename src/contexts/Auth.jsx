@@ -58,6 +58,10 @@ function AuthProvider({children}) {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                     return
                 }
+                if(result.data.status === "pending") {
+                    toast.error(`Olá, ${result.data.username}. Sua Está em análise!`);
+                    return
+                }
                 localStorage.setItem("foursome", JSON.stringify(result.data));
                
                 findInformationsAccount(result.data.id)
@@ -75,6 +79,10 @@ function AuthProvider({children}) {
                 if(result.data.status === "banned") {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                    return
+                }
+                if(result.data.status === "pending") {
+                    toast.error(`Olá, ${result.data.username}. Sua Está em análise!`);
+                    return
                 }
                 localStorage.setItem("foursome", JSON.stringify(result.data));
                
