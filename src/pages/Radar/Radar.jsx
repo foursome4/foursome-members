@@ -334,24 +334,24 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                         <div className="content">
                          <div className="main">
                         <div className="messageLoad">
-                            {userOffline.length > 100 ? 
                         <h4>Carregando usuários do radar. Aguarde...</h4>
-                        : userOffline.length > 200 ? 
+                            {/* {userOffline.length < 100 ? 
+                        <h4>Carregando usuários do radar. Aguarde...</h4>
+                        : userOffline.length < 200 ? 
                         <h4>Calculando distância</h4>
-                        : userOffline.length > 300 ? 
+                        : userOffline.length < 300 ? 
                         <h4>Carregando preferências</h4>
-                        : userOffline.length > 400 ? 
+                        : userOffline.length < 400 ? 
                         <h4>Verificando quem está perto</h4>
-                        : userOffline.length > 500 ? 
+                        : userOffline.length < 500 ? 
                         <h4>Cruzando interesses</h4>
-                         :""
-                            }
+                         : <h4>Carregando usuários do radar. Aguarde...</h4>
+                            } */}
                         </div>
                     </div>
                     </div>
                     )
                 }
-
 
     return (
         <div className="content">
@@ -425,6 +425,8 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                                 <option value="Transex">Transex </option>
                                 <option value="Travestis">Travestis </option>
                             </select>
+
+
 
                             </div>
                             <div className="radar-all">

@@ -33,6 +33,11 @@
     border-radius: 6px;
     background-color: var(--Background);
     color: var(--Gray_font1);
+    margin-top: 50px;
+}
+
+.content .main .messageLoad h4 {
+    color: var(--Gray_font1);
 }
 
 .content .aside{
@@ -252,7 +257,7 @@
     align-items: center;
     justify-content:center;
     flex-wrap: wrap;
-    background-color: var(--Primary);
+    margin: 5px 0
 }
 
 .content .aside .radar .radar-all .radar-unic h4 {
