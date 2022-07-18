@@ -40,7 +40,6 @@ function Notifications() {
             })}
            
             </div>
-            <ChatSlim />
                  <ToolbarLeftSlim />
                  <BarBottomMenu />
         </div>

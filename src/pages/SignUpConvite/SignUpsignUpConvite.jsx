@@ -5,7 +5,7 @@ import Portugal from '../../assets/images/flags/Portugal.png'
 import { AuthContext } from '../../contexts/Auth';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
-import './signUp.css';
+import './signUpConvite.css';
 import { toast } from 'react-toastify';
 import { FiEye, FiEyeOff, FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
 import {IoCloseOutline } from 'react-icons/io5';
@@ -13,7 +13,8 @@ import { v4 as uuidv4} from 'uuid'
 import { mask as masker, unMask } from "remask";
 import Modal from 'react-modal';
  
-function SignUp() {
+function SignUpConvite() {
+  const {email, code, patron, type} = useParams()
   const  {createAccount} = useContext(AuthContext)
   const [usernameNative, setUsernameNative] = useState("");
   const [newPhone, setPhone] = useState("");
@@ -24,9 +25,6 @@ function SignUp() {
   const [checked, setChecked] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [país, setPaís] = useState("select")
-  const [email, setEmail] = useState("")
-  const [patron, setPatron] = useState("")
-  const [type, setType] = useState("")
 
   const navigate = useNavigate();
 
@@ -90,8 +88,6 @@ function SignUp() {
           const cep = ""
           const nickname = ""
           const relationship = ""
-          const code = ""
-          const patron = ""
 
        createAccount(id, país, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship)
           console.log( {id, país, username:username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship})
@@ -294,17 +290,12 @@ function SignUp() {
 
   }
 
-  function handleSetectType(e) {
-    setType(e.target.value)
-    console.log(e.target.value)
-  }
-
 
   Modal.setAppElement('#root');
   return (
     <div className="content-Login">
       {país === "select" ?
-      <div className="signUp">
+      <div className="signUpConvite">
         <div className="top">
           <img src={logoImg} alt="Logotipo Foursome" />
           <h1>Escolha sua Nacionalidade</h1>
@@ -315,7 +306,7 @@ function SignUp() {
         </div>
       </div>
       : país === "Brasil" ?
-      <div className="signUpBrasil">
+      <div className="signUpConviteBrasil">
         <div className="logo">
         <img src={logoImg} alt="Logo Foursome" />
         <h2>Seja bem-vindo!</h2>
@@ -332,24 +323,16 @@ function SignUp() {
           </div>
           <input type="text" placeholder="E-mail" value={email} disabled/>
 
-          {/* <div className="titleInput">        
+          <div className="titleInput">        
           <p>Código do patrono:</p>
             </div>
-          <input type="text" placeholder="Id do Patrono" value={patron} disabled/> */}
+          <input type="text" placeholder="Id do Patrono" value={patron} disabled/>
 
 
           <div className="titleInput">
           <p>Tipo de conta:</p>
           </div>
-          <select value={type} onChange={handleSetectType}>
-                <option value="">Tipo de conta</option>
-                <option value="Homem">Homem </option>
-                <option value="Mulher">Mulher </option>
-                <option value="Casal">Casal </option>
-                <option value="Trisal">Trisal </option>
-                <option value="Transex">Transex </option>
-                <option value="Travestis">Travestis </option>
-            </select>
+          <input type="text" placeholder="Tipo de conta" value={type} disabled/>
 
           <div className="titleInput">
           <p>O nome de usuário deve ser todo junto, minúsculo e sem espaço.</p>
@@ -389,7 +372,7 @@ function SignUp() {
         
       </div>
       : país === "Portugal" ? 
-      <div className="signUpPortugal">
+      <div className="signUpConvitePortugal">
         <div className="logo">
         <img src={logoImg} alt="Logo Foursome" />
         <h2>Bem-vindos!</h2>
@@ -404,24 +387,17 @@ function SignUp() {
           </div>
           <input type="text" placeholder="E-mail" value={email} disabled/>
 
-          {/* <div className="titleInput">        
+          <div className="titleInput">        
           <p>Código do patrono:</p>
             </div>
-          <input type="text" placeholder="Id do Patrono" value={patron} disabled/> */}
+          <input type="text" placeholder="Id do Patrono" value={patron} disabled/>
 
 
-<div className="titleInput">
+          <div className="titleInput">
           <p>Tipo de conta:</p>
           </div>
-          <select value={type} onChange={handleSetectType}>
-                <option value="">Tipo de conta</option>
-                <option value="Homem">Homem </option>
-                <option value="Mulher">Mulher </option>
-                <option value="Casal">Casal </option>
-                <option value="Trisal">Trisal </option>
-                <option value="Transex">Transex </option>
-                <option value="Travestis">Travestis </option>
-            </select>
+          <input type="text" placeholder="Tipo de conta" value={type} disabled/>
+
           <div className="titleInput">
           <p>O nome de utilizador deve ser todo junto, minúsculo e sem espaço.</p>
           </div>
@@ -490,6 +466,6 @@ function SignUp() {
 
 
 
-export { SignUp }
+export { SignUpConvite }
 
        

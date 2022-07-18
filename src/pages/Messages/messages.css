@@ -17,7 +17,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     height: 80%;
     border: none;
     text-decoration: none;
@@ -26,14 +26,12 @@
 }
 
 .Messages .itensMessages .rooms {
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    background-color: var(--Background);
-    margin: 5px;
-    border-radius: 6px;
+    border: 2px solid var(--Background);
     text-decoration: none;
 }
 

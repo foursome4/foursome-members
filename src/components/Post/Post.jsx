@@ -24,7 +24,7 @@ function Post() {
     const [imageAvatar, setImageAvatar] = useState(''); 
     const [videoUrl, setVideoUrl] = useState(null);
     const [videoAvatar, setVideoAvatar] = useState(''); 
-    const [post, setPost] = useState("");
+    const [post, setPost] = useState("text");
     const [text, setText] = useState("");
     const [dataPhoto, setDataPhoto] = useState(false);
     const [dataVideo, setDataVideo] = useState(false);
@@ -285,29 +285,24 @@ function Post() {
         
 
     function postText() {
-        if(post === "") {
-            setPost("text")    
-        } else {
-            setPost("") 
+        if(post !== "text") {
+            setPost("text")
+            setText("")     
         }
     }
 
     function postPhoto(){
-        if(post === "") {
+        if(post !== "photo") {
             setPost("photo")
             setText("")  
-        } else {
-            setPost("") 
         }
 
     }
     
     function postVideo(){
-        if(post === "") {
+        if(post !== "video") {
             setPost("video")
             setText("")
-        } else {
-            setPost("") 
         }
 
     }
@@ -316,17 +311,14 @@ function Post() {
     return (
         <div className="post">
              <div className="post-data">
-            <div className="avatar">
-            <img src={userInformation.avatar} alt="" />
-            </div>
             <div className="post-type">
                 <div className="inputs">
                 {post === "text" ?
-                <textarea name="" id="" cols={30} rows={10}
+                <textarea name="" id="" cols={30} rows={10} placeholder="O que deseja compatilhar?"
                 onChange={(e) => setText(e.target.value)}></textarea> :
                 post === "photo" ?
                 <div className='post-file'>
-               <textarea name="" id="" cols={30} rows={10}
+               <textarea name="" id="" cols={30} rows={10} placeholder="O que deseja compatilhar?"
                 onChange={(e) => setText(e.target.value)}></textarea>
               
               
@@ -339,7 +331,7 @@ function Post() {
                 </div>:
                post === "video" ?
                <div className='post-file'>
-               <textarea name="" id="" cols={30} rows={10}
+               <textarea name="" id="" cols={30} rows={10} placeholder="O que deseja compatilhar?"
                 onChange={(e) => setText(e.target.value)}></textarea>
                
                  <label className="label-avatar">
@@ -349,7 +341,15 @@ function Post() {
                         </label>
                 </div> :" "
             }
-                        { post === "text" ?                  
+  
+                </div>
+                <div className="buttons">
+                    <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
+                  {dailyPost.length === 2 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
+                  {dailyPost.length === 2 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
+                </div>
+
+                { post === "text" ?                  
                         <button className="public" onClick={ text !== ""? handlePost : handleMessage}>
                             {loading === true ? <FiRefreshCcw /> : <FiSend />}
                         </button>
@@ -364,17 +364,13 @@ function Post() {
                         </button>
                         : ""
                     }
-                </div>
-                <div className="buttons">
-                    <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
-                  {dailyPost.length === 3 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
-                  {dailyPost.length === 3 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
-                </div>
             </div>      
             </div>
             <div className="counter">
-                <h5>{dailyPost.length === 0 ? "Você pode postar 3 fotos ou videos" : dailyPost.length === 1 ? "Você pode postar 2 fotos ou videos" : dailyPost.length === 2 ? "Você pode postar 1 foto ou video" : dailyPost.length === 3 ? "Você ja efetuou 3 postagens entre fotos e vídeos": "" }</h5>
+                <h5>{dailyPost.length === 0 ? "Você pode postar 2 fotos ou videos" : dailyPost.length === 1 ? "Você pode postar 1 fotos ou videos" : dailyPost.length === 2 ? "Você já postou 2 vezes hoje" : "" }</h5>
                 </div>
+
+                
         </div>
          
          

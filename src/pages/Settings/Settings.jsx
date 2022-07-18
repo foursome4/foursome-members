@@ -71,7 +71,6 @@ function Settings() {
             "Nada para mostrar ainda"
             }
         </div>
-        <ChatSlim />
         </div>
     )
 }

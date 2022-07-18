@@ -83,8 +83,6 @@ if(conversation) {
             )
         })}
         </div>
-
-        <ChatSlim />
                  <ToolbarLeftSlim />
                  <BarBottomMenu />
 

@@ -59,12 +59,12 @@ function PostText({nameForum, idForum}) {
 
  
     return (
-        <div className="post">
-             <div className="post-data">
+        <div className="postText">
+             <div className="postText-data">
             <div className="avatar">
             <img src={userInformation.avatar} alt="" />
             </div>
-            <div className="post-type">
+            <div className="postText-type">
                 <div className="inputs">
                 <textarea name="" id="" cols={30} rows={10} placeholder="Dê sua dica ou opnião"
                 onChange={(e) => setText(e.target.value)}></textarea>

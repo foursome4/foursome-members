@@ -1,6 +1,5 @@
 import { FeedPostUnic } from "../../components/FeedPostUnic/FeedPostUnic"
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
-import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { TopBar } from "../../components/TopBar/TopBar"
 import './postIndividual.css';
 import { useContext, useEffect } from "react"
@@ -36,7 +35,6 @@ return (
                     <div className="PostIndividual">
                     <FeedPostUnic id={id}/> 
                     </div>
-                <ChatSlim />
                 </div>
                  <ToolbarLeftSlim />
                  <BarBottomMenu />

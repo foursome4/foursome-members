@@ -61,7 +61,6 @@ function Foruns() {
                             
                            
                     </div>
-                <ChatSlim />
                 </div>
             </div>
         </div>

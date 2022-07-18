@@ -17,6 +17,7 @@ import { Invite } from '../pages/Invite/Invite';
 import { InvitesList } from '../pages/InvitesList/InvitesList';
 import { Lgpd } from '../pages/Lgpd/Lgpd';
 import { Loader } from '../pages/Loader/Loader';
+import { Menu } from '../pages/Menu/Menu';
 import { Messages } from '../pages/Messages/Messages';
 import { Notifications } from '../pages/Notifications/Notifications';
 import { PaymentConfirmed } from '../pages/Payments/PaymentConfirmed/PaymentConfirmed';
@@ -33,6 +34,7 @@ import { Profile } from '../pages/Profile/Profile';
 import { ProfileFriend } from '../pages/ProfileFriend/ProfileFriend';
 import { Radar } from '../pages/Radar/Radar';
 import { Ranking } from '../pages/Ranking/Ranking';
+import { Recados } from '../pages/Recados/Recados';
 import { RecoverPassword } from '../pages/RecoverPassword/RecoverPassword';
 import { Recuperation } from '../pages/Recuperation/Recuperation';
 import { RecuperationCode } from '../pages/RecuperationCode/RecuperationCode';
@@ -43,6 +45,7 @@ import { Search } from '../pages/Search/Search';
 import { Settings } from '../pages/Settings/Settings';
 import { SignIn } from '../pages/SignIn/SignIn';
 import { SignUp } from '../pages/SignUp/SignUp';
+import { SignUpConvite } from '../pages/SignUpConvite/SignUpsignUpConvite';
 import { Solicitations } from '../pages/Solicitations/Solicitations';
 import { UpdateAccounts } from '../pages/UpdateAccounts/UpdateAccounts';
 import { UsageTips } from '../pages/UsageTips/UsageTips';
@@ -61,7 +64,8 @@ function PrivateRoute({children} ) {
 
             <Routes>
             <Route path="/" element={<SignIn />}/>
-            <Route path="/signup/:email/:code/:patron/:type" element={ <SignUp />} />
+            <Route path="/signup/convite/:email/:code/:patron/:type" element={ <SignUpConvite />} />
+            <Route path="/signup/" element={ <SignUp />} />
             <Route path="/forgotit" element={ <Forgotit />} />
             <Route path="/recuperation" element={ <Recuperation />} />       
             <Route path="/recuperationuser" element={ <RecuperationUser />} />       
@@ -75,6 +79,8 @@ function PrivateRoute({children} ) {
             
             <Route path="/feed"
                     element={ <PrivateRoute> <Feed /> </PrivateRoute>} />
+            <Route path="/menu"
+                    element={ <PrivateRoute> <Menu /> </PrivateRoute>} />
             <Route path="/usagetips"
                     element={ <PrivateRoute> <UsageTips /> </PrivateRoute>} />
             <Route path="/update"
@@ -139,6 +145,8 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <PaymentNotice /> </PrivateRoute>} />
             <Route path="/notifications" 
                 element={ <PrivateRoute> <Notifications /> </PrivateRoute>} />
+            <Route path="/recados" 
+                element={ <PrivateRoute> <Recados /> </PrivateRoute>} />
             <Route path="/search" 
                 element={ <PrivateRoute> <Search /> </PrivateRoute>} />
             <Route path="/solicitations" 

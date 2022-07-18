@@ -61,12 +61,12 @@ function PostTextEvent({nameEvent, idEvent}) {
     }
     
     return (
-        <div className="post">
-             <div className="post-data">
+        <div className="postEvent">
+             <div className="postEvent-data">
             <div className="avatar">
             <img src={userInformation.avatar} alt="" />
             </div>
-            <div className="post-type">
+            <div className="postEvent-type">
                 <div className="inputs">
                 <textarea name="" id="" cols={30} rows={10} placeholder="Deixe um comentário sobre o evento"
                 onChange={(e) => setText(e.target.value)}></textarea>

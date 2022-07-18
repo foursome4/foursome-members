@@ -158,7 +158,6 @@ console.log(member)
                     </div>
             </div>
          </div>
-         <ChatSlim /> 
         </div>
       </div>
 

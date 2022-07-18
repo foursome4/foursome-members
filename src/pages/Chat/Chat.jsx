@@ -357,7 +357,6 @@ function handleMedia() {
             <br />
 
          </div>
-         <ChatSlim />
         </div>
       </div>
     </div>

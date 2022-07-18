@@ -1,13 +1,11 @@
 import './radar.css'
-import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { TopBar } from "../../components/TopBar/TopBar"
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
-import { useEffect, useState, useContext, useLayoutEffect } from "react"
+import { useEffect, useState, useContext } from "react"
 import { AuthContext } from "../../contexts/Auth"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import api from "../../services/api"
 import { Link } from "react-router-dom"
-import {toast, ToastContainer} from 'react-toastify';
 import {IoLocationOutline, IoPersonOutline} from 'react-icons/io5'
 import {FaCircle} from 'react-icons/fa'
 

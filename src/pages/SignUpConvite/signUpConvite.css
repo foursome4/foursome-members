@@ -6,7 +6,7 @@
     justify-content: center;
 }
 
-.content-Login .signUp {
+.content-Login .signUpConvite {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -15,7 +15,7 @@
     flex-direction: column;
     flex-wrap: wrap;
 }
-.content-Login .signUp .top {
+.content-Login .signUpConvite .top {
     width: 100%;
     display: flex;
     align-items: center;
@@ -25,15 +25,15 @@
     color: #fff; 
 }
 
-.content-Login .signUp .top h1 {
+.content-Login .signUpConvite .top h1 {
     text-align: center;
     margin: 20px;
 }
 
-.content-Login .signUp .top img{
+.content-Login .signUpConvite .top img{
     width: 250px;
 }
-.content-Login .signUp .flags {
+.content-Login .signUpConvite .flags {
     width: 100%;
     display: flex;
     align-items: center;
@@ -42,7 +42,7 @@
     flex-wrap: wrap;
     color: #fff; 
 }
-.content-Login .signUp .flags img{
+.content-Login .signUpConvite .flags img{
     width: 200px;
     height: 125px;
     margin: 20px;
@@ -51,7 +51,7 @@
     border-radius: 6px;
 }
 
-.content-Login .signUpBrasil {
+.content-Login .signUpConviteBrasil {
     width: 100%;
     display: flex;
     align-items: center;
@@ -62,7 +62,7 @@
 
 
 
-.content-Login .signUpBrasil .form {
+.content-Login .signUpConviteBrasil .form {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -71,20 +71,20 @@
     color: var(--White);
     margin-bottom:40px;
 }
-.content-Login .signUpBrasil .form .titleInput {
+.content-Login .signUpConviteBrasil .form .titleInput {
     width: 70%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
 }
-.content-Login .signUpBrasil .form .titleInput p {
+.content-Login .signUpConviteBrasil .form .titleInput p {
    font-weight: bold;
    text-align: left;
    margin-bottom: 3px;
 }
 
-.content-Login .signUpBrasil .form .title {
+.content-Login .signUpConviteBrasil .form .title {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -94,19 +94,19 @@
     margin-bottom: 10px;
 }
 
-.content-Login .signUpBrasil .form input:focus{
+.content-Login .signUpConviteBrasil .form input:focus{
     outline: none;
   }
 
-  .content-Login .signUpBrasil .form option:focus{
+  .content-Login .signUpConviteBrasil .form option:focus{
     outline: none;
   }
-  .content-Login .signUpBrasil .form select:focus{
+  .content-Login .signUpConviteBrasil .form select:focus{
     outline: none;
   }
 
 
-.content-Login .signUpBrasil .form input {
+.content-Login .signUpConviteBrasil .form input {
     width: 70%;
     height: 40px;
     border: none;
@@ -120,7 +120,7 @@
     font-weight: bold;
 }
 
-.content-Login .signUpBrasil .form select {
+.content-Login .signUpConviteBrasil .form select {
     width: 70%;
     height: 40px;
     border: none;
@@ -136,7 +136,7 @@
 }
 
 
-.content-Login .signUpBrasil .form option {
+.content-Login .signUpConviteBrasil .form option {
     width: 70%;
     border: none;
     border-bottom: 1px solid #fff;
@@ -147,11 +147,11 @@
 
 }
 
-.content-Login .signUpBrasil .form input::placeholder {
+.content-Login .signUpConviteBrasil .form input::placeholder {
     color: var(--Gray_font1);
 }
 
-.content-Login .signUpBrasil .form .inputPassword {
+.content-Login .signUpConviteBrasil .form .inputPassword {
     width: 70%;
     height: 45px;
     display: flex;
@@ -159,12 +159,12 @@
     }
 
     
-    .content-Login .signUpBrasil .form .inputPassword input {
+    .content-Login .signUpConviteBrasil .form .inputPassword input {
         width: 100%;
         border-radius: 6px 0 0 6px;
     }
     
-    .content-Login .signUpBrasil .form .password {
+    .content-Login .signUpConviteBrasil .form .password {
         background-color: var(--White);
         height: 40px;
         width: 50px;
@@ -176,7 +176,7 @@
     
 
 
-.content-Login .signUpBrasil .form .buttons {
+.content-Login .signUpConviteBrasil .form .buttons {
     width: 100%;
     display: flex;
     align-items: center;
@@ -185,7 +185,7 @@
     margin-top: 20px;
 }
 
-.content-Login .signUpBrasil .form .buttons button {
+.content-Login .signUpConviteBrasil .form .buttons button {
     background-color: var(--Button);
     width: 250px;
     height: 35PX;
@@ -195,7 +195,7 @@
     color: #fff;
     margin: 10px;
 }
-.content-Login .signUpBrasil .form .buttons .btn {
+.content-Login .signUpConviteBrasil .form .buttons .btn {
     background-color: var(--White);
     width: 250px;
     height: 35PX;
@@ -206,7 +206,7 @@
     margin: 10px;
 }
 
-.content-Login .signUpBrasil .form .terms {
+.content-Login .signUpConviteBrasil .form .terms {
     width: 70%;
     display: flex;
     flex-direction: row;
@@ -216,19 +216,19 @@
     margin-top: 10px;
 }
 
-.content-Login .signUpBrasil .form .terms p a {
+.content-Login .signUpConviteBrasil .form .terms p a {
     font-weight: 900;
     color: var(--White);
     text-decoration: none;
     margin-left: 3px;
 }
 
-.content-Login .signUpBrasil .form .terms .pointer{
+.content-Login .signUpConviteBrasil .form .terms .pointer{
   cursor: pointer;
   margin-left: 3px;
 }
 
-.content-Login .signUpBrasil .form .terms input[type="checkbox"] {
+.content-Login .signUpConviteBrasil .form .terms input[type="checkbox"] {
     margin-left: 5px;
     margin-right: 10px;
     color: var(--Primary);
@@ -236,27 +236,28 @@
 }
 
 
-.content-Login .signUpBrasil .logo {
-    width: 100%;
+.content-Login .signUpConviteBrasil .logo {
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     color: var(--White);
     text-align: center;
-    padding: 30px 5px;
+    padding: 20px;
+    margin: 20px;
 }
 
-.content-Login .signUpBrasil .logo img{
+.content-Login .signUpConviteBrasil .logo img{
     width: 250px;
     margin-bottom: 20px;
 }
 
-.content-Login .signUpBrasil .footer {
+.content-Login .signUpConviteBrasil .footer {
     position: absolute;
     bottom: 0;
 }
-.content-Login .signUpBrasil .footer img{
+.content-Login .signUpConviteBrasil .footer img{
     width: 70px;
     margin-bottom: 20px;
 }
@@ -333,7 +334,7 @@
 }
 
 @media (max-width: 800px) {
-    .content-Login .signUpBrasil {
+    .content-Login .signUpConviteBrasil {
         width: 100%;
         display: flex;
         align-items: center;
@@ -342,7 +343,7 @@
         flex-wrap: wrap;
     }
 
-    .content-Login .signUpBrasil .logo {
+    .content-Login .signUpConviteBrasil .logo {
         width: 80%;
         display: flex;
         align-items: center;
@@ -352,7 +353,7 @@
         text-align: center;
     }
 
-    .content-Login .signUpBrasil .form {
+    .content-Login .signUpConviteBrasil .form {
         width: 80%;
         display: flex;
         flex-direction: column;
@@ -362,16 +363,16 @@
        margin-top: 30px;
     }
 
-    .content-Login .signUpBrasil .logo img{
+    .content-Login .signUpConviteBrasil .logo img{
         width: 50%;
         margin-bottom: 20px;
     }
 
-    .content-Login .signUpBrasil .footer {
+    .content-Login .signUpConviteBrasil .footer {
         position: relative;
         bottom: 0;
     }
-    .content-Login .signUpBrasil .footer img{
+    .content-Login .signUpConviteBrasil .footer img{
         margin-top: 40px;
         width: 70px;
         margin-bottom: 20px;
@@ -379,7 +380,7 @@
     
 
     @media (max-width: 500px) {
-        .content-Login .signUpBrasil {
+        .content-Login .signUpConviteBrasil {
             width: 100%;
             display: flex;
             align-items: center;
@@ -388,7 +389,7 @@
             flex-wrap: wrap;
         }
     
-        .content-Login .signUpBrasil .logo {
+        .content-Login .signUpConviteBrasil .logo {
             width: 80%;
             display: flex;
             align-items: center;
@@ -398,7 +399,7 @@
             text-align: center;
         }
     
-        .content-Login .signUpBrasil .form {
+        .content-Login .signUpConviteBrasil .form {
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -409,14 +410,14 @@
         }
 
         
-    .content-Login .signUpBrasil .form .titleInput {
+    .content-Login .signUpConviteBrasil .form .titleInput {
         width: 90%;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: flex-start;
     }
-    .content-Login .signUpBrasil .form input {
+    .content-Login .signUpConviteBrasil .form input {
         width: 90%;
         height: 40px;
         border: none;
@@ -430,7 +431,7 @@
         font-weight: bold;
     }
     
-    .content-Login .signUpBrasil .form select {
+    .content-Login .signUpConviteBrasil .form select {
         width: 90%;
         height: 40px;
         border: none;
@@ -445,7 +446,7 @@
     
     }
     
-    .content-Login .signUpBrasil .form option {
+    .content-Login .signUpConviteBrasil .form option {
         width: 90%;
         border: none;
         border-bottom: 1px solid #fff;
@@ -455,27 +456,27 @@
         color: var(--Primary);
     
     }
-.content-Login .signUpBrasil .form .inputPassword {
+.content-Login .signUpConviteBrasil .form .inputPassword {
     width: 90%;
     height: 45px;
     display: flex;
     
     }
 
-        .content-Login .signUpBrasil .form .titleInput p {
+        .content-Login .signUpConviteBrasil .form .titleInput p {
            font-weight: bold;
         }
 
-        .content-Login .signUpBrasil .logo img{
+        .content-Login .signUpConviteBrasil .logo img{
             width: 60%;
             margin-bottom: 20px;
         }
 
-        .content-Login .signUpBrasil .form .terms {
+        .content-Login .signUpConviteBrasil .form .terms {
             width: 70%;
         }
 
-        .content-Login .signUpBrasil .form .terms span {
+        .content-Login .signUpConviteBrasil .form .terms span {
             font-size: 14px;
         }
         
@@ -493,7 +494,7 @@
     justify-content: center;
 }
 
-.content-Login .signUpPortugal {
+.content-Login .signUpConvitePortugal {
     width: 100%;
     display: flex;
     align-items: center;
@@ -502,7 +503,7 @@
     flex-wrap: wrap;
 }
 
-.content-Login .signUpPortugal .form {
+.content-Login .signUpConvitePortugal .form {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -511,20 +512,20 @@
     color: var(--White);
     margin-bottom:40px;
 }
-.content-Login .signUpPortugal .form .titleInput {
+.content-Login .signUpConvitePortugal .form .titleInput {
     width: 70%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
 }
-.content-Login .signUpPortugal .form .titleInput p {
+.content-Login .signUpConvitePortugal .form .titleInput p {
    font-weight: bold;
    text-align: left;
    margin-bottom: 3px;
 }
 
-.content-Login .signUpPortugal .form .title {
+.content-Login .signUpConvitePortugal .form .title {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -534,19 +535,19 @@
     margin-bottom: 10px;
 }
 
-.content-Login .signUpPortugal .form input:focus{
+.content-Login .signUpConvitePortugal .form input:focus{
     outline: none;
   }
 
-  .content-Login .signUpPortugal .form option:focus{
+  .content-Login .signUpConvitePortugal .form option:focus{
     outline: none;
   }
-  .content-Login .signUpPortugal .form select:focus{
+  .content-Login .signUpConvitePortugal .form select:focus{
     outline: none;
   }
 
 
-.content-Login .signUpPortugal .form input {
+.content-Login .signUpConvitePortugal .form input {
     width: 70%;
     height: 40px;
     border: none;
@@ -560,7 +561,7 @@
     font-weight: bold;
 }
 
-.content-Login .signUpPortugal .form select {
+.content-Login .signUpConvitePortugal .form select {
     width: 70%;
     height: 40px;
     border: none;
@@ -575,7 +576,7 @@
 
 }
 
-.content-Login .signUpPortugal .form option {
+.content-Login .signUpConvitePortugal .form option {
     width: 70%;
     border: none;
     border-bottom: 1px solid #fff;
@@ -586,23 +587,23 @@
 
 }
 
-.content-Login .signUpPortugal .form input::placeholder {
+.content-Login .signUpConvitePortugal .form input::placeholder {
     color: var(--Gray_font1);
 }
 
-.content-Login .signUpPortugal .form .inputPassword {
+.content-Login .signUpConvitePortugal .form .inputPassword {
     width: 70%;
     height: 45px;
     display: flex;
     
     }
     
-    .content-Login .signUpPortugal .form .inputPassword input {
+    .content-Login .signUpConvitePortugal .form .inputPassword input {
         width: 100%;
         border-radius: 6px 0 0 6px;
     }
     
-    .content-Login .signUpPortugal .form .password {
+    .content-Login .signUpConvitePortugal .form .password {
         background-color: var(--White);
         height: 40px;
         width: 50px;
@@ -614,7 +615,7 @@
     
 
 
-.content-Login .signUpPortugal .form .buttons {
+.content-Login .signUpConvitePortugal .form .buttons {
     width: 100%;
     display: flex;
     align-items: center;
@@ -623,7 +624,7 @@
     margin-top: 20px;
 }
 
-.content-Login .signUpPortugal .form .buttons button {
+.content-Login .signUpConvitePortugal .form .buttons button {
     background-color: var(--Button);
     width: 250px;
     height: 35PX;
@@ -632,7 +633,7 @@
     font-weight: bold;
     color: #fff;
 }
-.content-Login .signUpPortugal .form .buttons .btn {
+.content-Login .signUpConvitePortugal .form .buttons .btn {
     background-color: var(--White);
     width: 250px;
     height: 35PX;
@@ -643,7 +644,7 @@
     margin: 10px;
 }
 
-.content-Login .signUpPortugal .form .terms {
+.content-Login .signUpConvitePortugal .form .terms {
     width: 70%;
     display: flex;
     flex-direction: row;
@@ -653,19 +654,19 @@
     margin-top: 10px;
 }
 
-.content-Login .signUpPortugal .form .terms p a {
+.content-Login .signUpConvitePortugal .form .terms p a {
     font-weight: 900;
     color: var(--White);
     text-decoration: none;
     margin-left: 3px;
 }
 
-.content-Login .signUpPortugal .form .terms .pointer{
+.content-Login .signUpConvitePortugal .form .terms .pointer{
   cursor: pointer;
   margin-left: 3px;
 }
 
-.content-Login .signUpPortugal .form .terms input[type="checkbox"] {
+.content-Login .signUpConvitePortugal .form .terms input[type="checkbox"] {
     margin-left: 5px;
     margin-right: 10px;
     color: var(--Primary);
@@ -673,7 +674,7 @@
 }
 
 
-.content-Login .signUpPortugal .logo {
+.content-Login .signUpConvitePortugal .logo {
     width: 80%;
     display: flex;
     align-items: center;
@@ -685,16 +686,16 @@
     margin: 20px;
 }
 
-.content-Login .signUpPortugal .logo img{
+.content-Login .signUpConvitePortugal .logo img{
     width: 250px;
     margin-bottom: 20px;
 }
 
-.content-Login .signUpPortugal .footer {
+.content-Login .signUpConvitePortugal .footer {
     position: absolute;
     bottom: 0;
 }
-.content-Login .signUpPortugal .footer img{
+.content-Login .signUpConvitePortugal .footer img{
     width: 70px;
     margin-bottom: 20px;
 }
@@ -769,7 +770,7 @@
     margin-right: 10px;
 }
 @media (max-width: 800px) {
-    .content-Login .signUpPortugal {
+    .content-Login .signUpConvitePortugal {
         width: 100%;
         display: flex;
         align-items: center;
@@ -778,7 +779,7 @@
         flex-wrap: wrap;
     }
 
-    .content-Login .signUpPortugal .logo {
+    .content-Login .signUpConvitePortugal .logo {
         width: 80%;
         display: flex;
         align-items: center;
@@ -788,7 +789,7 @@
         text-align: center;
     }
 
-    .content-Login .signUpPortugal .form {
+    .content-Login .signUpConvitePortugal .form {
         width: 80%;
         display: flex;
         flex-direction: column;
@@ -798,16 +799,16 @@
        margin-top: 30px;
     }
 
-    .content-Login .signUpPortugal .logo img{
+    .content-Login .signUpConvitePortugal .logo img{
         width: 50%;
         margin-bottom: 20px;
     }
 
-    .content-Login .signUpPortugal .footer {
+    .content-Login .signUpConvitePortugal .footer {
         position: relative;
         bottom: 0;
     }
-    .content-Login .signUpPortugal .footer img{
+    .content-Login .signUpConvitePortugal .footer img{
         margin-top: 40px;
         width: 70px;
         margin-bottom: 20px;
@@ -815,7 +816,7 @@
     
 
     @media (max-width: 500px) {
-        .content-Login .signUpPortugal {
+        .content-Login .signUpConvitePortugal {
             width: 100%;
             display: flex;
             align-items: center;
@@ -824,7 +825,7 @@
             flex-wrap: wrap;
         }
     
-        .content-Login .signUpPortugal .logo {
+        .content-Login .signUpConvitePortugal .logo {
             width: 80%;
             display: flex;
             align-items: center;
@@ -834,7 +835,7 @@
             text-align: center;
         }
     
-        .content-Login .signUpPortugal .form {
+        .content-Login .signUpConvitePortugal .form {
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -845,14 +846,14 @@
         }
 
         
-    .content-Login .signUpPortugal .form .titleInput {
+    .content-Login .signUpConvitePortugal .form .titleInput {
         width: 90%;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: flex-start;
     }
-    .content-Login .signUpPortugal .form input {
+    .content-Login .signUpConvitePortugal .form input {
         width: 90%;
         height: 40px;
         border: none;
@@ -866,7 +867,7 @@
         font-weight: bold;
     }
     
-    .content-Login .signUpPortugal .form select {
+    .content-Login .signUpConvitePortugal .form select {
         width: 90%;
         height: 40px;
         border: none;
@@ -881,7 +882,7 @@
     
     }
     
-    .content-Login .signUpPortugal .form option {
+    .content-Login .signUpConvitePortugal .form option {
         width: 90%;
         border: none;
         border-bottom: 1px solid #fff;
@@ -891,27 +892,27 @@
         color: var(--Primary);
     
     }
-.content-Login .signUpPortugal .form .inputPassword {
+.content-Login .signUpConvitePortugal .form .inputPassword {
     width: 90%;
     height: 45px;
     display: flex;
     
     }
 
-        .content-Login .signUpPortugal .form .titleInput p {
+        .content-Login .signUpConvitePortugal .form .titleInput p {
            font-weight: bold;
         }
 
-        .content-Login .signUpPortugal .logo img{
+        .content-Login .signUpConvitePortugal .logo img{
             width: 60%;
             margin-bottom: 20px;
         }
 
-        .content-Login .signUpPortugal .form .terms {
+        .content-Login .signUpConvitePortugal .form .terms {
             width: 70%;
         }
 
-        .content-Login .signUpPortugal .form .terms span {
+        .content-Login .signUpConvitePortugal .form .terms span {
             font-size: 14px;
         }
         

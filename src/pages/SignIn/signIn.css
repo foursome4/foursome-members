@@ -31,6 +31,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 
 }
 .content-Login1 .signIn .form h6 {
@@ -40,6 +41,27 @@
     border-radius: 6px;
     padding:5px 10px;
     margin: 0px 0px 20px 0px;
+}
+
+.content-Login1 .signIn .form .register {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+
+}
+.content-Login1 .signIn .form .register h4 {
+    color: var(--White);
+    font-size:14px;
+    border-radius: 6px;
+    padding:5px 10px;
+}
+.content-Login1 .signIn .form .register h4 a {
+    color: var(--White);
+    text-decoration: none;
 }
 
 

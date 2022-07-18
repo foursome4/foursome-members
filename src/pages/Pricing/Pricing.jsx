@@ -1,6 +1,4 @@
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu";
-import { ChatSlim } from "../../components/ChatSlim/ChatSlim";
-import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim";
 import { TopBar } from "../../components/TopBar/TopBar";
 import { useFetch } from "../../hooks/useFetch";
 import './pricing.css'
@@ -37,6 +35,7 @@ function Pricing() {
 
  
         </div>
+        <BarBottomMenu />
         </div>
     )
 }

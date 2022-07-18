@@ -37,7 +37,6 @@ function InvitesList() {
                                 </div>
                             </div>
                     </div>
-                <ChatSlim />
                 </div>
             </div>
         </div>

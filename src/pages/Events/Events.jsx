@@ -65,7 +65,6 @@ function Events() {
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                            
                     </div>
-                <ChatSlim />
                 </div>
             </div>
         </div>

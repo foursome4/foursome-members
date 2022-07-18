@@ -139,8 +139,7 @@ console.log(idAccount, theme)
                
                     </div>
             </div>
-         </div>
-         <ChatSlim /> 
+         </div> 
         </div>
       </div>
 

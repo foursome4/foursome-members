@@ -60,7 +60,7 @@ function SignIn() {
         <img src={logoImg} alt="Logo Foursome" />
         </div>
         <div className="form">
-          {/* <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
+          <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
           {never1 === true ? <h6>Favor remover os espaços vazios no campo login</h6> : ""}
           <div className="inputPassword">
           <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
@@ -75,11 +75,14 @@ function SignIn() {
             <a href="/recuperationuser"><p> ESQUECI MEU USUÁRIO</p></a>
           </div>
 
-          <div className="whatsapp" onClick={handleInviteWhatsapp}>
+          {/* <div className="whatsapp" onClick={handleInviteWhatsapp}>
             <h4> Quero me cadastrar <IoLogoWhatsapp /></h4>
           </div> */}
-          <div className="whatsapp" onClick={handleInviteWhatsapp}>
+          {/* <div className="whatsapp" onClick={handleInviteWhatsapp}>
             <h4> Manutenção finalizada. <br />Em breve estaremos de volta com muitas novidades...</h4>
+          </div> */}
+          <div className="register">
+          <h4><b>Não tem conta? </b> <a href="/signup">Clique aqui e cadastre-se</a></h4>
           </div>
         </div>
       </div>

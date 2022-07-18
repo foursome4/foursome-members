@@ -71,7 +71,6 @@ function Invite() {
                             </div>
 
                     </div>
-                <ChatSlim />
                 </div>
             </div>
         </div>

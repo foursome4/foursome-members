@@ -56,7 +56,6 @@ Nosso objetivo é aproximar pessoas com o mesmo objetivo, trazendo uma experiên
                 </div>
                 
         </div>
-        <ChatSlim />
         </div>
     )
 }

@@ -3,6 +3,7 @@ import { useState, memo, useEffect} from 'react';
 import { ItemFeed } from '../ItemFeed/ItemFeed';
 import { useFetch } from '../../hooks/useFetch';
 import gifLoader from '../../assets/images/gif/loader.gif';
+import {IoOptionsOutline} from 'react-icons/io5'
 
 function FeedPostComponent() {
     const [followers, setFollowers] = useState([]);
@@ -41,6 +42,12 @@ function FeedPostComponent() {
     return (
 
         <div className="feedPost">
+            <div className="settingsFeed">
+                <button><IoOptionsOutline/></button>
+                <div className="options">
+                    
+                </div>
+            </div>
             <div className="posts-feed">
                                 {followers?.map((postsData => {
                                     return (   

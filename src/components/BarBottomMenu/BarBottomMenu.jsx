@@ -1,14 +1,17 @@
 import { useState, memo } from "react";
 import { IoCalendarOutline, IoList, IoRadio,IoMailUnreadOutline, IoPersonOutline, IoCashOutline, IoSettingsOutline, IoPeopleOutline, IoMenuOutline, IoCameraOutline, IoArrowBackOutline,
-    IoInformationCircleOutline, IoChatbubblesOutline, IoMailOutline, IoNewspaperOutline, IoBusinessOutline, IoMailOpenOutline, IoStatsChartOutline } from "react-icons/io5"
+    IoInformationCircleOutline, IoChatbubblesOutline, IoMailOutline, IoNewspaperOutline, IoBusinessOutline, IoMailOpenOutline, IoStatsChartOutline, IoCloseOutline } from "react-icons/io5"
 import { useFetch } from "../../hooks/useFetch";
 import { ButtonFeed } from "../ButtonsTollBar/ButtonFeed/ButtonFeed";
 import './barBottomMenu.css'
+import Modal from 'react-modal';
+import { Post } from "../Post/Post";
 
 function BarBottomMenuComponenet() {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
     const [select, setSelect] = useState(false);
+    const [isOpenModalPost, setIsOpenModalPost] = useState(false);
 
 
 
@@ -23,6 +26,20 @@ const {data} = useFetch(`/online`);
         e.preventDefault()
        setSelect(false)
     }
+
+    function handleOpenModalPost() {
+        setIsOpenModalPost(true)
+      }
+    function handlePosts() {
+        handleOpenModalPost();
+      }
+    
+      function handleCloseModalPost() {
+        setIsOpenModalPost(false)
+      }
+
+
+    Modal.setAppElement('#root');
     
 
     return (
@@ -53,15 +70,15 @@ const {data} = useFetch(`/online`);
                         <IoPersonOutline size={20}/>Perfil
                     </button>
                     </a>
-                    <a href="#" >
-                 <button className="ButtonsUnicBig" >
+
+                 <button className="ButtonsUnicBig" onClick={handleOpenModalPost}>
                         <IoCameraOutline size={20}/>Postar
                     </button>
-                    </a>
+
                     <div className="selectRemove2">         
   
                     </div>
-                    <a href="/messages" >
+                    <a href="/recados" >
                     <button className="ButtonsUnic" >
                         <IoMailUnreadOutline size={20}/>
                        Recados
@@ -75,12 +92,12 @@ const {data} = useFetch(`/online`);
                        Radar
                     </button>
                     </a>  */}
-                    <a href="/menu" >
-                    <button className="ButtonsUnic" onClick={handleOpenBar}>
-                       <IoMenuOutline size={20}/>Menu
-                   </button>
-                   </a> 
-
+                     <a href="/menu" >
+                    <button className="ButtonsUnic" >
+                        <IoMenuOutline size={20}/>
+                       Menu
+                    </button>
+                    </a>
 
                     <div className="selectRemove">
                     <a href="/ranking" >
@@ -137,6 +154,22 @@ const {data} = useFetch(`/online`);
                 </div>
 
             </div>
+
+                           {/* Modal Posts  */}
+                           <Modal isOpen={isOpenModalPost} onRequestClose={handleCloseModalPost}
+            overlayClassName="react-modal-overlay"
+            className="react-modal-content">
+            <button type="button" className="react-modal-button" onClick={handleCloseModalPost}>
+            <IoCloseOutline /> 
+            </button>
+            <div className="content-modal">
+            <div className="itensModalPost">
+           <Post />
+            </div>
+            </div>
+            </Modal>
+            {/* FIM Modal Posts  */}
+
         </div>
     )
 }

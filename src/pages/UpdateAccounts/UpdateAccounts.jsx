@@ -1,4 +1,4 @@
-﻿import { FiRefreshCcw, FiUpload } from 'react-icons/fi';
+﻿import { FiUpload } from 'react-icons/fi';
 import logoImg from '../../assets/images/logo.png';
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes} from 'firebase/storage';
@@ -11,7 +11,6 @@ import { mask as masker, unMask } from "remask";
 import buscaCep from '../../services/api-buscaCep';
 import apiGoogleReverse from '../../services/apiGoogleReverse';
 import buscaCepPortugal from '../../services/api-buscaCepPortugal';
-import { toNumber } from 'vanilla-masker';
 
 
 function UpdateAccounts() {

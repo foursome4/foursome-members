@@ -1,4 +1,4 @@
-.post {
+.postEvent {
     width: 80%;
     border-radius: 10px;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
@@ -10,7 +10,7 @@
     margin-top: 20px;
 }
 
-.post .post-data {
+.postEvent .postEvent-data {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -18,19 +18,19 @@
     justify-content: center;
 }
 
-.post .post-data .avatar {
+.postEvent .postEvent-data .avatar {
     width: 50px;
     height: 50px;  
 }
 
-.post .post-data .avatar img {
+.postEvent .postEvent-data .avatar img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.post .post-data .post-type {
+.postEvent .postEvent-data .postEvent-type {
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -39,14 +39,14 @@
     padding: 0 10px;
 }
 
-.post .post-data .post-type .inputs {
+.postEvent .postEvent-data .postEvent-type .inputs {
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
-.post .post-data .post-type .inputs .post-file {
+.postEvent .postEvent-data .postEvent-type .inputs .postEvent-file {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -55,7 +55,7 @@
     margin-right: 10px;
 }
 
-.post .post-data .post-type .inputs .post-file .label-avatar{
+.postEvent .postEvent-data .postEvent-type .inputs .postEvent-file .label-avatar{
     width: 80px;
     height: 80px;
     display: flex;
@@ -66,29 +66,29 @@
     margin: 5px 0;
 }
 
-.post .post-data .post-type .inputs .post-file .label-avatar input {
+.postEvent .postEvent-data .postEvent-type .inputs .postEvent-file .label-avatar input {
     display: none;
 }
 
-.post .post-data .post-type .inputs .post-file .label-avatar span {
+.postEvent .postEvent-data .postEvent-type .inputs .postEvent-file .label-avatar span {
     z-index: 99;
     position: absolute;
     opacity: 0.7;
     transition: all .5s;
 }
 
-.post .post-data .post-type .inputs .post-file .label-avatar span:hover{
+.postEvent .postEvent-data .postEvent-type .inputs .postEvent-file .label-avatar span:hover{
     opacity: 1;
     transform: scale(1.4);
 }
 
-.post .post-data .post-type .inputs .post-file .label-avatar img{
+.postEvent .postEvent-data .postEvent-type .inputs .postEvent-file .label-avatar img{
     margin-bottom: 1em;
     border-radius: 6%;
     object-fit: cover;
 }
 
-.post .post-data .post-type .inputs textarea {
+.postEvent .postEvent-data .postEvent-type .inputs textarea {
     width: 100%;
     height: 80px;
     border: 1px solid var(--Gray-Border);
@@ -97,7 +97,7 @@
     margin-right: 10px;
 }
 
-.post .post-data .post-type .inputs button {
+.postEvent .postEvent-data .postEvent-type .inputs button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -111,7 +111,7 @@
     color: var(--White);
 }
 
-.post .post-data .post-type .buttons {
+.postEvent .postEvent-data .postEvent-type .buttons {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -120,7 +120,7 @@
     margin-top: 10px;
 }
 
-.post .post-data .post-type .buttons button {
+.postEvent .postEvent-data .postEvent-type .buttons button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -133,16 +133,16 @@
     margin-right: 10px;
 }
 
-.post .post-data .post-type .buttons .selected {
+.postEvent .postEvent-data .postEvent-type .buttons .selected {
     border: 1px solid var(--Primary);
     color: var(--Primary);
 }
 
-.post .post-data .post-type .buttons button svg {
+.postEvent .postEvent-data .postEvent-type .buttons button svg {
     margin-right: 5px;
 }
 
-.post .posts-feed {
+.postEvent .posts-feed {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -151,7 +151,7 @@
     margin-top: 50px;
 }
 
-.post .posts-feed .buttons {
+.postEvent .posts-feed .buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -159,7 +159,7 @@
     margin: 0 0 10px 0;
 }
 
-.post .posts-feed .buttons button {
+.postEvent .posts-feed .buttons button {
     padding: 5px;
     width: 120px;
     border: none;
@@ -167,12 +167,12 @@
     background-color: var(--Background2);
 }
 
-.post .posts-feed .buttons .selected {
+.postEvent .posts-feed .buttons .selected {
     border-bottom: 2px solid var(--Primary);
     color: var(--Primary);
 }
 
-.post .posts-feed .feed-post {
+.postEvent .posts-feed .feed-post {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -185,7 +185,7 @@
     margin: 10px 0;
 }
 
-.post .posts-feed .feed-post .post-user {
+.postEvent .posts-feed .feed-post .post-user {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -193,33 +193,33 @@
     width: 90%;
 }
 
-.post .posts-feed .feed-post .post-user img {
+.postEvent .posts-feed .feed-post .post-user img {
     width: 50px;
     border-radius: 50%;
     margin-right: 20px;
 }
 
-.post .posts-feed .feed-post .post-user .name-data {
+.postEvent .posts-feed .feed-post .post-user .name-data {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-.post .posts-feed .feed-post .post-user .name-data .selected {
+.postEvent .posts-feed .feed-post .post-user .name-data .selected {
     color: var(--Primary) ;
 }
 
-.post .posts-feed .feed-post .post-data {
+.postEvent .posts-feed .feed-post .postEvent-data {
     margin: 5px 0;
     width: 90%;
 }
 
-.post .posts-feed .feed-post .post-data p {
+.postEvent .posts-feed .feed-post .postEvent-data p {
     font-size: 18px;
 }
 
-.post .posts-feed .feed-post .reactions {
+.postEvent .posts-feed .feed-post .reactions {
     width: 90%;
     display: flex;
     flex-direction: row;
@@ -229,7 +229,7 @@
     
 }
 
-.post .posts-feed .feed-post .reactions button {
+.postEvent .posts-feed .feed-post .reactions button {
     background-color: var(--Background2);
     border: none;
     font-size: 18px;
@@ -237,11 +237,11 @@
     
 }
 
-.post .posts-feed .feed-post .reactions button svg {
+.postEvent .posts-feed .feed-post .reactions button svg {
     margin-right: 5px;
 }
 
-.post .posts-feed .feed-post .reactions .selected{
+.postEvent .posts-feed .feed-post .reactions .selected{
     color: var(--Primary);   
 }
 
@@ -251,141 +251,141 @@
 
 
 @media (max-width: 1180px) {
-    .post .post-data .post-type .buttons button {
+    .postEvent .postEvent-data .postEvent-type .buttons button {
       width: 150px;
     }
 
-    .post .post-data .post-type .inputs textarea {
+    .postEvent .postEvent-data .postEvent-type .inputs textarea {
         width: 85%;
     }
 
-    .post .post-data .post-type .inputs button {
+    .postEvent .postEvent-data .postEvent-type .inputs button {
         width: 15%;
     }
 
     @media (max-width: 950px) {
 
-        .post {
+        .postEvent {
             width: 90%;
         }
-        .post .post-data .post-type .buttons button {
+        .postEvent .postEvent-data .postEvent-type .buttons button {
           width: 150px;
         }
 
-        .post .post-data .post-type .inputs textarea {
+        .postEvent .postEvent-data .postEvent-type .inputs textarea {
             width: 80%;
         }
 
-        .post .post-data .post-type .inputs button {
+        .postEvent .postEvent-data .postEvent-type .inputs button {
             width: 20%;
         }
       }
 
       @media (max-width: 850px) {
-        .post .post-data .post-type .buttons button {
+        .postEvent .postEvent-data .postEvent-type .buttons button {
           width: 150px;
         }
 
 
         @media (max-width: 750px) {
-            .post {
+            .postEvent {
                 width: 100%;
             }
 
-            .post .post-data .avatar {
+            .postEvent .postEvent-data .avatar {
                 width: 30px;
                 height: 30px;
             }
 
-            .post .post-data .avatar img {
+            .postEvent .postEvent-data .avatar img {
                 height: 30px;
                 width: 30px;
             }
 
-            .post .post-data .post-type .buttons button {
+            .postEvent .postEvent-data .postEvent-type .buttons button {
                 width: 100px;
               }
 
-            .post .post-data .post-type .buttons {
+            .postEvent .postEvent-data .postEvent-type .buttons {
               flex-wrap: wrap;
             }
 
 
 
             @media (max-width: 620px) {
-                .post {
+                .postEvent {
                     width: 100%;
                 }
     
-                .post .post-data .avatar {
+                .postEvent .postEvent-data .avatar {
                     display: none;
                 }
-                .post .post-data .avatar img {
+                .postEvent .postEvent-data .avatar img {
                     display: none;
                 }
 
-                .post .post-data .post-type {
+                .postEvent .postEvent-data .postEvent-type {
                     width: 100%;
                 }
     
-                .post .post-data .post-type .buttons {
+                .postEvent .postEvent-data .postEvent-type .buttons {
                   flex-wrap: wrap;
                 }
 
-                .post .post-data .post-type .buttons button {
+                .postEvent .postEvent-data .postEvent-type .buttons button {
                     width: 120px;
                   }
               }
 
 
               @media (max-width: 550px) {
-                .post {
+                .postEvent {
                     width: 100%;
                 }
 /*     
-                .post .post-data .avatar img {
+                .postEvent .postEvent-data .avatar img {
                     width: 30px;
                 }
      */
-                .post .post-data .post-type .buttons {
+                .postEvent .postEvent-data .postEvent-type .buttons {
                   flex-wrap: wrap;
                 }
 
-                .post .post-data .post-type .buttons button {
+                .postEvent .postEvent-data .postEvent-type .buttons button {
                     width: 120px;
                   }
 
 
                   @media (max-width: 450px) {
-                    .post {
+                    .postEvent {
                         width: 100%;
                     }
    
-                    .post .posts-feed .buttons {
+                    .postEvent .posts-feed .buttons {
                         width: 100%;
                     }
-                    .post .post-data .post-type .buttons {
+                    .postEvent .postEvent-data .postEvent-type .buttons {
                         flex-wrap: wrap;
                     }
     
-                    .post .post-data .post-type .buttons button {
+                    .postEvent .postEvent-data .postEvent-type .buttons button {
                         width: 90px;
                       }
 
 
                       @media (max-width: 380px) {
-                        .post {
+                        .postEvent {
                             width: 100%;
                         }
        
-                        .post .posts-feed .buttons {
+                        .postEvent .posts-feed .buttons {
                             width: 100%;
                         }
-                        .post .post-data .post-type .buttons {
+                        .postEvent .postEvent-data .postEvent-type .buttons {
                             flex-wrap: wrap;
                         }
         
-                        .post .post-data .post-type .buttons button {
+                        .postEvent .postEvent-data .postEvent-type .buttons button {
                             flex-direction: column;
                             width: 88px;
                             margin-right: 5px;

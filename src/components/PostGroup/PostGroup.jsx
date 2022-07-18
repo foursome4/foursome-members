@@ -183,8 +183,8 @@ function PostGroup({nameGroup, idGroup}) {
     }
  
     return (
-        <div className="post">
-             <div className="post-data">
+        <div className="postGroup">
+             <div className="postGroup-data">
             <div className="avatar">
             <img src={userInformation.avatar} alt="" />
             </div>
@@ -222,7 +222,7 @@ function PostGroup({nameGroup, idGroup}) {
 
                 </div> :
                post === "group" ?
-               <div className='post-file'>
+               <div className='postGroup-file'>
                <textarea name="" id="" cols={30} rows={10}
                 onChange={(e) => setText(e.target.value)}></textarea>
                

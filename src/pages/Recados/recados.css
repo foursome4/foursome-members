@@ -1,4 +1,4 @@
-.Notifications{
+﻿.Recados{
     display: flex;
     flex-direction:column;
     align-items:center;
@@ -6,13 +6,13 @@
     width:100%;
     background-color: var(--Background2)
 }
-.Notifications h2{
+.Recados h3{
     margin-top: 80px;
     margin-bottom:10px;
     color: var(--Primary)
 }
 
-.Notifications .listNotifications{
+.Recados .listRecados{
     display: flex;
     flex-direction:column;
     align-items:center;
@@ -22,7 +22,7 @@
 }
 
 
-.Notifications .listNotifications .notification {
+.Recados .listRecados .notification {
     width: 100%;
     display: flex;
     align-items: center;
@@ -31,7 +31,7 @@
     border: 2px solid var(--Background);
     text-decoration: none;
 }
-.Notifications .listNotifications .notification .name {
+.Recados .listRecados .notification .name {
     width: 100%;
     display: flex;
     align-items: center;
@@ -39,7 +39,7 @@
     justify-content: flex-start;
 }
 
-.Notifications .listNotifications .notification .name a {
+.Recados .listRecados .notification .name a {
     text-decoration: none;
     cursor: pointer;
 }

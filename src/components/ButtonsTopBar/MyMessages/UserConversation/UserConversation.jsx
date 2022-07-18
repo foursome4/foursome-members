@@ -51,6 +51,15 @@ function UserConversation({idAccount, room, text}) {
     newMessages = friendMessage?.filter((messages) => (myMessages !== undefined && friendMessage !== undefined ? new Date(messages.created_at) > new Date(myMessages[0]?.created_at) : ""))
     console.log("friendMessage")
     console.log(newMessages.length)
+    
+
+    if(!data) {
+        return (
+            <div className="item">
+                <h4>Carregando conversa.</h4>
+            </div>
+        )
+    }
 
     return (
         data?.length === 0 ? "" :       

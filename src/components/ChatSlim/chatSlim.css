@@ -10,7 +10,6 @@
     top: 0;
     right: 0;
     overflow:auto;
-    z-index: 99;
     border-left: 2px solid var(--Background);
 }
 .content-chat .list {
@@ -25,7 +24,6 @@
     top: 0;
     right: 0;
     overflow:auto;
-    z-index: 99;
     border-left: 2px solid var(--Background);
 }
 .content-chat .list2 {

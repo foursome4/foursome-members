@@ -70,8 +70,6 @@ function Solicitations() {
                 )
             })}
             </div>
-            <ChatSlim />
-                <Footer />
                  <ToolbarLeftSlim />
                  <BarBottomMenu />
         </div>

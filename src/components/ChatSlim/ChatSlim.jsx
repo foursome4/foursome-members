@@ -9,6 +9,7 @@ function ChatSlim() {
 
 const {data} = useFetch(`/online`);
 
+const online = data?.slice(0,20);
      
     return (
         <div className="content-chat">
@@ -41,7 +42,7 @@ const {data} = useFetch(`/online`);
                     </div>
                 </div>
             <div className="list2">
-            {data?.map((user) => {
+            {online?.map((user) => {
                 return (
                     user.idAccount === userData.id ? "" :
                     <div className="chat-avatar" key={user.idAccount}>

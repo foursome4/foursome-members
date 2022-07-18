@@ -11,7 +11,6 @@ import {useEffect, useState } from 'react'
 import api from '../../services/api'
 import { FeedPostIndividual } from '../../components/FeedPostIndividual/FeedPostIndividual'
 import { InformationsUser } from '../../components/InformationsUser/InformationsUser'
-import { ChatSlim } from '../../components/ChatSlim/ChatSlim'
 import { ListFollowing } from '../../components/ListFollowing/ListFollowing'
 import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
@@ -259,8 +258,6 @@ widthView()
                      <div className="feed">
                   {feed === "feed" ?
                   <>
-                    <Post user={user.id}/>
-                    <br /><br />
                     <FeedPostIndividual idAccount={user.id} />
                   </>
                   :

@@ -51,7 +51,7 @@ import { useFetch } from '../../hooks/useFetch';
     return (
         <div className="feedPostIndividual">
             <div className="posts-feed">
-            <div className="buttons">
+            {/* <div className="buttons">
             <button className={post === "" ? 'selected' : ""} onClick={postAll}> <FiMenu /> Todos </button>
             <button className={post === "post-text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
             <button className={post === "post-photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button>
@@ -59,7 +59,7 @@ import { useFetch } from '../../hooks/useFetch';
             <button className={post === "post-group" ? 'selected' : ""} onClick={postGroup}> <FiUsers /> Grupo </button>
             <button className={post === "post-forum" ? 'selected' : ""} onClick={postForum}> <FiList /> Fórum </button>
             </div>
-                            
+                             */}
                                 {data?.map((postsData => {
 
                                     return (                       

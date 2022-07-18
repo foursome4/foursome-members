@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu";
-import { ChatSlim } from "../../components/ChatSlim/ChatSlim";
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim";
 import { TopBar } from "../../components/TopBar/TopBar";
 import { Link } from "react-router-dom"
@@ -12,26 +11,10 @@ function Search() {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
-    const [users, setUsers] = useState([])
     const [online, setOnline] = useState([])
     const [search, setSearch] = useState('');
     const [type, setType] = useState('');
     const [país, setPaís] = useState('');
-    const [username, setUsername] = useState('');
-    const [nickname, setNickname] = useState('');
-    const [city, setCity] = useState('');
-    const [uf, setUf] = useState('');
-    const [distance, setDistance] = useState('');
-    const [plane, setPlane] = useState('');
-    const [emoji, setEmoji] = useState('');
-    const [song, setSong] = useState('');
-    const [couple, setCouple] = useState('Vazio');
-    const [men, setMen] = useState('Vazio');
-    const [woman, setWoman] = useState('Vazio');
-    const [trisal, setTrisal] = useState('Vazio');
-    const [transvestites, setTransvestites] = useState('Vazio');
-    const [transsexuals, setTranssexuals] = useState('Vazio');
-    const [groups, setGroups] = useState('Vazio');
     const [index, setIndex] = useState(0);
     const [qtd, setQtd] = useState(20);
     const [typeSearch, setTypeSearch] = useState('Nickname');
@@ -282,7 +265,6 @@ function handleTypeSearchUf(e) {
             </div>
             </div>
         
-            <ChatSlim />
                  <ToolbarLeftSlim />
                  <BarBottomMenu />
         </div>

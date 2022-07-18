@@ -230,7 +230,6 @@ console.log(data)
                     </div>
             </div>
          </div>
-         <ChatSlim /> 
         </div>
       </div>
 

@@ -64,7 +64,6 @@ function Groups() {
                             
                            
                     </div>
-                <ChatSlim />
                 </div>
             </div>
         </div>
