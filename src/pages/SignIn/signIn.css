@@ -180,6 +180,12 @@ display: flex;
     flex-direction: row;
     color: var(--White);
 }
+
+.content-Login1 .signIn .form .whatsapp h4 a {
+    color: var(--White);
+    text-decoration: none;
+    margin-left: 5px;
+}
 .content-Login1 .signIn .form .whatsapp h4 svg {
     margin-left: 5px;
 }

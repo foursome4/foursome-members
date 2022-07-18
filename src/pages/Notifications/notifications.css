@@ -17,13 +17,13 @@
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    width:100%;
+    width:80%;
     background-color: var(--Background2)
 }
 
 
 .Notifications .listNotifications .notification {
-    width: 100%;
+    width: 80%;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -42,4 +42,48 @@
 .Notifications .listNotifications .notification .name a {
     text-decoration: none;
     cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .Notifications .listNotifications{
+        display: flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        width:90%;
+        background-color: var(--Background2)
+    }
+    
+    
+    .Notifications .listNotifications .notification {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        border: 2px solid var(--Background);
+        text-decoration: none;
+    }
+
+    @media (max-width: 700px) {
+        .Notifications .listNotifications{
+            display: flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            width:100%;
+            background-color: var(--Background2)
+        }
+        
+        
+        .Notifications .listNotifications .notification {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-between;
+            border: 2px solid var(--Background);
+            text-decoration: none;
+        }
+    }
 }

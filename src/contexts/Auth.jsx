@@ -20,9 +20,9 @@ function AuthProvider({children}) {
     const [ufActual, setUfActual] = useState("");
 
     
-    async function createAccount(id, país, username, email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship) {
-        const data = {id, país, username, email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship}
-        const data2 = {id, país, username, email, phone, type, status, role, online, patron, date: new Date(), avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship}
+    async function createAccount(id, país, username, email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation) {
+        const data = {id, país, username, email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation}
+        const data2 = {id, país, username, email, phone, type, status, role, online, patron, date: new Date(), avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation}
  
         const dataInvite = await api.get(`/invites/find/${data.email}/${data.code}`);
 

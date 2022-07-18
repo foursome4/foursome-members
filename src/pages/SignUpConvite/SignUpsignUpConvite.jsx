@@ -47,7 +47,7 @@ function SignUpConvite() {
   function handleCreateAccount(e) {
     e.preventDefault();
 
-    const status = "active"; // Test = 7 Dias -- Active = Palno Ativo/Pago -- Bloqued = Plano Bloqueado/ Não pago-expirado -- Banned 
+    const status = "pending"; // Test = 7 Dias -- Active = Palno Ativo/Pago -- Bloqued = Plano Bloqueado/ Não pago-expirado -- Banned 
     const role = "Membro";
     const online = false;
 
@@ -88,9 +88,10 @@ function SignUpConvite() {
           const cep = ""
           const nickname = ""
           const relationship = ""
+          const recommendation = patron
 
-       createAccount(id, país, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship)
-          console.log( {id, país, username:username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship})
+       createAccount(id, país, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation)
+          console.log( {id, país, username:username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation})
         } else {
           toast.error("As senhas não combinam!")
         }

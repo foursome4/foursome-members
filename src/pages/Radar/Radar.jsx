@@ -16,8 +16,10 @@ function Radar() {
     const userData = JSON.parse(Local);
 
     const [load, setLoad] = useState(false)
+    const [loadOffline, setLoadOffline] = useState(false)
     const [range, setRange] = useState(0);
     const [distancia, setDistancia] = useState([]);
+    const [userOffline, setUserOffline] = useState([]);
     const [type, setType] = useState("");
     const [emojiSelect, setEmojiSelect] = useState("");
     const [myType, setMyType] = useState(false);
@@ -27,12 +29,11 @@ function Radar() {
     const [myInformations, setMyInformations] = useState(false)
     const id = userData.id
 
-    socketDataLocation();
-    
+   
     useEffect(() => {
         async function searchAccount() {
           const res =  await api.get(`accounts/filter/${id}`);
-            console.log(res.data)
+            //console.log(res.data)
             if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
                 logout(id)
             } else {
@@ -41,7 +42,7 @@ function Radar() {
         }
         async function searchInformations() {
           const res =  await api.get(`informations/${id}`);
-            console.log(res.data)
+           // console.log(res.data)
             if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
                 logout(id)
             } else {
@@ -50,7 +51,7 @@ function Radar() {
         }
         async function searchCharacteristcs() {
           const res =  await api.get(`characteristics/${id}`);
-            console.log(res.data)
+           // console.log(res.data)
             if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
                 logout(id)
             } else {
@@ -59,7 +60,7 @@ function Radar() {
         }
         async function searchPreferences() {
           const res =  await api.get(`preferences/${id}`);
-            console.log(res.data)
+//console.log(res.data)
             if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
                 logout(id)
             } else {
@@ -86,6 +87,8 @@ function Radar() {
     
         async function loadUsersONline() {
             const res = await api.get(`/online`);
+            console.log("res.data ONLINE")
+            console.log(res.data)
 
     
                 const myLocation = res.data.filter((location) => (location.idAccount === userData.id)); 
@@ -125,7 +128,8 @@ function Radar() {
                                plane: userLocation.plane,
                                emoji: userLocation.emoji,
                                song: userLocation.song,
-                               invisible: userLocation.invisible  
+                               invisible: userLocation.invisible,
+                               online: true
                            }
                            setDistancia(oldDistancia => [...oldDistancia, dados])
                    }
@@ -138,8 +142,80 @@ function Radar() {
         }
         loadUsersONline();  
      }, [userData.id])
+
+
+     useEffect(() => {   
+        async function loadUsersOffline() {
+            const res = await api.get(`/accounts`);
+            console.log("res.data OFFLINE")
+            console.log(res.data)
+    
+                const myLocation = res.data.filter((accounts) => (accounts.id === userData.id));
+                console.log(myLocation)
+
+                    res.data.forEach((userAccounts) => {
+
+                        if(userAccounts.latitude === "" || userAccounts.latitude === null || userAccounts.latitude === undefined) {
+                            console.log("Sem localização!")
+                            return;
+                        }
+    
+                        function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend) {
+                            console.log(myLat, myLong, latFriend, longFriend)
+                            var deg2rad = function (deg) { return deg * (Math.PI / 180); },
+                                R = 6371,
+                                dLat = deg2rad(latFriend - myLat),
+                                dLng = deg2rad(myLong - longFriend),
+                                a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                                    + Math.cos(deg2rad(myLat))
+                                    * Math.cos(deg2rad(latFriend))
+                                    * Math.sin(dLng / 2) * Math.sin(dLng / 2),
+                                c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                                console.log(((R * c *1000)/10).toFixed());
+                                console.log("Teste de Distancia")
+                                console.log((R * c*1000)/1000)
+                        
+                                const distanceCalc = (R * c).toString();
+                                
+                                if(distanceCalc.includes("00.")) {
+                                    number = (((R * c *1000)/1000).toFixed())
+                                } else{
+                                    number = (((R * c *1000)/1000).toFixed())
+                                }
+
+         
+                                const dados = {
+                                    distanceKm: parseInt(number),
+                                    id: userAccounts.id,
+                                    idAccount: userAccounts.id,
+                                    avatar: userAccounts.avatar,
+                                    nickname: userAccounts.nickname,
+                                    equalCity: true, 
+                                    type:userAccounts.type,
+                                    plane: "",
+                                    emoji: "",
+                                    song: "",
+                                    invisible: false,
+                                    online: false
+                                }
+                    setUserOffline(offline => [...offline, dados])
+     
+                        }
+                        
+                        getDistanceFromLatLonInKm(myLocation[0].latitude, myLocation[0].longitude, userAccounts.latitude, userAccounts.longitude )
+                        setLoadOffline(true)
+         
+                })
+
+    
+        }
+        loadUsersOffline();  
+     }, [userData.id])
     
 
+     if(!users) {
+         socketDataLocation();
+     }
 
 
     function handleUpdateInformations(e) {
@@ -198,13 +274,17 @@ function Radar() {
 
 
 
- console.log("DistanciaArray")
- console.log(distancia)
- console.log("User Online Unic")
- console.log(users)
+//  console.log("DistanciaArray")
+//  console.log(distancia)
+//  console.log("User Online Unic")
+//  console.log(users)
+ console.log("User Offline")
+ console.log(userOffline)
 
- if(distancia) {
-     distancia.sort(function(a,b) {
+ var allUsers = distancia.concat(userOffline);
+
+ if(allUsers) {
+    allUsers.sort(function(a,b) {
         if(a.distanceKm < b.distanceKm ) {
             return -1
         } else {
@@ -213,16 +293,16 @@ function Radar() {
     })
 }
 
-const searchAll = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.distanceKm <= range));
-const searchEmojiType = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type) );
-const searchEmojiRange = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.distanceKm <= range));
-const searchTypeRange = distancia.filter((distanciaUser) => (distanciaUser.type === type && distanciaUser.distanceKm <= range));
-const searchEmoji= distancia.filter((distanciaUser) => distanciaUser.emoji === emojiSelect );
-const searchType= distancia.filter((distanciaUser) =>  distanciaUser.type === type);
-const searchDistance= distancia.filter((distanciaUser) => distanciaUser.distanceKm <= range);
-const myUserFilter= distancia.filter((distanciaUser) => distanciaUser.idAccount <= userData.id);
+const searchAll = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.distanceKm <= range));
+const searchEmojiType = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type) );
+const searchEmojiRange = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.distanceKm <= range));
+const searchTypeRange = allUsers.filter((distanciaUser) => (distanciaUser.type === type && distanciaUser.distanceKm <= range));
+const searchEmoji= allUsers.filter((distanciaUser) => distanciaUser.emoji === emojiSelect );
+const searchType= allUsers.filter((distanciaUser) =>  distanciaUser.type === type);
+const searchDistance= allUsers.filter((distanciaUser) => distanciaUser.distanceKm <= range);
+const myUserFilter= allUsers.filter((distanciaUser) => distanciaUser.idAccount <= userData.id);
 
-console.log(myUserFilter)
+//console.log(myUserFilter)
 
 
 const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDistance : 
@@ -232,8 +312,8 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                 (range > 0) && (emojiSelect !== "") && (type === "" ) ? searchEmojiRange : 
                 (range > 0) && (emojiSelect === "") && (type !== "") ? searchTypeRange : 
                 (range > 0) && (emojiSelect !== "") && (type !== "") ? searchAll : 
-                (range < 1) && (emojiSelect === "") && (type === "") ? distancia : 
-                distancia
+                (range < 1) && (emojiSelect === "") && (type === "") ? allUsers : 
+                allUsers
 
 
                 if(!users) { 
@@ -245,14 +325,27 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                         </div>
                         </div>
                         </div>
+
+                        
                     )
                 }
-                if(load === false) { 
+                if(loadOffline === false) { 
                     return (
                         <div className="content">
                          <div className="main">
                         <div className="messageLoad">
+                            {userOffline.length > 100 ? 
                         <h4>Carregando usuários do radar. Aguarde...</h4>
+                        : userOffline.length > 200 ? 
+                        <h4>Calculando distância</h4>
+                        : userOffline.length > 300 ? 
+                        <h4>Carregando preferências</h4>
+                        : userOffline.length > 400 ? 
+                        <h4>Verificando quem está perto</h4>
+                        : userOffline.length > 500 ? 
+                        <h4>Cruzando interesses</h4>
+                         :""
+                            }
                         </div>
                     </div>
                     </div>
@@ -351,7 +444,7 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                         />
                                    </Link>
                                    <h4>{user.emoji === "musica" ? "🎶" : user.emoji === "emoji"? "😈" : user.emoji === "viagem" ? "✈️" :""  }</h4>           
-                                   {user.invisible === false ? <FaCircle /> : "" }
+                                   {user.online === true ? <FaCircle /> : "" }
                                    </div>
                                    <h6><IoLocationOutline />{user.distanceKm === 0 ? "- 1Km" : ` ${user.distanceKm}Km`}</h6>
                                    <h6><IoPersonOutline /> {user.type}</h6>

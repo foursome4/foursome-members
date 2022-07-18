@@ -252,8 +252,7 @@
     align-items: center;
     justify-content:center;
     flex-wrap: wrap;
-    padding: 5px;
-    margin: 5px;
+    background-color: var(--Primary);
 }
 
 .content .aside .radar .radar-all .radar-unic h4 {

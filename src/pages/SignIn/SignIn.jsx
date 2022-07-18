@@ -44,8 +44,7 @@ function SignIn() {
   }
 
   function handleInviteWhatsapp() {
-    window.open("https://wa.me/55"+ phone + "?text=" + text,
-    '_blank')
+    window.open("/signup", "_self")
   }
 
   let never1 = false
@@ -60,7 +59,7 @@ function SignIn() {
         <img src={logoImg} alt="Logo Foursome" />
         </div>
         <div className="form">
-          {/* <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
+          <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
           {never1 === true ? <h6>Favor remover os espaços vazios no campo login</h6> : ""}
           <div className="inputPassword">
           <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
@@ -73,14 +72,14 @@ function SignIn() {
           <div className="links">
           <a href="/recuperation"><p> ESQUECI MINHA SENHA</p></a>
             <a href="/recuperationuser"><p> ESQUECI MEU USUÁRIO</p></a>
-          </div> */}
-
-          {/* <div className="whatsapp" onClick={handleInviteWhatsapp}>
-            <h4> Quero me cadastrar <IoLogoWhatsapp /></h4>
-          </div> */}
-          <div className="whatsapp" onClick={handleInviteWhatsapp}>
-            <h4> Família Foursome! <br />Nosso site estará de volta à partir das 13h desta segunda-feira 18/07/2022. </h4>
           </div>
+
+          <div className="whatsapp" onClick={handleInviteWhatsapp}>
+             <h4><b>Não tem conta? </b> <a href="/signup">Clique aqui e cadastre-se</a></h4>
+          </div>
+          {/* <div className="whatsapp" onClick={handleInviteWhatsapp}>
+            <h4> Família Foursome! <br />Nosso site estará de volta à partir das 13h desta segunda-feira 18/07/2022. </h4>
+          </div> */}
           {/* <div className="register">
           <h4><b>Não tem conta? </b> <a href="/signup">Clique aqui e cadastre-se</a></h4>
           </div> */}

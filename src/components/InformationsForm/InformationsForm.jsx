@@ -153,7 +153,7 @@ function InformationsForm() {
        latitude: latitude2 === "" ? latitude : latitude2,
        longitude: longitude2 === "" ? longitude : longitude2,
        país: user.país,
-       username: user.username, role: user.role, status: user.status, type: user.type, email: user.email, phone: user.phone, online: user.online, patron: user.patron});
+       username: user.username, role: user.role, status: user.status, type: user.type, email: user.email, phone: user.phone, online: user.online, patron: user.patron, recommendation: user.recommendation});
 
         console.log({id, idAccount: user.id, avatar: avatar, cover: linkCover,
             city: cep !== "" ? city :  codigoPostal !== "" ? cityPortugal : city2,
