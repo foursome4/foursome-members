@@ -11,8 +11,8 @@ function UsageTips() {
             <div className="UsageTips">
                 <div className="title">
                     <img src={logo} alt="" />
-                    <h2>Dicas de uso!</h2>
-                    <h3>Siga as seguintes orientações para aproveitar melhor o nosso site:</h3>
+                    <h2>AGORA É SÓ AGUARDAR!</h2>
+                    <h3>Em até 2h, seu acesso será liberado!</h3>
                     <br />
                     <div className="orientations">
                     <h4><b> Ao finalizar seu uso. Clique sempre no botão na barra /Botão de sair Icon/ superior</b></h4><br />

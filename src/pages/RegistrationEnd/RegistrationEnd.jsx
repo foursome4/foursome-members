@@ -1,10 +1,19 @@
 import './registrationEnd.css'
 import logo from '../../assets/images/logo.png';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/Auth';
 
 function RegistrationEnd() {
+    
+    const {logout} = useContext(AuthContext);
+    const Local = localStorage.getItem("foursome");
+    const user = JSON.parse(Local);
+
+
+
     function handleRedirectFeed(e) {
         e.preventDefault();
-        window.open("/usagetips","_self")
+        logout(user.id)
     }
     return (
         <div className="content-registration">
@@ -12,6 +21,7 @@ function RegistrationEnd() {
                 <div className="title">
                     <img src={logo} alt="" />
                     <h2>Parabéns! <br /> Você concluiu a etapa do cadastro com sucesso.</h2>
+                    <h3>Em até 2h, seu cadastro será liberado. Você receberá um e-mail de confirmação.</h3><br />
                     <h3>Siga as seguintes orientações para aproveitar melhor o nosso site:</h3>
                     <br />
                     <div className="orientations">
