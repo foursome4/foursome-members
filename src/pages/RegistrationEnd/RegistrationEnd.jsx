@@ -21,7 +21,7 @@ function RegistrationEnd() {
                 <div className="title">
                     <img src={logo} alt="" />
                     <h2>Parabéns! <br /> Você concluiu a etapa do cadastro com sucesso.</h2>
-                    <h3>Em até 2h, seu cadastro será liberado. Você receberá um e-mail de confirmação.</h3><br />
+                    <h3>Em até 24h, seu cadastro será liberado. Você receberá um e-mail de confirmação.</h3><br />
                     <h3>Siga as seguintes orientações para aproveitar melhor o nosso site:</h3>
                     <br />
                     <div className="orientations">

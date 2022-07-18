@@ -57,14 +57,18 @@ function InformationsForm() {
         
             setLatitude(lat);
             setLongitude(long);
+            console.log("lat");
+            console.log(lat);
+            console.log("long");
+            console.log(long);
 
             reverseGeolocalization(lat, long);
           }
 
           async function reverseGeolocalization(lat, long) {
-            //console.log(lat, long)
-            const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyABASerjYyootb_nxj7evIFsZLOiqcnQm4`);
-           // console.log(address.data.results[0])
+            console.log(lat, long)
+            const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyCZllXD0czNd_oeF0u_o9LUVJ2bCd1K4p8`);
+           console.log(address.data.results[0])
             setCity2(address.data.results[0].address_components[3].long_name)
             setUf2(address.data.results[0].address_components[4].short_name) 
             return
