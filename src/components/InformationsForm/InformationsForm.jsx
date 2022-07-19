@@ -121,7 +121,7 @@ function InformationsForm() {
             return
         }
 
-        if(city === "" || city === null && city2 === "" || city2 === null ) {
+        if(city === "" || city === null || city2 === "" || city2 === null ) {
             toast.error("Busque seu CEP para preencher Cidade e Estado");
             return
         }
