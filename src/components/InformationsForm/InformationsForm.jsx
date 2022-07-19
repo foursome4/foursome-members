@@ -241,8 +241,8 @@ function InformationsForm() {
             try {
                 const res = await buscaCepPortugal.get(`${codigoPostal}`);
                 console.log(res.data[0])
-                setCityPortugal(res.data[0].Distrito)
-                setUfPortugal("")
+                setCity(res.data[0].Distrito)
+                setUf("")
                 setLatitude2(parseFloat(res.data[0].Latitude));
                 setLongitude2(parseFloat(res.data[0].Longitude));
                 return
@@ -419,8 +419,8 @@ console.log(districtAll)
                          <div className="location">
                          <br />
                         <h5>Localização pelo Código Postal</h5>
-                        <input type="text" autoComplete='off' placeholder='Cidade' value={cityPortugal} onChange={(e) => setCityPortugal(e.target.value)} required disabled/>
-                        <input type="text" autoComplete='off' placeholder='Província' value={ufPortugal} onChange={(e) => setUfPortugal(e.target.value)}  required disabled/>
+                        <input type="text" autoComplete='off' placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required disabled/>
+                        <input type="text" autoComplete='off' placeholder='Província' value={uf} onChange={(e) => setUf(e.target.value)}  required disabled/>
                         </div>
                         </>
                     }
