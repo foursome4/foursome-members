@@ -67,7 +67,7 @@ function Invite() {
                                  : typeInvite === "Whatsapp" ?
                                  <InviteWhatsapp />
                                  : "" }
-                                <a href="/invites"> <IoArrowForwardCircle/>Meus convites enviados </a>
+                                <a href="/invitelist"> <IoArrowForwardCircle/>Meus convites enviados </a>
                                 </div>
                             </div>
 
