@@ -518,7 +518,6 @@ function handleLogout() {
                             :
                             <>
                             <button type='submit'>Salvar e avançar</button>
-                            <button className="delete" onClick={handleLogout}>Continuar depois</button>
                             </>
                         : user.type === "Casal"?
                             data === "" ? "":
@@ -530,7 +529,6 @@ function handleLogout() {
                             :
                             <>
                             <button type='submit'>Salvar e avançar</button>
-                            <button className="delete" onClick={handleLogout}>Continuar depois</button>
                             </>
                         : 
                             data === "" ? "":
@@ -542,7 +540,6 @@ function handleLogout() {
                             :
                             <>
                             <button type='submit'>Salvar e avançar</button>
-                            <button className="delete" onClick={handleLogout}>Continuar depois</button>
                             </>
 
                         }
