@@ -32,7 +32,7 @@ function AuthProvider({children}) {
         // } 
         
         await api.post('/accounts', data).then(() => {
-            completeAccount(email)
+          //  completeAccount(email)
             toast.info(`Cadastro criado com sucesso!`);
             
             localStorage.setItem("foursome", JSON.stringify(data2));
@@ -768,11 +768,11 @@ async function CreateInviteMail({code, name, email, phone,idAccount, username, p
 
 
 
-    async function completeAccount(email) {
-        const res = await api.post("/mail/confirmation", {mail: email});
-        if(res.status === 200) {
-        }
-    }
+    // async function completeAccount(email) {
+    //     const res = await api.post("/mail/confirmation", {mail: email});
+    //     if(res.status === 200) {
+    //     }
+    // }
     async function createSuccess(email) {
         const res = await api.post("/mail/complete", {mail: email});
         if(res.status === 200) {
