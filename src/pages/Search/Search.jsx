@@ -161,20 +161,20 @@ function handleTypeSearchUf(e) {
     setTypeSearch("Uf")
 }
 
-
+const filterAccounts = online?.filter(account => account.city !== "" || account.uf !== "")
     
-    const SearchUsers = typeSearch === "Nickname" ? online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower))
-                    : typeSearch === "City" ? online?.filter((informations) => informations.city.toLowerCase().includes(searchLower))
-                    : typeSearch === "Uf" ? online?.filter((informations) => informations.uf.toLowerCase().includes(searchLower))
-                    : typeSearch === "Id" ? online?.filter((informations) => informations.idAccount.toLowerCase().includes(searchLower)) : ""
+    const SearchUsers = typeSearch === "Nickname" ? filterAccounts?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower))
+                    : typeSearch === "City" ? filterAccounts?.filter((informations) => informations.city.toLowerCase().includes(searchLower))
+                    : typeSearch === "Uf" ? filterAccounts?.filter((informations) => informations.uf.toLowerCase().includes(searchLower))
+                    : typeSearch === "Id" ? filterAccounts?.filter((informations) => informations.idAccount.toLowerCase().includes(searchLower)) : ""
 
-    const SearchUsersFilter = online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower)
+    const SearchUsersFilter = filterAccounts?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower)
                                                                 ||  informations.city.toLowerCase().includes(searchLower)
                                                                 ||  informations.uf.toLowerCase().includes(searchLower)
                                                                 && informations.type === type
                                                                 && informations.país === país)
-    const userFilter = online?.filter((onlines) => onlines.type === type )
-    const paísFilter = online?.filter((onlines) => onlines.país === país )
+    const userFilter = filterAccounts?.filter((onlines) => onlines.type === type )
+    const paísFilter = filterAccounts?.filter((onlines) => onlines.país === país )
 
     const usersNewArray = type === "" && search !== "" && país === "" ? SearchUsers :
                           type !== "" && search === ""  && país === "" ? userFilter :
