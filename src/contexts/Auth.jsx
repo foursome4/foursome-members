@@ -58,10 +58,6 @@ function AuthProvider({children}) {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                     return
                 }
-                if(result.data.status === "pending") {
-                    toast.info(`Olá, ${result.data.username}. Sua conta está em análise!`);
-                    return
-                }
                 localStorage.setItem("foursome", JSON.stringify(result.data));
                
                 findInformationsAccount(result.data.id)
@@ -79,10 +75,6 @@ function AuthProvider({children}) {
                 if(result.data.status === "banned") {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                    return
-                }
-                if(result.data.status === "pending") {
-                    toast.error(`Olá, ${result.data.username}. Sua conta está em análise!`);
-                    return
                 }
                 localStorage.setItem("foursome", JSON.stringify(result.data));
                
@@ -151,20 +143,26 @@ function AuthProvider({children}) {
             const LocalInformations = localStorage.getItem("informations-foursome");
             const userInformations = JSON.parse(LocalInformations);
 
-            if(user.latitude === undefined ||
-               user.longitude === undefined ||
-               user.latitude === null ||
-               user.longitude === null ||
-               user.latitude === false ||
-               user.longitude === false ||
-               user.país === undefined ||
-               user.país === null ||
-               user.país === false ||
-               userInformations.uf.length > 2
-               ) {
-                window.open("/feed", "_self");
-               // window.open("/update", "_self");
-            } else {
+           
+
+            // if(user.latitude === undefined ||
+            //    user.longitude === undefined ||
+            //    user.latitude === null ||
+            //    user.longitude === null ||
+            //    user.latitude === false ||
+            //    user.longitude === false ||
+            //    user.país === undefined ||
+            //    user.país === null ||
+            //    user.país === false ||
+            //    userInformations.uf.length > 2
+            //    ) {
+            //     window.open("/feed", "_self");
+            //    // window.open("/update", "_self");
+            // }
+            
+            if(user.status === "pending") {
+                window.open("/usagetips", "_self");
+            }else {
                 window.open("/feed", "_self");
             }
             
