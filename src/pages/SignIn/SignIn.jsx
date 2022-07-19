@@ -44,6 +44,11 @@ function SignIn() {
   }
 
   function handleInviteWhatsapp() {
+    window.open("https://wa.me/55"+ phone + "?text=" + text,
+    '_blank')
+  }
+
+  function handleSignUp() {
     window.open("/signup", "_self")
   }
 
@@ -74,12 +79,12 @@ function SignIn() {
             <a href="/recuperationuser"><p> ESQUECI MEU USUÁRIO</p></a>
           </div>
 
-          <div className="whatsapp" onClick={handleInviteWhatsapp}>
+          <div className="whatsapp" onClick={handleSignUp}>
              <h4><b>Não tem conta? </b> <a href="/signup">Clique aqui e cadastre-se</a></h4>
           </div>
-          {/* <div className="whatsapp" onClick={handleInviteWhatsapp}>
-            <h4> Família Foursome! <br />Nosso site estará de volta à partir das 13h desta segunda-feira 18/07/2022. </h4>
-          </div> */}
+          <div className="whatsapp2" onClick={handleInviteWhatsapp}>
+            <h4> Entre em contato <IoLogoWhatsapp /></h4>
+          </div>
           {/* <div className="register">
           <h4><b>Não tem conta? </b> <a href="/signup">Clique aqui e cadastre-se</a></h4>
           </div> */}

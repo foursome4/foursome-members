@@ -200,11 +200,9 @@ function InformationsForm() {
                 return
             }catch{
                 console.log("error")
-                toast.error("CEP não encontrado. Por favor, digite sua cidade e seu Estado(UF) - Sigla")
-                setLocation(true)
+                setLocation("Brasil")
                 setTextError(true)
             }
-            return
 
         }
 
@@ -219,8 +217,7 @@ function InformationsForm() {
                 return
             }catch{
                 console.log("error")
-                toast.error("Código Postal não encontrado. Por favor, digite sua Cidade e sua Província")
-                setLocation(true)
+                setLocation("Portugal")
                 setTextError(true)
             }
             return
@@ -345,7 +342,16 @@ function InformationsForm() {
                         <div className="digiteCep">        
                         <h5>Digite seu CEP, para buscar cidade e estado</h5>
                         </div>
+                        { textError === true ?
+                            <div className="infoavatar">
+                            <div className="alert">
+                                <h5>Cidade e estado não encontrados</h5>
+                            </div>
+                        </div>
+                            : ""
+                        }
                     </>
+
                     : location === "Portugal" ?
                     <>
                         <div className="SearchCep">
@@ -365,7 +371,7 @@ function InformationsForm() {
                             <br />
                             <h5>Localização automática</h5>
                             <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity2(e.target.value)} required disabled/>
-                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required disabled/>
+                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2} onChange={ChangeMask}  required disabled/>
                         </div>  : ""}  
                         
 
@@ -378,7 +384,7 @@ function InformationsForm() {
                         <br />
                         <h5>Localização pelo cep</h5>
                         <input type="text"  placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required disabled/>
-                        <input type="text" autoComplete='off' placeholder='UF (Sigla. Ex.: RJ)' value={uf.toUpperCase()} onChange={ChangeMask}  required disabled/>
+                        <input type="text" autoComplete='off' placeholder='UF (Sigla. Ex.: RJ)' value={uf} onChange={ChangeMask}  required disabled/>
                     </div> </>
                     }
                     </>

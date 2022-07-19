@@ -522,5 +522,3 @@ function SignUp() {
 
 
 export { SignUp }
-
-       
