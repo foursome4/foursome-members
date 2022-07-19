@@ -123,6 +123,18 @@
     margin-bottom: 50px;
 }
 
+.content-invite .aside .invites .invites-all .invites-unic a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-invite .aside .invites .invites-all .invites-unic a svg {
+    margin-right: 5px;
+    font-size: 20px;
+}
+
 
 .content-invite .aside .invites .invites-all .invites-unic .buttons {
     width: 60%;

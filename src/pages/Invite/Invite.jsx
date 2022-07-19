@@ -3,6 +3,7 @@ import './invite.css'
 import { ChatSlim } from "../../components/ChatSlim/ChatSlim"
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import { FiCheck,FiMail } from "react-icons/fi"
+import { IoArrowForwardCircle } from "react-icons/io5"
 import { FaWhatsapp } from "react-icons/fa"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { InviteEmail } from "../../components/ComponentsInvites/InviteEmail/InviteEmail"
@@ -66,8 +67,8 @@ function Invite() {
                                  : typeInvite === "Whatsapp" ?
                                  <InviteWhatsapp />
                                  : "" }
+                                <a href="/invites"> <IoArrowForwardCircle/>Meus convites enviados </a>
                                 </div>
-
                             </div>
 
                     </div>
