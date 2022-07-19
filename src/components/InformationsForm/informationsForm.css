@@ -166,6 +166,17 @@
     margin-top: 10px;
     flex-wrap: wrap;
 }
+.complete-informations form .data .location .uf {
+    width: 150px;
+    padding: 10px 5px;
+    border: none;
+    background-color: var(--Button);
+    border-radius: 6px;
+    font-size: 14px;
+    margin: 5px;
+    color: var(--White);
+    font-weight: bold;
+}
 
 .complete-informations form .SearchCep {
     display: flex;

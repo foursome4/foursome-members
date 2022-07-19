@@ -12,6 +12,7 @@ import { mask as masker, unMask } from "remask";
 import apiGoogleReverse from '../../services/apiGoogleReverse';
 import buscaCepPortugal from '../../services/api-buscaCepPortugal';
 import { FaStreetView } from 'react-icons/fa';
+import buscaDistrito from '../../services/api-buscaDistrito';
 
 
 function InformationsForm() {
@@ -21,7 +22,10 @@ function InformationsForm() {
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [imageAvatar, setImageAvatar] = useState('');
     const [city, setCity] = useState("");
+    const [district, setDistrict] = useState("");
+    const [districtAll, setDistrictAll] = useState([]);
     const [uf, setUf] = useState("");
+    const [ufSelect, setUfSelect] = useState("");
     const [city2, setCity2] = useState("");
     const [uf2, setUf2] = useState("");
     const [cep, setCep] = useState("");
@@ -127,7 +131,7 @@ function InformationsForm() {
             return
         }
 
-          
+
         if(avatarUrl !== null && nickname !== "" && relationship !== "") {
        toast.info("Salvando as informações. Aguarde...")
                 //Avatar
@@ -152,8 +156,8 @@ function InformationsForm() {
         const id = uuidv4();
         //Salvando no banco de dados
         createInformationsAccount({id, idAccount: user.id, avatar: avatar, cover: linkCover,
-            city: cep !== "" ? city :  codigoPostal !== "" ? cityPortugal : city2,
-            uf: cep !== "" ? uf :  codigoPostal !== "" ? ufPortugal : uf2,
+            city: city !== "" ? city : city2,
+            uf: uf !== "" ? uf.toUpperCase() : uf2,
        relationship, nickname,
        cep: cep === "" ? codigoPostal : cep,
        latitude: latitude2 === "" ? latitude : latitude2,
@@ -162,8 +166,8 @@ function InformationsForm() {
        username: user.username, role: user.role, status: user.status, type: user.type, email: user.email, phone: user.phone, online: user.online, patron: user.patron, recommendation: user.recommendation});
 
         console.log({id, idAccount: user.id, avatar: avatar, cover: linkCover,
-            city: cep !== "" ? city :  codigoPostal !== "" ? cityPortugal : city2,
-             uf: cep !== "" ? uf :  codigoPostal !== "" ? ufPortugal : uf2,
+            city: city !== "" ? city : city2,
+            uf: uf !== "" ? uf.toUpperCase() : uf2,
            relationship, nickname,
            cep: cep === "" ? codigoPostal : cep,
            latitude: latitude2 === "" ? latitude : latitude2,
@@ -179,31 +183,58 @@ function InformationsForm() {
     }
 
     
-    if(cep.length === 9) {
-        handleSearchCep()
-    } else {
+    // if(cep.length === 9) {
+    //     handleSearchCep()
+    // } else {
       
-    }
+    // }
+    // if(ufSelect.length === 2) {
+    //     handleSearchDistrict();
+    //     return
+    // } else {
+      
+    // }
     if(codigoPostal.length === 7) {
         handleSearchCepPortugal()
     } else {
         
     } 
 
-    async function handleSearchCep() {
-            try {
-                const res = await buscaCep.get(`${cep}/json`);
-                console.log(res.data);
-                console.log(res.data.uf);
-                setUf(res.data.uf)
-                setCity(res.data.localidade)
-                return
-            }catch{
-                console.log("error")
-                setLocation("Brasil")
-                setTextError(true)
-            }
+    // async function handleSearchCep() {
+    //         try {
+    //             const res = await buscaCep.get(`${cep}/json`);
+    //             console.log(res.data);
+    //             console.log(res.data.uf);
+    //             setUf(res.data.uf)
+    //             setCity(res.data.localidade)
+    //             return
+    //         }catch{
+    //             console.log("error")
+    //             setLocation("Brasil")
+    //             setTextError(true)
+    //         }
 
+    //     }
+    async function handleSearchDistrict() {
+                await buscaDistrito.get(`${uf}/distritos`).then((res) => { 
+                    console.log(res.data)
+                    setDistrictAll(res.data)
+                    console.log(res.data[0].municipio.nome);
+                    return;
+                }).catch((err) => {
+                    console.log(err)
+                })
+        }
+
+
+        if(districtAll) {
+            districtAll.sort(function(a,b) {
+                if(a.nome < b.nome ) {
+                    return -1
+                } else {
+                    return true
+                }
+            })
         }
 
         async function handleSearchCepPortugal() {
@@ -222,6 +253,11 @@ function InformationsForm() {
             }
             return
         }
+
+        function handleSetectCity(e) {
+            setCity(e.target.value)
+            console.log(e.target.value)
+          }
 
 
     function handleRelationship(e) {
@@ -288,14 +324,14 @@ function InformationsForm() {
             }
       } 
 
-
+console.log(districtAll)
     return (
             <div className="complete-informations">
                 <div className="title">
                     <img src={logoImg} alt="" />
                     <h2>Informações Complementares</h2>
                     </div>
-                        <form onSubmit={handleUploadAccount}>
+                        <form >
                             {view === false ?
                             <>
                             <p>Avatar</p>
@@ -334,25 +370,7 @@ function InformationsForm() {
                             </> :
                             view === true ?
                             <>
-                                        {location === "Brasil" ?       
-                    <>
-                    <div className="SearchCep">
-                        <input type="text" placeholder='Digite seu cep' value={cep} onChange={ChangeMaskCEP}/>
-                        </div>
-                        <div className="digiteCep">        
-                        <h5>Digite seu CEP, para buscar cidade e estado</h5>
-                        </div>
-                        { textError === true ?
-                            <div className="infoavatar">
-                            <div className="alert">
-                                <h5>Cidade e estado não encontrados</h5>
-                            </div>
-                        </div>
-                            : ""
-                        }
-                    </>
-
-                    : location === "Portugal" ?
+                                        {location === "Portugal" ?
                     <>
                         <div className="SearchCep">
                         <input type="text" placeholder='Digite seu Código Postal' value={codigoPostal} onChange={ChangeMaskCEPPortugal}/>
@@ -373,20 +391,25 @@ function InformationsForm() {
                             <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity2(e.target.value)} required disabled/>
                             <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2} onChange={ChangeMask}  required disabled/>
                         </div>  : ""}  
+
                         
 
                         {location === "Brasil" ?       
                     <>
-                    {
-                         cep.length < 9 ? "" :
-                         <>
                      <div className="location">
                         <br />
-                        <h5>Localização pelo cep</h5>
-                        <input type="text"  placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required disabled/>
-                        <input type="text" autoComplete='off' placeholder='UF (Sigla. Ex.: RJ)' value={uf} onChange={ChangeMask}  required disabled/>
-                    </div> </>
-                    }
+                        
+                            <h5>Localização Manual</h5>
+                            <input type="text" placeholder='UF - Ex.: RJ' value={uf} onChange={(e) => setUf(e.target.value)} required />
+                            <button className="uf" onClick={() => handleSearchDistrict()}>Buscar Cidades</button>
+                            <select value={city} onChange={handleSetectCity}>       
+                            {districtAll?.map((district) => {
+                                    return (
+                                        <option key={district.id} value={district.nome}>{district.nome}</option>
+                                    )
+                                })}
+                            </select>
+                    </div> 
                     </>
                     : location === "Portugal" ?
                     <>
@@ -402,7 +425,7 @@ function InformationsForm() {
                         </>
                     }
                     </>
-                    : ""}
+                    : ""} 
 
                         {
                             location === "" ?
