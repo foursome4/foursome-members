@@ -240,6 +240,12 @@ function InformationsForm() {
             setLocation("Portugal")
         }
     }
+    function handleHabiliteLocation2(e) {
+        e.preventDefault();
+        if(location === "Brasil" || location === "Portugal") {
+            setLocation("")
+        }
+    }
 
 
     function ChangeMask(e) {
@@ -358,30 +364,52 @@ function InformationsForm() {
                     <div className="location">
                             <br />
                             <h5>Localização automática</h5>
-                            <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity2(e.target.value)} required/>
-                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required/>
+                            <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity2(e.target.value)} required disabled/>
+                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required disabled/>
                         </div>  : ""}  
                         
 
                         {location === "Brasil" ?       
                     <>
+                    {
+                         cep.length < 9 ? "" :
+                         <>
                      <div className="location">
                         <br />
                         <h5>Localização pelo cep</h5>
-                        <input type="text"  placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required/>
-                        <input type="text" autoComplete='off' placeholder='UF (Sigla. Ex.: RJ)' value={uf.toUpperCase()} onChange={ChangeMask}  required/>
+                        <input type="text"  placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required disabled/>
+                        <input type="text" autoComplete='off' placeholder='UF (Sigla. Ex.: RJ)' value={uf.toUpperCase()} onChange={ChangeMask}  required disabled/>
                     </div> </>
+                    }
+                    </>
                     : location === "Portugal" ?
                     <>
-                    <input type="text" autoComplete='off' placeholder='Cidade' value={cityPortugal} onChange={(e) => setCityPortugal(e.target.value)} required/>
-                    <input type="text" autoComplete='off' placeholder='Província' value={ufPortugal} onChange={(e) => setUfPortugal(e.target.value)}  required/>
+                    {
+                        codigoPostal.length < 7 ? "" :
+                        <>
+                         <div className="location">
+                         <br />
+                        <h5>Localização pelo Código Postal</h5>
+                        <input type="text" autoComplete='off' placeholder='Cidade' value={cityPortugal} onChange={(e) => setCityPortugal(e.target.value)} required disabled/>
+                        <input type="text" autoComplete='off' placeholder='Província' value={ufPortugal} onChange={(e) => setUfPortugal(e.target.value)}  required disabled/>
+                        </div>
+                        </>
+                    }
                     </>
                     : ""}
 
+                        {
+                            location === "" ?
                         <div className="digiteCep">
                         <button onClick={handleHabiliteLocation}>{user.país === "Brasil" ? "Cidade/UF incorretos ou vazios? Clique aqui"
                                                                     : user.país === "Portugal" ? "Cidade incorreta ou vazia? Clique aqui" : ""}</button>
                         </div>
+                        :
+                        <div className="digiteCep">
+                        <button onClick={handleHabiliteLocation2}>Voltar a localização automática</button>
+                        </div>
+
+                        }
 
 
 
