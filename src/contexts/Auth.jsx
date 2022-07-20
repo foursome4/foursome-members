@@ -518,7 +518,7 @@ async function preferencesAccount({id, idAccount, men, woman, couple, trisal, tr
 }
 
 async function redirectToPageSucess() {
-    window.open("/registrationend","_self");
+    window.open("/feed","_self");
 }
 async function updatePreferencesAccount({id, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal, idPatrono, username, idAccount}) {
     await api.patch(`/preferences/${id}`, { men, woman, couple, trisal, transvestites, transsexuals, groups, proposal})
