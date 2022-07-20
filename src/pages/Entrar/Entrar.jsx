@@ -138,6 +138,10 @@ function Entrar() {
       e.preventDefault();
 
               
+      if(!email.includes('@') ) {
+          toast.error("Preencha, seu email corretamente");
+          return
+      }
       if(avatarUrl === null ) {
           toast.error("Favor adicionar foto de perfil");
           return
