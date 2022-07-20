@@ -4,7 +4,7 @@ import {toast} from 'react-toastify';
 import api from '../services/api';
 import apiGoogleReverse from '../services/apiGoogleReverse';
 import { socket } from '../services/websocket';
-
+import {v4 as uuidv4} from 'uuid';
 
 
 const AuthContext = createContext({});
@@ -20,10 +20,17 @@ function AuthProvider({children}) {
     const [ufActual, setUfActual] = useState("");
 
     
-    async function createAccount(id, país, username, email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation) {
-        const data = {id, país, username, email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation}
-        const data2 = {id, país, username, email, phone, type, status, role, online, patron, date: new Date(), avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation}
- 
+    async function createAccount({
+        id, país, username, email, phone, type, password, status, role,
+        code, online, patron, avatar, cover, nickname, relationship, recommendation,
+        cep, city, uf, latitude, longitude
+        }) {
+        const data = {
+            id, país, username, email, phone, type, password, status, role,
+            code, online, patron, avatar, cover, nickname, relationship, recommendation,
+            cep, city, uf, latitude, longitude
+            }
+        console.log(data)
        //   const dataInvite = await api.get(`/invites/find/${data.email}/${data.code}`);
 
         // if(dataInvite.data[0] === undefined) {
@@ -35,8 +42,9 @@ function AuthProvider({children}) {
           //  completeAccount(email)
             toast.info(`Cadastro criado com sucesso!`);
             
-            localStorage.setItem("foursome", JSON.stringify(data2));
-            window.open("/completeregistration", "_self")
+            createInformationsAccount({
+                idAccount:id, avatar, cover, relationship, nickname, city, uf, país
+                })
 
         }).catch(error => {
             console.log("Cadastro não foi realizado: "+ error);
@@ -49,13 +57,17 @@ function AuthProvider({children}) {
        
         let email;
         let username;
-
-        
+           
+       
         if(login.includes('@')) {
             email = login
             await api.post("/session", {email, password}).then((result) => {
                 if(result.data.status === "banned") {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
+                    return
+                }
+                if(result.data.status === "pending") {
+                    toast.info(`Olá, ${result.data.username}. Sua conta está em análise. E em até 24h será liberada!`);
                     return
                 }
                 localStorage.setItem("foursome", JSON.stringify(result.data));
@@ -75,6 +87,10 @@ function AuthProvider({children}) {
                 if(result.data.status === "banned") {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                    return
+                }
+                if(result.data.status === "pending") {
+                    toast.info(`Olá, ${result.data.username}. Sua conta está em análise. E em até 24h será liberada!`);
+                    return
                 }
                 localStorage.setItem("foursome", JSON.stringify(result.data));
                
@@ -145,24 +161,21 @@ function AuthProvider({children}) {
 
            
 
-            // if(user.latitude === undefined ||
-            //    user.longitude === undefined ||
-            //    user.latitude === null ||
-            //    user.longitude === null ||
-            //    user.latitude === false ||
-            //    user.longitude === false ||
-            //    user.país === undefined ||
-            //    user.país === null ||
-            //    user.país === false ||
-            //    userInformations.uf.length > 2
-            //    ) {
-            //     window.open("/feed", "_self");
-            //    // window.open("/update", "_self");
-            // }
-            
-            if(user.status === "pending") {
-                window.open("/usagetips", "_self");
-            }else {
+            if(user.latitude === undefined ||
+               user.longitude === undefined ||
+               user.latitude === null ||
+               user.longitude === null ||
+               user.latitude === false ||
+               user.longitude === false ||
+               user.país === undefined ||
+               user.país === null ||
+               user.país === false ||
+               userInformations.uf.length > 2
+               ) {
+                window.open("/feed", "_self");
+               // window.open("/update", "_self");
+            }
+            else {
                 window.open("/feed", "_self");
             }
             
@@ -278,11 +291,10 @@ async function deletePreferences(id) {
 
 
 
-    async function createInformationsAccount({id, idAccount, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron}) {
-        const data = {id, idAccount, avatar, cover, relationship, nickname, city, uf, país}
+    async function createInformationsAccount({idAccount, avatar, cover, relationship, nickname, city, uf, país}) {
+        const id = uuidv4()
         await api.post("/informations", {id, idAccount, avatar, cover, relationship, nickname, city, uf, país}).then(() => {
-            localStorage.setItem("informations-foursome", JSON.stringify(data));
-            updateAccount2({id: idAccount, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron})
+            window.open("/registrationend","_self")
         }).catch(error => {
             console.log("Informações não enviadas" + error)
         })

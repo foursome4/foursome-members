@@ -38,6 +38,7 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   font-family: 'Raleway', sans-serif;
+  background: var(--Primary);
 }
 
 .container {

@@ -3,6 +3,7 @@ import { Characteristcs } from '../pages/Characteristcs/Characteristcs';
 import { Chat } from '../pages/Chat/Chat';
 import { CommingSoom } from '../pages/CommingSoom/CommingSoom';
 import { CompleteRegistration } from '../pages/CompleteRegistration/CompleteRegistration';
+import { Entrar } from '../pages/Entrar/Entrar';
 import { EventIndividual } from '../pages/EventIndividual/EventIndividual';
 import { Events } from '../pages/Events/Events';
 import { Feed } from '../pages/Feed/Feed';
@@ -65,7 +66,7 @@ function PrivateRoute({children} ) {
             <Routes>
             <Route path="/" element={<SignIn />}/>
             <Route path="/signup/convite/:email/:code/:patron/:type" element={ <SignUpConvite />} />
-            <Route path="/signup/" element={ <SignUp />} />
+            <Route path="/signup/" element={ <Entrar />} />
             <Route path="/forgotit" element={ <Forgotit />} />
             <Route path="/recuperation" element={ <Recuperation />} />       
             <Route path="/recuperationuser" element={ <RecuperationUser />} />       
@@ -76,6 +77,9 @@ function PrivateRoute({children} ) {
             <Route path="/terms" element={ <UseOfTerms />} />       
             <Route path="/police" element={ <PrivacityPolice />} />       
             <Route path="/lgpd" element={ <Lgpd />} />       
+            <Route path="/entrar" element={ <Entrar />} />
+            <Route path="/registrationend" element={ <RegistrationEnd />} />
+  
             
             <Route path="/feed"
                     element={ <PrivateRoute> <Feed /> </PrivateRoute>} />
@@ -113,8 +117,6 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Characteristcs/> </PrivateRoute>} />
             <Route path="/preferences" 
                 element={ <PrivateRoute> <Preferences /> </PrivateRoute>} />
-            <Route path="/registrationend" 
-                element={ <PrivateRoute> <RegistrationEnd /> </PrivateRoute>} />
             <Route path="/comming-soom" 
                 element={ <PrivateRoute> <CommingSoom /> </PrivateRoute>} />
             <Route path="/Invitation" 

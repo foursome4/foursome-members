@@ -4,16 +4,9 @@ import { useContext } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 
 function RegistrationEnd() {
-    
-    const {logout} = useContext(AuthContext);
-    const Local = localStorage.getItem("foursome");
-    const user = JSON.parse(Local);
-
-
-
-    function handleRedirectFeed(e) {
+        function handleRedirectFeed(e) {
         e.preventDefault();
-        logout(user.id)
+        window.open("/", "_self")
     }
     return (
         <div className="content-registration">
@@ -48,7 +41,7 @@ function RegistrationEnd() {
                     </div>
                 </div> 
                                 
-                <button onClick={handleRedirectFeed}>Ir para o Feed</button>
+                <button onClick={handleRedirectFeed}>Sair</button>
             </div>
         </div>
     )
