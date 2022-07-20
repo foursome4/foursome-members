@@ -358,15 +358,15 @@ districtAll.sort(function(a,b) {
           const patron = "503465"
 
        createAccount({
-              id, país, username: username.toLowerCase(), email, phone, type, password, status, role,
+              id, país, username: username.toUpper(), email, phone, type, password, status, role,
               code, online, patron, avatar, cover, nickname, relationship, recommendation,
-              cep: cep === "" ? codigoPostal : cep, city: city !== "" ? city : city2, uf: uf !== "" ? uf : uf2 , latitude, longitude
+              cep: cep === "" ? codigoPostal : cep, city: city !== "" ? city : city2, uf: uf.toUpperCase() !== "" ? uf.toUpperCase() : uf2.toUpperCase() , latitude, longitude
               })
           
             console.log({
               id, país, username: username.toLowerCase(), email, phone, type, password, status, role,
               code, online, patron, avatar, cover, nickname, relationship, recommendation,
-              cep: cep === "" ? codigoPostal : cep, city: city !== "" ? city : city2, uf: uf !== "" ? uf : uf2 , latitude, longitude
+              cep: cep === "" ? codigoPostal : cep, city: city !== "" ? city : city2, uf: uf.toUpperCase() !== "" ? uf.toUpperCase() : uf2.toUpperCase() , latitude, longitude
               })
           
           } else {
