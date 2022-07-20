@@ -753,8 +753,8 @@ districtAll.sort(function(a,b) {
                     <div className="location">
                             <br />
                             <h5>Localização automática</h5>
-                            <input type="text" placeholder='Cidade' value={city2} onChange={(e) => setCity2(e.target.value)} required disabled/>
-                            <input type="text" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required disabled/>
+                            <input type="text" autocomplete="off" placeholder='Cidade' value={city2} onChange={(e) => setCity2(e.target.value)} required disabled/>
+                            <input type="text" autocomplete="off" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required disabled/>
                         </div> 
                         :location === "Manual" ?
                         <>
@@ -765,12 +765,12 @@ districtAll.sort(function(a,b) {
                           <br />
                           
                               <h5>Localização Manual</h5>
-                              <input type="text" placeholder='UF - Ex.: RJ' value={uf} onChange={(e) => setUf(e.target.value)} required />
+                              <input type="text" autocomplete="off" placeholder='UF - Ex.: RJ' value={uf} onChange={(e) => setUf(e.target.value)} required />
                               <button className="uf" onClick={() => handleSearchDistrict()}>Buscar Cidades</button>
                               <select value={city} onChange={handleSetectCity}>       
                               {districtAll?.map((district) => {
                                       return (
-                                          <option key={district.id} value={district.nome}>{district.nome}</option>
+                                          <option autocomplete="off" key={district.id} value={district.nome}>{district.nome}</option>
                                       )
                                   })}
                               </select>
