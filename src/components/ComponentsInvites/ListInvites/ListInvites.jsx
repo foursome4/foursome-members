@@ -34,7 +34,7 @@ function ListInvites() {
                                       <AccountCreatedInvite mail={invite.email} />
                                       <h5>{invite.email !== "" ? invite.email : ""} </h5>
                                       <div className="linkInvite">
-                                        <h5> <a href={`https://foursome.com.br/signup/${invite.email}/${invite.code}/${invite.idAccount}/${invite.type}`}>Pressione para copiar link de convite</a></h5>
+                                        <h5> <a href={`https://foursome.com.br/signup/convite/${invite.email}/${invite.code}/${invite.idAccount}/${invite.type}`}>Pressione para copiar link de convite</a></h5>
                                       </div>
                                       <p>Pressione e clique na opção: Copiar endereço do link</p>
                                       <button onClick={() => {handleDeleteInvite(invite.id)}}>Deletar</button> 
