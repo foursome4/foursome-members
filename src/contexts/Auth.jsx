@@ -41,7 +41,7 @@ function AuthProvider({children}) {
         await api.post('/accounts', data).then(() => {
           //  completeAccount(email)
             toast.info(`Cadastro criado com sucesso!`);
-            
+            createSuccess(email);
             createInformationsAccount({
                 idAccount:id, avatar, cover, relationship, nickname, city, uf, país
                 })
@@ -493,7 +493,6 @@ async function preferencesAccount({id, idAccount, men, woman, couple, trisal, tr
     .then(async () => {
         localStorage.setItem("preferences-foursome", JSON.stringify(data));
 
-        createSuccess(email);
         function friend(idAccount) {
             const idFriend = patron;
             const type = "friend"

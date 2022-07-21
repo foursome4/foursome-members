@@ -635,11 +635,11 @@ districtAll.sort(function(a,b) {
           {letra === "" ? "": 
           letra === letra.toUpperCase()  ? 
            <div className="alert2">
-           <h5>A primeira letra do seu e-mail está maiúscula</h5>
+           <h5>A primeira letra do seu e-mail está maiúscula. Isso está certo?</h5>
        </div>:
         email === email.toUpperCase()  ? 
         <div className="alert2">
-        <h5>Seu e-mail contém letra maiúscula</h5>
+        <h5>Seu e-mail contém letra maiúscula. Isso está certo?</h5>
     </div> :
                            ""
           }

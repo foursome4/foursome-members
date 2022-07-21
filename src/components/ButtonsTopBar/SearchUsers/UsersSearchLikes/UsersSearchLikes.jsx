@@ -1,12 +1,15 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFetch } from "../../../../hooks/useFetch";
+import api from "../../../../services/api";
 import './usersSearchLikes.css'
 
 
 function UsersSearchLikes({idAccount}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
+    console.log(idAccount)
 
     const [nickname, setNickname] = useState("")
     const [city, setCity] = useState("")
@@ -18,17 +21,32 @@ function UsersSearchLikes({idAccount}) {
 
     const {data} = useFetch(`/informations/${idAccount}`);
 
-    if(data) {
-        console.log(data);
+    useEffect(() => {
+        async function loadInformations() {
+            await api.get(`/informations/${idAccount}`).then((res) => {
+                console.log(res.data)
+                console.log(res.data[0])
+                        setNickname(res.data[0].nickname);
+                        setAvatar(res.data[0].avatar);
+                        setCity(res.data[0].city);
+                        setUf(res.data[0].uf);
+                        setPaís(res.data[0].país);
+            })
+        }
+        loadInformations()
+    }, [idAccount])
 
-        setNickname(data[0].nickname);
-        setAvatar(data[0].avatar);
-        setCity(data[0].city);
-        setUf(data[0].uf);
-        setPaís(data[0].país);
-    }
+    // if(data) {
+    //     console.log(data);
 
-    console.log({nickname, avatar, city, uf, país})
+    //     setNickname(data?.[0].nickname);
+    //     setAvatar(data?.[0].avatar);
+    //     setCity(data?.[0].city);
+    //     setUf(data?.[0].uf);
+    //     setPaís(data?.[0].país);
+    // }
+
+ console.log({nickname, avatar, city, uf, país})
 
     if(!data) {
       return (
@@ -41,7 +59,7 @@ function UsersSearchLikes({idAccount}) {
 
     return (
         <>
-        {data[0] === "" || data[0] === undefined ? "" :
+        {nickname === "" || nickname === undefined ? "" :
        <div className="item-search" key={idAccount}>
            <div className="image">
            {nickname === "" || nickname === undefined ||  nickname === null ?

@@ -11,6 +11,10 @@ function ListCommentsAndReactions({idPost}) {
     const [isOpenModalFriend, setIsOpenModalFriend] = useState(false);
     const {data} = useFetch(`/reactions/${idPost}`);
 
+    if(data) {
+       console.log(data);
+    }
+
     if(!data) {
         return (
             <div className="load">
@@ -37,8 +41,8 @@ function ListCommentsAndReactions({idPost}) {
             {data.length === 0 ? "" :
         <div className="ListCommentsAndReactions">
             <div className="text">
-               {/* <h5 onClick={handleFriends}>{data.length} {data.length === 1 ? "Curtida" : "Curtidas"}</h5> */}
-               <h5>{data.length} {data.length === 1 ? "Curtida" : "Curtidas"}</h5>
+               <h5 onClick={handleFriends}>{data.length} {data.length === 1 ? "Curtida" : "Curtidas"}</h5>
+               {/* <h5>{data.length} {data.length === 1 ? "Curtida" : "Curtidas"}</h5> */}
             </div>
 
 
