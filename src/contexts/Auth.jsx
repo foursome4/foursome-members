@@ -843,8 +843,8 @@ async function deleteLike(id){
     await api.delete(`/reactions/${id}`).then(() => {
     })
 }
-async function deleteActualMessage(_id){
-    await api.delete(`/messages/${_id}`).then(() => {
+async function deleteActualMessage(id){
+    await api.delete(`/messages/${id}`).then(() => {
     })
 }
 

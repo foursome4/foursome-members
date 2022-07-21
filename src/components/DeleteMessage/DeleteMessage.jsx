@@ -3,13 +3,14 @@ import { useContext } from 'react';
 import { FiTrash } from 'react-icons/fi';
 import { AuthContext } from '../../contexts/Auth';
 
-function DeleteMessage(_id) {
-    console.log(_id._id)
+function DeleteMessage({id}) {
+    console.log(id)
     const {deleteActualMessage} = useContext(AuthContext);
 
     function handleMessageDelete(e){
         e.preventDefault();
-        deleteActualMessage(_id._id)
+        console.log(id)
+        deleteActualMessage(id)
     }
 
     return (

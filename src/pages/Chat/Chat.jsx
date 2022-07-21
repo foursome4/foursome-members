@@ -222,7 +222,7 @@ function handlePressMessage() {
   if(click === false) {
     setClick(false)
   } else {
-    setClick(false)
+    setClick(true)
   }
 }
 
@@ -276,8 +276,7 @@ function handleMedia() {
                      <div className="date">
                      <DateFormatChat date={message.created_at} />
                        </div> 
-                    {click === true ?  message.idAccount === user.id ? <DeleteMessage _id={message._id} /> : "" :
-                      ""}
+                    {message.idAccount === user.id ? <DeleteMessage id={message.id} /> : ""}
                        </div>
                        <div className="avatar">                     
                        <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>             
@@ -319,8 +318,7 @@ function handleMedia() {
                                           <div className="date">
                                           <DateFormatChat date={message.created_at} />
                                             </div> 
-                      {click === true ?   message.idAccount === user.id ? <DeleteMessage _id={message._id} /> : "" :
-                      ""}
+                      {message.idAccount === user.id ? <DeleteMessage id={message.id} /> : ""}
                        </div>
                   </div>
                    </div>
