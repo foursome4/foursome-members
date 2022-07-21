@@ -766,8 +766,15 @@ districtAll.sort(function(a,b) {
                     <div className="location">
                             <br />
                             <h5>Localização automática</h5>
-                            <input type="text" autocomplete="off" placeholder='Cidade' value={city2} onChange={(e) => setCity2(e.target.value)} required disabled/>
-                            <input type="text" autocomplete="off" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required disabled/>
+                            <button className="btn">{city2}</button>
+                            <button className="btn">{uf2.toUpperCase()}</button>
+                            {/* <input type="text" autocomplete="off" placeholder='Cidade' value={city2} onChange={(e) => setCity2(e.target.value)} required disabled/>
+                            <input type="text" autocomplete="off" placeholder='UF (Sigla. Ex.: RJ)' value={uf2.toUpperCase()} onChange={ChangeMask}  required disabled/> */}
+
+                            <br />
+                            <br />
+                            <br />
+
                         </div> 
                         :location === "Manual" ?
                         <>
@@ -852,7 +859,7 @@ districtAll.sort(function(a,b) {
                         }          
 
                     </div>
-
+                    <br />
                     
                     <div className="buttons">
           <button onClick={() => handleSelectView("nickname")}> Avançar </button>

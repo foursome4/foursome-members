@@ -158,6 +158,16 @@
     color: #fff;
     margin: 10px;
 }
+.content-Login .EntrarBrasil .form .location .btn {
+    background-color: var(--Background2);
+    width: 70%;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    color: var(--Primary);
+    margin: 5px;
+}
 .content-Login .EntrarBrasil .form .SearchCep {
     width: 100%;
     display: flex;
