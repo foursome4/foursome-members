@@ -364,13 +364,13 @@ function PostFeed() {
                 </div>
                 <div className="buttons">
                     <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
-                  {dailyPost.length === 3 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
-                  {dailyPost.length === 3 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
+                  {dailyPost.length === 2 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
+                  {dailyPost.length === 2 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
                 </div>
             </div>      
             </div>
             <div className="counter">
-                <h5>{dailyPost.length === 0 ? "Você pode postar 3 fotos ou videos" : dailyPost.length === 1 ? "Você pode postar 2 fotos ou videos" : dailyPost.length === 2 ? "Você pode postar 1 foto ou video" : dailyPost.length === 3 ? "Você ja efetuou 3 postagens entre fotos e vídeos": "" }</h5>
+                <h5>{dailyPost.length === 0 ? "Você pode postar 2 fotos ou videos" : dailyPost.length === 1 ? "Você pode postar 1 fotos ou videos" : dailyPost.length === 2 ? "Você ja efetuou 3 postagens entre fotos e vídeos": ""  }</h5>
                 </div>
         </div>
          
