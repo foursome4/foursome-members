@@ -6,7 +6,7 @@
     justify-content: center;
 }
 
-.content-Login .signUpConvite {
+.content-Login .EntrarConvite {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -15,7 +15,7 @@
     flex-direction: column;
     flex-wrap: wrap;
 }
-.content-Login .signUpConvite .top {
+.content-Login .EntrarConvite .top {
     width: 100%;
     display: flex;
     align-items: center;
@@ -25,15 +25,15 @@
     color: #fff; 
 }
 
-.content-Login .signUpConvite .top h1 {
+.content-Login .EntrarConvite .top h1 {
     text-align: center;
     margin: 20px;
 }
 
-.content-Login .signUpConvite .top img{
+.content-Login .EntrarConvite .top img{
     width: 250px;
 }
-.content-Login .signUpConvite .flags {
+.content-Login .EntrarConvite .flags {
     width: 100%;
     display: flex;
     align-items: center;
@@ -42,7 +42,7 @@
     flex-wrap: wrap;
     color: #fff; 
 }
-.content-Login .signUpConvite .flags img{
+.content-Login .EntrarConvite .flags img{
     width: 200px;
     height: 125px;
     margin: 20px;
@@ -51,7 +51,7 @@
     border-radius: 6px;
 }
 
-.content-Login .signUpConviteBrasil {
+.content-Login .EntrarConviteBrasil {
     width: 100%;
     display: flex;
     align-items: center;
@@ -60,9 +60,28 @@
     flex-wrap: wrap;
 }
 
+.content-Login .EntrarConviteBrasil  .top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: #fff; 
+    margin-top: 40px;
+}
+
+.content-Login .EntrarConviteBrasil  .top h2 {
+    text-align: center;
+    margin: 20px;
+}
+
+.content-Login .EntrarConviteBrasil  .top img{
+    width: 250px;
+}
 
 
-.content-Login .signUpConviteBrasil .form {
+.content-Login .EntrarConviteBrasil .form {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -70,43 +89,95 @@
     justify-content: center;
     color: var(--White);
     margin-bottom:40px;
+    padding: 20px;
 }
-.content-Login .signUpConviteBrasil .form .titleInput {
-    width: 70%;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-.content-Login .signUpConviteBrasil .form .titleInput p {
-   font-weight: bold;
-   text-align: left;
-   margin-bottom: 3px;
-}
-
-.content-Login .signUpConviteBrasil .form .title {
+.content-Login .EntrarConviteBrasil .form .dataUser{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 70%;
+    align-items: center;
+    justify-content: center;
     color: var(--White);
-    margin-bottom: 10px;
 }
 
-.content-Login .signUpConviteBrasil .form input:focus{
-    outline: none;
-  }
+.content-Login .EntrarConviteBrasil .form .data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
 
-  .content-Login .signUpConviteBrasil .form option:focus{
-    outline: none;
-  }
-  .content-Login .signUpConviteBrasil .form select:focus{
-    outline: none;
-  }
-
-
-.content-Login .signUpConviteBrasil .form input {
+.content-Login .EntrarConviteBrasil .form .data .location {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.content-Login .EntrarConviteBrasil .form .data .digiteCep {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.content-Login .EntrarConviteBrasil .form .data .digiteCep button {
+    background-color: var(--Foursome2);
+    width: 250px;
+    height: 35PX;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px;
+}
+.content-Login .EntrarConviteBrasil .form .location {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.content-Login .EntrarConviteBrasil .form .location button {
+    background-color: var(--Foursome3);
+    width: 250px;
+    height: 35PX;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #fff;
+    margin: 10px;
+}
+.content-Login .EntrarConviteBrasil .form .location .btn {
+    background-color: var(--Background2);
+    width: 70%;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    color: var(--Primary);
+    margin: 5px;
+}
+.content-Login .EntrarConviteBrasil .form .SearchCep {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.content-Login .EntrarConviteBrasil .form .dataUser input {
     width: 70%;
     height: 40px;
     border: none;
@@ -120,7 +191,144 @@
     font-weight: bold;
 }
 
-.content-Login .signUpConviteBrasil .form select {
+
+.content-Login .EntrarConviteBrasil .form .label-avatar{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    margin: 5px 0;
+}
+
+.content-Login .EntrarConviteBrasil .form .label-avatar input {
+    display: none;
+}
+
+.content-Login .EntrarConviteBrasil .form .label-avatar span {
+    z-index: 99;
+    position: absolute;
+    opacity: 0.7;
+    transition: all .5s;
+}
+
+.content-Login .EntrarConviteBrasil .form .label-avatar span:hover{
+    opacity: 1;
+    transform: scale(1.4);
+}
+
+.content-Login .EntrarConviteBrasil .form .label-avatar img{
+    margin-bottom: 1em;
+    border-radius: 50px;
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+}
+
+
+.content-Login .EntrarConviteBrasil .form  .infoavatar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    background-color: var(--Button);
+    padding: 20px;
+    border-radius: 6px;
+}
+.content-Login .EntrarConviteBrasil .form  .infoavatar .alert {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 5px 0;
+    background-color: red;
+    padding: 10px;
+    border-radius: 6px;
+}
+.content-Login .EntrarConviteBrasil .form .alert {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 5px 0;
+    background-color: red;
+    padding: 10px;
+    border-radius: 6px;
+}
+.content-Login .EntrarConviteBrasil .form .alert2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 5px 0;
+    background-color: var(--Foursome2);
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.content-Login .EntrarConviteBrasil .form  .infoavatar h4 {
+    text-align: left;
+}
+.content-Login .EntrarConviteBrasil .form  .infoavatar h5 {
+    text-align: left;
+}
+
+
+
+.content-Login .EntrarConviteBrasil .form .titleInput {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.content-Login .EntrarConviteBrasil .form .titleInput p {
+   font-weight: bold;
+   text-align: left;
+   margin-bottom: 3px;
+}
+
+.content-Login .EntrarConviteBrasil .form .title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 70%;
+    color: var(--White);
+    margin-bottom: 10px;
+}
+
+.content-Login .EntrarConviteBrasil .form input:focus{
+    outline: none;
+  }
+
+  .content-Login .EntrarConviteBrasil .form option:focus{
+    outline: none;
+  }
+  .content-Login .EntrarConviteBrasil .form select:focus{
+    outline: none;
+  }
+
+
+.content-Login .EntrarConviteBrasil .form input {
+    width: 70%;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background-color: var(--White);
+    border-radius: 6px;
+    font-size: 14px;
+    padding:10px;
+    margin-bottom: 5px;
+    color: var(--Primary);
+    font-weight: bold;
+}
+
+.content-Login .EntrarConviteBrasil .form select {
     width: 70%;
     height: 40px;
     border: none;
@@ -136,7 +344,7 @@
 }
 
 
-.content-Login .signUpConviteBrasil .form option {
+.content-Login .EntrarConviteBrasil .form option {
     width: 70%;
     border: none;
     border-bottom: 1px solid #fff;
@@ -147,11 +355,11 @@
 
 }
 
-.content-Login .signUpConviteBrasil .form input::placeholder {
+.content-Login .EntrarConviteBrasil .form input::placeholder {
     color: var(--Gray_font1);
 }
 
-.content-Login .signUpConviteBrasil .form .inputPassword {
+.content-Login .EntrarConviteBrasil .form .inputPassword {
     width: 70%;
     height: 45px;
     display: flex;
@@ -159,12 +367,12 @@
     }
 
     
-    .content-Login .signUpConviteBrasil .form .inputPassword input {
+    .content-Login .EntrarConviteBrasil .form .inputPassword input {
         width: 100%;
         border-radius: 6px 0 0 6px;
     }
     
-    .content-Login .signUpConviteBrasil .form .password {
+    .content-Login .EntrarConviteBrasil .form .password {
         background-color: var(--White);
         height: 40px;
         width: 50px;
@@ -176,7 +384,7 @@
     
 
 
-.content-Login .signUpConviteBrasil .form .buttons {
+.content-Login .EntrarConviteBrasil .form .buttons {
     width: 100%;
     display: flex;
     align-items: center;
@@ -185,7 +393,7 @@
     margin-top: 20px;
 }
 
-.content-Login .signUpConviteBrasil .form .buttons button {
+.content-Login .EntrarConviteBrasil .form .buttons button {
     background-color: var(--Button);
     width: 250px;
     height: 35PX;
@@ -195,7 +403,7 @@
     color: #fff;
     margin: 10px;
 }
-.content-Login .signUpConviteBrasil .form .buttons .btn {
+.content-Login .EntrarConviteBrasil .form .buttons .btn {
     background-color: var(--White);
     width: 250px;
     height: 35PX;
@@ -206,7 +414,7 @@
     margin: 10px;
 }
 
-.content-Login .signUpConviteBrasil .form .terms {
+.content-Login .EntrarConviteBrasil .form .terms {
     width: 70%;
     display: flex;
     flex-direction: row;
@@ -216,19 +424,19 @@
     margin-top: 10px;
 }
 
-.content-Login .signUpConviteBrasil .form .terms p a {
+.content-Login .EntrarConviteBrasil .form .terms p a {
     font-weight: 900;
     color: var(--White);
     text-decoration: none;
     margin-left: 3px;
 }
 
-.content-Login .signUpConviteBrasil .form .terms .pointer{
+.content-Login .EntrarConviteBrasil .form .terms .pointer{
   cursor: pointer;
   margin-left: 3px;
 }
 
-.content-Login .signUpConviteBrasil .form .terms input[type="checkbox"] {
+.content-Login .EntrarConviteBrasil .form .terms input[type="checkbox"] {
     margin-left: 5px;
     margin-right: 10px;
     color: var(--Primary);
@@ -236,28 +444,27 @@
 }
 
 
-.content-Login .signUpConviteBrasil .logo {
-    width: 90%;
+.content-Login .EntrarConviteBrasil .logo {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     color: var(--White);
     text-align: center;
-    padding: 20px;
-    margin: 20px;
+    padding: 30px 5px;
 }
 
-.content-Login .signUpConviteBrasil .logo img{
+.content-Login .EntrarConviteBrasil .logo img{
     width: 250px;
     margin-bottom: 20px;
 }
 
-.content-Login .signUpConviteBrasil .footer {
+.content-Login .EntrarConviteBrasil .footer {
     position: absolute;
     bottom: 0;
 }
-.content-Login .signUpConviteBrasil .footer img{
+.content-Login .EntrarConviteBrasil .footer img{
     width: 70px;
     margin-bottom: 20px;
 }
@@ -334,7 +541,7 @@
 }
 
 @media (max-width: 800px) {
-    .content-Login .signUpConviteBrasil {
+    .content-Login .EntrarConviteBrasil {
         width: 100%;
         display: flex;
         align-items: center;
@@ -343,7 +550,7 @@
         flex-wrap: wrap;
     }
 
-    .content-Login .signUpConviteBrasil .logo {
+    .content-Login .EntrarConviteBrasil .logo {
         width: 80%;
         display: flex;
         align-items: center;
@@ -353,7 +560,7 @@
         text-align: center;
     }
 
-    .content-Login .signUpConviteBrasil .form {
+    .content-Login .EntrarConviteBrasil .form {
         width: 80%;
         display: flex;
         flex-direction: column;
@@ -363,16 +570,16 @@
        margin-top: 30px;
     }
 
-    .content-Login .signUpConviteBrasil .logo img{
+    .content-Login .EntrarConviteBrasil .logo img{
         width: 50%;
         margin-bottom: 20px;
     }
 
-    .content-Login .signUpConviteBrasil .footer {
+    .content-Login .EntrarConviteBrasil .footer {
         position: relative;
         bottom: 0;
     }
-    .content-Login .signUpConviteBrasil .footer img{
+    .content-Login .EntrarConviteBrasil .footer img{
         margin-top: 40px;
         width: 70px;
         margin-bottom: 20px;
@@ -380,7 +587,7 @@
     
 
     @media (max-width: 500px) {
-        .content-Login .signUpConviteBrasil {
+        .content-Login .EntrarConviteBrasil {
             width: 100%;
             display: flex;
             align-items: center;
@@ -389,7 +596,7 @@
             flex-wrap: wrap;
         }
     
-        .content-Login .signUpConviteBrasil .logo {
+        .content-Login .EntrarConviteBrasil .logo {
             width: 80%;
             display: flex;
             align-items: center;
@@ -399,7 +606,7 @@
             text-align: center;
         }
     
-        .content-Login .signUpConviteBrasil .form {
+        .content-Login .EntrarConviteBrasil .form {
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -410,14 +617,43 @@
         }
 
         
-    .content-Login .signUpConviteBrasil .form .titleInput {
+    .content-Login .EntrarConviteBrasil .form .titleInput {
         width: 90%;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: flex-start;
     }
-    .content-Login .signUpConviteBrasil .form input {
+
+    .content-Login .EntrarConviteBrasil .form .dataUser select {
+        width: 90%;
+        height: 40px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        background-color: var(--White);
+        border-radius: 6px;
+        font-size: 14px;
+        padding:10px;
+        margin-bottom: 5px;
+        color: var(--Primary);
+        font-weight: bold;
+    }
+    .content-Login .EntrarConviteBrasil .form .dataUser input {
+        width: 90%;
+        height: 40px;
+        border: none;
+        border-bottom: 1px solid #fff;
+        background-color: var(--White);
+        border-radius: 6px;
+        font-size: 14px;
+        padding:10px;
+        margin-bottom: 5px;
+        color: var(--Primary);
+        font-weight: bold;
+    }
+
+    
+    .content-Login .EntrarConviteBrasil .form input {
         width: 90%;
         height: 40px;
         border: none;
@@ -431,7 +667,7 @@
         font-weight: bold;
     }
     
-    .content-Login .signUpConviteBrasil .form select {
+    .content-Login .EntrarConviteBrasil .form select {
         width: 90%;
         height: 40px;
         border: none;
@@ -446,7 +682,7 @@
     
     }
     
-    .content-Login .signUpConviteBrasil .form option {
+    .content-Login .EntrarConviteBrasil .form option {
         width: 90%;
         border: none;
         border-bottom: 1px solid #fff;
@@ -456,27 +692,27 @@
         color: var(--Primary);
     
     }
-.content-Login .signUpConviteBrasil .form .inputPassword {
+.content-Login .EntrarConviteBrasil .form .inputPassword {
     width: 90%;
     height: 45px;
     display: flex;
     
     }
 
-        .content-Login .signUpConviteBrasil .form .titleInput p {
+        .content-Login .EntrarConviteBrasil .form .titleInput p {
            font-weight: bold;
         }
 
-        .content-Login .signUpConviteBrasil .logo img{
+        .content-Login .EntrarConviteBrasil .logo img{
             width: 60%;
             margin-bottom: 20px;
         }
 
-        .content-Login .signUpConviteBrasil .form .terms {
+        .content-Login .EntrarConviteBrasil .form .terms {
             width: 70%;
         }
 
-        .content-Login .signUpConviteBrasil .form .terms span {
+        .content-Login .EntrarConviteBrasil .form .terms span {
             font-size: 14px;
         }
         
@@ -494,7 +730,7 @@
     justify-content: center;
 }
 
-.content-Login .signUpConvitePortugal {
+.content-Login .EntrarConvitePortugal {
     width: 100%;
     display: flex;
     align-items: center;
@@ -503,7 +739,7 @@
     flex-wrap: wrap;
 }
 
-.content-Login .signUpConvitePortugal .form {
+.content-Login .EntrarConvitePortugal .form {
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -512,20 +748,20 @@
     color: var(--White);
     margin-bottom:40px;
 }
-.content-Login .signUpConvitePortugal .form .titleInput {
+.content-Login .EntrarConvitePortugal .form .titleInput {
     width: 70%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
 }
-.content-Login .signUpConvitePortugal .form .titleInput p {
+.content-Login .EntrarConvitePortugal .form .titleInput p {
    font-weight: bold;
    text-align: left;
    margin-bottom: 3px;
 }
 
-.content-Login .signUpConvitePortugal .form .title {
+.content-Login .EntrarConvitePortugal .form .title {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -535,19 +771,19 @@
     margin-bottom: 10px;
 }
 
-.content-Login .signUpConvitePortugal .form input:focus{
+.content-Login .EntrarConvitePortugal .form input:focus{
     outline: none;
   }
 
-  .content-Login .signUpConvitePortugal .form option:focus{
+  .content-Login .EntrarConvitePortugal .form option:focus{
     outline: none;
   }
-  .content-Login .signUpConvitePortugal .form select:focus{
+  .content-Login .EntrarConvitePortugal .form select:focus{
     outline: none;
   }
 
 
-.content-Login .signUpConvitePortugal .form input {
+.content-Login .EntrarConvitePortugal .form input {
     width: 70%;
     height: 40px;
     border: none;
@@ -561,7 +797,7 @@
     font-weight: bold;
 }
 
-.content-Login .signUpConvitePortugal .form select {
+.content-Login .EntrarConvitePortugal .form select {
     width: 70%;
     height: 40px;
     border: none;
@@ -576,7 +812,7 @@
 
 }
 
-.content-Login .signUpConvitePortugal .form option {
+.content-Login .EntrarConvitePortugal .form option {
     width: 70%;
     border: none;
     border-bottom: 1px solid #fff;
@@ -587,23 +823,23 @@
 
 }
 
-.content-Login .signUpConvitePortugal .form input::placeholder {
+.content-Login .EntrarConvitePortugal .form input::placeholder {
     color: var(--Gray_font1);
 }
 
-.content-Login .signUpConvitePortugal .form .inputPassword {
+.content-Login .EntrarConvitePortugal .form .inputPassword {
     width: 70%;
     height: 45px;
     display: flex;
     
     }
     
-    .content-Login .signUpConvitePortugal .form .inputPassword input {
+    .content-Login .EntrarConvitePortugal .form .inputPassword input {
         width: 100%;
         border-radius: 6px 0 0 6px;
     }
     
-    .content-Login .signUpConvitePortugal .form .password {
+    .content-Login .EntrarConvitePortugal .form .password {
         background-color: var(--White);
         height: 40px;
         width: 50px;
@@ -615,7 +851,7 @@
     
 
 
-.content-Login .signUpConvitePortugal .form .buttons {
+.content-Login .EntrarConvitePortugal .form .buttons {
     width: 100%;
     display: flex;
     align-items: center;
@@ -624,7 +860,7 @@
     margin-top: 20px;
 }
 
-.content-Login .signUpConvitePortugal .form .buttons button {
+.content-Login .EntrarConvitePortugal .form .buttons button {
     background-color: var(--Button);
     width: 250px;
     height: 35PX;
@@ -633,7 +869,7 @@
     font-weight: bold;
     color: #fff;
 }
-.content-Login .signUpConvitePortugal .form .buttons .btn {
+.content-Login .EntrarConvitePortugal .form .buttons .btn {
     background-color: var(--White);
     width: 250px;
     height: 35PX;
@@ -644,7 +880,7 @@
     margin: 10px;
 }
 
-.content-Login .signUpConvitePortugal .form .terms {
+.content-Login .EntrarConvitePortugal .form .terms {
     width: 70%;
     display: flex;
     flex-direction: row;
@@ -654,19 +890,19 @@
     margin-top: 10px;
 }
 
-.content-Login .signUpConvitePortugal .form .terms p a {
+.content-Login .EntrarConvitePortugal .form .terms p a {
     font-weight: 900;
     color: var(--White);
     text-decoration: none;
     margin-left: 3px;
 }
 
-.content-Login .signUpConvitePortugal .form .terms .pointer{
+.content-Login .EntrarConvitePortugal .form .terms .pointer{
   cursor: pointer;
   margin-left: 3px;
 }
 
-.content-Login .signUpConvitePortugal .form .terms input[type="checkbox"] {
+.content-Login .EntrarConvitePortugal .form .terms input[type="checkbox"] {
     margin-left: 5px;
     margin-right: 10px;
     color: var(--Primary);
@@ -674,7 +910,7 @@
 }
 
 
-.content-Login .signUpConvitePortugal .logo {
+.content-Login .EntrarConvitePortugal .logo {
     width: 80%;
     display: flex;
     align-items: center;
@@ -686,16 +922,16 @@
     margin: 20px;
 }
 
-.content-Login .signUpConvitePortugal .logo img{
+.content-Login .EntrarConvitePortugal .logo img{
     width: 250px;
     margin-bottom: 20px;
 }
 
-.content-Login .signUpConvitePortugal .footer {
+.content-Login .EntrarConvitePortugal .footer {
     position: absolute;
     bottom: 0;
 }
-.content-Login .signUpConvitePortugal .footer img{
+.content-Login .EntrarConvitePortugal .footer img{
     width: 70px;
     margin-bottom: 20px;
 }
@@ -770,7 +1006,7 @@
     margin-right: 10px;
 }
 @media (max-width: 800px) {
-    .content-Login .signUpConvitePortugal {
+    .content-Login .EntrarConvitePortugal {
         width: 100%;
         display: flex;
         align-items: center;
@@ -779,7 +1015,7 @@
         flex-wrap: wrap;
     }
 
-    .content-Login .signUpConvitePortugal .logo {
+    .content-Login .EntrarConvitePortugal .logo {
         width: 80%;
         display: flex;
         align-items: center;
@@ -789,7 +1025,7 @@
         text-align: center;
     }
 
-    .content-Login .signUpConvitePortugal .form {
+    .content-Login .EntrarConvitePortugal .form {
         width: 80%;
         display: flex;
         flex-direction: column;
@@ -799,16 +1035,16 @@
        margin-top: 30px;
     }
 
-    .content-Login .signUpConvitePortugal .logo img{
+    .content-Login .EntrarConvitePortugal .logo img{
         width: 50%;
         margin-bottom: 20px;
     }
 
-    .content-Login .signUpConvitePortugal .footer {
+    .content-Login .EntrarConvitePortugal .footer {
         position: relative;
         bottom: 0;
     }
-    .content-Login .signUpConvitePortugal .footer img{
+    .content-Login .EntrarConvitePortugal .footer img{
         margin-top: 40px;
         width: 70px;
         margin-bottom: 20px;
@@ -816,7 +1052,7 @@
     
 
     @media (max-width: 500px) {
-        .content-Login .signUpConvitePortugal {
+        .content-Login .EntrarConvitePortugal {
             width: 100%;
             display: flex;
             align-items: center;
@@ -825,7 +1061,7 @@
             flex-wrap: wrap;
         }
     
-        .content-Login .signUpConvitePortugal .logo {
+        .content-Login .EntrarConvitePortugal .logo {
             width: 80%;
             display: flex;
             align-items: center;
@@ -835,7 +1071,7 @@
             text-align: center;
         }
     
-        .content-Login .signUpConvitePortugal .form {
+        .content-Login .EntrarConvitePortugal .form {
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -846,14 +1082,14 @@
         }
 
         
-    .content-Login .signUpConvitePortugal .form .titleInput {
+    .content-Login .EntrarConvitePortugal .form .titleInput {
         width: 90%;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: flex-start;
     }
-    .content-Login .signUpConvitePortugal .form input {
+    .content-Login .EntrarConvitePortugal .form input {
         width: 90%;
         height: 40px;
         border: none;
@@ -867,7 +1103,7 @@
         font-weight: bold;
     }
     
-    .content-Login .signUpConvitePortugal .form select {
+    .content-Login .EntrarConvitePortugal .form select {
         width: 90%;
         height: 40px;
         border: none;
@@ -882,7 +1118,7 @@
     
     }
     
-    .content-Login .signUpConvitePortugal .form option {
+    .content-Login .EntrarConvitePortugal .form option {
         width: 90%;
         border: none;
         border-bottom: 1px solid #fff;
@@ -892,27 +1128,27 @@
         color: var(--Primary);
     
     }
-.content-Login .signUpConvitePortugal .form .inputPassword {
+.content-Login .EntrarConvitePortugal .form .inputPassword {
     width: 90%;
     height: 45px;
     display: flex;
     
     }
 
-        .content-Login .signUpConvitePortugal .form .titleInput p {
+        .content-Login .EntrarConvitePortugal .form .titleInput p {
            font-weight: bold;
         }
 
-        .content-Login .signUpConvitePortugal .logo img{
+        .content-Login .EntrarConvitePortugal .logo img{
             width: 60%;
             margin-bottom: 20px;
         }
 
-        .content-Login .signUpConvitePortugal .form .terms {
+        .content-Login .EntrarConvitePortugal .form .terms {
             width: 70%;
         }
 
-        .content-Login .signUpConvitePortugal .form .terms span {
+        .content-Login .EntrarConvitePortugal .form .terms span {
             font-size: 14px;
         }
         

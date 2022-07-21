@@ -45,8 +45,7 @@ import { RegistrationEnd } from '../pages/RegistrationEnd/RegistrationEnd';
 import { Search } from '../pages/Search/Search';
 import { Settings } from '../pages/Settings/Settings';
 import { SignIn } from '../pages/SignIn/SignIn';
-import { SignUp } from '../pages/SignUp/SignUp';
-import { SignUpConvite } from '../pages/SignUpConvite/SignUpsignUpConvite';
+import { EntrarConvite } from '../pages/EntrarConvite/EntrarConvite';
 import { Solicitations } from '../pages/Solicitations/Solicitations';
 import { UpdateAccounts } from '../pages/UpdateAccounts/UpdateAccounts';
 import { UsageTips } from '../pages/UsageTips/UsageTips';
@@ -65,7 +64,7 @@ function PrivateRoute({children} ) {
 
             <Routes>
             <Route path="/" element={<SignIn />}/>
-            <Route path="/signup/convite/:email/:code/:patron/:type" element={ <SignUpConvite />} />
+            <Route path="/signup/convite/:email/:code/:patron/:type" element={ <EntrarConvite />} />
             <Route path="/signup/" element={ <Entrar />} />
             <Route path="/forgotit" element={ <Forgotit />} />
             <Route path="/recuperation" element={ <Recuperation />} />       
