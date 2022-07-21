@@ -15,7 +15,7 @@ function DeleteMessage({id}) {
 
     return (
         <div className="delete">
-            <button className ="buttonDelete" onClick={handleMessageDelete}><FiTrash /></button>
+            <button className ="buttonDelete" onClick={handleMessageDelete}><FiTrash /> Deletar</button>
         </div>
     )
 }

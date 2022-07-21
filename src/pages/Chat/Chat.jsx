@@ -220,9 +220,11 @@ async function handleUploadAccountVideo(img) {
 
 function handlePressMessage() {
   if(click === false) {
-    setClick(false)
-  } else {
     setClick(true)
+    console.log(click)
+  } else {
+    setClick(false)
+    console.log(click)
   }
 }
 
@@ -253,7 +255,7 @@ function handleMedia() {
                   
                        <div className="data">
                        <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>
-                        <p><b>Eu - {message.idAccount}</b></p>
+                        <p>Eu - {message.idAccount}</p>
                         </Link>
                        <h5>{message.text}</h5>
                      {message.link !== "" ?
@@ -276,7 +278,10 @@ function handleMedia() {
                      <div className="date">
                      <DateFormatChat date={message.created_at} />
                        </div> 
-                    {message.idAccount === user.id ? <DeleteMessage id={message.id} /> : ""}
+                       {
+                        click === false ? "" :
+                    message.idAccount === user.id ? <DeleteMessage id={message.id} /> : ""
+                       }
                        </div>
                        <div className="avatar">                     
                        <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>             
@@ -295,7 +300,7 @@ function handleMedia() {
                     </div>
                        <div className="data">
                        <Link to={message.idAccount === user.id ? `/profile` : `/profile-friend/${message.idAccount}`}>
-                        <p><b>{message.nickname}</b></p>
+                        <p>{message.nickname}</p>
                        </Link>
                        <h5>{message.text}</h5>
                      {message.link !== "" ?
@@ -318,7 +323,10 @@ function handleMedia() {
                                           <div className="date">
                                           <DateFormatChat date={message.created_at} />
                                             </div> 
-                      {message.idAccount === user.id ? <DeleteMessage id={message.id} /> : ""}
+                                            {
+                        click === false ? "" :
+                    message.idAccount === user.id ? <DeleteMessage id={message.id} /> : ""
+                       }
                        </div>
                   </div>
                    </div>
