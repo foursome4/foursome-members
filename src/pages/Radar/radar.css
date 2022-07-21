@@ -4,7 +4,6 @@
 
 .content {
     width: 100%;
-    height: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -15,7 +14,6 @@
 
 .content .main{
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,7 +49,6 @@
 
 .content .aside .radar {
     width: 100%;
-    height: 600px;
     border-right: 2px solid var(--Background);
     display: flex;
     flex-direction: column;
@@ -59,7 +56,6 @@
     justify-content: flex-start;
     padding: 20px;
     margin-top: 25px;
-    margin-bottom: 60px;
 }
 
 .content .aside .radar h1 {
@@ -108,7 +104,7 @@
     padding: 5px 0;
 }
 .content .aside .radar .selectFilter {
-    width: 50%;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -117,6 +113,51 @@
     margin-top: -10px;
     margin-bottom: 20px;
 }
+
+.content .aside .radar .selectFilter .onOff {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 5px;
+}
+.content .aside .radar .selectFilter .onOff button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 10px 20px;
+    background-color: var(--White);
+    border: 1px solid var(--Primary);
+    color: var(--Primary);
+    cursor: pointer;
+}
+.content .aside .radar .selectFilter .onOff .one {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 10px 20px;
+    background-color: var(--Primary);
+    border: 1px solid var(--Primary);
+    color: var(--White);
+    cursor: pointer;
+
+}
+.content .aside .radar .selectFilter .onOff .two {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 10px 20px;
+    background-color: var(--White);
+    border: 1px solid var(--Primary);
+    color: var(--Primary);
+    cursor: pointer;
+}
+
+
 .content .aside .radar .selectFilter select {
     width: 50%;
     display: flex;
@@ -239,6 +280,44 @@
     margin: 10px;
 }
 
+.content .aside .radar .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+.content .aside .radar .button button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: var(--Primary);
+    color: var(--White);
+    border-radius: 6px;
+    border:none;
+    padding: 10px 20px;
+    font-weight: bold;
+    margin: 5px 5px 70px 5px;
+}
+.content .aside .radar .top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    color: var(--Primary);
+    border-radius: 50%;
+    font-size: 20px;
+    padding:5px;
+    border: none;
+    background-color: var(--White);
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    right: 0;
+    bottom: 100px;
+}
 .content .aside .radar .radar-all {
     width: 80%;
     display: flex;
@@ -247,7 +326,7 @@
     justify-content: center;
     padding: 5px 0;
     flex-wrap: wrap;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .content .aside .radar .radar-all .radar-unic {
@@ -346,6 +425,12 @@
 }
 
 @media(max-width: 850px) {
+
+    .content .aside .radar {
+        padding: 30px 1px;
+
+    }
+    
     .content .aside .radar .radar-all {
         width: 100%;    
 }
@@ -381,6 +466,12 @@
     background-color: var(--Background2);
     margin: 5px 0;
 }
+
+
+.content .aside .radar .radar-all .radar-unic h4 {
+    margin-top:-15px;
+}
+
 
 @media(max-width: 650px) {
     .content .aside .radar .radar-all {

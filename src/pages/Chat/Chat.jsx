@@ -238,7 +238,7 @@ function handleMedia() {
   return (
     <div className="content">
       <ToolbarLeftSlim />
-      <BarBottomMenu />
+      {/* <BarBottomMenu /> */}
       <div className="chat">
         <TopBar />
         <div className="main-chat">

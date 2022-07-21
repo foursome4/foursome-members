@@ -8,6 +8,7 @@ import api from "../../services/api"
 import { Link } from "react-router-dom"
 import {IoLocationOutline, IoPersonOutline} from 'react-icons/io5'
 import {FaCircle} from 'react-icons/fa'
+import { FiArrowUpCircle } from 'react-icons/fi'
 
 function Radar() {
     const {logout, updateUserOnline, socketDataLocation} = useContext(AuthContext);
@@ -27,7 +28,8 @@ function Radar() {
     const [style, setStyle] = useState("recolher");
     const [users, setUsers] = useState([]);
     const [myInformations, setMyInformations] = useState(false)
-    const id = userData.id
+    const id = userData.id;
+    const [qtd, setqtd] = useState(35)
 
    
     useEffect(() => {
@@ -270,14 +272,6 @@ function Radar() {
     
     var number ;
 
-
-
-
-
-//  console.log("DistanciaArray")
-//  console.log(distancia)
-//  console.log("User Online Unic")
-//  console.log(users)
  console.log("User Offline")
  console.log(userOffline)
 
@@ -290,6 +284,19 @@ function Radar() {
         } else {
             return true
         }
+    })
+}
+
+function handleInvitesView(e) {
+    e.preventDefault();
+    // setIndex(index + 35)
+    setqtd(qtd + 35)
+}
+
+function handleTop(e) {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     })
 }
 
@@ -315,6 +322,8 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                 (range < 1) && (emojiSelect === "") && (type === "") ? allUsers : 
                 allUsers
 
+                const limitData = filter?.slice(0, qtd)
+
 
                 if(!users) { 
                     return (
@@ -329,24 +338,29 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                         
                     )
                 }
+
+                let text = "Carregando usuários do radar. Aguarde..."
+
+                if(userOffline.length > 200) {
+                    text = "Calculando distância..."
+                } else if(userOffline.length > 300) {
+                    text = "Carregando preferências..."
+                } else if(userOffline.length > 400) {
+                    text = "Verificando quem está perto..."
+                } else if(userOffline.length > 500) {
+                    text = "Cruzando interesses..."
+                } else {
+                    text = "Carregando usuários do radar. Aguarde..."
+                }
+
+
+
                 if(loadOffline === false) { 
                     return (
                         <div className="content">
                          <div className="main">
                         <div className="messageLoad">
-                        <h4>Carregando usuários do radar. Aguarde...</h4>
-                            {/* {userOffline.length < 100 ? 
-                        <h4>Carregando usuários do radar. Aguarde...</h4>
-                        : userOffline.length < 200 ? 
-                        <h4>Calculando distância</h4>
-                        : userOffline.length < 300 ? 
-                        <h4>Carregando preferências</h4>
-                        : userOffline.length < 400 ? 
-                        <h4>Verificando quem está perto</h4>
-                        : userOffline.length < 500 ? 
-                        <h4>Cruzando interesses</h4>
-                         : <h4>Carregando usuários do radar. Aguarde...</h4>
-                            } */}
+                        <h4>{text}</h4>
                         </div>
                     </div>
                     </div>
@@ -401,9 +415,9 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
 }
 
                             <div className="radar-range">
-                                <h4>{range} Km</h4>
-                                <input type="range" min={0} max={5000} value={range} onChange={(e) => setRange(e.target.value)}/>
-                                <h4>5.000 km</h4>
+                                <h4>0 Km</h4>
+                                <input type="range" min={0} max={10000} value={range} onChange={(e) => setRange(e.target.value)}/>
+                                <h4>{range} km</h4>
                                 <br />
                                 <br />
                                 <br />
@@ -427,10 +441,16 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                             </select>
 
 
-
+<div className="onOff">
+    <button className={'select'}>Todos</button>
+    <button>Online</button>
+    <button className="two">Offline</button>
+</div>
                             </div>
+
+                            
                             <div className="radar-all">
-                                {filter?.map((user) => {
+                                {limitData?.map((user) => {
                                     return (
                                user.idAccount === userData.id ? "":
                                user.invisible === true ? "" :
@@ -455,6 +475,11 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                                 })}
 
                             </div>
+                            <div className="button">
+                            <button onClick={handleInvitesView}>Ver mais</button>
+                            </div>
+                <button className="top" onClick={handleTop}><FiArrowUpCircle /></button>
+
                     </div>
                 </div>
      

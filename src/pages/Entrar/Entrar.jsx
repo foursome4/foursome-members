@@ -189,16 +189,25 @@ function Entrar() {
   } else {
       
   } 
+  // if(uf !== "") {
+  //   handleSearchDistrict()
+
+  // } else {
+      
+  // } 
 
   async function handleSearchDistrict() {
-    await buscaDistrito.get(`${uf}/distritos`).then((res) => { 
+    try {
+      const res = await buscaDistrito.get(`${uf}/distritos`) 
         console.log(res.data)
         setDistrictAll(res.data)
         console.log(res.data[0].municipio.nome);
         return;
-    }).catch((err) => {
-        console.log(err)
-    })
+      }catch{
+        console.log("error")
+        toast.error("Código Postal não encontrado. Por favor, digite sua Cidade e sua Província")
+    }
+    return
 }
 
 
@@ -234,6 +243,10 @@ districtAll.sort(function(a,b) {
 
       function handleSetectCity(e) {
         setCity(e.target.value)
+        console.log(e.target.value)
+      }
+      function handleSetectUf(e) {
+        setUf(e.target.value)
         console.log(e.target.value)
       }
 
@@ -746,7 +759,7 @@ districtAll.sort(function(a,b) {
              <div className="form">
              <div className="top">
           <img src={logoImg} alt="Logotipo Foursome" />
-          <h2>Endereço</h2>
+          <h2>Cidade e Estado</h2>
         </div>
 
         {location === "Automatic" ?
@@ -763,9 +776,42 @@ districtAll.sort(function(a,b) {
                           país === "Brasil" ? 
                           <div className="location">
                           <br />
-                          
+                          <br />
+             <br />
                               <h5>Localização Manual</h5>
-                              <input type="text" autocomplete="off" placeholder='UF - Ex.: RJ' value={uf} onChange={(e) => setUf(e.target.value)} required />
+                              <select value={uf} onChange={handleSetectUf}> 
+                                      <option value="">Escolha seu estado</option>
+                                      <option value="AC">Acre</option>
+                                      <option value="AL">Alagoas</option>
+                                      <option value="AP">Amapá</option>
+                                      <option value="AM">Amazonas</option>
+                                      <option value="BA">Bahia</option>
+                                      <option value="CE">Ceará</option>
+                                      <option value="DF">Distrito Federal</option>
+                                      <option value="ES">Espírito Santo</option>
+                                      <option value="GO">Goiás</option>
+                                      <option value="MA">Maranhão</option>
+                                      <option value="MT">Mato Grosso</option>
+                                      <option value="MS">Mato Grosso do Sul</option>
+                                      <option value="MG">Minas Gerais</option>
+                                      <option value="PA">Pará</option>
+                                      <option value="PB">Paraíba</option>
+                                      <option value="PR">Paraná</option>
+                                      <option value="PE">Pernambuco</option>
+                                      <option value="PI">Piauí</option>
+                                      <option value="RJ">Rio de Janeiro</option>
+                                      <option value="RN">Rio Grande do Norte</option>
+                                      <option value="RS">Rio Grande do Sul</option>
+                                      <option value="RO">Rondônia</option>
+                                      <option value="RR">Roraima</option>
+                                      <option value="SC">Santa Catarina</option>
+                                      <option value="SP">São Paulo</option>
+                                      <option value="SE">Sergipe</option>
+                                      <option value="TO">Tocantins</option>
+                                      <option value="EX">Estrangeiro</option>
+                                
+                              </select>
+                              {/* <input type="text" autocomplete="off" placeholder='UF - Ex.: RJ' value={uf} onChange={(e) => setUf(e.target.value)} required /> */}
                               <button className="uf" onClick={() => handleSearchDistrict()}>Buscar Cidades</button>
                               <select value={city} onChange={handleSetectCity}>       
                               {districtAll?.map((district) => {
@@ -801,7 +847,7 @@ districtAll.sort(function(a,b) {
 
                         {
                         <div className="digiteCep">
-                        <button onClick={handleHabiliteLocation}>{location === "Automatic" ? "Buscar manuelmente": "Voltar a localização automática"}</button>
+                        <button onClick={handleHabiliteLocation}>{location === "Automatic" ? "Buscar manualmente": "Voltar a localização automática"}</button>
                         </div>
                         }          
 
@@ -812,6 +858,9 @@ districtAll.sort(function(a,b) {
           <button onClick={() => handleSelectView("nickname")}> Avançar </button>
           <button className='btn' onClick={() => {handleSelectView("information")}}> Voltar </button>
           </div>
+          <br />
+             <br />
+             <br />
           </div>
              </div>
        </>
@@ -822,6 +871,8 @@ districtAll.sort(function(a,b) {
           <img src={logoImg} alt="Logotipo Foursome" />
           <h2>Nome e relacionamento</h2>
         </div>
+        <br />
+             <br />
              <div className="form">
 
        <div className="dataUser">
@@ -834,6 +885,10 @@ districtAll.sort(function(a,b) {
                                 <option value="Relacionamento Aberto">Relacionamento Aberto</option>
                             </select>
              </div>  
+             <br />
+             <br />
+             <br />
+             <br />
 
              <div className="titleInput">
           <p>Como conheceu a Foursome:</p>
@@ -847,11 +902,18 @@ districtAll.sort(function(a,b) {
                 <option value="Google">Google </option>
                 <option value="Indicação de Amigo">Indicação de Amigo </option>
             </select>
-
+            <br />
+             <br />
              <div className="buttons">
           <button onClick={openModal }> Próxima Etapa </button>
           <button className='btn' onClick={() => handleSelectView("address")}> Voltar </button>
           </div>
+          <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
           </div>
           </div>
        </>
