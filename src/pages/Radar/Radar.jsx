@@ -30,6 +30,7 @@ function Radar() {
     const [myInformations, setMyInformations] = useState(false)
     const id = userData.id;
     const [qtd, setqtd] = useState(35)
+    const [onlineUsers, setOnlineUsers] = useState("")
 
    
     useEffect(() => {
@@ -292,6 +293,24 @@ function handleInvitesView(e) {
     // setIndex(index + 35)
     setqtd(qtd + 35)
 }
+function handleAllOnlineUsers(e) {
+    e.preventDefault();
+    // setIndex(index + 35)
+    setOnlineUsers("")
+    console.log("All")
+}
+function handleOnlineUsers(e) {
+    e.preventDefault();
+    // setIndex(index + 35)
+    setOnlineUsers(true)
+    console.log("Online")
+}
+function handleOfflineUsers(e) {
+    e.preventDefault();
+    // setIndex(index + 35)
+    setOnlineUsers(false)
+    console.log("Offline")
+}
 
 function handleTop(e) {
     window.scrollTo({
@@ -300,14 +319,18 @@ function handleTop(e) {
     })
 }
 
-const searchAll = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.distanceKm <= range));
+
+
+
+const searchAll = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers ));
 const searchEmojiType = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type) );
 const searchEmojiRange = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.distanceKm <= range));
 const searchTypeRange = allUsers.filter((distanciaUser) => (distanciaUser.type === type && distanciaUser.distanceKm <= range));
 const searchEmoji= allUsers.filter((distanciaUser) => distanciaUser.emoji === emojiSelect );
 const searchType= allUsers.filter((distanciaUser) =>  distanciaUser.type === type);
 const searchDistance= allUsers.filter((distanciaUser) => distanciaUser.distanceKm <= range);
-const myUserFilter= allUsers.filter((distanciaUser) => distanciaUser.idAccount <= userData.id);
+const filterOnline = allUsers.filter((distanciaUser) => distanciaUser.online === onlineUsers)
+
 
 //console.log(myUserFilter)
 
@@ -441,11 +464,11 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                             </select>
 
 
-<div className="onOff">
-    <button className={'select'}>Todos</button>
-    <button>Online</button>
-    <button className="two">Offline</button>
-</div>
+{/* <div className="onOff">
+    <button className={'select'} onClick={handleAllOnlineUsers}>Todos</button>
+    <button onClick={handleOnlineUsers}>Online</button>
+    <button className="two" onClick={handleOfflineUsers}>Offline</button>
+</div> */}
                             </div>
 
                             

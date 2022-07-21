@@ -205,7 +205,7 @@ function Entrar() {
         return;
       }catch{
         console.log("error")
-        toast.error("Código Postal não encontrado. Por favor, digite sua Cidade e sua Província")
+        toast.error("Escolha um estado e clica em buscar cidades")
     }
     return
 }
