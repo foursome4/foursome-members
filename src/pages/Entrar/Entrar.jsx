@@ -371,13 +371,13 @@ districtAll.sort(function(a,b) {
           const patron = "503465"
 
        createAccount({
-              id, país, username: username.toLowerCase(), email, phone, type, password, status, role,
+              id, país, username: username.toLowerCase(), email: email.replace(/\s+/g, ''), phone, type, password, status, role,
               code, online, patron, avatar, cover, nickname, relationship, recommendation,
               cep: cep === "" ? codigoPostal : cep, city: city !== "" ? city : city2, uf: uf.toUpperCase() !== "" ? uf.toUpperCase() : uf2.toUpperCase() , latitude, longitude
               })
           
             console.log({
-              id, país, username: username.toLowerCase(), email, phone, type, password, status, role,
+              id, país, username: username.toLowerCase(), email: email.replace(/\s+/g, ''), phone, type, password, status, role,
               code, online, patron, avatar, cover, nickname, relationship, recommendation,
               cep: cep === "" ? codigoPostal : cep, city: city !== "" ? city : city2, uf: uf.toUpperCase() !== "" ? uf.toUpperCase() : uf2.toUpperCase() , latitude, longitude
               })
@@ -626,7 +626,7 @@ districtAll.sort(function(a,b) {
           <div className="titleInput">
           <p>Meu email:</p>
           </div>
-          <input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+          <input type="email" placeholder="E-mail" value={email.replace(/\s+/g, '')} onChange={(e) => setEmail(e.target.value)} required/>
           {email.includes('@') ? "" :
                             <div className="alert">
                                 <h5>Seu Email deve conter o @</h5>
