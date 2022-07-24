@@ -31,6 +31,10 @@ function PostTextGroup({nameGroup, idGroup}) {
     async function handlePostNew() {
         setLoading(true)
 
+        if(text === "" ) {
+            return
+        }
+
             newPost({
                 idAccount: user.id,
                 link: "",

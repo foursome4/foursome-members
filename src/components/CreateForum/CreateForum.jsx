@@ -16,7 +16,7 @@ function CreateForum() {
 
 
     const cover = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
-    const avatar = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
+    const avatar = "https://pic.onlinewebfonts.com/svg/img_562621.png"
 
 
     const [avatarUrl, setAvatarUrl] = useState(null);
@@ -72,7 +72,7 @@ function CreateForum() {
         const uuid2 = uuidv4();
         let newCoverUrlFirebase = ref(storage, `images/cover/${uuid2}`);
         let upload = await uploadBytes(newCoverUrlFirebase, imageCover);
-        let cover = await getDownloadURL(upload.ref);
+        let cover2 = await getDownloadURL(upload.ref);
 
             let idAccount = user.id;
             let username = user.username;

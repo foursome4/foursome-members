@@ -31,6 +31,10 @@ function PostText({nameForum, idForum}) {
     async function handlePostNew() {
         setLoading(true)
 
+        if(text === "" ) {
+            return
+        }
+
             newPost({
                 idAccount: user.id,
                 link: "",

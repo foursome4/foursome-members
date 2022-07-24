@@ -194,6 +194,10 @@ function Post() {
 
     async function handlePostNew() {
         setLoading(true)
+
+        if(text === "" ) {
+            return
+        }
         
         if(post === "photo") {
             toast.info("Salvando a foto. Aguarde...")

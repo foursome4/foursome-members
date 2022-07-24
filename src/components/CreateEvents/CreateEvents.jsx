@@ -18,7 +18,7 @@ function CreateEvents() {
     const LocalInformations = localStorage.getItem("informations-foursome");
     const userInformations= JSON.parse(LocalInformations);
     
-    const cover = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
+    const cover2 = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
     const avatar2 = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
     const avatar = "https://pic.onlinewebfonts.com/svg/img_562621.png"
 
@@ -89,7 +89,7 @@ function CreateEvents() {
         const uuid2 = uuidv4();
         let newCoverUrlFirebase = ref(storage, `images/coverEvents/${uuid2}`);
         let upload = await uploadBytes(newCoverUrlFirebase, imageCover);
-        let cover = await getDownloadURL(upload.ref);
+        let  cover1 = await getDownloadURL(upload.ref);
 
             let idAccount = user.id;
             let username = user.username;
@@ -97,11 +97,17 @@ function CreateEvents() {
             let nickname = userInformations.nickname;
             let status = "pending"
         
+            const cover = cover1 === "" || cover1  === undefined || cover1  === null ? cover2 : cover1
  
 
         createEvents(
         avatar, name, description, date, street, district, city, uf, complement, reference, number, theme, cover, status, idAccount, username, avatarUser, nickname
         )
+
+        setInterval(function () { 
+            toast.success("Evento criado com sucesso! Aguarde a aprovação dos moderadores!")
+            window.open("/events","_self")
+         }, 5000);
 
         toast.success("Criando Evento...")
         
@@ -235,7 +241,7 @@ function CreateEvents() {
             <label className="label-cover">
                     <span><FiUpload color="#f65" size={25} /></span>
                     <input type="file" accept="image/*" onChange={handleFileCover}/><br />
-                    <img src={coverUrl === null ? cover : coverUrl } alt="Avatar"/>
+                    <img src={coverUrl === null ? cover2 : coverUrl } alt="Avatar"/>
                 </label>
 
                 <button onClick={handleCreateEvent}>Criar Evento</button>

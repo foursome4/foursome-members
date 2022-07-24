@@ -89,6 +89,10 @@ function PostGroup({nameGroup, idGroup}) {
       }
     
     async function handlePostNew() {
+
+        if(text === "" ) {
+            return
+        }
         setLoading(true)
         
         if(post === "photo") {

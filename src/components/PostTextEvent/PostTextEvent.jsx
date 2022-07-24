@@ -31,6 +31,10 @@ function PostTextEvent({nameEvent, idEvent}) {
 
     async function handlePostNew() {
 
+        if(text === "" ) {
+            return
+        }
+
         newPostEvent({
                 idAccount: user.id,
                 link: "",

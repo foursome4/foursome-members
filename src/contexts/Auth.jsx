@@ -916,6 +916,7 @@ async function createMemberGroup( idAccount, idGroup, username, avatar, nickname
 }
 async function createEvents( avatar, name, description, date, street, district, city, uf, complement, reference, number, theme, cover, status, idAccount, username, avatarUser, nickname){
     const data = { avatar, name, description, date, street, district, city, uf, complement, reference, number, theme, cover, status, idAccount, username, avatarUser, nickname};
+    console.log(avatar, name, description, date, street, district, city, uf, complement, reference, number, theme, cover, status, idAccount, username, avatarUser, nickname);
     const res = await api.post("/events", data)
 
     console.log(data)

@@ -8,10 +8,19 @@
     color: var(--Gray_font2)
 }
 
+.listEventsFeed .imageCover {
+    width: 800px;
+    height: 150px;
+    border-radius:6px;
+    object-fit: cover;
+}
+
 
 .listEventsFeed .imageCover img {
-    width: 100%;
+    width: 800px;
+    height: 150px;
     border-radius:6px;
+    object-fit: cover;
 }
 
 @media(max-width:750px) {

@@ -28,7 +28,7 @@ function ListEventsFeed() {
 
     return (
         <div className="listEventsFeed">
-                                 {eventos.map((event) => {
+                                 {events.map((event) => {
                                  return(
                                      event.status === "Aproved" ?
                                         <div className="imageCover" key={event.id}> 
