@@ -3,25 +3,28 @@ import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { ListMembersGroup } from '../ListMembersGroup/ListMembersGroup';
 import { Link } from 'react-router-dom';
+import { useFetch } from '../../hooks/useFetch';
 
 function ListGroups() {
-    const [groups, setGroups] = useState([])
+    // const [groups, setGroups] = useState([])
 
-    useEffect(() => {
-        async function loadGroups(){
-            await api.get("/groups").then((result) => {
-                console.log(result.data);
-                setGroups(result.data)
-            })
-        }
+    // useEffect(() => {
+    //     async function loadGroups(){
+    //         await api.get("/groups").then((result) => {
+    //             console.log(result.data);
+    //             setGroups(result.data)
+    //         })
+    //     }
 
-        loadGroups()
-    }, []);
+    //     loadGroups()
+    // }, []);
+
+    const {data} = useFetch(`/groups`);
 
     return (
         <div className="listGroups">
              <div className="groups-all">
-                             {groups.map((group) => {
+                             {data?.map((group) => {
                                  return(
                                     <div className="group-unic" key={group.id}>
                                         <div className="cover">

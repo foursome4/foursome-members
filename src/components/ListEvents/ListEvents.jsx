@@ -2,29 +2,30 @@ import './listEvents.css'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { Link } from 'react-router-dom';
+import { useFetch } from '../../hooks/useFetch';
 
 function ListEvents() {
 
-    const [events, setEvents] = useState([])
+    // const [events, setEvents] = useState([])
 
-
-    useEffect(() => {
-        async function loadGroups(){
-            await api.get("/events").then((result) => {
-                console.log(result.data);
-                setEvents(result.data)
-            })
-        }
-        loadGroups()
-    }, []);
+    const {data} = useFetch(`/events`);
+    // useEffect(() => {
+    //     async function loadGroups(){
+    //         await api.get("/events").then((result) => {
+    //             console.log(result.data);
+    //             setEvents(result.data)
+    //         })
+    //     }
+    //     loadGroups()
+    // }, []);
 
 
     return (
         <div className="listEvents">
              <div className="events-all">
-                             {events.map((event) => {
+                             {data?.map((event) => {
                                  return(
-                                     event.status === "Aproved" ?
+                                 
                                     <div className="events-unic" key={event.id}>
                                         <div className="imageCover"> 
                                     <img src={event.cover} alt="" className="cover"/>
@@ -33,8 +34,6 @@ function ListEvents() {
                                     <h4>{event.name}</h4>
                                     <Link to={`/event/${event.id}`}>Saber mais</Link>
                                 </div>
-                                : ""
-                           
                                  )
                              })}
                                

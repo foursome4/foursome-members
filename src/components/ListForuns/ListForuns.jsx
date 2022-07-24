@@ -2,28 +2,31 @@ import './listForuns.css'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { Link } from 'react-router-dom';
+import { useFetch } from '../../hooks/useFetch';
 
 function ListForuns() {
 
-    const [foruns, setForuns] = useState([])
+    // const [foruns, setForuns] = useState([])
 
 
-    useEffect(() => {
-        async function loadGroups(){
-            await api.get("/foruns").then((result) => {
-                console.log(result.data);
-                setForuns(result.data)
-            })
-        }
+    // useEffect(() => {
+    //     async function loadGroups(){
+    //         await api.get("/foruns").then((result) => {
+    //             console.log(result.data);
+    //             setForuns(result.data)
+    //         })
+    //     }
 
-        loadGroups()
-    }, []);
+    //     loadGroups()
+    // }, []);
+
+    const {data} = useFetch(`/foruns`);
 
 
     return (
         <div className="listForuns">
              <div className="foruns-all">
-                             {foruns.map((forum) => {
+                             {data?.map((forum) => {
                                  return(
                                     <div className="foruns-unic" key={forum.id}>
                                         <div className="imageCover"> 

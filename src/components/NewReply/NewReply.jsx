@@ -14,6 +14,9 @@ function NewReply({idComment, username}) {
     const [textComment, setTextComment] = useState("");
 
     function handleComment() {
+        if(textComment === "") {
+            return
+        }
         newReply({text: textComment, idComment: idComment, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username})
         setTextComment("");
         }

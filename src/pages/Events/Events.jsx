@@ -31,17 +31,17 @@ function Events() {
         <div className="content">
      <ToolbarLeftSlim />
      <BarBottomMenu />
-            <div className="main-group">
+            <div className="main-event">
                 <TopBar />
-                <div className="aside-group">
-                    <div className="group">
-                            <div className="group-selected">
+                <div className="aside-event">
+                    <div className="event">
+                            <div className="event-selected">
                                 <button className={select === "All" ? "selected" : ""} onClick={handleAllGroups}>Eventos</button>
                                 <button className={select === "Participate" ? "selected" : ""} onClick={handleParticipate}>Eu vou!</button>
                                 <button className={select === "My" ? "selected" : ""} onClick={handleMyEvents}>Meus Eventos</button>
                             </div>
-                            <div className="group-buttons">
-                                <div className="group-create">
+                            <div className="event-buttons">
+                                <div className="event-create">
                                 <button onClick={handleSelectCreate}><FiPlusCircle size={20}/> Criar evento</button>
                                 </div>
                             </div>

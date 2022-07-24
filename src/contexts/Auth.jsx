@@ -916,18 +916,21 @@ async function createMemberGroup( idAccount, idGroup, username, avatar, nickname
 }
 async function createEvents( avatar, name, description, date, street, district, city, uf, complement, reference, number, theme, cover, status, idAccount, username, avatarUser, nickname){
     const data = { avatar, name, description, date, street, district, city, uf, complement, reference, number, theme, cover, status, idAccount, username, avatarUser, nickname};
-    await api.post("/events", data).then(() => {
+    const res = await api.post("/events", data)
+
+    console.log(data)
+
+    if(res.status === 201) {
         toast.success("Evento criado com sucesso! Aguarde a aprovação dos moderadores!")
-        window.location.reload(false)
-    }).catch(error => {
-        console.log(error)
-    })
+        console.log("Evento criado com sucesso! Aguarde a aprovação dos moderadores!")
+        window.open("/events","_self")
+    }
+
 }
 async function createMembersEvents( idAccount, idEvent, role, status, username ){
     const data = { idAccount, idEvent, role, status, username };
     await api.post("/membersevents", data).then(() => {
         toast.success("Presença confirmada")
-        window.location.reload(false)
     }).catch(error => {
         console.log(error)
     })

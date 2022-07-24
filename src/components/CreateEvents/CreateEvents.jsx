@@ -5,7 +5,9 @@ import { AuthContext } from "../../contexts/Auth";
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes} from 'firebase/storage';
 import { v4 as uuidv4 } from 'uuid';
-import buscaCep from '../../services/api-buscaCep'
+import buscaCep from '../../services/api-buscaCep';
+import {toast} from 'react-toastify';
+import buscaDistrito from "../../services/api-buscaDistrito";
 
 
 
@@ -17,7 +19,8 @@ function CreateEvents() {
     const userInformations= JSON.parse(LocalInformations);
     
     const cover = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
-    const avatar = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
+    const avatar2 = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
+    const avatar = "https://pic.onlinewebfonts.com/svg/img_562621.png"
 
 
     const [avatarUrl, setAvatarUrl] = useState(null);
@@ -30,8 +33,9 @@ function CreateEvents() {
     const [theme, setTheme] = useState("");
     const [date, setDate] = useState("");
     const [street, setStreet] = useState("");
-    const [district, setDistrict] = useState("");
     const [city, setCity] = useState("");
+    const [district, setDistrict] = useState("");
+    const [districtAll, setDistrictAll] = useState([]);
     const [uf, setUf] = useState("");
     const [reference, setReferencee] = useState("");
     const [complement, setComplement] = useState("");
@@ -98,6 +102,8 @@ function CreateEvents() {
         createEvents(
         avatar, name, description, date, street, district, city, uf, complement, reference, number, theme, cover, status, idAccount, username, avatarUser, nickname
         )
+
+        toast.success("Criando Evento...")
         
     }
 
@@ -122,7 +128,30 @@ function CreateEvents() {
     }
 
 
+    async function handleSearchDistrict(e) {
+        e.preventDefault();
+        try {
+          const res = await buscaDistrito.get(`${uf}/distritos`) 
+            console.log(res.data)
+            setDistrictAll(res.data)
+            console.log(res.data[0].municipio.nome);
+            return;
+          }catch{
+            console.log("error")
+            toast.error("Escolha um estado e clica em buscar cidades")
+        }
+        return
+    }
 
+    function handleSetectCity(e) {
+        setCity(e.target.value)
+        console.log(e.target.value)
+      }
+
+      function handleSetectUf(e) {
+        setUf(e.target.value)
+        console.log(e.target.value)
+      }
 
 
     return (
@@ -140,16 +169,55 @@ function CreateEvents() {
                     <input type="text" placeholder='Descrição' value={description} onChange={(e) => setDescription(e.target.value)}/>
                     <input type="date" placeholder='Descrição' value={date} onChange={(e) => setDate(e.target.value)}/>
                     <div className="SearchCep">
-                <input type="text" placeholder='Digite seu cep' value={cep} onChange={(e) => setCep(e.target.value)}/>
-                <button onClick={handleSearchCep}><FiSearch /> Cep </button>
+                    <select value={uf} onChange={handleSetectUf}> 
+                                      <option value="">Escolha seu estado</option>
+                                      <option value="AC">Acre</option>
+                                      <option value="AL">Alagoas</option>
+                                      <option value="AP">Amapá</option>
+                                      <option value="AM">Amazonas</option>
+                                      <option value="BA">Bahia</option>
+                                      <option value="CE">Ceará</option>
+                                      <option value="DF">Distrito Federal</option>
+                                      <option value="ES">Espírito Santo</option>
+                                      <option value="GO">Goiás</option>
+                                      <option value="MA">Maranhão</option>
+                                      <option value="MT">Mato Grosso</option>
+                                      <option value="MS">Mato Grosso do Sul</option>
+                                      <option value="MG">Minas Gerais</option>
+                                      <option value="PA">Pará</option>
+                                      <option value="PB">Paraíba</option>
+                                      <option value="PR">Paraná</option>
+                                      <option value="PE">Pernambuco</option>
+                                      <option value="PI">Piauí</option>
+                                      <option value="RJ">Rio de Janeiro</option>
+                                      <option value="RN">Rio Grande do Norte</option>
+                                      <option value="RS">Rio Grande do Sul</option>
+                                      <option value="RO">Rondônia</option>
+                                      <option value="RR">Roraima</option>
+                                      <option value="SC">Santa Catarina</option>
+                                      <option value="SP">São Paulo</option>
+                                      <option value="SE">Sergipe</option>
+                                      <option value="TO">Tocantins</option>
+                                      <option value="EX">Estrangeiro</option>
+                                
+                              </select>
+                              {/* <input type="text" placeholder='UF - Ex.: RJ' value={uf} onChange={(e) => setUf(e.target.value)} required /> */}
+                              <button className="uf" onClick={handleSearchDistrict}>Buscar Cidades</button>
+                              <select value={city} onChange={handleSetectCity}>       
+                              {districtAll?.map((district) => {
+                                      return (
+                                          <option key={district.id} value={district.nome}>{district.nome}</option>
+                                      )
+                                  })}
+                              </select>
                 </div>
-                <input type="text" placeholder='Rua' value={street} onChange={(e) => setStreet(e.target.value)}/>
+                {/* <input type="text" placeholder='Rua' value={street} onChange={(e) => setStreet(e.target.value)}/>
                 <input type="text" placeholder='Bairro' value={district} onChange={(e) => setDistrict(e.target.value)}/>
                 <input type="number" placeholder='Número' value={number} onChange={(e) => setNumber(e.target.value)}/>
                 <input type="text" placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)}/>
                 <input type="text" placeholder='Estado' value={uf} onChange={(e) => setUf(e.target.value)}/>
                 <input type="text" placeholder='Complemento' value={complement} onChange={(e) => setComplement(e.target.value)}/>
-                <input type="text" placeholder='Ponto de Referênca' value={reference} onChange={(e) => setReferencee(e.target.value)}/>
+                <input type="text" placeholder='Ponto de Referênca' value={reference} onChange={(e) => setReferencee(e.target.value)}/> */}
                 <br />
                   
                     <select value={theme} onChange={handleTheme}>
@@ -162,6 +230,7 @@ function CreateEvents() {
                     </select>
 
             </div>
+            <br />
             <h5><b>Capa da página do Evento. Slider no feed ( Tamanho: 1000px largura x 200px altura )</b></h5>
             <label className="label-cover">
                     <span><FiUpload color="#f65" size={25} /></span>

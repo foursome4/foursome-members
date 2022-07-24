@@ -1,0 +1,117 @@
+﻿.RecadoUnic{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    background-color: var(--Background2);
+    padding: 100px 0;
+}
+
+
+.RecadoUnic .listRecadoUnic{
+    display: flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-start;
+    width:100%;
+    padding-left:10%;
+    padding-rigth:10%;
+    background-color: var(--Background2)
+}
+.RecadoUnic .listRecadoUnic .reply{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    margin: 40px 0;
+}
+
+.RecadoUnic .listRecadoUnic .reply textarea{
+        display: flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    border-radius: 6px;
+    border: 1px solid var(--Gray_font1);
+    color:  var(--Background);
+    width: 100%;
+    resize: none;
+    
+}
+.RecadoUnic .listRecadoUnic .reply button{
+        display: flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    border-radius: 6px;
+    border:none;
+    background-color: var(--Button);
+    color: var(--White);
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+
+.RecadoUnic .listRecadoUnic .title {
+    width: 80%;
+    heigth: 20px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: none;
+    border-left: 4px solid var(--Button);
+    padding: 10px;
+}
+.RecadoUnic .listRecadoUnic .title h3 {
+    color: var(--Primary);
+}
+.RecadoUnic .listRecadoUnic .title h5 {
+    color: var(--Gray_font1);
+}
+.RecadoUnic .listRecadoUnic h5 {
+    color: var(--Gray_font2);
+}
+
+.RecadoUnic .listRecadoUnic .title2 {
+    width: 80%;
+    heigth: 20px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: none;
+    border-left: 4px solid var(--Foursome2);
+    padding: 10px;
+}
+.RecadoUnic .listRecadoUnic .title2 h3 {
+    color: var(--Primary);
+}
+.RecadoUnic .listRecadoUnic .title2 h5 {
+    color: var(--Gray_font1);
+}
+.RecadoUnic .listRecadoUnic h5 {
+    color: var(--Gray_font2);
+}
+
+
+@media (max-width: 900px) {
+    .RecadoUnic .listRecadoUnic{
+        width:100%;
+        padding-left:10%;
+        padding-rigth:10%;
+        background-color: var(--Background2)
+    }
+
+    @media (max-width: 800px) {
+        .RecadoUnic .listRecadoUnic{
+            width:100%;
+            padding:0 10px;
+            background-color: var(--Background2)
+        }
+        
+    }
+    
+}

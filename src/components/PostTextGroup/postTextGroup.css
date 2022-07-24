@@ -1,4 +1,4 @@
-.postGroup {
+.postTextGroup {
     width: 80%;
     border-radius: 10px;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
@@ -10,7 +10,7 @@
     margin-top: 20px;
 }
 
-.postGroup .postGroup-data {
+.postTextGroup .postTextGroup-data {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -18,19 +18,19 @@
     justify-content: center;
 }
 
-.postGroup .postGroup-data .avatar {
+.postTextGroup .postTextGroup-data .avatar {
     width: 50px;
     height: 50px;  
 }
 
-.postGroup .postGroup-data .avatar img {
+.postTextGroup .postTextGroup-data .avatar img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.postGroup .postGroup-data .postGroup-type {
+.postTextGroup .postTextGroup-data .postTextGroup-type {
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -39,14 +39,14 @@
     padding: 0 10px;
 }
 
-.postGroup .postGroup-data .postGroup-type .inputs {
+.postTextGroup .postTextGroup-data .postTextGroup-type .inputs {
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
-.postGroup .postGroup-data .postGroup-type .inputs .post-file {
+.postTextGroup .postTextGroup-data .postTextGroup-type .inputs .postTextGroup-file {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -55,7 +55,7 @@
     margin-right: 10px;
 }
 
-.postGroup .postGroup-data .postGroup-type .inputs .post-file .label-avatar{
+.postTextGroup .postTextGroup-data .postTextGroup-type .inputs .postTextGroup-file .label-avatar{
     width: 80px;
     height: 80px;
     display: flex;
@@ -66,29 +66,29 @@
     margin: 5px 0;
 }
 
-.postGroup .postGroup-data .postGroup-type .inputs .post-file .label-avatar input {
+.postTextGroup .postTextGroup-data .postTextGroup-type .inputs .postTextGroup-file .label-avatar input {
     display: none;
 }
 
-.postGroup .postGroup-data .postGroup-type .inputs .post-file .label-avatar span {
+.postTextGroup .postTextGroup-data .postTextGroup-type .inputs .postTextGroup-file .label-avatar span {
     z-index: 99;
     position: absolute;
     opacity: 0.7;
     transition: all .5s;
 }
 
-.postGroup .postGroup-data .postGroup-type .inputs .post-file .label-avatar span:hover{
+.postTextGroup .postTextGroup-data .postTextGroup-type .inputs .postTextGroup-file .label-avatar span:hover{
     opacity: 1;
     transform: scale(1.4);
 }
 
-.postGroup .postGroup-data .postGroup-type .inputs .post-file .label-avatar img{
+.postTextGroup .postTextGroup-data .postTextGroup-type .inputs .postTextGroup-file .label-avatar img{
     margin-bottom: 1em;
     border-radius: 6%;
     object-fit: cover;
 }
 
-.postGroup .postGroup-data .postGroup-type .inputs textarea {
+.postTextGroup .postTextGroup-data .postTextGroup-type .inputs textarea {
     width: 100%;
     height: 80px;
     border: 1px solid var(--Gray-Border);
@@ -97,7 +97,7 @@
     margin-right: 10px;
 }
 
-.postGroup .postGroup-data .postGroup-type .inputs button {
+.postTextGroup .postTextGroup-data .postTextGroup-type .inputs button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -111,7 +111,7 @@
     color: var(--White);
 }
 
-.postGroup .postGroup-data .postGroup-type .buttons {
+.postTextGroup .postTextGroup-data .postTextGroup-type .buttons {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -120,7 +120,7 @@
     margin-top: 10px;
 }
 
-.postGroup .postGroup-data .postGroup-type .buttons button {
+.postTextGroup .postTextGroup-data .postTextGroup-type .buttons button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -133,16 +133,16 @@
     margin-right: 10px;
 }
 
-.postGroup .postGroup-data .postGroup-type .buttons .selected {
+.postTextGroup .postTextGroup-data .postTextGroup-type .buttons .selected {
     border: 1px solid var(--Primary);
     color: var(--Primary);
 }
 
-.postGroup .postGroup-data .postGroup-type .buttons button svg {
+.postTextGroup .postTextGroup-data .postTextGroup-type .buttons button svg {
     margin-right: 5px;
 }
 
-.postGroup .posts-feed {
+.postTextGroup .posts-feed {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -151,7 +151,7 @@
     margin-top: 50px;
 }
 
-.postGroup .posts-feed .buttons {
+.postTextGroup .posts-feed .buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -159,7 +159,7 @@
     margin: 0 0 10px 0;
 }
 
-.postGroup .posts-feed .buttons button {
+.postTextGroup .posts-feed .buttons button {
     padding: 5px;
     width: 120px;
     border: none;
@@ -167,12 +167,12 @@
     background-color: var(--Background2);
 }
 
-.postGroup .posts-feed .buttons .selected {
+.postTextGroup .posts-feed .buttons .selected {
     border-bottom: 2px solid var(--Primary);
     color: var(--Primary);
 }
 
-.postGroup .posts-feed .feed-post {
+.postTextGroup .posts-feed .feed-post {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -185,7 +185,7 @@
     margin: 10px 0;
 }
 
-.postGroup .posts-feed .feed-post .post-user {
+.postTextGroup .posts-feed .feed-post .post-user {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -193,33 +193,33 @@
     width: 90%;
 }
 
-.postGroup .posts-feed .feed-post .post-user img {
+.postTextGroup .posts-feed .feed-post .post-user img {
     width: 50px;
     border-radius: 50%;
     margin-right: 20px;
 }
 
-.postGroup .posts-feed .feed-post .post-user .name-data {
+.postTextGroup .posts-feed .feed-post .post-user .name-data {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
-.postGroup .posts-feed .feed-post .post-user .name-data .selected {
+.postTextGroup .posts-feed .feed-post .post-user .name-data .selected {
     color: var(--Primary) ;
 }
 
-.postGroup .posts-feed .feed-post .postGroup-data {
+.postTextGroup .posts-feed .feed-post .postTextGroup-data {
     margin: 5px 0;
     width: 90%;
 }
 
-.postGroup .posts-feed .feed-post .postGroup-data p {
+.postTextGroup .posts-feed .feed-post .postTextGroup-data p {
     font-size: 18px;
 }
 
-.postGroup .posts-feed .feed-post .reactions {
+.postTextGroup .posts-feed .feed-post .reactions {
     width: 90%;
     display: flex;
     flex-direction: row;
@@ -229,7 +229,7 @@
     
 }
 
-.postGroup .posts-feed .feed-post .reactions button {
+.postTextGroup .posts-feed .feed-post .reactions button {
     background-color: var(--Background2);
     border: none;
     font-size: 18px;
@@ -237,11 +237,11 @@
     
 }
 
-.postGroup .posts-feed .feed-post .reactions button svg {
+.postTextGroup .posts-feed .feed-post .reactions button svg {
     margin-right: 5px;
 }
 
-.postGroup .posts-feed .feed-post .reactions .selected{
+.postTextGroup .posts-feed .feed-post .reactions .selected{
     color: var(--Primary);   
 }
 
@@ -251,141 +251,141 @@
 
 
 @media (max-width: 1180px) {
-    .postGroup .postGroup-data .postGroup-type .buttons button {
+    .postTextGroup .postTextGroup-data .postTextGroup-type .buttons button {
       width: 150px;
     }
 
-    .postGroup .postGroup-data .postGroup-type .inputs textarea {
+    .postTextGroup .postTextGroup-data .postTextGroup-type .inputs textarea {
         width: 85%;
     }
 
-    .postGroup .postGroup-data .postGroup-type .inputs button {
+    .postTextGroup .postTextGroup-data .postTextGroup-type .inputs button {
         width: 15%;
     }
 
     @media (max-width: 950px) {
 
-        .postGroup {
+        .postTextGroup {
             width: 90%;
         }
-        .postGroup .postGroup-data .postGroup-type .buttons button {
+        .postTextGroup .postTextGroup-data .postTextGroup-type .buttons button {
           width: 150px;
         }
 
-        .postGroup .postGroup-data .postGroup-type .inputs textarea {
+        .postTextGroup .postTextGroup-data .postTextGroup-type .inputs textarea {
             width: 80%;
         }
 
-        .postGroup .postGroup-data .postGroup-type .inputs button {
+        .postTextGroup .postTextGroup-data .postTextGroup-type .inputs button {
             width: 20%;
         }
       }
 
       @media (max-width: 850px) {
-        .postGroup .postGroup-data .postGroup-type .buttons button {
+        .postTextGroup .postTextGroup-data .postTextGroup-type .buttons button {
           width: 150px;
         }
 
 
         @media (max-width: 750px) {
-            .postGroup {
+            .postTextGroup {
                 width: 100%;
             }
 
-            .postGroup .postGroup-data .avatar {
+            .postTextGroup .postTextGroup-data .avatar {
                 width: 30px;
                 height: 30px;
             }
 
-            .postGroup .postGroup-data .avatar img {
+            .postTextGroup .postTextGroup-data .avatar img {
                 height: 30px;
                 width: 30px;
             }
 
-            .postGroup .postGroup-data .postGroup-type .buttons button {
+            .postTextGroup .postTextGroup-data .postTextGroup-type .buttons button {
                 width: 100px;
               }
 
-            .postGroup .postGroup-data .postGroup-type .buttons {
+            .postTextGroup .postTextGroup-data .postTextGroup-type .buttons {
               flex-wrap: wrap;
             }
 
 
 
             @media (max-width: 620px) {
-                .postGroup {
+                .postTextGroup {
                     width: 100%;
                 }
     
-                .postGroup .postGroup-data .avatar {
+                .postTextGroup .postTextGroup-data .avatar {
                     display: none;
                 }
-                .postGroup .postGroup-data .avatar img {
+                .postTextGroup .postTextGroup-data .avatar img {
                     display: none;
                 }
 
-                .postGroup .postGroup-data .postGroup-type {
+                .postTextGroup .postTextGroup-data .postTextGroup-type {
                     width: 100%;
                 }
     
-                .postGroup .postGroup-data .postGroup-type .buttons {
+                .postTextGroup .postTextGroup-data .postTextGroup-type .buttons {
                   flex-wrap: wrap;
                 }
 
-                .postGroup .postGroup-data .postGroup-type .buttons button {
+                .postTextGroup .postTextGroup-data .postTextGroup-type .buttons button {
                     width: 120px;
                   }
               }
 
 
               @media (max-width: 550px) {
-                .postGroup {
+                .postTextGroup {
                     width: 100%;
                 }
 /*     
-                .postGroup .postGroup-data .avatar img {
+                .postTextGroup .postTextGroup-data .avatar img {
                     width: 30px;
                 }
      */
-                .postGroup .postGroup-data .postGroup-type .buttons {
+                .postTextGroup .postTextGroup-data .postTextGroup-type .buttons {
                   flex-wrap: wrap;
                 }
 
-                .postGroup .postGroup-data .postGroup-type .buttons button {
+                .postTextGroup .postTextGroup-data .postTextGroup-type .buttons button {
                     width: 120px;
                   }
 
 
                   @media (max-width: 450px) {
-                    .postGroup {
+                    .postTextGroup {
                         width: 100%;
                     }
    
-                    .postGroup .posts-feed .buttons {
+                    .postTextGroup .posts-feed .buttons {
                         width: 100%;
                     }
-                    .postGroup .postGroup-data .postGroup-type .buttons {
+                    .postTextGroup .postTextGroup-data .postTextGroup-type .buttons {
                         flex-wrap: wrap;
                     }
     
-                    .postGroup .postGroup-data .postGroup-type .buttons button {
+                    .postTextGroup .postTextGroup-data .postTextGroup-type .buttons button {
                         width: 90px;
                       }
 
 
                       @media (max-width: 380px) {
-                        .postGroup {
+                        .postTextGroup {
                             width: 100%;
                         }
        
-                        .postGroup .posts-feed .buttons {
+                        .postTextGroup .posts-feed .buttons {
                             width: 100%;
                         }
-                        .postGroup .postGroup-data .postGroup-type .buttons {
+                        .postTextGroup .postTextGroup-data .postTextGroup-type .buttons {
                             flex-wrap: wrap;
                         }
         
-                        .postGroup .postGroup-data .postGroup-type .buttons button {
+                        .postTextGroup .postTextGroup-data .postTextGroup-type .buttons button {
                             flex-direction: column;
                             width: 88px;
                             margin-right: 5px;

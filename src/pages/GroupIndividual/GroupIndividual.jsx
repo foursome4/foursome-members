@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom'
 import { PostGroup } from '../../components/PostGroup/PostGroup'
 import { FeedPostGroup } from '../../components/FeedPostGroup/FeedPostGroup'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
+import { PostTextGroup } from '../../components/PostTextGroup/PostTextGroup'
 
 
 function GroupIndividual() {
@@ -141,7 +142,7 @@ console.log(member)
                      <div className="feed">
                   {feed === "feed" ?
                   <>
-                    <PostGroup nameGroup={name} idGroup={idGroup}/>
+                    <PostTextGroup nameGroup={name} idGroup={idGroup}/>
                     <br /><br />
                     <FeedPostGroup idGroup={id} />
                   </>

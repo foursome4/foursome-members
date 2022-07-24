@@ -32,7 +32,55 @@ function Radar() {
     const [qtd, setqtd] = useState(35)
     const [onlineUsers, setOnlineUsers] = useState("")
 
+    const [minhaLatitude, setMinhaLatitude] = useState("")
+    const [minhaLongitude, setMinhaLongitude] = useState("")
+
+    let latInitial = 0
+    let longInitial = 0
    
+  useEffect(() => {
+    function getLocation() {
+        return window.navigator.geolocation.getCurrentPosition(success, error);
+         }
+
+    function success(position) {
+        latInitial  = position.coords.latitude;
+        longInitial = position.coords.longitude;
+        const lat100  = position.coords.latitude;
+        const long100 = position.coords.longitude;
+    
+        setMinhaLatitude(lat100);
+        setMinhaLongitude(long100);
+        console.log("lat100");
+        console.log(lat100);
+        console.log("long100");
+        console.log(long100);
+        console.log("latInitial");
+        console.log(latInitial);
+        console.log("longInitial");
+        console.log(longInitial);
+
+      //  reverseGeolocalization(lat100, long100);
+      }
+
+    //   async function reverseGeolocalization(lat, long) {
+    //     console.log(lat, long)
+    //     const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyCZllXD0czNd_oeF0u_o9LUVJ2bCd1K4p8`);
+    // //    console.log(address.data.results[0])
+    // //     setCity2(address.data.results[0].address_components[3].long_name)
+    // //     setUf2(address.data.results[0].address_components[4].short_name) 
+    //     return
+    //  }
+
+          
+  function error() {
+    console.log('Unable to retrieve your location');
+  }
+
+      getLocation()
+},[])
+
+
     useEffect(() => {
         async function searchAccount() {
           const res =  await api.get(`accounts/filter/${id}`);
@@ -98,6 +146,7 @@ function Radar() {
                 res.data.forEach((userLocation) => {
     
                    function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend) {
+                       console.log(latInitial, longInitial)
                        console.log(myLat, myLong, latFriend, longFriend)
                        var deg2rad = function (deg) { return deg * (Math.PI / 180); },
                            R = 6371,
@@ -137,7 +186,7 @@ function Radar() {
                            setDistancia(oldDistancia => [...oldDistancia, dados])
                    }
                    
-                   getDistanceFromLatLonInKm(myLocation[0].lat, myLocation[0].long, userLocation.lat, userLocation.long )
+                   getDistanceFromLatLonInKm(latInitial, longInitial, userLocation.lat, userLocation.long )
                    setLoad(true)
     
            })
@@ -164,6 +213,7 @@ function Radar() {
                         }
     
                         function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend) {
+                            console.log(latInitial, longInitial)
                             console.log(myLat, myLong, latFriend, longFriend)
                             var deg2rad = function (deg) { return deg * (Math.PI / 180); },
                                 R = 6371,
@@ -205,7 +255,7 @@ function Radar() {
      
                         }
                         
-                        getDistanceFromLatLonInKm(myLocation[0].latitude, myLocation[0].longitude, userAccounts.latitude, userAccounts.longitude )
+                        getDistanceFromLatLonInKm(latInitial, longInitial, userAccounts.latitude, userAccounts.longitude )
                         setLoadOffline(true)
          
                 })

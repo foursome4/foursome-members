@@ -15,6 +15,9 @@ function NewComment({postData, idAccount}) {
     const [textComment, setTextComment] = useState("");
 
     function handleComment(postData) {
+        if(textComment === "") {
+            return
+        }
         const data = {text: textComment, idPost: postData, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username, idPatrono: idAccount}
         newComment({text: textComment, idPost: postData, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username, idPatrono: idAccount})
         setTextComment("");

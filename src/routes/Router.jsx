@@ -50,6 +50,7 @@ import { Solicitations } from '../pages/Solicitations/Solicitations';
 import { UpdateAccounts } from '../pages/UpdateAccounts/UpdateAccounts';
 import { UsageTips } from '../pages/UsageTips/UsageTips';
 import { UseOfTerms } from '../pages/UseOfTerms/UseOfTerms';
+import { RecadoUnic } from '../pages/RecadoUnic/RecadoUnic';
 
 
 function Router () {
@@ -148,6 +149,8 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Notifications /> </PrivateRoute>} />
             <Route path="/recados" 
                 element={ <PrivateRoute> <Recados /> </PrivateRoute>} />
+            <Route path="/recados/:id" 
+                element={ <PrivateRoute> <RecadoUnic /> </PrivateRoute>} />
             <Route path="/search" 
                 element={ <PrivateRoute> <Search /> </PrivateRoute>} />
             <Route path="/solicitations" 
