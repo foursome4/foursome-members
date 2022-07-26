@@ -20,7 +20,7 @@ function Pricing() {
                                         <h2> <b>Seja VIP</b> </h2>
                                         <div className="double">
                                         <h4>Curtir/Comentar</h4>
-                                        <IoCheckmarkOutline color="Green"/>
+                                        <IoCheckmarkOutline color="#2aae2a"/>
                                         </div>
                                         <div className="double">
                                         <h4>Postar</h4>
@@ -28,19 +28,19 @@ function Pricing() {
                                         </div>
                                         <div className="double">
                                         <h4>Ver fotos</h4>
-                                        <IoCheckmarkOutline color="Green"/>
+                                        <IoCheckmarkOutline color="#2aae2a"/>
                                         </div>
                                         <div className="double">
-                                        <h4>ver vídeo</h4>
+                                        <h4>Ver vídeo</h4>
                                         <IoCloseOutline color="Red"/>
                                         </div>
                                         <div className="double">
                                         <h4>Acesso ao radar</h4>
-                                        <IoCheckmarkOutline color="Green"/>
+                                        <IoCheckmarkOutline color="#2aae2a"/>
                                         </div>
                                         <div className="double">
                                         <h4>Acesso ao ranking</h4>
-                                        <IoCheckmarkOutline color="Green"/>
+                                        <IoCheckmarkOutline color="#2aae2a"/>
                                         </div>
                                         <div className="double">
                                         <h4>Notificações</h4>
@@ -55,7 +55,48 @@ function Pricing() {
                                         <IoCloseOutline color="Red"/>
                                         </div>
 
-                                        <a href={`/selectplain/`}>Assinar</a>
+                                        <a href={`/selectplain/`}>Queroser VIP</a>
+                                </div>
+                                <div className="premium">
+                                        <h2> <b>Seja PREMIUM</b> </h2>
+                                        <div className="double">
+                                        <h4>Curtir/Comentar</h4>
+                                        <IoCheckmarkOutline color="#2aae2a"/>
+                                        </div>
+                                        <div className="double">
+                                        <h4>Postar</h4>
+                                        <h5>2 Foto/vídeos dia</h5>
+                                        </div>
+                                        <div className="double">
+                                        <h4>Ver fotos</h4>
+                                        <IoCheckmarkOutline color="#2aae2a"/>
+                                        </div>
+                                        <div className="double">
+                                        <h4>Ver vídeo</h4>
+                                        <IoCheckmarkOutline color="#2aae2a"/>
+                                        </div>
+                                        <div className="double">
+                                        <h4>Acesso ao radar</h4>
+                                        <IoCheckmarkOutline color="#2aae2a"/>
+                                        </div>
+                                        <div className="double">
+                                        <h4>Acesso ao ranking</h4>
+                                        <IoCheckmarkOutline color="#2aae2a"/>
+                                        </div>
+                                        <div className="double">
+                                        <h4>Notificações</h4>
+                                        <IoCheckmarkOutline color="#2aae2a"/>
+                                        </div>
+                                        <div className="double">
+                                        <h4>Solicitações</h4>
+                                        <IoCheckmarkOutline color="#2aae2a"/>
+                                        </div>
+                                        <div className="double">
+                                        <h4>Chat de mensagens</h4>
+                                        <IoCheckmarkOutline color="#2aae2a"/>
+                                        </div>
+
+                                        <a href={`/selectplain/`}>Quero ser PREMIUM</a>
                                 </div>
 
                     </div>
