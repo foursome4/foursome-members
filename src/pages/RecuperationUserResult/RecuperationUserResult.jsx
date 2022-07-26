@@ -12,7 +12,7 @@ function RecuperationUserResult() {
   }
 
   return (
-    <div className="content-Login">
+    <div className="content-Login1">
       <div className="recuperation">
       <div className="logo">
         <img src={logoImg} alt="Logo Foursome" />

@@ -80,7 +80,7 @@ function SignIn() {
           </div>
 
           <div className="whatsapp" onClick={handleSignUp}>
-             <h4><b>Não tem conta? </b> <a href="/signup">Clique aqui e cadastre-se</a></h4>
+             <h4><b>Não tem conta? </b> Clique aqui e cadastre-se</h4>
           </div>
           <div className="whatsapp2" onClick={handleInviteWhatsapp}>
             <h4> Entre em contato <IoLogoWhatsapp /></h4>

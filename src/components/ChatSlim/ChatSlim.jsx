@@ -13,7 +13,7 @@ const online = data?.slice(0,20);
      
     return (
         <div className="content-chat">
-            <div className="list">
+            {/* <div className="list">
             {data?.map((user) => {
                 return (
                     user.idAccount === userData.id ? "" :
@@ -31,7 +31,7 @@ const online = data?.slice(0,20);
                      </div>
                 )
             })}
-            </div>
+            </div> */}
                 <div className="online">
                     <div className="text">
                     <h5><b>Online agora: </b></h5>

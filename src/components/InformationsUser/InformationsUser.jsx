@@ -76,7 +76,7 @@ function InformationsUser() {
 
       const friendAproveds = myFriends.filter(friend => (friend.status === 'aproved'))
       const date = new Date(user.date)
-
+      const visitsLimit = visits.slice(0, 10)
 return (
     <div className="infos">
     <div className="info">
@@ -169,7 +169,7 @@ return (
 <div className="visits">
 <h5><b>Últimas visitas</b></h5>
 <div className="names">
-{visits.map((visit) => {
+{visitsLimit.map((visit) => {
     return(
       <div key={visit.id}>
         <a href={`/profile-friend/${visit.idAccount}`}>

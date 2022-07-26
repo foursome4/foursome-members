@@ -995,15 +995,17 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
     }
 
     
-
-         // Location
- function socketDataLocation() {
+    // Location
+    function socketDataLocation() {
+     let cityActualOnine = ""
     function success(position) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
     
         setlat(latitude)
         setLong(longitude)
+        console.log(latitude)
+        console.log(longitude)
    
        reverseGeolocalization(latitude, longitude)
       }
@@ -1017,8 +1019,9 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         }
    
         async function reverseGeolocalization(lat, long) {
-        const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyABASerjYyootb_nxj7evIFsZLOiqcnQm4`);
-
+        const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyCZllXD0czNd_oeF0u_o9LUVJ2bCd1K4p8`);
+        console.log(address.data.results[0].address_components[3].long_name)
+        cityActualOnine = address.data.results[0].address_components[3].long_name;
         setCityActual(address.data.results[0].address_components[3].long_name)
         setUfActual(address.data.results[0].address_components[4].short_name) 
      }
@@ -1028,7 +1031,7 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
     const LocalInformation = localStorage.getItem("informations-foursome");
     const userInformations = JSON.parse(LocalInformation);
 
-    async function getInformations() {
+    async function getInformations(cityActualOnine) {
 
         const Local = localStorage.getItem("foursome");
         const user = JSON.parse(Local);
@@ -1055,7 +1058,7 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
             long: long.toString(),
             city: userInformation.city,
             uf: userInformation.uf,
-            actualCity: cityActual,
+            actualCity: cityActualOnine === "" ? cityActual : cityActualOnine,
             actualUf: ufActual,
             equalCity: equalCity,
             plane: "",

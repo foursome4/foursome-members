@@ -47,7 +47,7 @@ form button {
     font-size: 14px;
     border: none;
     border-radius: 8px;
-    background-color: var(--Primary);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
     color: var(--White);
     margin-top: 10px;
 }

@@ -25,6 +25,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
+    background-color: var(--Background);
 }
 
 .content .aside .feed {
@@ -36,6 +37,7 @@
     justify-content: flex-start;
     padding: 10px 0;
     margin-top: 50px;
+
 }
 .content .aside .topScroll {
     display: flex;

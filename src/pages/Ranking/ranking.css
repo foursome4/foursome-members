@@ -77,7 +77,7 @@
     align-items: center;
     justify-content: center;
     border: 1px solid var(--Primary);
-    background-color: var(--Primary);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
     border-radius: 20px;
     color: var(--White);
     width: 40%;
@@ -140,7 +140,7 @@
     justify-content: center;
     border: none;
     border-radius: 50%;
-    background-color: var(--Primary);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
     padding: 10px;
     color: var(--White);
     margin: 10px;
@@ -175,7 +175,7 @@
     justify-content: center;
 }
 .content .aside .ranking .ranking-all .ranking-unic .title h3 {
-    background-color: var(--Primary);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
     color: var(--White);
     padding: 5px 10px;
     border-radius:6px;
@@ -299,7 +299,7 @@
         align-items: center;
         justify-content: center;
         border: 1px solid var(--Primary);
-        background-color: var(--Primary);
+        background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
         border-radius: 20px;
         color: var(--White);
         width: 70%;

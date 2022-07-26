@@ -93,7 +93,7 @@
     justify-content: center;
     border: none;
     border-radius: 50%;
-    background-color: var(--Primary);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
     padding: 10px;
     color: var(--White);
     margin: 10px;
@@ -155,7 +155,7 @@
     font-size: 14px;
     border: none;
     border-radius: 8px;
-    background-color: var(--Primary);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
     color: var(--White);
     margin: 10px 5px 0 5px;
 }

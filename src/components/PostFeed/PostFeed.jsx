@@ -24,12 +24,13 @@ function PostFeed() {
     const [imageAvatar, setImageAvatar] = useState(''); 
     const [videoUrl, setVideoUrl] = useState(null);
     const [videoAvatar, setVideoAvatar] = useState(''); 
-    const [post, setPost] = useState("text");
+    const [post, setPost] = useState("");
     const [text, setText] = useState("");
     const [dataPhoto, setDataPhoto] = useState(false);
     const [dataVideo, setDataVideo] = useState(false);
     const [videos, setVideos] = useState([])
     const [photos, setPhotos] = useState([]);
+    const [area,setArea] = useState(false);
 
     useEffect(() => {
         async function searchAccount() {
@@ -293,14 +294,16 @@ function PostFeed() {
 
     function postText() {
         if(post !== "text") {
-            setPost("text")    
+            setPost("text") 
+            setArea(true)  
         } 
     }
 
     function postPhoto(){
         if(post !== "photo") {
             setPost("photo")
-            setText("")  
+            setText("")
+            setArea(true)  
         } 
 
     }
@@ -309,6 +312,7 @@ function PostFeed() {
         if(post !== "video") {
             setPost("video")
             setText("")
+            setArea(true)  
         }
 
     }
@@ -321,6 +325,7 @@ function PostFeed() {
             <img src={userInformation.avatar} alt="" />
             </div>
             <div className="postFeed-type">
+                {area === false ? "" :
                 <div className="inputs">
                 {post === "text" ?
                 <textarea name="" id="" cols={30} rows={10}
@@ -366,6 +371,7 @@ function PostFeed() {
                         : ""
                     }
                 </div>
+                }
                 <div className="buttons">
                     <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
                   {dailyPost.length === 2 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 

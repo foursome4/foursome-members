@@ -26,8 +26,9 @@
 
 
 .informations .informations-page .selections button {
-    background-color: var(--Background);
-    color: var(--Primary);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+    border-radius: 6px;
+    color: var(--White);
     padding:0px;
     display: flex;
     align-items: center;

@@ -5,6 +5,7 @@ import { TopBar } from "../../components/TopBar/TopBar";
 import { Link } from "react-router-dom"
 import api from "../../services/api"
 import "./search.css"
+import { IoOptionsOutline, IoCloseCircleOutline } from "react-icons/io5";
 
 
 function Search() {
@@ -12,6 +13,7 @@ function Search() {
     const userData = JSON.parse(Local);
 
     const [online, setOnline] = useState([])
+    const [filtro, setFiltro] = useState("false")
     const [search, setSearch] = useState('');
     const [type, setType] = useState('');
     const [país, setPaís] = useState('');
@@ -161,6 +163,12 @@ function handleTypeSearchUf(e) {
     setTypeSearch("Uf")
 }
 
+function handleSetFilter(data) {
+    console.log(data)
+    setFiltro(data);
+}
+
+
     
     const SearchUsers = typeSearch === "Nickname" ? online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower))
                     : typeSearch === "City" ? online?.filter((informations) => informations.city.toLowerCase().includes(searchLower))
@@ -228,7 +236,14 @@ function handleTypeSearchUf(e) {
             </div>
 
 
-
+            <div className="filterActive">
+                {filtro === "false" ?
+            <button onClick={() => handleSetFilter("true")}> <IoOptionsOutline/></button>
+                :
+            <button onClick={() => handleSetFilter("false")}><IoCloseCircleOutline/></button>
+                }
+            </div>
+            {filtro === "false" ? "" :
             <div className="searchButton">
             <h3>Filtro de busca</h3>
             <div className="buttons">
@@ -262,6 +277,7 @@ function handleTypeSearchUf(e) {
                   </div>
                 </div>
             </div>
+            }
             </div>
         
                  <ToolbarLeftSlim />

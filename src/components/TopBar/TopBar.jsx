@@ -1,6 +1,6 @@
-import logoFoursomemini from '../../assets/images/logo-mini2.png';
-import logoFoursome from '../../assets/images/logo2.png';
-import { IoMailOutline, IoLogOutOutline} from 'react-icons/io5';
+import logoFoursomemini from '../../assets/images/logo-mini.png';
+import logoFoursome from '../../assets/images/logo.png';
+import { IoMailOutline, IoLogOutOutline, IoMail} from 'react-icons/io5';
 import './topBar.css';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/Auth';
@@ -51,7 +51,7 @@ function TopBar() {
 
                 <a href="/invite">
                 <div className="linkSelect" data-tip data-for='Convidar'>
-                    <IoMailOutline />
+                    <IoMail />
                 </div>
                 </ a>
                 <ReactTooltip id='Convidar' place="bottom" type="dark" effect="solid">

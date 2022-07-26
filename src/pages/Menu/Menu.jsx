@@ -2,6 +2,7 @@
 import { TopBar } from "../../components/TopBar/TopBar"
 import { IoCalendarOutline, IoList, IoRadio,IoMailUnreadOutline, IoPersonOutline, IoCashOutline, IoSettingsOutline, IoPeopleOutline, IoMenuOutline, IoCameraOutline, IoArrowBackOutline,
     IoInformationCircleOutline, IoChatbubblesOutline, IoMailOutline, IoNewspaperOutline, IoBusinessOutline, IoMailOpenOutline, IoStatsChartOutline, IoCloseOutline, IoWalletOutline } from "react-icons/io5"
+import {FaCrown} from "react-icons/fa"
 import "./menu.css"
 
 function Menu() {
@@ -53,6 +54,9 @@ function Menu() {
                 <div className="unic">
                     <a href="/infos" className="Primary"><IoInformationCircleOutline />Informações</a>
                 </div>
+            </div>
+            <div className="unic2">
+                <a href="/" className="Primary"><FaCrown />Assinatura Premium (Breve)</a>
             </div>
 </div>
 </div>

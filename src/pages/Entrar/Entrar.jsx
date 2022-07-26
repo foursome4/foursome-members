@@ -57,7 +57,7 @@ function Entrar() {
   const [relationship, setRelationship] = useState("");
   const [nickname, setNickname] = useState("")
   const [loadding, setLoadding] = useState(false);
-  const [location, setLocation] = useState("Automatic");
+  const [location, setLocation] = useState("Manual");
   const [textError, setTextError] = useState(false);
   const [invalidMail, setInvalidMail] = useState(false);
 

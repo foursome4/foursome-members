@@ -6,9 +6,9 @@ import { AuthContext } from "../../contexts/Auth"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import api from "../../services/api"
 import { Link } from "react-router-dom"
-import {IoLocationOutline, IoPersonOutline} from 'react-icons/io5'
+import {IoCloseCircleOutline, IoLocationOutline, IoOptionsOutline, IoPersonOutline} from 'react-icons/io5'
 import {FaCircle} from 'react-icons/fa'
-import { FiArrowUpCircle } from 'react-icons/fi'
+import { FiArrowUpCircle } from 'react-icons/fi';
 
 function Radar() {
     const {logout, updateUserOnline, socketDataLocation} = useContext(AuthContext);
@@ -30,7 +30,8 @@ function Radar() {
     const [myInformations, setMyInformations] = useState(false)
     const id = userData.id;
     const [qtd, setqtd] = useState(35)
-    const [onlineUsers, setOnlineUsers] = useState("")
+    const [onlineUsers, setOnlineUsers] = useState(true)
+    const [filtro, setFiltro] = useState("false")
 
     const [minhaLatitude, setMinhaLatitude] = useState("")
     const [minhaLongitude, setMinhaLongitude] = useState("")
@@ -60,15 +61,14 @@ function Radar() {
         console.log("longInitial");
         console.log(longInitial);
 
-      //  reverseGeolocalization(lat100, long100);
+    //   reverseGeolocalization(lat100, long100);
       }
 
     //   async function reverseGeolocalization(lat, long) {
     //     console.log(lat, long)
     //     const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyCZllXD0czNd_oeF0u_o9LUVJ2bCd1K4p8`);
-    // //    console.log(address.data.results[0])
-    // //     setCity2(address.data.results[0].address_components[3].long_name)
-    // //     setUf2(address.data.results[0].address_components[4].short_name) 
+    //    console.log(address.data.results[0])
+    //    cityActualOnine = address.data.results[0].address_components[3].long_name 
     //     return
     //  }
 
@@ -175,6 +175,7 @@ function Radar() {
                                idAccount: userLocation.idAccount,
                                avatar: userLocation.avatar,
                                nickname: userLocation.nickname,
+                               city: userLocation.city,
                                equalCity: userLocation.equalCity, 
                                type:userLocation.type,
                                plane: userLocation.plane,
@@ -243,6 +244,7 @@ function Radar() {
                                     idAccount: userAccounts.id,
                                     avatar: userAccounts.avatar,
                                     nickname: userAccounts.nickname,
+                                    city: userAccounts.city,
                                     equalCity: true, 
                                     type:userAccounts.type,
                                     plane: "",
@@ -362,15 +364,19 @@ function handleOfflineUsers(e) {
     console.log("Offline")
 }
 
+function handleSetFilter(data) {
+    console.log(data)
+    setFiltro(data);
+}
+
+
+
 function handleTop(e) {
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     })
 }
-
-
-
 
 const searchAll = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers ));
 const searchEmojiType = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type) );
@@ -379,36 +385,42 @@ const searchTypeRange = allUsers.filter((distanciaUser) => (distanciaUser.type =
 const searchEmoji= allUsers.filter((distanciaUser) => distanciaUser.emoji === emojiSelect );
 const searchType= allUsers.filter((distanciaUser) =>  distanciaUser.type === type);
 const searchDistance= allUsers.filter((distanciaUser) => distanciaUser.distanceKm <= range);
-const filterOnline = allUsers.filter((distanciaUser) => distanciaUser.online === onlineUsers)
 
+const searchEmojiOnline= allUsers.filter((distanciaUser) => distanciaUser.emoji === emojiSelect && distanciaUser.online === onlineUsers );
+const searchTypeOnline= allUsers.filter((distanciaUser) =>  distanciaUser.type === type && distanciaUser.online === onlineUsers);
+const filterOnlineRange = allUsers.filter((distanciaUser) => distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers);
+const filterOnline = allUsers.filter((distanciaUser) => distanciaUser.online === onlineUsers);
+
+console.log(filterOnline)
 
 //console.log(myUserFilter)
 
-
-const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDistance : 
-                (range < 1) && (emojiSelect !== "") && (type === "" ) ? searchEmoji : 
-                (range < 1) && (emojiSelect === "") && (type !== "") ? searchType : 
-                (range < 1) && (emojiSelect !== "") && (type !== "") ? searchEmojiType : 
-                (range > 0) && (emojiSelect !== "") && (type === "" ) ? searchEmojiRange : 
-                (range > 0) && (emojiSelect === "") && (type !== "") ? searchTypeRange : 
-                (range > 0) && (emojiSelect !== "") && (type !== "") ? searchAll : 
-                (range < 1) && (emojiSelect === "") && (type === "") ? allUsers : 
+const filter = (range > 0) && (emojiSelect === "") && (type === "") && (onlineUsers === true || onlineUsers === false) ? searchDistance : 
+                (range > 0) && (emojiSelect === "") && (type === "") && (onlineUsers === true || onlineUsers === false) ? filterOnlineRange : 
+                (range < 1) && (emojiSelect === "") && (type === "") && (onlineUsers === true || onlineUsers === false) ? filterOnline : 
+                (range < 1) && (emojiSelect !== "") && (type === "" ) && (onlineUsers === true || onlineUsers === false) ? searchEmoji : 
+                (range < 1) && (emojiSelect !== "") && (type === "" ) && (onlineUsers === true || onlineUsers === false) ? searchEmoji : 
+                (range < 1) && (emojiSelect === "") && (type !== "") && (onlineUsers === true || onlineUsers === false) ? searchType : 
+                (range < 1) && (emojiSelect !== "") && (type !== "") && (onlineUsers === true || onlineUsers === false) ? searchEmojiType : 
+                (range > 0) && (emojiSelect !== "") && (type === "" ) && (onlineUsers === true || onlineUsers === false) ? searchEmojiRange : 
+                (range > 0) && (emojiSelect === "") && (type !== "") && (onlineUsers === true || onlineUsers === false) ? searchTypeRange : 
+                (range > 0) && (emojiSelect === "") && (type !== "") && (onlineUsers === true || onlineUsers === false) ? searchTypeRange : 
+                (range > 0) && (emojiSelect !== "") && (type !== "") && (onlineUsers === true || onlineUsers === false) ? searchAll : 
+                (range < 1) && (emojiSelect === "") && (type === "") && (onlineUsers === true || onlineUsers === false) ? allUsers : 
                 allUsers
 
                 const limitData = filter?.slice(0, qtd)
-
+                const limitData2 = filterOnline?.slice(0, qtd)
 
                 if(!users) { 
                     return (
                         <div className="content">
-                                        <div className="main">
-                        <div className="messageLoad">
-                            <h4>Ative sua localização</h4>
-                        </div>
-                        </div>
-                        </div>
-
-                        
+                            <div className="main">
+                                <div className="messageLoad">
+                                <h4>Ative sua localização</h4>
+                                </div>
+                            </div>
+                        </div>   
                     )
                 }
 
@@ -426,16 +438,14 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                     text = "Carregando usuários do radar. Aguarde..."
                 }
 
-
-
                 if(loadOffline === false) { 
                     return (
-                        <div className="content">
-                         <div className="main">
-                        <div className="messageLoad">
-                        <h4>{text}</h4>
+                    <div className="content">
+                        <div className="main">
+                            <div className="messageLoad">
+                            <h4>{text}</h4>
+                            </div>
                         </div>
-                    </div>
                     </div>
                     )
                 }
@@ -449,10 +459,8 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                 <div className="aside">
                     <div className="radar">
                             <div className="radar-selected">
-  
                                 <button className="selected">Radar</button>
                             </div>
-
 
                             {users !== "" || users !== null || users !== undefined ?
                            
@@ -487,6 +495,8 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                        : "Carregando suas informações"
 }
 
+{filtro === "false" ? "" :
+<div className="filtroGeral">
                             <div className="radar-range">
                                 <h4>0 Km</h4>
                                 <input type="range" min={0} max={10000} value={range} onChange={(e) => setRange(e.target.value)}/>
@@ -514,16 +524,25 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                             </select>
 
 
-{/* <div className="onOff">
-    <button className={'select'} onClick={handleAllOnlineUsers}>Todos</button>
-    <button onClick={handleOnlineUsers}>Online</button>
-    <button className="two" onClick={handleOfflineUsers}>Offline</button>
-</div> */}
+                            <div className="onOff">
+                                <button className={onlineUsers === true ? "selected" : ""}  onClick={handleOnlineUsers}>Online</button>
+                                <button className={onlineUsers === false ? "selected" : ""} onClick={handleOfflineUsers}>Offline</button>
                             </div>
+                            </div>
+</div>
+}
+
+<div className="filterActive">
+                {filtro === "false" ?
+            <button onClick={() => handleSetFilter("true")}> <IoOptionsOutline/></button>
+                :
+            <button onClick={() => handleSetFilter("false")}><IoCloseCircleOutline/></button>
+                }
+            </div>
 
                             
                             <div className="radar-all">
-                                {limitData?.map((user) => {
+                                {limitData2.map((user) => {
                                     return (
                                user.idAccount === userData.id ? "":
                                user.invisible === true ? "" :
@@ -541,8 +560,10 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") ? searchDist
                                    <h4>{user.emoji === "musica" ? "🎶" : user.emoji === "emoji"? "😈" : user.emoji === "viagem" ? "✈️" :""  }</h4>           
                                    {user.online === true ? <FaCircle /> : "" }
                                    </div>
-                                   <h6><IoLocationOutline />{user.distanceKm === 0 ? "- 1Km" : ` ${user.distanceKm}Km`}</h6>
+                        <h6><b>{user.nickname}</b></h6>
                                    <h6><IoPersonOutline /> {user.type}</h6>
+                                   <h6><IoLocationOutline />{user.distanceKm === 0 ? "- 1Km" : ` ${user.distanceKm}Km`}</h6>
+                                   {/* <h6>{user.city}</h6> */}
                            </div>
                                     )
                                 })}

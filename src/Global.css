@@ -6,7 +6,11 @@
 
 :root{
   --Primary: #8124E2;
-  --Background: #F6F2F8;
+  --Primary3: #8124F2;
+  --Primary2: #8124D0;
+  --Primary3: #8124C0;
+  --Primary5: #8124A0;
+  --Background: #F7F7F7;
   --Background3: #fbfbfb;
   --Background-man: #ececff;
   --Background-woman: #ffecfc;
@@ -42,7 +46,7 @@ body {
 }
 
 .container {
-  background: var(--Primary);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
   width: 100%;
   height: 100%;
   display: flex;
@@ -51,14 +55,14 @@ body {
 }
 
 .content {
-  background: var(--Primary);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
   width: 100%;
     height: 100%;
     display: flex;
 
 }
 .content-Login1 {
-  background: var(--Primary);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
   width: 100vw;
   height: 100vh;
     display: flex;
@@ -67,7 +71,7 @@ body {
     justify-content: flex-start;
 }
 .content-Login {
-  background: var(--Primary);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
   width: 100vw;
   height: 100%;
     display: flex;
@@ -169,7 +173,7 @@ button {
 
 @media(max-width: 900px) {
   .container {
-    background: var(--Primary);
+      background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
     width: 100%;
     height: 100%;
     display: flex;
@@ -225,7 +229,7 @@ body {
 }
 
 .container {
-  background: var(--Primary);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
   width: 100%;
   height: 100%;
   display: flex;
@@ -234,14 +238,14 @@ body {
 }
 
 .content {
-  background: var(--Primary);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
   width: 100%;
     height: 100%;
     display: flex;
 
 }
 .content-Login {
-  background: var(--Primary);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
   width: 100vw;
     height: 100vh;
     display: flex;
@@ -339,7 +343,7 @@ button {
 
 @media(max-width: 900px) {
   .container {
-    background: var(--Primary);
+      background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
     width: 100%;
     height: 100%;
     display: flex;

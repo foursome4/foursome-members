@@ -11,6 +11,7 @@
     padding: 20px 0;
     margin: 10px 0;
     border: 1px solid var(--Background2);
+    background-color: var(--Background2);
 }
 .feed-post .TextLink{
     display: flex;
@@ -266,15 +267,16 @@
 
 
 
-.feed-post .reactions .selected button{
-    padding:10px 5px;
+.feed-post .reactions .selected{
+    background-color: var(--Foursome1);
+    color: var(--White);
 }
 
 
 
 .feed-post .reactions .selected svg{
     font-size: 14px;
-    color: var(--Primary); 
+    color: var(--White);
 }
 
 .feed-post .comment {

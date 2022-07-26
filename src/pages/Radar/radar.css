@@ -58,6 +58,18 @@
     margin-top: 25px;
 }
 
+.content .aside .radar .filtroGeral {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5px;
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+    border-radius: 6px;
+    margin: 10px 0;
+}
+
 .content .aside .radar h1 {
     color: var(--Background2);
 }
@@ -95,16 +107,8 @@
     font-weight: 500;
 }
 
-.content .aside .radar .radar-range {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    padding: 5px 0;
-}
-.content .aside .radar .selectFilter {
-    width: 80%;
+.content .aside .radar .filtroGeral .selectFilter {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -114,7 +118,7 @@
     margin-bottom: 20px;
 }
 
-.content .aside .radar .selectFilter .onOff {
+.content .aside .radar .filtroGeral .selectFilter .onOff {
     width: 90%;
     display: flex;
     align-items: center;
@@ -122,7 +126,7 @@
     flex-direction: row;
     padding: 5px;
 }
-.content .aside .radar .selectFilter .onOff button {
+.content .aside .radar .filtroGeral .selectFilter .onOff button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -132,33 +136,23 @@
     border: 1px solid var(--Primary);
     color: var(--Primary);
     cursor: pointer;
+    border-radius:6px;
 }
-.content .aside .radar .selectFilter .onOff .one {
+.content .aside .radar .filtroGeral .selectFilter .onOff .selected {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
     padding: 10px 20px;
-    background-color: var(--Primary);
+    background-color: var(--Foursome1);
     border: 1px solid var(--Primary);
     color: var(--White);
     cursor: pointer;
-
-}
-.content .aside .radar .selectFilter .onOff .two {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    padding: 10px 20px;
-    background-color: var(--White);
-    border: 1px solid var(--Primary);
-    color: var(--Primary);
-    cursor: pointer;
+    border-radius:6px;
 }
 
 
-.content .aside .radar .selectFilter select {
+.content .aside .radar .filtroGeral .selectFilter select {
     width: 50%;
     display: flex;
     align-items: center;
@@ -177,7 +171,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: var(--Background)
+    color: var(--White);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+    border-radius: 6px;
 }
 .content .aside .radar .mySelections .selections {
     width: 50%;
@@ -212,7 +208,7 @@
     padding: 5px 10px;
     margin: 5px;
     border-radius:6px;
-    background-color: var(--Primary);
+    background-color: var(--Foursome1);
     color: var(--White);
     border: none;
     cursor: pointer;
@@ -234,18 +230,18 @@
     padding: 5px 10px;
     margin: 5px;
     border-radius:6px;
-    background-color: var(--Primary);
+    background-color: var(--Foursome1);
     color: var(--White);
     border: none;
     cursor: pointer;
 }
-.content .aside .radar .selectFilter select {
+.content .aside .radar .filtroGeral .selectFilter select {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    padding: 5px 0;
+    padding: 10px 20px;
     margin: 5px;
     border: 1px solid var(--Primary);
     color: var(--Primary);
@@ -253,7 +249,18 @@
     border-radius: 6px;
 }
 
-.content .aside .radar .radar-range input[type=range] {
+
+.content .aside .radar .filtroGeral .radar-range {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 5px 0;
+}
+
+
+.content .aside .radar .filtroGeral .radar-range input[type=range] {
     width: 80%;
     border-radius: 20px;
     padding: 10px;
@@ -263,8 +270,8 @@
 
 }
 
-.content .aside .radar .radar-range h4 {
-    color: var(--Primary);
+.content .aside .radar .filtroGeral .radar-range h4 {
+    color: var(--White);
     font-weight: 600;
 }
 
@@ -327,6 +334,32 @@
     padding: 5px 0;
     flex-wrap: wrap;
     margin-bottom: 30px;
+}
+
+.content .aside .radar .filterActive{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 80%;  
+    height: 50px;  
+    margin: 10px 0;
+}
+.content .aside .radar .filterActive button {
+    width: 40px;  
+    height: 40px; 
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+    border-radius: 6px;
+    Border: none;
+    background-color: var(--Foursome1);
+    color: var(--White);
+}
+
+.content .aside .radar .filterActive button svg {
+    font-size: 20px;
 }
 
 .content .aside .radar .radar-all .radar-unic {
@@ -413,6 +446,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content:center;
+    text-align: center;
 }
 
 .content .aside .radar .radar-all .radar-unic h6 svg {
@@ -477,7 +511,17 @@
     .content .aside .radar .radar-all {
         width: 100%;    
 }
-
+.content .aside .radar .filtroGeral {
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5px;
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+    border-radius: 6px;
+    margin: 10px 0;
+}
 
 
 
@@ -556,7 +600,7 @@
 
 
 
-.content .aside .radar .radar-range {
+.content .aside .radar .filtroGeral .radar-range {
     width: 100%;
     display: flex;
     align-items: center;
@@ -564,7 +608,7 @@
     flex-direction: row;
     padding: 5px 0;
 }
-.content .aside .radar .radar-range h4 {
+.content .aside .radar .filtroGeral .radar-range h4 {
     font-size: 12px;
     display: flex;
     align-items: center;
@@ -572,7 +616,7 @@
     flex-direction: row;
 }
 
-.content .aside .radar .selectFilter {
+.content .aside .radar .filtroGeral .selectFilter {
     width: 90%;
     display: flex;
     align-items: center;
@@ -581,7 +625,7 @@
     padding: 5px 0;
 }
 
-.content .aside .radar .selectFilter select {
+.content .aside .radar .filtroGeral .selectFilter select {
     width: 100%;
 }
 

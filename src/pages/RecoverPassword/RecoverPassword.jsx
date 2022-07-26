@@ -26,7 +26,7 @@ function RecoverPassword() {
   }
 
   return (
-    <div className="content-Login">
+    <div className="content-Login1">
       <div className="signIn">
       <div className="logo">
         <img src={logoImg} alt="Logo Foursome" />

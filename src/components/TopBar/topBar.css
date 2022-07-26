@@ -5,12 +5,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--Background2);
-    border-bottom: 2px solid var(--Background);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+    border-bottom: 2px solid var(--Primary3);
     position: fixed;
     top: 0;
     z-index: 98;
-   padding: 0 10% 0 10%; 
+   padding: 0 20px; 
 }
 
 .topBar svg {
@@ -47,10 +47,14 @@
     align-items: center;
     justify-content: space-between;
     border-radius: 50%;
-    background-color: var(--Background);
+    background-color: var(--Primary3);
     padding: 8px;
     margin: 0 2px;
     cursor: pointer;
+}
+
+.topBar .links .link svg{
+    color: var(--White);
 }
 .topBar .links .linkSelect {
     display: flex;
@@ -58,7 +62,8 @@
     align-items: center;
     justify-content: space-between;
     border-radius: 50%;
-    background-color: var(--Primary);
+    background-color: var(--Foursome1);
+    border: 2px solid var(--Foursome1);
     color: var(--White);
     padding: 8px;
     margin: 0 2px;
@@ -110,7 +115,7 @@
 
 .topBar .links .account h4 {
     font-weight: 600;
-    color: var(--Primary);
+    color: var(--Background);
 }
 
 .topBar .links .account a {
@@ -136,7 +141,7 @@
                 
    
                 .topBar .logo2 img{
-                    height: 65px;
+                    height: 55px;
                     margin-top: 5px;
                     position: inherit;
                 }
