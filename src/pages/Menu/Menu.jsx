@@ -56,7 +56,7 @@ function Menu() {
                 </div>
             </div>
             <div className="unic2">
-                <a href="/pricing" className="Primary"><FaCrown />Seja Vip por R$ 9,90</a>
+                <a href="/pricing" className="Primary"><FaCrown />Seja Essencial por R$ 9,90</a>
             </div>
 </div>
 </div>
