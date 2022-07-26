@@ -56,7 +56,7 @@ function Menu() {
                 </div>
             </div>
             <div className="unic2">
-                <a href="/" className="Primary"><FaCrown />Assinatura Premium (Breve)</a>
+                <a href="/" className="Primary"><FaCrown />Seja Vip por R$ 9,90</a>
             </div>
 </div>
 </div>

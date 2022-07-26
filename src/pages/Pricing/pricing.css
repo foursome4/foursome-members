@@ -26,6 +26,35 @@
     border-radius: 10px;
     flex-wrap: wrap;
 }
+.Pricing .Pricing-page .payments .vip{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 300px;
+    background-color: var(--Primary);
+    color: var(--White);
+    padding: 10px;
+    border-radius: 6px;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+.Pricing .Pricing-page .payments .vip .double{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    color: var(--White);
+    padding: 5px;
+    margin: 3px 0;
+    background-color: var(--Primary2);
+    border-radius: 6px;
+}
+
+.Pricing .Pricing-page .payments .vip .double svg {
+    font-size: 20px;
+}
 .Pricing .Pricing-page .payments .unic{
     display: flex;
     align-items: center;

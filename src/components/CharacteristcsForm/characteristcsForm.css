@@ -76,7 +76,7 @@
 .content-caracteristicas form .data .data-form h4 {
     color: var(--White);
     font-size:14px;
-    background-color: var(--Button);
+    background-color: var(--button);
     border-radius: 6px;
     padding:5px 10px;
     margin: 5px;
@@ -160,7 +160,7 @@
     width: 90%;
     color: var(--White);
 }
-.content-caracteristicas form .confirmation .message {
+.content-caracteristicas form .confirmation .message2 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -168,9 +168,12 @@
     width: 90%;
     color: var(--White);
 }
-.content-caracteristicas form .confirmation .message button {
+.content-caracteristicas form .confirmation .message2 button {
+    background-color: var(--White);
+    color: var(--White);
     margin-right: 0px auto;
     margin-left: 0px auto;
+    border: 1px solid var(--White);
 }
 
 .content-caracteristicas form .confirmation button {
@@ -180,8 +183,9 @@
     border: none;
     border-radius: 8px;
     background-color: var(--White);
-    color: var(--Primary);
+    color: var(--White);
     margin: 5px;
+    border: 1px solid var(--White);
 }
 .content-caracteristicas form .confirmation .delete {
     width: 150px;
@@ -267,6 +271,9 @@
         
         .content-caracteristicas form .confirmation button {
            margin-top: 20px;
+           background-color: var(--White);
+           color: var(--White);
+           border: 1px solid var(--White);
         }
 
         .content-caracteristicas .title {
