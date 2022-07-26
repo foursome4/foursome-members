@@ -69,7 +69,7 @@ function MyMessages() {
                 <div className="link" onClick={handleMessages} data-tip data-for='Mensagens'>
 
                 {notificationsFilter.length === 0 ? "" :
-                    <div className="counter"></div>
+                    <div className="counter">{notificationsFilter.length}</div>
                     }
                     
                   <IoChatboxOutline />
