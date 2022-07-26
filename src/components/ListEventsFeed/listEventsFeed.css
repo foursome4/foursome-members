@@ -9,16 +9,14 @@
 }
 
 .listEventsFeed .imageCover {
-    width: 800px;
-    height: 150px;
+    width: 100%;
     border-radius:6px;
     object-fit: cover;
 }
 
 
 .listEventsFeed .imageCover img {
-    width: 800px;
-    height: 150px;
+    width: 100%;
     border-radius:6px;
     object-fit: cover;
 }

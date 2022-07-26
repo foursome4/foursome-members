@@ -2,7 +2,7 @@ import './listEventsFeed.css'
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { Link } from 'react-router-dom';
-import Evento from '../../assets/images/evento.jpeg';
+import Vip from '../../assets/images/SejaVip.png';
 
 function ListEventsFeed() {
 
@@ -10,7 +10,7 @@ function ListEventsFeed() {
 
     const eventos = [{
         id: "636363",
-        cover: Evento,
+        cover: Vip,
         status: "Aproved"
     }]
     useEffect(() => {
@@ -28,11 +28,11 @@ function ListEventsFeed() {
 
     return (
         <div className="listEventsFeed">
-                                 {events.map((event) => {
+                                 {eventsListNew.map((event) => {
                                  return(
                                      event.status === "Aproved" ?
                                         <div className="imageCover" key={event.id}> 
-                                        <Link to={`/event/${event.id}`}>
+                                        <Link to={`/pricing`}>
                                     <img src={event.cover} alt="" className="cover"/>
                                     </Link>
                                 </div>
