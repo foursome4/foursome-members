@@ -24,7 +24,7 @@ function Recuperation() {
     e.preventDefault();
     const generateCode = uuidv4()
     const code = generateCode.substring(0, 6)
-   gerateCodeRecuperation(email, code)
+   gerateCodeRecuperation(email.replace(/\s+/g, ''), code)
   }
 
   return (
@@ -38,7 +38,7 @@ function Recuperation() {
           <div className="title">
             <h3>DIGITE SEU E-MAIL DE CADASTRO</h3>
           </div>
-          <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <input type="text" placeholder="E-mail" value={email.replace(/\s+/g, '')} onChange={(e) => setEmail(e.target.value)}/>
 
           <div className="buttons">
           <button onClick={handleCreateCodeRecuperation}> Gerar código </button>

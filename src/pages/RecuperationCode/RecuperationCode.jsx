@@ -14,7 +14,7 @@ function RecuperationCode() {
 
   function handleRecuperationCode(e) {
     e.preventDefault();
-   validadeCodeRecuperation(code, email);
+   validadeCodeRecuperation(code.toLocaleLowerCase(), email);
   }
 
   return (
@@ -28,7 +28,7 @@ function RecuperationCode() {
           <div className="title">
             <h3>DIGITE SEU CÓDIGO</h3>
           </div>
-          <input type="text" placeholder="######" value={code} onChange={(e) => setCode(e.target.value)}/>
+          <input type="text" placeholder="######" value={code.toLocaleLowerCase()} onChange={(e) => setCode(e.target.value)}/>
 
           <div className="buttons">
           <button onClick={handleRecuperationCode}> Confirmar código </button>
