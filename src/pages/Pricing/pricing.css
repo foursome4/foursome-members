@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 95%;
+    width: 100%;
     background-color: var(--Background2);
     padding: 100px 0;
 }
@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    width: 85%;
+    width: 95%;
     padding: 10px;
     border-radius: 10px;
     flex-wrap: wrap;
@@ -52,6 +52,13 @@
 }
 .Pricing .Pricing-page .payments .vip h2 {
     margin-bottom: 20px;
+}
+
+.Pricing .Pricing-page .payments .vip h3 {
+    margin: 20px 0;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.37);
+    padding: 5px 10px;
 }
 .Pricing .Pricing-page .payments .vip a {
     margin-top: 20px;
@@ -91,6 +98,12 @@
 
 .Pricing .Pricing-page .payments .premium h2 {
     margin-bottom: 20px;
+}
+.Pricing .Pricing-page .payments .premium h3 {
+    margin: 20px 0;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.37);
+    padding: 5px 10px;
 }
 .Pricing .Pricing-page .payments .premium a {
     margin-top: 20px;
