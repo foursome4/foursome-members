@@ -24,7 +24,7 @@ function Pricing() {
                                         <IoCheckmarkOutline color="#2aae2a"/>
                                         </div>
                                         <div className="double">
-                                        <h4>Ver curtidas/comentários</h4>
+                                        <h4>Ver quem curtiu/comentou</h4>
                                         <IoCloseOutline color="Red"/>
                                         </div>
                                         <div className="double">
@@ -71,7 +71,7 @@ function Pricing() {
                                         <IoCheckmarkOutline color="#2aae2a"/>
                                         </div>
                                         <div className="double">
-                                        <h4>Ver curtidas/comentários</h4>
+                                        <h4>Ver quem curtiu/comentou</h4>
                                         <IoCheckmarkOutline color="#2aae2a"/>
                                         </div>
                                         <div className="double">
