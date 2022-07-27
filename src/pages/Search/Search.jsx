@@ -155,6 +155,10 @@ function handleTypeSearchNickname(e) {
     e.preventDefault();
     setTypeSearch("Nickname")
 }
+function handleTypeSearchUsername(e) {
+    e.preventDefault();
+    setTypeSearch("Username")
+}
 function handleTypeSearchCity(e) {
     e.preventDefault();
     setTypeSearch("City")
@@ -173,6 +177,7 @@ function handleSetFilter(data) {
     
     const SearchUsers = typeSearch === "Nickname" ? online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower))
                     : typeSearch === "City" ? online?.filter((informations) => informations.city.toLowerCase().includes(searchLower))
+                    : typeSearch === "Username" ? online?.filter((informations) => informations.username.toLowerCase().includes(searchLower))
                     : typeSearch === "Uf" ? online?.filter((informations) => informations.uf.toLowerCase().includes(searchLower))
                     : typeSearch === "Id" ? online?.filter((informations) => informations.idAccount.toLowerCase().includes(searchLower)) : ""
 
@@ -251,6 +256,7 @@ function handleSetFilter(data) {
             <div className="buttons">
                       <button className={typeSearch === "Id" ? "select" : ""} onClick={handleTypeSearchId}>ID</button>
                       <button className={typeSearch === "Nickname" ? "select" : ""} onClick={handleTypeSearchNickname}>Nome</button>
+                      <button className={typeSearch === "Username" ? "select" : ""} onClick={handleTypeSearchUsername}>Usuário</button>
                       <button className={typeSearch === "City" ? "select" : ""} onClick={handleTypeSearchCity}>Cidade</button>
                       <button className={typeSearch === "Uf" ? "select" : ""} onClick={handleTypeSearchUf}>Estado(UF)</button>
                   </div>
