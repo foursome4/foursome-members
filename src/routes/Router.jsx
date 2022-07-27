@@ -139,7 +139,7 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Pix /> </PrivateRoute>} />
             <Route path="/voucher/:id" 
                 element={ <PrivateRoute> <Voucher /> </PrivateRoute>} />
-            <Route path="/selectplain/:id" 
+            <Route path="/selectplain/:name" 
                 element={ <PrivateRoute> <PlainSelected /> </PrivateRoute>} />
             <Route path="/paymentConfirmed" 
                 element={ <PrivateRoute> <PaymentConfirmed /> </PrivateRoute>} />

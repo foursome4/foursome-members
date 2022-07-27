@@ -3,6 +3,8 @@ a {
     text-decoration: none;
 }
  .toolIcon .counter{
+    margin-left:55px;
+    font-size: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -10,13 +12,12 @@ a {
     border-radius: 50%;
     background-color: var(--Foursome1);
     position: absolute;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     color: var(--Background2);
-    margin-top: 0px;
-    margin-left:55px;
     font-size: 10px;
+    font-weight: bold;
 }
  .toolIcon a {
     text-decoration: none;

@@ -7,9 +7,7 @@ import { ToolbarLeftSlim } from "../../../components/ToolBarLeftSlim/ToolbarLeft
 import { BarBottomMenu } from "../../../components/BarBottomMenu/BarBottomMenu";
 
 function PlainSelected() {
-    const {id} = useParams();
-
-    const {data} = useFetch(`/plains/unic/${id}`);
+    const {name} = useParams();
 
     
     return  (
@@ -19,16 +17,55 @@ function PlainSelected() {
             <h2>Plano selecionado</h2>
 
             <div className="plain">
-            <h4>Plano: {data?.[0].name}</h4>
-            <h4>Valor: R${data?.[0].value}</h4>
-            <h4>Período: {data?.[0].period}</h4>
-            <h4>Ativação: {data?.[0].created_at}</h4>
-            <h4>Expira em: {data?.[0].created_at} Dias</h4>
+            <div className="text">
+            <h3> <b>Plano:</b>  Essencial</h3>
+            <h3> <b>Ativação:</b>  26/07/2022</h3>
+                </div>
 
+            <div className="link">
             <a href="/pricing">Alterar plano</a>
             </div>
+            </div>
 
-            <a href={`/payment/${data?.[0].id}`}>Prossegir para Pagamento</a>
+            <div className="optionsPayment">
+                <div className="optionUnic">
+                    <div className="title">
+                    <h3>MENSAL</h3>
+                    </div>
+                <h4> <b>Período:</b>  30 Dias</h4>
+                <h4> <b>Valor:</b>  R$ 9,90</h4>
+                <h4> <b>Pagamento:</b>  PIX</h4>
+                </div>
+                <div className="optionUnic">
+                <div className="title">
+                    <h3>TRIMESTRAL</h3>
+                    <h5>Economize: 10%</h5>
+                    </div>
+                <h4> <b>Período:</b>  90 Dias</h4>
+                <h4> <b>Valor:</b>  R$ 26,73</h4>
+                <h4> <b>Expira em:</b>  90 Dias</h4>
+                </div>
+                <div className="optionUnic">
+                <div className="title">
+                    <h3>SEMESTRAL</h3>
+                    <h5>Economize: 15%</h5>
+                    </div>
+                <h4> <b>Período:</b>  180 Dias</h4>
+                <h4> <b>Valor:</b>  R$ 50,49</h4>
+                <h4> <b>Pagamento:</b>  PIX</h4>
+                </div>
+                <div className="optionUnic">
+                <div className="title">
+                    <h3>ANUAL</h3>
+                    <h5>Economize: 20%</h5>
+                    </div>
+                <h4> <b>Período:</b>  365 Dias</h4>
+                <h4> <b>Valor:</b>  R$ 95,04</h4>
+                <h4> <b>Pagamento:</b>  PIX</h4>
+                </div>
+            </div>
+
+            <a href={`/payment/`}>Prossegir para Pagamento</a>
             </div>
 
         </div>

@@ -67,7 +67,7 @@
     padding: 7px;
     background-color: var(--Background);
     border: 1px solid var(--Primary);
-    color: var(--Background2);
+    color: var(--Primary);
     font-size: 14px;
     border-radius: 6px;
     margin: 3px;

@@ -18,12 +18,21 @@
 .PlainSelected .plains-informations .plain {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-    width: 55%;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 95%;
     background-color: var(--Primary);
     padding: 20px;
     margin: 20px;
+    border-radius: 10px;
+    color: var(--White);
+}
+
+.PlainSelected .plains-informations .plain .text {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
     border-radius: 10px;
     color: var(--White);
 }
@@ -38,7 +47,31 @@
     border-radius: 20px;
     border: 1px solid var(--Primary);
     font-weight: 500;
-    margin-top: 20px;
     padding: 7px 40px;
     text-decoration: none;
+}
+
+.PlainSelected .plains-informations .optionsPayment {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 95%;
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--White);
+    flex-wrap: wrap;
+}
+.PlainSelected .plains-informations .optionsPayment .optionUnic {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 300px;
+    height: 150px;
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--White);
+    background-color: var(--Primary);
+
 }
