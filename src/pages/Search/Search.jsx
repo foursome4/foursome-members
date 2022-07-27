@@ -7,7 +7,6 @@ import api from "../../services/api"
 import "./search.css"
 import { IoOptionsOutline, IoCloseCircleOutline } from "react-icons/io5";
 
-
 function Search() {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
@@ -20,9 +19,6 @@ function Search() {
     const [index, setIndex] = useState(0);
     const [qtd, setQtd] = useState(20);
     const [typeSearch, setTypeSearch] = useState('Nickname');
-
-
-
 
     const searchLower = search.toLowerCase()
 
@@ -198,7 +194,18 @@ function handleSetFilter(data) {
 
                           const limitData = usersNewArray.slice(index,qtd);
 
-
+if(!limitData) {
+    return (
+<>
+<br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h4>Carregando usuários</h4></>
+        )
+}
  
     return (
         <div className="SearchPage">
