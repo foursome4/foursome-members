@@ -133,6 +133,7 @@ function handleClearFilter(e) {
     e.preventDefault();
     setSearch("");
     setType("");
+    setPaís("");
 }
 
 function HandleNext(e) {
@@ -178,6 +179,7 @@ function handleSetFilter(data) {
     const SearchUsersFilter = online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower)
                                                                 ||  informations.city.toLowerCase().includes(searchLower)
                                                                 ||  informations.uf.toLowerCase().includes(searchLower)
+                                                                ||  informations.idAccount.toLowerCase().includes(searchLower)
                                                                 && informations.type === type
                                                                 && informations.país === país)
     const userFilter = online?.filter((onlines) => onlines.type === type )

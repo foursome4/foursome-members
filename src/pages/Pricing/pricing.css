@@ -31,7 +31,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 300px;
+    width: 350px;
     background-color: var(--Primary);
     color: var(--White);
     padding: 10px;
@@ -76,7 +76,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 300px;
+    width: 350px;
     background-color: var(--Foursome1);
     color: var(--White);
     padding: 10px;
