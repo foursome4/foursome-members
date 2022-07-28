@@ -373,14 +373,19 @@
 }
 
 .content .aside .radar .radar-all .radar-unic h4 {
-    margin-top:-20px;
+    margin-top:-55px;
+    margin-left:-5px;
+    position: absolute;
 }
-.content .aside .radar .radar-all .radar-unic svg {
+.content .aside .radar .radar-all .radar-unic h5 svg {
     color: rgb(110, 218, 2);
     font-size: 10px;
     border: 1px solid var(--Background2);
     border-radius: 50%;
     background-color: var(--Background2);
+    margin-left: 40px;
+    margin-top: -15px;
+    position: absolute;
   }
 
 .content .aside .radar .radar-all .radar-unic .img {
@@ -432,12 +437,7 @@
 }
 
 
-.content .aside .radar .radar-all .radar-unic h5 {
-    font-weight: 700;
-    color: var(--Primary);
-    margin: 5px 0 5px 0;
-    font-size: 12px;
-}
+
 .content .aside .radar .radar-all .radar-unic h6 {
     font-weight: 500;
     color: var(--Gray_font1);
@@ -475,6 +475,10 @@
 
 }
 
+.content .aside .radar .radar-all .radar-unic h5 svg {
+    margin-left: 15px;
+  }
+
 .content .aside .radar .radar-all .radar-unic .img {
     width: 50px;
     height: 50px;
@@ -499,11 +503,6 @@
     font-weight: 600;
     background-color: var(--Background2);
     margin: 5px 0;
-}
-
-
-.content .aside .radar .radar-all .radar-unic h4 {
-    margin-top:-15px;
 }
 
 

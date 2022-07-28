@@ -253,7 +253,16 @@ function Radar() {
                                     invisible: false,
                                     online: false
                                 }
-                    setUserOffline(offline => [...offline, dados])
+                                console.log(distancia)
+                                const filterUserOnline = distancia.filter((userFind) => userFind.idAccount === dados.idAccount )
+                                console.log("filterUserOnline")
+                                console.log(filterUserOnline)
+                                if(filterUserOnline.length === 0) {                   
+                                    console.log("Zerado")
+                                    console.log(filterUserOnline)
+                                    setDistancia(oldDistancia => [...oldDistancia, dados])
+                                    return;
+                                }
      
                         }
                         
@@ -328,10 +337,10 @@ function Radar() {
  console.log("User Offline")
  console.log(userOffline)
 
- var allUsers = distancia.concat(userOffline);
+ //var allUsers = distancia.concat(userOffline);
 
- if(allUsers) {
-    allUsers.sort(function(a,b) {
+ if(distancia) {
+    distancia.sort(function(a,b) {
         if(a.distanceKm < b.distanceKm ) {
             return -1
         } else {
@@ -378,26 +387,26 @@ function handleTop(e) {
     })
 }
 
-const searchAll = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers ));
+const searchAll = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers ));
 
-const searchDistance= allUsers.filter((distanciaUser) => distanciaUser.distanceKm <= range);
-const searchType= allUsers.filter((distanciaUser) =>  distanciaUser.type === type);
-const searchEmoji= allUsers.filter((distanciaUser) => distanciaUser.emoji === emojiSelect );
-const filterOnline = allUsers.filter((distanciaUser) => distanciaUser.online === onlineUsers);
+const searchDistance= distancia.filter((distanciaUser) => distanciaUser.distanceKm <= range);
+const searchType= distancia.filter((distanciaUser) =>  distanciaUser.type === type);
+const searchEmoji= distancia.filter((distanciaUser) => distanciaUser.emoji === emojiSelect );
+const filterOnline = distancia.filter((distanciaUser) => distanciaUser.online === onlineUsers);
 
-const searchTypeRange = allUsers.filter((distanciaUser) => (distanciaUser.type === type && distanciaUser.distanceKm <= range));
-const searchEmojiRange = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.distanceKm <= range));
-const filterOnlineRange = allUsers.filter((distanciaUser) => distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers);
+const searchTypeRange = distancia.filter((distanciaUser) => (distanciaUser.type === type && distanciaUser.distanceKm <= range));
+const searchEmojiRange = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.distanceKm <= range));
+const filterOnlineRange = distancia.filter((distanciaUser) => distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers);
 
-const searchEmojiType = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type) );
-const searchTypeOnline= allUsers.filter((distanciaUser) =>  distanciaUser.type === type && distanciaUser.online === onlineUsers);
+const searchEmojiType = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type) );
+const searchTypeOnline= distancia.filter((distanciaUser) =>  distanciaUser.type === type && distanciaUser.online === onlineUsers);
 
-const RangeTypeEmoji = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.distanceKm <= range ));
-const RangeEmojiOnline = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers ));
-const RangeTypeOnline = allUsers.filter((distanciaUser) => (distanciaUser.type === type && distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers ));
-const EmojiTypeOnline = allUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.online === onlineUsers ));
+const RangeTypeEmoji = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.distanceKm <= range ));
+const RangeEmojiOnline = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers ));
+const RangeTypeOnline = distancia.filter((distanciaUser) => (distanciaUser.type === type && distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers ));
+const EmojiTypeOnline = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.online === onlineUsers ));
 
-const searchEmojiOnline= allUsers.filter((distanciaUser) => distanciaUser.emoji === emojiSelect && distanciaUser.online === onlineUsers );
+const searchEmojiOnline= distancia.filter((distanciaUser) => distanciaUser.emoji === emojiSelect && distanciaUser.online === onlineUsers );
 
 console.log(filterOnline)
 
@@ -423,8 +432,8 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") && (onlineUs
                 (range < 1) && (emojiSelect !== "") && (type !== "") && (onlineUsers !== "") ? EmojiTypeOnline : 
 
                 (range > 0) && (emojiSelect !== "") && (type !== "") && (onlineUsers === true) ? searchAll : 
-                (range < 1) && (emojiSelect === "") && (type === "") && (onlineUsers === true) ? allUsers : 
-                allUsers
+                (range < 1) && (emojiSelect === "") && (type === "") && (onlineUsers === true) ? distancia : 
+                distancia
 
                 const limitData = filter?.slice(0, qtd)
                 const limitData2 = filterOnline?.slice(0, qtd)
@@ -576,7 +585,7 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") && (onlineUs
                         />
                                    </Link>
                                    <h4>{user.emoji === "musica" ? "🎶" : user.emoji === "emoji"? "😈" : user.emoji === "viagem" ? "✈️" :""  }</h4>           
-                                   {user.online === true ? <FaCircle /> : "" }
+                                   <h5>{user.online === true ? <FaCircle /> : "" }</h5>
                                    </div>
                         <h6><b>{user.nickname}</b></h6>
                                    <h6><IoPersonOutline /> {user.type}</h6>

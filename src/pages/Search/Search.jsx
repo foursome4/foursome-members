@@ -177,18 +177,39 @@ function handleSetFilter(data) {
                     : typeSearch === "Uf" ? online?.filter((informations) => informations.uf.toLowerCase().includes(searchLower))
                     : typeSearch === "Id" ? online?.filter((informations) => informations.idAccount.toLowerCase().includes(searchLower)) : ""
 
+                    const userFilter = online?.filter((onlines) => onlines.type === type )
+                    const paísFilter = online?.filter((onlines) => onlines.país === país )
+
+    const SearchUsersFilterTpe = online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower)
+                                                                ||  informations.username.toLowerCase().includes(searchLower)
+                                                                ||  informations.city.toLowerCase().includes(searchLower)
+                                                                ||  informations.uf.toLowerCase().includes(searchLower)
+                                                                ||  informations.idAccount.toLowerCase().includes(searchLower)
+                                                                && informations.type === type)
+
+    const SearchUsersFilterPaís = online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower)
+                                                                ||  informations.username.toLowerCase().includes(searchLower)
+                                                                ||  informations.city.toLowerCase().includes(searchLower)
+                                                                ||  informations.uf.toLowerCase().includes(searchLower)
+                                                                ||  informations.idAccount.toLowerCase().includes(searchLower)
+                                                                && informations.país === país)
+
+    const FilterPaísType = online?.filter((informations) => informations.type === type && informations.país === país)
+
     const SearchUsersFilter = online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower)
+                                                                ||  informations.username.toLowerCase().includes(searchLower)
                                                                 ||  informations.city.toLowerCase().includes(searchLower)
                                                                 ||  informations.uf.toLowerCase().includes(searchLower)
                                                                 ||  informations.idAccount.toLowerCase().includes(searchLower)
                                                                 && informations.type === type
                                                                 && informations.país === país)
-    const userFilter = online?.filter((onlines) => onlines.type === type )
-    const paísFilter = online?.filter((onlines) => onlines.país === país )
 
     const usersNewArray = type === "" && search !== "" && país === "" ? SearchUsers :
                           type !== "" && search === ""  && país === "" ? userFilter :
                           type === "" && search === "" && país !== "" ? paísFilter :
+                          type !== "" && search !== "" && país === "" ? SearchUsersFilterTpe :
+                          type === "" && search !== "" && país !== "" ? SearchUsersFilterPaís :
+                          type !== "" && search === "" && país !== "" ? FilterPaísType :
                           type !== "" && search !== "" && país !== "" ? SearchUsersFilter :
                           online
 

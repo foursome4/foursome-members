@@ -8,183 +8,50 @@
     flex-direction: column;
     text-align: center;
 }
-
-.createEvent form {
+.createEvent .text {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 20px;
-    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
-    flex-wrap: wrap;
-    padding: 20px;
-}
-
-
-
-.createEvent form .label-avatar{
-    width: 100px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    cursor: pointer;
-    margin: 5px 0;
-    background-color: var(--Background);
-}
-
-.createEvent form .label-avatar input {
-    display: none;
-}
-
-.createEvent form .label-avatar span {
-    z-index: 99;
-    position: absolute;
-    opacity: 0.7;
-    transition: all .5s;
-}
-
-.createEvent form .label-avatar span:hover{
-    opacity: 1;
-    transform: scale(1.4);
-}
-
-.createEvent form .label-avatar img{
-    margin-bottom: 1em;
-    border-radius: 20px;
-    object-fit: cover;
-    width: 100px;
-    height: 100px;
-}
-
-
-.createEvent form .label-cover{
-    width: 95%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    cursor: pointer;
-    margin: 20px 0;
-}
-
-.createEvent form .label-cover input {
-    display: none;
-}
-
-.createEvent form .label-cover span {
-    z-index: 99;
-    position: absolute;
-    opacity: 0.7;
-    transition: all .5s;
-}
-
-.createEvent form .label-cover span:hover{
-    opacity: 1;
-    transform: scale(1.4);
-}
-
-.createEvent form .label-cover img{
-    margin-bottom: 1em;
-    border-radius: 6px;
-    object-fit: cover;
-    width: 95%;
-    height: 100px;
-}
-
-.createEvent form .data {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 90%;
-    margin: 10px 0;
-}
-
-
-.createEvent form .data select {
-    width: 80%;
-    background-color: var(--Background2);
-    color: var(--Primary);
-    border: 1px solid var(--Primary);
-    border-radius: 6px;
-    padding: 5px 8px;
-    margin: 3px 0;
-}
-
-.createEvent .data input {
-    width: 80%;
-    background-color: var(--Background2);
-    color: var(--Primary);
-    border: 1px solid var(--Primary);
-    border-radius: 6px;
-    padding: 5px 8px;
-    margin: 3px 0;
-}
-
-.createEvent .data input::placeholder {
-    color: var(--Gray_font1);
-}
-
-
-.createEvent form button {
     background-color: var(--Primary);
+    border-radius: 6px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    color: var(--White);
-    padding: 5px 10px;
-    border-radius: 20px;
-    border: none;
-    font-size: 16px;
-}
-
-.createEvent form .SearchCep {
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-    margin: 10px 0;
-    width: 100%;
-}
-
-.createEvent form .SearchCep input {
-    background-color: var(--Background2);
-    color: var(--Primary);
-    border: 1px solid var(--Primary);
-    border-radius: 6px;
-    padding: 5px 8px;
-}
-.createEvent form .SearchCep select {
-    background-color: var(--Background2);
-    color: var(--Primary);
-    border: 1px solid var(--Primary);
-    border-radius: 6px;
-    padding: 5px 8px;
-}
-
-.createEvent form .SearchCep button {
-    background-color: var(--Foursome3);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    padding: 20px;
     color: var(--White);
-    padding: 10px 20px;
-    border-radius: 6px;
-    border: none;
-    margin: 10px 0;
-    font-size: 14px;
+    text-align: left;
 }
 
-@media (max-width: 500px) {
+.createEvent h2 {
+    margin: 10px 0;
+}
+
+.createEvent .text h4 {
+    margin: 10px 0;
+}
+
+
+@media (max-width: 768px) {
     .createEvent {
         width: 100%;
+        color: var(--Primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
     }
+
+    @media (max-width: 550px) {
+        .createEvent {
+            width: 100%;
+            color: var(--Primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+    
 }
