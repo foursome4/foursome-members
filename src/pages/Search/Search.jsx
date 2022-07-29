@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 import api from "../../services/api"
 import "./search.css"
 import { IoOptionsOutline, IoCloseCircleOutline } from "react-icons/io5";
+import { useFetch } from "../../hooks/useFetch";
 
 function Search() {
     const Local = localStorage.getItem("foursome");
@@ -22,8 +23,6 @@ function Search() {
 
     const searchLower = search.toLowerCase()
 
-
-
     useEffect(() => {
         async function loadUsersONline() {
             const res = await api.get("/accounts");
@@ -31,7 +30,9 @@ function Search() {
             res.data.forEach((user) => {
                 async function loadInformations() {
                     await api.get(`/informations/${user.id}`).then((res) => {
-      
+                        console.log(user.id)
+                        console.log(user)
+                        console.log(res.data)
                         if(res.data[0] === undefined) {
                             return
                         }
@@ -168,7 +169,6 @@ function handleSetFilter(data) {
     console.log(data)
     setFiltro(data);
 }
-
 
     
     const SearchUsers = typeSearch === "Nickname" ? online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower))

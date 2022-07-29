@@ -231,11 +231,18 @@ function AuthProvider({children}) {
 
 
 async function deleteAccount(id) {
-    toast.success("Deletendo sua conta")
-    const res = await api.delete(`/accounts/${id}`);
+    toast.success("Deletando sua conta")
     const Local = localStorage.getItem("informations-foursome");
     const user = JSON.parse(Local);
+     toast.success("Deletando conta de usuário")
+    console.log("Deletando conta de usuário")
+
+    const res = await api.delete(`/accounts/${id}`);
+
     if(res.status===201) {
+        toast.info("Deletando informações") 
+        deleteInformations1(id);
+
         const idPatrono = user.patron;
         const text = `${user.username}, Deletou sua conta em nosso site`;
         const type = "notification";
@@ -243,48 +250,97 @@ async function deleteAccount(id) {
         const idFriend = "";
         const idAccount = user.id;
         notifications(idPatrono, text, idAccount, idFriend, type, idPost)
-        deleteInformations(id)
        
      } else {
         toast.error('Falha ao deletar, tente novamente!');
      }
 }
 
-async function deleteInformations(id) {
-    const Local = localStorage.getItem("informations-foursome");
-    const user = JSON.parse(Local);
 
-    const res = await api.delete(`/informations/${id}`);
+async function deleteInformations1(idAccount) {
+    toast.success("Deletando informações")
+    console.log("Deletando informações")
+
+    await api.delete(`/informations/${idAccount}`).then((res) => {
+        deleteCharacteristcs(idAccount)
+    }).catch((error) => {
+        console.log(error)
+        toast.error('Falha ao deletar, tente novamente!');
+        console.log('Falha ao deletar, tente novamente!');
+    })
+}
+async function deleteCharacteristcs(idAccount) {
+    console.log(idAccount)
+    toast.success("Deletando Caracteristicas")
+    console.log("Deletando Caracteristicas")
+    const res = await api.get(`/characteristics/${idAccount}`)
+    console.log(res.data)
+    res.data.forEach(async (user) => {
+        console.log(user.idAccount)
+     await api.delete(`/characteristics/${user.idAccount}`).then((res) => {
+         console.log("Deletado")
+
+     }).catch((error) => {
+        console.log(error)
+     })
+     deletePreferences(user.idAccount)
+    })
+}
+async function deletePreferences(idAccount) {
+    toast.success("Deletando Preferencias")
+    console.log("Deletando Preferencias")
+    const res = await api.delete(`/preferences/${idAccount}`);
     if(res.status===201) {
-        deleteCharacteristcs(id)
-       
+        deletePostsUser(idAccount) 
      } else {
         toast.error('Falha ao deletar, tente novamente!');
      }
 }
-async function deleteCharacteristcs(id) {
-    const Local = localStorage.getItem("characteritics-foursome");
-    const user = JSON.parse(Local);
-    const res = await api.delete(`/characteristics/${id}`);
-    if(res.status===201) {
-        deletePreferences()
-       
-     } else {
-        toast.error('Falha ao deletar, tente novamente!');
-     }
-}
-async function deletePreferences(id) {
-    const Local = localStorage.getItem("preferences-foursome");
-    const user = JSON.parse(Local);
 
-    const res = await api.delete(`/preferences/${id}`);
-    if(res.status===201) {
-        toast.success("Conta deletada com sucesso");
-        logout(id);
-       
-     } else {
-        toast.error('Falha ao deletar, tente novamente!');
-     }
+async function deletePostsUser(idAccount) {
+    toast.success("Deletando Caracteristicas")
+    const res = await api.get(`/posts/filter/accounts/${idAccount}`)
+    res.data.forEach(async (user) => {
+     await api.delete(`/posts/${user.id}`); 
+     toast.info('Deletando Posts!');
+    const res = await api.get(`/comments/${user.id}`); 
+
+    res.data.forEach(async (user) => {
+        await api.delete(`/comments/${user.id}`); 
+        toast.info('Deletando Comant[arios!');
+       const res = await api.get(`/reply/${user.id}`); 
+
+       res.data.forEach(async (user) => {
+        await api.delete(`/reply/${user.id}`); 
+        toast.info('Deletando Respostas!');
+    })
+    toast.info('Conta totalmente deletada!');
+    })
+
+
+       })
+
+       deleteConversations(idAccount)
+
+
+}
+
+async function deleteConversations(user) {
+    const idAccount = user.id
+    const rmyRooms1 = await api.get(`conversations/account/filter/${idAccount}`)
+
+     const idFriend = user.id
+     const rmyRooms2 = await api.get(`conversations/friend/filter/${idFriend}`)
+
+     const newRooms = rmyRooms1.data.concat(rmyRooms2.data);
+     // console.log(newRooms);
+
+     newRooms.forEach(async (room) => {
+         const id = room.id
+         toast.success("Deletado conversas!");
+              await api.delete(`/conversations/${id}`);
+     })
+     toast.success("Deletado com sucesso!");
 }
 
 //Fim deletando conta

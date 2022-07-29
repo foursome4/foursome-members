@@ -1,12 +1,16 @@
 import "./settingsInformations.css"
 import { FiUpload } from "react-icons/fi";
 import buscaCep from "../../services/api-buscaCep";
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import { v4 as uuidv4} from 'uuid'
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes} from 'firebase/storage';
 import {toast} from 'react-toastify';
+import buscaDistrito from "../../services/api-buscaDistrito";
+import buscaCepPortugal from "../../services/api-buscaCepPortugal";
+import { mask as masker, unMask } from "remask";
+import apiGoogleReverse from "../../services/apiGoogleReverse";
 
 function SettingsInformations() {
     const {NewUpdateInformationsAccount} = useContext(AuthContext)
@@ -22,13 +26,57 @@ function SettingsInformations() {
     const [imageAvatar, setImageAvatar] = useState('');
     const [imageCover, setImageCover] = useState('');
     const [city, setCity] = useState("");
+    const [district, setDistrict] = useState("");
+    const [districtAll, setDistrictAll] = useState([]);
     const [uf, setUf] = useState("");
-    const [cep, setCep] = useState("");
+    const [codigoPostal, setCodigoPostal] = useState("");
     const [relationship, setRelationship] = useState(userInformations.relationship);
     const [nickname, setNickname] = useState("")
     const [loadding, setLoadding] = useState(false);
+    const [textError, setTextError] = useState(false);
+    const [latitude2, setLatitude2] = useState("");
+    const [longitude2, setLongitude2] = useState("");
+    const [city2, setCity2] = useState("");
+    const [uf2, setUf2] = useState("");
+    const [lat, setLat] = useState("");
+    const [long, setLong] = useState("");
 
-
+    useEffect(() => {
+        function getLocation() {
+            return window.navigator.geolocation.getCurrentPosition(success, error);
+             }
+  
+        function success(position) {
+            const lat1  = position.coords.latitude;
+            const long1 = position.coords.longitude;
+        
+            setLat(lat1);
+            setLong(long1);
+            console.log("lat1");
+            console.log(lat1);
+            console.log("long1");
+            console.log(long1);
+  
+            reverseGeolocalization(lat1, long1);
+          }
+  
+          async function reverseGeolocalization(lat, long) {
+            console.log(lat, long)
+            const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyCZllXD0czNd_oeF0u_o9LUVJ2bCd1K4p8`);
+           console.log(address.data.results[0])
+            setCity2(address.data.results[0].address_components[3].long_name)
+            setUf2(address.data.results[0].address_components[4].short_name) 
+            return
+         }
+  
+              
+      function error() {
+        console.log('Unable to retrieve your location');
+      }
+  
+          getLocation()
+    },)
+  
 
     function handleFile(e) {
         console.log(e.target.files[0])
@@ -192,23 +240,80 @@ function SettingsInformations() {
         setLoadding(false);
         
     }
-    async function handleSearchCep(e) {
-        e.preventDefault();
+
+
+    async function handleSearchDistrict() {
         try {
-            const res = await buscaCep.get(`${cep}/json`);
-            console.log(res.data);
-            console.log(res.data.uf);
-            setUf(res.data.uf)
-            setCity(res.data.localidade)
-        }catch{
-            console.log("eRRO")
+          const res = await buscaDistrito.get(`${uf}/distritos`) 
+            console.log(res.data)
+            setDistrictAll(res.data)
+            console.log(res.data[0].municipio.nome);
+            return;
+          }catch{
+            console.log("error")
+            toast.error("Escolha um estado e clica em buscar cidades")
         }
+        return
     }
 
+    
+    if(districtAll) {
+        districtAll.sort(function(a,b) {
+            if(a.nome < b.nome ) {
+                return -1
+            } else {
+                return true
+            }
+        })
+        }
+        
+        if(codigoPostal.length === 7) {
+            handleSearchCepPortugal()
+        } else {
+            
+        } 
+
+              async function handleSearchCepPortugal() {
+                  try {
+                      const res = await buscaCepPortugal.get(`${codigoPostal}`);
+                      console.log(res.data[0])
+                      setCity(res.data[0].Distrito)
+                      setUf("")
+                      setLatitude2(parseFloat(res.data[0].Latitude));
+                      setLongitude2(parseFloat(res.data[0].Longitude));
+                      setCodigoPostal("")
+                      return
+                  }catch{
+                      console.log("error")
+                      toast.error("Código Postal não encontrado. Por favor, digite sua Cidade e sua Província")
+                      setTextError(true)
+                  }
+                  return
+              }
+        
+              function handleSetectCity(e) {
+                setCity(e.target.value)
+                console.log(e.target.value)
+              }
+              function handleSetectUf(e) {
+                setUf(e.target.value)
+                console.log(e.target.value)
+              }
+
+              
     function handleRelationship(e) {
         setRelationship(e.target.value)
     }
 
+
+    function ChangeMaskCEPPortugal(e) {
+        const originalValue = unMask(e.target.value);
+        const maskedValue = masker(originalValue, [
+          "9999999",
+        ]);
+    
+        setCodigoPostal(maskedValue)
+      }
 
 
     return (
@@ -224,13 +329,64 @@ function SettingsInformations() {
 
                 <br />
                 <br />
+                {user.país === "Brasil" ? 
                 <div className="SearchCep">
-                <input type="text" placeholder='Digite seu cep' value={cep} onChange={(e) => setCep(e.target.value)}/>
-                <button onClick={handleSearchCep}>Buscar Cep</button>
+                                      <select value={uf} onChange={handleSetectUf}> 
+                                      <option value="">Escolha seu estado</option>
+                                      <option value="AC">Acre</option>
+                                      <option value="AL">Alagoas</option>
+                                      <option value="AP">Amapá</option>
+                                      <option value="AM">Amazonas</option>
+                                      <option value="BA">Bahia</option>
+                                      <option value="CE">Ceará</option>
+                                      <option value="DF">Distrito Federal</option>
+                                      <option value="ES">Espírito Santo</option>
+                                      <option value="GO">Goiás</option>
+                                      <option value="MA">Maranhão</option>
+                                      <option value="MT">Mato Grosso</option>
+                                      <option value="MS">Mato Grosso do Sul</option>
+                                      <option value="MG">Minas Gerais</option>
+                                      <option value="PA">Pará</option>
+                                      <option value="PB">Paraíba</option>
+                                      <option value="PR">Paraná</option>
+                                      <option value="PE">Pernambuco</option>
+                                      <option value="PI">Piauí</option>
+                                      <option value="RJ">Rio de Janeiro</option>
+                                      <option value="RN">Rio Grande do Norte</option>
+                                      <option value="RS">Rio Grande do Sul</option>
+                                      <option value="RO">Rondônia</option>
+                                      <option value="RR">Roraima</option>
+                                      <option value="SC">Santa Catarina</option>
+                                      <option value="SP">São Paulo</option>
+                                      <option value="SE">Sergipe</option>
+                                      <option value="TO">Tocantins</option>
+                                      <option value="EX">Estrangeiro</option>
+                                
+                              </select>
+                              {/* <input type="text" autocomplete="off" placeholder='UF - Ex.: RJ' value={uf} onChange={(e) => setUf(e.target.value)} required /> */}
+                              <button className="uf" onClick={() => handleSearchDistrict()}>Buscar Cidades</button>
+                              <select value={city} onChange={handleSetectCity}>       
+                              {districtAll?.map((district) => {
+                                      return (
+                                          <option autocomplete="off" key={district.id} value={district.nome}>{district.nome}</option>
+                                      )
+                                  })}
+                              </select>
                 </div>
+                :
+                <div className="SearchCep">
+                <input type="text" placeholder='Digite seu Código Postal' value={codigoPostal} onChange={ChangeMaskCEPPortugal} />
+                <br />
+                <input type="text" autoComplete='off' placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required disabled/>
+                        <input type="text" autoComplete='off' placeholder='Província / Região' value={uf} onChange={(e) => setUf(e.target.value)}  required/>
+                </div>
+                }
+
+
+
             <div className="data">                      
-                    <input type="text" placeholder={userInformations.uf} value={uf} onChange={(e) => setUf(e.target.value)}/>
-                    <input type="text" placeholder={userInformations.city} value={city} onChange={(e) => setCity(e.target.value)}/>
+                    <input type="text" placeholder={userInformations.uf} value={uf} onChange={(e) => setUf(e.target.value)} disabled/>
+                    <input type="text" placeholder={userInformations.city} value={city} onChange={(e) => setCity(e.target.value)} disabled/>
                     <input type="text" placeholder={userInformations.nickname} value={nickname} onChange={(e) => setNickname(e.target.value)}/>
                     <select value={relationship} onChange={handleRelationship}>
                         <option value="">Status de Relacionamento</option>
