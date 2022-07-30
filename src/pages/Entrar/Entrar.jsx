@@ -726,6 +726,8 @@ districtAll.sort(function(a,b) {
                             <h4>Importante!</h4>
                             <h5> <b>Sua foto de perfil deve seguir os seguintes padrões:</b> </h5>
                             <h5>- Foto real dos membros da conta</h5>
+                            <h5>- A foto deve corresponder a conta criada:</h5>
+                            <h5>Ex.: Conta de casal: Foto do casal, Conta mulher: Foto de mulher, Conta Trisal: Foto do trisal e etc</h5>
                             <h5>- Foto de parte do corpo ou do rosto ( Não é obrigatório foto de rosto)</h5>
                             <br />
                             <h5> <b>Não adicionar fotos de:</b> </h5>
