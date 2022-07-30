@@ -20,6 +20,7 @@ function Search() {
     const [index, setIndex] = useState(0);
     const [qtd, setQtd] = useState(20);
     const [typeSearch, setTypeSearch] = useState('Nickname');
+    const [text, setText] = useState('Carregando usuários');
 
     const searchLower = search.toLowerCase()
 
@@ -30,9 +31,11 @@ function Search() {
             res.data.forEach((user) => {
                 async function loadInformations() {
                     await api.get(`/informations/${user.id}`).then((res) => {
-                        console.log(user.id)
-                        console.log(user)
-                        console.log(res.data)
+                        if(res.data[0] === undefined) {
+                            console.log(user.id)
+                            console.log(user)
+                            console.log(res.data)
+                        }
                         if(res.data[0] === undefined) {
                             return
                         }
@@ -48,7 +51,7 @@ function Search() {
                           }
                           
                           setOnline(oldOnline => [...oldOnline, dados])
-
+                          setText("Nenhum resultado para sua busca!")
       
                       }).catch((error) => {
                           console.log(error)
@@ -170,6 +173,7 @@ function handleSetFilter(data) {
     setFiltro(data);
 }
 
+
     
     const SearchUsers = typeSearch === "Nickname" ? online?.filter((informations) => informations.nickname.toLowerCase().includes(searchLower))
                     : typeSearch === "City" ? online?.filter((informations) => informations.city.toLowerCase().includes(searchLower))
@@ -260,12 +264,18 @@ if(!limitData) {
                             </div>
                         </div>
                         </div>
+                
                 )
             })}
                 <div className="pages">
            {index === 0 ? "" : <button onClick={HandlePrev}>Voltar</button> } 
+           {usersNewArray.length === 0 ? <><h3>{text}</h3></>
+           :
+           <>
            <h5>Resultados de {index + 1} a {qtd} - Todal de {usersNewArray.length}</h5>
             <button onClick={HandleNext}>Avançar</button>
+           </>
+           }
                 </div>
             
             </div>

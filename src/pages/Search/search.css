@@ -195,6 +195,12 @@
     
 }
 
+.SearchPage .itensSearch h3 {
+    color: var(--Primary);
+    margin-top: 20px;
+    text-align: center;
+}
+
 .SearchPage .itensSearch .pages {
     display: flex;
     flex-direction:row;
