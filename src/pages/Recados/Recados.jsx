@@ -6,8 +6,7 @@ import "./recados.css"
 
 function Recados() {
 
-   // const {data} = useFetch(`/news`);
-    const data = []
+   const {data} = useFetch(`/news`);
 
     function hadleOpenRecado(id) {
         window.open(`/recados/${id}`, "_self");
