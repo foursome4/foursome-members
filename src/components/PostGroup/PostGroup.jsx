@@ -116,7 +116,9 @@ function PostGroup({nameGroup, idGroup}) {
                 idForum: "",
                 type: "post-photo-group",
                 text,
-                idPatrono: null
+                idPatrono: null,
+                ufAccount:user.uf,
+                cityAccount: user.city
             })
         } else if(post === "video"){
                 const uuid = uuidv4();
@@ -141,7 +143,10 @@ function PostGroup({nameGroup, idGroup}) {
                     idForum: "",
                     type: "post-video-group",
                     text,
-                    idPatrono: null
+                    idPatrono: null,
+                    ufAccount:user.uf,
+                    cityAccount: user.city,
+                    typeAccount: user.type,
                 })
 
             } else if(post === "text") {
@@ -157,7 +162,10 @@ function PostGroup({nameGroup, idGroup}) {
                 idForum: "",
                 type: "post-text-group",
                 text,
-                idPatrono: null
+                idPatrono: null,
+                ufAccount:user.uf,
+                cityAccount: user.city,
+                typeAccount: user.type,
             })
             
             

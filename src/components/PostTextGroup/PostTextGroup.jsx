@@ -47,7 +47,10 @@ function PostTextGroup({nameGroup, idGroup}) {
                 idForum: "",
                 type: "post-text-group",
                 text,
-                idPatrono: null
+                idPatrono: null,
+                ufAccount:user.uf,
+                cityAccount: user.city,
+                typeAccount: user.type,
             })
         
             setLoading(false)

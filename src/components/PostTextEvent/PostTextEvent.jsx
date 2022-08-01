@@ -47,7 +47,10 @@ function PostTextEvent({nameEvent, idEvent}) {
                 idForum: "",
                 type: "post-text-event",
                 text,
-                idPatrono: null
+                idPatrono: null,
+                ufAccount:user.uf,
+                cityAccount: user.city,
+                typeAccount: user.type,
             })
             setText("")
             reset()

@@ -223,7 +223,9 @@ function PostFeed() {
                 idForum: "",
                 type: "post-photo",
                 text,
-                iidPatrono: null
+                iidPatrono: null,
+                ufAccount:user.uf,
+                cityAccount: user.city
             })
             setDataPhoto(true)
             setPost("text")
@@ -251,7 +253,9 @@ function PostFeed() {
                     idForum: "",
                     type: "post-video",
                     text,
-                    iidPatrono: null
+                    iidPatrono: null,
+                    ufAccount:user.uf,
+                    cityAccount: user.city
                 })
                 setDataVideo(true)
                 setPost("text")
@@ -272,7 +276,9 @@ function PostFeed() {
                         idForum: "",
                         type: "post-text",
                         text,
-                        iidPatrono: null
+                        iidPatrono: null,
+                        ufAccount:user.uf,
+                        cityAccount: user.city
                     })
                     setPost("text")
                     reset()

@@ -47,7 +47,11 @@ function PostText({nameForum, idForum}) {
                 idForum: idForum,
                 type: "post-text-forum",
                 text,
-                idPatrono: null
+                idPatrono: null,
+                ufAccount:user.uf,
+                ufAccount:user.uf,
+                cityAccount: user.city,
+                typeAccount: user.type,
             })
         
             setLoading(false)
