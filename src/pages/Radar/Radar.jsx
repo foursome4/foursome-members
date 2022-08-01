@@ -9,6 +9,7 @@ import { Link } from "react-router-dom"
 import {IoCloseCircleOutline, IoLocationOutline, IoOptionsOutline, IoPersonOutline} from 'react-icons/io5'
 import {FaCircle} from 'react-icons/fa'
 import { FiArrowUpCircle } from 'react-icons/fi';
+import apiGoogleReverse from '../../services/apiGoogleReverse'
 
 function Radar() {
     const {logout, updateUserOnline, socketDataLocation} = useContext(AuthContext);
@@ -38,6 +39,7 @@ function Radar() {
 
     let latInitial = 0
     let longInitial = 0
+    let cityActualOnine = ""
    
   useEffect(() => {
     function getLocation() {
@@ -61,16 +63,9 @@ function Radar() {
         console.log("longInitial");
         console.log(longInitial);
 
-    //   reverseGeolocalization(lat100, long100);
       }
 
-    //   async function reverseGeolocalization(lat, long) {
-    //     console.log(lat, long)
-    //     const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyCZllXD0czNd_oeF0u_o9LUVJ2bCd1K4p8`);
-    //    console.log(address.data.results[0])
-    //    cityActualOnine = address.data.results[0].address_components[3].long_name 
-    //     return
-    //  }
+
 
           
   function error() {
@@ -144,9 +139,24 @@ function Radar() {
     
                 const myLocation = res.data.filter((location) => (location.idAccount === userData.id)); 
                 res.data.forEach((userLocation) => {
-    
-                   function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend) {
+
+                    async function reverseGeolocalization(lat, long) {
+                        console.log(lat, long)
+                        const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyCZllXD0czNd_oeF0u_o9LUVJ2bCd1K4p8`);
+                       console.log(address.data.results[0])
+                       cityActualOnine = address.data.results[0].address_components[3].long_name ;
+
+                       getDistanceFromLatLonInKm(latInitial, longInitial, lat, long, cityActualOnine)
+                        return
+                     }
+
+
+                     reverseGeolocalization(userLocation.lat, userLocation.long);
+
+
+                   function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend, cityActualOnine) {
                        console.log(latInitial, longInitial)
+                       console.log(cityActualOnine)
                        console.log(myLat, myLong, latFriend, longFriend)
                        var deg2rad = function (deg) { return deg * (Math.PI / 180); },
                            R = 6371,
@@ -175,7 +185,7 @@ function Radar() {
                                idAccount: userLocation.idAccount,
                                avatar: userLocation.avatar,
                                nickname: userLocation.nickname,
-                               city: userLocation.city,
+                               city: cityActualOnine,
                                equalCity: userLocation.equalCity, 
                                type:userLocation.type,
                                plane: userLocation.plane,
@@ -187,7 +197,7 @@ function Radar() {
                            setDistancia(oldDistancia => [...oldDistancia, dados])
                    }
                    
-                   getDistanceFromLatLonInKm(latInitial, longInitial, userLocation.lat, userLocation.long )
+                   
                    setLoad(true)
     
            })
@@ -590,7 +600,7 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") && (onlineUs
                         <h6><b>{user.nickname}</b></h6>
                                    <h6><IoPersonOutline /> {user.type}</h6>
                                    <h6><IoLocationOutline />{user.distanceKm === 0 ? "- 1Km" : ` ${user.distanceKm}Km`}</h6>
-                                   {/* <h6>{user.city}</h6> */}
+                                   <h6>{user.city}</h6>
                            </div>
                                     )
                                 })}
