@@ -1,7 +1,7 @@
 ﻿import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { TopBar } from "../../components/TopBar/TopBar"
 import { IoCalendarOutline, IoList, IoRadio,IoMailUnreadOutline, IoPersonOutline, IoCashOutline, IoSettingsOutline, IoPeopleOutline, IoMenuOutline, IoCameraOutline, IoArrowBackOutline,
-    IoInformationCircleOutline, IoChatbubblesOutline, IoMailOutline, IoNewspaperOutline, IoBusinessOutline, IoMailOpenOutline, IoStatsChartOutline, IoCloseOutline, IoWalletOutline } from "react-icons/io5"
+    IoInformationCircleOutline, IoChatbubblesOutline, IoMailOutline, IoTrashOutline, IoBusinessOutline, IoMailOpenOutline, IoStatsChartOutline, IoCloseOutline, IoWalletOutline } from "react-icons/io5"
 import {FaCrown} from "react-icons/fa"
 import "./menu.css"
 
@@ -57,6 +57,9 @@ function Menu() {
             </div>
             <div className="unic2">
                 <a href="/pricing" className="Primary"><FaCrown />Seja Essencial por R$ 9,90</a>
+            </div>
+            <div className="unic3">
+                <button><IoTrashOutline /> Deletar minha conta</button>
             </div>
 </div>
 </div>

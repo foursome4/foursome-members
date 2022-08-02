@@ -16,10 +16,7 @@ import Modal from 'react-modal';
 import { FiRefreshCcw, FiUpload } from 'react-icons/fi';
 import { storage } from '../../services/firebaseConnection';
 import { ref, getDownloadURL, uploadBytes} from 'firebase/storage';
-import buscaCep from '../../services/api-buscaCep';
-import apiGoogleReverse from '../../services/apiGoogleReverse';
 import buscaCepPortugal from '../../services/api-buscaCepPortugal';
-import { FaStreetView } from 'react-icons/fa';
 import buscaDistrito from '../../services/api-buscaDistrito';
 
  
@@ -42,11 +39,9 @@ function EntrarConvite() {
   const navigate = useNavigate();
   const Local = localStorage.getItem("foursome");
   const user = JSON.parse(Local);
-  const {createInformationsAccount, logout} = useContext(AuthContext)
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [imageAvatar, setImageAvatar] = useState('');
   const [city, setCity] = useState("");
-  const [district, setDistrict] = useState("");
   const [districtAll, setDistrictAll] = useState([]);
   const [uf, setUf] = useState("");
   const [city2, setCity2] = useState("");
@@ -57,15 +52,12 @@ function EntrarConvite() {
   const [loadding, setLoadding] = useState(false);
   const [location, setLocation] = useState("Manual");
   const [textError, setTextError] = useState(false);
-  const [invalidMail, setInvalidMail] = useState(false);
 
   const [lat, setLat] = useState("");
   const [long, setLong] = useState("");
 
   const [latitude2, setLatitude2] = useState("");
   const [longitude2, setLongitude2] = useState("");
-  const [cityPortugal, setCityPortugal] = useState("");
-  const [ufPortugal, setUfPortugal] = useState("");
   const [codigoPostal, setCodigoPostal] = useState("");
   const [view, setView] = useState(false);
 
@@ -89,18 +81,7 @@ function EntrarConvite() {
           console.log("long1");
           console.log(long1);
 
-          reverseGeolocalization(lat1, long1);
         }
-
-        async function reverseGeolocalization(lat, long) {
-          console.log(lat, long)
-          const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyCZllXD0czNd_oeF0u_o9LUVJ2bCd1K4p8`);
-         console.log(address.data.results[0])
-          setCity2(address.data.results[0].address_components[3].long_name)
-          setUf2(address.data.results[0].address_components[4].short_name) 
-          return
-       }
-
             
     function error() {
       console.log('Unable to retrieve your location');
