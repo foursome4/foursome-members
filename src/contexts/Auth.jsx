@@ -654,9 +654,9 @@ async function recoverPasswordNew(email, password) {
 // Fim recuperações
 
 
-async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent, idPatrono, typeAccount}) {
+async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent, idPatrono, typeAccount, ufAccount, cityAccount}) {
     setLoading(true)
-    await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent, typeAccount}).then( async () => {      
+    await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent, typeAccount, ufAccount, cityAccount}).then( async () => {      
     toast.info("Post publicado com sucesso!")
     window.location.reload(false)
         setLoading(false)
