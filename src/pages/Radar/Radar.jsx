@@ -139,21 +139,6 @@ function Radar() {
     
                 const myLocation = res.data.filter((location) => (location.idAccount === userData.id)); 
                 res.data.forEach((userLocation) => {
-
-                    async function reverseGeolocalization(lat, long) {
-                        console.log(lat, long)
-                        const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyCZllXD0czNd_oeF0u_o9LUVJ2bCd1K4p8`);
-                       console.log(address.data.results[0])
-                       cityActualOnine = address.data.results[0].address_components[3].long_name ;
-
-                       getDistanceFromLatLonInKm(latInitial, longInitial, lat, long, cityActualOnine)
-                        return
-                     }
-
-
-                     reverseGeolocalization(userLocation.lat, userLocation.long);
-
-
                    function getDistanceFromLatLonInKm(myLat, myLong, latFriend, longFriend, cityActualOnine) {
                        console.log(latInitial, longInitial)
                        console.log(cityActualOnine)
@@ -185,7 +170,7 @@ function Radar() {
                                idAccount: userLocation.idAccount,
                                avatar: userLocation.avatar,
                                nickname: userLocation.nickname,
-                               city: cityActualOnine,
+                               city: userLocation.city,
                                equalCity: userLocation.equalCity, 
                                type:userLocation.type,
                                plane: userLocation.plane,
@@ -196,6 +181,8 @@ function Radar() {
                            }
                            setDistancia(oldDistancia => [...oldDistancia, dados])
                    }
+
+                   getDistanceFromLatLonInKm(latInitial, longInitial, userLocation.lat, userLocation.long)
                    
                    
                    setLoad(true)

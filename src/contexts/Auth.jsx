@@ -1,6 +1,8 @@
 import {createContext, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import api from '../services/api';
+import apiGoogleReverse from '../services/apiGoogleReverse';
 import { socket } from '../services/websocket';
 import {v4 as uuidv4} from 'uuid';
 
@@ -9,10 +11,14 @@ const AuthContext = createContext({});
 
 function AuthProvider({children}) {
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
     const [comentsPosts, setComentsPosts] = useState([])
 
     const [lat, setlat] = useState("");
     const [long, setLong] = useState("");
+    const [cityActual, setCityActual] = useState("");
+    const [ufActual, setUfActual] = useState("");
+
     
     async function createAccount({
         id, país, username, email, phone, type, password, status, role,
@@ -1047,6 +1053,7 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
     
     // Location
     function socketDataLocation() {
+     let cityActualOnine = ""
     function success(position) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
@@ -1055,7 +1062,8 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         setLong(longitude)
         console.log(latitude)
         console.log(longitude)
-
+   
+       reverseGeolocalization(latitude, longitude)
       }
     
       function error() {
@@ -1066,6 +1074,14 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
        return window.navigator.geolocation.getCurrentPosition(success, error);
         }
    
+        async function reverseGeolocalization(lat, long) {
+        const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyCZllXD0czNd_oeF0u_o9LUVJ2bCd1K4p8`);
+        console.log(address.data.results[0].address_components[3].long_name)
+        cityActualOnine = address.data.results[0].address_components[3].long_name;
+        setCityActual(address.data.results[0].address_components[3].long_name)
+        setUfActual(address.data.results[0].address_components[4].short_name) 
+     }
+
     const DataUser = localStorage.getItem("foursome");
     const user = JSON.parse(DataUser);
     const LocalInformation = localStorage.getItem("informations-foursome");
@@ -1080,6 +1096,13 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
 
  
        
+        let equalCity = " "
+        if(cityActual === userInformations.city && ufActual === userInformations.uf ) {
+        equalCity = true
+        } else {
+        equalCity = false
+        }
+
         const data = {
             idAccount: user.id,
             username: user.username,
@@ -1089,8 +1112,11 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
             relationship: userInformation.relationship,
             lat: lat.toString(),
             long: long.toString(),
-            city: userInformation.city,
+            city: cityActual,
             uf: userInformation.uf,
+            actualCity: "",
+            actualUf: "",
+            equalCity: "",
             plane: "",
             emoji: "",
             song: "",

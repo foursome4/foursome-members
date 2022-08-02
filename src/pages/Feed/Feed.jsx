@@ -31,6 +31,28 @@ function Feed() {
     const {inactivityTime, logout, socketDataLocation} = useContext(AuthContext);
 
            inactivityTime();
+           useEffect(() => {
+
+            async function loadUsersOnline() {
+               const res = await api.get("/online");
+               
+               const selectUserOnline = res.data.filter(online => online.idAccount === user.id);
+               console.log("selectUserOnline")
+               console.log(selectUserOnline)
+               console.log(selectUserOnline.length)
+   
+               if(selectUserOnline.length === 0) {
+                   console.log("Cadastrando usuário")
+                socketDataLocation()
+               }
+            }
+
+               if(user.status === "blocked") {
+                window.open("/profile", "_self");
+               }
+ 
+               loadUsersOnline()
+           }, [navigate, socketDataLocation, user.status, user.id]);
 
 
            useEffect(() => {
@@ -117,28 +139,6 @@ function Feed() {
                 loadDateReadFeed()
             }, [loadDateReadFeed ]);
 
-           useEffect(() => {
-
-            async function loadUsersOnline() {
-               const res = await api.get("/online");
-               
-               const selectUserOnline = res.data.filter(online => online.idAccount === user.id);
-               console.log("selectUserOnline")
-               console.log(selectUserOnline)
-               console.log(selectUserOnline.length)
-   
-               if(selectUserOnline.length === 0) {
-                   console.log("Cadastrando usuário")
-               socketDataLocation()
-               }
-            }
-
-               if(user.status === "blocked") {
-                window.open("/profile", "_self");
-               }
- 
-               loadUsersOnline()
-           }, [navigate, socketDataLocation, user.status, user.id]);
 
            function handleTop(e) {
             window.scrollTo({
