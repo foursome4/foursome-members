@@ -138,6 +138,14 @@
                         .topBar .search {
                             width: 80px;
                             font-size: 12px;
+                            padding: 10px;
+                        }
+                        .topBar .search p {
+                           display: none;
+                        }
+                        .topBar .search svg {
+                           font-size: 16px;
+                           margin-right: 0px;
                         }
 
    

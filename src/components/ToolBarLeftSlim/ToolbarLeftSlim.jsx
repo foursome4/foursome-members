@@ -1,5 +1,5 @@
 import { IoCalendarOutline, IoList, IoRadio, IoPersonOutline, IoPeopleOutline, IoBusinessOutline, IoStatsChartOutline,
-    IoInformationCircleOutline, IoNewspaperOutline, IoMailOpenOutline, IoSettingsOutline, IoCashOutline } from "react-icons/io5";
+    IoInformationCircleOutline, IoMailUnreadOutline, IoMailOpenOutline, IoSettingsOutline, IoCashOutline } from "react-icons/io5";
 import {memo} from 'react' 
 import './toolbarLeftSlim.css'
 import { ButtonFeed } from "../ButtonsTollBar/ButtonFeed/ButtonFeed";
@@ -36,10 +36,10 @@ function ToolbarLeftSlimComponent() {
                     </button>
                     </a> */}
 
-                    <a href="/invitelist" >
+                    <a href="/recados" >
                     <button className="toolIcon" >
-                        <IoMailOpenOutline size={20}/>
-                       Enviado
+                        <IoMailUnreadOutline size={20}/>
+                       Recados
                     </button>
                     </a>
 
