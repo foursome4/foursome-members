@@ -41,10 +41,12 @@ function Feed() {
                console.log(selectUserOnline)
                console.log(selectUserOnline.length)
    
-               if(selectUserOnline.length === 0) {
+               if(selectUserOnline.length > 0) {
+                console.log("Usuário ja está online")
+                return
+              }
                    console.log("Cadastrando usuário")
-                socketDataLocation()
-               }
+                 socketDataLocation()
             }
 
                if(user.status === "blocked") {

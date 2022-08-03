@@ -1053,6 +1053,7 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
     
     // Location
     function socketDataLocation() {
+        console.log("Cadastrando em usuários online!")
      let cityActualOnine = ""
     function success(position) {
         const latitude  = position.coords.latitude;
