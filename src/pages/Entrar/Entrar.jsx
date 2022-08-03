@@ -711,6 +711,7 @@ districtAll.sort(function(a,b) {
                             <h5>- Foto de parte do corpo ou do rosto ( Não é obrigatório foto de rosto)</h5>
                             <br />
                             <h5> <b>Não adicionar fotos de:</b> </h5>
+                            <h5>- Prints de fotos</h5>
                             <h5>- Animais</h5>
                             <h5>- Paísagem</h5>
                             <h5>- Desenho</h5>
