@@ -20,7 +20,8 @@ function RecadoUnic() {
             <h5><b>Para:</b> Todos. <b>Prioridade:</b>{data?.[0].priority}</h5>     
                 </div>
             <br />
-            <h5>{data?.[0].text}</h5>  
+            <h5>{data?.[0].text}</h5> 
+            <img src={data?.[0].link} alt={data?.[0].title} /> 
             <br />
             <h5>Atenciosamente, <br />Equipe FOURSOME</h5>   
 

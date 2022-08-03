@@ -32,17 +32,17 @@
 
 .UserNotFound .user .top h3 {
     font-weight: 900;
-    margin: 20px;
-    color: var(--Gray_font2)
+    margin: 20px 10px;
+    color: var(--Foursome1)
 }
 .UserNotFound .user h4 {
     font-weight: 700;
-    margin: 40px 20px;
+    margin: 40px 10px;
     color: var(--Gray_font1)
 }
 
 .UserNotFound .user a {
-    background-color: var(--Gray_font2);
+    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
     color: var(--White);
     border-radius: 6px;
     padding: 10px 20px;

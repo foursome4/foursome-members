@@ -118,6 +118,9 @@
     color: var(--Gray_font2);
     white-space: pre-line;
 }
+.RecadoUnic .listRecadoUnic img {
+    width: 20%;
+}
 
 
 @media (max-width: 900px) {
@@ -128,11 +131,33 @@
         background-color: var(--Background2)
     }
 
+    .RecadoUnic .listRecadoUnic img {
+        width: 30%;
+    }
+
     @media (max-width: 800px) {
         .RecadoUnic .listRecadoUnic{
             width:100%;
             padding:0 10px;
             background-color: var(--Background2)
+        }
+
+        .RecadoUnic .listRecadoUnic img {
+            width: 40%;
+        }
+    
+
+        @media (max-width: 500px) {
+            .RecadoUnic .listRecadoUnic{
+                width:100%;
+                padding:0 10px;
+                background-color: var(--Background2)
+            }
+
+            .RecadoUnic .listRecadoUnic img {
+                width: 50%;
+            }
+            
         }
         
     }
