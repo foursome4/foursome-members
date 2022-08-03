@@ -71,7 +71,7 @@ function ProfileFriend() {
         const res =  await api.get(`accounts/filter/${id}`);
           console.log(res.data)
           if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-              window.open("/feed","_self")
+              window.open("/usernotfound","_self")
           } else {
               console.log("Conta encontrada")
           } 
@@ -85,6 +85,15 @@ function ProfileFriend() {
               console.log("Informações encontradas")
           } 
       }
+      async function searchInformations2() {
+        const res =  await api.get(`informations/${id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+            window.open("/usernotfound","_self")
+        } else {
+            console.log("Conta encontrada")
+        } 
+      }
       async function searchCharacteristcs() {
         const res =  await api.get(`characteristics/${myUser.id}`);
           console.log(res.data)
@@ -93,6 +102,15 @@ function ProfileFriend() {
           } else {
               console.log("Caracteristicas encontradas")
           } 
+      }
+      async function searchCharacteristcs2() {
+        const res =  await api.get(`characteristics/${id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+            window.open("/usernotfound","_self")
+        } else {
+            console.log("Conta encontrada")
+        } 
       }
       async function searchPreferences() {
         const res =  await api.get(`preferences/${myUser.id}`);
@@ -104,12 +122,24 @@ function ProfileFriend() {
               setMyInformations(true)
           } 
       }
+      async function searchPreferences2() {
+        const res =  await api.get(`preferences/${id}`);
+          console.log(res.data)
+          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
+            window.open("/usernotfound","_self")
+        } else {
+            console.log("Conta encontrada")
+        } 
+      }
 
       searchAccount()
       searchAccountFriend()
       searchInformations()
       searchCharacteristcs()
       searchPreferences()
+      searchInformations2()
+      searchCharacteristcs2()
+      searchPreferences2()
      }, []);
 
 useEffect(() => {
