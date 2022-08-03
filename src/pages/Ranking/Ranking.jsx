@@ -25,7 +25,7 @@ function Ranking() {
 
     res.data.forEach((photos) => {
          async function loadReactions() {
-          const res =  await api.get(`/reactions/${photos.id}`)
+          const res =  await api.get(`/reactions/counter/${photos.id}`)
             console.log(res.data)
             const data = {
                 id: photos.id,
@@ -52,7 +52,7 @@ function Ranking() {
 
             res.data.forEach((videos) => {
                 async function loadReactions() {
-                const res = await api.get(`/reactions/${videos.id}`)
+                const res = await api.get(`/reactions/counter/${videos.id}`)
                     console.log(res.data)
                     const dataVideo = {
                         id: videos.id,
