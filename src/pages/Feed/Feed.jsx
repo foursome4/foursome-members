@@ -68,7 +68,7 @@ function Feed() {
                 } 
             }
             async function searchInformations() {
-              const res =  await api.get(`informations/${id}`);
+              const res =  await api.get(`/informations/${id}`);
                 console.log(res.data)
                 if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
                     logout(id)
@@ -77,7 +77,7 @@ function Feed() {
                 } 
             }
             async function searchCharacteristcs() {
-              const res =  await api.get(`characteristics/${id}`);
+              const res =  await api.get(`/characteristics/${id}`);
                 console.log(res.data)
                 if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
                     logout(id)
@@ -86,7 +86,7 @@ function Feed() {
                 } 
             }
             async function searchPreferences() {
-              const res =  await api.get(`preferences/${id}`);
+              const res =  await api.get(`/preferences/${id}`);
                 console.log(res.data)
                 if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
                     logout(id)

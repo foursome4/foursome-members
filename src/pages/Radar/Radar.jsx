@@ -572,7 +572,7 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") && (onlineUs
                                user.invisible === true ? "" :
                                <div className="radar-unic" key={user.id}>
                                    <div className="img">
-                                   <Link to={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`}>
+                                   <a  href={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`} target="_blank">
                                    <img 
                         src={user.avatar}
                         onError={({ currentTarget }) => {
@@ -580,7 +580,7 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") && (onlineUs
                             currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
                         }}
                         />
-                                   </Link>
+                                   </a >
                                    <h4>{user.emoji === "musica" ? "🎶" : user.emoji === "emoji"? "😈" : user.emoji === "viagem" ? "✈️" :""  }</h4>           
                                    <h5>{user.online === true ? <FaCircle /> : "" }</h5>
                                    </div>

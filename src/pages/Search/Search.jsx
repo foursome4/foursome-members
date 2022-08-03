@@ -243,7 +243,7 @@ if(!limitData) {
                 return(
                     <div className="accounts" key={information.idAccount}>
                         <div className="image">
-                            <a href={information.idAccount === userData.id ? "/profile" : `/profile-friend/${information.idAccount}` } >
+                            <a href={information.idAccount === userData.id ? "/profile" : `/profile-friend/${information.idAccount}` } target="_blank">
                         <img 
                         src={information.avatar}
                         onError={({ currentTarget }) => {
@@ -254,7 +254,7 @@ if(!limitData) {
                         </a>
                         </div>
                         <div className="infos2">
-                        <a href={information.idAccount === userData.id ? "/profile" : `/profile-friend/${information.idAccount}` } >
+                        <a href={information.idAccount === userData.id ? "/profile" : `/profile-friend/${information.idAccount}` } target="_blank">
                             <h5>{information.nickname} {information.país === "Brasil" ? "🇧🇷" : information.país === "Portugal" ? "🇵🇹" : ""}</h5>
                             </a>
                             <h6>{information.username}</h6>
