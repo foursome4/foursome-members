@@ -26,10 +26,10 @@ function Ranking() {
     res.data.forEach((photos) => {
          async function loadReactions() {
           const res =  await api.get(`/reactions/${photos.id}`)
-            console.log(res.data.length)
+            console.log(res.data)
             const data = {
                 id: photos.id,
-                likes: res.data.length,
+                likes: res.data,
                 idAccount: photos.idAccount,
                 link: photos.link,
                 username: photos.username
@@ -53,10 +53,10 @@ function Ranking() {
             res.data.forEach((videos) => {
                 async function loadReactions() {
                 const res = await api.get(`/reactions/${videos.id}`)
-                    console.log(res.data.length)
+                    console.log(res.data)
                     const dataVideo = {
                         id: videos.id,
-                        likes: res.data.length,
+                        likes: res.data,
                         idAccount: videos.idAccount,
                         link: videos.link,
                         username: videos.username
