@@ -45,7 +45,7 @@ function Feed() {
                 console.log("Usuário ja está online")
                 return
               }
-                   console.log("Cadastrando usuário")
+                 console.log("Cadastrando usuário")
                  socketDataLocation()
             }
 

@@ -1123,11 +1123,6 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         setUfActual(address.data.results[0].address_components[4].short_name) 
      }
 
-    const DataUser = localStorage.getItem("foursome");
-    const user = JSON.parse(DataUser);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformations = JSON.parse(LocalInformation);
-
     async function getInformations(cityActualOnine) {
 
         const Local = localStorage.getItem("foursome");
@@ -1135,14 +1130,6 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         const LocalInformation = localStorage.getItem("informations-foursome");
         const userInformation = JSON.parse(LocalInformation);
 
- 
-       
-        let equalCity = " "
-        if(cityActual === userInformations.city && ufActual === userInformations.uf ) {
-        equalCity = true
-        } else {
-        equalCity = false
-        }
 
         const data = {
             idAccount: user.id,
@@ -1165,10 +1152,25 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         }
 
         if(data.idAccount && data.username && data.nickname && data.avatar && data.lat && data.long && data.city && data.uf !== "") {
+            socket.on("connection", () => {
+                console.log("Conexão estabelecida")
+            })
+            
+            const Local = localStorage.getItem("foursome");
+            const user = JSON.parse(Local);
+            const res = await api.get("/online");
+        
+            const selectUserOnline = res.data.filter(online => online.idAccount === user.id);
+            console.log("selectUserOnline")
+            console.log(selectUserOnline)
+            console.log(selectUserOnline.length)
+    
+            if(selectUserOnline.length > 0) {
+             console.log("Usuário ja está online")
+             return
+           }
 
-                socket.on("connection", () => {
-                    console.log("Conexão estabelecida")
-                })
+
                     await api.post("/online", data).then(() => {
                     })
  
