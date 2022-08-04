@@ -4,7 +4,7 @@ import './ranking.css'
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim"
 import api from "../../services/api"
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
-import {IoFlameOutline} from 'react-icons/io5'
+import {IoFlameOutline, IoVideocamOutline, IoImageOutline} from 'react-icons/io5'
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from "../../contexts/Auth"
 
@@ -17,6 +17,7 @@ function Ranking() {
     const [photo, setPhoto] = useState([])
     const [video, setVideo] = useState([])
     const [type, setType] = useState("Photo");
+    const [month, setMonth] = useState(new Date().getMonth() + 1);
 
 
     useEffect(() => {
@@ -32,7 +33,8 @@ function Ranking() {
                 likes: res.data,
                 idAccount: photos.idAccount,
                 link: photos.link,
-                username: photos.username
+                username: photos.username,
+                date: photos.created_at
             }
         setPhoto(oldOnline => [...oldOnline, data])
         }
@@ -59,7 +61,8 @@ function Ranking() {
                         likes: res.data,
                         idAccount: videos.idAccount,
                         link: videos.link,
-                        username: videos.username
+                        username: videos.username,
+                        date: videos.created_at
                     }
                     setVideo(oldOnline => [...oldOnline, dataVideo])
                 }
@@ -79,22 +82,35 @@ function Ranking() {
     function handleSelectTypeVideo() {
         setType("Video")
     }
+    function handleSelectMonth(e) {
+        setMonth(e.target.value)
+    }
 
+    const filterPhotos = photo?.filter((photos) => new Date(photos.date).getMonth() + 1 === parseInt(month) )
+    console.log(filterPhotos)
+    console.log(month)
+    console.log(parseInt(month))
+    const filterVideos = video?.filter((videos) => new Date(videos.date).getMonth() + 1 === parseInt(month) )
+    console.log(filterVideos)
+    console.log(month)
+    console.log(parseInt(month))
 
+    if(filterPhotos) {
+        filterPhotos.sort(function(a,b) {
+            if(a.likes > b.likes ) {
+                return -1
+            } else {
+                return true
+            }
+        })
+    }
     if(photo) {
-        photo.sort(function(a,b) {
-            if(a.likes > b.likes ) {
-                return -1
-            } else {
-                return true
-            }
-        })
+        console.log(photo)
     }
-    
-const limit = photo.slice(0,10);
+const limit = filterPhotos.slice(0,10);
 
-    if(video) {
-        video.sort(function(a,b) {
+    if(filterVideos) {
+        filterVideos.sort(function(a,b) {
             if(a.likes > b.likes ) {
                 return -1
             } else {
@@ -103,7 +119,7 @@ const limit = photo.slice(0,10);
         })
     }
     
-const limitVideo = video.slice(0,10);
+const limitVideo = filterVideos.slice(0,10);
 
     return (
         <div className="content">
@@ -118,12 +134,31 @@ const limitVideo = video.slice(0,10);
                             </div>
 
                             <div className="text">
-                             <h3>Seja bem vindo ao ranking. <br /> Aqui você verá as 10 fotos e vídeos mais curtidas 🔥</h3>
+                             <h3>Fotos e vídeos mais curtidas 🔥</h3>
                          </div>
 
                             <div className="buttons">
-                                <button className={type === "Photo" ? "selected" : ""} onClick={handleSelectTypePhoto}>Ver Ranking Fotos</button>
-                                <button className={type === "Video" ? "selected" : ""} onClick={handleSelectTypeVideo}>Ver Ranking Vídeos</button>
+                                <button className={type === "Photo" ? "selected" : ""} onClick={handleSelectTypePhoto}><IoImageOutline /> Fotos</button>
+                                <button className={type === "Video" ? "selected" : ""} onClick={handleSelectTypeVideo}><IoVideocamOutline /> Vídeos</button>
+                            </div>
+
+                             <div className="filterMonth">
+                                <h5>Veja as 10 melhores de cada mês</h5>
+                                <select value={month} onChange={handleSelectMonth}>
+                                <option>Escolha o mês</option>
+                                <option value="1">Janeiro</option>
+                                <option value="2">Fevereiro</option>
+                                <option value="3">Março</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Maio</option>
+                                <option value="6">Junho</option>
+                                <option value="7">Julho</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Setembro</option>
+                                <option value="10">Outubro</option>
+                                <option value="11">Novembro</option>
+                                <option value="12">Dezembro</option>
+                            </select>
                             </div>
 
 

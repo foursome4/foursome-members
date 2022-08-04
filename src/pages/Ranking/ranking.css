@@ -24,10 +24,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    padding: 60px 0 80px 0;
 }
 
 .content .aside .ranking {
-    margin-top: 50px;
     width: 100%;
     height: 100%;
     border-right: 2px solid var(--Background2);
@@ -49,6 +49,37 @@
 }
 
 
+.content .aside .ranking .filterMonth{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.content .aside .ranking .filterMonth h5 {
+    font-weight: 600;
+    color: var(--Primary);
+    margin: 5px;
+}
+
+.content .aside .ranking .filterMonth select {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--Primary);
+    background-color: var(--Background2);
+    border-radius: 20px;
+    color: var(--Primary);
+    width: 50%;
+    padding: 5px 10px;
+    font-weight: 600;
+
+}
 .content .aside .ranking .buttons{
     width: 50%;
     display: flex;
@@ -70,6 +101,7 @@
     color: var(--Primary);
     width: 40%;
     padding: 5px 10px;
+    font-weight: 600;
 }
 .content .aside .ranking .buttons .selected {
     display: flex;
@@ -82,6 +114,10 @@
     color: var(--White);
     width: 40%;
     padding: 5px 10px;
+}
+
+.content .aside .ranking .buttons button svg {
+    margin-right: 5px;
 }
 
 .content .aside .ranking .ranking-selected {
@@ -272,9 +308,9 @@
     .content .aside .ranking .buttons{
         width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         padding: 10px;
         flex-wrap: wrap;
     }
@@ -288,9 +324,23 @@
         background-color: var(--Background2);
         border-radius: 20px;
         color: var(--Primary);
-        width: 70%;
         padding: 5px 10px;
-        margin-top: 5px;
+        margin: 5px;
+    }
+
+    .content .aside .ranking .filterMonth select {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--Primary);
+        background-color: var(--Background2);
+        border-radius: 20px;
+        color: var(--Primary);
+        width: 80%;
+        padding: 5px 10px;
+        font-weight: 600;
+    
     }
 
     .content .aside .ranking .buttons .selected {
@@ -302,8 +352,7 @@
         background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
         border-radius: 20px;
         color: var(--White);
-        width: 70%;
         padding: 5px 10px;
-        margin-top: 5px;
+        margin: 5px;
     }
 }
