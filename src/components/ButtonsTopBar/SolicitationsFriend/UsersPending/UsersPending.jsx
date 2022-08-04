@@ -30,7 +30,7 @@ function UsersPending({id}) {
     return (
        <div className="item">
            <div className="image">
-           <Link to={userData.id === id ? `/profile` :`/profile-friend/${id}`}>
+           <a href={userData.id === id ? `/profile` :`/profile-friend/${id}`} target="_blank">
            {avatar === "" || avatar === undefined ? 
                                                <img 
                                                src={profile}
@@ -48,12 +48,12 @@ function UsersPending({id}) {
                         }}
                         />
                         }
-           </Link>
+           </a>
            </div>
            <div className="name">
              <Link to={userData.id === id ? `/profile` :`/profile-friend/${id}`}>
                        {nickname === "" || nickname === undefined ?
-         <h4>Carregando usuáeio...</h4>
+         <h4>Carregando usuário...</h4>
         :
         <h4>{nickname}</h4> }
            </Link>

@@ -58,6 +58,7 @@
     padding: 10px;
     flex-wrap: wrap;
     margin: 20px 0;
+    width: 90%;
 }
 
 .content .aside .ranking .filterMonth h5 {
@@ -75,7 +76,7 @@
     background-color: var(--Background2);
     border-radius: 20px;
     color: var(--Primary);
-    width: 50%;
+    width: 30%;
     padding: 5px 10px;
     font-weight: 600;
 
@@ -305,6 +306,75 @@
 
 
 @media(max-width: 768px) {
+
+    .content .aside .ranking {
+        width: 100%;
+        height: 100%;
+        border-right: 2px solid var(--Background2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 5px;
+    }
+
+    .content .aside .ranking .ranking-all {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: 5px 0;
+        flex-wrap: wrap;
+    }
+
+    .content .aside .ranking .ranking-all .ranking-unic {
+        width: 160px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-radius: 20px;
+        box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+        margin: 10px 0;
+    }
+
+    .content .aside .ranking .ranking-all .ranking-unic .post {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
+    
+    .content .aside .ranking .ranking-all .ranking-unic .post img {
+        object-fit: cover;
+        width: 150px;
+        height: 150px;
+        border-radius: 6px;
+    }
+    .content .aside .ranking .ranking-all .ranking-unic .post video {
+        object-fit: contain;
+        width: 150px;
+        height: 150px;
+        border-radius: 6px;
+    }
+    
+    .content .aside .ranking .ranking-all .ranking-unic .title h3 {
+        background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+        color: var(--White);
+        padding: 5px 10px;
+        border-radius:20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+    }
+    
     .content .aside .ranking .buttons{
         width: 100%;
         display: flex;

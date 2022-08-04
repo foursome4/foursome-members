@@ -165,7 +165,12 @@ const limitVideo = filterVideos.slice(0,10);
 
                             {type === "Photo" ?
                                 <div className="ranking-all">
-                                {limit.map((photos) => {
+                                {
+                                
+                                limit.length === 0 ?
+                                <h4>Carregando Ranking</h4>
+                                :
+                                limit.map((photos) => {
                                     return(
                                       <div className="ranking-unic" key={photos.id}>
                                           <div className="title">   
@@ -182,7 +187,11 @@ const limitVideo = filterVideos.slice(0,10);
                             :
                             type === "Video" ?
                             <div className="ranking-all">
-                            {limitVideo.map((videos) => {
+                            {
+                             limitVideo.length === 0 ?
+                             <h4>Carregando Ranking</h4>
+                             :
+                             limitVideo.map((videos) => {
                                 return(
                                     <div className="ranking-unic" key={videos.id}>
                                     <div className="title">   

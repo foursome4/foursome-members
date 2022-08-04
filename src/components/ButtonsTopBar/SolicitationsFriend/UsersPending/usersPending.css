@@ -38,3 +38,42 @@
     text-decoration: none;
     color: var(--Primary);
 }
+
+@media(max-width: 768px) {
+    .item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 5px 0;
+        width: 100%;
+        text-decoration: none;
+    }
+    .item  .image{
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .item  .image img{
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .item .name h4 {
+        margin-left: 0px;
+        color: var(--Primary);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14px;
+    }
+    .item .name h5 {
+        margin-left: 5px;
+        color: var(--Black);
+        text-decoration: none;
+        margin-left: 1px;
+        font-size: 12px;
+    }
+}
