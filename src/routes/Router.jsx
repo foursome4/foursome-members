@@ -52,6 +52,7 @@ import { UsageTips } from '../pages/UsageTips/UsageTips';
 import { UseOfTerms } from '../pages/UseOfTerms/UseOfTerms';
 import { RecadoUnic } from '../pages/RecadoUnic/RecadoUnic';
 import { UserNotFound } from '../pages/UserNotFound/UserNotFound';
+import { Welcome } from '../pages/Welcome/Welcome';
 
 
 function Router () {
@@ -160,6 +161,8 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Messages /> </PrivateRoute>} />
             <Route path="/usernotfound" 
                 element={ <PrivateRoute> <UserNotFound /> </PrivateRoute>} />
+            <Route path="/welcome" 
+                element={ <PrivateRoute> <Welcome /> </PrivateRoute>} />
             </Routes>
            
     )

@@ -133,7 +133,7 @@ function AuthProvider({children}) {
         .then((res) => {
             if(res.data.length === 0) {
               
-                window.open("/characteristcs","_self")
+                window.open("/welcome","_self")
                 return
             }
             localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));
