@@ -1,5 +1,6 @@
 ﻿import { useParams } from "react-router-dom";
 import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu";
+import { ReplyNews } from "../../components/ReplyNews/ReplyNews";
 import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim";
 import { TopBar } from "../../components/TopBar/TopBar";
 import { useFetch } from "../../hooks/useFetch";
@@ -23,16 +24,9 @@ function RecadoUnic() {
             <h5>{data?.[0].text}</h5> 
             <img src={data?.[0].link} alt={data?.[0].title} /> 
             <br />
-            <h5>Atenciosamente, <br />Equipe FOURSOME</h5>   
+            <h5>Atenciosamente, <br />{data?.[0].nickname}</h5>   
 
-            {data?.[0].reply === "Não" ? "" :
-            <div className="reply">
-                <textarea name="" id="" cols="30" rows="5" placeholder="Digite sua resposta">
-
-                </textarea>
-                <button>Responder</button>
-            </div>
-            }
+            <ReplyNews id={data?.[0].id} reply={data?.[0].reply} />
 
             </div>
                  <ToolbarLeftSlim />

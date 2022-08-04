@@ -126,8 +126,6 @@
 @media (max-width: 900px) {
     .RecadoUnic .listRecadoUnic{
         width:100%;
-        padding-left:10%;
-        padding-rigth:10%;
         background-color: var(--Background2)
     }
 
