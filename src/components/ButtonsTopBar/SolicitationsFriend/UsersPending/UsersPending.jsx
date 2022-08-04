@@ -53,7 +53,7 @@ function UsersPending({id}) {
            <div className="name">
              <Link to={userData.id === id ? `/profile` :`/profile-friend/${id}`}>
                        {nickname === "" || nickname === undefined ?
-         <h4>Usuário deletado</h4>
+         <h4>Carregando usuáeio...</h4>
         :
         <h4>{nickname}</h4> }
            </Link>
