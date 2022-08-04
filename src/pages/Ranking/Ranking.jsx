@@ -9,8 +9,11 @@ import { useEffect, useState, useContext } from "react"
 import { AuthContext } from "../../contexts/Auth"
 
 function Ranking() {
-
+    const Local = localStorage.getItem("foursome");
+    const userData = JSON.parse(Local);
     const {inactivityTime} = useContext(AuthContext);
+
+    const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
 
     inactivityTime()
 
@@ -26,15 +29,19 @@ function Ranking() {
 
     res.data.forEach((photos) => {
          async function loadReactions() {
+             const result = await api.get(`/informations/${photos.idAccount}`)
           const res =  await api.get(`/reactions/counter/${photos.id}`)
             console.log(res.data)
+            console.log(result.data)
             const data = {
                 id: photos.id,
                 likes: res.data,
                 idAccount: photos.idAccount,
                 link: photos.link,
                 username: photos.username,
-                date: photos.created_at
+                date: photos.created_at,
+                nickname: result.data[0].nickname,
+                avatar: result.data[0].avatar,
             }
         setPhoto(oldOnline => [...oldOnline, data])
         }
@@ -54,7 +61,9 @@ function Ranking() {
 
             res.data.forEach((videos) => {
                 async function loadReactions() {
+                    const result = await api.get(`/informations/${videos.idAccount}`)
                 const res = await api.get(`/reactions/counter/${videos.id}`)
+                console.log(result.data[0])
                     console.log(res.data)
                     const dataVideo = {
                         id: videos.id,
@@ -62,7 +71,9 @@ function Ranking() {
                         idAccount: videos.idAccount,
                         link: videos.link,
                         username: videos.username,
-                        date: videos.created_at
+                        date: videos.created_at,
+                        nickname: result.data[0].nickname,
+                        avatar: result.data[0].avatar,
                     }
                     setVideo(oldOnline => [...oldOnline, dataVideo])
                 }
@@ -167,14 +178,46 @@ const limitVideo = filterVideos.slice(0,10);
                                 <div className="ranking-all">
                                 {
                                 
-                                limit.length === 0 ?
+                                photo.length === 0 || video.length === 0?
                                 <h4>Carregando Ranking</h4>
+                                : limit.length === 0 ?
+                                <h4>Sem fotos para o mês selecionado</h4>
                                 :
                                 limit.map((photos) => {
                                     return(
                                       <div className="ranking-unic" key={photos.id}>
                                           <div className="title">   
-                                           <UsersPending id={photos.idAccount} />                                  
+                                          <div className="item">
+                                                <div className="image">
+                                                <a href={userData.id === photos.idAccount ? `/profile` :`/profile-friend/${photos.idAccount}`} target="_blank">
+                                                {photos.avatar === "" || photos.avatar === undefined ? 
+                                                                                    <img 
+                                                                                    src={profile}
+                                                                                    onError={({ currentTarget }) => {
+                                                                                        currentTarget.onerror = null; // previne loop
+                                                                                        currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
+                                                                                    }}
+                                                                                    />
+                                                                :
+                                                                <img 
+                                                                src={photos.avatar}
+                                                                onError={({ currentTarget }) => {
+                                                                    currentTarget.onerror = null; // previne loop
+                                                                    currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
+                                                                }}
+                                                                />
+                                                                }
+                                                </a>
+                                                </div>
+                                                <div className="name">
+                                                    <a href={userData.id === photos.idAccount ? `/profile` :`/profile-friend/${photos.idAccount}`} target="_blank">
+                                                            {photos.nickname === "" || photos.nickname === undefined ?
+                                                <h4>Carregando usuário...</h4>
+                                                :
+                                                <h4>{photos.nickname}</h4> }
+                                                </a>
+                                                </div>
+                                         </div>                                  
                                           <h3><IoFlameOutline /> {photos.likes} Votos</h3>
                                           </div>
                                           <div className="post">
@@ -195,7 +238,37 @@ const limitVideo = filterVideos.slice(0,10);
                                 return(
                                     <div className="ranking-unic" key={videos.id}>
                                     <div className="title">   
-                                     <UsersPending id={videos.idAccount} />                                  
+                                           <div className="item">
+                                                <div className="image">
+                                                <a href={userData.id === videos.idAccount ? `/profile` :`/profile-friend/${videos.idAccount}`} target="_blank">
+                                                {videos.avatar === "" || videos.avatar === undefined ? 
+                                                                                    <img 
+                                                                                    src={profile}
+                                                                                    onError={({ currentTarget }) => {
+                                                                                        currentTarget.onerror = null; // previne loop
+                                                                                        currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
+                                                                                    }}
+                                                                                    />
+                                                                :
+                                                                <img 
+                                                                src={videos.avatar}
+                                                                onError={({ currentTarget }) => {
+                                                                    currentTarget.onerror = null; // previne loop
+                                                                    currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
+                                                                }}
+                                                                />
+                                                                }
+                                                </a>
+                                                </div>
+                                                <div className="name">
+                                                    <a href={userData.id === videos.idAccount ? `/profile` :`/profile-friend/${videos.idAccount}`} target="_blank">
+                                                            {videos.nickname === "" || videos.nickname === undefined ?
+                                                <h4>Carregando usuário...</h4>
+                                                :
+                                                <h4>{videos.nickname}</h4> }
+                                                </a>
+                                                </div>
+                                         </div>                                  
                                      <h3><IoFlameOutline /> {videos.likes} Votos</h3>
                                     </div>
                                       <div className="post">
