@@ -26,7 +26,10 @@ function RecadoUnic() {
             <br />
             <h5>Atenciosamente, <br />{data?.[0].nickname}</h5>   
 
-            <ReplyNews id={data?.[0].id} reply={data?.[0].reply} />
+            {
+                data?.[0].reply === "Sim" ? "" :
+            <ReplyNews id={data?.[0].id} reply={data?.[0].reply}/>
+            }
 
             </div>
                  <ToolbarLeftSlim />

@@ -19,39 +19,6 @@
     padding-rigth:10%;
     background-color: var(--Background2)
 }
-.RecadoUnic .listRecadoUnic .reply{
-    display: flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    width:100%;
-    margin: 40px 0;
-}
-
-.RecadoUnic .listRecadoUnic .reply textarea{
-        display: flex;
-    flex-direction:row;
-    align-items:center;
-    justify-content:center;
-    border-radius: 6px;
-    border: 1px solid var(--Gray_font1);
-    color:  var(--Background);
-    width: 100%;
-    resize: none;
-    
-}
-.RecadoUnic .listRecadoUnic .reply button{
-        display: flex;
-    flex-direction:row;
-    align-items:center;
-    justify-content:center;
-    border-radius: 6px;
-    border:none;
-    background-color: var(--Button);
-    color: var(--White);
-    padding: 10px 20px;
-    margin-top: 10px;
-}
 
 
 .RecadoUnic .listRecadoUnic .title {

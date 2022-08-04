@@ -108,7 +108,6 @@ body, input, textarea, button :focus{
     padding: 10px;
   }
   input, textarea {
-
     color: var(--Primary);
   }
 

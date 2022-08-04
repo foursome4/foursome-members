@@ -1014,6 +1014,19 @@ async function newVisit(idAccount, username, idFriend) {
 }
 
 
+
+async function newReplyRecado({idNews, idAccount, text, link, username, nickname}) {
+    const data = {idNews, idAccount, text, link, username, nickname}
+    console.log(data)
+    await api.post("/newsreply", data).then((res) => {
+
+        toast.info("Respsta enviada com sucesso!")
+        window.location.reload(false)
+    }).catch(error => {
+        console.log(error)
+    })
+}
+
 async function updateUserOnline( id, idAccount, username, type ,nickname, avatar, relationship, lat, long, city, uf, actualCity, actualUf, equalCity, plane, emoji, song, invisible) {
     const data = {idAccount, username, type ,nickname, avatar, relationship, lat, long, city, uf, actualCity, actualUf, equalCity, plane, emoji, song, invisible};
     console.log(data)
@@ -1050,12 +1063,25 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         })
     }
 
-    
     // Location
-    function socketDataLocation() {
+    async function socketDataLocation() {
+        const Local1 = localStorage.getItem("foursome");
+        const user1 = JSON.parse(Local1);
+
+        const res = await api.get("/online");
+        
+        const selectUserOnline = res.data.filter(online => online.idAccount === user1.id);
+        console.log("selectUserOnline")
+        console.log(selectUserOnline)
+        console.log(selectUserOnline.length)
+
+        if(selectUserOnline.length > 0) {
+         console.log("Usuário ja está online")
+         return
+       }
         console.log("Cadastrando em usuários online!")
-     let cityActualOnine = ""
-    function success(position) {
+        let cityActualOnine = ""
+        function success(position) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
     
@@ -1076,6 +1102,20 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         }
    
         async function reverseGeolocalization(lat, long) {
+            const Local = localStorage.getItem("foursome");
+            const user = JSON.parse(Local);
+            const res = await api.get("/online");
+        
+            const selectUserOnline = res.data.filter(online => online.idAccount === user.id);
+            console.log("selectUserOnline")
+            console.log(selectUserOnline)
+            console.log(selectUserOnline.length)
+    
+            if(selectUserOnline.length > 0) {
+             console.log("Usuário ja está online")
+             return
+           }
+
         const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyCZllXD0czNd_oeF0u_o9LUVJ2bCd1K4p8`);
         console.log(address.data.results[0].address_components[3].long_name)
         cityActualOnine = address.data.results[0].address_components[3].long_name;
@@ -1241,7 +1281,8 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
             createMembersEvents,
             deleteEvent,
             deleteMemberEvent,
-            createPayment
+            createPayment,
+            newReplyRecado
         }}>
             {children}
         </AuthContext.Provider>
