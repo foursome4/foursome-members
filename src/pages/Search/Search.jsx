@@ -41,6 +41,7 @@ function Search() {
                         }
                           const dados = {
                               idAccount: user.id,
+                              status: user.status,
                               username: user.username,
                               type: user.type,
                               país: user.país === null || user.país === undefined ? "" : user.país,
@@ -241,6 +242,7 @@ if(!limitData) {
         
             {limitData.map((information) => {
                 return(
+                    information.status === "pending" ? "" :
                     <div className="accounts" key={information.idAccount}>
                         <div className="image">
                             <a href={information.idAccount === userData.id ? "/profile" : `/profile-friend/${information.idAccount}` } target="_blank">
