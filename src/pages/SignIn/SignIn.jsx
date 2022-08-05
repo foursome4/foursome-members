@@ -70,6 +70,14 @@ function SignIn() {
           <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
           <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
           </div>
+
+          <div className="infoavatar">
+                            <h5>Verifique sua senha!</h5>
+                            <h6><b>Certifique-se que está escrevendo conforme cadastrado:</b> </h6>
+                            <h6>- 70% dos erros de login são por e-mail e senha com letras maiúsculas incorratente.</h6>
+                        </div>
+
+
           <div className="buttons">
             <button onClick={handleCreateAccount}> Entrar </button>
 

@@ -34,13 +34,26 @@
     text-align: center;
 
 }
-.content-Login1 .signIn .form h6 {
-    color: var(--White);
-    font-size:14px;
-    background-color: red;
+
+.content-Login1 .signIn .form  .infoavatar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    background-color: var(--Foursome1);
+    padding: 10px;
     border-radius: 6px;
-    padding:5px 10px;
-    margin: 0px 0px 20px 0px;
+    color: var(--White);
+    width: 70%;
+}
+
+.content-Login1 .signIn .form  .infoavatar h5 {
+    text-align: left;
+}
+.content-Login1 .signIn .form  .infoavatar h6 {
+    text-align: left;
 }
 
 .content-Login1 .signIn .form .register {
@@ -278,7 +291,10 @@ display: flex;
             .content-Login1 .signIn .form {
                 width: 90%;
             }
-        
+            .content-Login1 .signIn .form  .infoavatar {
+                width: 100%;
+            }
+            
             .content-Login1 .signIn .form input {
                 width: 100%;
             }
