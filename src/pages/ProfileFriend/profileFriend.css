@@ -85,6 +85,7 @@
     padding: 0 50px;
     margin-top: -4px;
     border: 1px solid var(--Background);
+    padding-left:120px;
 }
 .content-profileFriend .profileFriend .main .section .profileFriend-tools .users {
     display: flex;
@@ -198,7 +199,7 @@
 
 
 .content-profileFriend .profileFriend .main .section .sections .feed {
-    width: 100%;
+    width: 90%;
     height: 100%;
     border-right: 2px solid var(--Background);
     display: flex;
@@ -244,7 +245,7 @@
 }
 
 .content-profileFriend .profileFriend .main .section .sections .infos {
-    width: 300px;
+    width: 550px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -259,7 +260,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 250px;
+    width: 350px;
     padding: 10px 5px;
 
 }
@@ -533,17 +534,17 @@
 
 @media (max-width: 1130px) {
     .content-profileFriend .profileFriend .main .section .sections .feed {
-        width: 100%;
-        align-items: flex-start;
-        padding: 20px 20px;
+        width: 70%;
+        align-items: center;
+        padding: 20px 0;
     }
 
     
 @media (max-width: 1060px) {
     .content-profileFriend .profileFriend .main .section .sections .feed {
         width: 80%;
-        align-items: flex-start;
-        padding: 20px 20px;
+        align-items: center;
+        padding: 20px 0;
     }
 }
 
@@ -551,8 +552,8 @@
 @media (max-width: 970px) {
     .content-profileFriend .profileFriend .main .section .sections .feed {
         width: 75%;
-        align-items: flex-start;
-        padding: 20px 20px;
+        align-items: center;
+        padding: 20px 0;
     }
 }
 
@@ -607,7 +608,6 @@
             align-items: center;
             justify-content: center;
             background-color: var(--Background2);
-            border: 1px solid var(--Background);
         }
 
         .content-profileFriend .profileFriend .main .section .sections .infos .photo {

@@ -23,11 +23,11 @@ function ToolbarLeftSlimComponent() {
 
                 <ButtonFeed />
 
-                    <a href="/profile" >
+                    {/* <a href="/profile" >
                     <button className="toolIcon" >
                         <IoPersonOutline size={20}/>Perfil
                     </button>
-                    </a>
+                    </a> */}
           
                     {/* <a href="/messages" >
                     <button className="toolIcon" >
@@ -101,7 +101,7 @@ function ToolbarLeftSlimComponent() {
 
                     <a href="/menu" >
                     <button className="toolIcon" >
-                        <IoMenuOutline size={20}/>Menu
+                        <IoMenuOutline size={20}/>Planos
                     </button>
                     </a>
                     <a href="/infos" >

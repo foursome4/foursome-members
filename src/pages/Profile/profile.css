@@ -89,6 +89,7 @@
     padding: 0 50px;
     margin-top: -4px;
     border: 1px solid var(--Background);
+    padding-left:120px;
 }
 
 .content-profile .profile .main .section .profile-tool .user {
@@ -223,7 +224,7 @@
 
 
 .content-profile .profile .main .section .sections .feed {
-    width: 100%;
+    width: 80%;
     height: 100%;
     border-right: 2px solid var(--Primary);
     display: flex;
@@ -272,17 +273,17 @@
 
 @media (max-width: 1130px) {
     .content-profile .profile .main .section .sections .feed {
-        width: 100%;
-        align-items: flex-start;
-        padding: 20px 20px;
+        width:8%;
+        align-items: center;
+        padding: 20px 0;
     }
 
     
 @media (max-width: 1060px) {
     .content-profile .profile .main .section .sections .feed {
         width: 80%;
-        align-items: flex-start;
-        padding: 20px 20px;
+        align-items: center;
+        padding: 20px 0;
     }
 }
 
@@ -290,8 +291,8 @@
 @media (max-width: 970px) {
     .content-profile .profile .main .section .sections .feed {
         width: 75%;
-        align-items: flex-start;
-        padding: 20px 20px;
+        align-items: center;
+        padding: 20px 0;
     }
 }
 

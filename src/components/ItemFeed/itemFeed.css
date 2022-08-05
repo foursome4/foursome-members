@@ -503,7 +503,7 @@
                 }
 
 
-                @media (max-width: 380px) {
+                @media (max-width: 375px) {
         
                     .feed-post .reactions {
                         width: 100%;
@@ -519,11 +519,11 @@
                     }
 
                     .feed-post .post-data-media .image{
-                        width: 300px;
+                        width: 298px;
                     }
                     
                     .feed-post .post-data-media .image-video{
-                        width: 300px;
+                        width: 298px;
                     }
                     
                     .feed-post .post-data-media .image img{
@@ -531,7 +531,7 @@
                      }
                     
                     .feed-post .post-data-media .image .marcadagua{
-                        width: 300px;
+                        width: 298px;
                         height: 250px;
                     }
                     .feed-post .post-data-media .image .marcadagua .white{
@@ -542,14 +542,14 @@
                     }
                     
                     .feed-post .post-data-media .image-video .markTop{
-                        width: 300px;
+                        width: 298px;
                         height: 150px;
                         margin-top: -200px
 
              
                     }
                     .feed-post .post-data-media .image-video .markBottom{
-                        width: 300px;
+                        width: 298px;
                         height: 150px;
 
                         margin-top: 200px;
@@ -559,7 +559,8 @@
                         font-size: 14px;
                     }
                       
-                         
+                       
+                    
     
                 }
             }

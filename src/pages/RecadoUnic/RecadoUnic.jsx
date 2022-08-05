@@ -27,7 +27,7 @@ function RecadoUnic() {
             <h5>Atenciosamente, <br />{data?.[0].nickname}</h5>   
 
             {
-                data?.[0].reply === "Sim" ? "" :
+                data?.[0].reply === "Não" ? "" :
             <ReplyNews id={data?.[0].id} reply={data?.[0].reply}/>
             }
 

@@ -82,10 +82,10 @@ console.log(member)
    
   return (
       <div className="container">
-    <div className="content-profile">
+    <div className="content-Group">
       <ToolbarLeftSlim />
       <BarBottomMenu />
-      <div className="profile">
+      <div className="Group">
         <TopBar />
         <div className="main">
          <div className="section">
@@ -93,7 +93,7 @@ console.log(member)
   
               <img src={ cover} alt="" />
           </div>
-            <div className="profile-tool">
+            <div className="Group-tool">
                 <div className="user">
                  <div className="user-img">
                    <img src={avatar} alt="" />

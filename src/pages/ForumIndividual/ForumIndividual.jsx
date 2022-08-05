@@ -75,10 +75,10 @@ console.log(idAccount, theme)
    
   return (
       <div className="container">
-    <div className="content-profile">
+    <div className="content-Forum">
       <ToolbarLeftSlim />
       <BarBottomMenu />
-      <div className="profile">
+      <div className="Forum">
         <TopBar />
         <div className="main">
          <div className="section">
@@ -86,7 +86,7 @@ console.log(idAccount, theme)
   
               <img src={ cover} alt="" />
           </div>
-            <div className="profile-tool">
+            <div className="Forum-tool">
                 <div className="user">
                  <div className="user-img">
                    <img src={avatar} alt="" />
