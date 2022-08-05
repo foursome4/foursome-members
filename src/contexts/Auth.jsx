@@ -76,8 +76,8 @@ function AuthProvider({children}) {
                 
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
-                toast.error(`Falha no login.
-                E-mail, usuário ou senha incorretos!`);
+                toast.error(`Falha no login. E-mail, usuário ou senha incorretos!`);
+                toast.error(`Verifique letras maiúsculas e minúsculas`);
             })
             
         } else {
@@ -98,8 +98,8 @@ function AuthProvider({children}) {
                 
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
-                toast.error(`Falha no login.
-                E-mail, usuário ou senha incorretos!`);
+                toast.error(`Falha no login. E-mail, usuário ou senha incorretos!`);
+                toast.error(`Verifique letras maiúsculas e minúsculas`);
             })
         }
         

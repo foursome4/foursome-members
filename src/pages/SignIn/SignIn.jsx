@@ -72,7 +72,7 @@ function SignIn() {
           </div>
 
           <div className="infoavatar">
-                            <h5>Verifique sua senha!</h5>
+                            <h5><b>Verifique seu e-mail e senha!</b></h5>
                             <h6><b>Certifique-se que está escrevendo conforme cadastrado:</b> </h6>
                             <h6>- 70% dos erros de login são por e-mail e senha com letras maiúsculas incorratente.</h6>
                         </div>
