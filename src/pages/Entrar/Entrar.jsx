@@ -840,11 +840,11 @@ districtAll.sort(function(a,b) {
 
                     <div className="data"> 
 
-                        {
+                        {/* {
                         <div className="digiteCep">
                         <button onClick={handleHabiliteLocation}>{location === "Automatic" ? "Buscar manualmente": "Voltar a localização automática"}</button>
                         </div>
-                        }          
+                        }           */}
 
                     </div>
                     <br />
