@@ -172,7 +172,7 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
              <div className={"comment"}>
                   <NewComment postData={id} idAccount={idAccount}/>
              </div>
-            <div className="infos">
+            <div className="infosReactions">
         <ListCommentsAndReactions idPost={id} />
         <ListComments idPost={id}/>
             </div>

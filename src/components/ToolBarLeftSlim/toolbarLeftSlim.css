@@ -1,5 +1,5 @@
 .content-toolbar {
-    width: 100px;
+    width: 150px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -76,19 +76,19 @@
 }
 
 .content-toolbar .ToolBarLeftSlim .tools .toolIcon {
-    width: 80px;
+    width: 120px;
     height: 45px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    border-radius: 6px;
+    border-radius: 30px;
     margin: 3px 0;
-    padding: 5px;
+    padding: 10px;
     color: var(--White);
     cursor: pointer;
-    padding: 5px;
-    font-size: 12px;
+    padding: 15px;
+    font-size: 14px;
     border: none;
     background-color: var(--Primary3);
 }
