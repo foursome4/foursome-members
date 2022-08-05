@@ -672,7 +672,12 @@ districtAll.sort(function(a,b) {
           <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
           </div>
 
-
+          {passwordNative !== passwordConfirmNative ?
+          <div className="alert2">
+           <h5>As senhas devem ser iguais</h5>
+        </div>
+        : ""
+          }
           <div className="terms">
           <input type="checkbox" checked={checked} onChange={handleChange}/>
           <p>Li e concordo com os<b><a href="/lgpd" target="_blank">Termos de uso</a></b></p>

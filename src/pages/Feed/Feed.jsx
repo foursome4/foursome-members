@@ -34,6 +34,11 @@ function Feed() {
            useEffect(() => {
 
             async function loadUsersOnline() {
+
+                if(user.status === "pending") {
+                    logout(user.id)
+                    return
+                }
                const res = await api.get("/online");
                
                const selectUserOnline = res.data.filter(online => online.idAccount === user.id);

@@ -68,7 +68,10 @@ function PrivateRoute({children} ) {
             <Routes>
             <Route path="/" element={<SignIn />}/>
             <Route path="/signup/convite/:email/:code/:patron/:type" element={ <EntrarConvite />} />
+            <Route path="/characteristcs/:idAccount/:email/:type/:username" element={ <Characteristcs />} />
+            <Route path="/preferences/:idAccount/:email/:username" element={ <Preferences />} />
             <Route path="/signup/" element={ <Entrar />} />
+
             <Route path="/forgotit" element={ <Forgotit />} />
             <Route path="/recuperation" element={ <Recuperation />} />       
             <Route path="/recuperationuser" element={ <RecuperationUser />} />       
@@ -115,9 +118,9 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Radar/> </PrivateRoute>} />
             <Route path="/completeregistration" 
                 element={ <PrivateRoute> <CompleteRegistration/> </PrivateRoute>} />
-            <Route path="/characteristcs" 
+            <Route path="/characteristcs/:idAccount/:email" 
                 element={ <PrivateRoute> <Characteristcs/> </PrivateRoute>} />
-            <Route path="/preferences" 
+            <Route path="/preferences/:idAccount/:email" 
                 element={ <PrivateRoute> <Preferences /> </PrivateRoute>} />
             <Route path="/comming-soom" 
                 element={ <PrivateRoute> <CommingSoom /> </PrivateRoute>} />

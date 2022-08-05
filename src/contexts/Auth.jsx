@@ -41,9 +41,9 @@ function AuthProvider({children}) {
         await api.post('/accounts', data).then(() => {
           //  completeAccount(email)
             toast.info(`Cadastro criado com sucesso!`);
-            createSuccess(email);
+           
             createInformationsAccount({
-                idAccount:id, avatar, cover, relationship, nickname, city, uf, país
+                idAccount:id, avatar, cover, relationship, nickname, city, uf, país, email, type, username
                 })
 
         }).catch(error => {
@@ -66,10 +66,6 @@ function AuthProvider({children}) {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                     return
                 }
-                if(result.data.status === "pending") {
-                    toast.info(`Olá, ${result.data.username}. Sua conta está em análise. E em até 24h será liberada!`);
-                    return
-                }
                 localStorage.setItem("foursome", JSON.stringify(result.data));
                
                 findInformationsAccount(result.data.id)
@@ -88,10 +84,7 @@ function AuthProvider({children}) {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                    return
                 }
-                if(result.data.status === "pending") {
-                    toast.info(`Olá, ${result.data.username}. Sua conta está em análise. E em até 24h será liberada!`);
-                    return
-                }
+ 
                 localStorage.setItem("foursome", JSON.stringify(result.data));
                
                 findInformationsAccount(result.data.id)
@@ -129,11 +122,13 @@ function AuthProvider({children}) {
     }
 
     async function findCharacteriticsAccount(id) {
+        const Local = localStorage.getItem("foursome");
+        const user = JSON.parse(Local);
         await api.get(`/characteristics/${id}`)
         .then((res) => {
             if(res.data.length === 0) {
               
-                window.open("/welcome","_self")
+                window.open(`/characteristcs/${user.id}/${user.email}/${user.type}/${user.username}`,"_self")
                 return
             }
             localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));
@@ -146,38 +141,44 @@ function AuthProvider({children}) {
     }
 
     async function findPreferencesAccount(id) {
+        const Local = localStorage.getItem("foursome");
+        const user = JSON.parse(Local);
         await api.get(`/preferences/${id}`)
         .then((res) => {
             if(res.data.length === 0) {
              
-                window.open("/preferences","_self");
+                window.open(`/preferences/${user.id}/${user.email}/${user.username}`,"_self");
                 return
             }
             localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
-            const Local = localStorage.getItem("foursome");
-            const user = JSON.parse(Local);
             const LocalInformations = localStorage.getItem("informations-foursome");
             const userInformations = JSON.parse(LocalInformations);
 
            
 
-            if(user.latitude === undefined ||
-               user.longitude === undefined ||
-               user.latitude === null ||
-               user.longitude === null ||
-               user.latitude === false ||
-               user.longitude === false ||
-               user.país === undefined ||
-               user.país === null ||
-               user.país === false ||
-               userInformations.uf.length > 2
-               ) {
-                window.open("/feed", "_self");
-               // window.open("/update", "_self");
+            // if(user.latitude === undefined ||
+            //    user.longitude === undefined ||
+            //    user.latitude === null ||
+            //    user.longitude === null ||
+            //    user.latitude === false ||
+            //    user.longitude === false ||
+            //    user.país === undefined ||
+            //    user.país === null ||
+            //    user.país === false ||
+            //    userInformations.uf.length > 2
+            //    ) {
+            //     window.open("/feed", "_self");
+            //    // window.open("/update", "_self");
+            // }
+            // else {
+            //     window.open("/feed", "_self");
+            // }
+
+            if(user.status === "pending") {
+                toast.info(`Olá, ${user.username}. Sua conta está em análise. E em até 24h será liberada!`);
+                return
             }
-            else {
-                window.open("/feed", "_self");
-            }
+            window.open("/feed", "_self");
             
            
         }).catch(error => {
@@ -347,10 +348,11 @@ async function deleteConversations(user) {
 
 
 
-    async function createInformationsAccount({idAccount, avatar, cover, relationship, nickname, city, uf, país}) {
+    async function createInformationsAccount({idAccount, avatar, cover, relationship, nickname, city, uf, país, email, type, username}) {
         const id = uuidv4()
         await api.post("/informations", {id, idAccount, avatar, cover, relationship, nickname, city, uf, país}).then(() => {
-            window.open("/registrationend","_self")
+            window.open(`/characteristcs/${idAccount}/${email}/${type}/${username}`,"_self");
+
         }).catch(error => {
             console.log("Informações não enviadas" + error)
         })
@@ -379,7 +381,7 @@ async function deleteConversations(user) {
     }
 
 
-    async function createCharacteristcs({id1, idAccount, data, sex, sign, sexualOption}) {
+    async function createCharacteristcs({id1, idAccount, data, sex, sign, sexualOption, email, username}) {
         const data1 = {id1, idAccount, data, sex, sign, sexualOption}
         let dados = [];
             setLoading(true)
@@ -387,8 +389,7 @@ async function deleteConversations(user) {
                 id: id1, idAccount, birthDate: data, sex, sign, sexualOption
             }).then(async () => {
                 dados.push(data1)
-                localStorage.setItem("characteritics-foursome", JSON.stringify(dados));
-                window.open("/preferences","_self");
+                window.open(`/preferences/${idAccount}/${email}/${username}`,"_self");
                 setLoading(false)
             }).catch(error => {
                 console.log("Informações não enviadas" + error)
@@ -397,7 +398,7 @@ async function deleteConversations(user) {
 
 
 
-    async function createCharacteristcs2({id1, id2, idAccount, data, sex, sign, sexualOption, data2, sex2, sign2, sexualOption2}) {
+    async function createCharacteristcs2({id1, id2, idAccount, data, sex, sign, sexualOption, data2, sex2, sign2, sexualOption2, email, username}) {
         const data10 = {id1, idAccount, data, sex, sign, sexualOption}
         const data20 = {id2, idAccount,  data2, sex2, sign2, sexualOption2}
         let dados = [];
@@ -410,8 +411,7 @@ async function deleteConversations(user) {
                    id: id2, idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2
                 }).then(async () => {
                     dados.push(data20)
-                    localStorage.setItem("characteritics-foursome", JSON.stringify(dados));
-                    window.open("/preferences","_self");
+                    window.open(`/preferences/${idAccount}/${email}/${username}`,"_self");
                 }).catch(error => {
                     console.log("Informações não enviadas" + error)
                 })
@@ -426,7 +426,7 @@ async function deleteConversations(user) {
 
 
 
-    async function createCharacteristcs3({id1, id2, id3, idAccount, data, sex, sign, sexualOption, data2, sex2, sign2, sexualOption2, data3, sex3, sign3, sexualOption3 }) {
+    async function createCharacteristcs3({id1, id2, id3, idAccount, data, sex, sign, sexualOption, data2, sex2, sign2, sexualOption2, data3, sex3, sign3, sexualOption3,email, username }) {
         const data100 = {id1, idAccount, data, sex, sign, sexualOption}
         const data200 = {id2, idAccount,  data2, sex2, sign2, sexualOption2}
         const data300 = {id3, idAccount,  data3, sex3, sign3, sexualOption3}
@@ -444,8 +444,7 @@ async function deleteConversations(user) {
                        id: id3, idAccount: idAccount, birthDate: data3, sex:sex3, sign:sign3, sexualOption: sexualOption3
                     }).then(async () => {
                         dados.push(data300)
-                    localStorage.setItem("characteritics-foursome", JSON.stringify(dados));
-                        window.open("/preferences","_self");
+                    window.open(`/preferences/${idAccount}/${email}/${username}`,"_self");
                         setLoading(false)
                     }).catch(error => {
                         console.log("Informações não enviadas" + error)
@@ -545,10 +544,9 @@ async function newUpdateCharacteristcs3({id, birthDate,
 
 async function preferencesAccount({id, idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal, email, patron, username}) {
     const data = {id, idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal}
+    console.log(email)
     await api.post('/preferences', {id, idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal})
     .then(async () => {
-        localStorage.setItem("preferences-foursome", JSON.stringify(data));
-
         function friend(idAccount) {
             const idFriend = patron;
             const type = "friend"
@@ -564,7 +562,7 @@ async function preferencesAccount({id, idAccount, men, woman, couple, trisal, tr
         const idFriend = "";
         notifications(idPatrono, text, idAccount, idFriend, type, idPost)
 
-    
+        createSuccess(email);
         redirectToPageSucess()
 
     }).catch(error => {
@@ -573,7 +571,7 @@ async function preferencesAccount({id, idAccount, men, woman, couple, trisal, tr
 }
 
 async function redirectToPageSucess() {
-    window.open("/feed","_self");
+    window.open("/registrationend","_self");
 }
 async function updatePreferencesAccount({id, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal, idPatrono, username, idAccount}) {
     await api.patch(`/preferences/${id}`, { men, woman, couple, trisal, transvestites, transsexuals, groups, proposal})
