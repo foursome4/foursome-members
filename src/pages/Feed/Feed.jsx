@@ -13,17 +13,13 @@ import api from "../../services/api"
 import {FiArrowUpCircle} from 'react-icons/fi'
 import { toast } from "react-toastify"
 import { PostFeed } from "../../components/PostFeed/PostFeed"
+import { ListGroupsUnic } from "../../components/ListGroups/ListGroups"
+import { ListEventsUnic } from "../../components/ListEvents/ListEvents"
 
 
 function Feed() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
-    // const LocalInformation = localStorage.getItem("informations-foursome");
-    // const userInformation = JSON.parse(LocalInformation);
-    // const Localcharacteritics = localStorage.getItem("characteritics-foursome");
-    // const usercharacteritics = JSON.parse(Localcharacteritics);
-    // const Localpreferences = localStorage.getItem("preferences-foursome");
-    // const userpreferences = JSON.parse(Localpreferences);
   
     const id = user.id
     const [myInformations, setMyInformations] = useState(false)
@@ -168,6 +164,13 @@ return (
                     <ChatSlim />
                     <PostFeed />
                     <FeedPost /> 
+                    </div>
+                    <div className="blocksFeed">
+                        <h3>Próximo Evento</h3>
+                        <ListEventsUnic />
+                        <br />
+                        <h3>Grupo mais recente</h3>
+                            <ListGroupsUnic />
                     </div>
                     </div>
                  <ToolbarLeftSlim />
