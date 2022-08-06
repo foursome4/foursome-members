@@ -367,10 +367,10 @@
 
 
                 .feed-post .post-data-media .image{
-            width: 500px;
+            width: 450px;
         }
                 .feed-post .post-data-media .image-video{
-            width: 500px;
+            width: 450px;
         }
         
         .feed-post .post-data-media .image img{
@@ -378,12 +378,12 @@
          }
         
         .feed-post .post-data-media .image .marcadagua{
-            width: 500px;
+            width: 450px;
             height: 350px;
 
         }
         .feed-post .post-data-media .image-video .mark{
-            width: 500px;
+            width: 450px;
             height: 350px;
 
         }
