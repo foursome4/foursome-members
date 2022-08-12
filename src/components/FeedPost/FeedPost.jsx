@@ -29,7 +29,7 @@ function FeedPostComponent() {
     }
 
     // const {data} = useFetch(`/posts/all?page=${currentPage}&limit=${perPage}`);
-     const {data} = useFetchPost(`/posts/preferences/${user.uf}/?page=${currentPage}&limit=${perPage}`, data2);
+     const {data} = useFetchPost(`/posts/difference/?page=${currentPage}&limit=${perPage}`, data2);
 
      if(data){
         console.log("data")
@@ -127,10 +127,10 @@ function FeedPostComponent() {
                                     </div> */}
                                     </div>              
                            </div>
-                           {data?.length === 0 ?
+                           {/* {data?.length === 0 ?
                            <FeedPost2 /> 
                            : ""
-                           }
+                           } */}
         </div>                                
     )
 }
