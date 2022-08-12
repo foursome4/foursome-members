@@ -196,7 +196,7 @@ function AuthProvider({children}) {
         const Local = localStorage.getItem("foursome");
         const user = JSON.parse(Local);
 
-        const payment = await api.get(`payments/${user.id}`);
+        const payment = await api.get(`/payments/${user.id}`);
 
         console.log(payment.data)
         console.log(payment.data.lenght)

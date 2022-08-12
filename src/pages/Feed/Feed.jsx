@@ -116,8 +116,8 @@ function Feed() {
            }
 
            async function verufy(id) {
-            const paymentUser = await api.get(`/payment/${id}`)
-            const periodTest = await api.get(`/periodTest/${id}`)
+            const paymentUser = await api.get(`/payments/${id}`)
+            const periodTest = await api.get(`/periodtest/${id}`)
 
             if(paymentUser.data.length === 0 || periodTest.data.length === 0) {
                 logout(id);
