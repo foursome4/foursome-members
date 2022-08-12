@@ -224,7 +224,7 @@ function AuthProvider({children}) {
                 console.log(error)
             })
         } else {
-            const data = {status: payment.data[0].namePlain === "Premium" ? "premium" : "essencial"}
+            const data = {status: payment.data[0].referencePlain === "Premium" ? "premium" : "essencial"}
             await api.patch(`accounts/updatestatus/${user.id}`, data).then((res) => {
                 console.log(`status atualizado`);
                 logout(user.id);
@@ -232,7 +232,7 @@ function AuthProvider({children}) {
                 console.log(error)
             })
         }
-        
+
 
        // new Date(payment.data[0].created_at) > new Date(payment.data[0].created_at) + 30 ? "Vencido" : "Pode acessar";
     }
@@ -1190,7 +1190,7 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         console.log(data)
         await api.post("/payments", data).then(async () => {
 
-            const data2 = {status: namePlain === "Premium" ? "premium" : "essencial"}
+            const data2 = {status: referencePlain === "Premium" ? "premium" : "essencial"}
             await api.patch(`accounts/updatestatus/${idAccount}`, data2).then((res) => {
                 toast.info("Pagamento realizado com sucesso!");
                 window.open("/paymentConfirmed","_self")
