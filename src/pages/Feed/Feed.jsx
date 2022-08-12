@@ -112,6 +112,17 @@ function Feed() {
 
            if(user.status === "aproved" || user.status  === "active") {
             console.log("olá, mundo")
+            verufy(user.id)
+           }
+
+           async function verufy(id) {
+            const paymentUser = await api.get(`/payment/${id}`)
+            const periodTest = await api.get(`/periodTest/${id}`)
+
+            if(paymentUser.data.length === 0 || periodTest.data.length === 0) {
+                logout(id);
+                return;
+            }
             verityTimesPeiodTest(user.id);
            }
 
