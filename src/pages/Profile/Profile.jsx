@@ -16,6 +16,8 @@ import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 import { useContext } from 'react'
 import { AuthContext } from '../../contexts/Auth'
+import { PostFeed2 } from '../../components/PostFeed2/PostFeed2'
+import { PostFeed } from '../../components/PostFeed/PostFeed'
 
 
 function Profile() {
@@ -264,6 +266,11 @@ widthView()
                      <div className="feed">
                   {feed === "feed" ?
                   <>
+                                      {user.status === "essencial" || user.status === "suspense" ? 
+                    <PostFeed2 />
+                    :
+                    <PostFeed />
+                    }
                     <FeedPostIndividual idAccount={user.id} />
                   </>
                   :
