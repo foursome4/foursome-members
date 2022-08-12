@@ -224,7 +224,13 @@ function AuthProvider({children}) {
                 console.log(error)
             })
         } else {
-            window.open("/feed","_self");
+            const data = {status: payment.data[0].namePlain === "Premium" ? "premium" : "essencial"}
+            await api.patch(`accounts/updatestatus/${user.id}`, data).then((res) => {
+                console.log(`status atualizado`);
+                logout(user.id);
+            }).catch((error) => {
+                console.log(error)
+            })
         }
 
        // new Date(payment.data[0].created_at) > new Date(payment.data[0].created_at) + 30 ? "Vencido" : "Pode acessar";
