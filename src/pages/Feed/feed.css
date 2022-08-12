@@ -42,7 +42,6 @@
 }
 .content .aside .blocksFeed {
     width: 25%;
-    height: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;

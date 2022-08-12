@@ -68,7 +68,9 @@ function Feed() {
                 console.log(res.data)
                 if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
                     logout(id)
-                } else {
+                } else if(res.data[0].status === "blocked") {
+                    logout(id)
+                } else{
                     console.log("Conta encontrada")
                 } 
             }
@@ -108,7 +110,7 @@ function Feed() {
            }, []);
 
 
-           if(user.status === "test") {
+           if(user.status === "aproved" || user.status  === "active") {
             console.log("olá, mundo")
             verityTimesPeiodTest(user.id);
            }

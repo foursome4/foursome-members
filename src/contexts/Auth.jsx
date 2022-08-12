@@ -170,7 +170,7 @@ function AuthProvider({children}) {
             } else if(user.status === "suspense") {
                 window.open("/activeplain","_self");
                 return
-            }else  if(user.status === "aproved" || user.status  === "active" || user.status  === "lifetime") {
+            }else  if(user.status  === "lifetime") {
                 window.open("/feed","_self");
                 return
             }else
@@ -180,7 +180,7 @@ function AuthProvider({children}) {
             }else if(user.status === "premium") {
                 vefiryCompleteAccount()
                 return
-            }else if(user.status === "test" || user.status === "test") {
+            }else if(user.status === "aproved" || user.status  === "active") {
                 verifyPaymentAccount()
                 return
             }
@@ -283,13 +283,17 @@ function AuthProvider({children}) {
 
             if(actualDate > periodInitial) {
                 toast.success(`Periodo de teste finalizado`);
-             
+                console.log(periodInitial)
+                console.log(actualDate)
                 const data = {status: "suspense"}
                 await api.patch(`accounts/updatestatus/${idAccount}`, data).then((res) => {
                     console.log(`status atualizado`);
                   logout(idAccount);
                 }).catch((error) => {
                     console.log(error)
+                    toast.success(`Periodo de teste finalizado`);
+                    console.log(periodInitial)
+                    console.log(actualDate)
                 })
             } else {
                 console.log("Teste")
