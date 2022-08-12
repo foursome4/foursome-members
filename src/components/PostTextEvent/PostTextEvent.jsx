@@ -48,7 +48,7 @@ function PostTextEvent({nameEvent, idEvent}) {
                 type: "post-text-event",
                 text,
                 idPatrono: null,
-                ufAccount:user.uf,
+                ufAccount:user.país === "Portugal" ? user.país : user.uf,
                 cityAccount: user.city,
                 typeAccount: user.type,
             })

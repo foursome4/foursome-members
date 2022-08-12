@@ -11,7 +11,7 @@ import { AuthContext } from "../../contexts/Auth"
 function Ranking() {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
-    const {inactivityTime} = useContext(AuthContext);
+    const {inactivityTime, verityTimesPeiodTest} = useContext(AuthContext);
 
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
 
@@ -84,6 +84,11 @@ function Ranking() {
         loadPostsVideo();
     }, []);
 
+
+    if(userData.status === "test") {
+        console.log("olá, mundo")
+        verityTimesPeiodTest(userData.id);
+       }
 
 
     function handleSelectTypePhoto() {

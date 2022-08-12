@@ -1,13 +1,12 @@
-import './feedPost.css';
+import './feedPost2.css';
 import { useState, memo, useEffect} from 'react';
 import { ItemFeed } from '../ItemFeed/ItemFeed';
 import { useFetch, useFetchPost } from '../../hooks/useFetch';
 import gifLoader from '../../assets/images/gif/loader.gif';
 import {IoOptionsOutline} from 'react-icons/io5'
 import api from '../../services/api';
-import { FeedPost2 } from '../FeedPost2/FeedPost2';
 
-function FeedPostComponent() {
+function FeedPostComponent2() {
     const Local2 = localStorage.getItem("preferences-foursome");
     const userPreferences = JSON.parse(Local2);
     console.log(userPreferences);
@@ -28,8 +27,8 @@ function FeedPostComponent() {
         groups: userPreferences.groups
     }
 
-    // const {data} = useFetch(`/posts/all?page=${currentPage}&limit=${perPage}`);
-     const {data} = useFetchPost(`/posts/preferences/${user.uf}/?page=${currentPage}&limit=${perPage}`, data2);
+    const {data} = useFetchPost(`/posts/difference/${user.uf}/?page=${currentPage}&limit=${perPage}`, data2);
+     //const {data} = useFetchPost(`/posts/qtd/${user.uf}/?page=${currentPage}&limit=${perPage}`, data2);
 
      if(data){
         console.log("data")
@@ -88,15 +87,13 @@ function FeedPostComponent() {
 
     return (
 
-        <div className="feedPost">
-            {data?.length === 0 ? "" :
-            <div className="settingsFeed">
+        <div className="feedPost2">
+            {/* <div className="settingsFeed">
                 <button><IoOptionsOutline/></button>
                 <div className="options">
                     
                 </div>
-            </div>
-            }
+            </div> */}
             <div className="posts-feed">
                                 {followers?.map((postsData => {
                                     return (   
@@ -122,17 +119,12 @@ function FeedPostComponent() {
                                 )
                             }))}
                             <div id="sentinela">
-                                {/* <div className="image">
+                                <div className="image">
                                     <img src={gifLoader} alt="Gif LOader more posts" />
-                                    </div> */}
-                                    </div>              
+                                    </div></div>              
                            </div>
-                           {data?.length === 0 ?
-                           <FeedPost2 /> 
-                           : ""
-                           }
         </div>                                
     )
 }
 
-export const FeedPost = memo(FeedPostComponent)
+export const FeedPost2 = memo(FeedPostComponent2)

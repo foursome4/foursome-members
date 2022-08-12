@@ -220,8 +220,9 @@ function Post() {
                 type: "post-photo",
                 text,
                 iidPatrono: null,
-                ufAccount:user.uf,
-                cityAccount: user.city
+                ufAccount:user.país === "Portugal" ? user.país : user.uf,
+                cityAccount: user.city,
+                typeAccount: user.type,
             })
             setDataPhoto(true)
             setPost("text")
@@ -250,8 +251,9 @@ function Post() {
                     type: "post-video",
                     text,
                     iidPatrono: null,
-                    ufAccount:user.uf,
-                    cityAccount: user.city
+                    ufAccount:user.país === "Portugal" ? user.país : user.uf,
+                    cityAccount: user.city,
+                    typeAccount: user.type,
                 })
                 setDataVideo(true)
                 setPost("text")
@@ -276,8 +278,9 @@ function Post() {
                         type: "post-text",
                         text,
                         iidPatrono: null,
-                        ufAccount:user.uf,
-                        cityAccount: user.city
+                        ufAccount:user.país === "Portugal" ? user.país : user.uf,
+                        cityAccount: user.city,
+                        typeAccount: user.type,
                     })
                     setPost("text")
                     reset()
@@ -358,8 +361,8 @@ function Post() {
                 </div>
                 <div className="buttons">
                     <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
-                  {dailyPost.length === 2 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
-                  {dailyPost.length === 2 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
+                  {dailyPost.length === 3 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
+                  {dailyPost.length === 3 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
                 </div>
 
                 { post === "text" ?                  
@@ -380,7 +383,11 @@ function Post() {
             </div>      
             </div>
             <div className="counter">
-                <h5>{dailyPost.length === 0 ? "Você pode postar 2 fotos ou videos" : dailyPost.length === 1 ? "Você pode postar 1 fotos ou videos" : dailyPost.length === 2 ? "Você já postou 2 vezes hoje" : "" }</h5>
+            <h5>{dailyPost.length === 0 ? "Você pode postar 3 fotos ou videos"
+                : dailyPost.length === 1 ? "Você pode postar 2 fotos ou videos"
+                : dailyPost.length === 2 ? "Você pode postar 1 foto ou video"
+                : dailyPost.length === 3 ? "Você ja efetuou suas postagens diárias"
+                : ""  }</h5>
                 </div>
 
                 

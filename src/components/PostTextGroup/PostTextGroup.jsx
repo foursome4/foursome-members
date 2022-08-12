@@ -48,7 +48,7 @@ function PostTextGroup({nameGroup, idGroup}) {
                 type: "post-text-group",
                 text,
                 idPatrono: null,
-                ufAccount:user.uf,
+                ufAccount:user.país === "Portugal" ? user.país : user.uf,
                 cityAccount: user.city,
                 typeAccount: user.type,
             })

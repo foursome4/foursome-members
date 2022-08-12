@@ -71,7 +71,18 @@ function UserComment({idAccount, date, role}) {
           <h4>Usuário não encontrado</h4>
                 </Link> :
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-                 <h4>{nickname} - {país === "Brasil" ? uf : país === "Portugal" ? `${city} - ${país}` : uf}  {país === "Brasil" ? "🇧🇷" : país === "Portugal" ? "🇵🇹" : ""}</h4>
+                    {
+                      idAccount === "67789f" ||
+                      idAccount === "503465" ||
+                      idAccount === "2ac0f7" ||
+                      idAccount === "e90897" ||
+                      idAccount === "4aabed" ||
+                      idAccount === "7b9f35" 
+                    ?
+                    <h4>{nickname} {país === "Brasil" ? "🇧🇷" : país === "Portugal" ? "🇵🇹" : ""}</h4>
+                    :
+                    <h4>{nickname} - {país === "Brasil" ? uf : país === "Portugal" ? `${city} - ${país}` : uf} {país === "Brasil" ? "🇧🇷" : país === "Portugal" ? "🇵🇹" : ""}</h4>
+                  }
                </Link>}
               <DateFormat date={date}/>
            </div>

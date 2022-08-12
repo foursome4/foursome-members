@@ -8,6 +8,8 @@ import { useState } from "react";
 import { FeedComments } from "../FeedComments/FeedComments";
 
 function ListComments({idPost}) {   
+    const Local = localStorage.getItem("foursome");
+    const userData = JSON.parse(Local);
     const [isOpenModalFriend, setIsOpenModalFriend] = useState(false);
     const {data} = useFetch(`/comments/${idPost}`);
 
@@ -23,6 +25,10 @@ function ListComments({idPost}) {
         setIsOpenModalFriend(true)
       }
     function handleFriends() {
+        if(userData.status === "essencial") {
+            window.open("/updateplain","_self");
+            return;
+        }
         handleOpenModalFriend();
       }
     

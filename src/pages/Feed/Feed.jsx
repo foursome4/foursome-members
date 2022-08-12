@@ -11,10 +11,10 @@ import { ListEventsFeed } from "../../components/ListEventsFeed/ListEventsFeed"
 import { useNavigate } from 'react-router-dom';
 import api from "../../services/api"
 import {FiArrowUpCircle} from 'react-icons/fi'
-import { toast } from "react-toastify"
 import { PostFeed } from "../../components/PostFeed/PostFeed"
 import { ListGroupsUnic } from "../../components/ListGroups/ListGroups"
 import { ListEventsUnic } from "../../components/ListEvents/ListEvents"
+import { PostFeed2 } from "../../components/PostFeed2/PostFeed2"
 
 
 function Feed() {
@@ -24,7 +24,7 @@ function Feed() {
     const id = user.id
     const [myInformations, setMyInformations] = useState(false)
     const navigate = useNavigate();
-    const {inactivityTime, logout, socketDataLocation} = useContext(AuthContext);
+    const {inactivityTime, logout, socketDataLocation, verityTimesPeiodTest} = useContext(AuthContext);
 
            inactivityTime();
            useEffect(() => {
@@ -33,6 +33,10 @@ function Feed() {
 
                 if(user.status === "pending") {
                     logout(user.id)
+                    return
+                }
+                if(user.status === "suspense") {
+                    window.open("/activeplain","_self");
                     return
                 }
                const res = await api.get("/online");
@@ -103,6 +107,12 @@ function Feed() {
             searchPreferences()
            }, []);
 
+
+           if(user.status === "test") {
+            console.log("olá, mundo")
+            verityTimesPeiodTest(user.id);
+           }
+
            
            const loadDateReadFeed = useCallback(async () => {
                      const idAccount = user.id
@@ -162,7 +172,11 @@ return (
                  <button className="topScroll" onClick={handleTop}><FiArrowUpCircle /></button>
                    {/* {myInformations === false ? "" : <Post />} */}
                     <ChatSlim />
+                    {user.status === "essencial" ? 
+                    <PostFeed2 />
+                    :
                     <PostFeed />
+                    }
                     <FeedPost /> 
                     </div>
                     <div className="blocksFeed">

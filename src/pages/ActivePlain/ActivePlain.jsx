@@ -2,25 +2,25 @@ import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu";
 import { TopBar } from "../../components/TopBar/TopBar";
 import { useFetch } from "../../hooks/useFetch";
 import {IoCheckmarkOutline, IoCloseOutline} from 'react-icons/io5'
-import './pricing.css'
+import './activePlain.css'
 import { FaCrown } from "react-icons/fa";
 
-function Pricing() {
+function ActivePlain() {
 
     const {data} = useFetch(`/plains`)
     
     return(
-        <div className="Pricing">
+        <div className="ActivePlain">
                  <TopBar />
-            <div className="Pricing-page">
+            <div className="ActivePlain-page">
 
-            <div className="text">
-                        <h2>Planos</h2>
-                        <h4>Escolha um plano e tenha todos os benefícios</h4>
+                    <div className="text">
+                        <h2>Sua conta está suspensa?</h2>
+                        <h4>Escolha um plano e tenha seu acesso de volta</h4>
                     </div>
 
                     <div className="payments">
-                                <div className="vip">
+                    <div className="vip">
                                         <h2> <b>Seja ESSENCIAL <FaCrown /></b> </h2>
                                         <div className="double">
                                         <h4>Curtir</h4>
@@ -134,7 +134,7 @@ function Pricing() {
 }
 
 
-export {Pricing}
+export {ActivePlain}
 
 
                         {/* {data?.map((payment) => {

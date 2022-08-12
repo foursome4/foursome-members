@@ -48,8 +48,7 @@ function PostText({nameForum, idForum}) {
                 type: "post-text-forum",
                 text,
                 idPatrono: null,
-                ufAccount:user.uf,
-                ufAccount:user.uf,
+                ufAccount:user.país === "Portugal" ? user.país : user.uf,
                 cityAccount: user.city,
                 typeAccount: user.type,
             })

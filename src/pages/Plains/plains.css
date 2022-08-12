@@ -15,6 +15,7 @@
     width: 95%;
     background-color: var(--Background2);
     padding: 100px 0;
+    margin-left: 120px;
 }
 .plains .plains-page {
     display: flex;
@@ -95,6 +96,10 @@
     flex-direction: column;
     width: 100px;
 }
+.plains .plains-page .myPayment .unic .dadosList .dados a {
+    text-direction: none;
+    color: var(--White);
+}
 
 .plains .plains-page .buttons {
     width: 80%;
@@ -125,4 +130,11 @@
     background-color: var(--Primary);
     color: var(--White);
 
+}
+
+
+@media (max-width: 768px) {
+    .plains .plains-page {
+        margin-left: 0px;
+    }
 }

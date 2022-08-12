@@ -6,6 +6,9 @@ import {FaCrown} from "react-icons/fa"
 import "./menu.css"
 
 function Menu() {
+    const Local = localStorage.getItem("foursome");
+    const userData = JSON.parse(Local);
+    
     return (
         <div className="container">
             <TopBar />
@@ -17,39 +20,39 @@ function Menu() {
             </div>
             <div className="double">
                 <div className="unic">
-                    <a href="/groups" className="Primary"><IoPeopleOutline />Grupos</a>
+                    <a href={userData.status === "suspense" ? `/activeplain`:`/groups`} className="Primary"><IoPeopleOutline />Grupos</a>
                 </div>
                 <div className="unic">
-                    <a href="/events" className="Primary"><IoCalendarOutline />Eventos</a>
+                    <a href={userData.status === "suspense" ? `/activeplain`:`/events`} className="Primary"><IoCalendarOutline />Eventos</a>
                 </div>
             </div>
             <div className="double">
                 <div className="unic"> 
-                    <a href="/messages" className="Primary"><IoChatbubblesOutline /> Mensagens</a>
+                    <a href={userData.status === "suspense" ? `/activeplain`:`/messages`} className="Primary"><IoChatbubblesOutline /> Mensagens</a>
                 </div>
                 <div className="unic">
-                    <a href="/recados" className="Primary"><IoMailUnreadOutline /> Recados</a>
-                </div>
-            </div>
-            <div className="double">
-                <div className="unic">
-                    <a href="/invite" className="Primary"><IoMailOutline /> Convite</a>
-                </div>
-                <div className="unic">
-                    <a href="/foruns" className="Primary"><IoList />Fóruns</a>
+                    <a href={userData.status === "suspense" ? `/activeplain`:`/recados`} className="Primary"><IoMailUnreadOutline /> Recados</a>
                 </div>
             </div>
             <div className="double">
                 <div className="unic">
-                    <a href="/ranking" className="Primary"><IoStatsChartOutline />Ranking</a>
+                    <a href={userData.status === "suspense" ? `/activeplain`:`/invite`} className="Primary"><IoMailOutline /> Convite</a>
                 </div>
                 <div className="unic">
-                    <a href="/radar" className="Primary"><IoRadio />Radar</a>
+                    <a href={userData.status === "suspense" ? `/activeplain`:`/foruns`} className="Primary"><IoList />Fóruns</a>
                 </div>
             </div>
             <div className="double">
                 <div className="unic">
-                    <a href="/plains" className="Primary"><IoWalletOutline />Pagamentos</a>
+                    <a href={userData.status === "suspense" ? `/activeplain`:`/ranking`} className="Primary"><IoStatsChartOutline />Ranking</a>
+                </div>
+                <div className="unic">
+                    <a href={userData.status === "suspense" ? `/activeplain`:`/radar`} className="Primary"><IoRadio />Radar</a>
+                </div>
+            </div>
+            <div className="double">
+                <div className="unic">
+                    <a href="/plain" className="Primary"><IoWalletOutline />Pagamentos</a>
                 </div>
                 <div className="unic">
                     <a href="/infos" className="Primary"><IoInformationCircleOutline />Informações</a>

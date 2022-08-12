@@ -50,6 +50,10 @@ function ButtonFeed() {
  
  
      async function handleUpdateReadFeed() {
+        if(user.status === "suspense") {
+            window.open("/activeplain","_self");
+            return
+        }
          const id = dateReadFeed.id
          const data = {
              DateReadFeed: new Date()

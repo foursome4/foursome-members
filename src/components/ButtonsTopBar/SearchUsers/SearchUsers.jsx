@@ -2,11 +2,14 @@ import './searchUsers.css'
 import { IoSearchOutline} from 'react-icons/io5';
 
 function SearchUsers() {
+  const Local = localStorage.getItem("foursome");
+  const user = JSON.parse(Local);
 
       function handleSearch() {
-        window.open("/search", "_self")
+        user.status === "suspense" ? window.open(`/activeplain`, "_self")  
+        : window.open("/search", "_self")
+        
       }
-
       return (
         <>
             <div className="search" onClick={handleSearch}>

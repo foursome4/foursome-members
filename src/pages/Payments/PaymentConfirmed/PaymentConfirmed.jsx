@@ -1,8 +1,20 @@
 ﻿import "./paymentConfirmed.css";
 import {IoCheckmarkCircleOutline} from "react-icons/io5"
 import { TopBar } from "../../../components/TopBar/TopBar"
+import { AuthContext } from "../../../contexts/Auth";
+import { useContext } from "react";
 
 function PaymentConfirmed() {
+    const {logout} = useContext(AuthContext);
+    const Local = localStorage.getItem("foursome");
+    const user = JSON.parse(Local);
+
+    function Tologout(e) {
+        e.preventDefault();
+        logout(user.id)
+    }
+
+
     return (
         <div className="paymentConfirmed">
             <TopBar />
@@ -17,7 +29,7 @@ function PaymentConfirmed() {
                 <h3>Em caso de reprovação do comprovante, seu acesso será bloqueado, e liberado após receber um comprovante de pagamento válido e dentro dos padrões solicitados.</h3>
             </div>
 
-            <a href="/feed">Ir para o feed.</a>
+            <button onClick={Tologout}>Prosseguir</button>
             </div>
         </div>
     )

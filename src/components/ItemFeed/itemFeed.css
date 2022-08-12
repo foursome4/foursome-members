@@ -141,6 +141,15 @@
     object-fit: cover;
 }
 
+.feed-post .post-data-media .image-video .blockVideo {
+    width: 425px;
+    height: 425px;
+    background-color: rgba(255, 255, 255, 0.1);
+    z-index: 5;
+    position: absolute;
+    border-radius: 10px;
+}
+
 
 
 .feed-post .post-data-media .image img{

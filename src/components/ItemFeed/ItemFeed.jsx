@@ -45,6 +45,12 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
         deletePost(id);
         } 
     }
+
+    function handleBockVideo(e) {
+        e.preventDefault();
+
+        window.open("/updateplain","_self");
+    }
     
    return (
          <div className="feed-post" key={id} >
@@ -109,6 +115,12 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
              type === "post-video"  ?
              <div className="post-data-media"  >
                   <div className='image-video'>
+
+                    {userData.status === "essencial" ?
+                                         <div className="blockVideo" onClick={handleBockVideo}>
+                                      </div>
+                    :
+                    <>
                   <div className="markTop">
                          <h3 className='white'>{`${dateActual.getDate()}/${dateActual.getMonth()+1}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
@@ -145,6 +157,9 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
                          <h3 className='white'>{`${dateActual.getDate()}/${dateActual.getMonth()+1}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
                      </div>
+                    </>
+                    }
+
 
                   <video playsInline controls controlsList="nofullscreen nodownload">
                      <source playsInline src={link} type="video/mp4"/>
@@ -168,10 +183,11 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
                      </>
                  : ""}
              </div>
-
+            {userData.status === "essencial" ? "":
              <div className={"comment"}>
                   <NewComment postData={id} idAccount={idAccount}/>
              </div>
+}
             <div className="infosReactions">
         <ListCommentsAndReactions idPost={id} />
         <ListComments idPost={id}/>

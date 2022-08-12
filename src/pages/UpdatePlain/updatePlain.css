@@ -1,5 +1,5 @@
 
-.Pricing {
+.UpdatePlain {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,7 +7,7 @@
     width: 100%;
     background-color: var(--Background2);
 }
-.Pricing .Pricing-page {
+.UpdatePlain .UpdatePlain-page {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,7 +16,7 @@
     background-color: var(--Background2);
     padding: 100px 0;
 }
-.Pricing .Pricing-page .text {
+.UpdatePlain .UpdatePlain-page .text {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,8 +28,7 @@
     margin: 20px;
 }
 
-
-.Pricing .Pricing-page .payments{
+.UpdatePlain .UpdatePlain-page .payments{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,7 +38,7 @@
     border-radius: 10px;
     flex-wrap: wrap;
 }
-.Pricing .Pricing-page .payments .vip{
+.UpdatePlain .UpdatePlain-page .payments .vip{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,7 +51,7 @@
     flex-wrap: wrap;
     margin: 10px;
 }
-.Pricing .Pricing-page .payments .vip .double{
+.UpdatePlain .UpdatePlain-page .payments .vip .double{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -63,17 +62,17 @@
     /* background-color: var(--Primary2); */
     border-radius: 6px;
 }
-.Pricing .Pricing-page .payments .vip h2 {
+.UpdatePlain .UpdatePlain-page .payments .vip h2 {
     margin-bottom: 20px;
 }
 
-.Pricing .Pricing-page .payments .vip h3 {
+.UpdatePlain .UpdatePlain-page .payments .vip h3 {
     margin: 20px 0;
     border-radius: 6px;
     background-color: rgba(255, 255, 255, 0.37);
     padding: 5px 10px;
 }
-.Pricing .Pricing-page .payments .vip a {
+.UpdatePlain .UpdatePlain-page .payments .vip a {
     margin-top: 20px;
     color: var(--White);
     text-decoration: none;
@@ -81,15 +80,15 @@
     padding: 10px 20px;
     border-radius: 6px;
 }
-.Pricing .Pricing-page .payments .vip .double svg {
+.UpdatePlain .UpdatePlain-page .payments .vip .double svg {
     font-size: 24px;
 }
-.Pricing .Pricing-page .payments .premium{
+.UpdatePlain .UpdatePlain-page .payments .premium{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 350px;
+    width: 550px;
     background-color: var(--Foursome1);
     color: var(--White);
     padding: 10px;
@@ -97,7 +96,7 @@
     flex-wrap: wrap;
     margin: 10px;
 }
-.Pricing .Pricing-page .payments .premium .double{
+.UpdatePlain .UpdatePlain-page .payments .premium .double{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -109,16 +108,16 @@
     border-radius: 6px;
 }
 
-.Pricing .Pricing-page .payments .premium h2 {
+.UpdatePlain .UpdatePlain-page .payments .premium h2 {
     margin-bottom: 20px;
 }
-.Pricing .Pricing-page .payments .premium h3 {
+.UpdatePlain .UpdatePlain-page .payments .premium h3 {
     margin: 20px 0;
     border-radius: 6px;
     background-color: rgba(255, 255, 255, 0.37);
     padding: 5px 10px;
 }
-.Pricing .Pricing-page .payments .premium a {
+.UpdatePlain .UpdatePlain-page .payments .premium a {
     margin-top: 20px;
     color: var(--White);
     text-decoration: none;
@@ -127,10 +126,10 @@
     border-radius: 6px;
 }
 
-.Pricing .Pricing-page .payments .premium .double svg {
+.UpdatePlain .UpdatePlain-page .payments .premium .double svg {
     font-size: 24px;
 }
-.Pricing .Pricing-page .payments .unic{
+.UpdatePlain .UpdatePlain-page .payments .unic{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,11 +142,11 @@
     flex-wrap: wrap;
     margin: 10px;
 }
-.Pricing .Pricing-page .payments .unic h3{
+.UpdatePlain .UpdatePlain-page .payments .unic h3{
     margin-bottom: 7px;
 }
 
-.Pricing .Pricing-page .payments .unic a {
+.UpdatePlain .UpdatePlain-page .payments .unic a {
     background-color: var(--Background2);
     color: var(--Primary);
     padding: 5px 10px;
@@ -163,7 +162,7 @@
     text-decoration: none;
 }
 
-.Pricing .Pricing-page .buttons {
+.UpdatePlain .UpdatePlain-page .buttons {
     width: 80%;
     display: flex;
     flex-direction: row;
@@ -172,7 +171,7 @@
     flex-wrap: wrap;
 }
 
-.Pricing .Pricing-page .buttons button {
+.UpdatePlain .UpdatePlain-page .buttons button {
     background-color: var(--Background2);
     color: var(--Primary);
     padding: 5px 10px;
@@ -188,7 +187,7 @@
     margin: 5px;
 }
 
-.Pricing .Pricing-page .buttons .selected {
+.UpdatePlain .UpdatePlain-page .buttons .selected {
     background-color: var(--Primary);
     color: var(--White);
 

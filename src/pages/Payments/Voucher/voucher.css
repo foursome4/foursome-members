@@ -5,6 +5,7 @@
     flex-direction: column;
     width: 100%;
     background-color: var(--Background2);
+    text-align: center;
 }
 .Voucher .page-Voucher {
     display: flex;
@@ -14,6 +15,7 @@
     width: 95%;
     background-color: var(--Background2);
     padding: 100px 0;
+    text-align: center;
 }
 .Voucher .page-Voucher .comprovant {
     display: flex;
@@ -22,6 +24,7 @@
     flex-direction: column;
     width: 100%;
     padding:20px;
+    text-align: center;
 }
 
 
@@ -88,6 +91,21 @@
     color: var(--White);
 }
 .Voucher .page-Voucher .green h3 {
+    margin-bottom:5px;
+}
+.Voucher .page-Voucher .blue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    background-color: blue;
+    padding: 20px;
+    border-radius: 6px;
+    margin: 10px;
+    color: var(--White);
+}
+.Voucher .page-Voucher .blue h3 {
     margin-bottom:5px;
 }
 

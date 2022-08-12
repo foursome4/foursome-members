@@ -11,9 +11,9 @@ function MyMessages() {
 
     const [dateReadMessage, setDateReadMessage] = useState([])
 
-
     useEffect(() => {
       async function loadDateRead() {
+
         const idAccount = user.id
         await api.get(`/datereadmessage/${idAccount}`)
         .then( async (res) => {
@@ -49,6 +49,11 @@ function MyMessages() {
 
 
       async function handleMessages() {
+
+        if(user.status === "suspense") {
+          window.open("/activeplain","_self");
+          return
+      }
         const id = dateReadMessage.id
         const data = {
             DateReadMessage: new Date()

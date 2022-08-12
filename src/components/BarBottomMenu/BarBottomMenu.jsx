@@ -6,6 +6,7 @@ import { ButtonFeed } from "../ButtonsTollBar/ButtonFeed/ButtonFeed";
 import './barBottomMenu.css'
 import Modal from 'react-modal';
 import { Post } from "../Post/Post";
+import { Post2 } from "../Post2/Post2";
 
 function BarBottomMenuComponenet() {
     const Local = localStorage.getItem("foursome");
@@ -28,6 +29,11 @@ const {data} = useFetch(`/online`);
     }
 
     function handleOpenModalPost() {
+        if(userData.status === "suspense") {
+            window.open("/activeplain","_self");
+            return
+        }
+
         setIsOpenModalPost(true)
       }
     function handlePosts() {
@@ -56,15 +62,15 @@ const {data} = useFetch(`/online`);
                         <IoMailOutline size={20}/>Convite
                     </button>
                     </a> */}
-                    <div className="selectRemove"> 
-                    <a href="/invitelist" >
+                    <div className="selectRemove">
+                    <a href={userData.status === "suspense" ? `/activeplain`:`/invitelist`}>
                     <button className="ButtonsUnic" >
                         <IoMailOpenOutline size={20}/>
                        Enviados
                     </button>
                     </a>
                     </div>
-
+                    
                     <a href="/profile" >
                     <button className="ButtonsUnic" >
                         <IoPersonOutline size={20}/>Perfil
@@ -78,7 +84,8 @@ const {data} = useFetch(`/online`);
                     <div className="selectRemove2">         
   
                     </div>
-                    <a href="/recados" >
+                    
+                    <a href={userData.status === "suspense" ? `/activeplain`:`/recados`} >
                     <button className="ButtonsUnic" >
                         <IoMailUnreadOutline size={20}/>
                        Recados
@@ -92,7 +99,7 @@ const {data} = useFetch(`/online`);
                        Radar
                     </button>
                     </a>  */}
-                     <a href="/menu" >
+                     <a href={userData.status === "suspense" ? `/activeplain`:`/menu`}>
                     <button className="ButtonsUnic" >
                         <IoMenuOutline size={20}/>
                        Menu
@@ -100,7 +107,7 @@ const {data} = useFetch(`/online`);
                     </a>
 
                     <div className="selectRemove">
-                    <a href="/ranking" >
+                    <a href={userData.status === "suspense" ? `/activeplain`:`/ranking`}>
                     <button className="ButtonsUnic" >
                         <IoStatsChartOutline size={20}/>
                        Ranking
@@ -164,7 +171,11 @@ const {data} = useFetch(`/online`);
             </button>
             <div className="content-modal">
             <div className="itensModalPost">
+                {userData.status === "essencial" ?
+           <Post2 />
+           :
            <Post />
+                }
             </div>
             </div>
             </Modal>

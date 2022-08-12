@@ -23,7 +23,7 @@ import moment from 'moment';
 
 function ProfileFriend() {
   const navigate = useNavigate()
-  const {newFriend, newFollower, deleteFriend, deleteFollower, newVisit, inactivityTime, logout} = useContext(AuthContext)
+  const {newFriend, newFollower, deleteFriend, deleteFollower, newVisit, inactivityTime,verityTimesPeiodTest, logout} = useContext(AuthContext)
   const Local = localStorage.getItem("foursome");
   const myUser = JSON.parse(Local);
   const {id} = useParams();
@@ -216,6 +216,7 @@ console.log(id)
       .then( async (res) => {
         if(res.data.length !== 0) {
           setRooms(res.data[0])
+          console.log(res.data[0])
           return
         } 
        
@@ -223,18 +224,9 @@ console.log(id)
         .then( async (res) => {
           if(res.data.length !== 0) {
             setRooms(res.data[0])
+            console.log(res.data[0])
             return
           }
-
-          const v4 = uuidv4();
-          const room = v4.substring(0, 6);
-          const data = {room, idAccount: myUser.id, idFriend: id}
-          setRooms(data)
-
-          await api.post(`/conversations`, data).then((res) => {
-          })
-
-
         }).catch(error => {
           console.log("Erro ao buscar dados" + error)
       })
@@ -253,10 +245,37 @@ console.log(id)
   }, [myUser.id, id]);
 
 
+  
 
- function handleChat() {
-  navigate(`/chat/${rooms.room}/${id}`);
+  async function handleRedirectToRoom(e) {
+    console.log(rooms.room)
+    if(rooms.length === 0) {
+      const v4 = uuidv4();
+      const room = v4.substring(0, 6);
+      const data = {room, idAccount: myUser.id, idFriend: id}
+      //setRooms(data)
+      console.log(data)
+      await api.post(`/conversations`, data).then((res) => {
+        handleChat(res.data[0].room);
+        console.log(res.data[0].room)
+      }).catch(error => {
+        console.log("Erro ao buscar dados" + error)
+    })
+    }
+
+    handleChat(rooms.room)
   }
+
+ function handleChat(room) {
+  if(myUser.status === "essencial") {
+    window.open("/updateplain","_self");
+    return;
+}
+
+  navigate(`/chat/${room}/${id}`);
+  }
+
+
 
 
     useEffect(() => {
@@ -294,6 +313,10 @@ console.log(id)
       createVisit()
     }, [myUser.id, myUser.username, id, newVisit ])
 
+    if(myUser.status === "test") {
+      console.log("olá, mundo")
+      verityTimesPeiodTest(myUser.id);
+     }
     
     function handleNewFriend(e) {
     const idAccount = myUser.id
@@ -431,7 +454,19 @@ console.log(id)
                         }}
                         />
                   </div>
-                  <h3> <b>{userInformations !== null ? `${userInformations.nickname} - ${userInformations.uf} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+                  {
+                      id === "67789f" ||
+                      id === "503465" ||
+                      id === "2ac0f7" ||
+                      id === "e90897" ||
+                      id === "4aabed" ||
+                      id === "7b9f35" 
+                    ?
+                    <h3>  <b>{userInformations !== null ? `${userInformations.nickname}  ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+                    :
+                    <h3> <b>{userInformations !== null ? `${userInformations.nickname} - ${user.uf} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+                  }
+                  
                 </div>
                 <div className="tool">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed }><FiHome size={16}/></button>
@@ -443,7 +478,7 @@ console.log(id)
                     {FollowingExists.length === 0 ? <FiHeart size={16} /> : <FaHeart size={16} />}
                     </button>
                   <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/></button>
-                  <button className="" onClick={handleChat}><FiMessageSquare size={16}/></button>
+                  <button className="" onClick={handleRedirectToRoom}><FiMessageSquare size={16}/></button>
                   <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/></button>
                   <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/></button>
                   <button  className='settings'><FiMoreVertical size={16}/></button>

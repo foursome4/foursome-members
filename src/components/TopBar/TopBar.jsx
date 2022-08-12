@@ -49,7 +49,8 @@ function TopBar() {
                 <SolicitationsFriend />
                 <Notifications /> 
 
-                <a href="/invite">
+
+                <a href={user.status === "suspense" ? `/activeplain`:`/invite`}>
                 <div className="linkSelect" data-tip data-for='Convidar'>
                     <IoMail />
                 </div>
@@ -66,9 +67,7 @@ function TopBar() {
                 <div className="link" data-tip data-for='Sair'>
                     <IoLogOutOutline onClick={Tologout} />
                 </div>
-                <ReactTooltip id='Sair' place="bottom" type="dark" effect="solid">
-                     <span>Sair</span>
-                </ReactTooltip>
+
                 <div className="account">
                     <a href="/profile">
                         <div className="avatar">

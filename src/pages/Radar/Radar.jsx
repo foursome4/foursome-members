@@ -12,7 +12,7 @@ import { FiArrowUpCircle } from 'react-icons/fi';
 import apiGoogleReverse from '../../services/apiGoogleReverse'
 
 function Radar() {
-    const {logout, updateUserOnline, socketDataLocation} = useContext(AuthContext);
+    const {logout, updateUserOnline, socketDataLocation, verityTimesPeiodTest} = useContext(AuthContext);
 
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
@@ -278,6 +278,10 @@ function Radar() {
          socketDataLocation();
      }
 
+     if(userData.status === "test") {
+        console.log("olá, mundo")
+        verityTimesPeiodTest(userData.id);
+       }
 
     function handleUpdateInformations(e) {
         e.preventDefault();

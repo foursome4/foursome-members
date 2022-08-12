@@ -53,6 +53,9 @@ import { UseOfTerms } from '../pages/UseOfTerms/UseOfTerms';
 import { RecadoUnic } from '../pages/RecadoUnic/RecadoUnic';
 import { UserNotFound } from '../pages/UserNotFound/UserNotFound';
 import { Welcome } from '../pages/Welcome/Welcome';
+import { ActivePlain } from '../pages/ActivePlain/ActivePlain';
+import { UpdatePlain } from '../pages/UpdatePlain/UpdatePlain';
+import { PeriodTeste } from '../pages/PeriodTeste/PeriodTeste';
 
 
 function Router () {
@@ -84,8 +87,12 @@ function PrivateRoute({children} ) {
             <Route path="/lgpd" element={ <Lgpd />} />       
             <Route path="/entrar" element={ <Entrar />} />
             <Route path="/registrationend" element={ <RegistrationEnd />} />
-  
+
             
+            <Route path="/activeplain"
+                    element={ <PrivateRoute> <ActivePlain /> </PrivateRoute>} />
+            <Route path="/updateplain"
+                    element={ <PrivateRoute> <UpdatePlain /> </PrivateRoute>} />
             <Route path="/feed"
                     element={ <PrivateRoute> <Feed /> </PrivateRoute>} />
             <Route path="/menu"
@@ -166,6 +173,8 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <UserNotFound /> </PrivateRoute>} />
             <Route path="/welcome" 
                 element={ <PrivateRoute> <Welcome /> </PrivateRoute>} />
+            <Route path="/periodtest" 
+                element={ <PrivateRoute> <PeriodTeste /> </PrivateRoute>} />
             </Routes>
            
     )

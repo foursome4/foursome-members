@@ -12,10 +12,6 @@ function LisMembers({idEvent}) {
             <h3>Carregando...</h3>
         )
     }
-    if(data) {
-        console.log(data)
-    }
-
 
     return (
         <div className="LisMembers">

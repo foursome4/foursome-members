@@ -24,7 +24,7 @@ function Profile() {
   const LocalInformations = localStorage.getItem("informations-foursome");
   const userInformations = JSON.parse(LocalInformations);
 
-  const {deleteAccount, inactivityTime, logout } = useContext(AuthContext);
+  const {deleteAccount, inactivityTime, verityTimesPeiodTest, logout } = useContext(AuthContext);
 
   inactivityTime()
 
@@ -129,6 +129,11 @@ widthView()
     }, [user.id]);
 
 
+
+    if(user.status === "test") {
+      console.log("olá, mundo")
+      verityTimesPeiodTest(user.id);
+     }
 
       function handleDeleteAccount(e) {
         e.preventDefault()
@@ -238,8 +243,9 @@ widthView()
                         }}
                         />
                    </div>
-                  <h3> <b>{userInformations !== null ? `${userInformations.nickname} - ${userInformations.uf} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""}` :"User Test"}</b> {user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
-                </div>
+
+                    <h3> <b>{userInformations !== null ? `${userInformations.nickname} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+                     </div>
                 <div className="tools">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed}><FiHome size={16}/> Home</button>
                   <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/> Amigos</button>

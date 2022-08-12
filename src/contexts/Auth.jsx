@@ -5,6 +5,7 @@ import api from '../services/api';
 import apiGoogleReverse from '../services/apiGoogleReverse';
 import { socket } from '../services/websocket';
 import {v4 as uuidv4} from 'uuid';
+import moment from 'moment';
 
 
 const AuthContext = createContext({});
@@ -66,6 +67,13 @@ function AuthProvider({children}) {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                     return
                 }
+
+                if(result.data.status === "blocked") {
+                    toast.error(`Olá, ${result.data.username}. Sua conta está bloqueada, entre em contato!`);
+                    return
+                }
+
+
                 localStorage.setItem("foursome", JSON.stringify(result.data));
                
                 findInformationsAccount(result.data.id)
@@ -83,6 +91,11 @@ function AuthProvider({children}) {
                 if(result.data.status === "banned") {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                    return
+                }
+
+                if(result.data.status === "blocked") {
+                    toast.error(`Olá, ${result.data.username}. Sua conta está bloqueada, entre em contato!`);
+                    return
                 }
  
                 localStorage.setItem("foursome", JSON.stringify(result.data));
@@ -145,48 +158,163 @@ function AuthProvider({children}) {
         const user = JSON.parse(Local);
         await api.get(`/preferences/${id}`)
         .then((res) => {
-            if(res.data.length === 0) {
-             
+            if(res.data.length === 0) {      
                 window.open(`/preferences/${user.id}/${user.email}/${user.username}`,"_self");
                 return
             }
             localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
-            const LocalInformations = localStorage.getItem("informations-foursome");
-            const userInformations = JSON.parse(LocalInformations);
-
-           
-
-            // if(user.latitude === undefined ||
-            //    user.longitude === undefined ||
-            //    user.latitude === null ||
-            //    user.longitude === null ||
-            //    user.latitude === false ||
-            //    user.longitude === false ||
-            //    user.país === undefined ||
-            //    user.país === null ||
-            //    user.país === false ||
-            //    userInformations.uf.length > 2
-            //    ) {
-            //     window.open("/feed", "_self");
-            //    // window.open("/update", "_self");
-            // }
-            // else {
-            //     window.open("/feed", "_self");
-            // }
 
             if(user.status === "pending") {
                 toast.info(`Olá, ${user.username}. Sua conta está em análise. E em até 24h será liberada!`);
                 return
+            } else if(user.status === "suspense") {
+                window.open("/activeplain","_self");
+                return
+            }else  if(user.status === "aproved" || user.status  === "active") {
+                window.open("/feed","_self");
+                return
+            }else
+            if(user.status === "essencial") {
+                vefiryCompleteAccount()
+                return
+            }else if(user.status === "premium") {
+                vefiryCompleteAccount()
+                return
+            }else if(user.status === "test" || user.status === "test") {
+                verifyPaymentAccount()
+                return
             }
-            window.open("/feed", "_self");
-            
+           
            
         }).catch(error => {
             console.log("Erro ao buscar dados" + error)
         })
         
     }
+    async function verifyPaymentAccount() {
+        toast.success(`Verificando pagamento`)
+        const Local = localStorage.getItem("foursome");
+        const user = JSON.parse(Local);
 
+        const payment = await api.get(`payments/${user.id}`);
+
+        console.log(payment.data)
+        console.log(payment.data.lenght)
+        console.log(payment.data.length)
+
+        if(payment.data.length === 0) {
+            testPeriodVerify(user.id, user.username);
+            return;
+        }
+
+        var d1 = new Date(payment.data[0].created_at);
+        var d2 = new Date();
+        var diff = moment(d2,"DD/MM/YYYY HH:mm:ss").diff(moment(d1,"DD/MM/YYYY HH:mm:ss"));
+        var valor = moment.duration(diff).asDays();
+        var dias = Math.round(valor, 1);
+        console.log(dias);
+        console.log(parseInt(payment.data[0].period));
+
+        if(dias > parseInt(payment.data[0].period)) {
+            const data = {status: "suspense"}
+            await api.patch(`accounts/updatestatus/${user.id}`, data).then((res) => {
+                console.log(`status atualizado`);
+              logout(user.id);
+            }).catch((error) => {
+                console.log(error)
+            })
+        } else {
+            window.open("/feed","_self");
+        }
+
+       // new Date(payment.data[0].created_at) > new Date(payment.data[0].created_at) + 30 ? "Vencido" : "Pode acessar";
+    }
+
+    async function testPeriodVerify(idAccount, username) {
+        const periodtest = await api.get(`periodtest/${idAccount}`);
+        console.log(periodtest.data)
+        console.log(periodtest.data.lenght)
+        console.log(periodtest.data.length)
+        toast.success(`Verificando teste`)
+        console.log(`Verificando teste`)
+
+        if(periodtest.data.length === 0) {
+            const data = {
+                stringDate: `${new Date().getDate()}/${new Date().getMonth() +1}/${new Date().getFullYear()} - ${new Date().getHours().lenght === 1 ? <> {"0" + new Date().getHours()}</> : new Date().getHours()}:${new Date().getMinutes().lenght === 1 ? <> {"0" + new Date().getMinutes()}</> : new Date().getMinutes()  }`,
+                idAccount,
+                username
+            }
+            await api.post(`periodtest/`, data).then((res) => {
+                toast.success(`liberando teste`)
+                console.log(`liberando teste`);
+              window.open("/periodtest","_self");
+            }).catch((error) => {
+                toast.success(`Periodo de teste já liberado`)
+                console.log(`Periodo de teste já liberado`)
+            })
+            return;
+        }
+
+       const periodInitial = `${new Date(periodtest.data[0].created_at).getDate()}/${new Date(periodtest.data[0].created_at).getMonth() +1}/${new Date(periodtest.data[0].created_at).getFullYear()} - ${new Date(periodtest.data[0].created_at).getHours()}:${new Date(periodtest.data[0].created_at).getMinutes() +15}`
+        const actualDate = `${new Date().getDate()}/${new Date().getMonth() +1}/${new Date().getFullYear()} - ${new Date().getHours()}:${new Date().getMinutes()}`
+        if(actualDate > periodInitial) {
+            toast.success(`Periodo de teste finalizado`);
+          window.open("/activeplain","_self");
+        } else {
+            toast.success(`Você ainda tem tempo. Aproveite`)
+           window.open("/feed","_self");
+        }
+    }
+
+     function verityTimesPeiodTest(idAccount) {
+        setInterval(async function () { 
+            const periodtest = await api.get(`periodtest/${idAccount}`);
+            console.log(periodtest)
+            
+            const periodInitial = `${new Date(periodtest.data[0].created_at).getDate()}/${new Date(periodtest.data[0].created_at).getMonth() +1}/${new Date(periodtest.data[0].created_at).getFullYear()} - ${new Date(periodtest.data[0].created_at).getHours()}:${new Date(periodtest.data[0].created_at).getMinutes() +15}`
+            const actualDate = `${new Date().getDate()}/${new Date().getMonth() +1}/${new Date().getFullYear()} - ${new Date().getHours()}:${new Date().getMinutes()}`
+
+            if(actualDate > periodInitial) {
+                toast.success(`Periodo de teste finalizado`);
+             
+                const data = {status: "suspense"}
+                await api.patch(`accounts/updatestatus/${idAccount}`, data).then((res) => {
+                    console.log(`status atualizado`);
+                  logout(idAccount);
+                }).catch((error) => {
+                    console.log(error)
+                })
+            } else {
+                console.log("Teste")
+            }
+         }, 60000);
+        
+        
+    }
+
+
+    function vefiryCompleteAccount() {
+        const Local = localStorage.getItem("foursome");
+        const user = JSON.parse(Local);
+        const Local2 = localStorage.getItem("informations-foursome");
+        const userInformations = JSON.parse(Local2);
+        if(user.latitude === undefined ||
+            user.longitude === undefined ||
+            user.latitude === null ||
+            user.longitude === null ||
+            user.latitude === false ||
+            user.longitude === false ||
+            user.país === undefined ||
+            user.país === null ||
+            user.país === false ||
+            userInformations.uf.length > 2
+            ) {
+            window.open("/update", "_self");
+         }
+         else {
+             window.open("/feed", "_self");
+         }
+    }
 
     async function updateAccount({id, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron}){
         const Local = localStorage.getItem("foursome");
@@ -1050,12 +1178,22 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
 
 
     //payments
-    async function createPayment(linkComprovant, idPlain, namePlain, idAccount,username, value, period) {
-        const data = {linkComprovant, idPlain, namePlain, idAccount,username, value, period}
+    async function createPayment({linkComprovant, idPlain, namePlain, referencePlain, idAccount,username, email, value, period, aceptTerms}) {
+        const data = {linkComprovant, idPlain, namePlain, referencePlain, idAccount,username, email, value, period, aceptTerms}
+        console.log(data)
+        await api.post("/payments", data).then(async () => {
 
-        await api.post("/payments", data).then(() => {
-            toast.info("Pagamento realizado com sucesso!");
-            window.open("/paymentConfirmed","_self")
+            const data2 = {status: namePlain === "Premium" ? "premium" : "essencial"}
+            await api.patch(`accounts/updatestatus/${idAccount}`, data2).then((res) => {
+                toast.info("Pagamento realizado com sucesso!");
+                window.open("/paymentConfirmed","_self")
+            }).catch((error) => {
+                console.log(error)
+            })
+
+
+
+
         }).catch((error) => {
             console.log(error)
         })
@@ -1282,7 +1420,8 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
             deleteEvent,
             deleteMemberEvent,
             createPayment,
-            newReplyRecado
+            newReplyRecado,
+            verityTimesPeiodTest
         }}>
             {children}
         </AuthContext.Provider>

@@ -1,5 +1,5 @@
 import { FiImage, FiVideo, FiMenu, FiSend, FiUpload, FiRefreshCcw} from 'react-icons/fi'
-import './postFeed.css';
+import './postFeed2.css';
 import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../contexts/Auth';
 import { v4 as uuidv4} from 'uuid'
@@ -8,7 +8,7 @@ import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
 import {toast} from 'react-toastify';
 import api from '../../services/api'
 
-function PostFeed() {
+function PostFeed2() {
     const {newPost, logout} = useContext(AuthContext)
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
@@ -328,12 +328,12 @@ function PostFeed() {
 
 
     return (
-        <div className="postFeed">
-             <div className="postFeed-data">
+        <div className="postFeed2">
+             <div className="postFeed2-data">
             <div className="avatar">
             <img src={userInformation.avatar} alt="" />
             </div>
-            <div className="postFeed-type">
+            <div className="postFeed2-type">
                 {area === false ? "" :
                 <div className="inputs">
                 {post === "text" ?
@@ -383,17 +383,13 @@ function PostFeed() {
                 }
                 <div className="buttons">
                     <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
-                  {dailyPost.length === 3 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
-                  {dailyPost.length === 3 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
+                  {dailyPost.length === 1 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
+                  {dailyPost.length === 1 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
                 </div>
             </div>      
             </div>
             <div className="counter">
-                <h5>{dailyPost.length === 0 ? "Você pode postar 3 fotos ou videos"
-                : dailyPost.length === 1 ? "Você pode postar 2 fotos ou videos"
-                : dailyPost.length === 2 ? "Você pode postar 1 foto ou video"
-                : dailyPost.length === 3 ? "Você ja efetuou suas postagens diárias"
-                : ""  }</h5>
+                <h5>{dailyPost.length === 0 ? "Você pode postar 1 foto ou video" : dailyPost.length === 1 ?  "Você ja efetuou sua postagem diária": ""  }</h5>
                 </div>
         </div>
          
@@ -402,5 +398,5 @@ function PostFeed() {
     )
 }
 
-export {PostFeed}
+export {PostFeed2}
 

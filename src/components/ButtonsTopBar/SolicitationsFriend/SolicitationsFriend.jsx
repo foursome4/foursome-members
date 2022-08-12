@@ -6,7 +6,7 @@ import { useFetch } from '../../../hooks/useFetch';
 function SolicitationsFriend() {
     const Local = localStorage.getItem("foursome");
     const user = JSON.parse(Local);
-
+  
 
     const idAccount = user.id;
     const {data} = useFetch(`/friends/${idAccount}`);
@@ -18,7 +18,8 @@ function SolicitationsFriend() {
     }
 
     function handleFriends() {
-        window.open("/solicitations", "_self")
+        user.status === "suspense" ? window.open(`/activeplain`, "_self") 
+        : window.open("/solicitations", "_self")
       }
 
     return (
