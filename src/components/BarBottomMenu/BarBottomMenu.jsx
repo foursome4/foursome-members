@@ -171,7 +171,7 @@ const {data} = useFetch(`/online`);
             </button>
             <div className="content-modal">
             <div className="itensModalPost">
-                {userData.status === "essencial" ?
+                {userData.status === "essencial" || userData.status === "suspense" ?
            <Post2 />
            :
            <Post />

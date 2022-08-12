@@ -172,7 +172,7 @@ return (
                  <button className="topScroll" onClick={handleTop}><FiArrowUpCircle /></button>
                    {/* {myInformations === false ? "" : <Post />} */}
                     <ChatSlim />
-                    {user.status === "essencial" ? 
+                    {user.status === "essencial" || user.status === "suspense" ? 
                     <PostFeed2 />
                     :
                     <PostFeed />
