@@ -75,9 +75,10 @@ function Voucher() {
         const value = data?.[0].value;
         const period = data?.[0].period;
         const aceptTerms = "sim";
+        const status = "pending";
 
-        console.log({linkComprovant, idPlain, namePlain, referencePlain, idAccount,username, email, value, period, aceptTerms})
-        createPayment({linkComprovant, idPlain, namePlain, referencePlain, idAccount,username, value,email, period, aceptTerms})
+        console.log({linkComprovant, idPlain, namePlain, referencePlain, idAccount,username, email, value, period, aceptTerms, status})
+        createPayment({linkComprovant, idPlain, namePlain, referencePlain, idAccount,username, value,email, period, aceptTerms, status})
     }
 
     return (

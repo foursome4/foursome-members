@@ -1185,8 +1185,8 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
 
 
     //payments
-    async function createPayment({linkComprovant, idPlain, namePlain, referencePlain, idAccount,username, email, value, period, aceptTerms}) {
-        const data = {linkComprovant, idPlain, namePlain, referencePlain, idAccount,username, email, value, period, aceptTerms}
+    async function createPayment({linkComprovant, idPlain, namePlain, referencePlain, idAccount,username, email, value, period, aceptTerms, status}) {
+        const data = {linkComprovant, idPlain, namePlain, referencePlain, idAccount,username, email, value, period, aceptTerms, status}
         console.log(data)
         await api.post("/payments", data).then(async () => {
 
