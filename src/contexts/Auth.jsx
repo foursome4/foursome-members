@@ -180,7 +180,7 @@ function AuthProvider({children}) {
             }else if(user.status === "premium") {
                 vefiryCompleteAccount()
                 return
-            }else if(user.status === "aproved" || user.status  === "active") {
+            }else if(user.status === "Aproved" || user.status  === "active") {
                 verifyPaymentAccount()
                 return
             }
