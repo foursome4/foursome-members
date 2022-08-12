@@ -232,6 +232,7 @@ function AuthProvider({children}) {
                 console.log(error)
             })
         }
+        
 
        // new Date(payment.data[0].created_at) > new Date(payment.data[0].created_at) + 30 ? "Vencido" : "Pode acessar";
     }
