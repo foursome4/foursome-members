@@ -15,6 +15,7 @@ import { PostFeed } from "../../components/PostFeed/PostFeed"
 import { ListGroupsUnic } from "../../components/ListGroups/ListGroups"
 import { ListEventsUnic } from "../../components/ListEvents/ListEvents"
 import { PostFeed2 } from "../../components/PostFeed2/PostFeed2"
+import { toast } from "react-toastify"
 
 
 function Feed() {
@@ -119,7 +120,8 @@ function Feed() {
             const paymentUser = await api.get(`/payments/${id}`)
             const periodTest = await api.get(`/periodtest/${id}`)
 
-            if(paymentUser.data.length === 0 || periodTest.data.length === 0) {
+            if(paymentUser.data.length === 0 && periodTest.data.length === 0) {
+                toast.error("deslogando...")
                 logout(id);
                 return;
             }
