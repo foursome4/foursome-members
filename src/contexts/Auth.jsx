@@ -170,7 +170,7 @@ function AuthProvider({children}) {
             } else if(user.status === "suspense") {
                 window.open("/activeplain","_self");
                 return
-            }else  if(user.status === "aproved" || user.status  === "active") {
+            }else  if(user.status === "aproved" || user.status  === "active" || user.status  === "lifetime") {
                 window.open("/feed","_self");
                 return
             }else
