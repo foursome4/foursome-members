@@ -35,6 +35,10 @@ function Feed() {
                     logout(user.id)
                     return
                 }
+                if(user.status === "blocked") {
+                    logout(user.id)
+                    return
+                }
                 if(user.status === "suspense") {
                     window.open("/activeplain","_self");
                     return
@@ -53,10 +57,6 @@ function Feed() {
                  console.log("Cadastrando usuário")
                  socketDataLocation()
             }
-
-               if(user.status === "blocked") {
-                window.open("/profile", "_self");
-               }
  
                loadUsersOnline()
            }, [navigate, socketDataLocation, user.status, user.id]);
