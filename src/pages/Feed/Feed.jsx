@@ -25,7 +25,7 @@ function Feed() {
     const id = user.id
     const [myInformations, setMyInformations] = useState(false)
     const navigate = useNavigate();
-    const {inactivityTime, logout, socketDataLocation, verityTimesPeiodTest} = useContext(AuthContext);
+    const {inactivityTime, logout, socketDataLocation, verityTimesPeiodTest, verifyPaymentAccount} = useContext(AuthContext);
 
            inactivityTime();
            useEffect(() => {
@@ -112,20 +112,7 @@ function Feed() {
 
 
            if(user.status === "aproved" || user.status  === "active") {
-            console.log("olá, mundo")
-            verufy(user.id)
-           }
-
-           async function verufy(id) {
-            const paymentUser = await api.get(`/payments/${id}`)
-            const periodTest = await api.get(`/periodtest/${id}`)
-
-            if(paymentUser.data.length === 0 && periodTest.data.length === 0) {
-                toast.error("deslogando...")
-                logout(id);
-                return;
-            }
-            verityTimesPeiodTest(user.id);
+            verifyPaymentAccount();
            }
 
            

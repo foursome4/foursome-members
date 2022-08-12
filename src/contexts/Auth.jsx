@@ -1439,7 +1439,8 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
             deleteMemberEvent,
             createPayment,
             newReplyRecado,
-            verityTimesPeiodTest
+            verityTimesPeiodTest,
+            verifyPaymentAccount
         }}>
             {children}
         </AuthContext.Provider>
