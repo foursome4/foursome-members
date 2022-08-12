@@ -266,7 +266,14 @@ function AuthProvider({children}) {
         const actualDate = `${new Date().getDate()}/${new Date().getMonth() +1}/${new Date().getFullYear()} - ${new Date().getHours()}:${new Date().getMinutes()}`
         if(actualDate > periodInitial) {
             toast.success(`Periodo de teste finalizado`);
-          window.open("/activeplain","_self");
+            const data = {status: "suspense"}
+            await api.patch(`accounts/updatestatus/${idAccount}`, data).then((res) => {
+                console.log(`status atualizado`);
+                window.open("/activeplain","_self");
+            }).catch((error) => {
+                console.log(error)
+            })
+  
         } else {
             toast.success(`Você ainda tem tempo. Aproveite`)
            window.open("/feed","_self");
