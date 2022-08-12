@@ -192,7 +192,6 @@ function AuthProvider({children}) {
         
     }
     async function verifyPaymentAccount() {
-        toast.success(`Verificando pagamento`)
         const Local = localStorage.getItem("foursome");
         const user = JSON.parse(Local);
 
@@ -242,7 +241,6 @@ function AuthProvider({children}) {
         console.log(periodtest.data)
         console.log(periodtest.data.lenght)
         console.log(periodtest.data.length)
-        toast.success(`Verificando teste`)
         console.log(`Verificando teste`)
 
         if(periodtest.data.length === 0) {
@@ -252,11 +250,9 @@ function AuthProvider({children}) {
                 username
             }
             await api.post(`periodtest/`, data).then((res) => {
-                toast.success(`liberando teste`)
                 console.log(`liberando teste`);
               window.open("/periodtest","_self");
             }).catch((error) => {
-                toast.success(`Periodo de teste já liberado`)
                 console.log(`Periodo de teste já liberado`)
             })
             return;
