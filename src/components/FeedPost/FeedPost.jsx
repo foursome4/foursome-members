@@ -89,14 +89,14 @@ function FeedPostComponent() {
     return (
 
         <div className="feedPost">
-            {data?.length === 0 ? "" :
+            {/* {data?.length === 0 ? "" :
             <div className="settingsFeed">
                 <button><IoOptionsOutline/></button>
                 <div className="options">
                     
                 </div>
             </div>
-            }
+            } */}
             <div className="posts-feed">
                                 {followers?.map((postsData => {
                                     return (   
