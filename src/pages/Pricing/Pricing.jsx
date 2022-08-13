@@ -4,6 +4,7 @@ import { useFetch } from "../../hooks/useFetch";
 import {IoCheckmarkOutline, IoCloseOutline} from 'react-icons/io5'
 import './pricing.css'
 import { FaCrown } from "react-icons/fa";
+import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim";
 
 function Pricing() {
 
@@ -128,6 +129,7 @@ function Pricing() {
 
  
         </div>
+        <ToolbarLeftSlim />
         <BarBottomMenu />
         </div>
     )

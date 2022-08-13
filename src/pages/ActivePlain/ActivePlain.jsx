@@ -4,6 +4,7 @@ import { useFetch } from "../../hooks/useFetch";
 import {IoCheckmarkOutline, IoCloseOutline} from 'react-icons/io5'
 import './activePlain.css'
 import { FaCrown } from "react-icons/fa";
+import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim";
 
 function ActivePlain() {
 
@@ -128,6 +129,7 @@ function ActivePlain() {
 
  
         </div>
+        <ToolbarLeftSlim />
         <BarBottomMenu />
         </div>
     )
