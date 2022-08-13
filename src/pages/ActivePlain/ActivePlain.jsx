@@ -21,7 +21,7 @@ function ActivePlain() {
 
                     <div className="payments">
                     <div className="vip">
-                                        <h2> <b>Seja ESSENCIAL <FaCrown /></b> </h2>
+                                        <h2> <b>Seja ESSENCIAL </b> </h2>
                                         <div className="double">
                                         <h4>Curtir</h4>
                                         <IoCheckmarkOutline color="#2aae2a"/>
@@ -69,7 +69,7 @@ function ActivePlain() {
 
                                         <h3><b>Seja Essencial por: R$ 9,90</b></h3>
 
-                                        <a href={`/selectplain/Essencial`}>Quero ser ESSENCIAL <FaCrown /> </a>
+                                        <a href={`/selectplain/Essencial`}>Quero ser ESSENCIAL </a>
                                 </div>
                                 <div className="premium">
                                         <h2> <b>Seja PREMIUM <FaCrown /></b> </h2>
