@@ -69,7 +69,7 @@ function ActivePlain() {
 
                                         <h3><b>Seja Essencial por: R$ 9,90</b></h3>
 
-                                        <a href={`/selectplain/Essencial`}>Quero ser ESSENCIAL <FaCrown /> (Breve)</a>
+                                        <a href={`/selectplain/Essencial`}>Quero ser ESSENCIAL <FaCrown /> </a>
                                 </div>
                                 <div className="premium">
                                         <h2> <b>Seja PREMIUM <FaCrown /></b> </h2>
@@ -120,7 +120,7 @@ function ActivePlain() {
 
                                         <h3><b>Seja Premium por: R$ 29,90</b></h3>
 
-                                        <a href={`/selectplain/Premium`}>Quero ser PREMIUM <FaCrown /> (Breve)</a>
+                                        <a href={`/selectplain/Premium`}>Quero ser PREMIUM <FaCrown /> </a>
                                 </div>
 
                     </div>

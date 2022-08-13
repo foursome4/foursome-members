@@ -69,7 +69,7 @@ function UpdatePlain() {
 
                                         <h3><b>Seja Premium por: R$ 29,90</b></h3>
 
-                                        <a href={`/selectplain/Premium`}>Quero ser PREMIUM <FaCrown /> (Breve)</a>
+                                        <a href={`/selectplain/Premium`}>Quero ser PREMIUM <FaCrown /> </a>
                                 </div>
 
                     </div>
