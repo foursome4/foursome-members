@@ -44,14 +44,9 @@ function Feed() {
                     window.open("/activeplain","_self");
                     return
                 }
-               const res = await api.get("/online");
-               
-               const selectUserOnline = res.data.filter(online => online.idAccount === user.id);
-               console.log("selectUserOnline")
-               console.log(selectUserOnline)
-               console.log(selectUserOnline.length)
-   
-               if(selectUserOnline.length > 0) {
+                const res = await api.get(`/online/one/${user.id}`)
+                 
+               if(res.data.length > 0) {
                 console.log("Usuário ja está online")
                 return
               }
