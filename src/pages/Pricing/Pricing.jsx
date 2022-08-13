@@ -69,7 +69,7 @@ function Pricing() {
 
                                         <h3><b>Seja Essencial por: R$ 9,90</b></h3>
 
-                                        <a href={`/selectplain/Essencial`}>Quero ser ESSENCIAL </a>
+                                        <a href={`/selectplain/Essencial`}>Assinar ESSENCIAL </a>
                                 </div>
                                 <div className="premium">
                                         <h2> <b>Seja PREMIUM <FaCrown /></b> </h2>
@@ -120,7 +120,7 @@ function Pricing() {
 
                                         <h3><b>Seja Premium por: R$ 29,90</b></h3>
 
-                                        <a href={`/selectplain/Premium`}>Quero ser PREMIUM <FaCrown /></a>
+                                        <a href={`/selectplain/Premium`}>Assinar PREMIUM <FaCrown /></a>
                                 </div>
 
                     </div>

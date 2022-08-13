@@ -18,6 +18,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../../contexts/Auth'
 import { PostFeed2 } from '../../components/PostFeed2/PostFeed2'
 import { PostFeed } from '../../components/PostFeed/PostFeed'
+import { FaCrown } from 'react-icons/fa'
 
 
 function Profile() {
@@ -246,7 +247,7 @@ widthView()
                         />
                    </div>
 
-                    <h3> <b>{userInformations !== null ? `${userInformations.nickname} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+                    <h3> {user.status === "premium" || user.status === "lifetime" ? <FaCrown /> : ""} <b>{userInformations !== null ? `${userInformations.nickname} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
                      </div>
                 <div className="tools">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed}><FiHome size={16}/> Home</button>

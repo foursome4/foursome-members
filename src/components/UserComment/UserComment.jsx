@@ -4,6 +4,7 @@ import './userComment.css'
 
 import { DateFormat } from '../DateFormat/DateFormat';
 import { Link } from 'react-router-dom';
+import { FaCrown } from 'react-icons/fa';
 
 function UserComment({idAccount, date, role}) {
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
@@ -15,6 +16,7 @@ function UserComment({idAccount, date, role}) {
     const [uf, setUf] = useState('')
     const [city, setCity] = useState('')
     const [país, setPaís] = useState('')
+    const [status, setStatus] = useState('')
     useEffect(() => {
         async function loadInformations() {
             await api.get(`informations/${idAccount}`).then((result) => {
@@ -30,6 +32,16 @@ function UserComment({idAccount, date, role}) {
         }
 
         loadInformations()
+        async function loadStatus() {
+            await api.get(`accounts/filter/${idAccount}`).then((result) => {
+                setStatus(result.data[0].status)
+            }).catch((error) => {
+                console.log(error)
+                console.log("Erro aos buscar informações")
+            })
+        }
+
+        loadStatus()
     }, [idAccount]);
 
 
@@ -46,15 +58,18 @@ function UserComment({idAccount, date, role}) {
            </Link>
            :
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-           {avatar === "" || avatar === undefined ? 
-                                                           <img 
-                                                           src={profile}
-                                                           onError={({ currentTarget }) => {
-                                                               currentTarget.onerror = null; // previne loop
-                                                               currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
-                                                           }}
-                                                           />
+           {avatar === "" || avatar === undefined ? <>
+           <img 
+           src={profile}
+           onError={({ currentTarget }) => {
+               currentTarget.onerror = null; // previne loop
+               currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
+           }}
+           />
+           {status === "premium" || status === "lifetime" ? <FaCrown /> : ""}
+           </>
                         :
+                        <>
                         <img 
                         src={avatar}
                         onError={({ currentTarget }) => {
@@ -62,6 +77,8 @@ function UserComment({idAccount, date, role}) {
                             currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
                         }}
                         />
+                      {status === "premium" || status === "lifetime" ? <FaCrown /> : ""}
+                        </>
                         }
            </Link>}
            </div>

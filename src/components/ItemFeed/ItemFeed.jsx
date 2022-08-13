@@ -11,7 +11,7 @@ import { ListCommentsAndReactions } from '../ListCommentsAndReactions/ListCommen
 import { ListComments } from '../ListComments/ListComments'
 
 
-function ItemFeedComponent({idAccount, link, date, text, type, id, username, group, forum, idGroup, idForum}) {
+function ItemFeedComponent({idAccount, link, date, text, type, id, username, group, forum, idGroup, idForum, typeAccount}) {
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
 
@@ -54,7 +54,7 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
     
    return (
          <div className="feed-post" key={id} >
-    <UsersPosts idAccount={idAccount} username={username} date={date} keyId={id} role={userData.role}/>
+    <UsersPosts idAccount={idAccount} username={username} date={date} keyId={id} role={userData.role} type={typeAccount}/>
     <div className="TextLink">
     <Link to={group !== "" ? `/group/${idGroup}` : forum !== "" ? `/forum/${idForum}` : ""} ><h5>{group !== "" ? `Grupo: ${group}` : forum  !== "" ? `Forum: ${forum}` : ""  } </h5></Link>
     </div>

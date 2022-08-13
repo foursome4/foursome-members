@@ -94,6 +94,18 @@
     justify-content: center;
     color: var(--Primary);
 }
+.content-profileFriend .profileFriend .main .section .profileFriend-tools .users h3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-profileFriend .profileFriend .main .section .profileFriend-tools .users h3 svg {
+    color: #e0aa3e;
+    color-image: linear-gradient(to right, #ae8625, #f7ef8a, #d2ac47, #edc967);
+    margin: 0 3px;
+}
 
 .content-profileFriend .profileFriend .main .section .profileFriend-tools .users .users-img {
     display: flex;

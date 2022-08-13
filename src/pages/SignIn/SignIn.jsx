@@ -65,7 +65,7 @@ function SignIn() {
         </div>
         <div className="form">
           <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
-          {never1 === true ? <h6>Favor remover os espaços vazios no campo login</h6> : ""}
+          {never1 === true ? <h5>Favor remover os espaços vazios no campo login</h5> : ""}
           <div className="inputPassword">
           <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
           <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>

@@ -108,8 +108,9 @@
 }
 
 .content-profile .profile .main .section .profile-tool .user h3 svg {
-    font-size: 14px;
-    margin-left: 3px;
+    color: #e0aa3e;
+    color-image: linear-gradient(to right, #ae8625, #f7ef8a, #d2ac47, #edc967);
+    margin: 0 3px;
 }
 
 .content-profile .profile .main .section .profile-tool .user .user-img {

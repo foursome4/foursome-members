@@ -1,7 +1,7 @@
 import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSlim'
 import { TopBar } from '../../components/TopBar/TopBar'
 import {FiHome, FiImage, FiVideo, FiMoreVertical, FiUser, FiUserPlus, FiHeart, FiUserMinus, FiMessageSquare, FiCheck} from 'react-icons/fi'
-import {FaHeart} from 'react-icons/fa'
+import {FaCrown, FaHeart} from 'react-icons/fa'
 import {IoShieldCheckmark} from 'react-icons/io5'
 import './profileFriend.css'
 import { Photos } from '../../components/Photos/Photos'
@@ -462,9 +462,9 @@ console.log(id)
                       id === "4aabed" ||
                       id === "7b9f35" 
                     ?
-                    <h3>  <b>{userInformations !== null ? `${userInformations.nickname}  ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+                    <h3> {user.status === "premium" || user.status === "lifetime" ? <FaCrown /> : ""}  <b>{userInformations !== null ?`${userInformations.nickname}  ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
                     :
-                    <h3> <b>{userInformations !== null ? `${userInformations.nickname} - ${user.uf} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+                    <h3> {user.status === "premium" || user.status === "lifetime" ? <FaCrown /> : ""}  <b>{userInformations !== null ? `${userInformations.nickname} - ${user.uf} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
                   }
                   
                 </div>

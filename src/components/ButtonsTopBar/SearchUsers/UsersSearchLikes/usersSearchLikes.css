@@ -24,6 +24,16 @@
     object-fit: cover;
 }
 
+.item-search  .image svg{
+    position: absolute;
+    margin-left: -40px;
+    margin-top: -5px;
+    transform: rotate(-35deg);
+    color: #e0aa3e;
+    color-image: linear-gradient(to right, #ae8625, #f7ef8a, #d2ac47, #edc967);
+}
+
+
 .item-search .name h4 {
     margin-left: 5px;
     color: var(--Primary);
