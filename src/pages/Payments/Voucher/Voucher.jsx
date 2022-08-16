@@ -92,6 +92,8 @@ function Voucher() {
                 <h4>Não envie linha de extrato.</h4>
                 <h4>Não rasure ou corte o comprovante.</h4>
                 <h4>O envio de comprovante fora dos padrões poderá causar o bloqueio do seu acesso.</h4>
+                <br />
+                <h4>NÃO ENVIAR COMPROVANTE EM PDF. APENAS PRINT DO COMPROVANTE</h4>
                 </div>
 
                 <div className="blue">
