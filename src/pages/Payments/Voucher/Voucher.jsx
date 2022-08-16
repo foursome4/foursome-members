@@ -104,10 +104,11 @@ function Voucher() {
                 <h1> <IoCheckmarkCircleOutline /> </h1>
                 <h4>Ao concluir a transação, clique no botão COMPROVANTE COMPLETO OU COMPARTILHAR COMPROVANTE.</h4>
                 <h4>O comprovante deve estar completo.</h4>
+                <h4>ENVIE O PRINT DO COMPROVANTE</h4>
                 </div>
 
                 <div className="comprovant">
-                <h3>Envie o comprovante aqui:</h3>
+                <h3>Envie o print do comprovante aqui:</h3>
                 <label className="label-avatar">
                             <span><FiUpload color="#f65" size={25} /></span>
                             <input type="file" accept="image/*" onChange={handleFile}/><br />
