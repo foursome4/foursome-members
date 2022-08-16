@@ -170,7 +170,7 @@ function AuthProvider({children}) {
             } else if(user.status === "suspense") {
                 window.open("/activeplain","_self");
                 return
-            }else  if(user.status  === "lifetime") {
+            }else  if(user.status  === "lifetime" || user.país === "Portugal") {
                 window.open("/feed","_self");
                 return
             }else
