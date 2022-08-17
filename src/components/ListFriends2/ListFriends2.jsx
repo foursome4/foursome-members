@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 function ListFriends2({id, idRegister}) {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const myUser = JSON.parse(Local);
 
     const {deleteFriend} = useContext(AuthContext)
@@ -23,7 +23,7 @@ function ListFriends2({id, idRegister}) {
 
         async function loadInformation() {
             const idAccount = id;
-            await api.get(`/informations/${idAccount}`).then((result) => {
+            await api.get(`/accounts/filter/${idAccount}`).then((result) => {
                 setFriendInformation(result.data[0])
             })
         }

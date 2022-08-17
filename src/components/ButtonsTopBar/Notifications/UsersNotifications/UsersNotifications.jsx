@@ -5,7 +5,7 @@ import './usersNotifications.css'
 
 
 function UsersNotifications({id, text}) {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const userData = JSON.parse(Local);
 
     const [avatar, setAvatar] = useState('')
@@ -14,7 +14,7 @@ function UsersNotifications({id, text}) {
             const idAccount = id
 
             if(id !== null) {
-                await api.get(`informations/${idAccount}`).then((result) => {
+                await api.get(`accounts/filter/${idAccount}`).then((result) => {
                     setAvatar(result.data[0].avatar)
                 }).catch((error) => {
                     console.log(error)
@@ -29,8 +29,8 @@ function UsersNotifications({id, text}) {
     return (
        <div className="item">
           { id !== null ?
-           <div className="image">
-           <Link to={userData.id === id ? `/profile`:`/profile-friend/${id}`}>
+           <div className={userData.status === "essencial" ? "image2" : "image"}>
+           <Link to={userData.status === "essencial" ? `/updateplain` : userData.id === id ? `/profile`:`/profile-friend/${id}`}>
            <img 
                         src={avatar}
                         onError={({ currentTarget }) => {
@@ -43,7 +43,11 @@ function UsersNotifications({id, text}) {
            : ""
             }
            <div className="name">
+            {userData.status === "essencial" ?
+           <p>Alguém inteagiu com você. Clique para ver</p>
+           :
            <p>{text}</p>
+            }
            </div>
        </div>
     ) 

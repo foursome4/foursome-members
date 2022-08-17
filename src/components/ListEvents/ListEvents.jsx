@@ -13,7 +13,7 @@ function ListEvents() {
              <div className="events-all">
                              {data?.map((event) => {
                                  return(
-                                 event.status === "Aproved" ?
+                                 event?.status === "Aproved" ?
                                     <div className="events-unic" key={event.id}>
                                         <div className="imageCover"> 
                                     <img src={event.cover} alt="" className="cover"/>
@@ -49,4 +49,42 @@ function ListEvents() {
     )
 }
 
-export { ListEvents }
+function ListEventsUnic() {
+    const {data} = useFetch(`/events`);
+
+    const EventAprtoved = data?.filter((event) => event.status === "Aproved")
+
+    return (
+           EventAprtoved?.length === 0 ?
+           <div className="listEvents2">
+
+           <div className="events-all2">
+                                  <div className="events-unic2">
+                                  <h4>Nenhum evento criado</h4>
+                                  <Link to={`/events`}>Criar Agora!</Link>
+                              </div>
+                             
+                          </div>
+     
+      </div>
+       :
+        <div className="listEvents2">
+
+             <div className="events-all2">
+                                    <div className="events-unic2" key={EventAprtoved?.[0].id}>
+                                        <div className="imageCover"> 
+                                    <img src={EventAprtoved?.[0].cover} alt="" className="cover"/>
+                                        </div>
+                                    <img src={EventAprtoved?.[0].avatar} alt="" className="profile"/>
+                                    <h4>{EventAprtoved?.[0].name}</h4>
+                                    <Link to={`/event/${EventAprtoved?.[0].id}`}>Saber mais</Link>
+                                </div>
+                               
+                            </div>
+       
+        </div>
+    )
+}
+
+
+export { ListEvents, ListEventsUnic }

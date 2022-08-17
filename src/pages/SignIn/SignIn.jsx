@@ -5,10 +5,11 @@ import { AuthContext } from '../../contexts/Auth';
 import { FiEye, FiEyeOff} from 'react-icons/fi';
 import { IoLogoWhatsapp} from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import image1 from '../../assets/images/slider/6.jpg';
 
 
 import './signIn.css';
+import { SliderImages } from '../../components/SliderImages/SliderImages';
 
 function SignIn() {
 
@@ -16,14 +17,11 @@ function SignIn() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [passwordView, setPasswordView] = useState(false)
-  const [never, setNever] = useState(false)
   const navigate = useNavigate();
 
-  const text = `Olá, queremos saber mais sobre como ingressar em sua rede social`
-  const phone = "22997910510"
-
+ 
   useEffect(() => {
-      if(localStorage.getItem("foursome") !== null) {
+      if(localStorage.getItem("forpride") !== null) {
         navigate("/feed")
       }
     },[navigate])
@@ -43,52 +41,39 @@ function SignIn() {
     }
   }
 
-  function handleInviteWhatsapp() {
-    window.open("https://wa.me/55"+ phone + "?text=" + text,
-    '_blank')
-  }
-
-  function handleSignUp() {
-    window.open("/signup", "_self")
-  }
-
-  let never1 = false
-  if(login.includes(" ")) {
-    never1 = true
-  }
 
   return (
-    <div className="content-Login1">
-      <div className="signIn">
-      <div className="logo">
-        <img src={logoImg} alt="Logo Foursome" />
+    <div className="content-Login">
+      <div className="slide">
+      <div className="images" key={image1}>
+            <img src={image1} alt="" />
         </div>
+      </div>
+      <div className="bloco2">
+
+      <div className="logo">
+        <img src={logoImg} alt="Logo forpride" />
+        </div>
+
+      <div className="signIn">
         <div className="form">
           <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
-          {never1 === true ? <h6>Favor remover os espaços vazios no campo login</h6> : ""}
           <div className="inputPassword">
           <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
           <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
           </div>
-          <div className="buttons">
-            <button onClick={handleCreateAccount}> Entrar </button>
-
-          </div>
           <div className="links">
-          <a href="/recuperation"><p> ESQUECI MINHA SENHA</p></a>
-            <a href="/recuperationuser"><p> ESQUECI MEU USUÁRIO</p></a>
+          <a href="/recuperation"><p> Esqueceu a senha?</p></a>
+          </div>
+          <div className="buttons">
+          <button onClick={handleCreateAccount}> Entrar </button>
+          </div>
+          <div className="create">
+          <p>Não possui conta? <a href="/signup"> Criar agora</a></p>
           </div>
 
-          <div className="whatsapp" onClick={handleSignUp}>
-             <h4><b>Não tem conta? </b> Clique aqui e cadastre-se</h4>
-          </div>
-          <div className="whatsapp2" onClick={handleInviteWhatsapp}>
-            <h4> Entre em contato <IoLogoWhatsapp /></h4>
-          </div>
-          {/* <div className="register">
-          <h4><b>Não tem conta? </b> <a href="/signup">Clique aqui e cadastre-se</a></h4>
-          </div> */}
         </div>
+      </div>
       </div>
     </div>
   )

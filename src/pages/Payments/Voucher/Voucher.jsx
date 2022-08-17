@@ -19,13 +19,13 @@ function Voucher() {
     const {id} = useParams();
     const{createPayment} = useContext(AuthContext)
 
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
 
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [imageAvatar, setImageAvatar] = useState(''); 
 
-    const {data} = useFetch(`/plains/unic/${id}`);
+    const {data} = useFetch(`/plains/plain/${id}`);
 
     function handleFile(e) {
         console.log(e.target.files[0])
@@ -61,22 +61,25 @@ function Voucher() {
         
         console.log(uploadAvatar.ref.name, photoUrlAvatar);
 
-        UploadVoucher(photoUrlAvatar)
+        handleCreatePayment(photoUrlAvatar)
     }
 
-    function UploadVoucher(voucherImage) {
-        const linkComprovant = voucherImage;
+    function handleCreatePayment(handleCreatePayment) {
+        const linkComprovant = handleCreatePayment;
         const idPlain = data?.[0].id;
         const namePlain = data?.[0].name;
+        const referencePlain = data?.[0].reference;
         const idAccount = user.id;
         const username = user.username;
+        const email = user.email;
         const value = data?.[0].value;
         const period = data?.[0].period;
+        const aceptTerms = "sim";
+        const status = "pending";
 
-        console.log({linkComprovant, idPlain, namePlain, idAccount,username, value, period})
-        createPayment(linkComprovant, idPlain, namePlain, idAccount,username, value, period)
+        console.log({linkComprovant, idPlain, namePlain, referencePlain, idAccount,username, email, value, period, aceptTerms, status})
+        createPayment({linkComprovant, idPlain, namePlain, referencePlain, idAccount,username, value,email, period, aceptTerms, status})
     }
-
 
     return (
         <div className="Voucher">
@@ -89,6 +92,12 @@ function Voucher() {
                 <h4>Não envie linha de extrato.</h4>
                 <h4>Não rasure ou corte o comprovante.</h4>
                 <h4>O envio de comprovante fora dos padrões poderá causar o bloqueio do seu acesso.</h4>
+                </div>
+
+                <div className="blue">
+                <h1> <IoCheckmarkCircleOutline /> </h1>
+                <h4>Escreva seu e-mail de cadastro da foursome na descrição do comprovante.</h4>
+                <h4>Isso facilitará a validação mais rápida de seu pagamento.</h4>
                 </div>
 
                 <div className="green">

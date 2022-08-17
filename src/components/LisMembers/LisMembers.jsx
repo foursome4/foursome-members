@@ -5,17 +5,13 @@ import "./lisMembers.css"
 function LisMembers({idEvent}) {
     console.log(idEvent)
 
-    const {data} = useFetch(`https://api-foursome.herokuapp.com/membersevents/${idEvent}`);
+    const {data} = useFetch(`/membersevents/${idEvent}`);
 
     if(!data) {
         return (
             <h3>Carregando...</h3>
         )
     }
-    if(data) {
-        console.log(data)
-    }
-
 
     return (
         <div className="LisMembers">

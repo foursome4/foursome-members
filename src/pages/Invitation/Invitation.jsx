@@ -15,10 +15,8 @@ function Invitation() {
     inactivityTime()
 
 
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -54,10 +52,10 @@ function Invitation() {
         const code = inviteCode.substring(0, 4)
 
         console.log(`Code: ${code}, Nome: ${name}, Email: ${email}, Telefone: ${newPhone},
-        isAccount: ${user.id}, username: ${user.username}, nickname: ${userInformation.nickname}, avatar: ${userInformation.avatar}`);
+        isAccount: ${user.id}, username: ${user.username}, nickname: ${user.nickname}, avatar: ${user.avatar}`);
 
 
-       CreateInviteNewUsew({code, name, email, phone:newPhone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname })
+       CreateInviteNewUsew({code, name, email, phone:newPhone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:user.nickname })
 
        
 
@@ -81,10 +79,10 @@ function Invitation() {
       const code = inviteCode.substring(0, 4)
 
       console.log(`Code: ${code}, Nome: ${name}, Email: ${email}, Telefone: ${newPhone},
-      isAccount: ${user.id}, username: ${user.username}, nickname: ${userInformation.nickname}, avatar: ${userInformation.avatar}`);
+      isAccount: ${user.id}, username: ${user.username}, nickname: ${user.nickname}, avatar: ${user.avatar}`);
 
 
-      CreateInviteMail({code, name, email, phone:newPhone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname })
+      CreateInviteMail({code, name, email, phone:newPhone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:user.nickname })
 
      
 

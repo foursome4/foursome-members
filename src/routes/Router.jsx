@@ -17,7 +17,6 @@ import { Invitation } from '../pages/Invitation/Invitation';
 import { Invite } from '../pages/Invite/Invite';
 import { InvitesList } from '../pages/InvitesList/InvitesList';
 import { Lgpd } from '../pages/Lgpd/Lgpd';
-import { Loader } from '../pages/Loader/Loader';
 import { Menu } from '../pages/Menu/Menu';
 import { Messages } from '../pages/Messages/Messages';
 import { Notifications } from '../pages/Notifications/Notifications';
@@ -53,10 +52,15 @@ import { UseOfTerms } from '../pages/UseOfTerms/UseOfTerms';
 import { RecadoUnic } from '../pages/RecadoUnic/RecadoUnic';
 import { UserNotFound } from '../pages/UserNotFound/UserNotFound';
 import { Welcome } from '../pages/Welcome/Welcome';
+import { ActivePlain } from '../pages/ActivePlain/ActivePlain';
+import { UpdatePlain } from '../pages/UpdatePlain/UpdatePlain';
+import { PeriodTeste } from '../pages/PeriodTeste/PeriodTeste';
+import { SignUp } from '../pages/SignUp/SignUp';
+import { Radar2 } from '../pages/Radar2/Radar2';
 
 
 function Router () {
-const Local = localStorage.getItem("foursome");
+const Local = localStorage.getItem("forpride");
 const userLocal = JSON.parse(Local)
 
 function PrivateRoute({children} ) {
@@ -68,21 +72,27 @@ function PrivateRoute({children} ) {
             <Routes>
             <Route path="/" element={<SignIn />}/>
             <Route path="/signup/convite/:email/:code/:patron/:type" element={ <EntrarConvite />} />
-            <Route path="/signup/" element={ <Entrar />} />
+            <Route path="/characteristcs/:idAccount/:email/:type/:username" element={ <Characteristcs />} />
+            <Route path="/preferences/:idAccount/:email/:username" element={ <Preferences />} />
+            <Route path="/signup/" element={ <SignUp />} />
+
             <Route path="/forgotit" element={ <Forgotit />} />
             <Route path="/recuperation" element={ <Recuperation />} />       
             <Route path="/recuperationuser" element={ <RecuperationUser />} />       
             <Route path="/recoverpassword/:email" element={ <RecoverPassword />} />       
             <Route path="/recuperationcode/:email" element={ <RecuperationCode />} />       
-            <Route path="/recuperationuserresult/:username" element={ <RecuperationUserResult />} />       
-            <Route path="/loader" element={ <Loader />} />       
+            <Route path="/recuperationuserresult/:username" element={ <RecuperationUserResult />} />           
             <Route path="/terms" element={ <UseOfTerms />} />       
             <Route path="/police" element={ <PrivacityPolice />} />       
             <Route path="/lgpd" element={ <Lgpd />} />       
             <Route path="/entrar" element={ <Entrar />} />
             <Route path="/registrationend" element={ <RegistrationEnd />} />
-  
+
             
+            <Route path="/activeplain"
+                    element={ <PrivateRoute> <ActivePlain /> </PrivateRoute>} />
+            <Route path="/updateplain"
+                    element={ <PrivateRoute> <UpdatePlain /> </PrivateRoute>} />
             <Route path="/feed"
                     element={ <PrivateRoute> <Feed /> </PrivateRoute>} />
             <Route path="/menu"
@@ -115,9 +125,9 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Radar/> </PrivateRoute>} />
             <Route path="/completeregistration" 
                 element={ <PrivateRoute> <CompleteRegistration/> </PrivateRoute>} />
-            <Route path="/characteristcs" 
+            <Route path="/characteristcs/:idAccount/:email" 
                 element={ <PrivateRoute> <Characteristcs/> </PrivateRoute>} />
-            <Route path="/preferences" 
+            <Route path="/preferences/:idAccount/:email" 
                 element={ <PrivateRoute> <Preferences /> </PrivateRoute>} />
             <Route path="/comming-soom" 
                 element={ <PrivateRoute> <CommingSoom /> </PrivateRoute>} />
@@ -163,6 +173,8 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <UserNotFound /> </PrivateRoute>} />
             <Route path="/welcome" 
                 element={ <PrivateRoute> <Welcome /> </PrivateRoute>} />
+            <Route path="/periodtest" 
+                element={ <PrivateRoute> <PeriodTeste /> </PrivateRoute>} />
             </Routes>
            
     )
@@ -170,26 +182,3 @@ function PrivateRoute({children} ) {
 
 export {Router}
 
-
-
-// const Local = localStorage.getItem("foursome");
-// const userLocal = JSON.parse(Local)
-// const LocalInformation = localStorage.getItem("informations-foursome");
-// const userInformation = JSON.parse(LocalInformation);
-// const Localcharacteritics = localStorage.getItem("characteritics-foursome");
-// const usercharacteritics = JSON.parse(Localcharacteritics);
-// const Localpreferences = localStorage.getItem("preferences-foursome");
-// const userpreferences = JSON.parse(Localpreferences);
-
-
-
-
-// function PrivateRoute({children} ) {
-//     return (
-//         userLocal !== null ? children :
-//         userInformation === null ? <Navigate to="/completeregistration"/> :
-//         usercharacteritics === null ? <Navigate to="/characteristcs"/> :
-//         userpreferences === null ? <Navigate to="/preferences"/> :
-//         <Navigate to="/"/>
-//     )
-// }

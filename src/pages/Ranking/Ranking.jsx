@@ -9,9 +9,9 @@ import { useEffect, useState, useContext } from "react"
 import { AuthContext } from "../../contexts/Auth"
 
 function Ranking() {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const userData = JSON.parse(Local);
-    const {inactivityTime} = useContext(AuthContext);
+    const {inactivityTime, verityTimesPeiodTest} = useContext(AuthContext);
 
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
 
@@ -85,6 +85,11 @@ function Ranking() {
     }, []);
 
 
+    if(userData.status === "test") {
+        console.log("olá, mundo")
+        verityTimesPeiodTest(userData.id);
+       }
+
 
     function handleSelectTypePhoto() {
         setType("Photo")
@@ -155,20 +160,20 @@ const limitVideo = filterVideos.slice(0,10);
 
                              <div className="filterMonth">
                                 <h5>Veja as 10 melhores de cada mês</h5>
-                                <select value={month} onChange={handleSelectMonth}>
-                                <option>Escolha o mês</option>
-                                <option value="1">Janeiro</option>
-                                <option value="2">Fevereiro</option>
-                                <option value="3">Março</option>
-                                <option value="4">Abril</option>
-                                <option value="5">Maio</option>
-                                <option value="6">Junho</option>
-                                <option value="7">Julho</option>
-                                <option value="8">Agosto</option>
-                                <option value="9">Setembro</option>
-                                <option value="10">Outubro</option>
-                                <option value="11">Novembro</option>
-                                <option value="12">Dezembro</option>
+                                <select value={month} onChange={handleSelectMonth} id="selectOption">
+                                <option className="selectOption">Escolha o mês</option>
+                                <option className="selectOption" value="1">Janeiro</option>
+                                <option className="selectOption" value="2">Fevereiro</option>
+                                <option className="selectOption" value="3">Março</option>
+                                <option className="selectOption" value="4">Abril</option>
+                                <option className="selectOption" value="5">Maio</option>
+                                <option className="selectOption" value="6">Junho</option>
+                                <option className="selectOption" value="7">Julho</option>
+                                <option className="selectOption" value="8">Agosto</option>
+                                <option className="selectOption" value="9">Setembro</option>
+                                <option className="selectOption" value="10">Outubro</option>
+                                <option className="selectOption" value="11">Novembro</option>
+                                <option className="selectOption" value="12">Dezembro</option>
                             </select>
                             </div>
 

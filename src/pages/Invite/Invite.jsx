@@ -17,8 +17,8 @@ function Invite() {
     const {inactivityTime} = useContext(AuthContext);
 
     inactivityTime()
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
+    const LocalInformation = localStorage.getItem("forpride");
+    const user = JSON.parse(LocalInformation);
 
     const [typeInvite, setTypeInvite] = useState("Email");
 
@@ -44,7 +44,7 @@ function Invite() {
 
                                 <div className="invites-unic">
                                     <div className="informationInvite">
-                                        <h4>Olá, {userInformation.nickname}.<br />Antes de enviar um convite, verifique as seguintes informações</h4>
+                                        <h4>Olá, {user.nickname}.<br />Antes de enviar um convite, verifique as seguintes informações</h4>
                                        <div className="roles">
                                        <p><FiCheck /> Certifique-se se seu convidado não faz parte de nossa rede.</p>
                                         <p><FiCheck /> O convite enviado é único, intransferível e válido por 10 dias.</p>
@@ -52,7 +52,7 @@ function Invite() {
                                         <br />
                                         <p><b>Qualquer problema ou dúvida. Entra em conato:</b></p>
                                         <p><b>Whatsapp</b> (22)99791-0510</p>
-                                        <p><b>E-mail:</b> contato@foursome.com.br</p>
+                                        <p><b>E-mail:</b> contato@forpride.com.br</p>
                                        </div>
                                     </div>
 

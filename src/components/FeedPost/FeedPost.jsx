@@ -1,18 +1,33 @@
 import './feedPost.css';
 import { useState, memo, useEffect} from 'react';
 import { ItemFeed } from '../ItemFeed/ItemFeed';
-import { useFetch } from '../../hooks/useFetch';
+import { useFetch, useFetchPost } from '../../hooks/useFetch';
 import gifLoader from '../../assets/images/gif/loader.gif';
 import {IoOptionsOutline} from 'react-icons/io5'
+import api from '../../services/api';
+import { FeedPost2 } from '../FeedPost2/FeedPost2';
 
 function FeedPostComponent() {
+    const Local = localStorage.getItem("forpride");
+    const user = JSON.parse(Local);
     const [followers, setFollowers] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
 
       const perPage = 5;
-      const {data} = useFetch(`/posts/all?page=${currentPage}&limit=${perPage}`);
 
-      useEffect(() => {
+      const data2 = {
+        man: user.preferenceOption
+    }
+
+    // const {data} = useFetch(`/posts/all?page=${currentPage}&limit=${perPage}`);
+    // const {data} = useFetchPost(`/posts/difference/?page=${currentPage}&limit=${perPage}`, data2);
+     const {data} = useFetch(`/posts/all?page=${currentPage}&limit=${perPage}`, data2);
+
+     if(data){
+        console.log("data")
+        console.log(data)
+     }
+     useEffect(() => {
           if(data) {
               setFollowers(oldFollowers => [...oldFollowers, ...data])
           }
@@ -31,6 +46,30 @@ function FeedPostComponent() {
     }, []);
 
 
+    // useEffect(() => {
+    //     async function loadPosts() {
+    //      const data = {
+    //          man: userPreferences.men,
+    //          woman: userPreferences.woman,
+    //          couple: userPreferences.couple,
+    //          trisal: userPreferences.trisal,
+    //          transvestites: userPreferences.transvestites,
+    //          transsexuals: userPreferences.transsexuals,
+    //          groups: userPreferences.groups
+    //      }
+    //      console.log("Preferencias no use Effect");
+    //      console.log(data);
+    //      console.log(user.uf);
+    //     const res = await api.post(`/posts/qtd/${user.uf}/?page=${currentPage}&limit=${perPage}`, data)
+
+    //     console.log("res.data")
+    //     console.log(res.data)
+    //  }
+
+    //  loadPosts()
+    // }, []);
+
+
   if(!followers) {
         return (
             <div className="load">
@@ -42,12 +81,14 @@ function FeedPostComponent() {
     return (
 
         <div className="feedPost">
-            {/* <div className="settingsFeed">
+            {/* {data?.length === 0 ? "" :
+            <div className="settingsFeed">
                 <button><IoOptionsOutline/></button>
                 <div className="options">
                     
                 </div>
-            </div> */}
+            </div>
+            } */}
             <div className="posts-feed">
                                 {followers?.map((postsData => {
                                     return (   
@@ -66,6 +107,7 @@ function FeedPostComponent() {
                                            forum={postsData.nameForum}
                                            idGroup={postsData.idGroup}
                                            idForum={postsData.idForum}
+                                           typeAccount={postsData.typeAccount}
                                            />
                                            : "" }
    
@@ -73,10 +115,15 @@ function FeedPostComponent() {
                                 )
                             }))}
                             <div id="sentinela">
-                                <div className="image">
+                                {/* <div className="image">
                                     <img src={gifLoader} alt="Gif LOader more posts" />
-                                    </div></div>              
+                                    </div> */}
+                                    </div>              
                            </div>
+                           {/* {data?.length === 0 ?
+                           <FeedPost2 /> 
+                           : ""
+                           } */}
         </div>                                
     )
 }

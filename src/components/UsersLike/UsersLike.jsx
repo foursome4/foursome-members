@@ -3,7 +3,7 @@ import api from '../../services/api'
 import './usersLike.css'
 
 function UsersLikeComponent({idAccount, username}) {
-    const LocalInformations = localStorage.getItem("informations-foursome");
+    const LocalInformations = localStorage.getItem("informations-forpride");
     const userInformations = JSON.parse(LocalInformations);
 
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
@@ -11,7 +11,7 @@ function UsersLikeComponent({idAccount, username}) {
     const [nickname, setNickname] = useState('')
     useEffect(() => {
         async function loadInformations() {
-            await api.get(`informations/${idAccount}`).then((result) => {
+            await api.get(`/accounts/filter/${idAccount}`).then((result) => {
                 setNickname(result.data[0].nickname)
             }).catch((error) => {
                 console.log(error)

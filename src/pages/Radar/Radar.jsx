@@ -12,9 +12,9 @@ import { FiArrowUpCircle } from 'react-icons/fi';
 import apiGoogleReverse from '../../services/apiGoogleReverse'
 
 function Radar() {
-    const {logout, updateUserOnline, socketDataLocation} = useContext(AuthContext);
+    const {logout, updateUserOnline, socketDataLocation, verityTimesPeiodTest} = useContext(AuthContext);
 
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const userData = JSON.parse(Local);
 
     const [load, setLoad] = useState(false)
@@ -86,39 +86,7 @@ function Radar() {
                 console.log("Conta encontrada")
             } 
         }
-        async function searchInformations() {
-          const res =  await api.get(`informations/${id}`);
-           // console.log(res.data)
-            if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-                logout(id)
-            } else {
-                console.log("Informações encontradas")
-            } 
-        }
-        async function searchCharacteristcs() {
-          const res =  await api.get(`characteristics/${id}`);
-           // console.log(res.data)
-            if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-                logout(id)
-            } else {
-                console.log("Caracteristicas encontradas")
-            } 
-        }
-        async function searchPreferences() {
-          const res =  await api.get(`preferences/${id}`);
-//console.log(res.data)
-            if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-                logout(id)
-            } else {
-                console.log("Preferencias encontradas")
-                setMyInformations(true)
-            } 
-        }
-
         searchAccount()
-        searchInformations()
-        searchCharacteristcs()
-        searchPreferences()
        }, []);
 
 
@@ -278,6 +246,10 @@ function Radar() {
          socketDataLocation();
      }
 
+     if(userData.status === "test") {
+        console.log("olá, mundo")
+        verityTimesPeiodTest(userData.id);
+       }
 
     function handleUpdateInformations(e) {
         e.preventDefault();

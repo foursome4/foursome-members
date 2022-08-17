@@ -10,11 +10,8 @@ import api from '../../services/api'
 
 function Post() {
     const {newPost, logout} = useContext(AuthContext)
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
-
     const id = user.id
 
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
@@ -30,6 +27,7 @@ function Post() {
     const [dataVideo, setDataVideo] = useState(false);
     const [videos, setVideos] = useState([])
     const [photos, setPhotos] = useState([]);
+    const [content, setContent] = useState("");
 
     useEffect(() => {
         async function searchAccount() {
@@ -192,6 +190,9 @@ function Post() {
       }
 
 
+      function handleSelectContent(e) {
+        setContent(e.target.value);
+      }
     async function handlePostNew() {
         setLoading(true)
 
@@ -210,7 +211,7 @@ function Post() {
                 idAccount: user.id,
                 link: photoUrlAvatar !== null ? photoUrlAvatar : "",
                 username: user.username,
-                typeAccount: user.type,
+                typeAccount: user.sex,
                 nameGroup: "",
                 nameForum: "",
                 nameEvent: "",
@@ -220,8 +221,9 @@ function Post() {
                 type: "post-photo",
                 text,
                 iidPatrono: null,
-                ufAccount:user.uf,
-                cityAccount: user.city
+                ufAccount:user.país === "Portugal" ? user.país : user.uf,
+                cityAccount: user.city,
+                content
             })
             setDataPhoto(true)
             setPost("text")
@@ -240,7 +242,7 @@ function Post() {
                     idAccount: user.id,
                     link: videoUrl !== null ? videoUrl : "",
                     username: user.username,
-                    typeAccount: user.type,
+                    typeAccount: user.sex,
                     nameGroup: "",
                     nameForum: "",
                     nameEvent: "",
@@ -250,8 +252,9 @@ function Post() {
                     type: "post-video",
                     text,
                     iidPatrono: null,
-                    ufAccount:user.uf,
-                    cityAccount: user.city
+                    ufAccount:user.país === "Portugal" ? user.país : user.uf,
+                    cityAccount: user.city,
+                    content
                 })
                 setDataVideo(true)
                 setPost("text")
@@ -266,7 +269,7 @@ function Post() {
                         idAccount: user.id,
                         link: "",
                         username: user.username,
-                        typeAccount: user.type,
+                        typeAccount: user.sex,
                         nameGroup: "",
                         nameForum: "",
                         nameEvent: "",
@@ -276,8 +279,9 @@ function Post() {
                         type: "post-text",
                         text,
                         iidPatrono: null,
-                        ufAccount:user.uf,
-                        cityAccount: user.city
+                        ufAccount:user.país === "Portugal" ? user.país : user.uf,
+                        cityAccount: user.city,
+                        content
                     })
                     setPost("text")
                     reset()
@@ -358,8 +362,19 @@ function Post() {
                 </div>
                 <div className="buttons">
                     <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
-                  {dailyPost.length === 2 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
-                  {dailyPost.length === 2 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
+                  {dailyPost.length === 3 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
+                  {dailyPost.length === 3 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
+                </div>
+
+                <div className="select">
+                    <select value={content} onChange={handleSelectContent}>
+                    <option value="">Tipo de conteúdo</option>
+                    <option value="livre">Conteúdo livre</option>
+                    <option value="sensible">Conteúdo sensível</option>
+                    </select>
+                    <div className="text">
+                        <h6>{content === "livre" ? "Seu conteúdo será mostrado a todos"  : content === "sensible" ? "Seu conteúdo receberá uma proteção: Conteúdo sensível, violência ou +18" : "Escolha um tipo de conteúdo. Conteúdo diferente do selecionado será excluído"}</h6>
+                    </div>
                 </div>
 
                 { post === "text" ?                  
@@ -380,7 +395,11 @@ function Post() {
             </div>      
             </div>
             <div className="counter">
-                <h5>{dailyPost.length === 0 ? "Você pode postar 2 fotos ou videos" : dailyPost.length === 1 ? "Você pode postar 1 fotos ou videos" : dailyPost.length === 2 ? "Você já postou 2 vezes hoje" : "" }</h5>
+            <h5>{dailyPost.length === 0 ? "Você pode postar 3 fotos ou videos"
+                : dailyPost.length === 1 ? "Você pode postar 2 fotos ou videos"
+                : dailyPost.length === 2 ? "Você pode postar 1 foto ou video"
+                : dailyPost.length === 3 ? "Você ja efetuou suas postagens diárias"
+                : ""  }</h5>
                 </div>
 
                 

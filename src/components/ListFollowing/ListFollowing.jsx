@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 function ListFollowing({idAccount, idRegister}) {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const myUser = JSON.parse(Local);
 
     const {deleteFollower} = useContext(AuthContext)
@@ -24,7 +24,7 @@ function ListFollowing({idAccount, idRegister}) {
 
         async function loadInformation() {
             
-            await api.get(`/informations/${idAccount}`).then((result) => {
+            await api.get(`/accounts/filter/${idAccount}`).then((result) => {
                 setFriendInformation(result.data[0])
             })
         }

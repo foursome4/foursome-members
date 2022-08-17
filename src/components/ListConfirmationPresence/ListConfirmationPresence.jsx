@@ -10,7 +10,6 @@ function ListConfirmationPresence({idGroup}) {
     useEffect(() => {
         async function loadGroups(){
             await api.get(`/members/${idGroup}`).then((result) => {
-                console.log(result.data.length);
                 setMembers(result.data.length)
 
             })

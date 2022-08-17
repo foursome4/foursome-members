@@ -5,7 +5,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    background-color: var(--Background2)
+    background-color: var(--Background)
 }
 
 .content-profile .profile {
@@ -15,11 +15,11 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    background-color: var(--Background2);
+    background-color: var(--Background);
 }
 
 .content-profile .profile .main {
-    background-color: var(--Background2);
+    background-color: var(--Background);
     width: 100%;
     height: 100%;
     display: flex;
@@ -30,7 +30,7 @@
 }
 
 .content-profile .profile .main .section {
-    background-color: var(--Background2);
+    background-color: var(--Background);
     width: 100%;
     height: 100%;
     display: flex;
@@ -85,10 +85,10 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    background-color: var(--Background2);
+    background-color: var(--Black);
     padding: 0 50px;
     margin-top: -4px;
-    border: 1px solid var(--Background);
+    border: 1px solid var(--Black);
     padding-left:120px;
 }
 
@@ -108,8 +108,9 @@
 }
 
 .content-profile .profile .main .section .profile-tool .user h3 svg {
-    font-size: 14px;
-    margin-left: 3px;
+    color: #e0aa3e;
+    color-image: linear-gradient(to right, #ae8625, #f7ef8a, #d2ac47, #edc967);
+    margin: 0 3px;
 }
 
 .content-profile .profile .main .section .profile-tool .user .user-img {
@@ -165,6 +166,7 @@
     width: 75%;
     height: 100%;
     padding: 10px;
+
 
 }
 
@@ -226,7 +228,7 @@
 .content-profile .profile .main .section .sections .feed {
     width: 80%;
     height: 100%;
-    border-right: 2px solid var(--Primary);
+    border-right: 2px solid var(--Black);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -264,10 +266,10 @@
 .content-profile .profile .main .section .sections .feed .friends .buttonsFriends button {
     width: 100%;
     border: none;
-    border-bottom: 1px solid var(--Primary);
+    border-bottom: 1px solid var(--Black);
     padding: 5px;
     color: var(--Primary);
-    background-color: var(--Background2);
+    background-color: var(--Background);
 }
 
 
@@ -313,10 +315,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            background-color: var(--Background2);
+            background-color: var(--Background);
             padding: 0 50px;
             margin-top: -4px;
-            border: 1px solid var(--Background);
+            border: 1px solid var(--Black);
         }
 
         .content-profile .profile .main .section .sections {
@@ -398,7 +400,7 @@
             .content-profile .profile .main .section .profile-tool .user img {
                 width: 150px;
                 height: 150px;
-                border: 2px solid var(--White);
+                border: 2px solid var(--Black);
                 border-radius: 15px;
                 margin-top: -120px;
                 margin-bottom: 10px;

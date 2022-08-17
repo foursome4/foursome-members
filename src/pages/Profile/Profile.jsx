@@ -16,15 +16,16 @@ import { ListFollowers } from '../../components/ListFollowers/ListFollowers'
 import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu'
 import { useContext } from 'react'
 import { AuthContext } from '../../contexts/Auth'
+import { PostFeed2 } from '../../components/PostFeed2/PostFeed2'
+import { PostFeed } from '../../components/PostFeed/PostFeed'
+import { FaCrown } from 'react-icons/fa'
 
 
 function Profile() {
-  const Local = localStorage.getItem("foursome");
+  const Local = localStorage.getItem("forpride");
   const user = JSON.parse(Local);
-  const LocalInformations = localStorage.getItem("informations-foursome");
-  const userInformations = JSON.parse(LocalInformations);
 
-  const {deleteAccount, inactivityTime, logout } = useContext(AuthContext);
+  const {deleteAccount, inactivityTime, verityTimesPeiodTest, logout } = useContext(AuthContext);
 
   inactivityTime()
 
@@ -56,41 +57,11 @@ function Profile() {
               logout(id)
           } else {
               console.log("Conta encontrada")
-          } 
-      }
-      async function searchInformations() {
-        const res =  await api.get(`informations/${id}`);
-          console.log(res.data)
-          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-              logout(id)
-          } else {
-              console.log("Informações encontradas")
-          } 
-      }
-      async function searchCharacteristcs() {
-        const res =  await api.get(`characteristics/${id}`);
-          console.log(res.data)
-          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-              logout(id)
-          } else {
-              console.log("Caracteristicas encontradas")
-          } 
-      }
-      async function searchPreferences() {
-        const res =  await api.get(`preferences/${id}`);
-          console.log(res.data)
-          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-              logout(id)
-          } else {
-              console.log("Preferencias encontradas")
               setMyInformations(true)
           } 
       }
 
       searchAccount()
-      searchInformations()
-      searchCharacteristcs()
-      searchPreferences()
      }, []);
 
 useEffect(() => {
@@ -129,6 +100,11 @@ widthView()
     }, [user.id]);
 
 
+
+    if(user.status === "test") {
+      console.log("olá, mundo")
+      verityTimesPeiodTest(user.id);
+     }
 
       function handleDeleteAccount(e) {
         e.preventDefault()
@@ -220,7 +196,7 @@ widthView()
          <div className="section">
           <div className="cover">
           <img 
-                        src={userInformations.cover}
+                        src={user.cover}
                         onError={({ currentTarget }) => {
                             currentTarget.onerror = null; // previne loop
                             currentTarget.src={coverImg};
@@ -231,15 +207,16 @@ widthView()
                 <div className="user">
                  <div className="user-img">
                    <img 
-                        src={userInformations.avatar}
+                        src={user.avatar}
                         onError={({ currentTarget }) => {
                             currentTarget.onerror = null; // previne loop
                             currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
                         }}
                         />
                    </div>
-                  <h3> <b>{userInformations !== null ? `${userInformations.nickname} - ${userInformations.uf} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""}` :"User Test"}</b> {user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
-                </div>
+
+                    <h3> {user.status === "premium" || user.status === "lifetime" ? <FaCrown /> : ""} <b>{user !== null ? `${user.nickname} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+                     </div>
                 <div className="tools">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed}><FiHome size={16}/> Home</button>
                   <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/> Amigos</button>
@@ -258,6 +235,11 @@ widthView()
                      <div className="feed">
                   {feed === "feed" ?
                   <>
+                                      {user.status === "essencial" || user.status === "suspense" ? 
+                    <PostFeed2 />
+                    :
+                    <PostFeed />
+                    }
                     <FeedPostIndividual idAccount={user.id} />
                   </>
                   :

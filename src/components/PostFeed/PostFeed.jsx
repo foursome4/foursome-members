@@ -10,10 +10,8 @@ import api from '../../services/api'
 
 function PostFeed() {
     const {newPost, logout} = useContext(AuthContext)
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
 
     const id = user.id
 
@@ -31,6 +29,7 @@ function PostFeed() {
     const [videos, setVideos] = useState([])
     const [photos, setPhotos] = useState([]);
     const [area,setArea] = useState(false);
+    const [content, setContent] = useState("");
 
     useEffect(() => {
         async function searchAccount() {
@@ -85,14 +84,14 @@ function PostFeed() {
           const idAccount = user.id;
           const res = await api.get(`/posts/filter/${idAccount}/post-photo`);
           setPhotos(res.data)
-          console.log(res.data)
+        //  console.log(res.data)
       
       }
         async function findPostsVideo() {
           const idAccount = user.id;
           const res = await api.get(`/posts/filter/${idAccount}/post-video`);
           setVideos(res.data)
-          console.log(res.data)
+        //  console.log(res.data)
       
       }
       findPostsPhoto()
@@ -214,7 +213,7 @@ function PostFeed() {
                 idAccount: user.id,
                 link: photoUrlAvatar !== null ? photoUrlAvatar : "",
                 username: user.username,
-                typeAccount: user.type,
+                typeAccount: user.sex,
                 nameGroup: "",
                 nameForum: "",
                 nameEvent: "",
@@ -224,8 +223,9 @@ function PostFeed() {
                 type: "post-photo",
                 text,
                 iidPatrono: null,
-                ufAccount:user.uf,
-                cityAccount: user.city
+                ufAccount:user.país === "Portugal" ? user.país : user.uf,
+                cityAccount: user.city,
+                content
             })
             setDataPhoto(true)
             setPost("text")
@@ -244,7 +244,7 @@ function PostFeed() {
                     idAccount: user.id,
                     link: videoUrl !== null ? videoUrl : "",
                     username: user.username,
-                    typeAccount: user.type,
+                    typeAccount: user.sex,
                     nameGroup: "",
                     nameForum: "",
                     nameEvent: "",
@@ -254,8 +254,9 @@ function PostFeed() {
                     type: "post-video",
                     text,
                     iidPatrono: null,
-                    ufAccount:user.uf,
-                    cityAccount: user.city
+                    ufAccount:user.país === "Portugal" ? user.país : user.uf,
+                    cityAccount: user.city,
+                    content
                 })
                 setDataVideo(true)
                 setPost("text")
@@ -267,7 +268,7 @@ function PostFeed() {
                         idAccount: user.id,
                         link: "",
                         username: user.username,
-                        typeAccount: user.type,
+                        typeAccount: user.sex,
                         nameGroup: "",
                         nameForum: "",
                         nameEvent: "",
@@ -277,8 +278,9 @@ function PostFeed() {
                         type: "post-text",
                         text,
                         iidPatrono: null,
-                        ufAccount:user.uf,
-                        cityAccount: user.city
+                        ufAccount:user.país === "Portugal" ? user.país : user.uf,
+                        cityAccount: user.city,
+                        content
                     })
                     setPost("text")
                     reset()
@@ -323,12 +325,17 @@ function PostFeed() {
 
     }
 
+    function handleSelectContent(e) {
+        setContent(e.target.value);
+      }
+
+
 
     return (
         <div className="postFeed">
              <div className="postFeed-data">
             <div className="avatar">
-            <img src={userInformation.avatar} alt="" />
+            <img src={user.avatar} alt="" />
             </div>
             <div className="postFeed-type">
                 {area === false ? "" :
@@ -380,13 +387,28 @@ function PostFeed() {
                 }
                 <div className="buttons">
                     <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
-                  {dailyPost.length === 2 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
-                  {dailyPost.length === 2 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
+                  {dailyPost.length === 3 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
+                  {dailyPost.length === 3 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
+                </div>
+                
+                <div className="select">
+                    <select value={content} onChange={handleSelectContent}>
+                    <option value="">Tipo de conteúdo</option>
+                    <option value="livre">Conteúdo livre</option>
+                    <option value="sensible">Conteúdo sensível</option>
+                    </select>
+                    <div className="text">
+                        <h6>{content === "livre" ? "Seu conteúdo será mostrado a todos"  : content === "sensible" ? "Seu conteúdo receberá uma proteção: Conteúdo sensível, violência ou +18" : "Escolha um tipo de conteúdo. Conteúdo diferente do selecionado será excluído"}</h6>
+                    </div>
                 </div>
             </div>      
             </div>
             <div className="counter">
-                <h5>{dailyPost.length === 0 ? "Você pode postar 2 fotos ou videos" : dailyPost.length === 1 ? "Você pode postar 1 fotos ou videos" : dailyPost.length === 2 ? "Você ja efetuou 3 postagens entre fotos e vídeos": ""  }</h5>
+                <h5>{dailyPost.length === 0 ? "Você pode postar 3 fotos ou videos"
+                : dailyPost.length === 1 ? "Você pode postar 2 fotos ou videos"
+                : dailyPost.length === 2 ? "Você pode postar 1 foto ou video"
+                : dailyPost.length === 3 ? "Você ja efetuou suas postagens diárias"
+                : ""  }</h5>
                 </div>
         </div>
          

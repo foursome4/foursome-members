@@ -53,6 +53,7 @@ import { ItemFeed } from '../ItemFeed/ItemFeed';
                                                date={postsData.created_at} text={postsData.text}
                                                type={postsData.type} id={postsData.id}
                                                username={postsData.username} group={postsData.nameGroup}
+                                               typeAccount={postsData.typeAccount}
                                                forum={postsData.nameForum}/>
                                     </div>
                                 )

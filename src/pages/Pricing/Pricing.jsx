@@ -4,6 +4,7 @@ import { useFetch } from "../../hooks/useFetch";
 import {IoCheckmarkOutline, IoCloseOutline} from 'react-icons/io5'
 import './pricing.css'
 import { FaCrown } from "react-icons/fa";
+import { ToolbarLeftSlim } from "../../components/ToolBarLeftSlim/ToolbarLeftSlim";
 
 function Pricing() {
 
@@ -14,14 +15,21 @@ function Pricing() {
                  <TopBar />
             <div className="Pricing-page">
 
-                    <h1>Planos</h1>
+            <div className="text">
+                        <h2>Planos</h2>
+                        <h4>Escolha um plano e tenha todos os benefícios</h4>
+                    </div>
 
                     <div className="payments">
                                 <div className="vip">
-                                        <h2> <b>Seja ESSENCIAL <FaCrown /></b> </h2>
+                                        <h2> <b>Seja ESSENCIAL </b> </h2>
                                         <div className="double">
-                                        <h4>Curtir/Comentar</h4>
+                                        <h4>Curtir</h4>
                                         <IoCheckmarkOutline color="#2aae2a"/>
+                                        </div>
+                                        <div className="double">
+                                        <h4>Comentar</h4>
+                                        <IoCloseOutline color="Red"/>
                                         </div>
                                         <div className="double">
                                         <h4>Ver quem curtiu/comentou</h4>
@@ -62,12 +70,16 @@ function Pricing() {
 
                                         <h3><b>Seja Essencial por: R$ 9,90</b></h3>
 
-                                        <a href={`/menu`}>Quero ser ESSENCIAL <FaCrown /> (Breve)</a>
+                                        <a href={`/selectplain/Essencial`}>Assinar ESSENCIAL </a>
                                 </div>
                                 <div className="premium">
                                         <h2> <b>Seja PREMIUM <FaCrown /></b> </h2>
                                         <div className="double">
-                                        <h4>Curtir/Comentar</h4>
+                                        <h4>Curtir</h4>
+                                        <IoCheckmarkOutline color="#2aae2a"/>
+                                        </div>
+                                        <div className="double">
+                                        <h4>Comentar</h4>
                                         <IoCheckmarkOutline color="#2aae2a"/>
                                         </div>
                                         <div className="double">
@@ -109,7 +121,7 @@ function Pricing() {
 
                                         <h3><b>Seja Premium por: R$ 29,90</b></h3>
 
-                                        <a href={`/menu`}>Quero ser PREMIUM <FaCrown /> (Breve)</a>
+                                        <a href={`/selectplain/Premium`}>Assinar PREMIUM <FaCrown /></a>
                                 </div>
 
                     </div>
@@ -117,6 +129,7 @@ function Pricing() {
 
  
         </div>
+        <ToolbarLeftSlim />
         <BarBottomMenu />
         </div>
     )

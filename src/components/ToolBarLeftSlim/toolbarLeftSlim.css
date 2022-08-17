@@ -4,15 +4,14 @@
     display: flex;
     align-items: center;
     justify-content:space-between;
-    flex-direction: column;    
-    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+    flex-direction: column;
+    background-color:var(--Black);
     position: fixed;
     top: 50px;
     left: 0;
     z-index: 99;
     overflow-y: scroll;
     overflow: auto;
-    border-right: 2px solid var(--Background);
     padding: 10px 0;
 }
 
@@ -89,15 +88,14 @@
     cursor: pointer;
     padding: 15px;
     font-size: 14px;
-    border: none;
-    background-color: var(--Primary3);
+    background-color: var(--Background);
 }
 .content-toolbar .ToolBarLeftSlim .tools .toolIcon svg {
     margin-right:3px;
 }
 .content-toolbar .ToolBarLeftSlim .tools .toolIcon:hover {
-    background-color: var(--Foursome1);
-    color: var(--Background2);
+    background-image: linear-gradient(to right bottom, #fe8b00, #f57303, #ea590a, #de3d11, #d01616);
+    color: var(--White);
 }
 
 

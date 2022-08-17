@@ -5,8 +5,8 @@ import './toolbarLeftSlim.css'
 import { ButtonFeed } from "../ButtonsTollBar/ButtonFeed/ButtonFeed";
 
 function ToolbarLeftSlimComponent() {
-    const Local = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(Local);
+    const LocalUser = localStorage.getItem("forpride");
+    const user = JSON.parse(LocalUser);
 
     const avatarImg = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
 
@@ -15,8 +15,8 @@ function ToolbarLeftSlimComponent() {
         <div className="content-toolbar">
             <div className="ToolBarLeftSlim">
                 <div className="image">
-                <a href="/profile" >
-                    <img src={userInformation !== null ? userInformation.avatar :avatarImg} alt="" />
+                <a href={user.status === "suspense" ? `/activeplain`:`/profile`}>
+                    <img src={user !== null ? user.avatar :avatarImg} alt="" />
                     </a>
                 </div>
                 <div className="tools">
@@ -35,43 +35,37 @@ function ToolbarLeftSlimComponent() {
                        Recados
                     </button>
                     </a> */}
-
                     <a href="/recados" >
                     <button className="toolIcon" >
                         <IoMailUnreadOutline size={20}/>
                        Recados
                     </button>
                     </a>
-
-                    <a href="/radar" >
+                    <a href={user.status === "suspense" ? `/activeplain`:`/radar`}>
                     <button className="toolIcon" >
                         <IoRadio size={20}/>
                        Radar
                     </button>
                     </a>
-
-                    <a href="/ranking" >
+                    <a href={user.status === "suspense" ? `/activeplain`:`/ranking`}>
                     <button className="toolIcon" >
                         <IoStatsChartOutline size={20}/>
                        Ranking
                     </button>
                     </a>
-
-                    <a href="/events" >
+                    <a href={user.status === "suspense" ? `/activeplain`:`/preventsfile`}>
                     <button className="toolIcon" >
                         <IoCalendarOutline size={20}/>
                        Eventos
                     </button>
                     </a>
-
-                    <a href="/groups" >
+                    <a href={user.status === "suspense" ? `/activeplain`:`/groups`}>
                     <button className="toolIcon" >
                         <IoPeopleOutline size={20}/>
                        Grupos
                     </button>
                     </a>
-
-                    <a href="/foruns" >
+                    <a href={user.status === "suspense" ? `/activeplain`:`/foruns`}>
                     <button className="toolIcon" >
                         <IoList size={20}/>
                        Fóruns
@@ -87,7 +81,7 @@ function ToolbarLeftSlimComponent() {
                         <IoBusinessOutline size={20}/>Locais
                     </button>
                     </a> */}
-                    
+           
                     <a href="/settings" >
                     <button className="toolIcon" >
                         <IoSettingsOutline size={20}/>Configs
@@ -98,10 +92,9 @@ function ToolbarLeftSlimComponent() {
                         <IoCashOutline size={20}/>Planos
                     </button>
                     </a> */}
-
                     <a href="/menu" >
                     <button className="toolIcon" >
-                        <IoMenuOutline size={20}/>Planos
+                        <IoMenuOutline size={20}/>Menu
                     </button>
                     </a>
                     <a href="/infos" >

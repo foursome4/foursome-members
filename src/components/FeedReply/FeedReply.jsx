@@ -3,7 +3,7 @@ import { UserReply } from '../UserReply/UserReply';
 import { useFetch } from '../../hooks/useFetch';
 
 function FeedReply({idComment}) {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const userData = JSON.parse(Local);
 
     const {data} = useFetch(`/reply/${idComment}`);

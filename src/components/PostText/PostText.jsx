@@ -9,10 +9,8 @@ import { toast } from 'react-toastify';
 function PostText({nameForum, idForum}) {
     console.log(nameForum, idForum)
     const {newPost, logout} = useContext(AuthContext)
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
     
     const [loading, setLoading] = useState(false)
     const [text, setText] = useState("");
@@ -48,8 +46,7 @@ function PostText({nameForum, idForum}) {
                 type: "post-text-forum",
                 text,
                 idPatrono: null,
-                ufAccount:user.uf,
-                ufAccount:user.uf,
+                ufAccount:user.país === "Portugal" ? user.país : user.uf,
                 cityAccount: user.city,
                 typeAccount: user.type,
             })
@@ -70,7 +67,7 @@ function PostText({nameForum, idForum}) {
         <div className="postText">
              <div className="postText-data">
             <div className="avatar">
-            <img src={userInformation.avatar} alt="" />
+            <img src={user.avatar} alt="" />
             </div>
             <div className="postText-type">
                 <div className="inputs">

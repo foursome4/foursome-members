@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--Background2) 
+    background-color: var(--Background) 
 }
 
 .content .menu {
@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: center;
     padding: 80px 200px;
-    background-color: var(--Background2);
+    background-color: var(--Background);
 }
 
 .content .menu .unic {
@@ -34,7 +34,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+    background-image: linear-gradient(to right bottom, #fe8b00, #f57303, #ea590a, #de3d11, #d01616);
     border-radius: 6px;
     padding: 10px;
     color: var(--White);
@@ -61,10 +61,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: var(--Foursome1);
+    background-color: var(--White);
     border-radius: 6px;
     padding: 10px;
-    color: var(--White);
+    color: var(--Primary);
     border: none;
     margin: 1px;
     text-decoration:none;
@@ -102,7 +102,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+    background-image: linear-gradient(to right bottom, #fe8b00, #f57303, #ea590a, #de3d11, #d01616);
     border-radius: 6px;
     padding: 10px;
     color: var(--White);
@@ -128,10 +128,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: var(--Foursome1);
+    background-color: var(--White);
     border-radius: 6px;
     padding: 10px;
-    color: var(--White);
+    color: var(--Primary);
     border: none;
     margin: 1px;
     text-decoration: none;
@@ -188,7 +188,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+     background-image: linear-gradient(to right bottom, #fe8b00, #f57303, #ea590a, #de3d11, #d01616);
     border-radius: 6px;
     padding: 10px;
     color: var(--White);
@@ -201,7 +201,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+     background-image: linear-gradient(to right bottom, #fe8b00, #f57303, #ea590a, #de3d11, #d01616);
     border-radius: 6px;
     padding: 10px;
     color: var(--White);
@@ -222,7 +222,7 @@
         align-items: center;
         justify-content: center;
         padding: 80px 100px;
-        background-color: var(--Background2);
+        background-color: var(--Background);
     }
 
     @media (max-width:700px) {
@@ -233,7 +233,7 @@
             align-items: center;
             justify-content: center;
             padding: 80px 50px;
-            background-color: var(--Background2);
+            background-color: var(--Background);
         }
 
         @media (max-width:500px) {
@@ -244,7 +244,7 @@
                 align-items: center;
                 justify-content: center;
                 padding: 80px 10px;
-                background-color: var(--Background2);
+                background-color: var(--Background);
             }
         }
     }

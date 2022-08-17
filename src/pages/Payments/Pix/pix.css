@@ -14,6 +14,24 @@
     width: 95%;
     background-color: var(--Background2);
     padding: 100px 0;
+    text-align: center;
+}
+
+.Pix .pix-page h3 {
+    text-align: center;
+    font-weight: bold;
+    color: var(--Primary);
+}
+.Pix .pix-page p {
+    text-align: left;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 20px 0;
+}
+
+.Pix .pix-page p a {
+    text-decoration: none;
+    color: var(--Foursome1);
 }
 .Pix .pix-page a {
     margin-top: 40px;
@@ -29,5 +47,10 @@
     background-color: var(--Background);
     padding: 10px;
     border-radius: 6px;
-    margin-top: 5px;
+    margin: 20px 0;
+    color: var(--Black);
+}
+
+.Pix .pix-page .chave h3 {
+    color: var(--Black);
 }

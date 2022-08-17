@@ -8,12 +8,10 @@ import { useState } from "react";
 import { ListComments } from "../ListComments/ListComments";
 
 function ListCommentsAndReactions({idPost}) {   
+    const Local = localStorage.getItem("forpride");
+    const userData = JSON.parse(Local);
     const [isOpenModalFriend, setIsOpenModalFriend] = useState(false);
     const {data} = useFetch(`/reactions/${idPost}`);
-
-    if(data) {
-       console.log(data);
-    }
 
     if(!data) {
         return (
@@ -27,6 +25,10 @@ function ListCommentsAndReactions({idPost}) {
         setIsOpenModalFriend(true)
       }
     function handleFriends() {
+        if(userData.status === "essencial") {
+            window.open("/updateplain","_self");
+            return;
+        }
         handleOpenModalFriend();
       }
     
@@ -41,7 +43,7 @@ function ListCommentsAndReactions({idPost}) {
             {data.length === 0 ? "" :
         <div className="ListCommentsAndReactions">
             <div className="text">
-               <h5 onClick={handleFriends}>{data.length} {data.length === 1 ? "Curtida" : "Curtidas"}</h5>
+               <h5 onClick={handleFriends}>{data.length} {data.length === 1 ? "Gostei" : "Gostei"}</h5>
                {/* <h5>{data.length} {data.length === 1 ? "Curtida" : "Curtidas"}</h5> */}
             </div>
 
@@ -59,7 +61,7 @@ function ListCommentsAndReactions({idPost}) {
             <div className="content-modal">
             <h5>{`${data.length} pessoas curtiram`}</h5>
             <br />
-            <div className="itensModalFriend">
+            <div className="itensModalReactions">
             {data?.map((friend) => {
                 return(
                     <div className="accounts" key={friend.idAccount}>

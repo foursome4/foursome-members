@@ -9,7 +9,7 @@ import { IoOptionsOutline, IoCloseCircleOutline } from "react-icons/io5";
 import { useFetch } from "../../hooks/useFetch";
 
 function Search() {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const userData = JSON.parse(Local);
 
     const [online, setOnline] = useState([])
@@ -41,6 +41,7 @@ function Search() {
                         }
                           const dados = {
                               idAccount: user.id,
+                              status: user.status,
                               username: user.username,
                               type: user.type,
                               país: user.país === null || user.país === undefined ? "" : user.país,
@@ -241,6 +242,7 @@ if(!limitData) {
         
             {limitData.map((information) => {
                 return(
+                    information.status === "pending" ? "" :
                     <div className="accounts" key={information.idAccount}>
                         <div className="image">
                             <a href={information.idAccount === userData.id ? "/profile" : `/profile-friend/${information.idAccount}` } target="_blank">

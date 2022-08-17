@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { FaCrown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useFetch } from "../../../../hooks/useFetch";
 import api from "../../../../services/api";
@@ -7,7 +8,7 @@ import './usersSearchLikes.css'
 
 
 function UsersSearchLikes({idAccount}) {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const userData = JSON.parse(Local);
     console.log(idAccount)
 
@@ -16,14 +17,15 @@ function UsersSearchLikes({idAccount}) {
     const [uf, setUf] = useState("")
     const [país, setPaís] = useState("")
     const [avatar, setAvatar] = useState("")
+    const [status, setStatus] = useState('')
 
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
 
-    const {data} = useFetch(`/informations/${idAccount}`);
+    const {data} = useFetch(`/accounts/filter/${idAccount}`);
 
     useEffect(() => {
         async function loadInformations() {
-            await api.get(`/informations/${idAccount}`).then((res) => {
+            await api.get(`/accounts/filter/${idAccount}`).then((res) => {
                 console.log(res.data)
                 console.log(res.data[0])
                         setNickname(res.data[0].nickname);
@@ -31,6 +33,7 @@ function UsersSearchLikes({idAccount}) {
                         setCity(res.data[0].city);
                         setUf(res.data[0].uf);
                         setPaís(res.data[0].país);
+                        setStatus(data.data[0].status)
             })
         }
         loadInformations()
@@ -62,21 +65,24 @@ function UsersSearchLikes({idAccount}) {
         {nickname === "" || nickname === undefined ? "" :
        <div className="item-search" key={idAccount}>
            <div className="image">
-           {nickname === "" || nickname === undefined ||  nickname === null ?
+           {nickname === "" || nickname === undefined ?
             <Link to="">
                <img src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e24" />
            </Link>
            :
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-           {avatar === "" || avatar === undefined ? 
-                                                           <img 
-                                                           src={profile}
-                                                           onError={({ currentTarget }) => {
-                                                               currentTarget.onerror = null; // previne loop
-                                                               currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
-                                                           }}
-                                                           />
+           {avatar === "" || avatar === undefined ? <>
+           <img 
+           src={profile}
+           onError={({ currentTarget }) => {
+               currentTarget.onerror = null; // previne loop
+               currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
+           }}
+           />
+           {status === "premium" || status === "lifetime" ? <FaCrown /> : ""}
+           </>
                         :
+                        <>
                         <img 
                         src={avatar}
                         onError={({ currentTarget }) => {
@@ -84,16 +90,29 @@ function UsersSearchLikes({idAccount}) {
                             currentTarget.src="https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
                         }}
                         />
+                      {status === "premium" || status === "lifetime" ? <FaCrown /> : ""}
+                        </>
                         }
            </Link>}
-            </div>
+           </div>
            <div className="name">
            {nickname === "" || nickname === undefined ?
             <Link to="">
           <h4>Usuário não encontrado</h4>
                 </Link> :
            <Link to={userData.id === idAccount ? `/profile` : `/profile-friend/${idAccount}`}>
-                 <h4>{nickname} - {país === "Brasil" ? uf : city} {país === "Brasil" ? "🇧🇷" : país === "Portugal" ? "🇵🇹" : ""}</h4>
+                    {
+                      idAccount === "67789f" ||
+                      idAccount === "503465" ||
+                      idAccount === "2ac0f7" ||
+                      idAccount === "e90897" ||
+                      idAccount === "4aabed" ||
+                      idAccount === "7b9f35" 
+                    ?
+                    <h4>{nickname} {país === "Brasil" ? "🇧🇷" : país === "Portugal" ? "🇵🇹" : ""}</h4>
+                    :
+                    <h4>{nickname} - {país === "Brasil" ? uf : país === "Portugal" ? `${city} - ${país}` : uf} {país === "Brasil" ? "🇧🇷" : país === "Portugal" ? "🇵🇹" : ""}</h4>
+                  }
                </Link>}
            </div>
        </div>

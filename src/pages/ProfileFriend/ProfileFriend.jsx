@@ -1,7 +1,7 @@
 import { ToolbarLeftSlim } from '../../components/ToolBarLeftSlim/ToolbarLeftSlim'
 import { TopBar } from '../../components/TopBar/TopBar'
 import {FiHome, FiImage, FiVideo, FiMoreVertical, FiUser, FiUserPlus, FiHeart, FiUserMinus, FiMessageSquare, FiCheck} from 'react-icons/fi'
-import {FaHeart} from 'react-icons/fa'
+import {FaCrown, FaHeart} from 'react-icons/fa'
 import {IoShieldCheckmark} from 'react-icons/io5'
 import './profileFriend.css'
 import { Photos } from '../../components/Photos/Photos'
@@ -23,8 +23,8 @@ import moment from 'moment';
 
 function ProfileFriend() {
   const navigate = useNavigate()
-  const {newFriend, newFollower, deleteFriend, deleteFollower, newVisit, inactivityTime, logout} = useContext(AuthContext)
-  const Local = localStorage.getItem("foursome");
+  const {newFriend, newFollower, deleteFriend, deleteFollower, newVisit, inactivityTime,verityTimesPeiodTest, logout} = useContext(AuthContext)
+  const Local = localStorage.getItem("forpride");
   const myUser = JSON.parse(Local);
   const {id} = useParams();
 
@@ -74,72 +74,12 @@ function ProfileFriend() {
               window.open("/usernotfound","_self")
           } else {
               console.log("Conta encontrada")
-          } 
-      }
-      async function searchInformations() {
-        const res =  await api.get(`informations/${myUser.id}`);
-          console.log(res.data)
-          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-              logout(myUser.id)
-          } else {
-              console.log("Informações encontradas")
-          } 
-      }
-      async function searchInformations2() {
-        const res =  await api.get(`informations/${id}`);
-          console.log(res.data)
-          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-            window.open("/usernotfound","_self")
-        } else {
-            console.log("Conta encontrada")
-        } 
-      }
-      async function searchCharacteristcs() {
-        const res =  await api.get(`characteristics/${myUser.id}`);
-          console.log(res.data)
-          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-              logout(myUser.id)
-          } else {
-              console.log("Caracteristicas encontradas")
-          } 
-      }
-      async function searchCharacteristcs2() {
-        const res =  await api.get(`characteristics/${id}`);
-          console.log(res.data)
-          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-            window.open("/usernotfound","_self")
-        } else {
-            console.log("Conta encontrada")
-        } 
-      }
-      async function searchPreferences() {
-        const res =  await api.get(`preferences/${myUser.id}`);
-          console.log(res.data)
-          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-              logout(myUser.id)
-          } else {
-              console.log("Preferencias encontradas")
               setMyInformations(true)
           } 
-      }
-      async function searchPreferences2() {
-        const res =  await api.get(`preferences/${id}`);
-          console.log(res.data)
-          if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-            window.open("/usernotfound","_self")
-        } else {
-            console.log("Conta encontrada")
-        } 
       }
 
       searchAccount()
       searchAccountFriend()
-      searchInformations()
-      searchCharacteristcs()
-      searchPreferences()
-      searchInformations2()
-      searchCharacteristcs2()
-      searchPreferences2()
      }, []);
 
 useEffect(() => {
@@ -183,7 +123,7 @@ console.log(id)
 
     const idUser = id;
     async function loadInformations() {
-      await api.get(`/informations/${idUser}`)
+      await api.get(`/accounts/filter/${idUser}`)
   .then((res) => {
     setuserInformations(res.data[0])
   }).catch(error => {
@@ -191,31 +131,13 @@ console.log(id)
   })
     }
 
-    async function loadCharacteristcs() {
-      const id_account = id
-      await api.get(`/characteristics/${id_account}`)
-      .then((res) => {
-        setCharacteristics(res.data)
-      }).catch(error => {
-        console.log("Erro ao buscar dados" + error)
-    })
-    }
-
-    async function loadPreferences() {
-      const idAccount = id;
-      await api.get(`/preferences/${idAccount}`)
-      .then((res) => {
-        setPreferences(res.data[0])
-      }).catch(error => {
-        console.log("Erro ao buscar dados" + error)
-    })
-    }
 
     async function loadRoom() {
       await api.get(`conversations/${myUser.id}/${id}`)
       .then( async (res) => {
         if(res.data.length !== 0) {
           setRooms(res.data[0])
+          console.log(res.data[0])
           return
         } 
        
@@ -223,18 +145,9 @@ console.log(id)
         .then( async (res) => {
           if(res.data.length !== 0) {
             setRooms(res.data[0])
+            console.log(res.data[0])
             return
           }
-
-          const v4 = uuidv4();
-          const room = v4.substring(0, 6);
-          const data = {room, idAccount: myUser.id, idFriend: id}
-          setRooms(data)
-
-          await api.post(`/conversations`, data).then((res) => {
-          })
-
-
         }).catch(error => {
           console.log("Erro ao buscar dados" + error)
       })
@@ -246,17 +159,49 @@ console.log(id)
     
     loadAccount()
     loadInformations()
-    loadCharacteristcs()
-    loadPreferences()
     loadRoom()
     loadDateLogin()
   }, [myUser.id, id]);
 
 
+  
 
- function handleChat() {
-  navigate(`/chat/${rooms.room}/${id}`);
+  async function handleRedirectToRoom(e) {
+    console.log("Sala Existente: ")
+    console.log(rooms.room)
+    if(rooms.length === 0) {
+      const v4 = uuidv4();
+      const roomId = v4.substring(0, 8);
+      newConversation(roomId, myUser.id, id)
+      return
+    }
+    handleChat(rooms.room)
   }
+
+  async function newConversation(room, idAccount, idFriend) {
+    const data ={room, idAccount, idFriend}
+    console.log(data)
+    await api.post(`/conversations`, data).then((res) => {
+      console.log("res.data[0].room")
+      console.log(res.data)
+     handleChat(res.data.room);
+    }).catch(error => {
+      console.log("Erro cadastrar" + error)
+    })
+  }
+
+ function handleChat(room) {
+  console.log("Sala recebido para abri link")
+  console.log(room)
+  if(myUser.status === "essencial") {
+   window.open("/updateplain","_self");
+   return;
+  }
+  
+  window.open(`/chat/${room}/${id}`, "_self");
+  }
+
+
 
 
     useEffect(() => {
@@ -294,6 +239,10 @@ console.log(id)
       createVisit()
     }, [myUser.id, myUser.username, id, newVisit ])
 
+    if(myUser.status === "test") {
+      console.log("olá, mundo")
+      verityTimesPeiodTest(myUser.id);
+     }
     
     function handleNewFriend(e) {
     const idAccount = myUser.id
@@ -376,6 +325,11 @@ console.log(id)
       setFollowers("followers");
     }
 
+    const nascimento = new Date(userInformations.birthDate);
+    const hoje = new Date()
+    
+    const idade =  Math.floor(Math.ceil(Math.abs(nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25);
+
     const photos = posts.filter(post => (post.type === "post-photo"));
     const allPhotos = photos.slice(0, 6)
     const videos = posts.filter(post => (post.type === "post-video"));
@@ -431,7 +385,19 @@ console.log(id)
                         }}
                         />
                   </div>
-                  <h3> <b>{userInformations !== null ? `${userInformations.nickname} - ${userInformations.uf} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+                  {
+                      id === "67789f" ||
+                      id === "503465" ||
+                      id === "2ac0f7" ||
+                      id === "e90897" ||
+                      id === "4aabed" ||
+                      id === "7b9f35" 
+                    ?
+                    <h3> {user.status === "premium" || user.status === "lifetime" ? <FaCrown /> : ""}  <b>{userInformations !== null ?`${userInformations.nickname}  ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+                    :
+                    <h3> {user.status === "premium" || user.status === "lifetime" ? <FaCrown /> : ""}  <b>{userInformations !== null ? `${userInformations.nickname} - ${user.uf} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+                  }
+                  
                 </div>
                 <div className="tool">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed }><FiHome size={16}/></button>
@@ -443,7 +409,7 @@ console.log(id)
                     {FollowingExists.length === 0 ? <FiHeart size={16} /> : <FaHeart size={16} />}
                     </button>
                   <button className={friend === "" ? "" : "select"} onClick={handleFriend}><FiUser size={16}/></button>
-                  <button className="" onClick={handleChat}><FiMessageSquare size={16}/></button>
+                  <button className="" onClick={handleRedirectToRoom}><FiMessageSquare size={16}/></button>
                   <button className={photo === "" ? "" : "select"} onClick={handlePhoto}><FiImage size={16}/></button>
                   <button className={video === "" ? "" : "select"} onClick={handleVideo}><FiVideo size={16}/></button>
                   <button  className='settings'><FiMoreVertical size={16}/></button>
@@ -490,55 +456,41 @@ console.log(id)
                     <div className="name">
                       <br />
                         <h4>{userInformations.city} - {userInformations.uf}</h4>
-                        <h4>Patrono: {patron !== null ?  <Link to={patron.idAccount === user.id ? `/profile` : `/profile-friend/${patron.idAccount}`}>{patron.nickname}</Link> :"Patrono não eocnotrado"}</h4>
+                        {/* <h4>Patrono: {patron !== null ?  <Link to={patron.idAccount === user.id ? `/profile` : `/profile-friend/${patron.idAccount}`}>{patron.nickname}</Link> :"Patrono não eocnotrado"}</h4> */}
                        </div>
 
                        <div className="info-user-preferences">
                         <div className="informations">
                             <h5 className='title'>Preferencias</h5>
                           <div className="selects">
-                          <div className="itens">{preferences.men !== "" ? <h5><FiCheck /> {preferences.men}</h5> : "" }  </div>
-                              <div className="itens"> {preferences.woman !== "" ? <h5><FiCheck /> {preferences.woman}</h5> : "" } </div>
-                              <div className="itens"> {preferences.couple !== "" ? <h5><FiCheck /> {preferences.couple}</h5> : "" } </div>
-                              <div className="itens"> {preferences.trisal !== "" ? <h5><FiCheck /> {preferences.trisal}</h5> : "" } </div>
-                              <div className="itens"> {preferences.transsexuals !== "" ? <h5><FiCheck /> {preferences.transsexuals}</h5> : "" } </div>
-                              <div className="itens"> {preferences.transvestites !== "" ? <h5><FiCheck /> {preferences.transvestites}</h5> : "" } </div>
-                              <div className="itens"> {preferences.groups !== "" ? <h5><FiCheck /> {preferences.groups}</h5> : "" } </div>
+                          <div className="itens"><h5><FiCheck /> {userInformations.preference} - {userInformations.preferenceOption}</h5></div>
                           </div>
-                          <div className="proposal">
+                          {/* <div className="proposal">
                             <h5 className='title'>Proposta</h5>
                             {preferences.proposal !== "" ? <h5>{preferences.proposal}</h5> : "" }
-                          </div>
+                          </div> */}
                         </div>
                       </div>
 
 
-                {characteristics.map((characteristicsUser) => {
 
-                  const nascimento = new Date(characteristicsUser.birthDate);
-                  const hoje = new Date()
-                  
-                  const idade =  Math.floor(Math.ceil(Math.abs(nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25);
 
-                  return (
-                    <div className={characteristicsUser.sex === "Mulher" ? "info-user-woman" : "info-user-man"} key={characteristicsUser.id}>
-                      <h4>{characteristicsUser.sex === "Mulher" ? <FaVenus size={20} /> : <FaMars size={20} />} </h4>
+
+                    <div className={userInformations.sex === "Mulher" ? "info-user-woman" : "info-user-man"} key={userInformations.id}>
+                      <h4>{userInformations.sex === "Mulher" ? <FaVenus size={20} /> : <FaMars size={20} />} </h4>
                         <div className="info-user-data">
                             <h5>Idade</h5>
                             <p>{idade}</p>
                         </div>
                         <div className="info-user-data">
                             <h5>Signo</h5>
-                            <p>{characteristicsUser.sign}</p>
+                            <p>{userInformations.sign}</p>
                         </div>
                         <div className="info-user-data">
                             <h5>Opção</h5>
-                            <p>{characteristicsUser.sexualOption}</p>
+                            <p>{userInformations.sexualOption}</p>
                         </div>
                     </div>
-                        )
-                      })}
-            
          
                     <div className="info-social">
                         <div className="info-social-data">

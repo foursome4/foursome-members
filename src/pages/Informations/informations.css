@@ -5,7 +5,7 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    background-color: var(--Background2);
+    background-color: var(--Background);
 }
 .informations .informations-page {
     display: flex;
@@ -13,7 +13,7 @@
     justify-content: center;
     flex-direction: column;
     width: 80%;
-    background-color: var(--Background2);
+    background-color: var(--Background);
     padding: 100px 0;
 }
 .informations .informations-page .selections {
@@ -26,7 +26,7 @@
 
 
 .informations .informations-page .selections button {
-    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+    background-image: linear-gradient(to right bottom, #fe8b00, #f57303, #ea590a, #de3d11, #d01616);
     border-radius: 6px;
     color: var(--White);
     padding:0px;

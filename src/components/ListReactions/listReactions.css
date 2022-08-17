@@ -16,20 +16,18 @@
     justify-content: center;
     background-color: none;
     border: none;
-    font-size: 12px;
+    font-size: 16px;
     color: var(--Gray_font2);
-    padding: 10px 20px;
+    padding: 12px;
     border-radius: 6px;
 }
 
 .reactionsList .selected svg {
-    margin-left: -12px;
     font-size: 16px;
-    margin-right: 10px;
-    color: var(--White); 
+    color: var(--White);
 }
 
 .reactionsList .selected{
-    color: var(--White); 
-    padding: 10px 10px;  
+    background-color: var(--Primary);
+    color: var(--White);
 }

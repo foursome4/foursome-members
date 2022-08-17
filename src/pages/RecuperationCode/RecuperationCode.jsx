@@ -21,7 +21,7 @@ function RecuperationCode() {
     <div className="content-Login1">
       <div className="signIn">
       <div className="logo">
-        <img src={logoImg} alt="Logo Foursome" />
+        <img src={logoImg} alt="Logo forpride" />
         <br />
         </div>
         <div className="form">

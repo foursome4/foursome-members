@@ -5,7 +5,7 @@ import { ItemFeed } from '../ItemFeed/ItemFeed';
 import { useFetch } from '../../hooks/useFetch';
 
     function FeedPostIndividual({id}) {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const userData = JSON.parse(Local);
 
     const [post, setPost] = useState("");
@@ -68,6 +68,7 @@ import { useFetch } from '../../hooks/useFetch';
                                            date={postsData.created_at} text={postsData.text}
                                            type={postsData.type} id={postsData.id}
                                            username={postsData.username} group={postsData.nameGroup}
+                                           typeAccount={postsData.typeAccount}
                                            forum={postsData.nameForum}/>
                                 </div>
                                 )

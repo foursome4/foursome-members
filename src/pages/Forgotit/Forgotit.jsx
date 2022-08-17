@@ -14,7 +14,7 @@ function Forgotit() {
   const navigate = useNavigate();
 
   useEffect(() => {
-      if(localStorage.getItem("foursome") !== null) {
+      if(localStorage.getItem("forpride") !== null) {
         navigate("/feed")
       }
   },[navigate])
@@ -29,7 +29,7 @@ function Forgotit() {
     <div className="content-Login">
       <div className="signIn">
       <div className="logo">
-        <img src={logoImg} alt="Logo Foursome" />
+        <img src={logoImg} alt="Logo forpride" />
         <h2>Seja bem-vindo de volta!</h2>
         <h2>Entre, a diversão está te esperando.</h2>
         </div>

@@ -5,7 +5,7 @@
     justify-content:center;
     width:100%;
     height:100%;
-    background-color: var(--Background2)
+    background-color: var(--Background)
 }
 
 .Messages h2{
@@ -22,7 +22,7 @@
     height: 80%;
     border: none;
     text-decoration: none;
-    background-color: var(--Background2);
+    background-color: var(--Background);
     margin-bottom:7px ;
 }
 
@@ -34,6 +34,7 @@
     justify-content: center;
     border: 2px solid var(--Background);
     text-decoration: none;
+    background-color: var(--Black);
 }
 
 @media (max-width: 900px) {

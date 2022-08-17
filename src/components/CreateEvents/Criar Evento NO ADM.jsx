@@ -13,10 +13,8 @@ import buscaDistrito from "../../services/api-buscaDistrito";
 
 function CreateEvents() {
     const {createEvents}= useContext(AuthContext);
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local)
-    const LocalInformations = localStorage.getItem("informations-foursome");
-    const userInformations= JSON.parse(LocalInformations);
     
     const cover2 = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
     const avatar2 = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
@@ -93,8 +91,8 @@ function CreateEvents() {
 
             let idAccount = user.id;
             let username = user.username;
-            let avatarUser = userInformations.avatar;
-            let nickname = userInformations.nickname;
+            let avatarUser = user.avatar;
+            let nickname = user.nickname;
             let status = "pending"
         
             const cover = cover1 === "" || cover1  === undefined || cover1  === null ? cover2 : cover1

@@ -5,7 +5,7 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    background-color: var(--Background2);
+    background-color: var(--Background);
 }
 .plains .plains-page {
     display: flex;
@@ -13,8 +13,9 @@
     justify-content: center;
     flex-direction: column;
     width: 95%;
-    background-color: var(--Background2);
+    background-color: var(--Background);
     padding: 100px 0;
+    margin-left: 120px;
 }
 .plains .plains-page {
     display: flex;
@@ -22,7 +23,7 @@
     justify-content: center;
     flex-direction: column;
     width: 95%;
-    background-color: var(--Background2);
+    background-color: var(--Background);
     padding: 100px 0;
 }
 .plains .plains-page .myPlain {
@@ -39,7 +40,7 @@
 }
 
 .plains .plains-page .myPlain a {
-    background-color: var(--Background2);
+    background-color: var(--Background);
     color: var(--Primary);
     padding: 5px 10px;
     display: flex;
@@ -95,6 +96,10 @@
     flex-direction: column;
     width: 100px;
 }
+.plains .plains-page .myPayment .unic .dadosList .dados a {
+    text-direction: none;
+    color: var(--White);
+}
 
 .plains .plains-page .buttons {
     width: 80%;
@@ -106,7 +111,7 @@
 }
 
 .plains .plains-page .buttons button {
-    background-color: var(--Background2);
+    background-color: var(--Background);
     color: var(--Primary);
     padding: 5px 10px;
     display: flex;
@@ -125,4 +130,11 @@
     background-color: var(--Primary);
     color: var(--White);
 
+}
+
+
+@media (max-width: 768px) {
+    .plains .plains-page {
+        margin-left: 0px;
+    }
 }

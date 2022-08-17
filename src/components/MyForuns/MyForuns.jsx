@@ -4,7 +4,7 @@ import api from '../../services/api';
 import { Link } from 'react-router-dom';
 
 function MyForuns() {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local)
     const [foruns, setForuns] = useState([])
 

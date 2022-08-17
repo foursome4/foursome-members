@@ -8,7 +8,7 @@ import api from "../../services/api";
 import "./messages.css"
 
 function Messages() {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
    const [conversation, setConversation] = useState([])
 

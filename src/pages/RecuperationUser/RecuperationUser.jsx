@@ -14,7 +14,7 @@ function RecuperationUser() {
   const navigate = useNavigate();
 
   useEffect(() => {
-      if(localStorage.getItem("foursome") !== null) {
+      if(localStorage.getItem("forpride") !== null) {
         window.open("/feed")
       }
     },[navigate])

@@ -99,7 +99,7 @@ relativos à vida sexual ou à orientação sexual do usuário</p>
 <p>Ao utilizar os serviços do site, o usuário está consentindo com a presente Política de
 Privacidade. O usuário tem o direito de retirar seu consentimento a qualquer momento, não
 comprometendo a licitude do tratamento de seus dados pessoais antes da retirada. A retirada
-do consentimento poderá ser feita pelo e-mail: contato@foursome.com.br, ou de forma
+do consentimento poderá ser feita pelo e-mail: contato@forpride.com.br, ou de forma
 automática no site. Poderão ainda ser coletados dados pessoais necessários para a execução e
 cumprimento dos serviços contratados pelo usuário no site. O tratamento de dados pessoais
 sem o consentimento do usuário apenas será realizado em razão de interesse legítimo ou para
@@ -141,7 +141,7 @@ aplicáveis.</p>
 <p>4.4. Prazo de conservação dos dados pessoais</p>
 <p>Os dados pessoais do usuário serão conservados por um período não superior ao exigido para
 cumprir os objetivos em razão dos quais eles são processados. O período de conservação dos
-dados são definidos de acordo com os seguintes critérios: A critério da foursome.com.br Os
+dados são definidos de acordo com os seguintes critérios: A critério da forpride.com.br Os
 dados pessoais dos usuários apenas poderão ser conservados após o término de seu
 tratamento nas seguintes hipóteses: - para o cumprimento de obrigação legal ou regulatória
 pelo controlador; - para estudo por órgão de pesquisa, garantida, sempre que possível, a
@@ -165,8 +165,8 @@ selos, certificados e códigos de conduta regularmente emitidos.</p><br />
 O controlador, responsável pelo tratamento dos dados pessoais do usuário, é a pessoa física
 ou jurídica, a autoridade pública, a agência ou outro organismo que, individualmente ou em
 conjunto com outras, determina as finalidades e os meios de tratamento de dados pessoais.
-Neste site, o responsável pelo tratamento dos dados pessoais coletados é foursome.com.br,
-que poderá ser contactado pelo e-mail: contato@foursome.com.br . O responsável pelo
+Neste site, o responsável pelo tratamento dos dados pessoais coletados é forpride.com.br,
+que poderá ser contactado pelo e-mail: contato@forpride.com.br . O responsável pelo
 tratamento dos dados se encarregará diretamente do tratamento dos dados pessoais do
 usuário.</p>
 
@@ -176,8 +176,8 @@ informar, aconselhar e controlar o responsável pelo tratamento dos dados, bem c
 trabalhadores que tratem os dados, a respeito das obrigações do site nos termos do GDPR, da
 Lei de Proteção de Dados Pessoais e de outras disposições de proteção de dados presentes na
 legislação nacional e internacional, em cooperação com a autoridade de controle competente.
-Neste site o encarregado de proteção de dados (data protection officer) é foursome.com.br,
-que poderá ser contactado pelo e-mail: contato@foursome.com.br.</p><br />
+Neste site o encarregado de proteção de dados (data protection officer) é forpride.com.br,
+que poderá ser contactado pelo e-mail: contato@forpride.com.br.</p><br />
 
 <p><b>6. Segurança no tratamento dos dados pessoais do usuário</b></p><br />
 <p>O site se compromete a aplicar as medidas técnicas e organizativas aptas a proteger os dados
@@ -263,7 +263,7 @@ https://support.microsoft.com/pt-br/help/17442/windows-internet-explorer-delete-
 <p><b>8. Das alterações</b></p><br />
 <p>A presente versão desta Política de Privacidade foi atualizada pela última vez na data supra
 citada. O editor se reserva o direito de modificar, a qualquer momento o site as presentes
-normas, especialmente para adaptá-las às evoluções do site Foursome Plus, seja pela
+normas, especialmente para adaptá-las às evoluções do site ForPride, seja pela
 disponibilização de novas funcionalidades, seja pela supressão ou modificação daquelas já
 existentes. O usuário será explicitamente notificado em caso de alteração desta política. Ao
 utilizar o serviço após eventuais modificações, o usuário demonstra sua concordância com as

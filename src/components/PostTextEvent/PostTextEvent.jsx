@@ -9,10 +9,8 @@ import { toast } from 'react-toastify';
 function PostTextEvent({nameEvent, idEvent}) {
     console.log(nameEvent, idEvent)
     const {newPostEvent, logout} = useContext(AuthContext)
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
 
     const [text, setText] = useState("");
     const [loading, setLoading] = useState(false);
@@ -48,7 +46,7 @@ function PostTextEvent({nameEvent, idEvent}) {
                 type: "post-text-event",
                 text,
                 idPatrono: null,
-                ufAccount:user.uf,
+                ufAccount:user.país === "Portugal" ? user.país : user.uf,
                 cityAccount: user.city,
                 typeAccount: user.type,
             })
@@ -71,7 +69,7 @@ function PostTextEvent({nameEvent, idEvent}) {
         <div className="postEvent">
              <div className="postEvent-data">
             <div className="avatar">
-            <img src={userInformation.avatar} alt="" />
+            <img src={user.avatar} alt="" />
             </div>
             <div className="postEvent-type">
                 <div className="inputs">

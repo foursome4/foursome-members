@@ -24,7 +24,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: var(--Foursome1);
+    background-image: linear-gradient(to right bottom, #fe8b00, #f57303, #ea590a, #de3d11, #d01616);
     position: absolute;
     width: 15px;
     height: 15px;

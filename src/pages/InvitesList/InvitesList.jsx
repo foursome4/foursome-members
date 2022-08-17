@@ -12,8 +12,8 @@ function InvitesList() {
     const {inactivityTime} = useContext(AuthContext);
 
     inactivityTime()
-  const LocalInformation = localStorage.getItem("informations-foursome");
-  const userInformation = JSON.parse(LocalInformation);
+  const LocalInformation = localStorage.getItem("forpride");
+  const user = JSON.parse(LocalInformation);
 
     return (
         <div className="content-invite">
@@ -30,7 +30,7 @@ function InvitesList() {
 
                                 <div className="invites-unic">
                                     <div className="informationInvite">
-                                        <h4>Olá, {userInformation.nickname}.<br />veja seus convites enviados</h4>
+                                        <h4>Olá, {user.nickname}.<br />veja seus convites enviados</h4>
     
                                     </div>
                               <ListInvites />                       

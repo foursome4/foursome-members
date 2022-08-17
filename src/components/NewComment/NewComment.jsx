@@ -8,18 +8,16 @@ import './newComment.css';
 function NewComment({postData, idAccount}) {
     const {newComment, comentsPosts, setComentsPosts} = useContext(AuthContext);
 
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const userData = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
     const [textComment, setTextComment] = useState("");
 
     function handleComment(postData) {
         if(textComment === "") {
             return
         }
-        const data = {text: textComment, idPost: postData, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username, idPatrono: idAccount}
-        newComment({text: textComment, idPost: postData, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username, idPatrono: idAccount})
+        const data = {text: textComment, idPost: postData, idAccount: userData.id, avatar:userData.avatar, nickname: userData.nickname, username: userData.username, idPatrono: idAccount}
+        newComment({text: textComment, idPost: postData, idAccount: userData.id, avatar:userData.avatar, nickname: userData.nickname, username: userData.username, idPatrono: idAccount})
         setTextComment("");
         setComentsPosts([...comentsPosts, data])
         }

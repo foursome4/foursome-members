@@ -5,10 +5,8 @@ import { AuthContext } from "../../../contexts/Auth"
 import {useContext, useState} from 'react'
 
 function InviteEmail() {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
 
 
     const {CreateInviteMail} = useContext(AuthContext);
@@ -44,10 +42,10 @@ function InviteEmail() {
         }
 
         console.log(`Code: ${code}, Nome: ${name}, Email: ${email},
-        isAccount: ${user.id}, username: ${user.username}, nickname: ${userInformation.nickname}, avatar: ${userInformation.avatar}`);
+        isAccount: ${user.id}, username: ${user.username}, nickname: ${user.nickname}, avatar: ${user.avatar}`);
 
 
-       CreateInviteMail({code, name, email, phone: "Undefined", username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname, type })
+       CreateInviteMail({code, name, email, phone: "Undefined", username: user.username, idAccount: user.id, patron: user.id, patronNickname:user.nickname, type })
 
         setEmail("")
         setName("")

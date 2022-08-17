@@ -8,14 +8,14 @@ function Lgpd() {
     <div className="text">
     <h2><b>Termos LGPD - Lei Geral de Proteção de Dados </b></h2>
 <p>Política de Privacidade</p><br />
-<p>Na Foursome, privacidade e segurança são prioridades e nos comprometemos com a
+<p>Na ForPride, privacidade e segurança são prioridades e nos comprometemos com a
 transparência do tratamento de dados pessoais dos nossos usuários/clientes. Por isso, esta
 presente Política de Privacidade estabelece como é feita a coleta, uso e transferência de
 informações de clientes ou outras pessoas que acessam ou usam nosso site. Ao utilizar nossos
 serviços, você entende que coletaremos e usaremos suas informações pessoais nas formas
 descritas nesta Política, sob as normas de Proteção de Dados (LGPD, Lei Federal 13.709/2018),
 das disposições consumeristas da Lei Federal 8078/1990 e as demais normas do ordenamento
-jurídico brasileiro aplicáveis. Dessa forma, a Foursome, no papel de Controladora de Dados,
+jurídico brasileiro aplicáveis. Dessa forma, a ForPride, no papel de Controladora de Dados,
 obriga-se ao disposto na presente Política de Privacidade.</p><br />
 
 <p><b>1. Quais dados coletamos sobre você e para qual finalidade?</b></p><br />
@@ -33,7 +33,7 @@ obrigatórios.</p>
 <p>1.3. Dados para compra de assinaturas</p>
 Podemos solicitar seu cpf, nome completo, endereço completo e dados do seu cartão de
 crédito para que as operadoras de pagamentos possam processar suas compras dentro de
-nosso site e/ou site. A Foursome não armazena estes dados.
+nosso site e/ou site. A ForPride não armazena estes dados.
 
 <p>1.4. Dados para solicitar pagamentos do programa de afiliados</p>
 <p>Caso você seja afiliado e estiver elegível a receber sua comissão, solicitaremos seu cpf, nome
@@ -45,13 +45,13 @@ data e ip.</p>
 
 <p>2.1. Consentimento</p>
 <p>É a partir do seu consentimento que tratamos os seus dados pessoais. O consentimento é a
-manifestação livre, informada e inequívoca pela qual você autoriza a Foursome a tratar seus
+manifestação livre, informada e inequívoca pela qual você autoriza a ForPride a tratar seus
 dados. Assim, em consonância com a Lei Geral de Proteção de Dados, seus dados só serão
 coletados, tratados e armazenados mediante prévio e expresso consentimento. O seu
 consentimento será obtido de forma específica para cada finalidade acima descrita,
-evidenciando o compromisso de transparência e boa-fé da Foursome para com seus
+evidenciando o compromisso de transparência e boa-fé da ForPride para com seus
 usuários/clientes, seguindo as regulações legislativas pertinentes. Ao utilizar os serviços da
-Foursome e fornecer seus dados pessoais, você está ciente e consentindo com as disposições
+ForPride e fornecer seus dados pessoais, você está ciente e consentindo com as disposições
 desta Política de Privacidade, além de conhecer seus direitos e como exercê-los. A qualquer
 tempo e sem nenhum custo, você poderá revogar seu consentimento. É importante destacar
 que a revogação do consentimento para o tratamento dos dados pode implicar a
@@ -59,7 +59,7 @@ impossibilidade da performance adequada de alguma funcionalidade do site que dep
 operação. Tais consequências serão informadas previamente.</p><br />
 
 <p><b>3. Quais são os seus direitos?</b></p><br />
-<p>A Foursome assegura a seus usuários/clientes seus direitos de titular previstos no artigo 18 da
+<p>A ForPride assegura a seus usuários/clientes seus direitos de titular previstos no artigo 18 da
 Lei Geral de Proteção de Dados. Dessa forma, você pode, de maneira gratuita e a qualquer
 tempo: • Confirmar a existência de tratamento de dados, de maneira simplificada ou em
 formato claro e completo. • Acessar seus dados, podendo solicitá-los em uma cópia legível por
@@ -67,25 +67,25 @@ meio eletrônico, seguro e idôneo. • Corrigir seus dados, ao solicitar a edi�
 atualização destes. • Limitar seus dados quando desnecessários, excessivos ou tratados em
 desconformidade com a legislação através da anonimização, bloqueio ou eliminação. •
 Solicitar a portabilidade de seus dados, através de um relatório de dados cadastrais que a
-Foursome trata a seu respeito. • Eliminar seus dados tratados a partir de seu consentimento,
+ForPride trata a seu respeito. • Eliminar seus dados tratados a partir de seu consentimento,
 exceto nos casos previstos em lei. • Revogar seu consentimento, desautorizando o tratamento
 de seus dados. • Informar-se sobre a possibilidade de não fornecer seu consentimento e sobre
 as consequências da negativa.</p><br />
 
 <p><b>4. Como você pode exercer seus direitos de titular?</b></p><br />
-<p>Para exercer seus direitos de titular, você deve entrar em contato com a Foursome através dos
-seguintes meios disponíveis: contato@foursome.com.br. De forma a garantir a sua correta
+<p>Para exercer seus direitos de titular, você deve entrar em contato com a ForPride através dos
+seguintes meios disponíveis: contato@ForPride.com.br. De forma a garantir a sua correta
 identificação como titular dos dados pessoais objeto da solicitação, é possível que solicitemos
 
 documentos ou demais comprovações que possam comprovar sua identidade. Nessa hipótese,
 você será informado previamente.</p><br />
 
 <p><b>5. Como e por quanto tempo seus dados serão armazenados?</b></p><br />
-<p>Seus dados pessoais coletados pela Foursome serão utilizados e armazenados durante o
+<p>Seus dados pessoais coletados pela ForPride serão utilizados e armazenados durante o
 tempo necessário para a prestação do serviço ou para que as finalidades elencadas na
 presente Política de Privacidade sejam atingidas, considerando os direitos dos titulares dos
 dados e dos controladores. De modo geral, seus dados serão mantidos enquanto a relação
-contratual entre você e a Foursome perdurar. Findado o período de armazenamento dos
+contratual entre você e a ForPride perdurar. Findado o período de armazenamento dos
 dados pessoais, estes serão excluídos de nossas bases de dados ou anonimizados, ressalvadas
 as hipóteses legalmente previstas no artigo 16 lei geral de proteção de dados, a saber: I –
 cumprimento de obrigação legal ou regulatória pelo controlador; II – estudo por órgão de
@@ -96,7 +96,7 @@ desde que anonimizados os dados. Isto é, informações pessoais sobre você que
 imprescindíveis para o cumprimento de determinações legais, judiciais e administrativas e/ou
 para o exercício do direito de defesa em processos judiciais e administrativos serão mantidas,
 a despeito da exclusão dos demais dados. O armazenamento de dados coletados pela
-Foursome reflete o nosso compromisso com a segurança e privacidade dos seus dados.
+ForPride reflete o nosso compromisso com a segurança e privacidade dos seus dados.
 Empregamos medidas e soluções técnicas de proteção aptas a garantir a confidencialidade,
 integridade e inviolabilidade dos seus dados. Além disso, também contamos com medidas de
 segurança apropriadas aos riscos e com controle de acesso às informações armazenadas.</p><br />
@@ -109,7 +109,7 @@ do tratamento e os riscos que eventuais violações gerariam para os direitos e 
 titular dos dados coletados e tratados. Entre as medidas que adotamos, destacamos as
 seguintes: Apenas pessoas autorizadas têm acesso a seus dados pessoais. O acesso a seus
 dados pessoais é feito somente após o compromisso de confidencialidade. Seus dados
-pessoais são armazenados em ambiente seguro e idôneo. A Foursome se compromete a
+pessoais são armazenados em ambiente seguro e idôneo. A ForPride se compromete a
 adotar as melhores posturas para evitar incidentes de segurança. Contudo, é necessário
 destacar que nenhuma página virtual é inteiramente segura e livre de riscos. É possível que,
 apesar de todos os nossos protocolos de segurança, problemas de culpa exclusivamente de
@@ -120,7 +120,7 @@ usuários/clientes, comunicaremos aos afetados e a Autoridade Nacional de Prote�
 sobre o ocorrido, em consonância com as disposições da Lei Geral de Proteção de Dados.</p><br />
 
 <p><b>7. Com quem seus dados podem ser compartilhados?</b></p><br />
-<p>Tendo em vista a preservação de sua privacidade, a Foursome não compartilhará seus dados
+<p>Tendo em vista a preservação de sua privacidade, a ForPride não compartilhará seus dados
 pessoais com nenhum terceiro não autorizado. Seus dados poderão ser compartilhados com
 nossos parceiros comerciais: Moip Pagamentos (https://moip.com.br) e Google
 Pay(https://pay.google.com). Estes recebem seus dados apenas na medida do necessário para
@@ -131,13 +131,13 @@ documentos. Além disso, também existem outras hipóteses em que seus dados pod
 compartilhados, que são: I – Determinação legal, requerimento, requisição ou ordem judicial,
 com autoridades judiciais, administrativas ou governamentais competentes. II – Caso de
 movimentações societárias, como fusão, aquisição e incorporação, de forma automática III –
-Proteção dos direitos da Foursome em qualquer tipo de conflito, inclusive os de teor judicial.</p>
+Proteção dos direitos da ForPride em qualquer tipo de conflito, inclusive os de teor judicial.</p>
 
 <p>7.1. Transferência internacional de dados</p>
 <p>Alguns dos terceiros com quem compartilhamos seus dados podem ser localizados ou possuir
 instalações localizadas em países estrangeiros. Nessas condições, de toda forma, seus dados
 pessoais estarão sujeitos à Lei Geral de Proteção de Dados e às demais legislações brasileiras
-de proteção de dados. Nesse sentido, a Foursome se compromete a sempre adotar eficientes
+de proteção de dados. Nesse sentido, a ForPride se compromete a sempre adotar eficientes
 padrões de segurança cibernética e de proteção de dados, nos melhores esforços de garantir e
 cumprir as exigências legislativas. Ao concordar com essa Política de Privacidade, você
 concorda com esse compartilhamento, que se dará conforme as finalidades descritas no
@@ -152,39 +152,39 @@ das mudanças ocorridas. Ao utilizar nossos serviços e fornecer seus dados pess
 modificações, você as consente.</p>
 
 <p><b>9. Responsabilidade</b></p><br />
-<p>A Foursome prevê a responsabilidade dos agentes que atuam nos processos de tratamento de
+<p>A ForPride prevê a responsabilidade dos agentes que atuam nos processos de tratamento de
 dados, em conformidade com os artigos 42 ao 45 da Lei Geral de Proteção de Dados. Nos
 comprometemos em manter esta Política de Privacidade atualizada, observando suas
 disposições e zelando por seu cumprimento. Além disso, também assumimos o compromisso
 
 de buscar condições técnicas e organizativas seguramente aptas a proteger todo o processo de
 tratamento de dados. Caso a Autoridade Nacional de Proteção de Dados exija a adoção de
-providências em relação ao tratamento de dados realizado pela Foursome, comprometemo-
+providências em relação ao tratamento de dados realizado pela ForPride, comprometemo-
 nos a segui-las.</p>
 
 <p>9.1 Isenção de responsabilidade</p><br/>
 <p>Conforme mencionado no Tópico 6, embora adotemos elevados padrões de segurança a fim
 de evitar incidentes, não há nenhuma página virtual inteiramente livre de riscos. Nesse
-sentido, a Foursome não se responsabiliza por: I – Quaisquer consequências decorrentes da
+sentido, a ForPride não se responsabiliza por: I – Quaisquer consequências decorrentes da
 negligência, imprudência ou imperícia dos usuários em relação a seus dados individuais.
 Garantimos e nos responsabilizamos apenas pela segurança dos processos de tratamento de
 dados e do cumprimento das finalidades descritas no presente instrumento. Destacamos que a
 responsabilidade em relação à confidencialidade dos dados de acesso é do usuário. II – Ações
 maliciosas de terceiros, como ataques de hackers, exceto se comprovada conduta culposa ou
-deliberada da Foursome. Destacamos que em caso de incidentes de segurança que possam
+deliberada da ForPride. Destacamos que em caso de incidentes de segurança que possam
 gerar risco ou dano relevante para você ou qualquer um de nossos usuários/clientes,
 comunicaremos aos afetados e a Autoridade Nacional de Proteção de Dados sobre o ocorrido
 e cumpriremos as providências necessárias. III – Inveracidade das informações inseridas pelo
-usuário/cliente nos registros necessários para a utilização dos serviços da Foursome; quaisquer
+usuário/cliente nos registros necessários para a utilização dos serviços da ForPride; quaisquer
 consequências decorrentes de informações falsas ou inseridas de má-fé são de inteiramente
 responsabilidade do usuário/cliente.</p>
 
 <p><b>10. Encarregado de Proteção de Dados</b></p><br/>
-<p>A Foursome disponibiliza os seguintes meios para que você possa entrar em contato conosco
-para exercer seus direitos de titular: contato@foursome.com.br. Caso tenha dúvidas sobre
+<p>A ForPride disponibiliza os seguintes meios para que você possa entrar em contato conosco
+para exercer seus direitos de titular: contato@ForPride.com.br. Caso tenha dúvidas sobre
 esta Política de Privacidade ou sobre os dados pessoais que tratamos, você pode entrar em
 contato com o nosso Encarregado de Proteção de Dados Pessoais, através dos seguintes
-canais: contato@foursome.com.br</p>
+canais: contato@ForPride.com.br</p>
 
       </div>
     </div>

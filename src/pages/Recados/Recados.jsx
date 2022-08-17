@@ -5,7 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 import "./recados.css"
 
 function Recados() {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
 
    const {data} = useFetch(`/news`);

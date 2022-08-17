@@ -16,6 +16,19 @@
     background-color: var(--Background2);
     padding: 100px 0;
 }
+.Pricing .Pricing-page .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--Primary5);
+    padding: 20px 40px;
+    border-radius: 6px;
+    color: var(--Background2);
+    margin: 20px;
+}
+
+
 .Pricing .Pricing-page .payments{
     display: flex;
     align-items: center;

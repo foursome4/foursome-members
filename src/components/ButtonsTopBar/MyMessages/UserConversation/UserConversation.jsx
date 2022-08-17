@@ -6,7 +6,7 @@ import './userConversation.css';
 
 
 function UserConversation({idAccount, room, text}) {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
 
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
@@ -17,7 +17,7 @@ function UserConversation({idAccount, room, text}) {
 
     useEffect(() => {
         async function loadInformations() {
-            await api.get(`informations/${idAccount}`).then((result) => {
+            await api.get(`accounts/filter/${idAccount}`).then((result) => {
                 if(result.data[0] !== undefined) {
                     setAvatar(result.data[0].avatar)
                     setNickname(result.data[0].nickname)
@@ -64,9 +64,9 @@ function UserConversation({idAccount, room, text}) {
     return (
         data?.length === 0 ? "" :       
        <div className="item">
-           <div className="image">
+            <div className={user.status === "essencial" ? "image2" : "image"}>
           
-           <Link to={`/chat/${room}/${idAccount}`}>
+           <Link to={user.status === "essencial" ? `/updateplain` : `/chat/${room}/${idAccount}`}>
            {avatar === "" || avatar === undefined ?
                                   <img 
                                   src={profile}
@@ -93,13 +93,19 @@ function UserConversation({idAccount, room, text}) {
             </div>
             }
            </div>
-           <Link to={`/chat/${room}/${idAccount}`}>
+           <Link to={user.status === "essencial" ? `/updateplain` : `/chat/${room}/${idAccount}`}>
          {nickname === "" || nickname === undefined ?
          <h4>Usuário deletado</h4>
         :
         <>
+        {user.status === "essencial" ?
+        <h4>{newMessages.length === 0 ? "Alguém enviou uma mensagem" : "Você tem uma nova mensagem"}</h4>
+        :
+        <>
         <h4>{nickname} - {uf}</h4>
         <h6>{text.slice(0,45)}</h6>
+        </>
+        }
         </>
         }
            </Link>

@@ -1,5 +1,5 @@
-import logoFoursomemini from '../../assets/images/logo-mini.png';
-import logoFoursome from '../../assets/images/logo.png';
+import logoFoursomemini from '../../assets/images/logo.png';
+import logoFoursome from '../../assets/images/logosimples.png';
 import { IoMailOutline, IoLogOutOutline, IoMail} from 'react-icons/io5';
 import './topBar.css';
 import { useContext } from 'react';
@@ -14,10 +14,8 @@ import { MyMessages } from '../ButtonsTopBar/MyMessages/MyMessages';
 
 function TopBar() {
     const {logout} = useContext(AuthContext);
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
 
     const avatarImg = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
 
@@ -49,7 +47,8 @@ function TopBar() {
                 <SolicitationsFriend />
                 <Notifications /> 
 
-                <a href="/invite">
+
+                <a href={user.status === "suspense" ? `/activeplain`:`/invite`}>
                 <div className="linkSelect" data-tip data-for='Convidar'>
                     <IoMail />
                 </div>
@@ -66,13 +65,11 @@ function TopBar() {
                 <div className="link" data-tip data-for='Sair'>
                     <IoLogOutOutline onClick={Tologout} />
                 </div>
-                <ReactTooltip id='Sair' place="bottom" type="dark" effect="solid">
-                     <span>Sair</span>
-                </ReactTooltip>
+
                 <div className="account">
                     <a href="/profile">
                         <div className="avatar">
-                    <img src={userInformation !== null ? userInformation.avatar : avatarImg} alt="" />
+                    <img src={user !== null ? user.avatar : avatarImg} alt="" />
                     </div>
                     </a>
                     <a href="/profile">

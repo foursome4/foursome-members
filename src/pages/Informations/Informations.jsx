@@ -19,7 +19,7 @@ function Informations() {
                  <TopBar />
             <div className="informations-page">
                 <div className="selections">
-                    <button>O que é a Foursome?</button>
+                    <button>O que é a ForPride?</button>
                     <h4><b>Somos uma rede social adulta de origem Brasileira voltada para swing, encontros causais e sexuais, sexo virtual e exibicionismo.
 Nosso objetivo é aproximar pessoas com o mesmo objetivo, trazendo uma experiência de relacionamento mais assertiva e direta.</b></h4>
                     <button>Regras e sugestões</button>
@@ -43,7 +43,7 @@ Nosso objetivo é aproximar pessoas com o mesmo objetivo, trazendo uma experiên
                     <button>Contato/Suporte</button>
                     <div className="dev">
                         <h4><b>Whatsapp:</b> (22)99791-0510</h4>
-                        <h4><b>E-mail:</b> contato@foursome.com.br</h4>
+                        <h4><b>E-mail:</b> contato@ForPride.com.br</h4>
                     </div>
                     {/* <button>Desenvolvimento</button>
                     <div className="dev">

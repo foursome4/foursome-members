@@ -12,7 +12,7 @@ function ConfirmCode() {
   const navigate = useNavigate();
 
   useEffect(() => {
-      if(localStorage.getItem("foursome") !== null) {
+      if(localStorage.getItem("forpride") !== null) {
         navigate("/loader")
       }
     },[navigate])
@@ -27,7 +27,7 @@ function ConfirmCode() {
     <div className="content-Login">
       <div className="signIn">
       <div className="logo">
-        <img src={logoImg} alt="Logo Foursome" />
+        <img src={logoImg} alt="Logo forpride" />
         <br />
         </div>
         <div className="form">

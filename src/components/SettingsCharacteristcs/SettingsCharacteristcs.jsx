@@ -6,7 +6,7 @@ import './settingsCharacteristcs.css'
 
 function SettingsCharacteristcs() {
     const {loading, newUpdateCharacteristcs, newUpdateCharacteristcs2, newUpdateCharacteristcs3} = useContext(AuthContext);
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local)
 
     const [characteristics, setCharacteristics] = useState([])

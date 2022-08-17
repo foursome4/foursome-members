@@ -11,8 +11,8 @@ import { ListCommentsAndReactions } from '../ListCommentsAndReactions/ListCommen
 import { ListComments } from '../ListComments/ListComments'
 
 
-function ItemFeedComponent({idAccount, link, date, text, type, id, username, group, forum, idGroup, idForum}) {
-    const Local = localStorage.getItem("foursome");
+function ItemFeedComponent({idAccount, link, date, text, type, id, username, group, forum, idGroup, idForum, typeAccount}) {
+    const Local = localStorage.getItem("forpride");
     const userData = JSON.parse(Local);
 
     const dateActual = new Date();
@@ -45,10 +45,16 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
         deletePost(id);
         } 
     }
+
+    function handleBockVideo(e) {
+        e.preventDefault();
+
+        window.open("/updateplain","_self");
+    }
     
    return (
          <div className="feed-post" key={id} >
-    <UsersPosts idAccount={idAccount} username={username} date={date} keyId={id} role={userData.role}/>
+    <UsersPosts idAccount={idAccount} username={username} date={date} keyId={id} role={userData.role} type={typeAccount}/>
     <div className="TextLink">
     <Link to={group !== "" ? `/group/${idGroup}` : forum !== "" ? `/forum/${idForum}` : ""} ><h5>{group !== "" ? `Grupo: ${group}` : forum  !== "" ? `Forum: ${forum}` : ""  } </h5></Link>
     </div>
@@ -109,6 +115,12 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
              type === "post-video"  ?
              <div className="post-data-media"  >
                   <div className='image-video'>
+
+                    {userData.status === "essencial" ?
+                                         <div className="blockVideo" onClick={handleBockVideo}>
+                                      </div>
+                    :
+                    <>
                   <div className="markTop">
                          <h3 className='white'>{`${dateActual.getDate()}/${dateActual.getMonth()+1}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
@@ -145,6 +157,9 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
                          <h3 className='white'>{`${dateActual.getDate()}/${dateActual.getMonth()+1}/${dateActual.getFullYear()} -`}</h3>
                          <h3 className='white'>{userData.id}</h3>
                      </div>
+                    </>
+                    }
+
 
                   <video playsInline controls controlsList="nofullscreen nodownload">
                      <source playsInline src={link} type="video/mp4"/>
@@ -168,10 +183,11 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
                      </>
                  : ""}
              </div>
-
+            {userData.status === "essencial" ? "":
              <div className={"comment"}>
                   <NewComment postData={id} idAccount={idAccount}/>
              </div>
+}
             <div className="infosReactions">
         <ListCommentsAndReactions idPost={id} />
         <ListComments idPost={id}/>

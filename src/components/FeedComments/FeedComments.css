@@ -17,7 +17,7 @@
     border-radius: 10px;
     padding: 10px 10px;
     margin-top: 5px;
-    background-color: var(--Background3);
+    background-color: var(--Black);
 }
 .feedComments .feed-comment .block1Comment {
     display: flex;

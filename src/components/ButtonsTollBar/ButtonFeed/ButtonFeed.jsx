@@ -5,7 +5,7 @@ import { useFetch } from "../../../hooks/useFetch";
 import api from "../../../services/api";
 
 function ButtonFeed() {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
 
     const [dateReadFeed, setDateReadFeed] = useState([]);
@@ -50,6 +50,10 @@ function ButtonFeed() {
  
  
      async function handleUpdateReadFeed() {
+        if(user.status === "suspense") {
+            window.open("/activeplain","_self");
+            return
+        }
          const id = dateReadFeed.id
          const data = {
              DateReadFeed: new Date()

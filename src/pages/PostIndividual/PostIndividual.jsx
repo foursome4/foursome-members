@@ -11,7 +11,7 @@ import { useParams } from 'react-router-dom'
 
 function PostIndividual() {
     const {id} = useParams();
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
 
 

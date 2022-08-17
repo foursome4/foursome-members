@@ -6,11 +6,11 @@ import { IoCalendarOutline, IoHeartOutline, IoMaleFemaleOutline, IoTransgenderOu
 import {v4 as uuidv4} from 'uuid';
 import './characteristcsForm.css'
 
-function CharacteristcsForm() {
+function CharacteristcsForm({idAccount,email, type, username}) {
     const {createCharacteristcs, createCharacteristcs2, createCharacteristcs3, deleteAccount, logout} = useContext(AuthContext);
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
-    const LocalInformations = localStorage.getItem("informations-foursome");
+    const LocalInformations = localStorage.getItem("informations-forpride");
     const userInformations = JSON.parse(LocalInformations);
 
     const [idade, setIdade] = useState(0);
@@ -69,7 +69,8 @@ function CharacteristcsForm() {
             const id2 = uuidv4();
             const id3 = uuidv4();
             createCharacteristcs3({
-                idAccount: userInformations.idAccount,
+                idAccount: idAccount,
+                email,
                 id3,
                 data3,
                 sex3,
@@ -84,13 +85,15 @@ function CharacteristcsForm() {
                 data,
                 sex,
                 sign,
-                sexualOption})
+                sexualOption,
+            username})
         } else if ( data !== "" && sex !== "" && sign !== "" && sexualOption !== "" && data2 !== "" && sex2 !== "" && sign2 !== "" && sexualOption2 !== "") {
             toast.info("Salvando Caracteristicas do casal. Aguarde...");
             const id1 = uuidv4();
             const id2 = uuidv4();
             createCharacteristcs2({
-                idAccount: userInformations.idAccount,
+                idAccount: idAccount,
+                email,
                 id2,
                 data2,
                 sex2,
@@ -101,18 +104,22 @@ function CharacteristcsForm() {
                 sex,
                 sign,
                 sexualOption,
+                username
             })
 
         } else if ( data !== "" && sex !== "" && sign !== "" && sexualOption !== "") {
             toast.info("Salvando Caracteristicas. Aguarde...");
             const id1 = uuidv4();
             createCharacteristcs({
-                idAccount: userInformations.idAccount,
+                idAccount: idAccount,
+                email,
                 id1,
                 data,
                 sex,
                 sign,
-                sexualOption})
+                sexualOption,
+                username
+            })
 
         } else {
             toast.error("Data de nascimento, sexo, opção sexual ou signo não estão preenchidos!")
@@ -184,7 +191,7 @@ function handleLogout() {
 
                             <div className="data">
                             <br /><br />
-                   {user.type === "Trisal" ?
+                   {type === "Trisal" ?
                     <div className="data-form">   
                     <span>Membro casal 1</span><br />
                     <h5>Data de nascimento</h5>
@@ -340,7 +347,7 @@ function handleLogout() {
                             </select>
                             </div>
        </div>
-             : user.type === "Casal"?
+             : type === "Casal"?
              <div className="data-form">
                   <span>Membro casal 1</span><br />
                   <h5>Data de nascimento</h5>
@@ -508,7 +515,7 @@ function handleLogout() {
                        <br />
 
 
-                       {user.type === "Trisal" ?
+                       {type === "Trisal" ?
                             data === "" ? "":
                             idadeAtual < 18 || idadeAtual2 < 18 || idadeAtual3 < 18 ? 
                             <div className="message">
@@ -519,7 +526,7 @@ function handleLogout() {
                             <>
                             <button type='submit'>Salvar e avançar</button>
                             </>
-                        : user.type === "Casal"?
+                        : type === "Casal"?
                             data === "" ? "":
                             idadeAtual < 18 || idadeAtual2 < 18  ? 
                             <div className="message">

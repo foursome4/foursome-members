@@ -5,6 +5,7 @@ import api from '../services/api';
 import apiGoogleReverse from '../services/apiGoogleReverse';
 import { socket } from '../services/websocket';
 import {v4 as uuidv4} from 'uuid';
+import moment from 'moment';
 
 
 const AuthContext = createContext({});
@@ -20,31 +21,21 @@ function AuthProvider({children}) {
     const [ufActual, setUfActual] = useState("");
 
     
-    async function createAccount({
-        id, país, username, email, phone, type, password, status, role,
-        code, online, patron, avatar, cover, nickname, relationship, recommendation,
-        cep, city, uf, latitude, longitude
-        }) {
+    async function createAccount({ id, país, username, role, status, viweSex, sex, sexualOption, viewSexualOption, preference, preferenceOption,
+        birthDate, sign, email, phone, password, online, patron, nickname, avatar, cover, relationship, city, uf, cep,
+        latitude, longitude, recommendation}) {
         const data = {
-            id, país, username, email, phone, type, password, status, role,
-            code, online, patron, avatar, cover, nickname, relationship, recommendation,
-            cep, city, uf, latitude, longitude
-            }
+            id, país, username, role, status, viweSex, sex, sexualOption, viewSexualOption, preference, preferenceOption,
+                birthDate, sign, email, phone, password, online, patron, nickname, avatar, cover, relationship, city, uf, cep,
+                latitude, longitude, recommendation}
+            
         console.log(data)
-       //   const dataInvite = await api.get(`/invites/find/${data.email}/${data.code}`);
 
-        // if(dataInvite.data[0] === undefined) {
-        //     toast.error("Código de verificação errado ou expirado!")
-        //     return
-        // } 
-        
         await api.post('/accounts', data).then(() => {
-          //  completeAccount(email)
             toast.info(`Cadastro criado com sucesso!`);
+
             createSuccess(email);
-            createInformationsAccount({
-                idAccount:id, avatar, cover, relationship, nickname, city, uf, país
-                })
+            redirectToPageSucess()
 
         }).catch(error => {
             console.log("Cadastro não foi realizado: "+ error);
@@ -66,18 +57,21 @@ function AuthProvider({children}) {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                     return
                 }
-                if(result.data.status === "pending") {
-                    toast.info(`Olá, ${result.data.username}. Sua conta está em análise. E em até 24h será liberada!`);
+
+                if(result.data.status === "blocked") {
+                    toast.error(`Olá, ${result.data.username}. Sua conta está bloqueada, entre em contato!`);
                     return
                 }
-                localStorage.setItem("foursome", JSON.stringify(result.data));
+
+
+                localStorage.setItem("forpride", JSON.stringify(result.data));
                
-                findInformationsAccount(result.data.id)
+                verificateAccountLogin()
                 
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
-                toast.error(`Falha no login.
-                E-mail, usuário ou senha incorretos!`);
+                toast.error(`Falha no login. E-mail, usuário ou senha incorretos!`);
+                toast.error(`Verifique letras maiúsculas e minúsculas`);
             })
             
         } else {
@@ -88,18 +82,20 @@ function AuthProvider({children}) {
                     toast.error(`Olá, ${result.data.username}. Sua conta foi banida, entre em contato!`);
                    return
                 }
-                if(result.data.status === "pending") {
-                    toast.info(`Olá, ${result.data.username}. Sua conta está em análise. E em até 24h será liberada!`);
+
+                if(result.data.status === "blocked") {
+                    toast.error(`Olá, ${result.data.username}. Sua conta está bloqueada, entre em contato!`);
                     return
                 }
-                localStorage.setItem("foursome", JSON.stringify(result.data));
-               
-                findInformationsAccount(result.data.id)
+ 
+                localStorage.setItem("forpride", JSON.stringify(result.data));
+
+                verificateAccountLogin()
                 
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
-                toast.error(`Falha no login.
-                E-mail, usuário ou senha incorretos!`);
+                toast.error(`Falha no login. E-mail, usuário ou senha incorretos!`);
+                toast.error(`Verifique letras maiúsculas e minúsculas`);
             })
         }
         
@@ -107,98 +103,219 @@ function AuthProvider({children}) {
 
     
 
-    async function findInformationsAccount(id) {
-        await api.get(`/informations/${id}`)
-        .then((res) => {
-            console.log(res.data.length)
-               if(res.data.length === 0) {
+    // async function findInformationsAccount(id) {
+    //     await api.get(`/informations/${id}`)
+    //     .then((res) => {
+    //         console.log(res.data.length)
+    //            if(res.data.length === 0) {
               
-                window.open("/completeregistration","_self");
-                return
-            }
-            localStorage.setItem("informations-foursome", JSON.stringify(res.data[0]));
+    //             window.open("/completeregistration","_self");
+    //             return
+    //         }
+    //         localStorage.setItem("informations-forpride", JSON.stringify(res.data[0]));
           
-            findCharacteriticsAccount(id)
+    //         findCharacteriticsAccount(id)
 
 
            
-        }).catch(error => {
-            console.log("Erro ao buscar dados" + error)
-        })
+    //     }).catch(error => {
+    //         console.log("Erro ao buscar dados" + error)
+    //     })
         
-    }
+    // }
 
-    async function findCharacteriticsAccount(id) {
-        await api.get(`/characteristics/${id}`)
-        .then((res) => {
-            if(res.data.length === 0) {
+    // async function findCharacteriticsAccount(id) {
+    //     const Local = localStorage.getItem("forpride");
+    //     const user = JSON.parse(Local);
+    //     await api.get(`/characteristics/${id}`)
+    //     .then((res) => {
+    //         if(res.data.length === 0) {
               
-                window.open("/welcome","_self")
+    //             window.open(`/characteristcs/${user.id}/${user.email}/${user.type}/${user.username}`,"_self")
+    //             return
+    //         }
+    //         localStorage.setItem("characteritics-forpride", JSON.stringify(res.data));
+           
+    //         findPreferencesAccount(id)
+    //     }).catch(error => {
+    //         console.log("Erro ao buscar dados" + error)
+    //     })
+        
+    // }
+
+    async function verificateAccountLogin() {
+        const Local = localStorage.getItem("forpride");
+        const user = JSON.parse(Local);
+
+            if(user.status === "pending") {
+                toast.info(`Olá, ${user.username}. Sua conta está em análise. E em até 24h será liberada!`);
+                return
+            } else if(user.status === "suspense") {
+                window.open("/activeplain","_self");
+                return
+            }else  if(user.status  === "active") {
+                window.open("/feed","_self");
+                return
+            }else
+            if(user.status === "essencial") {
+                vefiryCompleteAccount()
+                return
+            }else if(user.status === "premium") {
+                vefiryCompleteAccount()
+                return
+            }else if(user.status === "Aproved") {
+                verifyPaymentAccount()
                 return
             }
-            localStorage.setItem("characteritics-foursome", JSON.stringify(res.data));
-           
-            findPreferencesAccount(id)
-        }).catch(error => {
-            console.log("Erro ao buscar dados" + error)
-        })
         
     }
+    async function verifyPaymentAccount() {
+        const Local = localStorage.getItem("forpride");
+        const user = JSON.parse(Local);
 
-    async function findPreferencesAccount(id) {
-        await api.get(`/preferences/${id}`)
-        .then((res) => {
-            if(res.data.length === 0) {
-             
-                window.open("/preferences","_self");
-                return
-            }
-            localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
-            const Local = localStorage.getItem("foursome");
-            const user = JSON.parse(Local);
-            const LocalInformations = localStorage.getItem("informations-foursome");
-            const userInformations = JSON.parse(LocalInformations);
+        const payment = await api.get(`/payments/${user.id}`);
 
-           
+        console.log(payment.data)
+        console.log(payment.data.lenght)
+        console.log(payment.data.length)
 
-            if(user.latitude === undefined ||
-               user.longitude === undefined ||
-               user.latitude === null ||
-               user.longitude === null ||
-               user.latitude === false ||
-               user.longitude === false ||
-               user.país === undefined ||
-               user.país === null ||
-               user.país === false ||
-               userInformations.uf.length > 2
-               ) {
-                window.open("/feed", "_self");
-               // window.open("/update", "_self");
+        if(payment.data.length === 0) {
+            testPeriodVerify(user.id, user.username);
+            return;
+        }
+
+        var d1 = new Date(payment.data[0].created_at);
+        var d2 = new Date();
+        var diff = moment(d2,"DD/MM/YYYY HH:mm:ss").diff(moment(d1,"DD/MM/YYYY HH:mm:ss"));
+        var valor = moment.duration(diff).asDays();
+        var dias = Math.round(valor, 1);
+        console.log(dias);
+        console.log(parseInt(payment.data[0].period));
+
+        if(dias > parseInt(payment.data[0].period)) {
+            const data = {status: "suspense"}
+            await api.patch(`accounts/updatestatus/${user.id}`, data).then((res) => {
+                console.log(`status atualizado`);
+              logout(user.id);
+            }).catch((error) => {
+                console.log(error)
+            })
+        } else {
+            const data = {status: payment.data[0].referencePlain === "Premium" ? "premium" : "essencial"}
+            await api.patch(`accounts/updatestatus/${user.id}`, data).then((res) => {
+                console.log(`status atualizado`);
+                logout(user.id);
+            }).catch((error) => {
+                console.log(error)
+            })
+        }
+
+
+       // new Date(payment.data[0].created_at) > new Date(payment.data[0].created_at) + 30 ? "Vencido" : "Pode acessar";
+    }
+
+    async function testPeriodVerify(idAccount, username) {
+        const periodtest = await api.get(`periodtest/${idAccount}`);
+        console.log(periodtest.data)
+        console.log(periodtest.data.lenght)
+        console.log(periodtest.data.length)
+        console.log(`Verificando teste`)
+
+        if(periodtest.data.length === 0) {
+            const data = {
+                stringDate: `${new Date().getDate()}/${new Date().getMonth() +1}/${new Date().getFullYear()} - ${new Date().getHours().lenght === 1 ? <> {"0" + new Date().getHours()}</> : new Date().getHours()}:${new Date().getMinutes().lenght === 1 ? <> {"0" + new Date().getMinutes()}</> : new Date().getMinutes()  }`,
+                idAccount,
+                username
             }
-            else {
-                window.open("/feed", "_self");
-            }
+            await api.post(`periodtest/`, data).then((res) => {
+                console.log(`liberando teste`);
+              window.open("/periodtest","_self");
+            }).catch((error) => {
+                console.log(`Periodo de teste já liberado`)
+            })
+            return;
+        }
+
+       const periodInitial = `${new Date(periodtest.data[0].created_at).getDate()}/${new Date(periodtest.data[0].created_at).getMonth() +1}/${new Date(periodtest.data[0].created_at).getFullYear()} - ${new Date(periodtest.data[0].created_at).getHours()}:${new Date(periodtest.data[0].created_at).getMinutes() +15}`
+        const actualDate = `${new Date().getDate()}/${new Date().getMonth() +1}/${new Date().getFullYear()} - ${new Date().getHours()}:${new Date().getMinutes()}`
+        if(actualDate > periodInitial) {
+            toast.success(`Periodo de teste finalizado`);
+            const data = {status: "suspense"}
+            await api.patch(`accounts/updatestatus/${idAccount}`, data).then((res) => {
+                console.log(`status atualizado`);
+                window.open("/activeplain","_self");
+            }).catch((error) => {
+                console.log(error)
+            })
+  
+        } else {
+            toast.success(`Você ainda tem tempo. Aproveite`)
+           window.open("/feed","_self");
+        }
+    }
+
+     function verityTimesPeiodTest(idAccount) {
+        setInterval(async function () { 
+            const periodtest = await api.get(`periodtest/${idAccount}`);
+            console.log(periodtest)
             
-           
-        }).catch(error => {
-            console.log("Erro ao buscar dados" + error)
-        })
+            const periodInitial = `${new Date(periodtest.data[0].created_at).getDate()}/${new Date(periodtest.data[0].created_at).getMonth() +1}/${new Date(periodtest.data[0].created_at).getFullYear()} - ${new Date(periodtest.data[0].created_at).getHours()}:${new Date(periodtest.data[0].created_at).getMinutes() +15}`
+            const actualDate = `${new Date().getDate()}/${new Date().getMonth() +1}/${new Date().getFullYear()} - ${new Date().getHours()}:${new Date().getMinutes()}`
+
+            if(actualDate > periodInitial) {
+                toast.success(`Periodo de teste finalizado`);
+                console.log(periodInitial)
+                console.log(actualDate)
+                const data = {status: "suspense"}
+                await api.patch(`accounts/updatestatus/${idAccount}`, data).then((res) => {
+                    console.log(`status atualizado`);
+                  logout(idAccount);
+                }).catch((error) => {
+                    console.log(error)
+                    toast.success(`Periodo de teste finalizado`);
+                    console.log(periodInitial)
+                    console.log(actualDate)
+                })
+            } else {
+                console.log("Teste")
+            }
+         }, 60000);
+        
         
     }
 
+
+    function vefiryCompleteAccount() {
+        const Local = localStorage.getItem("forpride");
+        const user = JSON.parse(Local);
+        if(user.latitude === undefined ||
+            user.longitude === undefined ||
+            user.latitude === null ||
+            user.longitude === null ||
+            user.latitude === false ||
+            user.longitude === false ||
+            user.país === undefined ||
+            user.país === null ||
+            user.país === false ||
+            user.uf.length > 2
+            ) {
+            window.open("/update", "_self");
+         }
+         else {
+             window.open("/feed", "_self");
+         }
+    }
 
     async function updateAccount({id, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron}){
-        const Local = localStorage.getItem("foursome");
+        const Local = localStorage.getItem("forpride");
         const user = JSON.parse(Local)
-        const Local2 = localStorage.getItem("informations-foursome");
-        const userInformations = JSON.parse(Local2)
         const data = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron};
         const data2 = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron, date:user.date , token:user.token  , expiresIn:user.expiresIn };
         console.log(id)
         console.log(data)
         await api.patch(`/accounts/${id}`, data).then(res => {
-            localStorage.setItem("foursome", JSON.stringify(data2));
-            NewUpdateInformationsAccount({id: userInformations.id, idAccount:user.id, avatar, cover, relationship, nickname, city, uf, created_at: new Date(), idPatrono:user.patron , país, username})
+            localStorage.setItem("forpride", JSON.stringify(data2));
+            NewUpdateInformationsAccount({id: user.id, idAccount:user.id, avatar, cover, relationship, nickname, city, uf, created_at: new Date(), idPatrono:user.patron , país, username})
             window.open("/feed", "_self")
         }).catch(error => {
             console.log(error)
@@ -210,14 +327,14 @@ function AuthProvider({children}) {
 
     
     async function updateAccount2({id, avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país,  username, role, status, type, email, phone, online, patron}){
-        const Local = localStorage.getItem("foursome");
+        const Local = localStorage.getItem("forpride");
         const user = JSON.parse(Local)
         const data = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron};
         const data2 = {avatar, cover, city, uf, relationship, nickname, cep, latitude, longitude, país, username, role, status, type, email, phone, online, patron, date:user.date , token:user.token  , expiresIn:user.expiresIn };
         console.log(id)
         console.log(data)
         await api.patch(`/accounts/${id}`, data).then(res => {
-            localStorage.setItem("foursome", JSON.stringify(data2));
+            localStorage.setItem("forpride", JSON.stringify(data2));
             window.open("/characteristcs","_self");
         }).catch(error => {
             console.log(error)
@@ -232,7 +349,7 @@ function AuthProvider({children}) {
 
 async function deleteAccount(id) {
     toast.success("Deletando sua conta")
-    const Local = localStorage.getItem("informations-foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
      toast.success("Deletando conta de usuário")
     console.log("Deletando conta de usuário")
@@ -343,14 +460,25 @@ async function deleteConversations(user) {
      toast.success("Deletado com sucesso!");
 }
 
+
+async function deleteConversation(room) {
+    await api.delete(`/conversations/room/${room}`).then((res) => {
+        toast.success("Deletado com sucesso!");
+        window.open("/messages", "_self")
+
+    })
+}
+
+
 //Fim deletando conta
 
 
 
-    async function createInformationsAccount({idAccount, avatar, cover, relationship, nickname, city, uf, país}) {
+    async function createInformationsAccount({idAccount, avatar, cover, relationship, nickname, city, uf, país, email, type, username}) {
         const id = uuidv4()
         await api.post("/informations", {id, idAccount, avatar, cover, relationship, nickname, city, uf, país}).then(() => {
-            window.open("/registrationend","_self")
+            window.open(`/characteristcs/${idAccount}/${email}/${type}/${username}`,"_self");
+
         }).catch(error => {
             console.log("Informações não enviadas" + error)
         })
@@ -361,7 +489,7 @@ async function deleteConversations(user) {
 
     async function NewUpdateInformationsAccount({id, país, idAccount, avatar, cover, relationship, nickname, city, uf, created_at, idPatrono, username}) {
         await api.patch(`/informations/${id}`, {avatar, cover, relationship, nickname, city, uf, país}).then( async () => {
-            localStorage.setItem("informations-foursome", JSON.stringify({
+            localStorage.setItem("informations-forpride", JSON.stringify({
                 id, _id: id, idAccount, avatar, cover, relationship, nickname, city, uf, país, created_at
             }))
 
@@ -379,7 +507,7 @@ async function deleteConversations(user) {
     }
 
 
-    async function createCharacteristcs({id1, idAccount, data, sex, sign, sexualOption}) {
+    async function createCharacteristcs({id1, idAccount, data, sex, sign, sexualOption, email, username}) {
         const data1 = {id1, idAccount, data, sex, sign, sexualOption}
         let dados = [];
             setLoading(true)
@@ -387,8 +515,7 @@ async function deleteConversations(user) {
                 id: id1, idAccount, birthDate: data, sex, sign, sexualOption
             }).then(async () => {
                 dados.push(data1)
-                localStorage.setItem("characteritics-foursome", JSON.stringify(dados));
-                window.open("/preferences","_self");
+                window.open(`/preferences/${idAccount}/${email}/${username}`,"_self");
                 setLoading(false)
             }).catch(error => {
                 console.log("Informações não enviadas" + error)
@@ -397,7 +524,7 @@ async function deleteConversations(user) {
 
 
 
-    async function createCharacteristcs2({id1, id2, idAccount, data, sex, sign, sexualOption, data2, sex2, sign2, sexualOption2}) {
+    async function createCharacteristcs2({id1, id2, idAccount, data, sex, sign, sexualOption, data2, sex2, sign2, sexualOption2, email, username}) {
         const data10 = {id1, idAccount, data, sex, sign, sexualOption}
         const data20 = {id2, idAccount,  data2, sex2, sign2, sexualOption2}
         let dados = [];
@@ -410,8 +537,7 @@ async function deleteConversations(user) {
                    id: id2, idAccount, birthDate: data2, sex:sex2, sign:sign2, sexualOption: sexualOption2
                 }).then(async () => {
                     dados.push(data20)
-                    localStorage.setItem("characteritics-foursome", JSON.stringify(dados));
-                    window.open("/preferences","_self");
+                    window.open(`/preferences/${idAccount}/${email}/${username}`,"_self");
                 }).catch(error => {
                     console.log("Informações não enviadas" + error)
                 })
@@ -426,7 +552,7 @@ async function deleteConversations(user) {
 
 
 
-    async function createCharacteristcs3({id1, id2, id3, idAccount, data, sex, sign, sexualOption, data2, sex2, sign2, sexualOption2, data3, sex3, sign3, sexualOption3 }) {
+    async function createCharacteristcs3({id1, id2, id3, idAccount, data, sex, sign, sexualOption, data2, sex2, sign2, sexualOption2, data3, sex3, sign3, sexualOption3,email, username }) {
         const data100 = {id1, idAccount, data, sex, sign, sexualOption}
         const data200 = {id2, idAccount,  data2, sex2, sign2, sexualOption2}
         const data300 = {id3, idAccount,  data3, sex3, sign3, sexualOption3}
@@ -444,8 +570,7 @@ async function deleteConversations(user) {
                        id: id3, idAccount: idAccount, birthDate: data3, sex:sex3, sign:sign3, sexualOption: sexualOption3
                     }).then(async () => {
                         dados.push(data300)
-                    localStorage.setItem("characteritics-foursome", JSON.stringify(dados));
-                        window.open("/preferences","_self");
+                    window.open(`/preferences/${idAccount}/${email}/${username}`,"_self");
                         setLoading(false)
                     }).catch(error => {
                         console.log("Informações não enviadas" + error)
@@ -545,10 +670,9 @@ async function newUpdateCharacteristcs3({id, birthDate,
 
 async function preferencesAccount({id, idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal, email, patron, username}) {
     const data = {id, idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal}
+    console.log(email)
     await api.post('/preferences', {id, idAccount, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal})
     .then(async () => {
-        localStorage.setItem("preferences-foursome", JSON.stringify(data));
-
         function friend(idAccount) {
             const idFriend = patron;
             const type = "friend"
@@ -558,13 +682,13 @@ async function preferencesAccount({id, idAccount, men, woman, couple, trisal, tr
 
         friend()
         const idPatrono = patron;
-        const text = `${username}, ingressou na Foursome, dê as boas vindas.`;
+        const text = `${username}, ingressou na ForPride, dê as boas vindas.`;
         const type = "notification";
         const idPost = "";
         const idFriend = "";
         notifications(idPatrono, text, idAccount, idFriend, type, idPost)
 
-    
+        createSuccess(email);
         redirectToPageSucess()
 
     }).catch(error => {
@@ -572,8 +696,10 @@ async function preferencesAccount({id, idAccount, men, woman, couple, trisal, tr
     })
 }
 
+
+
 async function redirectToPageSucess() {
-    window.open("/feed","_self");
+    window.open("/registrationend","_self");
 }
 async function updatePreferencesAccount({id, men, woman, couple, trisal, transvestites, transsexuals, groups, proposal, idPatrono, username, idAccount}) {
     await api.patch(`/preferences/${id}`, { men, woman, couple, trisal, transvestites, transsexuals, groups, proposal})
@@ -654,9 +780,9 @@ async function recoverPasswordNew(email, password) {
 // Fim recuperações
 
 
-async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent, idPatrono, typeAccount, ufAccount, cityAccount}) {
+async function newPost({idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent, idPatrono, typeAccount, ufAccount, cityAccount, content}) {
     setLoading(true)
-    await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent, typeAccount, ufAccount, cityAccount}).then( async () => {      
+    await api.post("/posts", {idAccount, type, link, text, idForum, idGroup, idEvent, avatar, nickname, username, nameForum, nameGroup, nameEvent, typeAccount, ufAccount, cityAccount, content}).then( async () => {      
     toast.info("Post publicado com sucesso!")
     window.location.reload(false)
         setLoading(false)
@@ -792,7 +918,7 @@ async function newReply({idAccount, idComment, text, avatar, username, nickname}
 }
 
 async function CreateInviteNewUsew({code, name, email, phone,idAccount, username, patron, type, patronNickname}) {
-    const text = `Parabens ${name}! %0AVocê foi convidado por ${patronNickname} a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. FOURSOME foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa. %0A%0AEsse convite é valido por 10 dias e intransferível. %0A%0APara criar seu perfil agora, acesse: %0A https://foursome.com.br/signup/${email}/${code}/${patron}/${type} %0A%0AEm caso de dúvida, fale conosco. %0AContato@foursome.com.br %0A%0AFOURSOME https://www.foursome.com.br`
+    const text = `Parabens ${name}! %0AVocê foi convidado por ${patronNickname} a fazer parte de uma rede de relacionamento, exclusivo para casais, solteiros e solteiras. ForPride foi criado com o objetivo de aproximar pessoas com o mesmo pensamento de relacionamento de forma livre, segura e respeitosa. %0A%0AEsse convite é valido por 10 dias e intransferível. %0A%0APara criar seu perfil agora, acesse: %0A https://forpride.com.br/signup/${email}/${code}/${patron}/${type} %0A%0AEm caso de dúvida, fale conosco. %0AContato@forpride.com.br %0A%FORPRIDE https://www.forpride.com.br`
     
     const findAccountEmail = await api.get(`/accounts/find/${email}`);
 
@@ -1040,10 +1166,10 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
 
 // Fim da Sessão grupos
     async function logout(idAccount) {
-        localStorage.removeItem("foursome");
-        localStorage.removeItem("informations-foursome");
-        localStorage.removeItem("preferences-foursome");
-        localStorage.removeItem("characteritics-foursome");
+        localStorage.removeItem("forpride");
+        localStorage.removeItem("informations-forpride");
+        localStorage.removeItem("preferences-forpride");
+        localStorage.removeItem("characteritics-forpride");
         await api.delete(`/online/${idAccount}`)
         window.open("/", "_self");
 
@@ -1052,12 +1178,22 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
 
 
     //payments
-    async function createPayment(linkComprovant, idPlain, namePlain, idAccount,username, value, period) {
-        const data = {linkComprovant, idPlain, namePlain, idAccount,username, value, period}
+    async function createPayment({linkComprovant, idPlain, namePlain, referencePlain, idAccount,username, email, value, period, aceptTerms, status}) {
+        const data = {linkComprovant, idPlain, namePlain, referencePlain, idAccount,username, email, value, period, aceptTerms, status}
+        console.log(data)
+        await api.post("/payments", data).then(async () => {
 
-        await api.post("/payments", data).then(() => {
-            toast.info("Pagamento realizado com sucesso!");
-            window.open("/paymentConfirmed","_self")
+            const data2 = {status: referencePlain === "Premium" ? "premium" : "essencial"}
+            await api.patch(`accounts/updatestatus/${idAccount}`, data2).then((res) => {
+                toast.info("Pagamento realizado com sucesso!");
+                window.open("/paymentConfirmed","_self")
+            }).catch((error) => {
+                console.log(error)
+            })
+
+
+
+
         }).catch((error) => {
             console.log(error)
         })
@@ -1065,7 +1201,7 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
 
     // Location
     async function socketDataLocation() {
-        const Local1 = localStorage.getItem("foursome");
+        const Local1 = localStorage.getItem("forpride");
         const user1 = JSON.parse(Local1);
 
         const res = await api.get("/online");
@@ -1102,7 +1238,7 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         }
    
         async function reverseGeolocalization(lat, long) {
-            const Local = localStorage.getItem("foursome");
+            const Local = localStorage.getItem("forpride");
             const user = JSON.parse(Local);
             const res = await api.get("/online");
         
@@ -1125,23 +1261,22 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
 
     async function getInformations(cityActualOnine) {
 
-        const Local = localStorage.getItem("foursome");
+        const Local = localStorage.getItem("forpride");
         const user = JSON.parse(Local);
-        const LocalInformation = localStorage.getItem("informations-foursome");
-        const userInformation = JSON.parse(LocalInformation);
+
 
 
         const data = {
             idAccount: user.id,
             username: user.username,
             type: user.type,
-            nickname: userInformation.nickname,
-            avatar: userInformation.avatar,
-            relationship: userInformation.relationship,
+            nickname: user.nickname,
+            avatar: user.avatar,
+            relationship: user.relationship,
             lat: lat.toString(),
             long: long.toString(),
             city: cityActual,
-            uf: userInformation.uf,
+            uf: user.uf,
             actualCity: "",
             actualUf: "",
             equalCity: "",
@@ -1156,7 +1291,7 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
                 console.log("Conexão estabelecida")
             })
             
-            const Local = localStorage.getItem("foursome");
+            const Local = localStorage.getItem("forpride");
             const user = JSON.parse(Local);
             const res = await api.get("/online");
         
@@ -1199,7 +1334,7 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
        document.onclick = resetTimer;
        document.onchange = resetTimer;
        function doSomething() {
-        const DataUser = localStorage.getItem("foursome");
+        const DataUser = localStorage.getItem("forpride");
         const user = JSON.parse(DataUser);
 
             if(user !== null || user !== undefined || user !== "") {
@@ -1284,7 +1419,10 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
             deleteEvent,
             deleteMemberEvent,
             createPayment,
-            newReplyRecado
+            newReplyRecado,
+            verityTimesPeiodTest,
+            verifyPaymentAccount,
+            deleteConversation
         }}>
             {children}
         </AuthContext.Provider>

@@ -6,14 +6,14 @@ import ReactTooltip from 'react-tooltip';
 import { useFetch } from '../../../hooks/useFetch';
 
 function MyMessages() {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
 
     const [dateReadMessage, setDateReadMessage] = useState([])
 
-
     useEffect(() => {
       async function loadDateRead() {
+
         const idAccount = user.id
         await api.get(`/datereadmessage/${idAccount}`)
         .then( async (res) => {
@@ -49,6 +49,11 @@ function MyMessages() {
 
 
       async function handleMessages() {
+
+        if(user.status === "suspense") {
+          window.open("/activeplain","_self");
+          return
+      }
         const id = dateReadMessage.id
         const data = {
             DateReadMessage: new Date()

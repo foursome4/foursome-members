@@ -30,40 +30,49 @@
     cursor: pointer;
 }
 
+.content-modal  {
+    height: 100%;
+    padding: 0px;
+}
+
 
 .content-modal h5 {
     text-align: center;
     margin: 0px auto;
     color: var(--Gray_font2);
 }
-.content-modal .itensModalFriend::-webkit-scrollbar {
+.content-modal .itensModalReactions::-webkit-scrollbar {
     width: 12px;              
   }
   
- .content-modal .itensModalFriend::-webkit-scrollbar-track {
-    background: var(--Background2);      
+ .content-modal .itensModalReactions::-webkit-scrollbar-track {
+    background: var(--Black);
+    border-radius: 20px; 
+    margin-right: 3px;       
   }
   
- .content-modal .itensModalFriend::-webkit-scrollbar-thumb {
-    background-color: var(--Background-man);   
+ .content-modal .itensModalReactions::-webkit-scrollbar-thumb {
+    background-color: var(--Primary);   
     border-radius: 20px;      
     border: 3px solid var(--Background2); 
   }
 
 
- .content-modal .itensModalFriend {
-    display: flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
-    width:100%;
-    background-color: var(--Background2)
-}
- .content-modal .itensModalFriend .accounts {
+ .content-modal .itensModalReactions {
     display: flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    width: 90%;
-    background-color: var(--Background2)
+    width:100%;
+    height:100%;
+    background-color: var(--Background);
+}
+.content-modal .itensModalReactions .accounts {
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:Flex-start;
+    width: 100%;
+    height:100%;
+    background-color: var(--Background);
 }

@@ -3,110 +3,271 @@ import logoImg from '../../assets/images/logo.png'
 import Brasil from '../../assets/images/flags/Brasil.png'
 import Portugal from '../../assets/images/flags/Portugal.png'
 import { AuthContext } from '../../contexts/Auth';
-import { useParams } from 'react-router';
+import {IoCalendarOutline} from 'react-icons/io5';
+import { FiEye, FiEyeOff, FiUpload } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-import './signUp.css';
-import { toast } from 'react-toastify';
-import { FiEye, FiEyeOff, FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
-import {IoCloseOutline } from 'react-icons/io5';
+import image1 from '../../assets/images/slider/7.jpg';
 import { v4 as uuidv4} from 'uuid'
 import { mask as masker, unMask } from "remask";
-import Modal from 'react-modal';
- 
+import { toast } from 'react-toastify';
+import './signUp.css';
+import { storage } from '../../services/firebaseConnection';
+import { ref, getDownloadURL, uploadBytes} from 'firebase/storage';
+import buscaCepPortugal from '../../services/api-buscaCepPortugal';
+import buscaDistrito from '../../services/api-buscaDistrito';
+
 function SignUp() {
+
   const  {createAccount} = useContext(AuthContext)
   const [usernameNative, setUsernameNative] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [relationship, setRelationship] = useState("");
   const [newPhone, setPhone] = useState("");
   const [newPhonePortugal, setPhonePortugal] = useState("");
   const [passwordNative, setPasswordNative] = useState("");
+  const [email, setEmail] = useState("");
+  const [sex, setSex] = useState("");
+  const [sexualOption, setSexualOption] = useState("");
   const [passwordConfirmNative, setPasswordConfirmNative] = useState("");
   const [passwordView, setPasswordView] = useState(true)
   const [checked, setChecked] = useState(false);
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [país, setPaís] = useState("select")
-  const [email, setEmail] = useState("")
-  const [patron, setPatron] = useState("")
-  const [type, setType] = useState("")
-  const [recommendation, setRecommendation] = useState("")
-
+  const [checkedSex, setCheckedSex] = useState(false);
+  const [checkedOptionSexual, setCheckedOptionSexual] = useState(false);
   const navigate = useNavigate();
+  const [país, setPaís] = useState("select");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [latitude2, setLatitude2] = useState("");
+  const [longitude2, setLongitude2] = useState("");
+  const [city, setCity] = useState("");
+  const [uf, setUf] = useState("");
+  const [cep, setCep] = useState("");
+  const [codigoPostal, setCodigoPostal] = useState("");
+  const [sign, setSign] = useState("");
+  const [birthDate, setBirthDate] = useState("");
+  const [day, setDay] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
+  const [recommendation, setRecommendation] = useState("Indicação");
+  const [preferenceOption, setPreferenceOption] = useState("");
+  const [preference, setPreference] = useState("");
+  const [etapa, setEtapa] = useState("1");
+  const [avatarUrl, setAvatarUrl] = useState(null);
+  const [imageAvatar, setImageAvatar] = useState('');
+  const [idade, setIdade] = useState(0);
+  const [location, setLocation] = useState(false);
+  const [textError, setTextError] = useState(false);
+  const [flag, setFlag] = useState(false);
+  const [districtAll, setDistrictAll] = useState([]);
 
-
-  function openModal() {
-    setIsOpen(true);
+  const nascimento = new Date(birthDate);
+  const hoje = new Date();
+  let idadeAtual = 0;
+  
+  if(birthDate !== "") {
+      idadeAtual = Math.floor(Math.ceil(Math.abs(nascimento.getTime() - hoje.getTime()) / (1000 * 3600 * 24)) / 365.25) ;
+      console.log(idadeAtual);
   }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
+  const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
+ 
   useEffect(() => {
       if(localStorage.getItem("foursome") !== null) {
         navigate("/feed")
       }
-  },[navigate])
+    },[navigate])
+
+    useEffect(() => {
+      function getLocation() {
+          return window.navigator.geolocation.getCurrentPosition(success, error);
+           }
+
+      function success(position) {
+          const lat  = position.coords.latitude;
+          const long = position.coords.longitude;
+      
+          setLatitude(lat);
+          setLongitude(long);
+        }
+            
+    function error() {
+      console.log('Unable to retrieve your location');
+    }
+
+        getLocation()
+  },)
+
+    function handleFile(e) {
+      console.log(e.target.files[0])
+
+     if(e.target.files[0]){
+         const image = e.target.files[0];
+
+         if(image.type === 'image/jpeg' || image.type === 'image/jpg' || image.type === 'image/png') {
+             setImageAvatar(image);
+             setAvatarUrl(URL.createObjectURL(e.target.files[0]));
+             console.log(avatarUrl);
+          } else {
+              console.log('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
+              setImageAvatar(null);
+              return null;
+          }
+      }
+  }
 
 
-  function handleCreateAccount(e) {
+  async function handleUploadAccount(e) {
     e.preventDefault();
 
-    const status = "pending"; // Test = 7 Dias -- Active = Palno Ativo/Pago -- Bloqued = Plano Bloqueado/ Não pago-expirado -- Banned 
-    const role = "Membro";
-    const online = false;
-
-
-    const remove1Paranteses = newPhone === "" ? newPhonePortugal.replace('(', '') : newPhone.replace('(', '')
-    const remove2Paranteses = remove1Paranteses.replace(')', '')
-    const removeSpace = remove2Paranteses.replace(' ', '')
-    const removeTrace = removeSpace.replace('-', '')
-    const phone = removeTrace;
-
-   if(newPhone === "" && newPhonePortugal === "") {
-    toast.error("Favor preencher o telefone")
-   }
-   if(type === "") {
-    toast.error("Favor selecionar o tipo de conta")
-   }
-   if(usernameNative === "") {
-    toast.error("Favor preencher o nome de usuário")
-   }
-   if(passwordNative === "") {
-    toast.error("Favor preencher a senha")
-   }
-
-    if(checked) {
-      if(passwordConfirmNative === passwordNative) {
-        toast.info("Salvando informações. Aguarde...")
-          const username = usernameNative.replace(/( )+/g, "")
-          const password = passwordNative.replace(/( )+/g, "");
-
-          const idGenerate = uuidv4();
-          const id = idGenerate.substring(0, 6);
-          const avatar = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240";
-          const cover = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
-          const city = ""
-          const uf = ""
-          const latitude =""
-          const longitude = ""
-          const cep = ""
-          const nickname = ""
-          const relationship = ""
-          const code = ""
-          const patron = "503465"
-
-       createAccount(id, país, username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation)
-         // console.log( {id, país, username:username.toLowerCase(), email, phone, type, password, status, role, code, online, patron, avatar, cover, city, uf, latitude, longitude, cep, nickname, relationship, recommendation})
-        } else {
-          toast.error("As senhas não combinam!")
-        }
-    } else {
-      toast.error("Favor, confirmar a leitura do termo de uso")
+            
+    if(!email.includes('@') ) {
+        toast.error("Preencha, seu email corretamente");
+        return
     }
+    if(avatarUrl === null ) {
+        toast.error("Favor adicionar foto de perfil");
+        return
+    }
+
+    if(city === "" ) {
+        toast.error("Defina sua cidade");
+        return
+    }
+
+    if(email === "" || usernameNative === "" || sex === ""  ) {
+        toast.error("Favor verificar todos os campos antes de avançar, todos os campos");
+        return
+    }
+    
+    if(nickname === "" || relationship === "" || recommendation === "" ) {
+        toast.error("Favor preencher, todos os campos");
+        return
+    }
+
+      
+    if(avatarUrl !== null && nickname !== "" && relationship !== "") {
+   toast.info("Salvando as informações. Aguarde...")
+            //Avatar
+    const uuid = uuidv4();
+
+    let newAvatarUrlFirebase = ref(storage, `images/avatar/${uuid}`);
+    let uploadAvatar = await uploadBytes(newAvatarUrlFirebase, imageAvatar);
+    let photoUrlAvatar = await getDownloadURL(uploadAvatar.ref);
+        
+    console.log(uploadAvatar.ref.name, photoUrlAvatar);
+
+    
+    handleCreateAccount(photoUrlAvatar)
   }
 
-  function handleChange(e) {
-    setChecked(true)
+
+}
+
+
+
+    function handleCreateAccount(avatar1) {
+      const remove1Paranteses = newPhone === "" ? newPhonePortugal.replace('(', '') : newPhone.replace('(', '')
+      const remove2Paranteses = remove1Paranteses.replace(')', '')
+      const removeSpace = remove2Paranteses.replace(' ', '')
+      const removeTrace = removeSpace.replace('-', '')
+      const phone = removeTrace;
+      const viewSexualOption = checkedOptionSexual
+      const viweSex = checkedSex
+
+  
+      if(checked) {
+        if(passwordConfirmNative === passwordNative) {
+          toast.info("Cadastrando. Aguarde...")
+            const username = usernameNative.replace(/( )+/g, "")
+            const password = passwordNative.replace(/( )+/g, "");
+  
+            const idGenerate = uuidv4();
+            const id = idGenerate.substring(0, 8);
+            const avatar = avatar1;
+            const cover = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
+            const cep = ""
+            const patron = "0000"
+            const status = "active"
+            const role = "Membro"
+            const online = false;
+            const mylatitude = latitude2 === "" ? latitude : latitude2
+            const mylongitude = longitude2 === "" ? longitude : longitude2
+          
+            console.log({ id, país, username:username.toLowerCase(), role, status, viweSex, sex, sexualOption, viewSexualOption, preference, preferenceOption,
+              birthDate, sign, email, phone, password, online, patron, nickname, avatar, cover, relationship, city, uf, cep,
+              latitude: mylatitude, longitude: mylongitude, recommendation})
+          
+              createAccount({ id, país, username:username.toLowerCase(), role, status, viweSex, sex, sexualOption, viewSexualOption, preference, preferenceOption,
+              birthDate, sign, email, phone, password, online, patron, nickname, avatar, cover, relationship, city, uf, cep,
+              latitude: mylatitude, longitude: mylongitude, recommendation})
+
+      } else {
+            toast.error("As senhas não combinam!")
+          }
+      } else {
+        toast.error("Favor, confirmar a leitura do termo de uso")
+      }
+    }
+
+
+  if(codigoPostal.length === 7) {
+      handleSearchCepPortugal()
+  } else {
+      
   }
+
+  async function handleSearchCepPortugal() {
+          try {
+              const res = await buscaCepPortugal.get(`${codigoPostal}`);
+              console.log(res.data[0])
+              console.log(res.data[0].Distrito)
+              setCity(res.data[0].Distrito)
+              setUf("")
+              setLatitude2(parseFloat(res.data[0].Latitude));
+              setLongitude2(parseFloat(res.data[0].Longitude));
+              setFlag(true)
+              return
+          }catch{
+              console.log("error")
+              toast.error("Código Postal não encontrado. Por favor, digite sua Cidade e sua Província")
+              setLocation(true)
+              setTextError(true)
+          }
+          return
+      }
+  
+  function handleSelectSign(e) {
+    setSign(e.target.value)
+}
+  function handleSelectDay(e) {
+    setDay(e.target.value);
+    setBirthDate(`${year}-${month}-${day}`)
+}
+  function handleSelectMonth(e) {
+    setMonth(e.target.value)
+    setBirthDate(`${year}-${month}-${day}`)
+}
+  function handleSelectYear(e) {
+    setYear(e.target.value)
+    setBirthDate(`${year}-${month}-${day}`)
+}
+
+function handleRelationship(e) {
+  setRelationship(e.target.value)
+}
+
+function handleSex(e) {
+  setSex(e.target.value)
+}
+function handleSexualOption(e) {
+  setSexualOption(e.target.value)
+}
+function handlePreference(e) {
+  setPreference(e.target.value)
+}
+function handlePreferenceSexualOption(e) {
+  setPreferenceOption(e.target.value)
+}
 
   function handlePasswordView() {
     if(passwordView === false) {
@@ -173,17 +334,10 @@ function SignUp() {
     const maskedValue = masker(originalValue, [
       "(99)99999-9999",
       "(99)99999-999",
+      "999 99999-9999"
     ]);
 
     setPhone(maskedValue)
-  }
-  function ChangeMaskPhonePortugal(e) {
-    const originalValue = unMask(e.target.value);
-    const maskedValue = masker(originalValue, [
-      "999 99999-9999",
-    ]);
-
-    setPhonePortugal(maskedValue)
   }
   function ChangeMaskPassword(e) {
     const originalValue = unMask(e.target.value);
@@ -290,235 +444,478 @@ function SignUp() {
     setPasswordConfirmNative(maskedValue)
   }
 
-  function selectFlag(flag) {
-    setPaís(flag)
 
+function ChangeMaskCEPPortugal(e) {
+    const originalValue = unMask(e.target.value);
+    const maskedValue = masker(originalValue, [
+      "9999999",
+    ]);
+
+    setCodigoPostal(maskedValue)
   }
 
-  function handleSetectType(e) {
-    setType(e.target.value)
-    console.log(e.target.value)
+  function handlePaís(data) {
+    setPaís(data)
+    setFlag(false)
+    if(data === "Brasil") {
+      setCodigoPostal("")
+    } else if (data === "Portugal") {
+      setCep("")
+    }
+}
+
+  function handleSelectEtapa(etapa) {
+    setEtapa(etapa)
   }
-  function handleSetectRecommendation(e) {
-    setRecommendation(e.target.value)
-    console.log(e.target.value)
+
+  function handleChange(e) {
+    if(checked === false) {
+      setChecked(true)
+    } else {
+      setChecked(false)
+    }
+  }
+  function handleChangeSex(e) {
+    if(checked === false) {
+      setCheckedSex(true)
+    } else {
+      setCheckedSex(false)
+    }
+  }
+  function handleChangeOptionSexual(e) {
+    if(checked === false) {
+      setCheckedOptionSexual(true)
+    } else {
+      setCheckedOptionSexual(false)
+    }
   }
 
 
-  Modal.setAppElement('#root');
-  return (
-    <div className="content-Login">
-      {país === "select" ?
-      <div className="signUp">
-        <div className="top">
-          <img src={logoImg} alt="Logotipo Foursome" />
-          <h1>Escolha sua Nacionalidade</h1>
-        </div>
-        <div className="flags">
-          <img src={Brasil} alt="Bandeira do Brasil" onClick={() => {selectFlag("Brasil")}}/>
-          <img src={Portugal} alt="Bandeira de Portugal" onClick={() => {selectFlag("Portugal")}}/>
-        </div>
-      </div>
-      : país === "Brasil" ?
-      <div className="signUpBrasil">
-        <div className="logo">
-        <img src={logoImg} alt="Logo Foursome" />
-        <h2>Seja bem-vindo!</h2>
-        <h3>Realize seu cadastro e aproveite tudo que preparamos.</h3>
-        </div>
-        <div className="form">
-        <div className="title">
-
-          
-            <h3>CADASTRE-SE: 🇧🇷</h3>
-          </div>
-          <div className="titleInput">
-          <p>Meu email:</p>
-          </div>
-          <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)}/>
-
-          {/* <div className="titleInput">        
-          <p>Código do patrono:</p>
-            </div>
-          <input type="text" placeholder="Id do Patrono" value={patron}/> */}
+  
+  async function handleSearchDistrict() {
+    try {
+      const res = await buscaDistrito.get(`${uf}/distritos`) 
+        console.log(res.data)
+        setDistrictAll(res.data)
+        console.log(res.data[0].municipio.nome);
+        return;
+      }catch{
+        console.log("error")
+        toast.error("Escolha um estado e clica em buscar cidades")
+    }
+    return
+}
 
 
-          <div className="titleInput">
-          <p>Tipo de conta:</p>
-          </div>
-          <select value={type} onChange={handleSetectType}>
-                <option value="">Selecione</option>
-                <option value="Homem">Homem </option>
-                <option value="Mulher">Mulher </option>
-                <option value="Casal">Casal </option>
-                <option value="Trisal">Trisal </option>
-                <option value="Transex">Transex </option>
-                <option value="Travestis">Travestis </option>
-            </select>
+function handleSetectCity(e) {
+  setCity(e.target.value)
+  console.log(e.target.value)
+}
+function handleSetectUf(e) {
+  setUf(e.target.value)
+  console.log(e.target.value)
+}
 
-          <div className="titleInput">
-          <p>O nome de usuário deve ser todo junto, minúsculo e sem espaço.</p>
-          </div>
-          <input type="text" placeholder="Nome de usuário (Junto e sem espaço)" value={usernameNative.toLowerCase()} onChange={ChangeMask}/>
-         
-          <div className="titleInput">
-          <p>Telefone:</p>
-          </div>
-          <input type="text" value={newPhone} onChange={ChangeMaskPhone} placeholder="(XX)XXXXX-XXXX"/>
-
-          <div className="titleInput">
-          <p>Senha:</p>
-          </div>
-          <div className="inputPassword">
-          <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={passwordNative} onChange={ChangeMaskPassword}/>
-          <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
-          </div>
-
-          <div className="inputPassword">
-          <input type={passwordView === false ? "password" : "text" } placeholder="Confirmar senha" value={passwordConfirmNative} onChange={ChangeMaskConfirmPassword}/>
-          <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
-          </div>
-
-          <div className="titleInput">
-          <p>Como conheceu a Foursome:</p>
-          </div>
-          <select value={recommendation} onChange={handleSetectRecommendation}>
-                <option value="">Selecione</option>
-                <option value="Instagram">Instagram </option>
-                <option value="Facebook">Facebook </option>
-                <option value="Casal Cezar e Rê">Casal Cezar e Rê </option>
-                <option value="Promouter de Eventos">Promouter de Eventos </option>
-                <option value="Google">Google </option>
-                <option value="Indicação de Amigo">Indicação de Amigo </option>
-            </select>
-
-
-          <div className="terms">
-          <input type="checkbox" checked={checked} onChange={handleChange}/>
-          <p>Li e concordo com os<b><a href="/lgpd" target="_blank">Termos de uso</a></b></p>
-          </div>
-
-          <div className="buttons">
-          <button onClick={openModal}> Cadastrar </button>
-          <button className='btn' onClick={() => {selectFlag("select")}}> Alterar país </button>
-          </div>
-        </div>
-
-        
-      </div>
-      : país === "Portugal" ? 
-      <div className="signUpPortugal">
-        <div className="logo">
-        <img src={logoImg} alt="Logo Foursome" />
-        <h2>Bem-vindos!</h2>
-        <h3>Registe-se e desfrute de tudo o que preparámos.</h3>
-        </div>
-        <div className="form">
-        <div className="title">
-            <h3>CADASTRE-SE: 🇵🇹</h3>
-          </div>
-          <div className="titleInput">
-          <p>Meu email:</p>
-          </div>
-          <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)}/>
-
-          {/* <div className="titleInput">        
-          <p>Código do patrono:</p>
-            </div>
-          <input type="text" placeholder="Id do Patrono" value={patron}/> */}
-
-
-<div className="titleInput">
-          <p>Tipo de conta:</p>
-          </div>
-          <select value={type} onChange={handleSetectType}>
-                <option value="">Selecione</option>
-                <option value="Homem">Homem </option>
-                <option value="Mulher">Mulher </option>
-                <option value="Casal">Casal </option>
-                <option value="Trisal">Trisal </option>
-                <option value="Transex">Transex </option>
-                <option value="Travestis">Travestis </option>
-            </select>
-          <div className="titleInput">
-          <p>O nome de utilizador deve ser todo junto, minúsculo e sem espaço.</p>
-          </div>
-          <input type="text" placeholder="Nome de utilizador (Juntos e sem espaço)" value={usernameNative.toLowerCase()} onChange={ChangeMask}/>
-         
-          <div className="titleInput">
-          <p>Telefone:</p>
-          </div>
-          <input type="text" value={newPhonePortugal} onChange={ChangeMaskPhonePortugal} placeholder="XXX XXXXX-XXXX"/>
-
-          <div className="titleInput">
-          <p>Senha:</p>
-          </div>
-          <div className="inputPassword">
-          <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={passwordNative} onChange={ChangeMaskPassword}/>
-          <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
-          </div>
-
-          <div className="inputPassword">
-          <input type={passwordView === false ? "password" : "text" } placeholder="Confirmar senha" value={passwordConfirmNative} onChange={ChangeMaskConfirmPassword}/>
-          <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
-          </div>
-
-          <div className="titleInput">
-          <p>Como conheceu a Foursome:</p>
-          </div>
-          <select value={recommendation} onChange={handleSetectRecommendation}>
-                <option value="">Selecione</option>
-                <option value="Instagram">Instagram </option>
-                <option value="Facebook">Facebook </option>
-                <option value="Casal Cezar e Rê">Casal Cezar e Rê </option>
-                <option value="Promouter de Eventos">Promouter de Eventos </option>
-                <option value="Google">Google </option>
-                <option value="Indicação de Amigo">Indicação de Amigo </option>
-            </select>
-
-
-          <div className="terms">
-          <input type="checkbox" checked={checked} onChange={handleChange}/>
-          <p>Li e concordo com os<b><a href="/lgpd" target="_blank">Termos de Utilização</a></b></p>
-          </div>
-
-          <div className="buttons">
-          <button onClick={openModal}> Cadastrar </button>
-          <button className='btn' onClick={() => {selectFlag("select")}}> Alterar país </button>
-          </div>
-        </div>
-
-        
-      </div>
-      : ""}
-
-
-
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal}
-            overlayClassName="react-modal-overlay"
-            className="react-modal-content">
-            <button type="button" className="react-modal-button" onClick={closeModal}>
-            <IoCloseOutline /> 
-            </button>
-            <div className="content-modal">
-            <h3>Este site é para maiores de 18 anos</h3>
-        
-            <div className="itensModalMessages">
-
-            <h2>Você confirma que tem 18 anos ou mais?</h2>
-            <div className="buttons">
-            <button onClick={handleCreateAccount}><FiThumbsUp/>SIM</button>
-            <button  onClick={closeModal} className="down"><FiThumbsDown/>NÃO</button>
-            </div>
-            </div>
-            </div>
-            </Modal>  
-    </div>
-    
-  )
+function handleSelectRecomendation(e) {
+  setRecommendation(e.target.value)
 }
 
 
 
+  return (
+    <div className="content-SignUp">
+      <div className="bloco">
+
+      <div className="logo">
+        <img src={logoImg} alt="Logo Foursome" />
+        </div>
+
+      <div className="signUp">
+        {/* Passo  1 */}
+        {etapa === "1" ?
+        <div className="form">
+          <input type="text" placeholder="Nome de usuário (Junto e sem espaço)" value={usernameNative.toLowerCase()} onChange={ChangeMask}/>
+          <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+          <input type="text" value={newPhone} onChange={ChangeMaskPhone} placeholder="(XX)XXXXX-XXXX ou XXX XXXXX-XXXX" />
+          <h6>Digite telefone modelo Brasil ou Portugal</h6>
+          <div className="inputPassword">
+          <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={passwordNative} onChange={ChangeMaskPassword}/>
+          <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
+          </div>
+          <div className="inputPassword">
+          <input type={passwordView === false ? "password" : "text" } placeholder="Confirmar senha" value={passwordConfirmNative} onChange={ChangeMaskConfirmPassword}/>
+          <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
+          </div>
+          <div className="buttons">
+          <button onClick={() => handleSelectEtapa("2") }> Criar conta </button>
+          <br />
+          <div className="terms">
+          <input type="checkbox" checked={checked} onChange={handleChange}/>
+          <p>Li e concordo com os<b><a href="/lgpd" target="_blank">Termos de Utilização</a></b></p>
+          </div>
+          </div>
+          <div className="create">
+          <p>Já possui conta? <a href="/"> Entre agora</a></p>
+          </div>
+        </div>
+        : ""}
+
+        {/* Passo  2 */}
+        {etapa === "2" ?
+        <div className="form">
+          <div className="text">
+            <h5>EU SOU</h5>
+          </div>
+            <select className={sex === "" ? "empyt" : ""} value={sex} onChange={handleSex} required>
+                <option value="">Selecione</option>
+                <option value="Homem">Homem</option>
+                <option value="Mulher">Mulher</option>
+                <option value="Homem trans ou transmasculino">Homem trans ou transmasculino</option>
+                <option value="Mulher trans ou transfeminino">Mulher trans ou transfeminino</option>
+                <option value="Pessoa não binária">Pessoa não binária</option>
+            </select>
+            <div className="terms">
+          <input type="checkbox" checked={checkedSex} onChange={handleChangeSex}/>
+          <p>Mostrar no meu perfil</p>
+          </div>
+
+            <div className="text">
+            <h5>MINHA ORIENTAÇÃO SEXUAL</h5>
+          </div>
+
+             <select className={sexualOption === "" ? "empyt" : ""} value={sexualOption} onChange={handleSexualOption} required>
+                <option value="">Selecione</option>
+                <option value="Gay">Gay</option>
+                <option value="Lésbica">Lésbica</option>
+                <option value="Trans/travesti">Trans/travesti</option>
+                <option value="Bissexual">Bissexual</option>
+                <option value="Assexual">Assexual</option>
+                <option value="Demissexual">Demissexual</option>
+                <option value="Pansexual">Pansexual</option>
+                <option value="Queer">Queer</option>
+                <option value="Intersexual">Intersexual</option>
+                <option value="Questionando">Questionando</option>
+            </select>
+
+          <div className="terms">
+          <input type="checkbox" checked={checkedOptionSexual} onChange={handleChangeOptionSexual}/>
+          <p>Mostrar no meu perfil</p>
+          </div>
+
+            <div className="text">
+            <h5>PROCURO POR</h5>
+          </div>
+
+            <select className={preference === "" ? "empyt" : ""} value={preference} onChange={handlePreference} required>
+                <option value="">Selecione</option>
+                <option value="Homem">Homem</option>
+                <option value="Mulher">Mulher</option>
+                <option value="Homem trans ou transmasculino">Homem trans ou transmasculino</option>
+                <option value="Mulher trans ou transfeminino">Mulher trans ou transfeminino</option>
+                <option value="Pessoa não binária">Pessoa não binária</option>
+            </select>
+            <div className="text">
+            <h5>QUE SEJA</h5>
+          </div>
+
+          <select className={preferenceOption === "" ? "empyt" : ""} value={preferenceOption} onChange={handlePreferenceSexualOption} required>
+                <option value="">Selecione</option>
+                <option value="Gay">Gay</option>
+                <option value="Lésbica">Lésbica</option>
+                <option value="Trans/travesti">Trans/travesti</option>
+                <option value="Bissexual">Bissexual</option>
+                <option value="Assexual">Assexual</option>
+                <option value="Demissexual">Demissexual</option>
+                <option value="Pansexual">Pansexual</option>
+                <option value="Queer">Queer</option>
+                <option value="Intersexual">Intersexual</option>
+                <option value="Questionando">Questionando</option>
+            </select>
+          <div className="buttons">
+          <button onClick={() => handleSelectEtapa("3")}> Avançar </button>
+          <button className='btn' onClick={() => handleSelectEtapa("1")}> Voltar </button>
+          <br />
+          </div>
+        </div>
+        : ""}
+
+                {/* Passo  3 */}
+                {etapa === "3" ?
+        <div className="form">
+ 
+          <p>Avatar</p>
+                        <label className="label-avatar">
+                            <span><FiUpload color="#f65" size={25} /></span>
+                            <input type="file" accept="image/*" onChange={handleFile} required/><br />
+                            <img src={avatarUrl === null ? profile : avatarUrl} alt="Avatar" height={100} width={100}/>
+                        </label>
+
+
+ 
+                        <div className="text">
+                          <h5>NOME DE EXIBIÇÃO </h5>
+                          </div>
+                          <input type="text" placeholder="Nome de exibição" value={nickname} onChange={(e) => setNickname(e.target.value)} required/>
+                          <div className="text">
+                          <h5>STATUS DE RELACIONAMENTO</h5>
+                          </div>
+                          <select className={relationship === "" ? "empyt" : ""} value={relationship} onChange={handleRelationship} required>
+                                <option value="">Status de Relacionamento</option>
+                                <option value="Solteir@">Solteir@ </option>
+                                <option value="Casad@">Casad@</option>
+                                <option value="Enrolad@">Enrolad@</option>
+                                <option value="Relacionamento Aberto">Relacionamento Aberto</option>
+                            </select>
+                            <div className="text">
+                            <h5>DATA DE NASCIMENTO <IoCalendarOutline /></h5>
+                        </div>
+                    <div className="birthDate">
+
+                    <select value={year} onChange={handleSelectYear} required>
+                          <option>Ano</option>
+                          <option>1960</option>
+                          <option>1961</option>
+                          <option>1962</option>
+                          <option>1963</option>
+                          <option>1964</option>
+                          <option>1965</option>
+                          <option>1966</option>
+                          <option>1967</option>
+                          <option>1968</option>
+                          <option>1969</option>
+                          <option>1970</option>
+                          <option>1971</option>
+                          <option>1972</option>
+                          <option>1973</option>
+                          <option>1974</option>
+                          <option>1975</option>
+                          <option>1976</option>
+                          <option>1977</option>
+                          <option>1978</option>
+                          <option>1979</option>
+                          <option>1980</option>
+                          <option>1981</option>
+                          <option>1982</option>
+                          <option>1983</option>
+                          <option>1984</option>
+                          <option>1985</option>
+                          <option>1986</option>
+                          <option>1987</option>
+                          <option>1988</option>
+                          <option>1989</option>
+                          <option>1990</option>
+                          <option>1991</option>
+                          <option>1992</option>
+                          <option>1993</option>
+                          <option>1994</option>
+                          <option>1995</option>
+                          <option>1996</option>
+                          <option>1997</option>
+                          <option>1998</option>
+                          <option>1999</option>
+                          <option>2000</option>
+                          <option>2001</option>
+                          <option>2002</option>
+                          <option>2003</option>
+                          <option>2004</option>
+                      </select>
+
+                    <select value={month} onChange={handleSelectMonth} required>
+                      <option>Mês</option>
+                      <option value="01">Janeiro</option>
+                      <option value="02">Fevereiro</option>
+                      <option value="03">Março</option>
+                      <option value="04">Abril</option>
+                      <option value="05">Maio</option>
+                      <option value="06">Junho</option>
+                      <option value="07">Julho</option>
+                      <option value="08">Agosto</option>
+                      <option value="09">Setembro</option>
+                      <option value="10">Outubro</option>
+                      <option value="11">Novembro</option>
+                      <option value="12">Dezembro</option>
+                    </select>
+
+                    <select value={day} onChange={handleSelectDay} required>
+                      <option>Dia</option>
+                      <option value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04">04</option>
+                      <option value="05">05</option>
+                      <option value="06">06</option>
+                      <option value="07">07</option>
+                      <option value="08">08</option>
+                      <option value="09">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                      <option value="25">25</option>
+                      <option value="26">26</option>
+                      <option value="27">27</option>
+                      <option value="28">28</option>
+                      <option value="29">29</option>
+                      <option value="30">30</option>
+                      <option value="31">31</option>
+                    </select>
+
+
+
+                      
+                    </div>
+                    {birthDate !== "" ?
+                         idadeAtual >= 18 ? 
+                     <h6>Sua idade é {idadeAtual} anos</h6>:
+                     <h6>Sua idade é {idadeAtual} anos</h6>
+                      : ""}
+                    <div className="text">
+                    <h5>SIGNO</h5>    
+                        </div>
+                            <select className={sign === "" ? "empyt" : ""} required value={sign} onChange={handleSelectSign}>
+                                <option value="">Selecione</option>
+                                <option value="Áries">Áries </option>
+                                <option value="Touro">Touro </option>
+                                <option value="Gêmeos">Gêmeos</option>
+                                <option value="Câncer">Câncer</option>
+                                <option value="Leão">Leão</option>
+                                <option value="Virgem">Virgem</option>
+                                <option value="Libra">Libra</option>
+                                <option value="Escorpião">Escorpião</option>
+                                <option value="Sagitário">Sagitário</option>
+                                <option value="Capricórnio">Capricórnio</option>
+                                <option value="Aquário">Aquário</option>
+                                <option value="Peixes">Peixes</option>
+                            </select>
+
+
+          <div className="buttons">
+          <button onClick={() => handleSelectEtapa("4")}> Avançar </button>
+          <button className='btn' onClick={() => handleSelectEtapa("2")}> Voltar </button>
+          <br />
+          </div>
+        </div>
+        : ""}
+
+          {/* Passo  3 */}
+          {etapa === "4" ?
+            <div className="form">
+              <div className="text">
+                <h5>ESCOLHA SEU PAÍS</h5>    
+              </div>
+              <div className="images">
+                <div className="image">
+                  <img className={país === "Brasil" ? "select" : ""} onClick={() => handlePaís("Brasil")} src={Brasil} alt="bandeira do Brasil" />
+                </div>
+                <div className="image">
+                <img className={país === "Portugal" ? "select" : ""} onClick={() => handlePaís("Portugal")} src={Portugal} alt="bandeira de Portugal" />
+                </div>
+              </div>
+              <br />
+
+              <br />
+              {país === "Brasil" ?
+              <>
+              <div className="text">
+                <h5>BUSQUE SUA LOCALIZAÇÃO</h5>
+              </div>
+
+              <select value={uf} onChange={handleSetectUf}> 
+                                      <option value="">Escolha seu estado</option>
+                                      <option value="AC">Acre</option>
+                                      <option value="AL">Alagoas</option>
+                                      <option value="AP">Amapá</option>
+                                      <option value="AM">Amazonas</option>
+                                      <option value="BA">Bahia</option>
+                                      <option value="CE">Ceará</option>
+                                      <option value="DF">Distrito Federal</option>
+                                      <option value="ES">Espírito Santo</option>
+                                      <option value="GO">Goiás</option>
+                                      <option value="MA">Maranhão</option>
+                                      <option value="MT">Mato Grosso</option>
+                                      <option value="MS">Mato Grosso do Sul</option>
+                                      <option value="MG">Minas Gerais</option>
+                                      <option value="PA">Pará</option>
+                                      <option value="PB">Paraíba</option>
+                                      <option value="PR">Paraná</option>
+                                      <option value="PE">Pernambuco</option>
+                                      <option value="PI">Piauí</option>
+                                      <option value="RJ">Rio de Janeiro</option>
+                                      <option value="RN">Rio Grande do Norte</option>
+                                      <option value="RS">Rio Grande do Sul</option>
+                                      <option value="RO">Rondônia</option>
+                                      <option value="RR">Roraima</option>
+                                      <option value="SC">Santa Catarina</option>
+                                      <option value="SP">São Paulo</option>
+                                      <option value="SE">Sergipe</option>
+                                      <option value="TO">Tocantins</option>
+                                      <option value="EX">Estrangeiro</option>
+                                
+                              </select>
+                              {/* <input type="text" autocomplete="off" placeholder='UF - Ex.: RJ' value={uf} onChange={(e) => setUf(e.target.value)} required /> */}
+                              <button className="uf" onClick={() => handleSearchDistrict()}>Buscar Cidades</button>
+                              <select value={city} onChange={handleSetectCity}>       
+                              {districtAll?.map((district) => {
+                                      return (
+                                          <option autocomplete="off" key={district.id} value={district.nome}>{district.nome}</option>
+                                      )
+                                  })}
+                              </select>
+              </>
+                : país === "Portugal" ?
+                <>
+                <div className="text">
+                <h5></h5>
+                </div>
+                <input type="text" placeholder='Digite seu Código Postal' value={codigoPostal} onChange={ChangeMaskCEPPortugal}/>
+                      <input type="text" autoComplete='off' placeholder='Cidade' value={city} onChange={(e) => setCity(e.target.value)} required/>
+                      <input type="text" autoComplete='off' placeholder='Província / Vila / Região' value={uf} onChange={(e) => setUf(e.target.value)}  required/>
+                        </>
+
+                : "Selecione seu país"
+                                }
+
+              <div className="text">
+                <h5>COMO NOS CONHECEU?</h5>
+              </div>
+              <select value={recommendation} onChange={handleSelectRecomendation}> 
+                                      <option value="">Escolha</option>
+                                      <option value="Instagram">Instagram</option>
+                                      <option value="Facebook">Facebook</option>
+                                      <option value="Google">Google</option>
+                                      <option value="Indicação de amigo">Indicação de amigo</option>
+                              </select>
+
+                 <div className="buttons">
+          <button onClick={handleUploadAccount}> Finalizar </button>
+          <button className='btn' onClick={() => handleSelectEtapa("3")}> Voltar </button>
+          <br />
+          </div>
+               </div>
+            : ""}
+
+
+
+      </div>
+      </div>
+      <div className="slide-SignUp">
+      <div className="images-SignUp" key={image1}>
+            <img src={image1} alt="" />
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export { SignUp }

@@ -2,7 +2,7 @@ import "./settingsDataAccess.css"
 
 function SettingsDataAccess() {
 
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local)
 
     return (

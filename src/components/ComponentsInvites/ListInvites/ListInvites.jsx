@@ -5,7 +5,7 @@ import { useFetch } from '../../../hooks/useFetch';
 import {AccountCreatedInvite} from '../AccountCreatedInvite/AccountCreatedInvite'
 
 function ListInvites() {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
     const {deleteInvite} = useContext(AuthContext);
 

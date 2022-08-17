@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/Auth';
 
 function Welcome() {
     const {logout} = useContext(AuthContext);
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
     function Tologout(e) {
         e.preventDefault();

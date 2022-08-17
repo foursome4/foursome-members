@@ -5,7 +5,7 @@
     justify-content: flex-start;
     width: 100%;
     color: var(--Gray_font2);
-    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 5px 1px rgba(255, 255, 255, 0.03);
     border-radius: 10px;
     padding: 20px 0;
     margin: 10px 0;
@@ -128,6 +128,8 @@
     justify-content: center;
     object-fit: contain;
     border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px rgba(255, 255, 255, 0.08);
+    background-color: var(--Background2);
 }
 .feed-post .post-data-media .image-video{
     width: 425px;
@@ -139,6 +141,17 @@
     background-color: black;
     border-radius: 10px;
     object-fit: cover;
+    box-shadow: 1px 1px 5px 1px rgba(255, 255, 255, 0.03);
+    background-color: var(--Background2);
+}
+
+.feed-post .post-data-media .image-video .blockVideo {
+    width: 425px;
+    height: 425px;
+    background-color: rgba(255, 255, 255, 0.1);
+    z-index: 5;
+    position: absolute;
+    border-radius: 10px;
 }
 
 
@@ -260,23 +273,24 @@
     background-color: var(--Background);
     border: none;
     color: var(--Gray_font2);
-    padding:10px 20px;
-    margin: 3px;
-    border-radius: 6px;
-    font-size: 14px;
+    padding:12px;
+    margin: 5px 10px;
+    border-radius: 50%;
+    font-size: 16px;
 }
 
 
 
 .feed-post .reactions .selected{
-    background-color: var(--Foursome1);
+    background-color: var(--Primary);
     color: var(--White);
+    font-size: 16px;
 }
 
 
 
 .feed-post .reactions .selected svg{
-    font-size: 14px;
+    font-size: 16px;
     color: var(--White);
 }
 
@@ -367,10 +381,10 @@
 
 
                 .feed-post .post-data-media .image{
-            width: 500px;
+            width: 450px;
         }
                 .feed-post .post-data-media .image-video{
-            width: 500px;
+            width: 450px;
         }
         
         .feed-post .post-data-media .image img{
@@ -378,12 +392,12 @@
          }
         
         .feed-post .post-data-media .image .marcadagua{
-            width: 500px;
+            width: 450px;
             height: 350px;
 
         }
         .feed-post .post-data-media .image-video .mark{
-            width: 500px;
+            width: 450px;
             height: 350px;
 
         }
@@ -397,7 +411,7 @@
                 width: 100%;
             }
             .feed-post .reactions button {
-                font-size: 14px;
+                font-size: 16px;
             }
 
             
@@ -408,13 +422,9 @@
 
             }
             .feed-post .reactions button {
-                font-size: 14px;
-                margin: 2px 3px;
+                font-size: 16px;
             }
 
-            .feed-post .reactions button svg {
-                margin-right: 2px;
-            }
 
             .feed-post .post-data-media .image{
                 width: 400px;
@@ -495,8 +505,7 @@
                     margin-left: -22px;
                 }
                 .feed-post .reactions button {
-                    font-size: 14px;
-                    margin: 2px 5px;
+                    font-size: 16px;
                 }
 
                 .feed-post .post-data-media {
@@ -520,8 +529,7 @@
                         margin-left: 0px;
                     }
                     .feed-post .reactions button {
-                        font-size: 12px;
-                        margin: 2px 5px;
+                        font-size: 16px;
                     }
     
                     .feed-post .post-data-media {

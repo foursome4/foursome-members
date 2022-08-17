@@ -11,47 +11,48 @@ import { ListEventsFeed } from "../../components/ListEventsFeed/ListEventsFeed"
 import { useNavigate } from 'react-router-dom';
 import api from "../../services/api"
 import {FiArrowUpCircle} from 'react-icons/fi'
-import { toast } from "react-toastify"
 import { PostFeed } from "../../components/PostFeed/PostFeed"
+import { ListGroupsUnic } from "../../components/ListGroups/ListGroups"
+import { ListEventsUnic } from "../../components/ListEvents/ListEvents"
+import { PostFeed2 } from "../../components/PostFeed2/PostFeed2"
+import { toast } from "react-toastify"
 
 
 function Feed() {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
-    // const LocalInformation = localStorage.getItem("informations-foursome");
-    // const userInformation = JSON.parse(LocalInformation);
-    // const Localcharacteritics = localStorage.getItem("characteritics-foursome");
-    // const usercharacteritics = JSON.parse(Localcharacteritics);
-    // const Localpreferences = localStorage.getItem("preferences-foursome");
-    // const userpreferences = JSON.parse(Localpreferences);
   
     const id = user.id
     const [myInformations, setMyInformations] = useState(false)
     const navigate = useNavigate();
-    const {inactivityTime, logout, socketDataLocation} = useContext(AuthContext);
+    const {inactivityTime, logout, socketDataLocation, verityTimesPeiodTest} = useContext(AuthContext);
 
            inactivityTime();
            useEffect(() => {
 
             async function loadUsersOnline() {
-               const res = await api.get("/online");
-               
-               const selectUserOnline = res.data.filter(online => online.idAccount === user.id);
-               console.log("selectUserOnline")
-               console.log(selectUserOnline)
-               console.log(selectUserOnline.length)
-   
-               if(selectUserOnline.length > 0) {
+
+                if(user.status === "pending") {
+                    logout(user.id)
+                    return
+                }
+                if(user.status === "blocked") {
+                    logout(user.id)
+                    return
+                }
+                if(user.status === "suspense") {
+                    window.open("/activeplain","_self");
+                    return
+                }
+                const res = await api.get(`/online/one/${user.id}`)
+                 
+               if(res.data.length > 0) {
                 console.log("Usuário ja está online")
                 return
               }
                  console.log("Cadastrando usuário")
                  socketDataLocation()
             }
-
-               if(user.status === "blocked") {
-                window.open("/profile", "_self");
-               }
  
                loadUsersOnline()
            }, [navigate, socketDataLocation, user.status, user.id]);
@@ -63,44 +64,44 @@ function Feed() {
                 console.log(res.data)
                 if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
                     logout(id)
-                } else {
+                } else if(res.data[0].status === "blocked") {
+                    logout(id)
+                } else{
                     console.log("Conta encontrada")
                 } 
             }
-            async function searchInformations() {
-              const res =  await api.get(`/informations/${id}`);
-                console.log(res.data)
-                if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-                    logout(id)
-                } else {
-                    console.log("Informações encontradas")
-                } 
-            }
-            async function searchCharacteristcs() {
-              const res =  await api.get(`/characteristics/${id}`);
-                console.log(res.data)
-                if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-                    logout(id)
-                } else {
-                    console.log("Caracteristicas encontradas")
-                } 
-            }
-            async function searchPreferences() {
-              const res =  await api.get(`/preferences/${id}`);
-                console.log(res.data)
-                if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
-                    logout(id)
-                } else {
-                    console.log("Preferencias encontradas")
-                    setMyInformations(true)
-                } 
-            }
+
 
             searchAccount()
-            searchInformations()
-            searchCharacteristcs()
-            searchPreferences()
            }, []);
+
+
+           if(user.status === "Aproved") {
+            console.log("olá, mundo")
+            verufy(user.id)
+           }
+
+           async function verufy(id) {
+            const paymentUser = await api.get(`/payments/${id}`)
+            const periodTest = await api.get(`/periodtest/${id}`)
+
+            if(paymentUser.data.length === 0 && periodTest.data.length === 0) {
+                toast.error("deslogando...")
+                logout(id);
+                return;
+            }
+
+            if(paymentUser.data.length > 0) {
+                toast.error("deslogando...")
+                logout(id);
+                return;
+            }
+
+            if(periodTest.data.length > 0) {
+                verityTimesPeiodTest(user.id);
+                return;
+            }
+           }
 
            
            const loadDateReadFeed = useCallback(async () => {
@@ -157,12 +158,23 @@ return (
                 <TopBar />
                 <div className="aside">
                     <div className="feed">
-                    <ListEventsFeed />
+                    {/* <ListEventsFeed /> */}
                  <button className="topScroll" onClick={handleTop}><FiArrowUpCircle /></button>
                    {/* {myInformations === false ? "" : <Post />} */}
                     <ChatSlim />
+                    {user.status === "essencial" || user.status === "suspense" ? 
+                    <PostFeed2 />
+                    :
                     <PostFeed />
+                    }
                     <FeedPost /> 
+                    </div>
+                    <div className="blocksFeed">
+                        <h3>Próximo Evento</h3>
+                        <ListEventsUnic />
+                        <br />
+                        <h3>Grupo mais recente</h3>
+                            <ListGroupsUnic />
                     </div>
                     </div>
                  <ToolbarLeftSlim />

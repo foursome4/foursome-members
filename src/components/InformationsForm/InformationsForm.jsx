@@ -16,7 +16,7 @@ import buscaDistrito from '../../services/api-buscaDistrito';
 
 
 function InformationsForm() {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
     const {createInformationsAccount, logout} = useContext(AuthContext)
     const [avatarUrl, setAvatarUrl] = useState(null);

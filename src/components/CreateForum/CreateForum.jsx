@@ -9,10 +9,9 @@ import { v4 as uuidv4 } from 'uuid'
 
 function CreateForum() {
     const {createForum}= useContext(AuthContext);
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local)
-    const LocalInformations = localStorage.getItem("informations-foursome");
-    const userInformations= JSON.parse(LocalInformations);
+
 
 
     const cover = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/capa%20foursome2.png?alt=media&token=6124db20-1954-47d4-9444-73b3fee41ce0"
@@ -76,8 +75,8 @@ function CreateForum() {
 
             let idAccount = user.id;
             let username = user.username;
-            let avatarUser = userInformations.avatar;
-            let nickname = userInformations.nickname;
+            let avatarUser = user.avatar;
+            let nickname = user.nickname;
         
  
 

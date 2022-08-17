@@ -4,21 +4,21 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: var(--Foursome1);
+    background-image: linear-gradient(to right bottom, #fe8b00, #f57303, #ea590a, #de3d11, #d01616);
     padding: 10px 20px;
     border-radius: 6px;
-    color: var(--Background2);
+    color: var(--White);
     cursor: pointer;
 }
 
 .search svg {
-    color: var(--Background2);
+    color: var(--White);
     margin-right: 5px;
 
 }
 
 .search p {
-    color: var(--Background2);
+    color: var(--White);
 
 }
 
@@ -99,7 +99,7 @@
 }
 
 .content-modal .search input::placeholder {
-    color: var(--Background2);
+    color: var(--White);
 }
 
 

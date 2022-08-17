@@ -9,7 +9,7 @@ import { FiTrash2, FiEdit, FiCornerDownLeft } from 'react-icons/fi'
 import { useFetch } from '../../hooks/useFetch';
 
 function FeedCommentsComponent({idPost}) {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const userData = JSON.parse(Local);
 
     const {deleteComment} = useContext(AuthContext);

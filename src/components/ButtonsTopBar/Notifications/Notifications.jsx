@@ -6,7 +6,7 @@ import { useFetch } from '../../../hooks/useFetch';
 import {IoNotificationsOutline} from 'react-icons/io5'
 
 function Notifications() {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
 
     const [dateRead, setDateRead] = useState([]);
@@ -50,6 +50,11 @@ function Notifications() {
 
 
     async function handleNotifications() {
+        if(user.status === "suspense") {
+            window.open("/activeplain","_self");
+            return
+        }
+
         const id = dateRead.id
         const data = {
             DateRead: new Date()
@@ -57,7 +62,9 @@ function Notifications() {
 
     await api.patch(`/dateread/${id}`, data).then((res) => {
         console.log("Data inicial alterada com sucesso!");
-        window.open("/notifications", "_self")
+
+        user.status === "suspense" ? window.open(`/activeplain`, "_self") 
+        : window.open("/notifications", "_self")
         }).catch(error => {
         console.log("Erro ao buscar dados" + error)
     })

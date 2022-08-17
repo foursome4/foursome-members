@@ -6,13 +6,8 @@ import { v4 as uuidv4 } from 'uuid';
 import {IoMaleOutline, IoFemaleOutline, IoMaleFemaleOutline, IoTransgenderOutline, IoPeopleOutline} from 'react-icons/io5';
 import './preferencesForm.css'
 
-function PreferencesForm() {
+function PreferencesForm({idAccount,email, username}) {
     const {preferencesAccount, logout} = useContext(AuthContext);
-    const Local = localStorage.getItem("foursome");
-    const user = JSON.parse(Local)
-
-    const LocalInformations = localStorage.getItem("informations-foursome");
-    const userInformations = JSON.parse(LocalInformations);
 
 
     const [homem, setHomem] = useState("");
@@ -40,7 +35,8 @@ function PreferencesForm() {
         const id = uuidv4()
         preferencesAccount({
             id,
-            idAccount: userInformations.idAccount,
+            idAccount: idAccount,
+            email,
             men:homem,
             woman:mulher,
             couple:casal,
@@ -49,13 +45,13 @@ function PreferencesForm() {
             transsexuals:transexuais,
             groups:grupos,
             proposal:proposal,
-            email: user.email,
-            patron: user.patron,
-            username: user.username,
+            patron: "",
+            username,
         })
         console.log({
             id,
-            idAccount: userInformations.idAccount,
+            idAccount: idAccount,
+            email,
             men:homem,
             woman:mulher,
             couple:casal,
@@ -63,13 +59,12 @@ function PreferencesForm() {
             transvestites:travestis,
             transsexuals:transexuais,
             groups:grupos,
-            proposal:proposal,
-            email: user.email
+            proposal:proposal
         })
     }
 
         function handleLogout() {
-            logout(user.id)
+            logout(idAccount)
         }
 
     function handleSelectHomem(e) {

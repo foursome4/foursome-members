@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/Auth';
 
 function UsageTips() {
     const {logout} = useContext(AuthContext);
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
     function Tologout(e) {
         e.preventDefault();
@@ -33,7 +33,7 @@ function UsageTips() {
                     <br /><br />
                     <h4><b>Qualquer problema ou dúvida. Entra em conato:</b></h4>
                     <h4><b>Whatsapp</b> (22)99791-0510</h4>
-                    <h4><b>E-mail:</b> contato@foursome.com.br</h4>
+                    <h4><b>E-mail:</b> contato@forpride.com.br</h4>
                     </div>
                 </div> 
                 <button onClick={Tologout}>Sair</button>

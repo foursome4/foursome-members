@@ -5,7 +5,7 @@ import { DateFormat } from '../DateFormat/DateFormat';
 import './usersPosts.css'
 
 function UsersPostsComponent({idAccount, username, date, keyId, role}) {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const userData = JSON.parse(Local);
 
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
@@ -16,7 +16,7 @@ function UsersPostsComponent({idAccount, username, date, keyId, role}) {
     const [city, setCity] = useState('')
     useEffect(() => {
         async function loadInformations() {
-            await api.get(`informations/${idAccount}`).then((result) => {
+            await api.get(`accounts/filter/${idAccount}`).then((result) => {
                 setNickname(result.data[0].nickname)
                 setAvatar(result.data[0].avatar)
                 setCity(result.data[0].city)

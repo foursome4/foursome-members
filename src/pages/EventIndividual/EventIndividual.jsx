@@ -19,7 +19,7 @@ import { useFetch } from '../../hooks/useFetch';
 function EventIndividual() {
   const {id} = useParams();
   console.log(id)
-  const Local = localStorage.getItem("foursome");
+  const Local = localStorage.getItem("forpride");
   const userData = JSON.parse(Local);
   const {inactivityTime, createMembersEvents, deleteMemberEvent} = useContext(AuthContext);
 
@@ -93,7 +93,7 @@ function EventIndividual() {
     loadGroups()
 }, [id]);
 
-const {data} = useFetch(`https://api-foursome.herokuapp.com/membersevents`);
+const {data} = useFetch(`/membersevents`);
 
 let myPresence = []
 

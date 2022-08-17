@@ -7,10 +7,8 @@ import {useContext, useState} from 'react'
 import { mask as masker, unMask } from "remask";
 
 function InviteWhatsapp() {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
 
 
     const {CreateInviteNewUsew} = useContext(AuthContext);
@@ -55,7 +53,7 @@ function InviteWhatsapp() {
        
         const code = inviteCode.substring(0, 4)
 
-       CreateInviteNewUsew({code, name, email, phone:newPhone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:userInformation.nickname, type })
+       CreateInviteNewUsew({code, name, email, phone:newPhone, username: user.username, idAccount: user.id, patron: user.id, patronNickname:user.nickname, type })
 
         setEmail("")
         setPhone("")

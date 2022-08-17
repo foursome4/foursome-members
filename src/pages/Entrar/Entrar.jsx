@@ -302,7 +302,7 @@ districtAll.sort(function(a,b) {
   }
 
   useEffect(() => {
-      if(localStorage.getItem("foursome") !== null) {
+      if(localStorage.getItem("forpride") !== null) {
         navigate("/feed")
       }
   },[navigate])
@@ -582,7 +582,7 @@ districtAll.sort(function(a,b) {
       {select === "flag" ?
       <div className="Entrar">
         <div className="top">
-          <img src={logoImg} alt="Logotipo Foursome" />
+          <img src={logoImg} alt="Logotipo forpride" />
           <h1>Escolha sua Nacionalidade</h1>
         </div>
         <div className="flags">
@@ -593,7 +593,7 @@ districtAll.sort(function(a,b) {
       : select === "account" ?
       <div className="EntrarBrasil">
         <div className="logo">
-        <img src={logoImg} alt="Logo Foursome" />
+        <img src={logoImg} alt="Logo forpride" />
         <h2>Seja bem-vindo!</h2>
         <h3>Realize seu cadastro e aproveite tudo que preparamos.</h3>
         </div>
@@ -691,7 +691,7 @@ districtAll.sort(function(a,b) {
        <>
              <div className="EntrarBrasil">
              <div className="top">
-          <img src={logoImg} alt="Logotipo Foursome" />
+          <img src={logoImg} alt="Logotipo forpride" />
           <h2>Foto de Perfil</h2>
         </div>
              <div className="form">
@@ -738,10 +738,10 @@ districtAll.sort(function(a,b) {
        </>
        : select === "address" ?
        <>
-                  <div className="EntrarBrasil">
+             <div className="EntrarBrasil">
              <div className="form">
              <div className="top">
-          <img src={logoImg} alt="Logotipo Foursome" />
+          <img src={logoImg} alt="Logotipo forpride" />
           <h2>Cidade e Estado</h2>
         </div>
 
@@ -858,7 +858,7 @@ districtAll.sort(function(a,b) {
        <>
                          <div className="EntrarBrasil">
                          <div className="top">
-          <img src={logoImg} alt="Logotipo Foursome" />
+          <img src={logoImg} alt="Logotipo forpride" />
           <h2>Nome e relacionamento</h2>
         </div>
         <br />
@@ -881,13 +881,12 @@ districtAll.sort(function(a,b) {
              <br />
 
              <div className="titleInput">
-          <p>Como conheceu a Foursome:</p>
+          <p>Como conheceu a ForPride:</p>
           </div>
           <select value={recommendation} onChange={handleSetectRecommendation}>
                 <option value="">Selecione</option>
                 <option value="Instagram">Instagram </option>
                 <option value="Facebook">Facebook </option>
-                <option value="Casal Cezar e Rê">Casal Cezar e Rê </option>
                 <option value="Promouter de Eventos">Promouter de Eventos </option>
                 <option value="Google">Google </option>
                 <option value="Indicação de Amigo">Indicação de Amigo </option>

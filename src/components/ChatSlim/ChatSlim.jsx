@@ -4,7 +4,7 @@ import { FaCircle } from 'react-icons/fa'
 import { useFetch } from '../../hooks/useFetch';
 
 function ChatSlim() {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const userData = JSON.parse(Local);
 
 const {data} = useFetch(`/online`);

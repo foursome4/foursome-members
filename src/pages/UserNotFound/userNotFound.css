@@ -5,7 +5,7 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    background-color: var(--Background2);
+    background-color: var(--Background);
     text-align: center;
 }
 .UserNotFound .user {
@@ -33,7 +33,7 @@
 .UserNotFound .user .top h3 {
     font-weight: 900;
     margin: 20px 10px;
-    color: var(--Foursome1)
+    color: var(--Primary)
 }
 .UserNotFound .user h4 {
     font-weight: 700;
@@ -42,7 +42,7 @@
 }
 
 .UserNotFound .user a {
-    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+    background-image: linear-gradient(to right bottom, #fe8b00, #f57303, #ea590a, #de3d11, #d01616);
     color: var(--White);
     border-radius: 6px;
     padding: 10px 20px;

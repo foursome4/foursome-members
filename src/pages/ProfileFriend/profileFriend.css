@@ -5,7 +5,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    background-color: var(--Background2)
+    background-color: var(--Background)
 }
 
 .content-profileFriend .profileFriend {
@@ -15,11 +15,11 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    background-color: var(--Background2)
+    background-color: var(--Background)
 }
 
 .content-profileFriend .profileFriend .main {
-    background-color: var(--Background2);
+    background-color: var(--Background);
     width: 100%;
     height: 100%;
     display: flex;
@@ -81,7 +81,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    background-color: var(--Background2);
+    background-color: var(--Black);
     padding: 0 50px;
     margin-top: -4px;
     border: 1px solid var(--Background);
@@ -93,6 +93,18 @@
     align-items: center;
     justify-content: center;
     color: var(--Primary);
+}
+.content-profileFriend .profileFriend .main .section .profileFriend-tools .users h3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-profileFriend .profileFriend .main .section .profileFriend-tools .users h3 svg {
+    color: #e0aa3e;
+    color-image: linear-gradient(to right, #ae8625, #f7ef8a, #d2ac47, #edc967);
+    margin: 0 3px;
 }
 
 .content-profileFriend .profileFriend .main .section .profileFriend-tools .users .users-img {

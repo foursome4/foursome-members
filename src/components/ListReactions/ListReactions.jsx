@@ -1,5 +1,6 @@
 import { useContext, memo } from "react"
-import {IoFlameOutline } from 'react-icons/io5'
+import {IoHappyOutline } from 'react-icons/io5'
+import {FaSmile, FaSmileBeam, FaSmileWink, FaAngellist } from 'react-icons/fa'
 import { AuthContext } from "../../contexts/Auth";
 import { useFetch } from "../../hooks/useFetch";
 import "./listReactions.css"
@@ -7,10 +8,8 @@ import "./listReactions.css"
 
 function ListReactionsComponent({idPost, idAccount}) {
     const {likePost, deleteLike} = useContext(AuthContext);
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const userData = JSON.parse(Local);
-    const LocalInformations = localStorage.getItem("informations-foursome");
-    const userInformations = JSON.parse(LocalInformations);
 
     const {data} = useFetch(`/reactions/${idPost}`);
 
@@ -24,7 +23,7 @@ function ListReactionsComponent({idPost, idAccount}) {
     function handleLikePost(e) {
         e.preventDefault()
         console.log("Curti")
-       likePost({idAccount: userData.id, username: userData.username, idPost, idPatrono: idAccount, nickname: userInformations.nickname});
+       likePost({idAccount: userData.id, username: userData.username, idPost, idPatrono: idAccount, nickname: userData.nickname});
     }
 
     function handleDeleteLike(e) {
@@ -38,7 +37,7 @@ function ListReactionsComponent({idPost, idAccount}) {
     return (
         <div className="reactionsList">
               <button className={myLike.length === 0 ? "" :"selected"} onClick={myLike.length === 0 ? handleLikePost : handleDeleteLike}>
-                  <IoFlameOutline /> Curtir
+                  <FaSmileWink />
                   </button>
         </div>
     )

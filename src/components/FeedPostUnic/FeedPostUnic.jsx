@@ -7,7 +7,7 @@ import { useFetch } from '../../hooks/useFetch';
 function FeedPostUnicComponent({id}) {
       
 
-      const {data} = useFetch(`https://api-foursome.herokuapp.com/posts/one/${id}`);
+      const {data} = useFetch(`/posts/one/${id}`);
 
 
   if(!data) {

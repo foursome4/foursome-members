@@ -4,7 +4,7 @@
     align-items:center;
     justify-content:center;
     width:100%;
-    background-color: var(--Background2)
+    background-color: var(--Background)
 }
 .Notifications h2{
     margin-top: 80px;
@@ -18,7 +18,7 @@
     align-items:center;
     justify-content:center;
     width:80%;
-    background-color: var(--Background2)
+    background-color: var(--Background)
 }
 
 
@@ -30,6 +30,7 @@
     justify-content: space-between;
     border: 2px solid var(--Background);
     text-decoration: none;
+    background-color: var(--Black);
 }
 .Notifications .listNotifications .notification .name {
     width: 100%;

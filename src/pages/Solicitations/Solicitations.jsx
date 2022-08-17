@@ -13,7 +13,7 @@ import { BarBottomMenu } from '../../components/BarBottomMenu/BarBottomMenu';
 
 function Solicitations() {
     const {friendAproved, deleteFriend, deleteFriendAndFollower} = useContext(AuthContext);
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
     const idAccount = user.id;
     const {data} = useFetch(`/friends/${idAccount}`);
@@ -52,6 +52,8 @@ function Solicitations() {
                         <div className="name">
                         <UsersPending id={friend.idAccount} />
                         </div>
+                        {user.startus === "essencial" ? ""
+                        :
                         <div className="buttons">
                             <button className='Acept' data-tip data-for='Aceitar' onClick={() => handleAprovedFriend(friend.id)}><IoCheckboxOutline /></button>
                             <ReactTooltip id='Aceitar' place="bottom" type="dark" effect="solid">
@@ -66,6 +68,7 @@ function Solicitations() {
                              <span>Recusar</span>
                             </ReactTooltip>
                         </div>
+                        }
                     </div>
                 )
             })}

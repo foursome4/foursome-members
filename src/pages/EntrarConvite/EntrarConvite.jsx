@@ -37,7 +37,7 @@ function EntrarConvite() {
 
 
   const navigate = useNavigate();
-  const Local = localStorage.getItem("foursome");
+  const Local = localStorage.getItem("forpride");
   const user = JSON.parse(Local);
   const [avatarUrl, setAvatarUrl] = useState(null);
   const [imageAvatar, setImageAvatar] = useState('');
@@ -301,7 +301,7 @@ districtAll.sort(function(a,b) {
   }
 
   useEffect(() => {
-      if(localStorage.getItem("foursome") !== null) {
+      if(localStorage.getItem("forpride") !== null) {
         navigate("/feed")
       }
   },[navigate])
@@ -575,7 +575,7 @@ districtAll.sort(function(a,b) {
       {select === "flag" ?
       <div className="EntrarConvite">
         <div className="top">
-          <img src={logoImg} alt="Logotipo Foursome" />
+          <img src={logoImg} alt="Logotipo forpride" />
           <h1>Escolha sua Nacionalidade</h1>
         </div>
         <div className="flags">
@@ -586,7 +586,7 @@ districtAll.sort(function(a,b) {
       : select === "account" ?
       <div className="EntrarConviteBrasil">
         <div className="logo">
-        <img src={logoImg} alt="Logo Foursome" />
+        <img src={logoImg} alt="Logo forpride" />
         <h2>Seja bem-vindo!</h2>
         <h3>Realize seu cadastro e aproveite tudo que preparamos.</h3>
         </div>
@@ -679,7 +679,7 @@ districtAll.sort(function(a,b) {
        <>
              <div className="EntrarConviteBrasil">
              <div className="top">
-          <img src={logoImg} alt="Logotipo Foursome" />
+          <img src={logoImg} alt="Logotipo forpride" />
           <h2>Foto de Perfil</h2>
         </div>
              <div className="form">
@@ -727,7 +727,7 @@ districtAll.sort(function(a,b) {
                   <div className="EntrarConviteBrasil">
              <div className="form">
              <div className="top">
-          <img src={logoImg} alt="Logotipo Foursome" />
+          <img src={logoImg} alt="Logotipo forpride" />
           <h2>Cidade e Estado</h2>
         </div>
 
@@ -844,7 +844,7 @@ districtAll.sort(function(a,b) {
        <>
                          <div className="EntrarConviteBrasil">
                          <div className="top">
-          <img src={logoImg} alt="Logotipo Foursome" />
+          <img src={logoImg} alt="Logotipo forpride" />
           <h2>Nome e relacionamento</h2>
         </div>
         <br />
@@ -867,7 +867,7 @@ districtAll.sort(function(a,b) {
              <br />
 
              <div className="titleInput">
-          <p>Como conheceu a Foursome:</p>
+          <p>Como conheceu a ForPride:</p>
           </div>
           <select value={recommendation} onChange={handleSetectRecommendation}>
                 <option value="">Selecione</option>

@@ -23,14 +23,12 @@ function Chat() {
   const messageRef = useRef(null);
 
 
-  const {inactivityTime} = useContext(AuthContext);
+  const {inactivityTime, deleteConversation} = useContext(AuthContext);
 
   inactivityTime()
   
-  const Local = localStorage.getItem("foursome");
+  const Local = localStorage.getItem("forpride");
   const user = JSON.parse(Local);
-  const LocalInformations = localStorage.getItem("informations-foursome");
-  const userInformations = JSON.parse(LocalInformations);
 
   console.log(`User: ${user.id}`)
   console.log(`Room: ${room}`)
@@ -143,8 +141,8 @@ async function handleUploadAccount(img) {
     type: "photo",
     text,
     link: photoUrlAvatar,
-    avatar: userInformations.avatar,
-    nickname: userInformations.nickname,
+    avatar: user.avatar,
+    nickname: user.nickname,
     username: user.username,
     created_at: new Date()
   }
@@ -178,8 +176,8 @@ async function handleUploadAccountVideo(img) {
     type: "video",
     text,
     link: photoUrlAvatar,
-    avatar: userInformations.avatar,
-    nickname: userInformations.nickname,
+    avatar: user.avatar,
+    nickname: user.nickname,
     username: user.username,
     created_at: new Date()
   }
@@ -203,8 +201,8 @@ async function handleUploadAccountVideo(img) {
       type: "text",
       text,
       link: "",
-      avatar: userInformations.avatar,
-      nickname: userInformations.nickname,
+      avatar: user.avatar,
+      nickname: user.nickname,
       username: user.username,
       created_at: new Date()
     }
@@ -234,6 +232,14 @@ function handleMedia() {
     } else {
       setMedia(false)
     }
+}
+
+function handleDeleteMessage(e) {
+  e.preventDefault()
+  const deletar = window.confirm("Deseja realmente deletar sua conta?");
+  if(deletar === true) {
+    deleteConversation(room)
+  } 
 }
 
 
@@ -359,6 +365,9 @@ function handleMedia() {
               }
                 <button className="button1" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}>Enviar <FiSend /></button>
                 <button className="button2" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}><FiSend /></button>
+                {media === false ? "" : 
+                <button className="button3" onClick={handleDeleteMessage} disabled={text === "" ? "disabled" : ""}>Deletar Conversa</button>
+               }
             </div>
             <br />
 

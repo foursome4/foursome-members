@@ -10,7 +10,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../contexts/Auth";
 
 function ReplyNews({id, reply}) {
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
 
     const {newReplyRecado} = useContext(AuthContext)

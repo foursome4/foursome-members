@@ -9,10 +9,8 @@ import { toast } from 'react-toastify';
 function PostTextGroup({nameGroup, idGroup}) {
     console.log(nameGroup, idGroup)
     const {newPost, logout} = useContext(AuthContext)
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
     
     const [loading, setLoading] = useState(false)
     const [text, setText] = useState("");
@@ -48,7 +46,7 @@ function PostTextGroup({nameGroup, idGroup}) {
                 type: "post-text-group",
                 text,
                 idPatrono: null,
-                ufAccount:user.uf,
+                ufAccount:user.país === "Portugal" ? user.país : user.uf,
                 cityAccount: user.city,
                 typeAccount: user.type,
             })
@@ -69,7 +67,7 @@ function PostTextGroup({nameGroup, idGroup}) {
         <div className="postTextGroup">
              <div className="postTextGroup-data">
             <div className="avatar">
-            <img src={userInformation.avatar} alt="" />
+            <img src={user.avatar} alt="" />
             </div>
             <div className="postTextGroup-type">
                 <div className="inputs">

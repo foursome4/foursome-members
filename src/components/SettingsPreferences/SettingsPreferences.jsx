@@ -5,7 +5,7 @@ import './settingsPreferences.css'
 
 function SettingsPreferences() {
     const {updatePreferencesAccount} = useContext(AuthContext);
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local)
     const [homem, setHomem] = useState("");
     const [mulher, setMulher] = useState("");

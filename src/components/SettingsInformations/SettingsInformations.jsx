@@ -15,10 +15,9 @@ import apiGoogleReverse from "../../services/apiGoogleReverse";
 function SettingsInformations() {
     const {NewUpdateInformationsAccount} = useContext(AuthContext)
 
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
-    const LocalInformations = localStorage.getItem("informations-foursome");
-    const userInformations= JSON.parse(LocalInformations);
+
 
 
     const [avatarUrl, setAvatarUrl] = useState(null);
@@ -30,7 +29,7 @@ function SettingsInformations() {
     const [districtAll, setDistrictAll] = useState([]);
     const [uf, setUf] = useState("");
     const [codigoPostal, setCodigoPostal] = useState("");
-    const [relationship, setRelationship] = useState(userInformations.relationship);
+    const [relationship, setRelationship] = useState(user.relationship);
     const [nickname, setNickname] = useState("")
     const [loadding, setLoadding] = useState(false);
     const [textError, setTextError] = useState(false);
@@ -153,17 +152,17 @@ function SettingsInformations() {
 
         
         //Salvando no banco de dados
-        NewUpdateInformationsAccount({id: userInformations.id,
-            idAccount: userInformations.idAccount,
-            avatar: userInformations.avatar,
-            cover: userInformations.cover,
-            city: city === "" ? userInformations.city : city,
-            uf: uf === "" ? userInformations.uf : uf,
-            relationship: relationship === "" ? userInformations.relationship : relationship ,
-            nickname: nickname === "" ? userInformations.nickname : nickname,
+        NewUpdateInformationsAccount({id: user.id,
+            idAccount: user.idAccount,
+            avatar: user.avatar,
+            cover: user.cover,
+            city: city === "" ? user.city : city,
+            uf: uf === "" ? user.uf : uf,
+            relationship: relationship === "" ? user.relationship : relationship ,
+            nickname: nickname === "" ? user.nickname : nickname,
             idPatrono: user.patron,
             username: user.username,
-            created_at: userInformations.created_at
+            created_at: user.created_at
         });
         console.log(loadding);
         setLoadding(false);
@@ -189,17 +188,17 @@ function SettingsInformations() {
             console.log(uploadAvatar.ref.name, photoUrlAvatar);
         
         //Salvando no banco de dados
-        NewUpdateInformationsAccount({id: userInformations.id,
-            idAccount: userInformations.idAccount,
-            avatar: photoUrlAvatar === "" ? userInformations.avatar : photoUrlAvatar,
-            cover: userInformations.cover,
-            city: city === "" ? userInformations.city : city,
-            uf: uf === "" ? userInformations.uf : uf,
-            relationship: relationship === "" ? userInformations.relationship : relationship ,
-            nickname: nickname === "" ? userInformations.nickname : nickname,
+        NewUpdateInformationsAccount({id: user.id,
+            idAccount: user.idAccount,
+            avatar: photoUrlAvatar === "" ? user.avatar : photoUrlAvatar,
+            cover: user.cover,
+            city: city === "" ? user.city : city,
+            uf: uf === "" ? user.uf : uf,
+            relationship: relationship === "" ? user.relationship : relationship ,
+            nickname: nickname === "" ? user.nickname : nickname,
             idPatrono: user.patron,
             username: user.username,
-            created_at: userInformations.created_at,
+            created_at: user.created_at,
         });
         console.log(loadding);
         setLoadding(false);
@@ -224,17 +223,17 @@ function SettingsInformations() {
          console.log(upload.ref.name, photoUrl);
         
         //Salvando no banco de dados
-        NewUpdateInformationsAccount({id: userInformations.id,
-            idAccount: userInformations.idAccount,
-            avatar: userInformations.avatar,
-            cover: photoUrl === "" ? userInformations.cover : photoUrl,
-            city: city === "" ? userInformations.city : city,
-            uf: uf === "" ? userInformations.uf : uf,
-            relationship: relationship === "" ? userInformations.relationship : relationship ,
-            nickname: nickname === "" ? userInformations.nickname : nickname,
+        NewUpdateInformationsAccount({id: user.id,
+            idAccount: user.idAccount,
+            avatar: user.avatar,
+            cover: photoUrl === "" ? user.cover : photoUrl,
+            city: city === "" ? user.city : city,
+            uf: uf === "" ? user.uf : uf,
+            relationship: relationship === "" ? user.relationship : relationship ,
+            nickname: nickname === "" ? user.nickname : nickname,
             idPatrono: user.patron,
             username: user.username,
-            created_at: userInformations.created_at,
+            created_at: user.created_at,
         });
         console.log(loadding);
         setLoadding(false);
@@ -322,7 +321,7 @@ function SettingsInformations() {
     <label className="label-avatar">
                     <span><FiUpload color="#f65" size={25} /></span>
                     <input type="file" accept="image/*" onChange={handleFile}/><br />
-                    <img src={avatarUrl === null ? userInformations.avatar : avatarUrl } alt="Avatar" height={100} width={100}/>
+                    <img src={avatarUrl === null ? user.avatar : avatarUrl } alt="Avatar" height={100} width={100}/>
                 </label>
 
                 <button onClick={handleUploadAvatar}>Atualizar Avatar</button>
@@ -385,9 +384,9 @@ function SettingsInformations() {
 
 
             <div className="data">                      
-                    <input type="text" placeholder={userInformations.uf} value={uf} onChange={(e) => setUf(e.target.value)} disabled/>
-                    <input type="text" placeholder={userInformations.city} value={city} onChange={(e) => setCity(e.target.value)} disabled/>
-                    <input type="text" placeholder={userInformations.nickname} value={nickname} onChange={(e) => setNickname(e.target.value)}/>
+                    <input type="text" placeholder={user.uf} value={uf} onChange={(e) => setUf(e.target.value)} disabled/>
+                    <input type="text" placeholder={user.city} value={city} onChange={(e) => setCity(e.target.value)} disabled/>
+                    <input type="text" placeholder={user.nickname} value={nickname} onChange={(e) => setNickname(e.target.value)}/>
                     <select value={relationship} onChange={handleRelationship}>
                         <option value="">Status de Relacionamento</option>
                         <option value="Solteir@">Solteir@ </option>
@@ -405,7 +404,7 @@ function SettingsInformations() {
             <label className="label-cover">
                     <span><FiUpload color="#f65" size={25} /></span>
                     <input type="file" accept="image/*" onChange={handleFileCover}/><br />
-                    <img src={coverUrl === null ? userInformations.cover : coverUrl } alt="Avatar"/>
+                    <img src={coverUrl === null ? user.cover : coverUrl } alt="Avatar"/>
                 </label>
               
                 <button onClick={handleUploadCover}>Atualizar Capa</button>

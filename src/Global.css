@@ -5,27 +5,27 @@
 }
 
 :root{
-  --Primary: #8124E2;
+  --Primary: #f57303;
   --Primary3: #8124F2;
   --Primary2: #8124D0;
   --Primary3: #8124C0;
   --Primary5: #8124A0;
-  --Background: #F7F7F7;
-  --Background3: #fbfbfb;
+  --Background: #202020;
   --Background-man: #ececff;
   --Background-woman: #ffecfc;
   --Background-preferences: #ffffec;
-  --Background2: #FEFEFE;
-  --Gray_font1: #828CA9;
-  --Gray_font2: #727376;
+  --Background2: #000000;
+  --Gray_font1: #FFEACF;
+  --Gray_font2: #DFE0DF;
   --Black: #000000;
   --White: #ffffff;
-  --Button: #0095d3;
+  --Button: #FE8B00;
   --Gray-Border: #BFC4D3;
-  --Delete:#de0053;
-  --Foursome1:#ae009d;
+  --Delete:#d01616;
+  --Foursome1:#FD5D5C;
   --Foursome2:#de0053;
   --Foursome3:#ffc200;
+
 }
 
 html {
@@ -41,12 +41,11 @@ html {
 
 body {
   -webkit-font-smoothing: antialiased;
-  font-family: 'Raleway', sans-serif;
-  background: var(--Background2);
+  background: var(--Background);
 }
 
 .container {
-    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+  background: var(--Black);
   width: 100%;
   height: 100%;
   display: flex;
@@ -55,33 +54,29 @@ body {
 }
 
 .content {
-    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+  background: var(--Black);
   width: 100%;
     height: 100%;
     display: flex;
 
 }
-.content-Login1 {
-    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
-  width: 100vw;
-  height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
 .content-Login {
-    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+  background: var(--Black);
   width: 100vw;
-  height: 100%;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+
+}
+.content-SignUp {
+  background: var(--Black);
+  width: 100vw;
+    height: 100vh;
+    display: flex;
+
 }
 
 body, input, textarea, button {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-weight: 400;
   
   
@@ -108,177 +103,6 @@ body, input, textarea, button :focus{
     padding: 10px;
   }
   input, textarea {
-    color: var(--Primary);
-  }
-
-h1, h2, h3, h4, h5, h6, strong {
-  font-weight: 400;
-}
-
-p {
-  font-size: 12px;
-}
-
-button {
-  cursor: pointer;
-}
-
-
-
-.react-modal-overlay {
-  background-color: rgba(0,0,0,0.5);
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.react-modal-overlay:focus{
-  outline: none;
-  }
-
-.react-modal-content {
-  width: 100%;
-  max-width: 576px;
-  background-color: var(--White);
-  padding: 20px 0;
-  position: relative;
-  border-radius: 8px;
-  border: none;
-}
-
-.react-modal-content:focus{
-  outline: none;
-  }
-
-.react-modal-button {
-  width: 15px;
-  height: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color:var(--White);
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 15px;
-  border: none;
-}
-
-@media(max-width: 900px) {
-  .container {
-      background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-
-
-
-
-
-
-/* ------------------------------------- Novo DOC ------------------- */
-
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root{
-  --Primary: #8124E2;
-  --Background: #121212;
-  --Background-man: #ececff;
-  --Background-woman: #ffecfc;
-  --Background-preferences: #ffffec;
-  --Background2: #000000;
-  --Gray_font1: #828CA9;
-  --Gray_font2: #727376;
-  --Black: #000000;
-  --White: #ffffff;
-  --Button: #0095D3;
-  --Gray-Border: #BFC4D3;
-  --Delete:#d01616;
-}
-
-html {
-  @media (max-width: 1080px) {
-    font-size: 93.75%;
-    
-    @media (max-width: 720px) {
-      font-size: 87.5%;
-    }
-  }
-  
-}
-
-body {
-  -webkit-font-smoothing: antialiased;
-  background: var(--Black);
-}
-
-.container {
-    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.content {
-    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
-  width: 100%;
-    height: 100%;
-    display: flex;
-
-}
-.content-Login {
-    background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
-  width: 100vw;
-    height: 100vh;
-    display: flex;
-
-}
-
-body, input, textarea, button {
-  font-family: 'Ubuntu', sans-serif;
-  font-weight: 400;
-  
-  
-}
-body, input, textarea, button :focus{
-  outline: none;
-  }
-
-  body::-webkit-scrollbar {
-    width: 12px;              
-  /* }
-  
-  body::-webkit-scrollbar-track {
-    background: var(--Background2);  
-  }
-  
-  body::-webkit-scrollbar-thumb {
-    background-color: var(--Background-man);    
-    border-radius: 20px;      
-    border: 3px solid var(--Background2);  
-  }
-
-  textarea {
-    padding: 10px;
-  }
-  input, textarea {
 
     color: var(--Primary);
   }
@@ -314,12 +138,14 @@ button {
 
 .react-modal-content {
   width: 100%;
-  max-width: 576px;
-  background-color: var(--White);
+  max-width: 700px;
+  height: 500px;
+  background-color: var(--Background);
   padding: 20px 0;
   position: relative;
   border-radius: 8px;
   border: none;
+  z-index: 99;
 }
 
 .react-modal-content:focus{
@@ -342,12 +168,12 @@ button {
 
 @media(max-width: 900px) {
   .container {
-      background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
+    background: var(--Primary);
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-} 
- */
+}
+

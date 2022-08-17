@@ -7,17 +7,15 @@ import './newReply.css'
 function NewReply({idComment, username}) {
     const {newReply} = useContext(AuthContext);
 
-    const Local = localStorage.getItem("foursome");
+    const Local = localStorage.getItem("forpride");
     const userData = JSON.parse(Local);
-    const LocalInformation = localStorage.getItem("informations-foursome");
-    const userInformation = JSON.parse(LocalInformation);
     const [textComment, setTextComment] = useState("");
 
     function handleComment() {
         if(textComment === "") {
             return
         }
-        newReply({text: textComment, idComment: idComment, idAccount: userData.id, avatar:userInformation.avatar, nickname: userInformation.nickname, username: userData.username})
+        newReply({text: textComment, idComment: idComment, idAccount: userData.id, avatar:userData.avatar, nickname: userData.nickname, username: userData.username})
         setTextComment("");
         }
 

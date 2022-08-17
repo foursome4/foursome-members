@@ -14,7 +14,7 @@ function Recuperation() {
   const navigate = useNavigate();
 
   useEffect(() => {
-      if(localStorage.getItem("foursome") !== null) {
+      if(localStorage.getItem("forpride") !== null) {
         navigate("/loader")
       }
     },[navigate])

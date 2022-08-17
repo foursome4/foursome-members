@@ -7,6 +7,7 @@
     padding: 10px 5px;
     margin-top: 20px;
     height: 100%;
+    background-color: var(--background);
 }
 .post .counter {
     width: 100%;
@@ -104,10 +105,10 @@
 .post .post-data .post-type .inputs textarea {
     width: 100%;
     height: 80px;
-    border: 1px solid var(--Gray_font1);
     border-radius: 20px;
     resize: none;
-    color: var(--Gray_font2);
+    margin-right: 10px;
+    background-color: var(--Background);
 }
 
 .post .post-data .post-type button {
@@ -132,6 +133,27 @@
     align-items: center;
     justify-content: center;
     margin-top: 10px;
+}
+.post .post-data .post-type .select {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.post .post-data .post-type .select select {
+    border: none;
+    padding: 5px 10px;
+    background-image: linear-gradient(to right bottom, #fe8b00, #f57303, #ea590a, #de3d11, #d01616);
+    color: var(--White);
+    border-radius: 6px;
+}
+
+.post .post-data .post-type .select h6 {
+    color: var(--White);
+    margin: 0 5px;
 }
 
 .post .post-data .post-type .buttons button {
@@ -179,7 +201,7 @@
     width: 100%;
     border: none;
     border-bottom: 1px solid var(--Gray-Border);
-    background-color: var(--Background2);
+    background-color: var(--Background);
 }
 
 .post .posts-feed .buttons .selected {
