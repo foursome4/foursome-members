@@ -33,9 +33,16 @@ function AuthProvider({children}) {
 
         await api.post('/accounts', data).then(() => {
             toast.info(`Cadastro criado com sucesso!`);
+<<<<<<< HEAD
 
             createSuccess(email);
             redirectToPageSucess()
+=======
+           
+            createInformationsAccount({
+                idAccount:id, avatar, cover, relationship, nickname, city, uf, país, email, type, username
+                })
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
         }).catch(error => {
             console.log("Cadastro não foi realizado: "+ error);
@@ -64,7 +71,11 @@ function AuthProvider({children}) {
                 }
 
 
+<<<<<<< HEAD
                 localStorage.setItem("forpride", JSON.stringify(result.data));
+=======
+                localStorage.setItem("foursome", JSON.stringify(result.data));
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                
                 verificateAccountLogin()
                 
@@ -88,9 +99,15 @@ function AuthProvider({children}) {
                     return
                 }
  
+<<<<<<< HEAD
                 localStorage.setItem("forpride", JSON.stringify(result.data));
 
                 verificateAccountLogin()
+=======
+                localStorage.setItem("foursome", JSON.stringify(result.data));
+               
+                findInformationsAccount(result.data.id)
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
@@ -124,6 +141,7 @@ function AuthProvider({children}) {
         
     // }
 
+<<<<<<< HEAD
     // async function findCharacteriticsAccount(id) {
     //     const Local = localStorage.getItem("forpride");
     //     const user = JSON.parse(Local);
@@ -165,12 +183,175 @@ function AuthProvider({children}) {
                 return
             }else if(user.status === "Aproved") {
                 verifyPaymentAccount()
+=======
+    async function findCharacteriticsAccount(id) {
+        const Local = localStorage.getItem("foursome");
+        const user = JSON.parse(Local);
+        await api.get(`/characteristics/${id}`)
+        .then((res) => {
+            if(res.data.length === 0) {
+              
+                window.open(`/characteristcs/${user.id}/${user.email}/${user.type}/${user.username}`,"_self")
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 return
             }
         
     }
     async function verifyPaymentAccount() {
         const Local = localStorage.getItem("forpride");
+        const user = JSON.parse(Local);
+
+<<<<<<< HEAD
+        const payment = await api.get(`/payments/${user.id}`);
+
+        console.log(payment.data)
+        console.log(payment.data.lenght)
+        console.log(payment.data.length)
+
+        if(payment.data.length === 0) {
+            testPeriodVerify(user.id, user.username);
+            return;
+        }
+
+        var d1 = new Date(payment.data[0].created_at);
+        var d2 = new Date();
+        var diff = moment(d2,"DD/MM/YYYY HH:mm:ss").diff(moment(d1,"DD/MM/YYYY HH:mm:ss"));
+        var valor = moment.duration(diff).asDays();
+        var dias = Math.round(valor, 1);
+        console.log(dias);
+        console.log(parseInt(payment.data[0].period));
+
+        if(dias > parseInt(payment.data[0].period)) {
+            const data = {status: "suspense"}
+            await api.patch(`accounts/updatestatus/${user.id}`, data).then((res) => {
+                console.log(`status atualizado`);
+              logout(user.id);
+            }).catch((error) => {
+                console.log(error)
+            })
+        } else {
+            const data = {status: payment.data[0].referencePlain === "Premium" ? "premium" : "essencial"}
+            await api.patch(`accounts/updatestatus/${user.id}`, data).then((res) => {
+                console.log(`status atualizado`);
+                logout(user.id);
+            }).catch((error) => {
+                console.log(error)
+            })
+        }
+
+
+       // new Date(payment.data[0].created_at) > new Date(payment.data[0].created_at) + 30 ? "Vencido" : "Pode acessar";
+    }
+
+    async function testPeriodVerify(idAccount, username) {
+        const periodtest = await api.get(`periodtest/${idAccount}`);
+        console.log(periodtest.data)
+        console.log(periodtest.data.lenght)
+        console.log(periodtest.data.length)
+        console.log(`Verificando teste`)
+
+        if(periodtest.data.length === 0) {
+            const data = {
+                stringDate: `${new Date().getDate()}/${new Date().getMonth() +1}/${new Date().getFullYear()} - ${new Date().getHours().lenght === 1 ? <> {"0" + new Date().getHours()}</> : new Date().getHours()}:${new Date().getMinutes().lenght === 1 ? <> {"0" + new Date().getMinutes()}</> : new Date().getMinutes()  }`,
+                idAccount,
+                username
+            }
+            await api.post(`periodtest/`, data).then((res) => {
+                console.log(`liberando teste`);
+              window.open("/periodtest","_self");
+            }).catch((error) => {
+                console.log(`Periodo de teste já liberado`)
+            })
+            return;
+        }
+
+       const periodInitial = `${new Date(periodtest.data[0].created_at).getDate()}/${new Date(periodtest.data[0].created_at).getMonth() +1}/${new Date(periodtest.data[0].created_at).getFullYear()} - ${new Date(periodtest.data[0].created_at).getHours()}:${new Date(periodtest.data[0].created_at).getMinutes() +15}`
+        const actualDate = `${new Date().getDate()}/${new Date().getMonth() +1}/${new Date().getFullYear()} - ${new Date().getHours()}:${new Date().getMinutes()}`
+        if(actualDate > periodInitial) {
+            toast.success(`Periodo de teste finalizado`);
+            const data = {status: "suspense"}
+            await api.patch(`accounts/updatestatus/${idAccount}`, data).then((res) => {
+                console.log(`status atualizado`);
+                window.open("/activeplain","_self");
+            }).catch((error) => {
+                console.log(error)
+            })
+  
+        } else {
+            toast.success(`Você ainda tem tempo. Aproveite`)
+           window.open("/feed","_self");
+        }
+    }
+
+     function verityTimesPeiodTest(idAccount) {
+        setInterval(async function () { 
+            const periodtest = await api.get(`periodtest/${idAccount}`);
+            console.log(periodtest)
+            
+            const periodInitial = `${new Date(periodtest.data[0].created_at).getDate()}/${new Date(periodtest.data[0].created_at).getMonth() +1}/${new Date(periodtest.data[0].created_at).getFullYear()} - ${new Date(periodtest.data[0].created_at).getHours()}:${new Date(periodtest.data[0].created_at).getMinutes() +15}`
+            const actualDate = `${new Date().getDate()}/${new Date().getMonth() +1}/${new Date().getFullYear()} - ${new Date().getHours()}:${new Date().getMinutes()}`
+
+            if(actualDate > periodInitial) {
+                toast.success(`Periodo de teste finalizado`);
+                console.log(periodInitial)
+                console.log(actualDate)
+                const data = {status: "suspense"}
+                await api.patch(`accounts/updatestatus/${idAccount}`, data).then((res) => {
+                    console.log(`status atualizado`);
+                  logout(idAccount);
+                }).catch((error) => {
+                    console.log(error)
+                    toast.success(`Periodo de teste finalizado`);
+                    console.log(periodInitial)
+                    console.log(actualDate)
+                })
+            } else {
+                console.log("Teste")
+            }
+         }, 60000);
+        
+=======
+    async function findPreferencesAccount(id) {
+        const Local = localStorage.getItem("foursome");
+        const user = JSON.parse(Local);
+        await api.get(`/preferences/${id}`)
+        .then((res) => {
+            if(res.data.length === 0) {      
+                window.open(`/preferences/${user.id}/${user.email}/${user.username}`,"_self");
+                return
+            }
+            localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
+
+            if(user.status === "pending") {
+                toast.info(`Olá, ${user.username}. Sua conta está em análise. E em até 24h será liberada!`);
+                return
+            } else if(user.status === "suspense") {
+                window.open("/suspenseaccount","_self");
+                return
+            }else  if(user.status  === "lifetime" || user.país === "Portugal") {
+                window.open("/feed","_self");
+                return
+            }else
+            if(user.status === "essencial") {
+                vefiryCompleteAccount()
+                return
+            }else if(user.status === "premium") {
+                vefiryCompleteAccount()
+                return
+            }else if(user.status === "Aproved" || user.status  === "active") {
+                verifyPaymentAccount()
+                return
+            }
+           
+           
+        }).catch(error => {
+            console.log("Erro ao buscar dados" + error)
+        })
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
+        
+    }
+    async function verifyPaymentAccount() {
+        const Local = localStorage.getItem("foursome");
         const user = JSON.parse(Local);
 
         const payment = await api.get(`/payments/${user.id}`);
@@ -284,6 +465,29 @@ function AuthProvider({children}) {
         
     }
 
+
+    function vefiryCompleteAccount() {
+        const Local = localStorage.getItem("foursome");
+        const user = JSON.parse(Local);
+        const Local2 = localStorage.getItem("informations-foursome");
+        const userInformations = JSON.parse(Local2);
+        if(user.latitude === undefined ||
+            user.longitude === undefined ||
+            user.latitude === null ||
+            user.longitude === null ||
+            user.latitude === false ||
+            user.longitude === false ||
+            user.país === undefined ||
+            user.país === null ||
+            user.país === false ||
+            userInformations.uf.length > 2
+            ) {
+            window.open("/update", "_self");
+         }
+         else {
+             window.open("/feed", "_self");
+         }
+    }
 
     function vefiryCompleteAccount() {
         const Local = localStorage.getItem("forpride");
@@ -468,8 +672,11 @@ async function deleteConversation(room) {
 
     })
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 //Fim deletando conta
 
 

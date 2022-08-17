@@ -7,7 +7,11 @@ import { DateFormatUser } from '../DateFormatUser/DateFormatUser';
 import './usersPosts.css'
 
 function UsersPostsComponent({idAccount, username, date, keyId, role, type}) {
+<<<<<<< HEAD
     const Local = localStorage.getItem("forpride");
+=======
+    const Local = localStorage.getItem("foursome");
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     const userData = JSON.parse(Local);
 
     const profile = "https://firebasestorage.googleapis.com/v0/b/foursome4-b925c.appspot.com/o/avatar.png?alt=media&token=f3b1f0bc-3885-4296-8363-ec1c3d43e240"
@@ -34,6 +38,16 @@ function UsersPostsComponent({idAccount, username, date, keyId, role, type}) {
         }
 
         loadInformations()
+        async function loadStatus() {
+            await api.get(`accounts/filter/${idAccount}`).then((result) => {
+                setStatus(result.data[0].status)
+            }).catch((error) => {
+                console.log(error)
+                console.log("Erro aos buscar informações")
+            })
+        }
+
+        loadStatus()
     }, [idAccount])
 
     return (

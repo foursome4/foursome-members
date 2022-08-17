@@ -79,6 +79,58 @@
     justify-content: center;
 
 }
+<<<<<<< HEAD
+=======
+
+.content-Login1 .signIn .form  h5 {
+    text-align: left;
+    color: var(--White);
+    font-weight: 700;
+}
+
+
+.content-Login1 .signIn .form  .infoavatar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    background-color: var(--Foursome1);
+    padding: 10px;
+    border-radius: 6px;
+    color: var(--White);
+    width: 70%;
+}
+
+.content-Login1 .signIn .form  .infoavatar h5 {
+    text-align: left;
+}
+.content-Login1 .signIn .form  .infoavatar h6 {
+    text-align: left;
+}
+
+.content-Login1 .signIn .form .register {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+
+}
+.content-Login1 .signIn .form .register h4 {
+    color: var(--White);
+    font-size:14px;
+    border-radius: 6px;
+    padding:5px 10px;
+}
+.content-Login1 .signIn .form .register h4 a {
+    color: var(--White);
+    text-decoration: none;
+}
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
 
 .content-Login .bloco2 .signIn .form input:focus {
@@ -290,8 +342,16 @@ margin-top: 10px;
             .content-Login .bloco2 .signIn .form {
                 width: 70%;
             }
+<<<<<<< HEAD
         
             .content-Login .bloco2 .signIn .form input {
+=======
+            .content-Login1 .signIn .form  .infoavatar {
+                width: 100%;
+            }
+            
+            .content-Login1 .signIn .form input {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 width: 100%;
             }
 

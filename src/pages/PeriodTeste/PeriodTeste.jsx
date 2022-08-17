@@ -6,7 +6,11 @@ import { AuthContext } from '../../contexts/Auth';
 
 function PeriodTeste() {
     const {logout} = useContext(AuthContext);
+<<<<<<< HEAD
     const Local = localStorage.getItem("forpride");
+=======
+    const Local = localStorage.getItem("foursome");
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     const user = JSON.parse(Local);
 
     function handleRedirectTo(e) {
@@ -35,7 +39,11 @@ function PeriodTeste() {
                     <h2>Bem vindo a Foursome.</h2>
                     <br />
                     <h3>Você recebeu um teste de 15 minutos para utilizar o nosso site sem limites,<br />
+<<<<<<< HEAD
                     após este período seu acesso será bloqueado e você deverá assinar um de nossos planos para continuar a utilizar</h3>
+=======
+                    após este período seu acesso reduzido e você deverá assinar um de nossos planos para continuar a utilizar todas as funcionalidades do site</h3>
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                     <br />
                     <br />
                     <br />

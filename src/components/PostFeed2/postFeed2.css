@@ -54,6 +54,7 @@
     padding: 0 10px;
 }
 
+<<<<<<< HEAD
 .postFeed2 .postFeed2-data .postFeed2-type  .select {
     width: 100%;
     display: flex;
@@ -76,6 +77,8 @@
     margin: 0 5px;
 }
 
+=======
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 .postFeed2 .postFeed2-data .postFeed2-type .inputs {
     width: 100%;
     display: flex;

@@ -14,7 +14,11 @@ import apiGoogleReverse from '../../services/apiGoogleReverse'
 function Radar2() {
     const {logout, updateUserOnline, socketDataLocation, verityTimesPeiodTest} = useContext(AuthContext);
 
+<<<<<<< HEAD
     const Local = localStorage.getItem("forpride");
+=======
+    const Local = localStorage.getItem("foursome");
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     const userData = JSON.parse(Local);
 
     const [load, setLoad] = useState(false)
@@ -33,7 +37,10 @@ function Radar2() {
     const [qtd, setqtd] = useState(35)
     const [onlineUsers, setOnlineUsers] = useState(true)
     const [filtro, setFiltro] = useState("false")
+<<<<<<< HEAD
     const [ff, setFf] = useState(false)
+=======
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
     const [minhaLatitude, setMinhaLatitude] = useState(0)
     const [minhaLongitude, setMinhaLongitude] = useState(0)
@@ -57,6 +64,7 @@ function Radar2() {
         setMinhaLongitude(long100);
         console.log(lat100);
         console.log(long100);
+<<<<<<< HEAD
 
         if(ff === true) {
             loadUsersONline(latInitial, longInitial);
@@ -88,13 +96,20 @@ function Radar2() {
     }
 
 
+=======
+      }
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
         
   function error() {
     console.log('Unable to retrieve your location');
   }
 
       getLocation()
+<<<<<<< HEAD
 },[ff])
+=======
+},[])
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
 
     useEffect(() => {
@@ -143,6 +158,54 @@ function Radar2() {
        }, []);
 
 
+<<<<<<< HEAD
+=======
+    useEffect(() => {
+        async function loadUsersONline() {
+            console.log("online")
+            console.log("minhaLatitude")
+            console.log(latInitial)
+            console.log("minhaLongitude")
+            console.log(longInitial)
+        await api.get(`/online/distance/${latInitial}/${longInitial}`).then((result) => {
+            setDistancia(result.data)
+            console.log("Online")
+            console.log(result.data)
+        }).catch((err) => {
+            console.log(err)
+        });
+    
+        }
+        loadUsersONline();  
+     }, [])
+
+
+     useEffect(() => {   
+        async function loadUsersOffline() {
+            console.log("Offline")
+            console.log("minhaLatitude")
+            console.log(latInitial)
+            console.log("minhaLongitude")
+            console.log(longInitial)
+        await api.get(`/accounts/distance/${latInitial}/${longInitial}`).then((result) => {
+            setUserOffline(result.data)
+            console.log("Offline")
+            console.log(result.data)
+        }).catch((err) => {
+            console.log(err)
+        });
+    }
+        loadUsersOffline();  
+     }, [])
+
+
+     const newUsers = distancia.concat(userOffline);
+
+     console.log("newUsers")
+     console.log(newUsers)
+    
+
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
      if(latInitial === 0 && longInitial === 0) {
          socketDataLocation();
      }
@@ -201,12 +264,18 @@ function Radar2() {
     function handleSetectTMyEmoji(e) {
         setMyEmojiSelect(e.target.value)
       }
+<<<<<<< HEAD
     function handleSelectFF(e) {
         setFf(e.target.value)
       }
     
  if(distancia) {
     distancia.sort(function(a,b) {
+=======
+    
+ if(newUsers) {
+    newUsers.sort(function(a,b) {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
         if(a.distanceKm < b.distanceKm ) {
             return -1
         } else {
@@ -253,6 +322,7 @@ function handleTop(e) {
     })
 }
 
+<<<<<<< HEAD
 const searchAll = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers ));
 
 const searchDistance= distancia.filter((distanciaUser) => distanciaUser.distanceKm <= range);
@@ -273,6 +343,28 @@ const RangeTypeOnline = distancia.filter((distanciaUser) => (distanciaUser.type 
 const EmojiTypeOnline = distancia.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.online === onlineUsers ));
 
 const searchEmojiOnline= distancia.filter((distanciaUser) => distanciaUser.emoji === emojiSelect && distanciaUser.online === onlineUsers );
+=======
+const searchAll = newUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers ));
+
+const searchDistance= newUsers.filter((distanciaUser) => distanciaUser.distanceKm <= range);
+const searchType= newUsers.filter((distanciaUser) =>  distanciaUser.type === type);
+const searchEmoji= newUsers.filter((distanciaUser) => distanciaUser.emoji === emojiSelect );
+const filterOnline = newUsers.filter((distanciaUser) => distanciaUser.online === onlineUsers);
+
+const searchTypeRange = newUsers.filter((distanciaUser) => (distanciaUser.type === type && distanciaUser.distanceKm <= range));
+const searchEmojiRange = newUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.distanceKm <= range));
+const filterOnlineRange = newUsers.filter((distanciaUser) => distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers);
+
+const searchEmojiType = newUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type) );
+const searchTypeOnline= newUsers.filter((distanciaUser) =>  distanciaUser.type === type && distanciaUser.online === onlineUsers);
+
+const RangeTypeEmoji = newUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.distanceKm <= range ));
+const RangeEmojiOnline = newUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers ));
+const RangeTypeOnline = newUsers.filter((distanciaUser) => (distanciaUser.type === type && distanciaUser.distanceKm <= range && distanciaUser.online === onlineUsers ));
+const EmojiTypeOnline = newUsers.filter((distanciaUser) => (distanciaUser.emoji === emojiSelect && distanciaUser.type === type && distanciaUser.online === onlineUsers ));
+
+const searchEmojiOnline= newUsers.filter((distanciaUser) => distanciaUser.emoji === emojiSelect && distanciaUser.online === onlineUsers );
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
 console.log(filterOnline)
 
@@ -320,11 +412,19 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") && (onlineUs
         <div className="content">
      <ToolbarLeftSlim />
      <BarBottomMenu />
+<<<<<<< HEAD
             <div className="main2">
                 <TopBar />
                 <div className="aside2">
                     <div className="radar2">
                             <div className="radar2-selected">
+=======
+            <div className="main">
+                <TopBar />
+                <div className="aside">
+                    <div className="radar">
+                            <div className="radar-selected">
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                                 <button className="selected">Radar</button>
                             </div>
 
@@ -363,7 +463,11 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") && (onlineUs
 
 {filtro === "false" ? "" :
 <div className="filtroGeral">
+<<<<<<< HEAD
                             <div className="radar2-range">
+=======
+                            <div className="radar-range">
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                                 <h4>0 Km</h4>
                                 <input type="range" min={0} max={10000} value={range} onChange={(e) => setRange(e.target.value)}/>
                                 <h4>{range} km</h4>
@@ -408,12 +512,20 @@ const filter = (range > 0) && (emojiSelect === "") && (type === "") && (onlineUs
             </div>
 
                             
+<<<<<<< HEAD
                             <div className="radar2-all">
+=======
+                            <div className="radar-all">
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                                 {limitData.map((user) => {
                                     return (
                                user.idAccount === userData.id ? "":
                                user.invisible === true ? "" :
+<<<<<<< HEAD
                                <div className="radar2-unic" key={user.id}>
+=======
+                               <div className="radar-unic" key={user.id}>
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                                    <div className="img">
                                    <a  href={user.idAccount === userData.id ? `/profile` : `/profile-friend/${user.idAccount}`} target="_blank">
                                    <img 

@@ -36,9 +36,11 @@ function ListReactionsComponent({idPost, idAccount}) {
 
     return (
         <div className="reactionsList">
+            {userData.status === "suspense" ? "" :
               <button className={myLike.length === 0 ? "" :"selected"} onClick={myLike.length === 0 ? handleLikePost : handleDeleteLike}>
                   <FaSmileWink />
                   </button>
+            }
         </div>
     )
 }

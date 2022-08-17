@@ -10,8 +10,15 @@ import api from '../../services/api'
 
 function PostFeed2() {
     const {newPost, logout} = useContext(AuthContext)
+<<<<<<< HEAD
     const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
+=======
+    const Local = localStorage.getItem("foursome");
+    const user = JSON.parse(Local);
+    const LocalInformation = localStorage.getItem("informations-foursome");
+    const userInformation = JSON.parse(LocalInformation);
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
     const id = user.id
 
@@ -29,7 +36,10 @@ function PostFeed2() {
     const [videos, setVideos] = useState([])
     const [photos, setPhotos] = useState([]);
     const [area,setArea] = useState(false);
+<<<<<<< HEAD
     const [content, setContent] = useState("");
+=======
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
     useEffect(() => {
         async function searchAccount() {
@@ -213,7 +223,11 @@ function PostFeed2() {
                 idAccount: user.id,
                 link: photoUrlAvatar !== null ? photoUrlAvatar : "",
                 username: user.username,
+<<<<<<< HEAD
                 typeAccount: user.sex,
+=======
+                typeAccount: user.type,
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 nameGroup: "",
                 nameForum: "",
                 nameEvent: "",
@@ -225,7 +239,11 @@ function PostFeed2() {
                 iidPatrono: null,
                 ufAccount:user.país === "Portugal" ? user.país : user.uf,
                 cityAccount: user.city,
+<<<<<<< HEAD
                 content
+=======
+                typeAccount: user.type,
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
             })
             setDataPhoto(true)
             setPost("text")
@@ -244,7 +262,11 @@ function PostFeed2() {
                     idAccount: user.id,
                     link: videoUrl !== null ? videoUrl : "",
                     username: user.username,
+<<<<<<< HEAD
                     typeAccount: user.sex,
+=======
+                    typeAccount: user.type,
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                     nameGroup: "",
                     nameForum: "",
                     nameEvent: "",
@@ -256,7 +278,11 @@ function PostFeed2() {
                     iidPatrono: null,
                     ufAccount:user.país === "Portugal" ? user.país : user.uf,
                     cityAccount: user.city,
+<<<<<<< HEAD
                     content
+=======
+                    typeAccount: user.type,
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 })
                 setDataVideo(true)
                 setPost("text")
@@ -268,7 +294,11 @@ function PostFeed2() {
                         idAccount: user.id,
                         link: "",
                         username: user.username,
+<<<<<<< HEAD
                         typeAccount: user.sex,
+=======
+                        typeAccount: user.type,
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                         nameGroup: "",
                         nameForum: "",
                         nameEvent: "",
@@ -280,7 +310,11 @@ function PostFeed2() {
                         iidPatrono: null,
                         ufAccount:user.país === "Portugal" ? user.país : user.uf,
                         cityAccount: user.city,
+<<<<<<< HEAD
                         content
+=======
+                        typeAccount: user.type,
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                     })
                     setPost("text")
                     reset()
@@ -325,16 +359,23 @@ function PostFeed2() {
 
     }
 
+<<<<<<< HEAD
     function handleSelectContent(e) {
         setContent(e.target.value);
       }
 
+=======
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
     return (
         <div className="postFeed2">
              <div className="postFeed2-data">
             <div className="avatar">
+<<<<<<< HEAD
             <img src={user.avatar} alt="" />
+=======
+            <img src={userInformation.avatar} alt="" />
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
             </div>
             <div className="postFeed2-type">
                 {area === false ? "" :
@@ -389,6 +430,7 @@ function PostFeed2() {
                   {dailyPost.length === 1 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
                   {dailyPost.length === 1 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
                 </div>
+<<<<<<< HEAD
 
                 
                 <div className="select">
@@ -401,6 +443,8 @@ function PostFeed2() {
                         <h6>{content === "livre" ? "Seu conteúdo será mostrado a todos"  : content === "sensible" ? "Seu conteúdo receberá uma proteção: Conteúdo sensível, violência ou +18" : "Escolha um tipo de conteúdo. Conteúdo diferente do selecionado será excluído"}</h6>
                     </div>
                 </div>
+=======
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
             </div>      
             </div>
             <div className="counter">

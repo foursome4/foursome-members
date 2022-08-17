@@ -58,10 +58,29 @@ function SignIn() {
       <div className="signIn">
         <div className="form">
           <input type="text" placeholder="E-mail ou Nome de usuário" value={login} onChange={(e) => setLogin(e.target.value)}/>
+<<<<<<< HEAD
+=======
+          {never1 === true ? <h5>Favor remover os espaços vazios no campo login</h5> : ""}
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
           <div className="inputPassword">
           <input type={passwordView === false ? "password" : "text" } placeholder="Senha" value={password} onChange={(e) => setPassword(e.target.value)}/>
           <button className='password' onClick={handlePasswordView}>{passwordView === false ? <FiEye /> : <FiEyeOff /> } </button>
           </div>
+<<<<<<< HEAD
+=======
+
+          <div className="infoavatar">
+                            <h5><b>Verifique seu e-mail e senha!</b></h5>
+                            <h6><b>Certifique-se que está escrevendo conforme cadastrado:</b> </h6>
+                            <h6>- 70% dos erros de login são por e-mail e senha com letras maiúsculas incorratente.</h6>
+                        </div>
+
+
+          <div className="buttons">
+            <button onClick={handleCreateAccount}> Entrar </button>
+
+          </div>
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
           <div className="links">
           <a href="/recuperation"><p> Esqueceu a senha?</p></a>
           </div>

@@ -7,16 +7,38 @@ import {IoOptionsOutline} from 'react-icons/io5'
 import api from '../../services/api';
 
 function FeedPostComponent2() {
+<<<<<<< HEAD
     const Local = localStorage.getItem("forpride");
+=======
+    const Local2 = localStorage.getItem("preferences-foursome");
+    const userPreferences = JSON.parse(Local2);
+    console.log(userPreferences);
+    const Local = localStorage.getItem("foursome");
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     const user = JSON.parse(Local);
     const [followers, setFollowers] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
 
       const perPage = 5;
 
+<<<<<<< HEAD
       const data2 = user.preferenceOption
 
     const {data} = useFetchPost(`/posts/difference/${user.uf}/?page=${currentPage}&limit=${perPage}`, data2)
+=======
+      const data2 = {
+        man: userPreferences.men,
+        woman: userPreferences.woman,
+        couple: userPreferences.couple,
+        trisal: userPreferences.trisal,
+        transvestites: userPreferences.transvestites,
+        transsexuals: userPreferences.transsexuals,
+        groups: userPreferences.groups
+    }
+
+    const {data} = useFetchPost(`/posts/difference/${user.uf}/?page=${currentPage}&limit=${perPage}`, data2);
+     //const {data} = useFetchPost(`/posts/qtd/${user.uf}/?page=${currentPage}&limit=${perPage}`, data2);
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
      if(data){
         console.log("data")
@@ -41,6 +63,32 @@ function FeedPostComponent2() {
     }, []);
 
 
+<<<<<<< HEAD
+=======
+    // useEffect(() => {
+    //     async function loadPosts() {
+    //      const data = {
+    //          man: userPreferences.men,
+    //          woman: userPreferences.woman,
+    //          couple: userPreferences.couple,
+    //          trisal: userPreferences.trisal,
+    //          transvestites: userPreferences.transvestites,
+    //          transsexuals: userPreferences.transsexuals,
+    //          groups: userPreferences.groups
+    //      }
+    //      console.log("Preferencias no use Effect");
+    //      console.log(data);
+    //      console.log(user.uf);
+    //     const res = await api.post(`/posts/qtd/${user.uf}/?page=${currentPage}&limit=${perPage}`, data)
+
+    //     console.log("res.data")
+    //     console.log(res.data)
+    //  }
+
+    //  loadPosts()
+    // }, []);
+
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
   if(!followers) {
         return (
@@ -72,7 +120,10 @@ function FeedPostComponent2() {
                                  <ItemFeed idAccount={postsData.idAccount} link={postsData.link}
                                            date={postsData.created_at} text={postsData.text}
                                            type={postsData.type} id={postsData.id}
+<<<<<<< HEAD
                                            typeAccount={postsData.typeAccount}
+=======
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                                            username={postsData.username}
                                            group={postsData.nameGroup}
                                            forum={postsData.nameForum}

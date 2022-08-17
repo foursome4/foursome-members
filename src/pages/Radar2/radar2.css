@@ -12,7 +12,11 @@
 
 
 
+<<<<<<< HEAD
 .content .main2{
+=======
+.content .main{
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -21,7 +25,11 @@
     background-color: var(--Background)
 }
 
+<<<<<<< HEAD
 .content .main2 .messageLoad {
+=======
+.content .main .messageLoad {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 90%;
     display: flex;
     align-items: center;
@@ -34,11 +42,19 @@
     margin-top: 50px;
 }
 
+<<<<<<< HEAD
 .content .main2 .messageLoad h4 {
     color: var(--Gray_font1);
 }
 
 .content .aside2{
+=======
+.content .main .messageLoad h4 {
+    color: var(--Gray_font1);
+}
+
+.content .aside{
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 100%;
     height: 100%;
     display: flex;
@@ -47,7 +63,11 @@
     justify-content: center;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 {
+=======
+.content .aside .radar {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 100%;
     border-right: 2px solid var(--Background);
     display: flex;
@@ -57,7 +77,11 @@
     padding: 0 20px;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .filtroGeral {
+=======
+.content .aside .radar .filtroGeral {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 80%;
     display: flex;
     align-items: center;
@@ -69,11 +93,19 @@
     margin: 10px 0;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 h1 {
     color: var(--Background2);
 }
 
 .content .aside2 .radar2 .radar2-selected {
+=======
+.content .aside .radar h1 {
+    color: var(--Background2);
+}
+
+.content .aside .radar .radar-selected {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 80%;
     display: flex;
     flex-direction: row;
@@ -82,7 +114,11 @@
     padding: 10px 0;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-selected button {
+=======
+.content .aside .radar .radar-selected button {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 100%;
     text-align: left;
     padding: 5px;
@@ -94,7 +130,11 @@
     font-weight: 500;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-selected .selected{
+=======
+.content .aside .radar .radar-selected .selected{
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 100%;
     text-align: left;
     padding: 5px;
@@ -106,7 +146,11 @@
     font-weight: 500;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .filtroGeral .selectFilter {
+=======
+.content .aside .radar .filtroGeral .selectFilter {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 100%;
     display: flex;
     align-items: center;
@@ -117,7 +161,11 @@
     margin-bottom: 20px;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .filtroGeral .selectFilter .onOff {
+=======
+.content .aside .radar .filtroGeral .selectFilter .onOff {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 90%;
     display: flex;
     align-items: center;
@@ -125,7 +173,11 @@
     flex-direction: row;
     padding: 5px;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .filtroGeral .selectFilter .onOff button {
+=======
+.content .aside .radar .filtroGeral .selectFilter .onOff button {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,7 +189,11 @@
     cursor: pointer;
     border-radius:6px;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .filtroGeral .selectFilter .onOff .selected {
+=======
+.content .aside .radar .filtroGeral .selectFilter .onOff .selected {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,7 +208,11 @@
 }
 
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .filtroGeral .selectFilter select {
+=======
+.content .aside .radar .filtroGeral .selectFilter select {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 50%;
     display: flex;
     align-items: center;
@@ -165,7 +225,11 @@
     background-color: var(--Background2);
     border-radius: 6px;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .mySelections {
+=======
+.content .aside .radar .mySelections {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 80%;
     display: flex;
     align-items: center;
@@ -175,7 +239,11 @@
     background-image: linear-gradient(to right, var(--Primary) , var(--Primary2));
     border-radius: 6px;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .mySelections .selections {
+=======
+.content .aside .radar .mySelections .selections {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 50%;
     display: flex;
     align-items: center;
@@ -183,11 +251,19 @@
     flex-direction: row;
     padding: 5px 0;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .mySelections .recolher {
     display: none;
 }
 
 .content .aside2 .radar2 .mySelections .selections select {
+=======
+.content .aside .radar .mySelections .recolher {
+    display: none;
+}
+
+.content .aside .radar .mySelections .selections select {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 50%;
     display: flex;
     align-items: center;
@@ -200,7 +276,11 @@
     background-color: var(--Background2);
     border-radius: 6px;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .mySelections .selections button {
+=======
+.content .aside .radar .mySelections .selections button {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     display: flex;
     align-items: center;
     justify-content: center;
@@ -214,7 +294,11 @@
     cursor: pointer;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .mySelections .text {
+=======
+.content .aside .radar .mySelections .text {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 70%;
     display: flex;
     align-items: center;
@@ -222,7 +306,11 @@
     flex-direction: row;
     padding: 5px 0;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .mySelections .text button {
+=======
+.content .aside .radar .mySelections .text button {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     display: flex;
     align-items: center;
     justify-content: center;
@@ -235,7 +323,11 @@
     border: none;
     cursor: pointer;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .filtroGeral .selectFilter select {
+=======
+.content .aside .radar .filtroGeral .selectFilter select {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 50%;
     display: flex;
     align-items: center;
@@ -250,7 +342,11 @@
 }
 
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .filtroGeral .radar2-range {
+=======
+.content .aside .radar .filtroGeral .radar-range {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 100%;
     display: flex;
     align-items: center;
@@ -260,7 +356,11 @@
 }
 
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .filtroGeral .radar2-range input[type=range] {
+=======
+.content .aside .radar .filtroGeral .radar-range input[type=range] {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 80%;
     border-radius: 20px;
     padding: 10px;
@@ -270,12 +370,20 @@
 
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .filtroGeral .radar2-range h4 {
+=======
+.content .aside .radar .filtroGeral .radar-range h4 {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     color: var(--White);
     font-weight: 600;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-search button {
+=======
+.content .aside .radar .radar-search button {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     display: flex;
     align-items: center;
     justify-content: center;
@@ -287,7 +395,11 @@
     margin: 10px;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .button {
+=======
+.content .aside .radar .button {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     display: flex;
     align-items: center;
     justify-content: center;
@@ -295,7 +407,11 @@
     width: 100%;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .button button{
+=======
+.content .aside .radar .button button{
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     display: flex;
     align-items: center;
     justify-content: center;
@@ -308,7 +424,11 @@
     font-weight: bold;
     margin: 5px 5px 70px 5px;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .top {
+=======
+.content .aside .radar .top {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     display: flex;
     align-items: center;
     justify-content: center;
@@ -325,7 +445,11 @@
     right: 0;
     bottom: 100px;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all {
+=======
+.content .aside .radar .radar-all {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 80%;
     display: flex;
     flex-direction: row;
@@ -336,7 +460,11 @@
     margin-bottom: 30px;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .filterActive{
+=======
+.content .aside .radar .filterActive{
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -345,7 +473,11 @@
     height: 50px;  
     margin: 10px 0;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .filterActive button {
+=======
+.content .aside .radar .filterActive button {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 40px;  
     height: 40px; 
     display: flex;
@@ -358,11 +490,19 @@
     color: var(--White);
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .filterActive button svg {
     font-size: 20px;
 }
 
 .content .aside2 .radar2 .radar2-all .radar2-unic {
+=======
+.content .aside .radar .filterActive button svg {
+    font-size: 20px;
+}
+
+.content .aside .radar .radar-all .radar-unic {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 90px;
     display: flex;
     flex-direction: column;
@@ -372,12 +512,20 @@
     margin: 5px 0
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic h4 {
+=======
+.content .aside .radar .radar-all .radar-unic h4 {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     margin-top:-55px;
     margin-left:-5px;
     position: absolute;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic h5 svg {
+=======
+.content .aside .radar .radar-all .radar-unic h5 svg {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     color: rgb(110, 218, 2);
     font-size: 10px;
     border: 1px solid var(--Background2);
@@ -388,19 +536,28 @@
     position: absolute;
   }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic .img {
+=======
+.content .aside .radar .radar-all .radar-unic .img {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 50px;
     height: 50px;
     object-fit: cover;
     border-radius: 50%
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic .img img {
+=======
+.content .aside .radar .radar-all .radar-unic .img img {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 50px;
     height: 50px;
     object-fit: cover;
     border-radius: 50%
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic .cover {
     width: 260px;
 }
@@ -414,6 +571,21 @@
 }
 
 .content .aside2 .radar2 .radar2-all .radar2-unic button {
+=======
+.content .aside .radar .radar-all .radar-unic .cover {
+    width: 260px;
+}
+
+.content .aside .radar .radar-all .radar-unic .profile {
+    width: 80px;
+}
+
+.content .aside .radar .radar-all .radar-unic .members {
+    width: 120px;
+}
+
+.content .aside .radar .radar-all .radar-unic button {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     border: 1px solid var(--Primary);
     padding: 5px;
     border-radius: 20px;
@@ -425,11 +597,19 @@
     margin: 5px 0;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic img {
     border-radius: 10px;
 }
 
 .content .aside2 .radar2 .radar2-all .radar2-unic a {
+=======
+.content .aside .radar .radar-all .radar-unic img {
+    border-radius: 10px;
+}
+
+.content .aside .radar .radar-all .radar-unic a {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     text-decoration: none;
     font-size: 14px;
     color: var(--Primary);
@@ -438,7 +618,11 @@
 
 
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic h6 {
+=======
+.content .aside .radar .radar-all .radar-unic h6 {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     font-weight: 500;
     color: var(--Gray_font1);
     margin: 2px 0px 0px 0;
@@ -449,7 +633,11 @@
     text-align: center;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic h6 svg {
+=======
+.content .aside .radar .radar-all .radar-unic h6 svg {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     color: var(--Gray_font1);
 }
 
@@ -460,32 +648,56 @@
 
 @media(max-width: 850px) {
 
+<<<<<<< HEAD
     .content .aside2 .radar2 {
+=======
+    .content .aside .radar {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
         padding: 30px 1px;
 
     }
     
+<<<<<<< HEAD
     .content .aside2 .radar2 .radar2-all {
         width: 100%;    
 }
 
 .content .aside2 .radar2 .radar2-all .radar2-unic {
+=======
+    .content .aside .radar .radar-all {
+        width: 100%;    
+}
+
+.content .aside .radar .radar-all .radar-unic {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 80px;
     text-align: center;
 
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic h5 svg {
     margin-left: 15px;
   }
 
 .content .aside2 .radar2 .radar2-all .radar2-unic .img {
+=======
+.content .aside .radar .radar-all .radar-unic h5 svg {
+    margin-left: 15px;
+  }
+
+.content .aside .radar .radar-all .radar-unic .img {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 50px;
     height: 50px;
     object-fit: cover;
     border-radius: 50%;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic .img img {
+=======
+.content .aside .radar .radar-all .radar-unic .img img {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 50px;
     height: 50px;
     object-fit: cover;
@@ -493,7 +705,11 @@
 }
 
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic button {
+=======
+.content .aside .radar .radar-all .radar-unic button {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     border: 1px solid var(--Primary);
     padding: 5px;
     border-radius: 20px;
@@ -507,10 +723,17 @@
 
 
 @media(max-width: 650px) {
+<<<<<<< HEAD
     .content .aside2 .radar2 .radar2-all {
         width: 100%;    
 }
 .content .aside2 .radar2 .filtroGeral {
+=======
+    .content .aside .radar .radar-all {
+        width: 100%;    
+}
+.content .aside .radar .filtroGeral {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 95%;
     display: flex;
     align-items: center;
@@ -524,10 +747,17 @@
 
 
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .mySelections {
     width: 95%;
 }
 .content .aside2 .radar2 .mySelections .selections {
+=======
+.content .aside .radar .mySelections {
+    width: 95%;
+}
+.content .aside .radar .mySelections .selections {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 100%;
     display: flex;
     align-items: center;
@@ -536,11 +766,19 @@
     padding: 5px 0;
     flex-wrap: wrap;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .mySelections .recolher {
     display: none;
 }
 
 .content .aside2 .radar2 .mySelections .selections select {
+=======
+.content .aside .radar .mySelections .recolher {
+    display: none;
+}
+
+.content .aside .radar .mySelections .selections select {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 30%;
     display: flex;
     align-items: center;
@@ -554,7 +792,11 @@
     border-radius: 6px;
     font-size: 12px;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .mySelections .selections button {
+=======
+.content .aside .radar .mySelections .selections button {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 30%;
     display: flex;
     align-items: center;
@@ -570,7 +812,11 @@
     font-size: 12px;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .mySelections .text {
+=======
+.content .aside .radar .mySelections .text {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 100%;
     display: flex;
     align-items: center;
@@ -579,7 +825,11 @@
     padding: 5px;
     text-align: center;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .mySelections .text button {
+=======
+.content .aside .radar .mySelections .text button {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     display: flex;
     align-items: center;
     justify-content: center;
@@ -599,7 +849,11 @@
 
 
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .filtroGeral .radar2-range {
+=======
+.content .aside .radar .filtroGeral .radar-range {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 100%;
     display: flex;
     align-items: center;
@@ -607,7 +861,11 @@
     flex-direction: row;
     padding: 5px 0;
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .filtroGeral .radar2-range h4 {
+=======
+.content .aside .radar .filtroGeral .radar-range h4 {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     font-size: 12px;
     display: flex;
     align-items: center;
@@ -615,7 +873,11 @@
     flex-direction: row;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .filtroGeral .selectFilter {
+=======
+.content .aside .radar .filtroGeral .selectFilter {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 90%;
     display: flex;
     align-items: center;
@@ -624,24 +886,40 @@
     padding: 5px 0;
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .filtroGeral .selectFilter select {
+=======
+.content .aside .radar .filtroGeral .selectFilter select {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 100%;
 }
 
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic {
+=======
+.content .aside .radar .radar-all .radar-unic {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 80px;
     text-align: center;
 
 }
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic .img {
+=======
+.content .aside .radar .radar-all .radar-unic .img {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 50px;
     height: 50px;
     object-fit: cover;
     border-radius: 50%
 }
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic .img img {
+=======
+.content .aside .radar .radar-all .radar-unic .img img {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     width: 50px;
     height: 50px;
     object-fit: cover;
@@ -649,7 +927,11 @@
 }
 
 
+<<<<<<< HEAD
 .content .aside2 .radar2 .radar2-all .radar2-unic button {
+=======
+.content .aside .radar .radar-all .radar-unic button {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     border: 1px solid var(--Primary);
     padding: 5px;
     border-radius: 20px;

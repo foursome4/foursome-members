@@ -8,7 +8,11 @@ import { useState } from "react";
 import { FeedComments } from "../FeedComments/FeedComments";
 
 function ListComments({idPost}) {   
+<<<<<<< HEAD
     const Local = localStorage.getItem("forpride");
+=======
+    const Local = localStorage.getItem("foursome");
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     const userData = JSON.parse(Local);
     const [isOpenModalFriend, setIsOpenModalFriend] = useState(false);
     const {data} = useFetch(`/comments/${idPost}`);
@@ -25,7 +29,11 @@ function ListComments({idPost}) {
         setIsOpenModalFriend(true)
       }
     function handleFriends() {
+<<<<<<< HEAD
         if(userData.status === "essencial") {
+=======
+        if(userData.status === "essencial" || userData.status === "suspense") {
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
             window.open("/updateplain","_self");
             return;
         }

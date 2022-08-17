@@ -33,6 +33,16 @@ function UserComment({idAccount, date, role}) {
         }
 
         loadInformations()
+        async function loadStatus() {
+            await api.get(`accounts/filter/${idAccount}`).then((result) => {
+                setStatus(result.data[0].status)
+            }).catch((error) => {
+                console.log(error)
+                console.log("Erro aos buscar informações")
+            })
+        }
+
+        loadStatus()
     }, [idAccount]);
 
 

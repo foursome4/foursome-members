@@ -6,7 +6,11 @@ import {FaCrown} from "react-icons/fa"
 import "./menu.css"
 
 function Menu() {
+<<<<<<< HEAD
     const Local = localStorage.getItem("forpride");
+=======
+    const Local = localStorage.getItem("foursome");
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     const userData = JSON.parse(Local);
     
     return (
@@ -51,9 +55,15 @@ function Menu() {
                 </div>
             </div>
             <div className="double">
+<<<<<<< HEAD
                 {/* <div className="unic">
                     <a href="/plain" className="Primary"><IoWalletOutline />Pagamentos</a>
                 </div> */}
+=======
+                <div className="unic">
+                    <a href="/plain" className="Primary"><IoWalletOutline />Pagamentos</a>
+                </div>
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 <div className="unic">
                     <a href="/infos" className="Primary"><IoInformationCircleOutline />Informações</a>
                 </div>

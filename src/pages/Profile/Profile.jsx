@@ -215,7 +215,11 @@ widthView()
                         />
                    </div>
 
+<<<<<<< HEAD
                     <h3> {user.status === "premium" || user.status === "lifetime" ? <FaCrown /> : ""} <b>{user !== null ? `${user.nickname} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+=======
+                    <h3> {user.status === "premium" || user.status === "lifetime" ? <FaCrown /> : ""} <b>{userInformations !== null ? `${userInformations.nickname} ${user.país === "Brasil" ? "🇧🇷" : user.país === "Portugal" ? "🇵🇹" : ""} ` :"User Test"}</b>{user.role !== "Membro" ? <IoShieldCheckmark />: ""}</h3>
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                      </div>
                 <div className="tools">
                   <button className={feed === "" ? "" : "select"} onClick={handleFeed}><FiHome size={16}/> Home</button>

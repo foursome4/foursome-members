@@ -10,8 +10,15 @@ import api from '../../services/api'
 
 function Post2() {
     const {newPost, logout} = useContext(AuthContext)
+<<<<<<< HEAD
     const Local = localStorage.getItem("forpride");
     const user = JSON.parse(Local);
+=======
+    const Local = localStorage.getItem("foursome");
+    const user = JSON.parse(Local);
+    const LocalInformation = localStorage.getItem("informations-foursome");
+    const userInformation = JSON.parse(LocalInformation);
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
     const id = user.id
 
@@ -28,7 +35,10 @@ function Post2() {
     const [dataVideo, setDataVideo] = useState(false);
     const [videos, setVideos] = useState([])
     const [photos, setPhotos] = useState([]);
+<<<<<<< HEAD
     const [content, setContent] = useState("");
+=======
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
     useEffect(() => {
         async function searchAccount() {
@@ -75,9 +85,13 @@ function Post2() {
        }, [])
 
 
+<<<<<<< HEAD
        function handleSelectContent(e) {
         setContent(e.target.value);
       }
+=======
+
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
 
     useEffect(() => {
@@ -211,7 +225,11 @@ function Post2() {
                 idAccount: user.id,
                 link: photoUrlAvatar !== null ? photoUrlAvatar : "",
                 username: user.username,
+<<<<<<< HEAD
                 typeAccount: user.sex,
+=======
+                typeAccount: user.type,
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 nameGroup: "",
                 nameForum: "",
                 nameEvent: "",
@@ -222,7 +240,12 @@ function Post2() {
                 text,
                 iidPatrono: null,
                 ufAccount:user.país === "Portugal" ? user.país : user.uf,
+<<<<<<< HEAD
                 content
+=======
+                cityAccount: user.city,
+                typeAccount: user.type,
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
             })
             setDataPhoto(true)
             setPost("text")
@@ -241,7 +264,11 @@ function Post2() {
                     idAccount: user.id,
                     link: videoUrl !== null ? videoUrl : "",
                     username: user.username,
+<<<<<<< HEAD
                     typeAccount: user.sex,
+=======
+                    typeAccount: user.type,
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                     nameGroup: "",
                     nameForum: "",
                     nameEvent: "",
@@ -253,7 +280,11 @@ function Post2() {
                     iidPatrono: null,
                     ufAccount:user.país === "Portugal" ? user.país : user.uf,
                     cityAccount: user.city,
+<<<<<<< HEAD
                     content
+=======
+                    typeAccount: user.type,
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 })
                 setDataVideo(true)
                 setPost("text")
@@ -268,7 +299,11 @@ function Post2() {
                         idAccount: user.id,
                         link: "",
                         username: user.username,
+<<<<<<< HEAD
                         typeAccount: user.sex,
+=======
+                        typeAccount: user.type,
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                         nameGroup: "",
                         nameForum: "",
                         nameEvent: "",
@@ -280,7 +315,11 @@ function Post2() {
                         iidPatrono: null,
                         ufAccount:user.país === "Portugal" ? user.país : user.uf,
                         cityAccount: user.city,
+<<<<<<< HEAD
                         content
+=======
+                        typeAccount: user.type,
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                     })
                     setPost("text")
                     reset()
@@ -365,6 +404,7 @@ function Post2() {
                   {dailyPost.length === 1 || dataVideo === true ? "" :  <button className={post2 === "video" ? 'selected' : ""} onClick={post2Video}> <FiVideo /> Vídeo </button> } 
                 </div>
 
+<<<<<<< HEAD
 
                 <div className="select">
                     <select value={content} onChange={handleSelectContent}>
@@ -377,6 +417,8 @@ function Post2() {
                     </div>
                 </div>
 
+=======
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 { post2 === "text" ?                  
                         <button className="public" onClick={ text !== ""? handlePost : handleMessage}>
                             {loading === true ? <FiRefreshCcw /> : <FiSend />}

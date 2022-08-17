@@ -37,6 +37,7 @@ function ListGroupsUnic() {
     const {data} = useFetch(`/groups`);
 
     return (
+<<<<<<< HEAD
         data?.length === 0 ? 
         <div className="listGroups2">
         <div className="groups-all2">
@@ -50,6 +51,8 @@ function ListGroupsUnic() {
                        </div>
    </div>
    :
+=======
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
         <div className="listGroups2">
              <div className="groups-all2">
                                     <div className="group-unic2" key={data?.[0].id}>

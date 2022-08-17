@@ -12,7 +12,11 @@ import { ListComments } from '../ListComments/ListComments'
 
 
 function ItemFeedComponent({idAccount, link, date, text, type, id, username, group, forum, idGroup, idForum, typeAccount}) {
+<<<<<<< HEAD
     const Local = localStorage.getItem("forpride");
+=======
+    const Local = localStorage.getItem("foursome");
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     const userData = JSON.parse(Local);
 
     const dateActual = new Date();
@@ -183,7 +187,11 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
                      </>
                  : ""}
              </div>
+<<<<<<< HEAD
             {userData.status === "essencial" ? "":
+=======
+            {userData.status === "essencial" || userData.status === "suspense" ? "":
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
              <div className={"comment"}>
                   <NewComment postData={id} idAccount={idAccount}/>
              </div>

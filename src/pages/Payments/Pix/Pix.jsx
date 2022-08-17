@@ -34,7 +34,7 @@ function Pix() {
                 <h3>7978df39-614f-4ec6-bf41-8052656a4bc2</h3>
             </div>
 
-            <a href={`/voucher/${id}`}>Enviar comprovante</a>
+            <a href={`/voucher/${id}`}>Enviar print do comprovante</a>
             </div>
             
         </div>

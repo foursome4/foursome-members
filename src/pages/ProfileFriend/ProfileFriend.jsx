@@ -24,7 +24,11 @@ import moment from 'moment';
 function ProfileFriend() {
   const navigate = useNavigate()
   const {newFriend, newFollower, deleteFriend, deleteFollower, newVisit, inactivityTime,verityTimesPeiodTest, logout} = useContext(AuthContext)
+<<<<<<< HEAD
   const Local = localStorage.getItem("forpride");
+=======
+  const Local = localStorage.getItem("foursome");
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
   const myUser = JSON.parse(Local);
   const {id} = useParams();
 
@@ -57,10 +61,24 @@ function ProfileFriend() {
   const [login, setLogin] = useState([]);
   const [myInformations, setMyInformations] = useState(false)
 
+useEffect(() => {
+    function redirectUser() {
+      if(myUser.status === "suspense" ) {
+        window.open("/activeplain","_self");
+        return
+      }
+
+    }
+  redirectUser()
+
+},[myUser.status])
+
   useEffect(() => {
       async function searchAccount() {
         const res =  await api.get(`accounts/filter/${myUser.id}`);
           console.log(res.data)
+
+
           if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
               logout(myUser.id)
           } else {
@@ -78,9 +96,24 @@ function ProfileFriend() {
           } 
       }
 
+<<<<<<< HEAD
       searchAccount()
       searchAccountFriend()
      }, []);
+=======
+   
+    
+    searchAccount()
+    searchAccountFriend()
+    searchInformations()
+    searchCharacteristcs()
+    searchPreferences()
+    searchInformations2()
+    searchCharacteristcs2()
+    searchPreferences2()
+  }, []);
+  
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
 useEffect(() => {
 function widthView() {
@@ -94,7 +127,7 @@ setWidth((window.innerWidth > 0) ? window.innerWidth : window.screen.width);
 widthView()
 },[])
 
-console.log(id)
+
 
   useEffect(() => {
 
@@ -166,6 +199,10 @@ console.log(id)
 
   
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
   async function handleRedirectToRoom(e) {
     console.log("Sala Existente: ")
     console.log(rooms.room)

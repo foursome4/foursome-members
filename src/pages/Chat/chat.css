@@ -18,9 +18,15 @@
 }
 
 .content .chat .main-chat {
+<<<<<<< HEAD
     margin-left: 5%;
     padding: 0 0 0 5%;
     width: 95%;
+=======
+    margin-left: 3%;
+    padding: 0 0 0 5%;
+    width: 97%;
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     height: 100vh;
     display: flex;
     flex-direction: row;
@@ -393,6 +399,23 @@
     align-items: center;
     justify-content: center;
 }
+
+.content .chat .main-chat .section-chat .text .button3 {
+    width: 80px;
+    height: 45px;
+    border: none;
+    border-radius: 8px;
+    background-color: Red;
+    color: var(--White);
+    margin: 0 10px;
+}
+.content .chat .main-chat .section-chat .text .button3 button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 
 
 .content .chat .main-chat .section-chat .text .label-avatar{

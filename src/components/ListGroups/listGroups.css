@@ -135,7 +135,11 @@
     border-radius: 20px;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
     margin: 5px;
+<<<<<<< HEAD
     background-color: var(--Background);
+=======
+    background-color: var(--Background2);
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     color: var(--Foursome1);
 }
 

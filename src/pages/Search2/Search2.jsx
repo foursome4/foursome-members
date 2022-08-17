@@ -9,7 +9,11 @@ import { IoOptionsOutline, IoCloseCircleOutline } from "react-icons/io5";
 import { useFetch } from "../../hooks/useFetch";
 
 function Search2() {
+<<<<<<< HEAD
     const Local = localStorage.getItem("forpride");
+=======
+    const Local = localStorage.getItem("foursome");
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     const userData = JSON.parse(Local);
 
     const [online, setOnline] = useState([])

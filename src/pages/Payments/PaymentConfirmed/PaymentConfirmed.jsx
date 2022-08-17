@@ -6,7 +6,11 @@ import { useContext } from "react";
 
 function PaymentConfirmed() {
     const {logout} = useContext(AuthContext);
+<<<<<<< HEAD
     const Local = localStorage.getItem("forpride");
+=======
+    const Local = localStorage.getItem("foursome");
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     const user = JSON.parse(Local);
 
     function Tologout(e) {

@@ -55,6 +55,7 @@ function ListEventsUnic() {
     const EventAprtoved = data?.filter((event) => event.status === "Aproved")
 
     return (
+<<<<<<< HEAD
            EventAprtoved?.length === 0 ?
            <div className="listEvents2">
 
@@ -70,6 +71,9 @@ function ListEventsUnic() {
        :
         <div className="listEvents2">
 
+=======
+        <div className="listEvents2">
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
              <div className="events-all2">
                                     <div className="events-unic2" key={EventAprtoved?.[0].id}>
                                         <div className="imageCover"> 
@@ -82,6 +86,10 @@ function ListEventsUnic() {
                                
                             </div>
        
+<<<<<<< HEAD
+=======
+                         
+>>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
         </div>
     )
 }
