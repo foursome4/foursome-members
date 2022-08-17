@@ -8,14 +8,7 @@ import api from '../../services/api';
 import { FeedPost2 } from '../FeedPost2/FeedPost2';
 
 function FeedPostComponent() {
-<<<<<<< HEAD
     const Local = localStorage.getItem("forpride");
-=======
-    const Local2 = localStorage.getItem("preferences-foursome");
-    const userPreferences = JSON.parse(Local2);
-    console.log(userPreferences);
-    const Local = localStorage.getItem("foursome");
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     const user = JSON.parse(Local);
     const [followers, setFollowers] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
@@ -23,26 +16,12 @@ function FeedPostComponent() {
       const perPage = 5;
 
       const data2 = {
-<<<<<<< HEAD
         man: user.preferenceOption
     }
 
     // const {data} = useFetch(`/posts/all?page=${currentPage}&limit=${perPage}`);
     // const {data} = useFetchPost(`/posts/difference/?page=${currentPage}&limit=${perPage}`, data2);
      const {data} = useFetch(`/posts/all?page=${currentPage}&limit=${perPage}`, data2);
-=======
-        man: userPreferences.men,
-        woman: userPreferences.woman,
-        couple: userPreferences.couple,
-        trisal: userPreferences.trisal,
-        transvestites: userPreferences.transvestites,
-        transsexuals: userPreferences.transsexuals,
-        groups: userPreferences.groups
-    }
-
-    // const {data} = useFetch(`/posts/all?page=${currentPage}&limit=${perPage}`);
-     const {data} = useFetchPost(`/posts/difference/?page=${currentPage}&limit=${perPage}`, data2);
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
      if(data){
         console.log("data")
