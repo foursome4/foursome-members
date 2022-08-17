@@ -57,10 +57,24 @@ function ProfileFriend() {
   const [login, setLogin] = useState([]);
   const [myInformations, setMyInformations] = useState(false)
 
+useEffect(() => {
+    function redirectUser() {
+      if(myUser.status === "suspense" ) {
+        window.open("/activeplain","_self");
+        return
+      }
+
+    }
+  redirectUser()
+
+},[myUser.status])
+
   useEffect(() => {
       async function searchAccount() {
         const res =  await api.get(`accounts/filter/${myUser.id}`);
           console.log(res.data)
+
+
           if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
               logout(myUser.id)
           } else {
@@ -132,15 +146,18 @@ function ProfileFriend() {
         } 
       }
 
-      searchAccount()
-      searchAccountFriend()
-      searchInformations()
-      searchCharacteristcs()
-      searchPreferences()
-      searchInformations2()
-      searchCharacteristcs2()
-      searchPreferences2()
-     }, []);
+   
+    
+    searchAccount()
+    searchAccountFriend()
+    searchInformations()
+    searchCharacteristcs()
+    searchPreferences()
+    searchInformations2()
+    searchCharacteristcs2()
+    searchPreferences2()
+  }, []);
+  
 
 useEffect(() => {
 function widthView() {
@@ -154,7 +171,7 @@ setWidth((window.innerWidth > 0) ? window.innerWidth : window.screen.width);
 widthView()
 },[])
 
-console.log(id)
+
 
   useEffect(() => {
 
@@ -245,7 +262,7 @@ console.log(id)
   }, [myUser.id, id]);
 
 
-  
+
 
   async function handleRedirectToRoom(e) {
     console.log("Sala Existente: ")

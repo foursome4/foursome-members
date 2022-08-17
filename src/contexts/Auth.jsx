@@ -168,7 +168,7 @@ function AuthProvider({children}) {
                 toast.info(`Olá, ${user.username}. Sua conta está em análise. E em até 24h será liberada!`);
                 return
             } else if(user.status === "suspense") {
-                window.open("/activeplain","_self");
+                window.open("/suspenseaccount","_self");
                 return
             }else  if(user.status  === "lifetime" || user.país === "Portugal") {
                 window.open("/feed","_self");

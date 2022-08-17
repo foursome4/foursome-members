@@ -56,6 +56,7 @@ import { Welcome } from '../pages/Welcome/Welcome';
 import { ActivePlain } from '../pages/ActivePlain/ActivePlain';
 import { UpdatePlain } from '../pages/UpdatePlain/UpdatePlain';
 import { PeriodTeste } from '../pages/PeriodTeste/PeriodTeste';
+import { SuspenseAccount } from '../pages/SuspenseAccount/SuspenseAccount';
 
 
 function Router () {
@@ -175,6 +176,8 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Welcome /> </PrivateRoute>} />
             <Route path="/periodtest" 
                 element={ <PrivateRoute> <PeriodTeste /> </PrivateRoute>} />
+            <Route path="/suspenseaccount" 
+                element={ <PrivateRoute> <SuspenseAccount /> </PrivateRoute>} />
             </Routes>
            
     )

@@ -40,10 +40,10 @@ function Feed() {
                     logout(user.id)
                     return
                 }
-                if(user.status === "suspense") {
-                    window.open("/activeplain","_self");
-                    return
-                }
+                // if(user.status === "suspense") {
+                //     window.open("/activeplain","_self");
+                //     return
+                // }
                 const res = await api.get(`/online/one/${user.id}`)
                  
                if(res.data.length > 0) {
@@ -192,7 +192,8 @@ return (
                  <button className="topScroll" onClick={handleTop}><FiArrowUpCircle /></button>
                    {/* {myInformations === false ? "" : <Post />} */}
                     <ChatSlim />
-                    {user.status === "essencial" || user.status === "suspense" ? 
+                    { 
+                    user.status === "essencial" || user.status === "suspense" ? 
                     <PostFeed2 />
                     :
                     <PostFeed />

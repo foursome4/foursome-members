@@ -25,7 +25,7 @@ function ListComments({idPost}) {
         setIsOpenModalFriend(true)
       }
     function handleFriends() {
-        if(userData.status === "essencial") {
+        if(userData.status === "essencial" || userData.status === "suspense") {
             window.open("/updateplain","_self");
             return;
         }

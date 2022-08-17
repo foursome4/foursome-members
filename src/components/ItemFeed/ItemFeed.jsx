@@ -183,7 +183,7 @@ function ItemFeedComponent({idAccount, link, date, text, type, id, username, gro
                      </>
                  : ""}
              </div>
-            {userData.status === "essencial" ? "":
+            {userData.status === "essencial" || userData.status === "suspense" ? "":
              <div className={"comment"}>
                   <NewComment postData={id} idAccount={idAccount}/>
              </div>

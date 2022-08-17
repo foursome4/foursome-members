@@ -242,8 +242,6 @@ function handleDeleteMessage(e) {
   if(deletar === true) {
     deleteConversation(room)
   } 
-
-
 }
 
 

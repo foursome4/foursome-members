@@ -35,7 +35,7 @@ function PeriodTeste() {
                     <h2>Bem vindo a Foursome.</h2>
                     <br />
                     <h3>Você recebeu um teste de 15 minutos para utilizar o nosso site sem limites,<br />
-                    após este período seu acesso será bloqueado e você deverá assinar um de nossos planos para continuar a utilizar</h3>
+                    após este período seu acesso reduzido e você deverá assinar um de nossos planos para continuar a utilizar todas as funcionalidades do site</h3>
                     <br />
                     <br />
                     <br />
