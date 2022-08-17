@@ -248,31 +248,38 @@ console.log(id)
   
 
   async function handleRedirectToRoom(e) {
+    console.log("Sala Existente: ")
     console.log(rooms.room)
     if(rooms.length === 0) {
       const v4 = uuidv4();
-      const room = v4.substring(0, 6);
-      const data = {room, idAccount: myUser.id, idFriend: id}
-      //setRooms(data)
-      console.log(data)
-      await api.post(`/conversations`, data).then((res) => {
-        handleChat(res.data[0].room);
-        console.log(res.data[0].room)
-      }).catch(error => {
-        console.log("Erro ao buscar dados" + error)
-    })
+      const roomId = v4.substring(0, 8);
+      newConversation(roomId, myUser.id, id)
+      return
     }
-
     handleChat(rooms.room)
   }
 
- function handleChat(room) {
-  if(myUser.status === "essencial") {
-    window.open("/updateplain","_self");
-    return;
-}
+  async function newConversation(room, idAccount, idFriend) {
+    const data ={room, idAccount, idFriend}
+    console.log(data)
+    await api.post(`/conversations`, data).then((res) => {
+      console.log("res.data[0].room")
+      console.log(res.data)
+     handleChat(res.data.room);
+    }).catch(error => {
+      console.log("Erro cadastrar" + error)
+    })
+  }
 
-  navigate(`/chat/${room}/${id}`);
+ function handleChat(room) {
+  console.log("Sala recebido para abri link")
+  console.log(room)
+  if(myUser.status === "essencial") {
+   window.open("/updateplain","_self");
+   return;
+  }
+  
+  window.open(`/chat/${room}/${id}`, "_self");
   }
 
 

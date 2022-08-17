@@ -486,6 +486,14 @@ async function deleteConversations(user) {
      toast.success("Deletado com sucesso!");
 }
 
+
+async function deleteConversation(room) {
+    await api.delete(`/conversations/room/${room}`).then((res) => {
+        toast.success("Deletado com sucesso!");
+        window.open("/messages", "_self")
+
+    })
+}
 //Fim deletando conta
 
 
@@ -1436,7 +1444,8 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
             createPayment,
             newReplyRecado,
             verityTimesPeiodTest,
-            verifyPaymentAccount
+            verifyPaymentAccount,
+            deleteConversation
         }}>
             {children}
         </AuthContext.Provider>

@@ -23,7 +23,7 @@ function Chat() {
   const messageRef = useRef(null);
 
 
-  const {inactivityTime} = useContext(AuthContext);
+  const {inactivityTime, deleteConversation} = useContext(AuthContext);
 
   inactivityTime()
   
@@ -236,6 +236,16 @@ function handleMedia() {
     }
 }
 
+function handleDeleteMessage(e) {
+  e.preventDefault()
+  const deletar = window.confirm("Deseja realmente deletar sua conta?");
+  if(deletar === true) {
+    deleteConversation(room)
+  } 
+
+
+}
+
 
   return (
     <div className="content">
@@ -359,6 +369,9 @@ function handleMedia() {
               }
                 <button className="button1" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}>Enviar <FiSend /></button>
                 <button className="button2" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}><FiSend /></button>
+                {media === false ? "" : 
+                <button className="button3" onClick={handleDeleteMessage}>Deletar Conversa</button>
+               }
             </div>
             <br />
 
