@@ -128,11 +128,7 @@
     border-radius: 20px;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
     margin:5px;
-<<<<<<< HEAD
     background-color: var(--Background);
-=======
-    background-color: var(--Background2);
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 }
 
 .listEvents2 .events-all2 .events-unic2 .imageCover {
@@ -167,11 +163,7 @@
     align-items: center;
     justify-content: center;
     padding: 5px;
-<<<<<<< HEAD
     border: 1px solid var(--Primary);
-=======
-    border: 1px solid var(--Primary);;
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     border-radius: 20px;
     width: 100%;
     font-size: 14px;

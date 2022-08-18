@@ -1,16 +1,12 @@
 ﻿import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { TopBar } from "../../components/TopBar/TopBar"
 import { IoCalendarOutline, IoList, IoRadio,IoMailUnreadOutline, IoPersonOutline, IoCashOutline, IoSettingsOutline, IoPeopleOutline, IoMenuOutline, IoCameraOutline, IoArrowBackOutline,
-    IoInformationCircleOutline, IoChatbubblesOutline, IoMailOutline, IoTrashOutline, IoBusinessOutline, IoMailOpenOutline, IoStatsChartOutline, IoCloseOutline, IoWalletOutline } from "react-icons/io5"
+    IoInformationCircleOutline, IoLogOutOutline, IoChatbubblesOutline, IoMailOutline, IoTrashOutline, IoBusinessOutline, IoMailOpenOutline, IoStatsChartOutline, IoCloseOutline, IoWalletOutline } from "react-icons/io5"
 import {FaCrown} from "react-icons/fa"
 import "./menu.css"
 
 function Menu() {
-<<<<<<< HEAD
     const Local = localStorage.getItem("forpride");
-=======
-    const Local = localStorage.getItem("foursome");
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     const userData = JSON.parse(Local);
     
     return (
@@ -55,15 +51,9 @@ function Menu() {
                 </div>
             </div>
             <div className="double">
-<<<<<<< HEAD
                 {/* <div className="unic">
                     <a href="/plain" className="Primary"><IoWalletOutline />Pagamentos</a>
                 </div> */}
-=======
-                <div className="unic">
-                    <a href="/plain" className="Primary"><IoWalletOutline />Pagamentos</a>
-                </div>
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 <div className="unic">
                     <a href="/infos" className="Primary"><IoInformationCircleOutline />Informações</a>
                 </div>
@@ -72,7 +62,7 @@ function Menu() {
                 <a href="/pricing" className="Primary"><FaCrown />Seja Essencial por R$ 9,90</a>
             </div> */}
             <div className="unic3">
-                <button><IoTrashOutline /> Deletar minha conta</button>
+                <button><IoLogOutOutline /> Sair</button>
             </div>
 </div>
 </div>

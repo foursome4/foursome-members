@@ -40,17 +40,12 @@ function Feed() {
                     logout(user.id)
                     return
                 }
-<<<<<<< HEAD
-                if(user.status === "suspense") {
-                    window.open("/activeplain","_self");
-                    return
-                }
-=======
+
                 // if(user.status === "suspense") {
                 //     window.open("/activeplain","_self");
                 //     return
                 // }
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
+
                 const res = await api.get(`/online/one/${user.id}`)
                  
                if(res.data.length > 0) {
@@ -83,11 +78,7 @@ function Feed() {
            }, []);
 
 
-<<<<<<< HEAD
            if(user.status === "Aproved") {
-=======
-           if(user.status === "Aproved" || user.status  === "active") {
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
             console.log("olá, mundo")
             verufy(user.id)
            }
@@ -173,12 +164,7 @@ return (
                  <button className="topScroll" onClick={handleTop}><FiArrowUpCircle /></button>
                    {/* {myInformations === false ? "" : <Post />} */}
                     <ChatSlim />
-<<<<<<< HEAD
                     {user.status === "essencial" || user.status === "suspense" ? 
-=======
-                    { 
-                    user.status === "essencial" || user.status === "suspense" ? 
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                     <PostFeed2 />
                     :
                     <PostFeed />

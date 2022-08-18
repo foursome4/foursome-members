@@ -18,15 +18,9 @@
 }
 
 .content .chat .main-chat {
-<<<<<<< HEAD
-    margin-left: 5%;
-    padding: 0 0 0 5%;
-    width: 95%;
-=======
     margin-left: 3%;
     padding: 0 0 0 5%;
     width: 97%;
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
     height: 100vh;
     display: flex;
     flex-direction: row;

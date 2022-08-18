@@ -24,11 +24,7 @@ import moment from 'moment';
 function ProfileFriend() {
   const navigate = useNavigate()
   const {newFriend, newFollower, deleteFriend, deleteFollower, newVisit, inactivityTime,verityTimesPeiodTest, logout} = useContext(AuthContext)
-<<<<<<< HEAD
   const Local = localStorage.getItem("forpride");
-=======
-  const Local = localStorage.getItem("foursome");
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
   const myUser = JSON.parse(Local);
   const {id} = useParams();
 
@@ -96,25 +92,10 @@ useEffect(() => {
           } 
       }
 
-<<<<<<< HEAD
       searchAccount()
       searchAccountFriend()
-     }, []);
-=======
-   
-    
-    searchAccount()
-    searchAccountFriend()
-    searchInformations()
-    searchCharacteristcs()
-    searchPreferences()
-    searchInformations2()
-    searchCharacteristcs2()
-    searchPreferences2()
   }, []);
   
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
-
 useEffect(() => {
 function widthView() {
   //resolução navegador
@@ -199,10 +180,6 @@ widthView()
 
   
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
   async function handleRedirectToRoom(e) {
     console.log("Sala Existente: ")
     console.log(rooms.room)

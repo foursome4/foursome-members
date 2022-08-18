@@ -223,11 +223,7 @@ function Post() {
                 iidPatrono: null,
                 ufAccount:user.país === "Portugal" ? user.país : user.uf,
                 cityAccount: user.city,
-<<<<<<< HEAD
-                content
-=======
                 typeAccount: user.type,
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
             })
             setDataPhoto(true)
             setPost("text")
@@ -258,11 +254,7 @@ function Post() {
                     iidPatrono: null,
                     ufAccount:user.país === "Portugal" ? user.país : user.uf,
                     cityAccount: user.city,
-<<<<<<< HEAD
-                    content
-=======
                     typeAccount: user.type,
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 })
                 setDataVideo(true)
                 setPost("text")
@@ -289,11 +281,7 @@ function Post() {
                         iidPatrono: null,
                         ufAccount:user.país === "Portugal" ? user.país : user.uf,
                         cityAccount: user.city,
-<<<<<<< HEAD
-                        content
-=======
                         typeAccount: user.type,
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                     })
                     setPost("text")
                     reset()
@@ -376,7 +364,6 @@ function Post() {
                     <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
                   {dailyPost.length === 3 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
                   {dailyPost.length === 3 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
-<<<<<<< HEAD
                 </div>
 
                 <div className="select">
@@ -388,8 +375,6 @@ function Post() {
                     <div className="text">
                         <h6>{content === "livre" ? "Seu conteúdo será mostrado a todos"  : content === "sensible" ? "Seu conteúdo receberá uma proteção: Conteúdo sensível, violência ou +18" : "Escolha um tipo de conteúdo. Conteúdo diferente do selecionado será excluído"}</h6>
                     </div>
-=======
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 </div>
 
                 { post === "text" ?                  

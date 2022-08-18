@@ -33,16 +33,8 @@ function AuthProvider({children}) {
 
         await api.post('/accounts', data).then(() => {
             toast.info(`Cadastro criado com sucesso!`);
-<<<<<<< HEAD
-
             createSuccess(email);
             redirectToPageSucess()
-=======
-           
-            createInformationsAccount({
-                idAccount:id, avatar, cover, relationship, nickname, city, uf, país, email, type, username
-                })
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 
         }).catch(error => {
             console.log("Cadastro não foi realizado: "+ error);
@@ -71,12 +63,8 @@ function AuthProvider({children}) {
                 }
 
 
-<<<<<<< HEAD
-                localStorage.setItem("forpride", JSON.stringify(result.data));
-=======
-                localStorage.setItem("foursome", JSON.stringify(result.data));
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
-               
+
+                localStorage.setItem("forpride", JSON.stringify(result.data));               
                 verificateAccountLogin()
                 
             }).catch(error => {
@@ -99,15 +87,8 @@ function AuthProvider({children}) {
                     return
                 }
  
-<<<<<<< HEAD
                 localStorage.setItem("forpride", JSON.stringify(result.data));
-
                 verificateAccountLogin()
-=======
-                localStorage.setItem("foursome", JSON.stringify(result.data));
-               
-                findInformationsAccount(result.data.id)
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 
             }).catch(error => {
                 console.log("Login não foi realizado" + error)
@@ -141,7 +122,6 @@ function AuthProvider({children}) {
         
     // }
 
-<<<<<<< HEAD
     // async function findCharacteriticsAccount(id) {
     //     const Local = localStorage.getItem("forpride");
     //     const user = JSON.parse(Local);
@@ -183,26 +163,28 @@ function AuthProvider({children}) {
                 return
             }else if(user.status === "Aproved") {
                 verifyPaymentAccount()
-=======
+            }
+
+        }
+
+
     async function findCharacteriticsAccount(id) {
-        const Local = localStorage.getItem("foursome");
+        const Local = localStorage.getItem("forpride");
         const user = JSON.parse(Local);
         await api.get(`/characteristics/${id}`)
         .then((res) => {
             if(res.data.length === 0) {
               
                 window.open(`/characteristcs/${user.id}/${user.email}/${user.type}/${user.username}`,"_self")
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 return
             }
         
+    })
     }
+    
     async function verifyPaymentAccount() {
         const Local = localStorage.getItem("forpride");
-        const user = JSON.parse(Local);
-
-<<<<<<< HEAD
-        const payment = await api.get(`/payments/${user.id}`);
+        const user = JSON.parse(Local);       const payment = await api.get(`/payments/${user.id}`);
 
         console.log(payment.data)
         console.log(payment.data.lenght)
@@ -309,10 +291,10 @@ function AuthProvider({children}) {
                 console.log("Teste")
             }
          }, 60000);
+        }
         
-=======
     async function findPreferencesAccount(id) {
-        const Local = localStorage.getItem("foursome");
+        const Local = localStorage.getItem("forpride");
         const user = JSON.parse(Local);
         await api.get(`/preferences/${id}`)
         .then((res) => {
@@ -320,7 +302,7 @@ function AuthProvider({children}) {
                 window.open(`/preferences/${user.id}/${user.email}/${user.username}`,"_self");
                 return
             }
-            localStorage.setItem("preferences-foursome", JSON.stringify(res.data[0]));
+            localStorage.setItem("preferences-forpride", JSON.stringify(res.data[0]));
 
             if(user.status === "pending") {
                 toast.info(`Olá, ${user.username}. Sua conta está em análise. E em até 24h será liberada!`);
@@ -347,11 +329,10 @@ function AuthProvider({children}) {
         }).catch(error => {
             console.log("Erro ao buscar dados" + error)
         })
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
         
     }
     async function verifyPaymentAccount() {
-        const Local = localStorage.getItem("foursome");
+        const Local = localStorage.getItem("forpride");
         const user = JSON.parse(Local);
 
         const payment = await api.get(`/payments/${user.id}`);
@@ -467,9 +448,9 @@ function AuthProvider({children}) {
 
 
     function vefiryCompleteAccount() {
-        const Local = localStorage.getItem("foursome");
+        const Local = localStorage.getItem("forpride");
         const user = JSON.parse(Local);
-        const Local2 = localStorage.getItem("informations-foursome");
+        const Local2 = localStorage.getItem("informations-forpride");
         const userInformations = JSON.parse(Local2);
         if(user.latitude === undefined ||
             user.longitude === undefined ||
@@ -672,11 +653,6 @@ async function deleteConversation(room) {
 
     })
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 //Fim deletando conta
 
 
@@ -1527,10 +1503,6 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
 }
 
 
-
-
-
-
   // Deslogandop após tempo de inatividade
    function inactivityTime() {
        let time;
@@ -1555,15 +1527,7 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
       //time = setTimeout(doSomething, 1000)
     }
 
-
-
-
 }
-
-
-
-
-
 
 
     return(

@@ -38,7 +38,6 @@
     justify-content: flex-start;
     padding: 10px 0;
     margin-right: 25%;
-<<<<<<< HEAD
 }
 .content .aside .blocksFeed {
     width: 25%;
@@ -55,9 +54,6 @@
     right: 0;
     z-index: 98;
 }
-=======
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
-
 .content .aside .blocksFeed h3 {
     background-image: linear-gradient(to right bottom, #fe8b00, #f57303, #ea590a, #de3d11, #d01616);
     color: var(--White);

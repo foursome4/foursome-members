@@ -104,20 +104,16 @@
 .post2 .post2-data .post2-type .inputs textarea {
     width: 100%;
     height: 80px;
-<<<<<<< HEAD
     border-radius: 20px;
     resize: none;
     margin-right: 10px;
     background-color: var(--Background);
-}
-=======
     border: 1px solid var(--Gray_font1);
     border-radius: 20px;
     resize: none;
     color: var(--Gray_font2);
 }
 
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 .post2 .post2-data .post2-type button {
     display: flex;
     flex-direction: row;
@@ -156,8 +152,6 @@
     margin: 0 5px;
 }
 
-=======
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
 .post2 .post2-data .post2-type .buttons {
     width: 100%;
     display: flex;

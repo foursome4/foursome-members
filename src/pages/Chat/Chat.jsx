@@ -366,11 +366,7 @@ function handleDeleteMessage(e) {
                 <button className="button1" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}>Enviar <FiSend /></button>
                 <button className="button2" onClick={handleNewMessage} disabled={text === "" ? "disabled" : ""}><FiSend /></button>
                 {media === false ? "" : 
-<<<<<<< HEAD
-                <button className="button3" onClick={handleDeleteMessage} disabled={text === "" ? "disabled" : ""}>Deletar Conversa</button>
-=======
                 <button className="button3" onClick={handleDeleteMessage}>Deletar Conversa</button>
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                }
             </div>
             <br />

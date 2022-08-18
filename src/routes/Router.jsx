@@ -55,12 +55,11 @@ import { Welcome } from '../pages/Welcome/Welcome';
 import { ActivePlain } from '../pages/ActivePlain/ActivePlain';
 import { UpdatePlain } from '../pages/UpdatePlain/UpdatePlain';
 import { PeriodTeste } from '../pages/PeriodTeste/PeriodTeste';
-<<<<<<< HEAD
+
 import { SignUp } from '../pages/SignUp/SignUp';
-import { Radar2 } from '../pages/Radar2/Radar2';
-=======
+
 import { SuspenseAccount } from '../pages/SuspenseAccount/SuspenseAccount';
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
+
 
 
 function Router () {
@@ -78,11 +77,11 @@ function PrivateRoute({children} ) {
             <Route path="/signup/convite/:email/:code/:patron/:type" element={ <EntrarConvite />} />
             <Route path="/characteristcs/:idAccount/:email/:type/:username" element={ <Characteristcs />} />
             <Route path="/preferences/:idAccount/:email/:username" element={ <Preferences />} />
-<<<<<<< HEAD
+
             <Route path="/signup/" element={ <SignUp />} />
-=======
+
             <Route path="/signup/" element={ <Entrar />} />
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
+
 
             <Route path="/forgotit" element={ <Forgotit />} />
             <Route path="/recuperation" element={ <Recuperation />} />       
@@ -183,11 +182,11 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <Welcome /> </PrivateRoute>} />
             <Route path="/periodtest" 
                 element={ <PrivateRoute> <PeriodTeste /> </PrivateRoute>} />
-<<<<<<< HEAD
-=======
+
+
             <Route path="/suspenseaccount" 
                 element={ <PrivateRoute> <SuspenseAccount /> </PrivateRoute>} />
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
+
             </Routes>
            
     )

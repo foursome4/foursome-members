@@ -79,8 +79,6 @@
     justify-content: center;
 
 }
-<<<<<<< HEAD
-=======
 
 .content-Login1 .signIn .form  h5 {
     text-align: left;
@@ -130,8 +128,6 @@
     color: var(--White);
     text-decoration: none;
 }
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
-
 
 .content-Login .bloco2 .signIn .form input:focus {
     outline: none;
@@ -342,16 +338,12 @@ margin-top: 10px;
             .content-Login .bloco2 .signIn .form {
                 width: 70%;
             }
-<<<<<<< HEAD
         
-            .content-Login .bloco2 .signIn .form input {
-=======
             .content-Login1 .signIn .form  .infoavatar {
                 width: 100%;
             }
             
             .content-Login1 .signIn .form input {
->>>>>>> 92dc7d78bea45d0e00f9337c8b860be63edae8cd
                 width: 100%;
             }
 
@@ -370,9 +362,11 @@ margin-top: 10px;
                 width: 100%;
             }
 
-            @media (max-width: 500px) {
+            @media (max-width: 550px) {
 
-
+                .content-Login .slide {
+                    display: none;
+                }
                 .content-Login .bloco2 .signIn .form {
                     width: 70%;
                 }
