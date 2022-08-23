@@ -30,7 +30,7 @@ const {data} = useFetch(`/online`);
 
     function handleOpenModalPost() {
         if(userData.status === "suspense") {
-            window.open("/activeplain","_self");
+            window.open("/suspenseaccount","_self");
             return
         }
 
@@ -63,7 +63,7 @@ const {data} = useFetch(`/online`);
                     </button>
                     </a> */}
                     <div className="selectRemove">
-                    <a href={userData.status === "suspense" ? `/activeplain`:`/invitelist`}>
+                    <a href={userData.status === "Aproved" || userData.status  === "active" ? "/activeplain" : userData.status === "suspense" ? `/suspenseaccount`:`/invitelist`}>
                     <button className="ButtonsUnic" >
                         <IoMailOpenOutline size={20}/>
                        Enviados
@@ -85,7 +85,7 @@ const {data} = useFetch(`/online`);
   
                     </div>
                     
-                    <a href={userData.status === "suspense" ? `/activeplain`:`/recados`} >
+                    <a href={userData.status === "Aproved" || userData.status  === "active" ? "/activeplain" : userData.status === "suspense" ? `/suspenseaccount`:`/recados`} >
                     <button className="ButtonsUnic" >
                         <IoMailUnreadOutline size={20}/>
                        Recados
@@ -99,7 +99,7 @@ const {data} = useFetch(`/online`);
                        Radar
                     </button>
                     </a>  */}
-                     <a href={userData.status === "suspense" ? `/activeplain`:`/menu`}>
+                     <a href={userData.status === "Aproved" || userData.status  === "active" ? "/activeplain" : userData.status === "suspense" ? `/suspenseaccount`:`/menu`}>
                     <button className="ButtonsUnic" >
                         <IoMenuOutline size={20}/>
                        Menu
@@ -107,7 +107,7 @@ const {data} = useFetch(`/online`);
                     </a>
 
                     <div className="selectRemove">
-                    <a href={userData.status === "suspense" ? `/activeplain`:`/ranking`}>
+                    <a href={userData.status === "Aproved" || userData.status  === "active" ? "/activeplain" : userData.status === "suspense" ? `/suspenseaccount`:`/ranking`}>
                     <button className="ButtonsUnic" >
                         <IoStatsChartOutline size={20}/>
                        Ranking
@@ -171,7 +171,7 @@ const {data} = useFetch(`/online`);
             </button>
             <div className="content-modal">
             <div className="itensModalPost">
-                {userData.status === "essencial" || userData.status === "suspense" ?
+                {userData.status === "Aproved" || userData.status  === "active" ?
            <Post2 />
            :
            <Post />

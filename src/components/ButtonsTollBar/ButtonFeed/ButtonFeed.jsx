@@ -50,8 +50,12 @@ function ButtonFeed() {
  
  
      async function handleUpdateReadFeed() {
-        if(user.status === "suspense" ) {
+        if(user.status === "Aproved" || user.status  === "active" ) {
             window.open("/feed","_self");
+            return
+        }
+        if(user.status  === "suspense" ) {
+            window.open("/suspenseaccount","_self");
             return
         }
          const id = dateReadFeed.id

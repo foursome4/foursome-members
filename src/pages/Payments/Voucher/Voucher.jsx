@@ -33,19 +33,12 @@ function Voucher() {
         if(e.target.files[0]){
             const image = e.target.files[0];
             
-            if(image.type === 'image/jpeg' ||
-            image.type === 'image/jpg' ||
-            image.type === 'image/png'
-            ) {
+          
                 setImageAvatar(image);
                setAvatarUrl(URL.createObjectURL(e.target.files[0]));
                console.log(avatarUrl);
-               toast.success('Imagem carregada com sucesso. Publique sua postagem!');
-            } else {
-                console.log('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
-                setImageAvatar("");
-                return null;
-            }
+               toast.success('Comprovante carregado com sucesso. Finalize seu pagamento!');
+
         }
     }
 
@@ -93,7 +86,7 @@ function Voucher() {
                 <h4>Não rasure ou corte o comprovante.</h4>
                 <h4>O envio de comprovante fora dos padrões poderá causar o bloqueio do seu acesso.</h4>
                 <br />
-                <h4>NÃO ENVIAR COMPROVANTE EM PDF. APENAS PRINT DO COMPROVANTE</h4>
+                <h4>ENVIAR COMPROVANTE EM PDF OU PRINT DO COMPROVANTE</h4>
                 </div>
 
                 <div className="blue">
@@ -106,14 +99,14 @@ function Voucher() {
                 <h1> <IoCheckmarkCircleOutline /> </h1>
                 <h4>Ao concluir a transação, clique no botão COMPROVANTE COMPLETO OU COMPARTILHAR COMPROVANTE.</h4>
                 <h4>O comprovante deve estar completo.</h4>
-                <h4>ENVIE O PRINT DO COMPROVANTE</h4>
+                <h4>ENVIE COMPROVANTE EM PDF OU PRINT DO COMPROVANTE</h4>
                 </div>
 
                 <div className="comprovant">
                 <h3>Envie o print do comprovante aqui:</h3>
                 <label className="label-avatar">
                             <span><FiUpload color="#f65" size={25} /></span>
-                            <input type="file" accept="image/*" onChange={handleFile}/><br />
+                            <input type="file" accept="application/pdf|image/*" onChange={handleFile}/><br />
                             <img src={avatarUrl === null ? profile : avatarUrl} alt="Avatar" height={80} width={80}/>
                         </label>
                 </div>

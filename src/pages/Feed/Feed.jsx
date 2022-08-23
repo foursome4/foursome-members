@@ -40,10 +40,10 @@ function Feed() {
                     logout(user.id)
                     return
                 }
-                // if(user.status === "suspense") {
-                //     window.open("/activeplain","_self");
-                //     return
-                // }
+                if(user.status === "suspense") {
+                    window.open("/suspenseaccount","_self");
+                    return
+                }
                 const res = await api.get(`/online/one/${user.id}`)
                  
                if(res.data.length > 0) {
@@ -106,7 +106,7 @@ function Feed() {
            }, []);
 
 
-           if(user.status === "Aproved" || user.status  === "active") {
+           if(user.status === "Aproved" || user.status  === "active" || user.status  === "suspense" ) {
             console.log("olá, mundo")
             verufy(user.id)
            }
@@ -193,7 +193,7 @@ return (
                    {/* {myInformations === false ? "" : <Post />} */}
                     <ChatSlim />
                     { 
-                    user.status === "essencial" || user.status === "suspense" ? 
+                    user.status === "Aproved" || user.status  === "active" ? 
                     <PostFeed2 />
                     :
                     <PostFeed />

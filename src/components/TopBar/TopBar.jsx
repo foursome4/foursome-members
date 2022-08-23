@@ -50,7 +50,7 @@ function TopBar() {
                 <Notifications /> 
 
 
-                <a href={user.status === "suspense" ? `/activeplain`:`/invite`}>
+                <a href={user.status === "Aproved" || user.status  === "active" ? "/activeplain" : user.status === "suspense" ? `/suspenseaccount`:`/invite`}>
                 <div className="linkSelect" data-tip data-for='Convidar'>
                     <IoMail />
                 </div>

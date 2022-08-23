@@ -6,7 +6,7 @@ function SearchUsers() {
   const user = JSON.parse(Local);
 
       function handleSearch() {
-        user.status === "suspense" ? window.open(`/activeplain`, "_self")  
+        user.status === "Aproved" || user.status  === "active" ? window.open(`/activeplain" `, "_self") : user.status === "suspense" ? window.open(`/suspenseaccount`, "_self")  
         : window.open("/search", "_self")
         
       }

@@ -36,25 +36,8 @@ function SuspenseAccount() {
                     <br />
                     <h2>Olá, {user.username}</h2>
                     <h2>Sua conta está suspensa</h2>
-                    <h3>Seu acesso foi reduzido. Neste momento você pode postar apenas uma foto por dia, e tem acesso a ver as postagens do feed</h3>
+                    <h3>Seu acesso foi bloqueado. aguarde 24h para acessar novamente <br /> Ou Assine nosso plano e tenha acesso total a nosso site</h3>
                     <br />
-                    <div className="text">
-                    <h3>Com a conta suspensa, você não pode:</h3>
-                    <h4>- Curtir postagens</h4>
-                    <h4>- Comentar postagens</h4>
-                    <h4>- Ver quem curtiu as postagens, incluindo as suas</h4>
-                    <h4>- Ver quem comentou as postagens, incluindo as suas</h4>
-                    <h4>- Ver vídeos</h4>
-                    <h4>- Abrir perfil e amigo</h4>
-                    <h4>- Ver mensagens</h4>
-                    <h4>- Ver notificações</h4>
-                    <h4>- Ver solicitações de amigos</h4>
-                    <h4>- Ver ranking</h4>
-                    <h4>- Ver radar</h4>
-                    <h4>- Ver eventos</h4>
-                    <h4>- Ver grupos</h4>
-                    <h4>- Ver foruns</h4>
-                    </div>
                     <br />
                     <br />
                     <div className="orientations">
@@ -66,7 +49,6 @@ function SuspenseAccount() {
                 </div> 
                 <div className="buttons">
                 <button className="btn1" onClick={handleRedirectToActivate}>Ativar meu plano</button>
-                <button className="btn2" onClick={HandleRedirectFeed}>Ir para o feed</button>
                 <button onClick={Tologout}>Sair</button>
                 </div>
                     <br />

@@ -52,32 +52,7 @@ function PlainSelected() {
             <a href="/pricing">Alterar plano</a>
             </div>
             </div>
-            {
-                name === "Essencial" ?
-                <div className="optionsPayment">
-                    {data?.map((plain) => {
-                        return (
-                            plain === "Premium" ? "" :
-                            <div className="optionUnic" key={plain.id}>
-                               <div className="title">
-                                <h3>{plain.name}</h3>
-                                <h5>{
-                                plain.name === "Trimestral" ? "/ Economize: 10%":
-                                plain.name === "Semestral" ? "/ Economize: 15%":
-                                plain.name === "Anual" ? "/ Economize: 20%":
-                                ""
-                                }</h5>
-                                </div>
-                        <h4> <b>Período:</b>  {plain.period} Dias</h4>
-                        <h4> <b>Valor:</b>  R$ {plain.value}</h4>
-                        <h4> <b>Pagamento:</b>  PIX</h4>
-                        <a href={`/payment/${plain.id}`}>Prossegir para Pagamento</a>
-                        </div>
-                        )
-                    })}
-
-            </div>
-            : 
+   
             <div className="optionsPayment">
                      {data?.map((plain) => {
                          return (
@@ -99,11 +74,7 @@ function PlainSelected() {
                         </div>
                         )
                     })}
-        </div>
-            }
-
-
-           
+        </div>           
             </div>
 
         </div>

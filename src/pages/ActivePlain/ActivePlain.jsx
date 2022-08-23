@@ -17,61 +17,10 @@ function ActivePlain() {
 
                     <div className="text">
                         <h2>Sua conta está suspensa?</h2>
-                        <h4>Escolha um plano e tenha seu acesso de volta</h4>
+                        <h4>Efetue o pagamento via pix e tenha seu acesso de volta!</h4>
                     </div>
 
                     <div className="payments">
-                    <div className="vip">
-                                        <h2> <b>Seja ESSENCIAL </b> </h2>
-                                        <div className="double">
-                                        <h4>Curtir</h4>
-                                        <IoCheckmarkOutline color="#2aae2a"/>
-                                        </div>
-                                        <div className="double">
-                                        <h4>Comentar</h4>
-                                        <IoCloseOutline color="Red"/>
-                                        </div>
-                                        <div className="double">
-                                        <h4>Ver quem curtiu/comentou</h4>
-                                        <IoCloseOutline color="Red"/>
-                                        </div>
-                                        <div className="double">
-                                        <h4>Postar</h4>
-                                        <h5>1 Foto dia</h5>
-                                        </div>
-                                        <div className="double">
-                                        <h4>Ver fotos</h4>
-                                        <IoCheckmarkOutline color="#2aae2a"/>
-                                        </div>
-                                        <div className="double">
-                                        <h4>Ver vídeo</h4>
-                                        <IoCloseOutline color="Red"/>
-                                        </div>
-                                        <div className="double">
-                                        <h4>Acesso ao radar</h4>
-                                        <IoCheckmarkOutline color="#2aae2a"/>
-                                        </div>
-                                        <div className="double">
-                                        <h4>Acesso ao ranking</h4>
-                                        <IoCheckmarkOutline color="#2aae2a"/>
-                                        </div>
-                                        <div className="double">
-                                        <h4>Notificações</h4>
-                                        <IoCloseOutline color="Red"/>
-                                        </div>
-                                        <div className="double">
-                                        <h4>Solicitações</h4>
-                                        <IoCloseOutline color="Red"/>
-                                        </div>
-                                        <div className="double">
-                                        <h4>Chat de mensagens</h4>
-                                        <IoCloseOutline color="Red"/>
-                                        </div>
-
-                                        <h3><b>Seja Essencial por: R$ 9,90</b></h3>
-
-                                        <a href={`/selectplain/Essencial`}>Assinar ESSENCIAL </a>
-                                </div>
                                 <div className="premium">
                                         <h2> <b>Seja PREMIUM <FaCrown /></b> </h2>
                                         <div className="double">

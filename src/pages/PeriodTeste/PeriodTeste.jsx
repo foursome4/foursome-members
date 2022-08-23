@@ -34,9 +34,16 @@ function PeriodTeste() {
                     <br />
                     <h2>Bem vindo a Foursome.</h2>
                     <br />
-                    <h3>Você recebeu um teste de 15 minutos para utilizar o nosso site sem limites,<br />
-                    após este período seu acesso reduzido e você deverá assinar um de nossos planos para continuar a utilizar todas as funcionalidades do site</h3>
+                    <h3>Você está no período de utilização diário de 5 minutos para utilizar o nosso site com limites,<br />
+                    após este período você deverá aguardar 24h para ter novamente o acesso ou <br /> assine um de nossos planos para utilizar todas as funcionalidades do site</h3>
                     <br />
+                    <div className="text">
+                    <h3>No período de teste você pode:</h3>
+                    <h4>- Ver apenas o feed</h4>
+                    <h4>- Ver os recados</h4>
+                    <h4>- Postar uma foto</h4>
+                    <h4>- Curtir fotos</h4>
+                    </div>
                     <br />
                     <br />
                     <div className="orientations">

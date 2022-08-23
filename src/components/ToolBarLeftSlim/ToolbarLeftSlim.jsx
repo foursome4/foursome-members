@@ -17,7 +17,7 @@ function ToolbarLeftSlimComponent() {
         <div className="content-toolbar">
             <div className="ToolBarLeftSlim">
                 <div className="image">
-                <a href={user.status === "suspense" ? `/activeplain`:`/profile`}>
+                <a href={`/profile`}>
                     <img src={userInformation !== null ? userInformation.avatar :avatarImg} alt="" />
                     </a>
                 </div>
@@ -43,31 +43,31 @@ function ToolbarLeftSlimComponent() {
                        Recados
                     </button>
                     </a>
-                    <a href={user.status === "suspense" ? `/activeplain`:`/radar`}>
+                    <a href={user.status === "Aproved" || user.status  === "active" ? "/activeplain" : user.status === "suspense" ? `/suspenseaccount`:`/radar`}>
                     <button className="toolIcon" >
                         <IoRadio size={20}/>
                        Radar
                     </button>
                     </a>
-                    <a href={user.status === "suspense" ? `/activeplain`:`/ranking`}>
+                    <a href={user.status === "Aproved" || user.status  === "active" ? "/activeplain" : user.status === "suspense" ? `/suspenseaccount`:`/ranking`}>
                     <button className="toolIcon" >
                         <IoStatsChartOutline size={20}/>
                        Ranking
                     </button>
                     </a>
-                    <a href={user.status === "suspense" ? `/activeplain`:`/preventsfile`}>
+                    <a href={user.status === "Aproved" || user.status  === "active" ? "/activeplain" : user.status === "suspense" ? `/suspenseaccount`:`/preventsfile`}>
                     <button className="toolIcon" >
                         <IoCalendarOutline size={20}/>
                        Eventos
                     </button>
                     </a>
-                    <a href={user.status === "suspense" ? `/activeplain`:`/groups`}>
+                    <a href={user.status === "Aproved" || user.status  === "active" ? "/activeplain" : user.status === "suspense" ? `/suspenseaccount`:`/groups`}>
                     <button className="toolIcon" >
                         <IoPeopleOutline size={20}/>
                        Grupos
                     </button>
                     </a>
-                    <a href={user.status === "suspense" ? `/activeplain`:`/foruns`}>
+                    <a href={user.status === "Aproved" || user.status  === "active" ? "/activeplain" : user.status === "suspense" ? `/suspenseaccount`:`/foruns`}>
                     <button className="toolIcon" >
                         <IoList size={20}/>
                        Fóruns
@@ -96,7 +96,7 @@ function ToolbarLeftSlimComponent() {
                     </a>
                     <a href="/menu" >
                     <button className="toolIcon" >
-                        <IoMenuOutline size={20}/>Planos
+                        <IoMenuOutline size={20}/>Menu
                     </button>
                     </a>
                     <a href="/infos" >

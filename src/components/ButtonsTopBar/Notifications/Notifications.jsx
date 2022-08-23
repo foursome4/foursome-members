@@ -51,7 +51,7 @@ function Notifications() {
 
     async function handleNotifications() {
         if(user.status === "suspense") {
-            window.open("/activeplain","_self");
+            window.open("/suspenseaccount","_self");
             return
         }
 
@@ -63,7 +63,7 @@ function Notifications() {
     await api.patch(`/dateread/${id}`, data).then((res) => {
         console.log("Data inicial alterada com sucesso!");
 
-        user.status === "suspense" ? window.open(`/activeplain`, "_self") 
+        user.status === "Aproved" || user.status  === "active" ? window.open(`/activeplain" `, "_self") : user.status === "suspense" ? window.open(`/suspenseaccount`, "_self") 
         : window.open("/notifications", "_self")
         }).catch(error => {
         console.log("Erro ao buscar dados" + error)
