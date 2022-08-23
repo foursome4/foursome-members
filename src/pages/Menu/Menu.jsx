@@ -1,14 +1,20 @@
 ﻿import { BarBottomMenu } from "../../components/BarBottomMenu/BarBottomMenu"
 import { TopBar } from "../../components/TopBar/TopBar"
 import { IoCalendarOutline, IoList, IoRadio,IoMailUnreadOutline, IoPersonOutline, IoCashOutline, IoSettingsOutline, IoPeopleOutline, IoMenuOutline, IoCameraOutline, IoArrowBackOutline,
-    IoInformationCircleOutline, IoChatbubblesOutline, IoMailOutline, IoTrashOutline, IoBusinessOutline, IoMailOpenOutline, IoStatsChartOutline, IoCloseOutline, IoWalletOutline } from "react-icons/io5"
+    IoInformationCircleOutline, IoChatbubblesOutline, IoMailOutline, IoLogOutOutline, IoTrashOutline, IoBusinessOutline, IoMailOpenOutline, IoStatsChartOutline, IoCloseOutline, IoWalletOutline } from "react-icons/io5"
 import {FaCrown} from "react-icons/fa"
 import "./menu.css"
+import { useContext } from "react"
+import { AuthContext } from "../../contexts/Auth"
 
 function Menu() {
+    const {logout} = useContext(AuthContext);
     const Local = localStorage.getItem("foursome");
     const userData = JSON.parse(Local);
     
+    function handleLogout() {
+        logout(userData.id)
+    }
     return (
         <div className="container">
             <TopBar />
@@ -59,10 +65,10 @@ function Menu() {
                 </div>
             </div>
             <div className="unic2">
-                <a href="/pricing" className="Primary"><FaCrown />Seja Essencial por R$ 9,90</a>
+                <a href="/pricing" className="Primary"><FaCrown />Seja Premium por R$ 29,90</a>
             </div>
             <div className="unic3">
-                <button><IoTrashOutline /> Deletar minha conta</button>
+                <button onClick={handleLogout}><IoLogOutOutline /> Deslogar</button>
             </div>
 </div>
 </div>
