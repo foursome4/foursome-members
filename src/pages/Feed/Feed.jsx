@@ -45,12 +45,15 @@ function Feed() {
                     return
                 }
                 const res = await api.get(`/online/one/${user.id}`)
-                 
-               if(res.data.length > 0) {
-                console.log("Usuário ja está online")
-                return
-              }
-                 console.log("Cadastrando usuário")
+                
+                if(res.data.length > 0) {
+                    console.log("Usuário ja está online")
+                    return
+                }
+                if(res.data.length ===  0) {
+                    window.open("/onlineuser","_self");
+                    return
+                }
             }
  
                loadUsersOnline()
