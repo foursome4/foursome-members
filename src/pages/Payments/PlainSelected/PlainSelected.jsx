@@ -48,9 +48,6 @@ function PlainSelected() {
             <h3> <b>Ativação:</b> {datePost} </h3>
                 </div>
 
-            <div className="link">
-            <a href="/pricing">Alterar plano</a>
-            </div>
             </div>
    
             <div className="optionsPayment">
