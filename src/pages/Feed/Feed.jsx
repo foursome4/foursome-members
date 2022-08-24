@@ -25,7 +25,7 @@ function Feed() {
     const id = user.id
     const [myInformations, setMyInformations] = useState(false)
     const navigate = useNavigate();
-    const {inactivityTime, logout, socketDataLocation, verityTimesPeiodTest} = useContext(AuthContext);
+    const {inactivityTime, logout, verityTimesPeiodTest} = useContext(AuthContext);
 
            inactivityTime();
            useEffect(() => {
@@ -51,11 +51,10 @@ function Feed() {
                 return
               }
                  console.log("Cadastrando usuário")
-                 socketDataLocation()
             }
  
                loadUsersOnline()
-           }, [navigate, socketDataLocation, user.status, user.id]);
+           }, [navigate, user.status, user.id]);
 
 
            useEffect(() => {

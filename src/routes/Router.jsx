@@ -57,6 +57,7 @@ import { ActivePlain } from '../pages/ActivePlain/ActivePlain';
 import { UpdatePlain } from '../pages/UpdatePlain/UpdatePlain';
 import { PeriodTeste } from '../pages/PeriodTeste/PeriodTeste';
 import { SuspenseAccount } from '../pages/SuspenseAccount/SuspenseAccount';
+import { OnlineUser } from '../pages/UsageTips copy/OnlineUser';
 
 
 function Router () {
@@ -178,6 +179,8 @@ function PrivateRoute({children} ) {
                 element={ <PrivateRoute> <PeriodTeste /> </PrivateRoute>} />
             <Route path="/suspenseaccount" 
                 element={ <PrivateRoute> <SuspenseAccount /> </PrivateRoute>} />
+            <Route path="/onlineuser" 
+                element={ <PrivateRoute> <OnlineUser /> </PrivateRoute>} />
             </Routes>
            
     )

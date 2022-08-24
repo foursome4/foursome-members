@@ -171,7 +171,7 @@ function AuthProvider({children}) {
                 testPeriodVerify(user.id, user.username);
                 return
             }else  if(user.status  === "lifetime" || user.país === "Portugal") {
-                window.open("/feed","_self");
+                window.open("/onlineuser","_self");
                 return
             }else if(user.status === "premium") {
                 vefiryCompleteAccount()
@@ -328,7 +328,7 @@ function AuthProvider({children}) {
   
         } else {
             toast.success(`Você ainda tem tempo. Aproveite`)
-           window.open("/feed","_self");
+           window.open("/onlineuser","_self");
         }
     }
 
@@ -382,7 +382,7 @@ function AuthProvider({children}) {
             window.open("/update", "_self");
          }
          else {
-             window.open("/feed", "_self");
+             window.open("/onlineuser", "_self");
          }
     }
 
@@ -1277,131 +1277,6 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         })
     }
 
-    // Location
-    async function socketDataLocation() {
-        const Local1 = localStorage.getItem("foursome");
-        const user1 = JSON.parse(Local1);
-
-        const res = await api.get("/online");
-        
-        const selectUserOnline = res.data.filter(online => online.idAccount === user1.id);
-        console.log("selectUserOnline")
-        console.log(selectUserOnline)
-        console.log(selectUserOnline.length)
-
-        if(selectUserOnline.length > 0) {
-         console.log("Usuário ja está online")
-         return
-       }
-        console.log("Cadastrando em usuários online!")
-        let cityActualOnine = ""
-        function success(position) {
-        const latitude  = position.coords.latitude;
-        const longitude = position.coords.longitude;
-    
-        setlat(latitude)
-        setLong(longitude)
-        console.log(latitude)
-        console.log(longitude)
-   
-       reverseGeolocalization(latitude, longitude)
-      }
-    
-      function error() {
-        console.log('Unable to retrieve your location');
-      }
-   
-      function getLocation() {
-       return window.navigator.geolocation.getCurrentPosition(success, error);
-        }
-   
-        async function reverseGeolocalization(lat, long) {
-            const Local = localStorage.getItem("foursome");
-            const user = JSON.parse(Local);
-            const res = await api.get("/online");
-        
-            const selectUserOnline = res.data.filter(online => online.idAccount === user.id);
-            console.log("selectUserOnline")
-            console.log(selectUserOnline)
-            console.log(selectUserOnline.length)
-    
-            if(selectUserOnline.length > 0) {
-             console.log("Usuário ja está online")
-             return
-           }
-
-        const address = await apiGoogleReverse.get(`json?latlng=${lat},${long}&key=AIzaSyCZllXD0czNd_oeF0u_o9LUVJ2bCd1K4p8`);
-        console.log(address.data.results[0].address_components[3].long_name)
-        cityActualOnine = address.data.results[0].address_components[3].long_name;
-        setCityActual(address.data.results[0].address_components[3].long_name)
-        setUfActual(address.data.results[0].address_components[4].short_name) 
-     }
-
-    async function getInformations(cityActualOnine) {
-
-        const Local = localStorage.getItem("foursome");
-        const user = JSON.parse(Local);
-        const LocalInformation = localStorage.getItem("informations-foursome");
-        const userInformation = JSON.parse(LocalInformation);
-
-
-        const data = {
-            idAccount: user.id,
-            username: user.username,
-            type: user.type,
-            nickname: userInformation.nickname,
-            avatar: userInformation.avatar,
-            relationship: userInformation.relationship,
-            lat: lat.toString(),
-            long: long.toString(),
-            city: cityActual,
-            uf: userInformation.uf,
-            actualCity: "",
-            actualUf: "",
-            equalCity: "",
-            plane: "",
-            emoji: "",
-            song: "",
-            invisible: false
-        }
-
-        if(data.idAccount && data.username && data.nickname && data.avatar && data.lat && data.long && data.city && data.uf !== "") {
-            socket.on("connection", () => {
-                console.log("Conexão estabelecida")
-            })
-            
-            const Local = localStorage.getItem("foursome");
-            const user = JSON.parse(Local);
-            const res = await api.get("/online");
-        
-            const selectUserOnline = res.data.filter(online => online.idAccount === user.id);
-            console.log("selectUserOnline")
-            console.log(selectUserOnline)
-            console.log(selectUserOnline.length)
-    
-            if(selectUserOnline.length > 0) {
-             console.log("Usuário ja está online")
-             return
-           }
-
-
-                    await api.post("/online", data).then(() => {
-                    })
- 
-
-            } else {
-                console.log("Imformações não coletadas com sucesso!")
-            }
-    }
-
-    getLocation()
-    getInformations()
-}
-
-
-
-
-
 
   // Deslogandop após tempo de inatividade
    function inactivityTime() {
@@ -1442,7 +1317,6 @@ async function updateUserOnline( id, idAccount, username, type ,nickname, avatar
         <AuthContext.Provider value={{
             updateAccount,
             updateUserOnline,
-            socketDataLocation,
             loginSession,
             createAccount,
             loading,
