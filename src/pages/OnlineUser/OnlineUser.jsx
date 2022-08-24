@@ -8,6 +8,7 @@ import { useState } from 'react';
 import apiGoogleReverse from '../../services/apiGoogleReverse';
 import api from '../../services/api';
 import { socket } from '../../services/websocket';
+import { toast } from 'react-toastify';
 
 function OnlineUser() {
     const Local = localStorage.getItem("foursome");
@@ -95,6 +96,10 @@ function OnlineUser() {
 
     async function handleUserOnline(e) {
         e.preventDefault();
+        if(invisible === false && latitude === "") {
+            toast.info("Prof favor. Ative sua localização.");
+            return
+        }
         console.log({idAccount: user.id, username:user.username, type: user.type, nickname:user.nickname, avatar:user.avatar,
                     relationship:user.relationship, lat: latitude.toString(), long: longitude.toString(),
                      city: city, uf: uf, actualCity: "", actualUf: "", equalCity: "", plane, emoji, song, invisible})
@@ -124,7 +129,7 @@ function OnlineUser() {
                     <h3>Olá {user.nickname === null || user.nickname === undefined ? user.username : user.nickname}</h3>
                     <br />
                     <br />
-                    <h4>Como você deseja entar hoje?</h4>
+                    <h4>Como você deseja entrar hoje?</h4>
                     <h4><FaCircle color={invisible === false ? "green":"gray"}/></h4>
                     <select value={invisible} onChange={handleSelectVisible}>
                         <option value="false">Disponível (Online) </option>
