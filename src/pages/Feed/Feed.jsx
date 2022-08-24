@@ -108,7 +108,7 @@ function Feed() {
            }, []);
 
 
-           if(user.status === "Aproved" || user.status  === "active" || user.status  === "suspense" ) {
+           if(user.status === "Aproved" || user.status  === "active" ) {
             console.log("olá, mundo")
             verufy(user.id)
            }
