@@ -615,7 +615,7 @@ districtAll.sort(function(a,b) {
           {letra === "" ? "": 
           letra === letra.toUpperCase()  ? 
            <div className="alert2">
-           <h5>A primeira letra do seu e-mail está maiúscula. Isso está certo?</h5>
+           <h5>A primeira letra do seu e-mail está maiúscula. Isso está certo? <br /> Caso esteja correto prossiga tranquilamente. Este é apenas um alerta</h5>
        </div>:
         email === email.toUpperCase()  ? 
         <div className="alert2">
