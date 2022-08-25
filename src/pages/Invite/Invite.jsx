@@ -58,7 +58,7 @@ function Invite() {
 
                                     <div className="buttons">
                                       <button onClick={handleInviteForEmail}>E-mail <FiMail /></button>
-                                      <button onClick={handleInviteForWhatsapp}>Whatsapp <FaWhatsapp /></button>
+                                      {/* <button onClick={handleInviteForWhatsapp}>Whatsapp <FaWhatsapp /></button> */}
                                     </div>
 
                                     { typeInvite === "Email" ?
