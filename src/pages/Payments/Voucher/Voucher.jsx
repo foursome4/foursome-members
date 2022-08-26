@@ -32,12 +32,19 @@ function Voucher() {
         
         if(e.target.files[0]){
             const image = e.target.files[0];
-            
-          
+            console.log(image)
+
+             if(image.type === 'image/jpeg' || image.type === 'image/jpg' || image.type === 'image/png'  || image.type === 'application/pdf') {
                 setImageAvatar(image);
                setAvatarUrl(URL.createObjectURL(e.target.files[0]));
                console.log(avatarUrl);
                toast.success('Comprovante carregado com sucesso. Finalize seu pagamento!');
+            } else {
+                    toast.error('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png ou .PDF');
+                    console.log('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
+                    setImageAvatar(null);
+                    return null;
+                }
 
         }
     }
@@ -46,7 +53,7 @@ function Voucher() {
     async function handleUploadVoucher(e) {
         e.preventDefault();
         if(avatarUrl === null) {
-            toast.error("Favir anexar um comprovante Válido!");
+            toast.error("Favor anexar um comprovante Válido!");
             return;
         }
         toast.info("Salvando a foto. Aguarde...")
@@ -107,7 +114,7 @@ function Voucher() {
                 </div>
 
                 <div className="comprovant">
-                <h3>Envie o print do comprovante aqui:</h3>
+                <h3>Envie o print do comprovante ou PDF aqui:</h3>
                 <label className="label-avatar">
                             <span><FiUpload color="#f65" size={25} /></span>
                             <input type="file" accept="application/pdf|image/*" onChange={handleFile}/><br />
