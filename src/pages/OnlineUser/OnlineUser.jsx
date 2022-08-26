@@ -24,7 +24,18 @@ function OnlineUser() {
     const [latitude, setLatitude] = useState("");
     const [longitude, setLongitude] = useState("");
 
+    useEffect(() => {
+        async function loadUsersOnline() {
+            const res = await api.get(`/online/one/${user.id}`)
+            if(res.data.length > 0) {
+                window.open("/feed","_self");
+                return
+            }
+        }
 
+           loadUsersOnline()
+       }, [user.id]);
+       
     useEffect(() => {
         function getLocation() {
             return window.navigator.geolocation.getCurrentPosition(success, error);
