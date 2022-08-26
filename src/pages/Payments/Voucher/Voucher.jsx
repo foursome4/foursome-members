@@ -45,6 +45,10 @@ function Voucher() {
 
     async function handleUploadVoucher(e) {
         e.preventDefault();
+        if(avatarUrl === null) {
+            toast.error("Favir anexar um comprovante Válido!");
+            return;
+        }
         toast.info("Salvando a foto. Aguarde...")
         const uuid = uuidv4();
         let newAvatarUrlFirebase = ref(storage, `images/comprovant/${uuid}`);
