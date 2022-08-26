@@ -28,6 +28,23 @@ function Groups() {
     function handleSelectCreate() {
         setSelect("Create")
     }
+    
+    const dataAtualMais5 = `${new Date().getHours()}:0${new Date().getMinutes() +5}`
+    const dataAtual = `${new Date().getHours()}:${new Date().getMinutes()+20}`
+    console.log(dataAtual)
+    console.log(dataAtualMais5)
+
+    console.log(toString(new Date().getMinutes()).length)
+    console.log(new Date().getMinutes())
+
+
+    if(dataAtualMais5 > dataAtual) {
+       console.log("terminou o tempo")
+    } else {
+        console.log("Você tem tempo")
+    }
+
+
 
     return (
         <div className="content">

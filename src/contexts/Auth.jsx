@@ -313,9 +313,8 @@ function AuthProvider({children}) {
             })
             return;
         }
-
-       const periodInitial = `${new Date(periodtest.data[0].created_at).getDate()}/${new Date(periodtest.data[0].created_at).getMonth() +1}/${new Date(periodtest.data[0].created_at).getFullYear()} - ${new Date(periodtest.data[0].created_at).getHours()}:${new Date(periodtest.data[0].created_at).getMinutes() + 5}`
-        const actualDate = `${new Date().getDate()}/${new Date().getMonth() +1}/${new Date().getFullYear()} - ${new Date().getHours()}:${new Date().getMinutes()}`
+       const periodInitial = `${new Date(periodtest.data[0].created_at).getHours()}:${new Date(periodtest.data[0].created_at).getMinutes() + 5}`
+        const actualDate = `${new Date().getHours()}:${new Date().getMinutes()}`
         if(actualDate > periodInitial) {
             toast.success(`Periodo de teste finalizado`);
             const data = {status: "suspense"}
@@ -337,8 +336,8 @@ function AuthProvider({children}) {
             const periodtest = await api.get(`periodtest/${idAccount}`);
             console.log(periodtest)
             
-            const periodInitial = `${new Date(periodtest.data[0].created_at).getDate()}/${new Date(periodtest.data[0].created_at).getMonth() +1}/${new Date(periodtest.data[0].created_at).getFullYear()} - ${new Date(periodtest.data[0].created_at).getHours()}:${new Date(periodtest.data[0].created_at).getMinutes() +5}`
-            const actualDate = `${new Date().getDate()}/${new Date().getMonth() +1}/${new Date().getFullYear()} - ${new Date().getHours()}:${new Date().getMinutes()}`
+            const periodInitial = `${new Date(periodtest.data[0].created_at).getHours()}:${new Date(periodtest.data[0].created_at).getMinutes() +5}`
+            const actualDate = `${new Date().getHours()}:${new Date().getMinutes()}`
 
             if(actualDate > periodInitial) {
                 toast.success(`Periodo de teste finalizado`);
