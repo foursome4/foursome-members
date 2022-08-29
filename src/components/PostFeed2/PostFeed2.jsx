@@ -194,10 +194,6 @@ function PostFeed2() {
 
 
     async function handlePostNew() {
-
-        if(text === "" ) {
-            return
-        }
         setLoading(true)
         
         if(post === "photo") {
@@ -265,6 +261,7 @@ function PostFeed2() {
                 
 
             } else if(post === "text") {
+
                     newPost({
                         idAccount: user.id,
                         link: "",

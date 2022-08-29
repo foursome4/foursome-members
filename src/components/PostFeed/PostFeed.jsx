@@ -194,10 +194,6 @@ function PostFeed() {
 
 
     async function handlePostNew() {
-
-        if(text === "" ) {
-            return
-        }
         setLoading(true)
         
         if(post === "photo") {
