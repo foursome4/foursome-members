@@ -13,6 +13,7 @@ function Search() {
     const userData = JSON.parse(Local);
 
     const [online, setOnline] = useState([])
+    const [users, setUsers] = useState([])
     const [filtro, setFiltro] = useState("false")
     const [search, setSearch] = useState('');
     const [type, setType] = useState('');
@@ -27,7 +28,8 @@ function Search() {
     useEffect(() => {
         async function loadUsersONline() {
             const res = await api.get("/accounts");
-
+            console.log(res.data.length);
+            setUsers(res.data)
             res.data.forEach((user) => {
                 async function loadInformations() {
                     await api.get(`/informations/${user.id}`).then((res) => {
@@ -67,7 +69,7 @@ function Search() {
      }, [])
 
 
-
+     console.log(online)
     function handleSearch(e){
         e.preventDefault();
         setIndex(0)
@@ -274,7 +276,7 @@ if(!limitData) {
            {usersNewArray.length === 0 ? <><h3>{text}</h3></>
            :
            <>
-           <h5>Resultados de {index + 1} a {qtd} - Todal de {usersNewArray.length}</h5>
+           <h5>Resultados de {index + 1} a {qtd} - Todal de {type === "" && search === "" && país === "" ? users.length : usersNewArray.length}</h5>
             <button onClick={HandleNext}>Avançar</button>
            </>
            }
