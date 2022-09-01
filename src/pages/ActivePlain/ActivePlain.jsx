@@ -68,7 +68,7 @@ function ActivePlain() {
                                         <IoCheckmarkOutline color="#2aae2a"/>
                                         </div>
 
-                                        <h3><b>Seja Premium por: R$ 29,90</b></h3>
+                                        <h3><b>Por: R$ 29,90 / Mensal</b></h3>
 
                                         <a href={`/selectplain/Premium`}>Assinar PREMIUM <FaCrown /> </a>
                                 </div>
