@@ -341,12 +341,11 @@ function AuthProvider({children}) {
             testPeriodCreate()
             return;
         }
-        if(new Date(periodtest.data[0].created_at).getDate() < new Date().getDate()) {
-           testPeriodUpdate()
-            // await api.delete(`periodtest/${periodtest.data[0].id}`).then((res) => {
-            //     testPeriodUpdate()
-            // })
-            // return;
+        if(`${new Date(periodtest.data[0].created_at).getDate()}/${new Date(periodtest.data[0].created_at).getDate()}` < `${new Date().getDate()}/${new Date().getMonth()+1}`) {
+            await api.delete(`periodtest/${periodtest.data[0].id}`).then((res) => {
+                testPeriodUpdate()
+            })
+            return;
         } 
        const periodInitial = `${new Date(periodtest.data[0].created_at).getHours()}:${new Date(periodtest.data[0].created_at).getMinutes() + 5}`
         const actualDate = `${new Date().getHours()}:${new Date().getMinutes()}`

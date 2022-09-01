@@ -24,7 +24,7 @@ function Post2() {
     const [imageAvatar, setImageAvatar] = useState(''); 
     const [videoUrl, setVideoUrl] = useState(null);
     const [videoAvatar, setVideoAvatar] = useState(''); 
-    const [post2, setPost] = useState("text");
+    const [post, setPost] = useState("text");
     const [text, setText] = useState("");
     const [dataPhoto, setDataPhoto] = useState(false);
     const [dataVideo, setDataVideo] = useState(false);
@@ -82,14 +82,14 @@ function Post2() {
     useEffect(() => {
         async function findPostsPhoto() {
           const idAccount = user.id;
-          const res = await api.get(`/post2s/filter/${idAccount}/post2-photo`);
+          const res = await api.get(`/posts/filter/${idAccount}/post-photo`);
           setPhotos(res.data)
           console.log(res.data)
       
       }
         async function findPostsVideo() {
           const idAccount = user.id;
-          const res = await api.get(`/post2s/filter/${idAccount}/post2-video`);
+          const res = await api.get(`/posts/filter/${idAccount}/post-video`);
           setVideos(res.data)
           console.log(res.data)
       
@@ -101,8 +101,8 @@ function Post2() {
 
   const allPosts = photos.concat(videos);
 
-  const dailyPost = allPosts.filter((post2s) => (
-    new Date(post2s.created_at).getDate() + "/" + new Date(post2s.created_at).getMonth() + "/" + new Date(post2s.created_at).getFullYear() === new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear()));
+  const dailyPost = allPosts.filter((posts) => (
+    new Date(posts.created_at).getDate() + "/" + new Date(posts.created_at).getMonth() + "/" + new Date(posts.created_at).getFullYear() === new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear()));
  
 //     const dailyPhoto = photos.filter((photo) => (
 //     new Date(photo.created_at).getDate() + "/" + new Date(photo.created_at).getMonth() + "/" + new Date(photo.created_at).getFullYear() === new Date().getDate() + "/" + new Date().getMonth() + "/" + new Date().getFullYear()));
@@ -128,7 +128,7 @@ function Post2() {
                 setImageAvatar(image);
                setAvatarUrl(URL.createObjectURL(e.target.files[0]));
                console.log(avatarUrl);
-               toast.success('Imagem carregada com sucesso. Publique sua post2agem!');
+               toast.success('Imagem carregada com sucesso. Publique sua postagem!');
             } else {
                 console.log('Tipo dearquivo não aceito. Envie uma imagem dos tipos: .jpg, .jpeg, .png');
                 setImageAvatar("");
@@ -163,7 +163,7 @@ function Post2() {
                     setVideoAvatar(video);
                     setVideoUrl(URL.createObjectURL(e.target.files[0]));
                     console.log(videoUrl);
-                    toast.success('Vídeo carregado com sucesso. Publique sua post2agem!');
+                    toast.success('Vídeo carregado com sucesso. Publique sua postagem!');
                     
             } else {
                 console.log('Tipo dearquivo não aceito. Envie video do tipo: .mp4 ou MOV');
@@ -177,7 +177,7 @@ function Post2() {
     
     async function handleMessage(e) {
         e.preventDefault();
-        toast.error("Não é possível enviar um post2 vazio")
+        toast.error("Não é possível enviar um post vazio")
     }
 
     async function handlePost() {
@@ -186,7 +186,7 @@ function Post2() {
           if(res.data === "" || res.data === undefined || res.data.length === 0 ) {
               logout(user.id)
           } else {
-            console.log("Pode post2ar")
+            console.log("Pode postar")
             handlePostNew()
           } 
       }
@@ -196,10 +196,10 @@ function Post2() {
         setLoading(true)
 
        
-        if(post2 === "photo") {
+        if(post === "photo") {
             toast.info("Salvando a foto. Aguarde...")
             const uuid = uuidv4();
-            let newAvatarUrlFirebase = ref(storage, `images/post2s/${uuid}`);
+            let newAvatarUrlFirebase = ref(storage, `images/posts/${uuid}`);
             
             let uploadAvatar = await uploadBytes(newAvatarUrlFirebase, imageAvatar);
             let photoUrlAvatar = await getDownloadURL(uploadAvatar.ref);
@@ -227,10 +227,10 @@ function Post2() {
             setDataPhoto(true)
             setPost("text")
             reset()
-        } else if(post2 === "video" ){
+        } else if(post === "video" ){
             toast.info("Salvando o vídeo. Aguarde...")
                 const uuid = uuidv4();
-                let newVideoUrlFirebase = ref(storage, `videos/post2s/${uuid}`);
+                let newVideoUrlFirebase = ref(storage, `videos/posts/${uuid}`);
                 
                 let uploadVideo = await uploadBytes(newVideoUrlFirebase, videoAvatar);
                 let videoUrl = await getDownloadURL(uploadVideo.ref);
@@ -260,7 +260,7 @@ function Post2() {
                 reset()
                 
 
-            } else if(post2 === "text") {
+            } else if(post === "text") {
                 if(text === "" ) {
                     return
                 }
@@ -287,7 +287,7 @@ function Post2() {
                 
                 }
         else {
-            console.log("Escolha um tipo de post2agem")
+            console.log("Escolha um tipo de postagem")
         }   
     
         setLoading(false)
@@ -300,23 +300,23 @@ function Post2() {
     }
         
 
-    function post2Text() {
-        if(post2 !== "text") {
+    function postText() {
+        if(post !== "text") {
             setPost("text")
             setText("")     
         }
     }
 
-    function post2Photo(){
-        if(post2 !== "photo") {
+    function postPhoto(){
+        if(post !== "photo") {
             setPost("photo")
             setText("")  
         }
 
     }
     
-    function post2Video(){
-        if(post2 !== "video") {
+    function postVideo(){
+        if(post !== "video") {
             setPost("video")
             setText("")
         }
@@ -325,15 +325,15 @@ function Post2() {
 
 
     return (
-        <div className="post2">
-             <div className="post2-data">
-            <div className="post2-type">
+        <div className="post">
+             <div className="post-data">
+            <div className="post-type">
                 <div className="inputs">
-                {post2 === "text" ?
+                {post === "text" ?
                 <textarea name="" id="" cols={30} rows={10} placeholder="O que deseja compatilhar?"
                 onChange={(e) => setText(e.target.value)}></textarea> :
-                post2 === "photo" ?
-                <div className='post2-file'>
+                post === "photo" ?
+                <div className='post-file'>
                <textarea name="" id="" cols={30} rows={10} placeholder="O que deseja compatilhar?"
                 onChange={(e) => setText(e.target.value)}></textarea>
               
@@ -345,8 +345,8 @@ function Post2() {
                         </label>
 
                 </div>:
-               post2 === "video" ?
-               <div className='post2-file'>
+               post === "video" ?
+               <div className='post-file'>
                <textarea name="" id="" cols={30} rows={10} placeholder="O que deseja compatilhar?"
                 onChange={(e) => setText(e.target.value)}></textarea>
                
@@ -360,21 +360,21 @@ function Post2() {
   
                 </div>
                 <div className="buttons">
-                    <button className={post2 === "text" ? 'selected' : ""} onClick={post2Text}> <FiMenu /> Texto </button>
-                  {dailyPost.length === 1 || dataPhoto === true ? "" : <button className={post2 === "photo" ? 'selected' : ""} onClick={post2Photo}> <FiImage /> Foto </button> } 
-                  {dailyPost.length === 1 || dataVideo === true ? "" :  <button className={post2 === "video" ? 'selected' : ""} onClick={post2Video}> <FiVideo /> Vídeo </button> } 
+                    <button className={post === "text" ? 'selected' : ""} onClick={postText}> <FiMenu /> Texto </button>
+                  {dailyPost.length === 1 || dataPhoto === true ? "" : <button className={post === "photo" ? 'selected' : ""} onClick={postPhoto}> <FiImage /> Foto </button> } 
+                  {dailyPost.length === 1 || dataVideo === true ? "" :  <button className={post === "video" ? 'selected' : ""} onClick={postVideo}> <FiVideo /> Vídeo </button> } 
                 </div>
 
-                { post2 === "text" ?                  
+                { post === "text" ?                  
                         <button className="public" onClick={ text !== ""? handlePost : handleMessage}>
                             {loading === true ? <FiRefreshCcw /> : <FiSend />}
                         </button>
                         : 
-                        post2 === "photo" ?                  
+                        post === "photo" ?                  
                         <button className="public" onClick={avatarUrl !== null ? handlePost : handleMessage}>
                             {loading === true ? <FiRefreshCcw /> : <FiSend />}
                         </button>
-                        : post2 === "video" ?                  
+                        : post === "video" ?                  
                         <button className="public" onClick={videoUrl !== null ? handlePost : handleMessage}>
                             {loading === true ? <FiRefreshCcw /> : <FiSend />}
                         </button>
@@ -383,9 +383,7 @@ function Post2() {
             </div>      
             </div>
             <div className="counter">
-            <h5>{dailyPost.length === 0 ? "Você pode postar 1 foto ou video"
-                : dailyPost.length === 1 ? "Você ja efetuou suas postagens diárias"
-                : ""  }</h5>
+            <h5>{dailyPost.length === 0 ? "Você pode postar 1 foto ou video" : dailyPost.length === 1 ?  "Você ja efetuou sua postagem diária": ""  }</h5>
                 </div>
 
                 
