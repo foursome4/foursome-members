@@ -341,12 +341,22 @@ function AuthProvider({children}) {
             testPeriodCreate()
             return;
         }
-        if(`${new Date(periodtest.data[0].created_at).getDate()}/${new Date(periodtest.data[0].created_at).getDate()}` < `${new Date().getDate()}/${new Date().getMonth()+1}`) {
+
+        var d1 = new Date(periodtest.data[0].created_at);
+        var d2 = new Date();
+        var diff = moment(d2,"DD/MM/YYYY HH:mm:ss").diff(moment(d1,"DD/MM/YYYY HH:mm:ss"));
+        var valor = moment.duration(diff).asDays();
+        var dias = Math.round(valor, 1);
+        console.log(dias);
+
+        if(dias > 0) {
             await api.delete(`periodtest/${periodtest.data[0].id}`).then((res) => {
                 testPeriodUpdate()
             })
-            return;
+             return;
+
         } 
+
        const periodInitial = `${new Date(periodtest.data[0].created_at).getHours()}:${new Date(periodtest.data[0].created_at).getMinutes() + 5}`
         const actualDate = `${new Date().getHours()}:${new Date().getMinutes()}`
         if(actualDate > periodInitial) {
