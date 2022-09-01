@@ -237,19 +237,54 @@ function AuthProvider({children}) {
         toast.info("Verificando periodo de teste...")
         const periodtest = await api.get(`periodtest/${idAccount}`);
         console.log(periodtest.data)
-        console.log(periodtest.data.lenght)
         console.log(periodtest.data.length)
         console.log(`Verificando teste`)
 
         async function testPeriodCreate() {
+            const Local = localStorage.getItem("foursome");
+            const user = JSON.parse(Local);
             const data = {
                 stringDate: `${new Date().getDate()}/${new Date().getMonth() +1}/${new Date().getFullYear()} - ${new Date().getHours().lenght === 1 ? <> {"0" + new Date().getHours()}</> : new Date().getHours()}:${new Date().getMinutes().lenght === 1 ? <> {"0" + new Date().getMinutes()}</> : new Date().getMinutes()  }`,
                 idAccount,
                 username
             }
-            await api.post(`periodtest/`, data).then((res) => {
-                console.log(`liberando teste`);
-              window.open("/periodtest","_self");
+            await api.post(`periodtest/`, data).then( async (res) => {
+                const data2 = {status: "active"}
+                await api.patch(`accounts/updatestatus/${idAccount}`, data2).then((res) => {
+                    console.log(`liberando teste`);
+                    const foursome = {
+                        avatar: user.avatar ,
+                        cep: user.cep,
+                        city: user.city,
+                        cover: user.cover,
+                        date: user.date,
+                        email: user.email,
+                        expiresIn: username.expiresIn,
+                        id: user.id,
+                        id2: user.id2,
+                        latitude: user.latitude,
+                        longitude: user.longitude,
+                        nickname: user.nickname,
+                        online: user.online,
+                        patron: user.patron,
+                        país: user.país,
+                        phone: user.phone,
+                        recommendation: user.recommendation,
+                        relationship: user.relationship,
+                        role: user.role,
+                        status: "active",
+                        token: user.token,
+                        type: user.type,
+                        uf: user.uf,
+                        username: user.username
+                    }
+
+                    localStorage.setItem("foursome", JSON.stringify(foursome));
+                    window.open("/periodtest","_self");
+                }).catch((error) => {
+                    console.log(error)
+                })
+
             })
         }
 
@@ -306,13 +341,13 @@ function AuthProvider({children}) {
             testPeriodCreate()
             return;
         }
-
         if(new Date(periodtest.data[0].created_at).getDate() < new Date().getDate()) {
-            await api.delete(`periodtest/${periodtest.data[0].id}`).then((res) => {
-                testPeriodUpdate()
-            })
-            return;
-        }
+           testPeriodUpdate()
+            // await api.delete(`periodtest/${periodtest.data[0].id}`).then((res) => {
+            //     testPeriodUpdate()
+            // })
+            // return;
+        } 
        const periodInitial = `${new Date(periodtest.data[0].created_at).getHours()}:${new Date(periodtest.data[0].created_at).getMinutes() + 5}`
         const actualDate = `${new Date().getHours()}:${new Date().getMinutes()}`
         if(actualDate > periodInitial) {
