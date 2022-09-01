@@ -20,6 +20,9 @@ function Menu() {
             <TopBar />
         <div className="content">
         <div className="menu">
+        <div className="unic2">
+                <a href="/pricing" className="Primary"><FaCrown />Seja Premium por R$ 29,90</a>
+            </div>
             <div className="unic">
                 <a href="/profile" className="Primary"><IoPersonOutline />Meu perfil</a>
                 <a href="/settings"><IoSettingsOutline />Configurações</a>
@@ -64,11 +67,9 @@ function Menu() {
                     <a href="/infos" className="Primary"><IoInformationCircleOutline />Informações</a>
                 </div>
             </div>
-            <div className="unic2">
-                <a href="/pricing" className="Primary"><FaCrown />Seja Premium por R$ 29,90</a>
-            </div>
+
             <div className="unic3">
-                <button onClick={handleLogout}><IoLogOutOutline /> Deslogar</button>
+                <button onClick={handleLogout}><IoLogOutOutline /> Deslogar / Sair</button>
             </div>
 </div>
 </div>
