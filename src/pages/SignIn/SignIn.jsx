@@ -87,9 +87,9 @@ function SignIn() {
             <a href="/recuperationuser"><p> ESQUECI MEU USUÁRIO</p></a>
           </div>
 
-          <div className="whatsapp" onClick={handleSignUp}>
+          {/* <div className="whatsapp" onClick={handleSignUp}>
              <h4><b>Não tem conta? </b> Clique aqui e cadastre-se</h4>
-          </div>
+          </div> */}
           <div className="whatsapp2" onClick={handleInviteWhatsapp}>
             <h4> Entre em contato <IoLogoWhatsapp /></h4>
           </div>
