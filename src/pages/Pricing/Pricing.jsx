@@ -16,7 +16,7 @@ function Pricing() {
             <div className="Pricing-page">
 
             <div className="text">
-                        <h2>Planos</h2>
+                        <h2>Escolha um plano</h2>
                         <h4>Escolha um plano e tenha todos os benefícios</h4>
                     </div>
 

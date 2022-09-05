@@ -11,10 +11,18 @@ function Plains() {
 
     const {data} = useFetch(`/payments/${user.id}`)
 
-    const expiração = parseInt(data?.[0].period) === 30 ? 2 :
-                     parseInt(data?.[0].period) === 90 ? 4 :
-                     parseInt(data?.[0].period) === 180 ? 7 :
-                     parseInt(data?.[0].period) === 365 ? 13 : ""
+    let expiração = ""
+    if(!data) {
+        window.open(`/pricing`, "_self")
+        return
+    }
+    if(data) {
+         expiração = parseInt(data?.[0].period) === 30 ? 2 :
+                         parseInt(data?.[0].period) === 90 ? 4 :
+                         parseInt(data?.[0].period) === 180 ? 7 :
+                         parseInt(data?.[0].period) === 365 ? 13 : ""
+    }
+
 console.log(expiração)
     return(
         <div className="plains">
@@ -22,11 +30,18 @@ console.log(expiração)
             <div className="plains-page">
             <div className="myPlain">
             <h2>Meu plano</h2>
+           {data?.length > 0 ?
+           <>
             <h4>Plano: {data?.[0].referencePlain} {data?.[0].namePlain}</h4>
             <h4>Valor: R${data?.[0].value}</h4>
             <h4>Período: {data?.[0].period} Dias</h4>
             <h4>Ativação: {`${new Date(data?.[0].created_at).getDate()}/${new Date(data?.[0].created_at).getMonth() +1}/${new Date(data?.[0].created_at).getFullYear()}`}</h4>
             <h4>Expira em:  {`${new Date(data?.[0].created_at).getDate()}/${new Date(data?.[0].created_at).getMonth() +expiração}/${new Date(data?.[0].created_at).getFullYear()}`}</h4>
+            </>
+            
+        :
+        <h4>Você ainda não possui plano</h4>
+        }
 
 
             <a href="/pricing">Renovar plano</a>

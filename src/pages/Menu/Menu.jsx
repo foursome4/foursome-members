@@ -61,7 +61,7 @@ function Menu() {
             </div>
             <div className="double">
                 <div className="unic">
-                    <a href="/plain" className="Primary"><IoWalletOutline />Pagamentos</a>
+                    <a href="/plain" className="Primary"><IoWalletOutline />Meus Pagamentos</a>
                 </div>
                 <div className="unic">
                     <a href="/infos" className="Primary"><IoInformationCircleOutline />Informações</a>
