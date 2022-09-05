@@ -16,8 +16,8 @@ function UpdatePlain() {
             <div className="UpdatePlain-page">
 
                     <div className="text">
-                        <h2>Sua conta está suspensa?</h2>
-                        <h4>Escolha um plano e tenha seu acesso de volta</h4>
+                        <h2>Deseja fazer um upgrade de plano?</h2>
+                        <h4>Escolha um plano, faça seu upgrade agora mesmo e tenha mais benefícios</h4>
                     </div>
 
                     <div className="payments">
@@ -68,7 +68,7 @@ function UpdatePlain() {
                                         <IoCheckmarkOutline color="#2aae2a"/>
                                         </div>
 
-                                        <h3><b>Seja Premium por: R$ 29,90</b></h3>
+                                        <h3><b>Seja Premium por apenas R$ 9,90</b></h3>
 
                                         <a href={`/selectplain/Premium`}>Assinar PREMIUM <FaCrown /> </a>
                                 </div>

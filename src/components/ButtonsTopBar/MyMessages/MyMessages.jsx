@@ -38,6 +38,9 @@ function MyMessages() {
       loadDateRead()
     }, [user.id])
 
+    
+
+
     const idFriend = user.id;
     const {data} = useFetch(`notificationsmessage/my/${idFriend}`);
 
@@ -50,9 +53,12 @@ function MyMessages() {
 
       async function handleMessages() {
 
-        if(user.status === "suspense") {
-          window.open("/activeplain","_self");
+        if(user.status === "Aproved" || user.status  === "active") {
+          window.open(`/activeplain`, "_self")
           return
+      } else if(user.status === "suspense") {
+        window.open(`/suspenseaccount`, "_self")
+        return
       }
         const id = dateReadMessage.id
         const data = {
