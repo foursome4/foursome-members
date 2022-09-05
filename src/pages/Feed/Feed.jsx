@@ -190,7 +190,7 @@ return (
                 <TopBar />
                 <div className="aside">
                     <div className="feed">
-                    {/* <ListEventsFeed /> */}
+                    <ListEventsFeed />
                  <button className="topScroll" onClick={handleTop}><FiArrowUpCircle /></button>
                    {/* {myInformations === false ? "" : <Post />} */}
                     <ChatSlim />
