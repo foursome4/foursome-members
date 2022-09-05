@@ -38,6 +38,7 @@ function SuspenseAccount() {
                     <h2>Sua conta está suspensa</h2>
                     <h3>Seu acesso foi bloqueado. aguarde 24h para acessar novamente <br /> Ou Assine nosso plano e tenha acesso total a nosso site</h3>
                     <br />
+                    <button className="btn1" onClick={handleRedirectToActivate}>Assine agora por apenas R$ 9,90</button>
                     <br />
                     <br />
                     <div className="orientations">

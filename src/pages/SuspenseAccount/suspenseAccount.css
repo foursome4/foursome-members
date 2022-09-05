@@ -49,6 +49,15 @@
     color: var(--White);
     margin: 10px;
 }
+.content-SuspenseAccount .SuspenseAccount .btn1 {
+    padding: 10px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--Foursome1);
+    color: var(--White);
+    margin: 10px;
+}
 .content-SuspenseAccount .SuspenseAccount .buttons .btn2 {
     width: 150px;
     padding: 10px 5px;
