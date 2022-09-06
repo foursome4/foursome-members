@@ -54,11 +54,39 @@ function InviteEmail() {
         setType("")
     }
 
+    let never1 = false
+    if(email.includes(" ")) {
+      never1 = true
+    }
+
+    const letra = email.substring(0, 1)
+
  return (   <>
        <form action="">
             <span>Envie um convite por e-mail</span>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nome"/>
             <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"/>
+            {never1 === true ?
+            <div className="alert2">
+                <h5>Favor remover os espaços vazios no campo login</h5> 
+                </div>
+                : ""}
+                
+            {email.includes('@') ? "" :
+                            <div className="alert">
+                                <h5>Seu Email deve conter o @</h5>
+                            </div>
+          }
+          {  letra === "" ? "" : letra === letra.toUpperCase() && never1 === false ? 
+           <div className="alert2">
+           <h5>A primeira letra do seu e-mail está maiúscula. Isso está certo? <br /> Caso esteja correto prossiga tranquilamente. Este é apenas um alerta</h5>
+       </div>:
+        email === email.toUpperCase() && never1 === false ? 
+        <div className="alert2">
+        <h5>Seu e-mail contém letra maiúscula. Isso está certo?</h5>
+    </div> :
+                           ""
+          }
             
             <select className={type === "" ? "" : "active"} value={type} onChange={handleSetectType}>
                 <option value="">Tipo de conta</option>

@@ -40,6 +40,29 @@ form .active {
 form input::placeholder {
     color: var(--Gray_font1);
 }
+form .alert {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 5px 0;
+    background-color: red;
+    padding: 10px;
+    border-radius: 6px;
+    color: var(--White);
+}
+form .alert2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 5px 0;
+    background-color: var(--Foursome2);
+    padding: 10px;
+    border-radius: 6px;
+    color: var(--White);
+}
+
 
 form button {
     width: 150px;
