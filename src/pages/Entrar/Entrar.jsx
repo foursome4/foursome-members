@@ -892,7 +892,6 @@ districtAll.sort(function(a,b) {
                 <option value="">Selecione</option>
                 <option value="Instagram">Instagram </option>
                 <option value="Facebook">Facebook </option>
-                <option value="Casal Cezar e Rê">Casal Cezar e Rê </option>
                 <option value="Promouter de Eventos">Promouter de Eventos </option>
                 <option value="Google">Google </option>
                 <option value="Indicação de Amigo">Indicação de Amigo </option>
